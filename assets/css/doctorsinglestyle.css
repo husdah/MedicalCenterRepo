@@ -234,3 +234,30 @@ h2
     color: #0051A1;
 }
 /************************Comment section*******************************/
+
+
+@media (max-width: 1400px){
+
+    .container 
+{
+    margin-right: 0;
+    margin-left: 0;
+}
+    .left
+{
+    float: left;
+    width: 60%;
+    margin-right: 120px;
+}
+.right
+{
+    float: right;
+    width: 30%;
+}
+
+.time1
+{
+    width: 180px;
+    padding: 2px;
+}
+}
