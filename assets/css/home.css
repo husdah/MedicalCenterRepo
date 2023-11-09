@@ -149,7 +149,7 @@ p{
 }
 
 .about-col1{
-    background: url(./images/about.jpg) center center no-repeat;
+    background: url('images/about.jpg') center center no-repeat;
     background-size: cover;
 }
 .about-col2{
