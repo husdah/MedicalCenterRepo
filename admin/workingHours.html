@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthHub Admin Panel</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/form.css">
+    <link rel="stylesheet" href="assets/css/checkbox.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+     <!-- Sidebar -->
+     <aside class="sidebar">
+        <a href="#" class="logo">
+            <i class='bx bx-pulse'></i>
+            <div class="logo-name"><span>Health</span>Hub</div>
+        </a>
+        <ul class="side-menu">
+            <li><a href="index.html"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li><a href="clinics.html"><i class='bx bx-store-alt'></i>Clinics</a></li>
+            <li><a href="doctors.html"><i class='bx bx-first-aid'></i>Doctors</a></li>
+            <li><a href="patients.html"><i class='bx bx-group'></i>Patients</a></li>
+            <li><a href="donors.html"><i class='bx bx-donate-blood'></i>Donors</a></li>
+            <li class="active"><a href="workingHours.html"><i class='bx bx-time'></i>Working Hours</a></li>
+            <li><a href="settings.html"><i class='bx bx-cog'></i>Settings</a></li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="#" class="logout">
+                    <i class='bx bx-log-out-circle'></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+     </aside>
+    <!-- End of Sidebar -->
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Navbar -->
+        <nav>
+            <i class='bx bx-menu'></i>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+            <input type="checkbox" id="theme-toggle" hidden>
+            <label for="theme-toggle" class="theme-toggle"></label>
+            <a href="#" class="notif">
+                <i class='bx bx-bell'></i>
+                <span class="count">12</span>
+            </a>
+            <a href="#" class="profile">
+                <img src="images/HealthHubLogo.png">
+            </a>
+        </nav>
+        <!-- End of Navbar -->
+
+        <main>
+            <div class="header">
+                <div class="left">
+                    <h1>Manage Working Hours</h1>
+                    <ul class="breadcrumb">
+                        <li><a href="#">
+                                Choose Hours
+                            </a></li>
+                        /
+                        <li><a href="#" class="active">Available Doctors</a></li>
+                    </ul>
+                </div>
+                <a href="#" class="report">
+                    <i class='bx bx-receipt'></i>
+                    <span>View Appointments</span>
+                </a>
+            </div>
+
+            <div class="bottom-data">
+                <div class="orders">
+                    <div class="header">
+                        <i class='bx bx-time'></i>
+                        <h3>Working Hours</h3>
+                        <i class='bx bx-filter'></i>
+                        <i class='bx bx-search'></i>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Doctors</th>
+                                <th>Day</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="images/profile-1.jpg">
+                                    <p>Hussein Daher</p>
+                                </td>
+                                <td>Monday</td>
+                                <td>
+                                    <label class="check-container" id="check_display">available
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="images/profile-1.jpg">
+                                    <p>Hussein Daher</p>
+                                </td>
+                                <td>Monday</td>
+                                <td>
+                                    <label class="check-container" id="check_display">available
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="images/profile-1.jpg">
+                                    <p>Hussein Daher</p>
+                                </td>
+                                <td>Monday</td>
+                                <td>
+                                    <label class="check-container" id="check_display">available
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Reminders -->
+                <div class="reminders">
+                    <div class="header">
+                        <i class='bx bx-timer'></i>
+                        <h3>Working Hours</h3>
+                    </div>
+                    <form class="form">
+                        <p class="title">Manage WH</p>
+                        <p class="message">Please Enter The Needed Information. </p>
+                        <label>
+                            <select name="" id="" class="input">
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thurday">Thurday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Saturday">Saturday</option>
+                                <option value="Sunday">Sunday</option>
+                            </select>
+                            <span>Day</span>
+                        </label>
+
+                        <div class="flex">
+                            <label>
+                                <input required="" placeholder="" type="number" class="input">
+                                <span>From</span>
+                            </label>
+                    
+                            <label>
+                                <input required="" placeholder="" type="number" class="input">
+                                <span>To</span>
+                            </label>
+                        </div>                        
+                        
+                        <label class="check-container" id="check_display">Closed
+                            <input type="checkbox" name="closed">
+                            <span class="checkmark"></span>
+                        </label>
+
+                        <button class="submit">Submit</button>
+                    </form>
+                </div>
+                <!-- End of Reminders-->
+
+            </div>
+
+
+            <div class="bottom-data">
+                <div class="orders">
+                    <div class="header">
+                        <i class='bx bx-time'></i>
+                        <h3>Working Hours</h3>
+                        <i class='bx bx-filter'></i>
+                        <i class='bx bx-search'></i>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Doctors</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="images/profile-1.jpg">
+                                    <p>Hussein Daher</p>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">available
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">available
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">available
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">available
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">available
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="images/profile-1.jpg">
+                                    <p>Hussein Daher</p>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">available
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">available
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">available
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">available
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">available
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="images/profile-1.jpg">
+                                    <p>Hussein Daher</p>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">available
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">available
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">available
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">available
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">available
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="assets/js/index.js"></script>
+    
+</body>
+</html>
