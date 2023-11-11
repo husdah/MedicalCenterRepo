@@ -30,6 +30,14 @@ a{
     text-decoration: none;
 }
 
+a:link {
+    color: var(--dark);
+}
+    
+a:visited {
+    color: var(--dark);
+}
+
 li{
     list-style: none;
 }
@@ -548,6 +556,11 @@ body{
     height: 36px;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.content main .bottom-data .orders table td a:hover{
+    color: var(--light-primary);
+    text-decoration: none;
 }
 
 .content main .bottom-data .orders table tbody tr{
