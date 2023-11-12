@@ -1,0 +1,124 @@
+:root
+{
+    --primary:#0051A1;
+    --lightptimary:#9FC3E7;
+    --gray:#E0E5E9;
+}
+body
+{
+    background-color:  #c7c6c6;
+}
+a
+{
+    text-decoration: none;
+    color: white;
+}
+.container
+{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    height: calc(100vh - 75px);
+    margin-top:75px;
+}
+.sidebar
+{
+    width:38%;
+    height: calc(100vh - 79px);
+}
+.sidebar img
+{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    /* object-position: right center; */
+}
+.main-content
+{
+    width: 62%;
+    display: flex;
+    flex-direction: column;
+    
+}
+.main-content h1,h2
+{
+    margin: 10px;
+    margin-left: 40px;
+}
+.main-content h1
+{
+    color: var(--primary);
+}
+.main-content h2
+{
+    color: var(--primary);
+}
+.title
+{
+    border-radius: 20px;
+    /* background-image: url('../../images/clinic.jpg');
+    background-size: cover;
+    background-position: right center; */
+    background-color: white;
+    margin-top: 20px;
+   margin-right: 10px;
+    margin-bottom:0px;
+    box-shadow: rgb(61, 91, 123) 0px 20px 30px -10px;
+   
+    
+}
+.des
+{
+    font-size: 10px;
+    padding-top: 10px;
+}
+
+.clinics
+{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+    background-color: white;
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+    padding-left: 60px;
+    margin-right:10px;
+    padding-bottom: 35px;
+    padding-top: 35px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    /* box-shadow:5px 5px 10px  rgb(83, 82, 82); */
+}
+.item
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 150px;
+    height: 150px;
+    background-color: var(--primary);
+    justify-content: center;
+    border-radius: 15px;
+    text-align:center;
+    box-shadow:5px 5px 10px  rgb(83, 82, 82);
+    transition: transform 0.3s;
+}
+.item:hover
+{
+    background-color:#9FC3E9;
+    transform: scale(1.1);
+    cursor:pointer;
+    box-shadow: none;
+}
+i
+{
+    font-size: 45px;
+    margin: auto 20px;
+    margin-bottom: 20px;
+}
+.name
+{
+    font-size: 20px;
+}
