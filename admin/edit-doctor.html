@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthHub Admin Panel</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/form.css">
+    <link rel="stylesheet" href="assets/css/checkbox.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+     <!-- Sidebar -->
+     <aside class="sidebar">
+        <a href="#" class="logo">
+            <i class='bx bx-pulse'></i>
+            <div class="logo-name"><span>Health</span>Hub</div>
+        </a>
+        <ul class="side-menu">
+            <li><a href="dashboard.html"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li><a href="clinics.html"><i class='bx bx-store-alt'></i>Clinics</a></li>
+            <li><a href="doctors.html"><i class='bx bx-first-aid'></i>Doctors</a></li>
+            <li><a href="patients.html"><i class='bx bx-group'></i>Patients</a></li>
+            <li><a href="donors.html"><i class='bx bx-donate-blood'></i>Donors</a></li>
+            <li><a href="workingHours.html"><i class='bx bx-time'></i>Working Hours</a></li>
+            <li><a href="settings.html"><i class='bx bx-cog'></i>Settings</a></li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="#" class="logout">
+                    <i class='bx bx-log-out-circle'></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+     </aside>
+    <!-- End of Sidebar -->
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Navbar -->
+        <nav>
+            <i class='bx bx-menu'></i>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+            <input type="checkbox" id="theme-toggle" hidden>
+            <label for="theme-toggle" class="theme-toggle"></label>
+            <a href="#" class="notif">
+                <i class='bx bx-bell'></i>
+                <span class="count">12</span>
+            </a>
+            <a href="#" class="profile">
+                <img src="../images/HealthHubLogo.png">
+            </a>
+        </nav>
+        <!-- End of Navbar -->
+
+        <main>
+            <div class="header">
+                <div class="left">
+                    <h1>Edit Doctor</h1>
+                    <ul class="breadcrumb">
+                        <li><a href="#">
+                                Edit Profile
+                            </a></li>
+                        /
+                        <li><a href="#" class="active">Manage WH</a></li>
+                    </ul>
+                </div>
+                <a href="#" class="report">
+                    <i class='bx bx-arrow-back'></i>
+                    <span>Back</span>
+                </a>
+            </div>
+
+            <div class="bottom-data">
+                <div class="orders">
+                    <div class="header">
+                        <i class='bx bx-time'></i>
+                        <h3>Manage Working Hours</h3>
+                        <i class='bx bx-filter'></i>
+                        <i class='bx bx-search'></i>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>Available</th>
+                                <th>Exception</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <form action="">
+                            <tr>
+                                <td>Monday</td>
+                                <td>
+                                    <label class="check-container" id="check_display" style="margin: 0 25px;">
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td class="form" style="background: transparent;">
+                                    <div class="flex">
+                                        <label>
+                                            <input required="" placeholder="" type="text" class="input">
+                                            <span>reason</span>
+                                        </label>
+                                        <label>
+                                           <input type="date" class="input">
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Tuesday</td>
+                                <td>
+                                    <label class="check-container" id="check_display" style="margin: 0 25px;">
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td class="form" style="background: transparent;">
+                                    <div class="flex">
+                                        <label>
+                                            <input required="" placeholder="" type="text" class="input">
+                                            <span>reason</span>
+                                        </label>
+                                        <label>
+                                            <input required="" placeholder="" type="date" class="input">
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Wednesday</td>
+                                <td>
+                                    <label class="check-container" id="check_display" style="margin: 0 25px;">
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td class="form" style="background: transparent;">
+                                    <div class="flex">
+                                        <label>
+                                            <input required="" placeholder="" type="text" class="input">
+                                            <span>reason</span>
+                                        </label>
+                                        <label>
+                                            <input required="" placeholder="" type="date" class="input">
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Thursday</td>
+                                <td>
+                                    <label class="check-container" id="check_display" style="margin: 0 25px;">
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td class="form" style="background: transparent;">
+                                    <div class="flex">
+                                        <label>
+                                            <input required="" placeholder="" type="text" class="input">
+                                            <span>reason</span>
+                                        </label>
+                                        <label>
+                                            <input required="" placeholder="" type="date" class="input">
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Friday</td>
+                                <td>
+                                    <label class="check-container" id="check_display" style="margin: 0 25px;">
+                                        <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td class="form" style="background: transparent;">
+                                    <div class="flex">
+                                        <label>
+                                            <input required="" placeholder="" type="text" class="input">
+                                            <span>reason</span>
+                                        </label>
+                                        <label>
+                                            <input required="" placeholder="" type="date" class="input">
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            </form>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Reminders -->
+                <div class="reminders">
+                    <div class="header">
+                        <i class='bx bx-pencil'></i>
+                        <h3>Edit Doctor Account</h3>
+                    </div>
+                    <form class="form">
+                        <p class="title">Update Info</p>
+                        <p class="message">Please Enter The Needed Information. </p>
+                        <div class="flex">
+                            <label>
+                                <input required="" placeholder="" type="text" class="input">
+                                <span>Firstname</span>
+                            </label>
+                    
+                            <label>
+                                <input required="" placeholder="" type="text" class="input">
+                                <span>Lastname</span>
+                            </label>
+                        </div>  
+                                
+                        <label>
+                            <input required="" placeholder="" type="email" class="input">
+                            <span>Email</span>
+                        </label> 
+                            
+                        <label>
+                            <input required="" placeholder="" type="password" class="input">
+                            <span>Password</span>
+                        </label>
+                        <label>
+                            <input required="" placeholder="" type="password" class="input">
+                            <span>Confirm password</span>
+                        </label>
+                        <button class="submit">Save Changes</button>
+                    </form>
+                </div>
+                <!-- End of Reminders-->
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="assets/js/index.js"></script>
+    
+</body>
+</html>
