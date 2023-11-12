@@ -92,6 +92,24 @@
     border-radius: 10px;
     background: var(--grey);
   }
+
+  .form label input[type="date"]
+  {
+   padding: 10px 10px 20px 10px;
+   outline: 0;
+   border: 1px solid rgba(105, 105, 105, 0.397);
+   border-radius: 10px;
+   background: var(--grey);
+ }
+
+/*  .form label input[type="date"]::-webkit-datetime-edit-text,
+ .form label input[type="date"]::-webkit-datetime-edit-month-field,
+ .form label input[type="date"]::-webkit-datetime-edit-day-field,
+ .form label input[type="date"]::-webkit-datetime-edit-year-field
+ {
+  -webkit-appearance:none;
+  display: none;
+} */
   
   .form label .input + span{
     position: absolute;
