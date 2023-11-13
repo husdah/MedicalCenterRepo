@@ -25,8 +25,8 @@ a
 .sidebar
 {
     width:38%;
-    height: calc(100vh - 109.5px);
-    margin-bottom: 35px;
+    height: 100%;
+    min-height: 100vh;
 }
 .sidebar img
 {
