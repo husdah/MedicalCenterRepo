@@ -17,20 +17,25 @@ a
 {
     display: flex;
     gap: 10px;
-    width: 100%;
+    width:calc(100% - 10px);
     height: calc(100vh - 75px);
     margin-top:75px;
+    margin-left: 10px;
 }
 .sidebar
 {
     width:38%;
-    height: calc(100vh - 79px);
+    height: calc(100vh - 109.5px);
+    margin-bottom: 35px;
 }
 .sidebar img
 {
     height: 100%;
     width: 100%;
+    margin-top: 20px;
+    border-radius: 20px;
     object-fit: cover;
+    box-shadow: rgb(61, 91, 123) 0px 20px 30px -10px;
     /* object-position: right center; */
 }
 .main-content
