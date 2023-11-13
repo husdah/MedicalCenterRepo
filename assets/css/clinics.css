@@ -21,18 +21,18 @@ a
     height: calc(100vh - 75px);
     margin-top:75px;
     margin-left: 10px;
+   
 }
 .sidebar
 {
     width:38%;
-    height: 100%;
-    min-height: 100vh;
+    height: inherit;
+   
 }
 .sidebar img
 {
-    height: 100%;
+    height: inherit;
     width: 100%;
-    margin-top: 20px;
     border-radius: 20px;
     object-fit: cover;
     box-shadow: rgb(61, 91, 123) 0px 20px 30px -10px;
