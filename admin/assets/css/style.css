@@ -78,7 +78,7 @@ body{
     border: none;
     outline: none;
     background-color: #0051a1;
-    padding: 5px;
+    padding: 8px;
     border-radius: 10px;
     color: #fff;
     font-size: .8rem;
@@ -86,11 +86,32 @@ body{
 }
 .btn-delete i{
     font-size: .8rem;
+    margin-right: 5px;
 }
   
 .btn-delete:hover {
     background-color: #9fc3e7;
 }
+
+.btn-edit{
+    border: none;
+    outline: none;
+    background-color: #0051a1;
+    padding: 8px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: .8rem;
+    transform: .3s ease;
+}
+.btn-edit i{
+    font-size: .8rem;
+    margin-right: 5px;
+}
+  
+.btn-edit:hover {
+    background-color: #9fc3e7;
+}
+
 
 .sidebar{
     position: fixed;
@@ -538,6 +559,10 @@ body{
     font-size: 13px;
     text-align: left;
     border-bottom: 1px solid var(--grey);
+}
+
+.content main .bottom-data .orders table .action_center{
+    text-align: center;
 }
 
 .content main .bottom-data .orders table td{

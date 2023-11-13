@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/form.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- magnific-popup css -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
 </head>
 <body>
 
@@ -91,39 +93,51 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Image</th>
-                                <th>Action</th>
+                                <th class="action_center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td><a href="edit-clinic.html"><p>Cardiology</p></a></td>
                                 <td><img src="../images/profile-1.jpg"></td>
-                                <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
+                                <td class="action_center">
+                                    <button class="btn-edit" id="edit" value="1"><i class="bx bx-edit"></i><span>Edit</span></button>
+                                    <button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button>
+                                </td>
                             </tr>
                             <tr>
                                 <td><a href="edit-clinic.html"><p>Dental</p></a></td>
                                 <td><img src="../images/profile-1.jpg"></td>
-                                <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
+                               <td class="action_center">
+                                    <button class="btn-edit" id="edit" value="2"><i class="bx bx-edit"></i><span>Edit</span></button>
+                                    <button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button>
+                                </td>
                             </tr>
                             <tr>
                                 <td><a href="edit-clinic.html"><p>Surgery</p></a></td>
                                 <td><img src="../images/profile-1.jpg"></td>
-                                <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
+                               <td class="action_center">
+                                    <button class="btn-edit" id="edit" value="3"><i class="bx bx-edit"></i><span>Edit</span></button>
+                                    <button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button>
+                                </td>
                             </tr>
                             <tr>
                                 <td><a href="edit-clinic.html"><p>Physiology</p></a></td>
                                 <td><img src="../images/profile-1.jpg"></td>
-                                <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
+                               <td class="action_center">
+                                    <button class="btn-edit" id="edit" value="4"><i class="bx bx-edit"></i><span>Edit</span></button>
+                                    <button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
                 <!-- Reminders -->
-                <div class="reminders">
+                <div class="reminders view" id="clinicAdd">
                     <div class="header">
                         <i class='bx bx-clinic'></i>
-                        <h3>ADD Clinic</h3>
+                        <h3 id="FormTitle">ADD Clinic</h3>
                     </div>
                     <form class="form">
                         <p class="title">Fill The Form</p>
@@ -144,12 +158,62 @@
                 </div>
                 <!-- End of Reminders-->
 
+
+                 <!-- Reminders -->
+              <div class="reminders hide" id="clinicEdit">
+                <div class="header">
+                    <i class='bx bx-pencil'></i>
+                    <h3>Edit Clinic</h3>
+                </div>
+                <form class="form">
+                    <p class="title">Fill The Form</p>
+                    <p class="message">Please Enter The Needed Information. </p>
+
+                    <label>
+                        <input required="" placeholder="" type="text" class="input">
+                        <span>Clinic name</span>
+                    </label>           
+                    <label>
+                        <textarea class="input" name="description" id="" cols="30" rows="5" placeholder="Enter Description"></textarea>
+                    </label> 
+                    <label>
+                        <input required="" placeholder="Upload Image" type="file" class="input">
+                    </label>
+                    <label for=""><span>Current Image</span></label>
+                    <label>
+                      <input type="hidden" name="old_image" value="">
+                      <a href="/images/profile-1.jpg" class="imageLB"> 
+                        <img src="/images/profile-1.jpg" height="50px" width="50px" alt="category Image">
+                      </a>    
+                    </label>
+                    <button class="submit">Save Changes</button>
+                </form>
+            </div>
+            <!-- End of Reminders-->
+
+
             </div>
 
         </main>
 
     </div>
 
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+        <!-- magnifier popup js cdn link -->
+    <script src="assets/js/jquery.magnific-popup.js"></script>   
     <script src="assets/js/index.js"></script>
+    <script src="assets/js/changeView.js"></script>
+
+    <script> 
+        $('.imageLB').magnificPopup({
+            type: 'image',
+            mainClass: 'mfp-with-zoom',
+            zoom: {
+                enabled: true,
+                duration: 300,
+                easing: 'ease-in-out',
+            }
+        });
+    </script>
 </body>
 </html>

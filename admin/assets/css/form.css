@@ -126,6 +126,12 @@
     font-size: 1rem;
     font-weight: 600;
   }
+
+  .form label .s2{
+    color: #0051a1;
+    font-size: .8rem;
+    font-weight: 500;
+  }
   
   .form label .input:placeholder-shown + span {
     top: 15px;
@@ -167,4 +173,12 @@
       transform: scale(1.8);
       opacity: 0;
     }
+  }
+
+  .view{
+    display: block;
+  }
+
+  .hide{
+    display: none;
   }
