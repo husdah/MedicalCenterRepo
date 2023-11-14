@@ -1,0 +1,460 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --light: #f6f6f9;
+    --primary: #0051a1;
+    --light-primary: #9fc3e7;
+    --grey: #e0e5e9;
+    --dark-grey: #AAAAAA;
+    --dark: #363949;
+    --danger: #D32F2F;
+	--light-danger: #FECDD3;
+    --warning: #FBC02D;
+    --light-warning: #FFF2C6;
+    --success: #388E3C;
+    --light-success: #BBF7D0;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}
+
+html{
+    overflow-x: hidden;
+}
+
+body{
+    background: var(--grey);
+    overflow-x: hidden;
+}
+
+.bx{
+    font-size: 1.7rem;
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--light);
+    width: 230px;
+    height: 100%;
+    z-index: 2000;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    transition: all 0.3s ease;
+}
+
+.sidebar::-webkit-scrollbar{
+    display: none;
+}
+
+.sidebar.close{
+    width: 70px;
+}
+
+.sidebar .sidebar-header{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar .sidebar-header .bx.bx-menu{
+   position: absolute;
+   margin: 0 5px;
+   left: 90%;
+   line-height: 50px;
+   transform: translateX(-50%);
+   cursor: pointer;
+   z-index: 1000;
+}
+
+.sidebar.close .sidebar-header .bx.bx-menu{
+    left: 50%;
+}
+
+.sidebar .sidebar-header .logo{
+    font-size: 24px;
+    font-weight: 700;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    color: var(--primary);
+    z-index: 500;
+    box-sizing: content-box;
+    opacity: 1;
+}
+
+.sidebar.close .sidebar-header .logo{
+    opacity: 0;
+}
+
+.sidebar .logo .logo-name span{
+    color: var(--dark);
+}
+
+.sidebar .user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.sidebar .user .user-img{
+    width: 60px;
+    border-radius: 100%;
+    margin: 15px 5px 10px;
+}
+
+.sidebar .user .user-name{
+    font-weight: 500;
+}
+
+.sidebar .user .user-clinic{
+    font-size: 10px;
+    font-weight: 300;
+}
+
+.sidebar.close .user .user-name,.sidebar.close .user .user-clinic{
+    opacity: 0;
+}
+
+.sidebar .logo .bx{
+    z-index: 500;
+    min-width: 60px;
+    display: flex;
+    justify-content: center;
+    font-size: 2.2rem;
+}
+
+.sidebar .side-menu{
+    width: 100%;
+    margin-top: 48px;
+}
+
+.sidebar .side-menu li{
+    height: 48px;
+    background: transparent;
+    margin-left: 6px;
+    border-radius: 48px 0 0 48px;
+    padding: 4px;
+}
+
+.sidebar .side-menu li.active{
+    background: var(--grey);
+    position: relative;
+}
+
+.sidebar .side-menu li.active::before{
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: -40px;
+    right: 0;
+    box-shadow: 20px 20px 0 var(--grey);
+    z-index: -1;
+}
+
+.sidebar .side-menu li.active::after{
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    bottom: -40px;
+    right: 0;
+    box-shadow: 20px -20px 0 var(--grey);
+    z-index: -1;
+}
+
+.sidebar .side-menu li a{
+    width: 100%;
+    height: 100%;
+    background: var(--light);
+    display: flex;
+    align-items: center;
+    border-radius: 48px;
+    font-size: 16px;
+    color: var(--dark);
+    white-space: nowrap;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+}
+
+.sidebar .side-menu li.active a,
+.sidebar .side-menu li:hover a{
+    background: var(--primary);
+    color: var(--grey);
+    box-shadow: 3px 5px 12px #555;
+}
+
+.sidebar.close .side-menu li a{
+    width: calc(48px - (4px * 2));
+    transition: all 0.3s ease;
+}
+
+.sidebar .side-menu li a .bx{
+    min-width: calc(60px - ((4px + 6px) * 2));
+    display: flex;
+    font-size: 1.6rem;
+    justify-content: center;
+}
+
+.sidebar .side-menu li a.logout{
+    color: var(--danger);
+}
+
+.sidebar .side-menu li a.logout:hover{
+    color: var(--grey);
+    background: var(--danger);
+    box-shadow: 3px 5px 12px #555;
+}
+
+.sidebar.close~.content{
+    width: calc(100% - 60px); 
+    left: 150px;
+}
+
+.content{
+    position: relative;
+    margin-left: 15px;
+    width: calc(100% - 230px);
+    left: 230px;
+    transition: all 0.3s ease;
+}
+
+.content .top{
+    margin: 15px 20px;
+    color: var(--dark);
+}
+
+.content .top .currentDay{
+    color: var(--primary);
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.content .top .currentDate{
+    color: var(--dark-grey);
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.content .banner{
+    position: relative;
+    width: 560px;
+    height: 120px;
+    color: var(--light);
+    margin: 10px 15px;
+    background: var(--primary);
+    border-radius: 20px;
+    padding: 10px;
+    transition: all .4s ease-in-out;
+}
+
+.content .banner img{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    height: 100%;
+    width: auto;
+}
+
+.content .banner .title{
+    text-align: center;
+    margin: 20px 0;
+}
+
+.content .insights{
+    width: 560px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 10px;
+}
+
+.content .insights .insight{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 170px;
+    height: 100px;
+    margin: 15px 0;
+    border-radius: 15px;
+    background: var(--light);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform .4s;
+}
+
+.content .insights .insight:hover{
+    transform: scale(1.1);
+}
+
+.content .insights .insight i{
+    background: #0050a134;
+    color: var(--primary);
+    border-radius: 5px;
+    margin: 0 10px;
+    font-size: 35px;
+    padding: 10px;
+}
+
+.content .insights .insight .labels{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--dark);
+}
+
+.content .insights .insight .labels .patients-nb,
+.content .insights .insight .labels .appointments-nb,
+.content .insights .insight .labels .calls-nb
+{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.content .insights .insight .labels .label{
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.content .request{
+    margin-left: 20px;
+}
+
+.content .request h4{
+    color: var(--dark);
+}
+
+.content .request-table{
+    width: 560px;
+    border: none;
+    border-radius: 15px;
+    border-collapse: collapse;
+    background: var(--light);
+    color: var(--dark);
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.content .request-table th{
+    text-align: center;
+    height: 60px;
+    border-bottom: 1px solid var(--grey);
+}
+
+.content .request-table td{
+    text-align: center;
+    height: 55px;
+}
+
+.content .request-table td button{
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+}
+
+.content .request-table td .acc-btn{
+    color: var(--success);
+}
+
+.content .request-table td .del-btn{
+    color: var(--danger);
+}
+
+.content .request-table tr td{
+    transition: transform .4s;
+}
+
+.content .request-table tr:hover td{
+    background: var(--grey);
+    transform: scale(1.1);
+    box-shadow: 3px 5px 12px #555;
+}
+
+.content .right-side{
+    position: absolute;
+    top: 90px;
+    left: 600px;
+    background: var(--light);
+    border-radius: 15px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 450px;
+    height: 590px;
+    overflow-y: auto;
+}
+
+.content .right-side .filter{
+    margin: 5px 10px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.content .filter select{
+    width: 400px;
+    text-align: center;
+    color: var(--light);
+    font-size: 15px;
+    font-weight: 500;
+    outline: none;
+    background: var(--primary);
+    border-radius: 100px;
+    padding: 0 20px;
+}
+.content .right-side .appointments{
+    width: 100%;
+    height: 100%;
+    border-collapse: separate;
+    border-spacing: 0 20px;
+}
+
+.content .right-side .appointments .info{
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.content .right-side .appointments .info h3{
+    color: var(--dark);
+}
+
+.content .appointments .info label,
+.content .appointments .info i{
+    font-size: 13px;
+    color: var(--dark);
+    font-weight: 300;
+}
+
+.content .appointments tr{
+    background: #f0f0f0;
+}
+
+.content .appointments .time i,
+.content .appointments .time span{
+    color: var(--primary);
+}

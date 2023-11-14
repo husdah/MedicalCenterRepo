@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Doctor Dashboard</title>
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="#" class="logo">
+                <i class='bx bx-pulse'></i>
+                <div class="logo-name"><span>Health</span>Hub</div>
+            </a>
+        <i class="bx bx-menu"></i>
+        </div>
+        <div class="user">
+            <img src="images/dr1.jpg" class="user-img">
+            <label class="user-name">Dr. Doctor</label>
+            <label class="user-clinic">Cardiology</label>
+        </div>
+        <ul class="side-menu">
+            <li class="active"><a href="dashboard.html"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li><a href="#"><i class='bx bx-group'></i>Patients</a></li>
+            <li><a href="#"><i class='bx bx-calendar-edit'></i>Schedule</a></li>
+            <li><a href="#"><i class='bx bx-cog'></i>Settings</a></li>
+        </ul>
+        <ul class="side-menu">
+            <li class="log-li">
+                <a href="#" class="logout">
+                    <i class='bx bx-log-out-circle'></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+     </aside>
+    <!-- End of Sidebar -->
+
+     <!-- Main Content -->
+     <div class="content">
+        <div class="top">
+       <h1>Dashboard</h1>
+       <span class="currentDay" id="currentDay"></span>,<span class="currentDate" id="currentDate"></span>
+       </div>
+       <div class="banner">
+        <div class="banner-img"><img src="images/ban.png"></div>
+        <div class="title"><h2>Welcome, dr. <span>Doctor</span></h2>
+        <p>Have a nice day at work.</p></div>
+       </div>
+       <div class="insights">
+        <div class="insight">
+            <i class='bx bx-group'></i>
+            <div class="labels">
+            <label class="label">Patients</label>
+            <label class="patients-nb">333</label>
+            </div>
+        </div>
+        <div class="insight">
+            <i class='bx bx-calendar-check'></i>
+            <div class="labels">
+            <label class="label">Appointments</label>
+            <label class="appointments-nb">45</label>
+            </div>
+        </div>
+        <div class="insight">
+            <i class='bx bx-phone-call'></i>
+            <div class="labels">
+                <label class="label">Consultation</label>
+                <label class="calls-nb">7</label>
+            </div>
+        </div>
+       </div>
+       <div class="request">
+        <h4>Appointment Requests</h4>
+        <table class="request-table">
+            <thead>
+            <tr>
+                <th>Name of Patient</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tr>
+                <td>patient 1</td>
+                <td>11/12/2023</td>
+                <td>10:00 am</td>
+                <td>
+                    <button class="acc-btn"><i class='bx bx-check-circle'></i></button>
+                    <button class="del-btn"><i class='bx bx-x-circle'></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>patient 2</td>
+                <td>11/12/2023</td>
+                <td>10:00 am</td>
+                <td>
+                    <button class="acc-btn"><i class='bx bx-check-circle'></i></button>
+                    <button class="del-btn"><i class='bx bx-x-circle'></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>patient 3</td>
+                <td>11/16/2023</td>
+                <td>12:00 pm</td>
+                <td>
+                    <button class="acc-btn"><i class='bx bx-check-circle'></i></button>
+                    <button class="del-btn"><i class='bx bx-x-circle'></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>patient 4</td>
+                <td>11/20/2023</td>
+                <td>13:00 pm</td>
+                <td>
+                    <button class="acc-btn"><i class='bx bx-check-circle'></i></button>
+                    <button class="del-btn"><i class='bx bx-x-circle'></i></button>
+                </td>
+            </tr>
+        </table>
+       </div>
+        <div class="right-side">
+           <div class="filter">
+                <select class="filter-date" name="filter" id="filter">
+                    <option>All Upcoming</option>
+                    <option>Previous 30 days</option>
+                    <option>Previous 7 days</option>
+                    <option>Yesterday</option>
+                    <option>Today</option>
+                    <option>Tomorrow</option>
+                    <option>Next 7 days</option>
+                    <option>Next 30 days</option>
+                </select>
+           </div>
+           <table class="appointments">
+            <tr>
+                <td>
+                    <div class="info">
+                    <h3 id="name">Name</h3>
+                    <label><i class='bx bxs-phone' >Phone:</i><span id="phone">12345560</span></label>
+                    <label><i class='bx bxs-envelope' ></i>Email:<span id="email">email@gmail.com</span></label>
+                </div>  
+                </td>
+                <td>
+                    <div class="time">
+                        <i class='bx bxs-alarm'></i>
+                        <span id="hour">11:00am</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="info">
+                    <h3 id="name">Name</h3>
+                    <label><i class='bx bxs-phone' >Phone:</i><span id="phone">12345560</span></label>
+                    <label><i class='bx bxs-envelope' ></i>Email:<span id="email">email@gmail.com</span></label>
+                </div>  
+                </td>
+                <td>
+                    <div class="time">
+                        <i class='bx bxs-alarm'></i>
+                        <span id="hour">11:00am</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="info">
+                    <h3 id="name">Name</h3>
+                    <label><i class='bx bxs-phone' >Phone:</i><span id="phone">12345560</span></label>
+                    <label><i class='bx bxs-envelope' ></i>Email:<span id="email">email@gmail.com</span></label>
+                </div>  
+                </td>
+                <td>
+                    <div class="time">
+                        <i class='bx bxs-alarm'></i>
+                        <span id="hour">11:00am</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="info">
+                    <h3 id="name">Name</h3>
+                    <label><i class='bx bxs-phone' >Phone:</i><span id="phone">12345560</span></label>
+                    <label><i class='bx bxs-envelope' ></i>Email:<span id="email">email@gmail.com</span></label>
+                </div>  
+                </td>
+                <td>
+                    <div class="time">
+                        <i class='bx bxs-alarm'></i>
+                        <span id="hour">11:00am</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="info">
+                    <h3 id="name">Name</h3>
+                    <label><i class='bx bxs-phone' >Phone:</i><span id="phone">12345560</span></label>
+                    <label><i class='bx bxs-envelope' ></i>Email:<span id="email">email@gmail.com</span></label>
+                </div>  
+                </td>
+                <td>
+                    <div class="time">
+                        <i class='bx bxs-alarm'></i>
+                        <span id="hour">11:00am</span>
+                    </div>
+                </td>
+            </tr>
+           </table>
+        </div>
+     </div>
+     <!-- End of Main Content-->
+
+    <script src="assets/js/dashboard.js"></script>
+
+</body>
+</html>
