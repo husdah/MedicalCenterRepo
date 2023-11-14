@@ -6,6 +6,9 @@
     <title>HealthHub Admin Panel</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/form.css">
+    <link rel="stylesheet" href="assets/css/seachBox.css">
+    <link rel="stylesheet" href="assets/css/dropdown.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -120,8 +123,30 @@
                     <div class="header">
                         <i class='bx bx-receipt'></i>
                         <h3>Recent Appointments</h3>
-                        <i class='bx bx-filter'></i>
-                        <i class='bx bx-search'></i>
+                        <div class="User-area">
+                            <div class="User-avtar User-avtar1">
+                                <i class='bx bx-filter'></i>
+                            </div>
+                            <ul class="User-Dropdown User-Dropdown1">
+                            <li><a href="#">My Profile</a></li>
+                            <li><a href="#">Notifications</a></li>
+                            <li><a href="#">Projects</a></li>
+                            <li><a href="#">Settings</a></li>
+                            <li><a href="#">Logout</a></li>
+                            </ul>
+                        </div>
+                        <div id="searchContainer" class="searchContainer">
+                            <span id="searchIcon" onclick="toggleSearchBox()"><i class='bx bx-search'></i></span>
+                            <div id="searchBox" class="searchBox">
+                                <form action="" class="form">
+                                    <label for="">
+                                        <input class="input" type="text" id="searchInput" placeholder="Search...">
+                                        <span>search</span>
+                                    </label>
+                                    <button class="submit" onclick="performSearch()">Search</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                     <table>
                         <thead>
@@ -173,8 +198,30 @@
                     <div class="header">
                         <i class='bx bx-note'></i>
                         <h3>Remiders</h3>
-                        <i class='bx bx-filter'></i>
-                        <i class='bx bx-plus'></i>
+                        <div class="User-area">
+                            <div class="User-avtar User-avtar2">
+                                <i class='bx bx-filter'></i>
+                            </div>
+                            <ul class="User-Dropdown User-Dropdown2">
+                            <li><a href="#">My Profile</a></li>
+                            <li><a href="#">Notifications</a></li>
+                            <li><a href="#">Projects</a></li>
+                            <li><a href="#">Settings</a></li>
+                            <li><a href="#">Logout</a></li>
+                            </ul>
+                        </div>
+                        <div id="reminderContainer" class="searchContainer">
+                            <span id="searchIcon" onclick="toggleReminderBox()"><i class='bx bx-plus'></i></span>
+                            <div id="reminderBox" class="reminderBox">
+                                <form action="" class="form">
+                                    <label for="">
+                                        <input class="input" type="text" id="searchInput" placeholder="Enter Reminders...">
+                                        <span>reminder</span>
+                                    </label>
+                                    <button class="submit" onclick="performSearch()">ADD</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                     <ul class="task-list">
                         <li class="completed">
@@ -207,8 +254,10 @@
         </main>
 
     </div>
-
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
     <script src="assets/js/index.js"></script>
+    <script src="assets/js/searchBox.js"></script>
+    <script src="assets/js/dropdown.js"></script>
     
 </body>
 </html>
