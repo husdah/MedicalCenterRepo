@@ -8,50 +8,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/form.css">
     <link rel="stylesheet" href="assets/css/checkbox.css">
+    <link rel="stylesheet" href="assets/css/seachBox.css">
+    <link rel="stylesheet" href="assets/css/dropdown.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-
-    <style>
-        body {
-          font-family: Arial, sans-serif;
-        } */
-    
-       .search-button {
-          cursor: pointer;
-          border: none;
-          background: none;
-          font-size: 18px;
-          color: #333;
-          outline: none;
-        }
-    
-        .modal {
-          display: none;
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          /* background: rgba(0, 0, 0, 0.5); */
-          justify-content: center;
-          align-items: center;
-        }
-    
-        .modal-content {
-          background: transparent;
-          padding: 1px;
-          border-radius: 5px;
-        }
-    
-        .close-button {
-          cursor: pointer;
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          font-size: 20px;
-          color: #000;
-        }
-      </style>
 </head>
 <body>
 
@@ -122,29 +81,35 @@
                 </a>
             </div>
 
-            <!-- Modal -->
-            <div id="myModal" class="modal">
-                <div class="modal-content">
-                <span class="close-button" onclick="closeModal()">&times;</span>
-                <form class="form">
-                    <label>
-                        <input id="searchInput" type="text" class="input">
-                        <span>search</span>
-                    </label>
-                    <!-- <button type="button" class="submit" onclick="performSearch()">Search</button> -->
-                </form>
-                </div>
-            </div>
-
             <div class="bottom-data">
                 <div class="orders">
                     <div class="header">
                         <i class='bx bx-time'></i>
                         <h3>Working Hours</h3>
-                        <i class='bx bx-filter'></i>
-                        <button class="search-button" onclick="openModal()">
-                            <i class='bx bx-search'></i>
-                        </button>
+                        <div class="User-area">
+                            <div class="User-avtar User-avtar1">
+                                <i class='bx bx-filter'></i>
+                            </div>
+                            <ul class="User-Dropdown User-Dropdown1">
+                            <li><a href="#">My Profile</a></li>
+                            <li><a href="#">Notifications</a></li>
+                            <li><a href="#">Projects</a></li>
+                            <li><a href="#">Settings</a></li>
+                            <li><a href="#">Logout</a></li>
+                            </ul>
+                        </div>
+                        <div id="searchContainer" class="searchContainer">
+                            <span id="searchIcon" onclick="toggleSearchBox()"><i class='bx bx-search'></i></span>
+                            <div id="searchBox" class="searchBox">
+                                <form action="" class="form">
+                                    <label for="">
+                                        <input class="input" type="text" id="searchInput" placeholder="Search...">
+                                        <span>search</span>
+                                    </label>
+                                    <button class="submit" onclick="performSearch()">Search</button>
+                                </form>
+                            </div>
+                        </div>                     
                     </div>
                     <table>
                         <thead>
@@ -260,34 +225,10 @@
         </main>
 
     </div>
-
-    <script>
-        // Function to open the modal
-        function openModal() {
-          document.getElementById('myModal').style.display = 'flex';
-        }
-      
-        // Function to close the modal
-        function closeModal() {
-          document.getElementById('myModal').style.display = 'none';
-        }
-      
-        // Placeholder function for performing the search (you can replace this with your actual search logic)
-        function performSearch() {
-          alert('Performing search...');
-          closeModal();
-        }
-      
-        // Close the modal if the user clicks outside of it
-        window.onclick = function(event) {
-          var modal = document.getElementById('myModal');
-          if (event.target === modal) {
-            closeModal();
-          }
-        };
-      </script>
-
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
     <script src="assets/js/index.js"></script>
+    <script src="assets/js/searchBox.js"></script>
+    <script src="assets/js/dropdown.js"></script>
     
 </body>
 </html>

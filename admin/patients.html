@@ -7,6 +7,8 @@
 
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dropdown.css">
+    <link rel="stylesheet" href="assets/css/form.css">
+    <link rel="stylesheet" href="assets/css/seachBox.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -84,10 +86,10 @@
                         <i class='bx bx-receipt'></i>
                         <h3>Patients</h3>
                         <div class="User-area">
-                            <div class="User-avtar">
+                            <div class="User-avtar User-avtar1">
                                 <i class='bx bx-filter'></i>
                             </div>
-                            <ul class="User-Dropdown">
+                            <ul class="User-Dropdown User-Dropdown1">
                             <li><a href="#">My Profile</a></li>
                             <li><a href="#">Notifications</a></li>
                             <li><a href="#">Projects</a></li>
@@ -95,8 +97,18 @@
                             <li><a href="#">Logout</a></li>
                             </ul>
                         </div>
-                        <!-- <i class='bx bx-filter'></i> -->
-                        <i class='bx bx-search'></i>
+                        <div id="searchContainer2" class="searchContainer">
+                            <span onclick="toggleSearchBox2()"><i class='bx bx-search'></i></span>
+                            <div id="searchBox2" class="searchBox2">
+                                <form action="" class="form">
+                                    <label for="">
+                                        <input class="input" type="text" id="searchInput" placeholder="Search...">
+                                        <span>search</span>
+                                    </label>
+                                    <button class="submit" onclick="performSearch()">Search</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                     <table>
                         <thead>
@@ -145,9 +157,10 @@
         </main>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
     <script src="assets/js/index.js"></script>
     <script src="assets/js/dropdown.js"></script>
+    <script src="assets/js/searchBox.js"></script>
     
 </body>
 </html>
