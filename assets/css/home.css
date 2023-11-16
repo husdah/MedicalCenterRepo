@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
 *{
     margin:0;
     padding: 0;
     box-sizing: border-box;
-    font-family:  sans-serif, "Raleway";
+    font-family: 'Poppins', sans-serif;
 }
+
 body{
     background-color: #e0e5e9;
 }
@@ -12,23 +15,18 @@ p{
     font-weight:100;
     line-height: 18px;
 }
-
-
 /*banner section*/
 section.banner{
-    border:1px solid rebeccapurple;
     width: 100%;
     height: 75vh;
-    /*position: relative;*/
-    background-image: url(../../images/banner.jpg) ;
+    position: relative;
+    background-image: url(../../images/bg15.jpg) ;
     background-attachment: fixed;
     background-size: cover; 
+    object-fit: cover;
     background-repeat: no-repeat;
-    background-position: center center;
     isolation: isolate;/*we can put z-index:1;*/
-    z-index:1;
     margin-top: 75px;
-    margin-bottom: -145px;
 }
 /* overlay for banner image*/
 section.banner::after{
@@ -36,14 +34,14 @@ section.banner::after{
     position: absolute;
     z-index: -1;
     inset: 0;/*top:0,left:0*/
-    background:#fff;
-    opacity:0.7;
+    background:#9fc3e7;
+    opacity:0.2;
 }
 .banner .banner-container {
     width: 50%;
-    height: 38%;
-    margin: 50px 0 0 43px;
+    margin-left: 43px;
     justify-content: center;
+    padding-top: 120px;
 }
 .banner .banner-container  h1 {
     font-size: 48px;
@@ -51,25 +49,21 @@ section.banner::after{
     line-height: 56px;
     text-transform: uppercase;
     color: #0051a1;
+    width: max-content;
+    text-shadow: 3px 1px 1px rgba(159, 195, 231, 1);
 }
+.banner .banner-container  h1.bannerHeading-mt{
+    margin-bottom: 20px;
+}
+
 .banner .banner-container  h2 {
     color: #0051a1;
     margin-top: 10px;
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 500;
 }
 .banner .banner-container  a{
     text-decoration: none;
-}
-.banner-container .home-btn{
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    display: inline-block;
-    padding: 12px 30px;
-    border-radius: 50px;
 }
 .banner-container .btn-get-started {
     margin-top: 30px;
@@ -80,23 +74,10 @@ section.banner::after{
 .banner-container  .btn-get-started:hover{
     background-color: #9fc3e7;
 }
-
-/*why us section*/
-section.why-us {
-    border:1px solid yellow;
-    position: absolute;
-    width:100%;
-    height:400px;
-    z-index: 4;
-}
 .why-us-container{
-    border:1px solid green;
-    margin-left: 85px;
+    margin: 123px 0 0 43px;
     width:90%;
-    height:100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 .why-us-grid-col1{
     background-color: #0051a1;
@@ -154,6 +135,16 @@ section.why-us {
     padding: 0 20px 30px 20px;
     color:#0051a1;
 }
+.home-btn{
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+}
 /* Add Button: Book Appointment */
 .button-app{
     position:fixed;
@@ -173,12 +164,11 @@ section.why-us {
 .button-app a{
     color: #fff;
 }
-
 /* About Us */
 section.about{
-    border:1px solid violet;
     width: 100%;
     height: 500px;
+    margin-top:300px;
 }
 .about-container{
     width: 100%;
@@ -189,11 +179,10 @@ section.about{
     align-items: center;
 }
 .about-col1{
-    background: url('../../images/about-home.jpg') center center no-repeat;
-    background-size: cover;
+    background: url(../../images/about-home.jpg);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     border-radius:50%;
-    margin-left: 45px;
+    margin-left: 43px;
     height: 85%;
     width: 85%;
     display: flex;
@@ -245,12 +234,10 @@ section.about{
     font-size: 18px;
 }
 .title-description p{
-    color:#444;
+    color:#000;
 }
-
 /* Count */
 section.counts{
-    border:1px solid green;
     width:100%;
     height:300px;
     background-color: #9fc3e7;
@@ -306,9 +293,8 @@ section.counts{
 }
 /* Titles */
 .section-title {
-    border:1px solid orange;
     text-align: center;
-    padding-bottom: 30px;
+    padding: 30px;
 }
 .section-title h2 {
     font-size: 40px;
@@ -346,10 +332,9 @@ section.home-heading{
 }
 /* Services */
 section.service{
-    border:1px solid yellow;
     width:100%;
     height:528px;
-    margin-bottom:60px;
+    margin-bottom:75px;
 }
 .service-container{
     height:100%;
@@ -410,15 +395,19 @@ section.service{
 .service-column.mt{
     margin-top:10px;
  }
+/*section.doctor-heading{
+    background-color: #9fc3e7;
+}
 /* Doctor*/
 section.doctor{
-    border:1px solid red;
+    background: url(../../images/wave.svg);
+    background-size: cover;
     height: 350px;
     width:100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 85px;
+    margin-bottom: 75px;
 }
 .doctor-container{
     height:100%;
@@ -447,7 +436,7 @@ section.doctor{
 .team__item h5 {
     font-size: 18px;
     color: #000;
-    font-weight: 300;
+    font-weight: 400;
     margin-bottom: 10px;
 }
 .team__item span {
@@ -470,13 +459,13 @@ section.doctor{
 
 /* Clinics  */
 section.clinics{
-    border:1px solid green;
     width:100%;
     height:400px;
     position: relative;
     display: flex;
     justify-content: center;
     text-align: center;
+    margin-bottom: 150px;
 }
 .clinic-container{
     height: 100%;
@@ -539,12 +528,88 @@ section.clinics{
 .clinic-info p{
     font-size: 13px;
     font-weight: 100;
-    font-family: sans-serif;
     padding: 10px 0;
 }
 
 
 /* Donation */
+section.donation{
+    width:100%;
+    height:210px;
+    display: flex;
+    justify-content: center;
+}
+.donation-container{
+    border:2px solid #0051a1;
+    border-radius: 12px 12px 0 0;
+    width:20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+.donation-image{
+    margin-bottom: -23px;
+    background-color: #e0e5e9;
+    border:2px solid #0051a1;
+    width: 130px;
+    height: 130px;
+    border-radius:50%;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    transform: rotate(-45deg);
+}
+.donation-image img{
+    transform: rotate(45deg);
+    width: 120px; 
+    height:120px;
+    margin-left: 5px;
+}
+.donation-content{
+    padding: 20px 0 20px 0;
+    width:100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+input[type='text']{
+    border: 0;
+    height: 40px;
+    width: 85%;
+    border-bottom: 3px solid #0051a1;
+    margin-bottom: 20px;
+    background-color: transparent;
+}
+input[type='text']::placeholder {
+    color: #aaa;
+    font-weight: 500;
+    padding-bottom: 25px;
+  }
+  input[type='text']:focus{
+    outline: none;
+}
+.donation-container label{
+    color:#0051a1;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-bottom:25px;
+}  
+select{
+    border: none;
+    border-radius: 50px;
+    background: #0051a1;
+    color: #fff;
+    font-weight: 500;
+    outline: none;
+    width: 70px;
+    height: 40px;
+    text-align: center;
+}
+
 
 
 
