@@ -1,4 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+:root {
+    --light: #f6f6f9;
+    --primary: #0051a1;
+    --light-primary: #9fc3e7;
+    --grey: #e0e5e9;
+    --dark-grey: #AAAAAA;
+    --dark: #363949;
+    --danger: #D32F2F;
+  --light-danger: #FECDD3;
+    --warning: #FBC02D;
+    --light-warning: #FFF2C6;
+    --success: #388E3C;
+    --light-success: #BBF7D0;
+}
 *{
     box-sizing: border-box;
     margin: 0;
@@ -7,7 +21,7 @@
     font-family: 'Poppins', sans-serif;
 }
 body{
-    background-color: #e0e5e9;
+    background-color: var(--grey);
 }
 .contact.body{
     margin-top: 75px;
@@ -41,13 +55,13 @@ body{
     margin:25px 20px 0 5px;
 }
 .breadcrumb li a{
-    color:#9fc3e7;
+    color: var(--light-primary);
 }
 .breadcrumb li a:hover{
-    color:#0051a1;
+    color: var(--primary);
 }
 .row{
-    height:  520px;
+    height:  600px;
     display: flex;
     grid-template-columns: 70% 30%;
     margin:50px 0 25px 146px;
@@ -73,9 +87,9 @@ body{
     width:400px;
     height:350px;
     padding:20px 0;
-    background-color: #0051a1;
+    background-color: var(--primary);
     border-radius: 12px 0 0 12px;
-    box-shadow: 2px 4px 5px #0051a1;
+    box-shadow: 2px 4px 5px var(--primary);
 }
 .column-right span i{
     color:#fff;
@@ -93,21 +107,21 @@ h1, h2, h3{
     text-align: center;
     color: #fff;
     margin-top: 50px;
-    padding-top: 10px;
+    padding-top: 20px;
 }
 .contact-form h2{
-    color: #0051a1;
+    color: var(--primary);
     font-size: 30px;
     font-weight: bold;
     line-height: 18px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 .contact-form h3{
-    color: #0051a1;
+    color: var(--primary);
     font-size: 13px;
     font-weight: bold;
     line-height: 18px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 .column-right h3{
     color: #fff;
@@ -142,7 +156,7 @@ input[type="text"],
 textarea{
     border: 0;
     width: 50%;
-    border-bottom: 3px solid #0051a1;
+    border-bottom: 3px solid var(--primary);
     margin-bottom: 20px;
 }
 input[type="text"]:focus,
@@ -165,14 +179,14 @@ textarea:focus{
     font-weight: 300;
     padding: 15px 40px;
     border: none;
-    background-color: #0051a1;
+    background-color: var(--primary);
     border-radius: 6px;
     width: 50%;
     cursor: pointer;
 }
 .contact-form .contact-btn:hover{
     color: #fff;
-    background-color: #9fc3e7;
+    background-color: var(--light-primary);
 }
 .map{
     width: 100%;
@@ -182,11 +196,12 @@ textarea:focus{
 /* Responsive */
 @media(max-width:900px){
     .contact.body {
+        margin-top: 45px;
         padding-bottom: 2px;
     }
     .row{
         margin: 20px;
-        height: 540px;
+        height: 600px;
     }
     .column-left{
         padding: 50px 40px 0 20px;
@@ -202,7 +217,7 @@ textarea:focus{
         width:40%;
     }
     .column-right span {
-        margin-left: 50px;
+        margin-left: 40px;
     }
 }
 @media(max-width:600px){
@@ -221,7 +236,7 @@ textarea:focus{
         display: flex;
         flex-direction: column-reverse;
         grid-template-columns: 50% 50%;
-        margin-top:195px;
+        margin-top:250px;
     }
     .column-left{
         border-radius: 12px;
