@@ -7,8 +7,8 @@
 
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/form.css">
-    <link rel="stylesheet" href="assets/css/seachBox.css">
-    <link rel="stylesheet" href="assets/css/dropdown.css">
+    <link rel="stylesheet" href="assets/css/expandSearchBox.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- magnific-popup css -->
     <link rel="stylesheet" href="assets/css/magnific-popup.css">
@@ -87,30 +87,26 @@
                     <div class="header">
                         <i class='bx bx-receipt'></i>
                         <h3>Available Clinics</h3>
-                        <div class="User-area">
-                            <div class="User-avtar User-avtar1">
-                                <i class='bx bx-filter'></i>
+                        <form class="expanding-search-form">
+                            <div class="search-dropdown">
+                              <button class="button dropdown-toggle" type="button">
+                                <span class="toggle-active">Sort By</span>
+                                <span class="ion-arrow-down-b"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li class="menu-active"><a href="#">Everything</a></li>
+                                <li><a href="#">People</a></li>
+                                <li><a href="#">Products</a></li>
+                                <li><a href="#">Blog</a></li>
+                              </ul>
                             </div>
-                            <ul class="User-Dropdown User-Dropdown1">
-                            <li><a href="#">My Profile</a></li>
-                            <li><a href="#">Notifications</a></li>
-                            <li><a href="#">Projects</a></li>
-                            <li><a href="#">Settings</a></li>
-                            <li><a href="#">Logout</a></li>
-                            </ul>
-                        </div>
-                        <div id="searchContainer" class="searchContainer">
-                            <span id="searchIcon" onclick="toggleSearchBox()"><i class='bx bx-search'></i></span>
-                            <div id="searchBox" class="searchBox">
-                                <form action="" class="form">
-                                    <label for="">
-                                        <input class="input" type="text" id="searchInput" placeholder="Search...">
-                                        <span>search</span>
-                                    </label>
-                                    <button class="submit" onclick="performSearch()">Search</button>
-                                </form>
-                            </div>
-                        </div>
+                            <input class="search-input" id="global-search" type="search" placeholder="Search">
+                            <button class="button search-button" type="button">
+                                <span class="icon ion-search">
+                                    <span class="sr-only">Search</span>
+                                </span>
+                            </button>
+                        </form>
                     </div>
                     <table>
                         <thead>
@@ -227,8 +223,7 @@
     <script src="assets/js/jquery.magnific-popup.js"></script>   
     <script src="assets/js/index.js"></script>
     <script src="assets/js/changeView.js"></script>
-    <script src="assets/js/searchBox.js"></script>
-    <script src="assets/js/dropdown.js"></script>
+    <script src="assets/js/expandSearchBox.js"></script>
 
     <script> 
         $('.imageLB').magnificPopup({
