@@ -1,3 +1,22 @@
+/* For counters in count section */
+
+let valueDisplays = document.querySelectorAll(".purecounter");
+let interval = 3500;
+valueDisplays.forEach((valueDisplay) =>{
+    let startValue = 0;
+    let endValue = parseInt(valueDisplay.getAttribute("data-purecounter-end"));
+    let duration = Math.floor(interval / endValue);
+    let counter = setInterval(function(){
+      startValue += 1;
+      valueDisplay.textContent = startValue;
+      if(startValue == endValue){
+        clearInterval(counter);
+      }
+    }, duration);
+});
+
+/* For Swiper in clinic section */
+
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 3,
     loop:true,
@@ -18,9 +37,10 @@ var swiper = new Swiper(".mySwiper", {
       slidesPerView: 5,
   },
   },
-    pagination: {
+   pagination: {
       el: ".swiper-pagination",
       clickable: true,
     },
 
   });
+
