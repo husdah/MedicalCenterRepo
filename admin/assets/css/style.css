@@ -113,7 +113,6 @@ body{
     background-color: #9fc3e7;
 }
 
-
 .sidebar{
     position: fixed;
     top: 0;
@@ -233,11 +232,11 @@ body{
     justify-content: center;
 }
 
-.sidebar .side-menu li a.logout{
+.sidebar .side-menu .log-li a.logout{
     color: var(--danger);
 }
 
-.sidebar .side-menu li a.logout:hover{
+.sidebar .side-menu .log-li:hover a.logout{
     color: var(--grey);
     background: var(--danger);
     box-shadow: 3px 5px 12px #555;
