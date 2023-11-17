@@ -78,6 +78,12 @@
     width: 100%;
     gap: 6px;
   }
+
+  .flex2 {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }
   
   .form label {
     position: relative;

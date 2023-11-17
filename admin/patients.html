@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patients</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/form.css">
+    <link rel="stylesheet" href="assets/css/checkbox.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/expandSearchBox.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
 
     <!-- Sidebar -->
@@ -35,7 +39,7 @@
                 </a>
             </li>
         </ul>
-     </aside>
+    </aside>
     <!-- End of Sidebar -->
 
     <!-- Main Content -->
@@ -86,14 +90,14 @@
                         <h3>Patients</h3>
                         <form class="expanding-search-form">
                             <div class="search-dropdown">
-                              <button class="button dropdown-toggle" type="button">
-                                <span class="toggle-active">Sort By</span>
-                                <span class="ion-arrow-down-b"></span>
-                              </button>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Name</a></li>
-                                <li><a href="#">Date</a></li>
-                              </ul>
+                                <button class="button dropdown-toggle" type="button">
+                                    <span class="toggle-active">Sort By</span>
+                                    <span class="ion-arrow-down-b"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Name</a></li>
+                                    <li><a href="#">Date</a></li>
+                                </ul>
                             </div>
                             <input class="search-input" id="global-search" type="search" placeholder="Search">
                             <button class="button search-button" type="button">
@@ -115,44 +119,127 @@
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="view-patient.html"><p>Hussein Daher</p></a>
+                                    <a href="view-patient.html">
+                                        <p>Hussein Daher</p>
+                                    </a>
                                 </td>
                                 <td>14-08-2023</td>
-                                <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
+                                <td><button class="btn-delete"><i
+                                            class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                             </tr>
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="view-patient.html"><p>Haya Tfaily</p></a>
+                                    <a href="view-patient.html">
+                                        <p>Haya Tfaily</p>
+                                    </a>
                                 </td>
                                 <td>14-08-2023</td>
-                                <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
+                                <td><button class="btn-delete"><i
+                                            class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                             </tr>
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="view-patient.html"><p>Zeinab Hijazi</p></a>
+                                    <a href="view-patient.html">
+                                        <p>Zeinab Hijazi</p>
+                                    </a>
                                 </td>
                                 <td>14-08-2023</td>
-                                <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
+                                <td><button class="btn-delete"><i
+                                            class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                             </tr>
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="view-patient.html"><p>Loreen Baker</p></a>
+                                    <a href="view-patient.html">
+                                        <p>Loreen Baker</p>
+                                    </a>
                                 </td>
                                 <td>14-08-2023</td>
-                                <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
+                                <td><button class="btn-delete"><i
+                                            class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+
+                <!-- Reminders -->
+                <div class="reminders">
+                    <div class="header">
+                        <i class='bx bx-group'></i>
+                        <h3>Create Patient Account</h3>
+                    </div>
+                    <form class="form">
+                        <p class="title">Register Patient</p>
+                        <p class="message">Please Enter The Needed Information. </p>
+                        <div class="flex">
+                            <label>
+                                <input required="" placeholder="" type="text" class="input">
+                                <span>Firstname</span>
+                            </label>
+                    
+                            <label>
+                                <input required="" placeholder="" type="text" class="input">
+                                <span>Lastname</span>
+                            </label>
+                        </div>
+                        
+                        <div class="flex2">
+                            <label class="check-container" id="check_display">Male
+                                <input type="radio" name="gender" id="male" value="male">
+                                <span class="checkmark"></span>
+                            </label>
+
+                            <label class="check-container" id="check_display">Female
+                                <input type="radio" name="gender" id="female" value="female">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        
+                        <label>Date OF Birth:
+                            <input required="" placeholder="" type="date" class="input">
+                        </label>
+
+                        <label>
+                            <select name="" id="" class="input">
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                            <span>Blood Type</span>
+                        </label>
+
+                        <label>
+                            <input required="" placeholder="" type="email" class="input">
+                            <span>Email</span>
+                        </label>
+                            
+                        <label>
+                            <input required="" placeholder="" type="password" class="input">
+                            <span>Password</span>
+                        </label>
+                        <label>
+                            <input required="" placeholder="" type="password" class="input">
+                            <span>Confirm password</span>
+                        </label>
+                        <button class="submit">Submit</button>
+                    </form>
+                </div>
+                <!-- End of Reminders-->
+            </div>
         </main>
     </div>
 
     <script src="assets/js/jquery-3.7.1.min.js"></script>
     <script src="assets/js/index.js"></script>
     <script src="assets/js/expandSearchBox.js"></script>
-    
+
 </body>
+
 </html>
