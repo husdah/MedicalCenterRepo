@@ -24,7 +24,6 @@
         </div>
         <ul class="side-menu">
             <li class="active"><a href="dashboard.html"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-            <li><a href="patients.html"><i class='bx bx-group'></i>Patients</a></li>
             <li><a href="#"><i class='bx bx-calendar-edit'></i>Schedule</a></li>
             <li><a href="#"><i class='bx bx-cog'></i>Settings</a></li>
         </ul>
@@ -123,17 +122,11 @@
         </table>
        </div>
         <div class="right-side">
+            <div class="top">
+            <h2>Patients</h2>
            <div class="filter">
-                <select class="filter-date" name="filter" id="filter">
-                    <option>All Upcoming</option>
-                    <option>Previous 30 days</option>
-                    <option>Previous 7 days</option>
-                    <option>Yesterday</option>
-                    <option>Today</option>
-                    <option>Tomorrow</option>
-                    <option>Next 7 days</option>
-                    <option>Next 30 days</option>
-                </select>
+            <input type="text" id="searchInput" placeholder="Search..."><i class='bx bx-search-alt-2'></i>
+           </div>
            </div>
            <table class="appointments">
             <tr>
@@ -145,9 +138,8 @@
                 </div>  
                 </td>
                 <td>
-                    <div class="time">
-                        <i class='bx bxs-alarm'></i>
-                        <span id="hour">11:00am</span>
+                    <div class="view-btn">
+                        <a href="patient.html"><button id="view" name="view">View</button></a>
                     </div>
                 </td>
             </tr>
@@ -160,9 +152,8 @@
                 </div>  
                 </td>
                 <td>
-                    <div class="time">
-                        <i class='bx bxs-alarm'></i>
-                        <span id="hour">11:00am</span>
+                    <div class="view-btn">
+                        <a href="patient.html"><button id="view" name="view">View</button></a>
                     </div>
                 </td>
             </tr>
@@ -175,9 +166,8 @@
                 </div>  
                 </td>
                 <td>
-                    <div class="time">
-                        <i class='bx bxs-alarm'></i>
-                        <span id="hour">11:00am</span>
+                    <div class="view-btn">
+                        <a href="patient.html"><button id="view" name="view">View</button></a>
                     </div>
                 </td>
             </tr>
@@ -190,9 +180,8 @@
                 </div>  
                 </td>
                 <td>
-                    <div class="time">
-                        <i class='bx bxs-alarm'></i>
-                        <span id="hour">11:00am</span>
+                    <div class="view-btn">
+                        <a href="patient.html"><button id="view" name="view">View</button></a>
                     </div>
                 </td>
             </tr>
@@ -205,9 +194,8 @@
                 </div>  
                 </td>
                 <td>
-                    <div class="time">
-                        <i class='bx bxs-alarm'></i>
-                        <span id="hour">11:00am</span>
+                    <div class="view-btn">
+                        <a href="patient.html"><button id="view" name="view">View</button></a>
                     </div>
                 </td>
             </tr>

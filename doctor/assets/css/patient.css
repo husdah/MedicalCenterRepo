@@ -238,7 +238,7 @@ body{
     transition: all 0.3s ease;
 }
 
-.content h1{
+.content h3{
     color: var(--dark);
     margin: 10px;
 }
@@ -343,12 +343,12 @@ body{
 
 .content .apps-table{
     margin-top: 15px;
-    margin-left: 50px;
+    margin-left: 20px;
     color: var(--dark);
     height: auto;
 }
 
-.content .apps-table h3{
+.content .apps-table h2{
     margin-left: 10px;
 }
 
@@ -357,7 +357,7 @@ body{
     background: var(--light);
     margin-top: 10px;
     border-radius: 15px;
-    width: 900px;
+    width: 600px;
     border-collapse: collapse;
     border-spacing: 5px 0;
     cursor: pointer;
@@ -407,27 +407,21 @@ body{
 
 .content .notes{
     position: absolute;
-    top: 68px;
+    top: 52px;
     left: 650px;
-    height: 192px;
-    width: 400px;
+    height: 91%;
+    width: 450px;
     background: var(--light);
     border-radius: 15px;
     padding: 10px;
 }
 
-.content .notes .text{
-    position: relative;
-    border-radius: 15px;
-    margin: 10px 5px;
-    background: var(--grey);
-    font-size: 12px;
-    font-weight: 400;
-    padding: 10px;
-    height: 125px;
+.content .notes h2{
+    text-align: center;
+    color: var(--primary);
 }
 
-.content .notes .text button{
+.content .notes button{
     position: absolute;
     bottom: 0;
     right: 0;
@@ -443,27 +437,63 @@ body{
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.content .notes .text button:hover{
+.content .notes button:hover{
     background: var(--light-primary);
 }
 
-.content .footer .currentDate,
-.content .footer label{
-    position: absolute;
-    color: var(--dark-grey);
+.content .notes .page{
+    height: inherit;
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid var(--primary);
+    border-radius: 15px;
+}
+
+.content .notes .page form{
+    margin: 20px 5px;
+}
+
+.content .notes .page label{
+    font-size: 12px;
+    color: var(--dark);
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+.content .notes .page form .date{
+    margin-left: 45px;
+}
+
+.content .notes .page input{
+    margin: 10px 5px;
+    width: 110px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--dark);
+    color: var(--dark);
     font-weight: 400;
-    font-size: 10px;
-    bottom: 0;
-    right: 0;
-    margin: 5px 20px;
+    outline: none;
 }
 
-.content .footer label i{
+.content .notes .page form textarea{
+    width: 100%;
+    margin-top: 15px;
+    outline: none;
+    padding: 10px;
+    color: var(--dark);
+    font-weight: 500;
+    border: none;
+}
+
+.content .notes .page .signature{
+    display: flex;
+    justify-content: end;
+}
+
+.content .notes .page .signature label{
     font-size: 15px;
-    margin-right: 3px;
 }
 
-.content .footer label {
-    position: absolute;
-    left: 0;
+.content .notes .page .signature input{
+    border-bottom: none;
 }
