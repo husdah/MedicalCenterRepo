@@ -82,7 +82,7 @@
             </div>
 
             <div class="bottom-data">
-                <div class="orders">
+<!--                 <div class="orders">
                     <div class="header">
                         <i class='bx bx-time'></i>
                         <h3>Manage WH</h3>
@@ -214,6 +214,117 @@
                                         </label>
                                     </div>
                                 </td>
+                            </tr>
+                            </form>
+                        </tbody>
+                    </table>
+                </div> -->
+
+                <div class="orders">
+                    <div class="header">
+                        <i class='bx bx-time'></i>
+                        <h3>Manage Exceptions</h3>
+                        <form class="expanding-search-form">
+                            <div class="search-dropdown">
+                              <button class="button dropdown-toggle" type="button">
+                                <span class="toggle-active">Day</span>
+                                <span class="ion-arrow-down-b"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li class="menu-active"><a href="#">Day</a></li>
+                              </ul>
+                            </div>
+                            <input class="search-input" id="global-search" type="search" placeholder="Search">
+                            <button class="button search-button" type="button">
+                                <span class="icon ion-search">
+                                    <span class="sr-only">Search</span>
+                                </span>
+                            </button>
+                        </form>
+                        <form class="form" style="background: transparent;">
+                            <div class="flex3">     
+                                <label>ADD Exception: </label>
+                                <label>
+                                    <input required="" placeholder="" type="date" class="input">
+                                </label>
+                                <label>
+                                    <input required="" placeholder="" type="text" class="input">
+                                    <span>reason</span>
+                                </label>
+                                <button class="submit">ADD</button>
+                            </div>
+                            <!-- <button class="submit">ADD Exception</button> -->
+                        </form>
+                    </div>
+                    <table id="dataTable" class="exceptionTable">
+                        <thead>
+                            <tr>
+                                <th>Day</th>  
+                                <th>Exception</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <form action="" class="form">
+                            <tr>
+                                <td class="day">15-12-2023</td>
+                                <td style="background: transparent;">
+                                    <div class="form" style="background: transparent;">
+                                        <label>
+                                            <input required="" placeholder="" type="text" class="input">
+                                            <span>reason</span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
+                            </tr>
+                            <tr>
+                                <td class="day">12-12-2023</td>
+                                <td>
+                                    <div class="form" style="background: transparent;">
+                                        <label>
+                                            <input required="" placeholder="" type="text" class="input">
+                                            <span>reason</span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
+                            </tr>
+                            <tr>
+                                <td class="day">11-12-2023</td>
+                                <td>
+                                    <div class="form" style="background: transparent;">
+                                        <label>
+                                            <input required="" placeholder="" type="text" class="input">
+                                            <span>reason</span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
+                            </tr>
+                            <tr>
+                                <td class="day">9-12-2023</td>
+                                <td>
+                                    <div class="form" style="background: transparent;">
+                                        <label>
+                                            <input required="" placeholder="" type="text" class="input">
+                                            <span>reason</span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
+                            </tr>
+                            <tr>
+                                <td class="day">10-12-2023</td>
+                                <td>
+                                    <div class="form" style="background: transparent;">
+                                        <label>
+                                            <input required="" placeholder="" type="text" class="input">
+                                            <span>reason</span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                             </tr>
                             </form>
                         </tbody>

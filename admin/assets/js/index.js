@@ -69,3 +69,29 @@ account.addEventListener('change', function () {
         }
     }
 });
+
+
+var firstInput = document.getElementById('firstInput');
+var secondInput = document.getElementById('secondInput');
+
+firstInput.addEventListener('input', function() {
+
+    if (firstInput.value.trim() === '' && secondInput.value.trim() === '') {
+        firstInput.required = true;
+        secondInput.required = true;
+    } else if (firstInput.value.trim() != '' && secondInput.value.trim() === '') {
+        secondInput.required = false;
+    }
+
+});
+
+secondInput.addEventListener('input', function() {
+
+    if (firstInput.value.trim() === '' && secondInput.value.trim() === '') {
+        firstInput.required = true;
+        secondInput.required = true;
+    } else if (firstInput.value.trim() === '' && secondInput.value.trim() != '') {
+        firstInput.required = false;
+    }
+
+});
