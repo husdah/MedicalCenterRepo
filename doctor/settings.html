@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Doctor Dashboard</title>
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/settingscss.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="#" class="logo">
+                <i class='bx bx-pulse'></i>
+                <div class="logo-name"><span>Health</span>Hub</div>
+            </a>
+        <i class="bx bx-menu"></i>
+        </div>
+        <div class="user">
+            <img src="../images/dr1.jpg" class="user-img">
+            <label class="user-name">Dr. Doctor</label>
+            <label class="user-clinic">Cardiology</label>
+        </div>
+        <ul class="side-menu">
+            <li class="active"><a href="dashboard.html"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li><a href="#"><i class='bx bx-group'></i>Patients</a></li>
+            <li><a href="addpatient.html"><i class='bx bx-calendar-edit'></i>manage Appointments</a></li>
+            <li><a href="settings.html"><i class='bx bx-cog'></i>Settings</a></li>
+        </ul>
+        <ul class="side-menu">
+            <li class="log-li">
+                <a href="#" class="logout">
+                    <i class='bx bx-log-out-circle'></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+     </aside>
+    <!-- End of Sidebar -->
+    <div class="mainContent">
+        <div class="center">
+        <h2>Settings</h2>
+       <div class="title">
+        <div class="title1">
+            <img src="../images/dr1.jpg" alt="">
+        </div>
+        <div class="title2">
+            <div class="title2i">
+                <input type="text" name="dname" id="dname" value="Doctor Name">
+                <i class="fa-solid fa-pen"></i>
+            </div>
+            <div class="title2i">
+                <input type="text" name="dclinic" id="dclinic" value="Cardiology">
+                <i class="fa-solid fa-pen"></i>
+            </div>
+        </div>
+       </div>
+       <div class="changepass">
+        <h3>Do you want to change the passsword?</h3>
+        <form action="">
+            <div>
+            <label for="cpass">Current Password:</label> <input type="text" name="cpass" id="cpass">
+            </div>
+            <div>
+            <label for="cpass">New password</label> <input type="text" name="npass" id="npass">
+            </div>
+            <div>
+            <label for="cpass">Re-type new password</label> <input type="text" name="rnpass" id="rnpass">
+            </div>
+            <div class="submit">
+                <input type="submit" value="change" name="submit" id="submit">
+            </div>
+            
+        </form>
+       </div>
+    </div>
+    </div>
+ </body>
+</html>
