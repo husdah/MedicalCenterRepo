@@ -91,11 +91,11 @@
                         <form class="expanding-search-form">
                             <div class="search-dropdown">
                                 <button class="button dropdown-toggle" type="button">
-                                    <span class="toggle-active">Sort By</span>
+                                    <span class="toggle-active">Name</span>
                                     <span class="ion-arrow-down-b"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Name</a></li>
+                                    <li class="menu-active"><a href="#">Name</a></li>
                                     <li><a href="#">Date</a></li>
                                 </ul>
                             </div>
@@ -107,7 +107,7 @@
                             </button>
                         </form>
                     </div>
-                    <table>
+                    <table id="dataTable">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -120,10 +120,10 @@
                                 <td>
                                     <img src="../images/profile-1.jpg">
                                     <a href="view-patient.html">
-                                        <p>Hussein Daher</p>
+                                        <p class="name">Hussein Daher</p>
                                     </a>
                                 </td>
-                                <td>14-08-2023</td>
+                                <td class="date">17-08-2023</td>
                                 <td><button class="btn-delete"><i
                                             class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                             </tr>
@@ -131,10 +131,10 @@
                                 <td>
                                     <img src="../images/profile-1.jpg">
                                     <a href="view-patient.html">
-                                        <p>Haya Tfaily</p>
+                                        <p class="name">Haya Tfaily</p>
                                     </a>
                                 </td>
-                                <td>14-08-2023</td>
+                                <td class="date">16-08-2023</td>
                                 <td><button class="btn-delete"><i
                                             class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                             </tr>
@@ -142,10 +142,10 @@
                                 <td>
                                     <img src="../images/profile-1.jpg">
                                     <a href="view-patient.html">
-                                        <p>Zeinab Hijazi</p>
+                                        <p class="name">Zeinab Hijazi</p>
                                     </a>
                                 </td>
-                                <td>14-08-2023</td>
+                                <td class="date">15-08-2023</td>
                                 <td><button class="btn-delete"><i
                                             class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                             </tr>
@@ -153,10 +153,10 @@
                                 <td>
                                     <img src="../images/profile-1.jpg">
                                     <a href="view-patient.html">
-                                        <p>Loreen Baker</p>
+                                        <p class="name">Loreen Baker</p>
                                     </a>
                                 </td>
-                                <td>14-08-2023</td>
+                                <td class="date">14-08-2023</td>
                                 <td><button class="btn-delete"><i
                                             class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                             </tr>
@@ -187,7 +187,7 @@
                         
                         <div class="flex2">
                             <label class="check-container" id="check_display">Male
-                                <input type="radio" name="gender" id="male" value="male">
+                                <input checked required type="radio" name="gender" id="male" value="male">
                                 <span class="checkmark"></span>
                             </label>
 
@@ -215,19 +215,32 @@
                             <span>Blood Type</span>
                         </label>
 
-                        <label>
-                            <input required="" placeholder="" type="email" class="input">
-                            <span>Email</span>
-                        </label>
+                        <div class="flex">
+                            <label>
+                                <input required="" placeholder="" type="email" class="input req">
+                                <span>Email</span>
+                            </label>
+                            <label>or</label>
+                            <label>
+                                <input required="" placeholder="" type="tel" class="input req">
+                                <span>Phone</span>
+                            </label>
+                        </div>
                             
                         <label>
-                            <input required="" placeholder="" type="password" class="input">
+                            <input required="" placeholder="" type="password" class="input req">
                             <span>Password</span>
                         </label>
                         <label>
-                            <input required="" placeholder="" type="password" class="input">
+                            <input required="" placeholder="" type="password" class="input req">
                             <span>Confirm password</span>
                         </label>
+
+                        <label class="check-container" id="check_display">Create Account
+                            <input checked type="checkbox" name="account" id="account" value="account">
+                            <span class="checkmark"></span>
+                        </label>
+
                         <button class="submit">Submit</button>
                     </form>
                 </div>

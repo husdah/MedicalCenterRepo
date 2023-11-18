@@ -89,13 +89,13 @@
                         <form class="expanding-search-form">
                             <div class="search-dropdown">
                               <button class="button dropdown-toggle" type="button">
-                                <span class="toggle-active">Sort By</span>
+                                <span class="toggle-active">Name</span>
                                 <span class="ion-arrow-down-b"></span>
                               </button>
                               <ul class="dropdown-menu">
-                                <li><a href="#">Name</a></li>
+                                <li class="menu-active"><a href="#">Name</a></li>
                                 <li><a href="#">Day</a></li>
-                                <li><a href="#">Status</a></li>
+                                <!-- <li><a href="#">Status</a></li> -->
                               </ul>
                             </div>
                             <input class="search-input" id="global-search" type="search" placeholder="Search">
@@ -106,7 +106,7 @@
                             </button>
                         </form>                    
                     </div>
-                    <table>
+                    <table id="dataTable">
                         <thead>
                             <tr>
                                 <th>Doctors</th>
@@ -118,9 +118,9 @@
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="edit-doctor.html"><p>Haya Tfaily</p></a>
+                                    <a href="edit-doctor.html"><p class="name">Haya Tfaily</p></a>
                                 </td>
-                                <td>Monday</td>
+                                <td class="day">Monday</td>
                                 <td>
                                     <label class="check-container" id="check_display">available
                                         <input type="checkbox" name="available">
@@ -131,9 +131,9 @@
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="edit-doctor.html"><p>Haya Tfaily</p></a>
+                                    <a href="edit-doctor.html"><p class="name">Hussein Daher</p></a>
                                 </td>
-                                <td>Monday</td>
+                                <td class="day">Friday</td>
                                 <td>
                                     <label class="check-container" id="check_display">available
                                         <input type="checkbox" name="available">
@@ -144,9 +144,9 @@
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="edit-doctor.html"><p>Haya Tfaily</p></a>
+                                    <a href="edit-doctor.html"><p class="name">Loreen Baker</p></a>
                                 </td>
-                                <td>Monday</td>
+                                <td class="day">Wednesday</td>
                                 <td>
                                     <label class="check-container" id="check_display">available
                                         <input type="checkbox" name="available">
@@ -157,9 +157,9 @@
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="edit-doctor.html"><p>Haya Tfaily</p></a>
+                                    <a href="edit-doctor.html"><p class="name">Zeinab Hijazi</p></a>
                                 </td>
-                                <td>Monday</td>
+                                <td class="day">Tuesday</td>
                                 <td>
                                     <label class="check-container" id="check_display">available
                                         <input type="checkbox" name="available">

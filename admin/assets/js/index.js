@@ -54,3 +54,18 @@ toggler.addEventListener('change', function () {
         document.body.classList.remove('dark');
     }
 });
+
+
+const account = document.getElementById('account');
+const reqs = document.getElementsByClassName('req');
+account.addEventListener('change', function () {
+    if (this.checked) {
+        for (var i = 0; i < reqs.length; i++) {
+            reqs[i].required = true;
+        }
+    } else {
+        for (var i = 0; i < reqs.length; i++) {
+            reqs[i].required = false;
+        }
+    }
+});

@@ -128,11 +128,11 @@
                         <form class="expanding-search-form">
                             <div class="search-dropdown">
                               <button class="button dropdown-toggle" type="button">
-                                <span class="toggle-active">Sort By</span>
+                                <span class="toggle-active">Name</span>
                                 <span class="ion-arrow-down-b"></span>
                               </button>
                               <ul class="dropdown-menu">
-                                <li><a href="#">Name</a></li>
+                                <li class="menu-active"><a href="#">Name</a></li>
                                 <li><a href="#">Date</a></li>
                                 <li><a href="#">Status</a></li>
                               </ul>
@@ -145,7 +145,7 @@
                             </button>
                         </form>
                     </div>
-                    <table>
+                    <table id="dataTable">
                         <thead>
                             <tr>
                                 <th>Patient</th>
@@ -153,37 +153,37 @@
                                 <th>Status</th>
                             </tr>
                         </thead>
-                        <tbody id="dataList">
-                            <tr class="name">
+                        <tbody>
+                            <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="view-patient.html"><p>Hussein Daher</p></a>
+                                    <a href="view-patient.html"><p class="name">Hussein Daher</p></a>
                                 </td>
-                                <td>14-08-2023</td>
+                                <td class="date">18-08-2023</td>
                                 <td><span class="status completed">Completed</span></td>
                             </tr>
-                            <tr class="name">
+                            <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="view-patient.html"><p>Haya Tfaily</p></a>
+                                    <a href="view-patient.html"><p class="name">Haya Tfaily</p></a>
                                 </td>
-                                <td>14-08-2023</td>
+                                <td class="date">17-08-2023</td>
                                 <td><span class="status pending">Pending</span></td>
                             </tr>
-                            <tr class="name">
+                            <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="view-patient.html"><p>Loreen Baker</p></a>
+                                    <a href="view-patient.html"><p class="name">Loreen Baker</p></a>
                                 </td>
-                                <td>14-08-2023</td>
+                                <td class="date">16-08-2023</td>
                                 <td><span class="status process">Processing</span></td>
                             </tr>
-                            <tr class="name">
+                            <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="view-patient.html"><p>Zeinab Hijazi</p></a>
+                                    <a href="view-patient.html"><p class="name">Zeinab Hijazi</p></a>
                                 </td>
-                                <td>14-08-2023</td>
+                                <td class="date">15-08-2023</td>
                                 <td><span class="status process">Processing</span></td>
                             </tr>
                         </tbody>
