@@ -88,18 +88,12 @@
                         <form class="expanding-search-form">
                             <div class="search-dropdown">
                               <button class="button dropdown-toggle" type="button">
-                                <span class="toggle-active">Blood Type</span>
+                                <span class="toggle-active">Name</span>
                                 <span class="ion-arrow-down-b"></span>
                               </button>
                               <ul class="dropdown-menu">
-                                <li><a href="#">A+</a></li>
-                                <li><a href="#">A-</a></li>
-                                <li><a href="#">B+</a></li>
-                                <li><a href="#">B-</a></li>
-                                <li><a href="#">AB+</a></li>
-                                <li><a href="#">AB-</a></li>
-                                <li><a href="#">O+</a></li>
-                                <li><a href="#">O-</a></li>
+                                <li class="menu-active"><a href="#">Name</a></li>
+                                <li><a href="#">BloodType</a></li>
                               </ul>
                             </div>
                             <input class="search-input" id="global-search" type="search" placeholder="Search">
@@ -110,7 +104,7 @@
                             </button>
                         </form>
                     </div>
-                    <table>
+                    <table id="dataTable">
                         <thead>
                             <tr>
                                 <th>Donor</th>
@@ -122,33 +116,33 @@
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="view-patient.html"><p>Hussein Daher</p></a>
+                                    <a href="view-patient.html"><p class="name">Hussein Daher</p></a>
                                 </td>
-                                <td>A+</td>
+                                <td class="bloodtype">A+</td>
                                 <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                             </tr>
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="view-patient.html"><p>Zeinab Hijazi</p></a>
+                                    <a href="view-patient.html"><p class="name">Zeinab Hijazi</p></a>
                                 </td>
-                                <td>O+</td>
+                                <td class="bloodtype">O+</td>
                                 <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                             </tr>
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="view-patient.html"><p>Haya Tfaily</p></a>
+                                    <a href="view-patient.html"><p class="name">Haya Tfaily</p></a>
                                 </td>
-                                <td>O-</td>
+                                <td class="bloodtype">O-</td>
                                 <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                             </tr>
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="view-patient.html"><p>Loreen Baker</p></a>
+                                    <a href="view-patient.html"><p class="name">Loreen Baker</p></a>
                                 </td>
-                                <td>A+</td>
+                                <td class="bloodtype">A+</td>
                                 <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                             </tr>
                         </tbody>

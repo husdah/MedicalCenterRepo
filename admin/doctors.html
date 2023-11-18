@@ -88,12 +88,12 @@
                         <form class="expanding-search-form">
                             <div class="search-dropdown">
                               <button class="button dropdown-toggle" type="button">
-                                <span class="toggle-active">Clinic</span>
+                                <span class="toggle-active">Doctor</span>
                                 <span class="ion-arrow-down-b"></span>
                               </button>
                               <ul class="dropdown-menu">
-                                <li><a href="#">Surgery</a></li>
-                                <li><a href="#">Cardiology</a></li>
+                                <li class="menu-active"><a href="#">Doctor</a></li>
+                                <li><a href="#">Clinic</a></li>
                               </ul>
                             </div>
                             <input class="search-input" id="global-search" type="search" placeholder="Search">
@@ -104,7 +104,7 @@
                             </button>
                         </form>
                     </div>
-                    <table>
+                    <table id="dataTable">
                         <thead>
                             <tr>
                                 <th>Doctor</th>
@@ -116,33 +116,33 @@
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="edit-doctor.html"><p>Hussein Daher</p></a>
+                                    <a href="edit-doctor.html"><p class="doctor">Hussein Daher</p></a>
                                 </td>
-                                <td>Surgery</td>
+                                <td class="clinic">Surgery</td>
                                 <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                             </tr>
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="edit-doctor.html"><p>Zeinab Hijazi</p></a>
+                                    <a href="edit-doctor.html"><p class="doctor">Zeinab Hijazi</p></a>
                                 </td>
-                                <td>Cardiology</td>
+                                <td class="clinic">Cardiology</td>
                                 <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                             </tr>
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="edit-doctor.html"><p>Haya Tfaily</p></a>
+                                    <a href="edit-doctor.html"><p class="doctor">Haya Tfaily</p></a>
                                 </td>
-                                <td>Surgery</td>
+                                <td class="clinic">Surgery</td>
                                 <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                             </tr>
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="edit-doctor.html"><p>Loreen Baker</p></a>
+                                    <a href="edit-doctor.html"><p class="doctor">Loreen Baker</p></a>
                                 </td>
-                                <td>Cardiology</td>
+                                <td class="clinic">Cardiology</td>
                                 <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                             </tr>
                         </tbody>

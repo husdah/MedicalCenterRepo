@@ -82,20 +82,19 @@
             </div>
 
             <div class="bottom-data">
-                <div class="orders">
+<!--                 <div class="orders">
                     <div class="header">
                         <i class='bx bx-time'></i>
                         <h3>Working Hours</h3>
                         <form class="expanding-search-form">
                             <div class="search-dropdown">
                               <button class="button dropdown-toggle" type="button">
-                                <span class="toggle-active">Sort By</span>
+                                <span class="toggle-active">Name</span>
                                 <span class="ion-arrow-down-b"></span>
                               </button>
                               <ul class="dropdown-menu">
-                                <li><a href="#">Name</a></li>
+                                <li class="menu-active"><a href="#">Name</a></li>
                                 <li><a href="#">Day</a></li>
-                                <li><a href="#">Status</a></li>
                               </ul>
                             </div>
                             <input class="search-input" id="global-search" type="search" placeholder="Search">
@@ -106,7 +105,7 @@
                             </button>
                         </form>                    
                     </div>
-                    <table>
+                    <table id="dataTable">
                         <thead>
                             <tr>
                                 <th>Doctors</th>
@@ -118,9 +117,9 @@
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="edit-doctor.html"><p>Haya Tfaily</p></a>
+                                    <a href="edit-doctor.html"><p class="name">Haya Tfaily</p></a>
                                 </td>
-                                <td>Monday</td>
+                                <td class="day">Monday</td>
                                 <td>
                                     <label class="check-container" id="check_display">available
                                         <input type="checkbox" name="available">
@@ -131,9 +130,9 @@
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="edit-doctor.html"><p>Haya Tfaily</p></a>
+                                    <a href="edit-doctor.html"><p class="name">Hussein Daher</p></a>
                                 </td>
-                                <td>Monday</td>
+                                <td class="day">Friday</td>
                                 <td>
                                     <label class="check-container" id="check_display">available
                                         <input type="checkbox" name="available">
@@ -144,9 +143,9 @@
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="edit-doctor.html"><p>Haya Tfaily</p></a>
+                                    <a href="edit-doctor.html"><p class="name">Loreen Baker</p></a>
                                 </td>
-                                <td>Monday</td>
+                                <td class="day">Wednesday</td>
                                 <td>
                                     <label class="check-container" id="check_display">available
                                         <input type="checkbox" name="available">
@@ -157,12 +156,196 @@
                             <tr>
                                 <td>
                                     <img src="../images/profile-1.jpg">
-                                    <a href="edit-doctor.html"><p>Haya Tfaily</p></a>
+                                    <a href="edit-doctor.html"><p class="name">Zeinab Hijazi</p></a>
                                 </td>
-                                <td>Monday</td>
+                                <td class="day">Tuesday</td>
                                 <td>
                                     <label class="check-container" id="check_display">available
                                         <input type="checkbox" name="available">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> -->
+
+
+                <div class="orders">
+                    <div class="header">
+                        <i class='bx bx-time'></i>
+                        <h3>Working Hours</h3>
+                        <form class="expanding-search-form">
+                            <div class="search-dropdown">
+                              <button class="button dropdown-toggle" type="button">
+                                <span class="toggle-active">Name</span>
+                                <span class="ion-arrow-down-b"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li class="menu-active"><a href="#">Name</a></li>
+                              </ul>
+                            </div>
+                            <input class="search-input" id="global-search" type="search" placeholder="Search">
+                            <button class="button search-button" type="button">
+                                <span class="icon ion-search">
+                                    <span class="sr-only">Search</span>
+                                </span>
+                            </button>
+                        </form>                    
+                    </div>
+                    <table id="dataTable" class="whTable">
+                        <thead>
+                            <tr>
+                                <th>Doctors</th>
+                                <!-- <th>M</th>
+                                <th>T</th>
+                                <th>W</th>
+                                <th>TH</th>
+                                <th>F</th> -->
+                                <th class="action_center" colspan="5">Days Available</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="../images/profile-1.jpg">
+                                    <a href="edit-doctor.html"><p class="name">Haya Tfaily</p></a>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">M
+                                        <input type="checkbox" name="monday">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">T
+                                        <input type="checkbox" name="tuesday">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">W
+                                        <input type="checkbox" name="wednesday">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">TH
+                                        <input type="checkbox" name="thursday">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">F
+                                        <input type="checkbox" name="friday">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="../images/profile-1.jpg">
+                                    <a href="edit-doctor.html"><p class="name">Hussein Daher</p></a>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">M
+                                        <input type="checkbox" name="monday">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">T
+                                        <input type="checkbox" name="tuesday">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">W
+                                        <input type="checkbox" name="wednesday">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">TH
+                                        <input type="checkbox" name="thursday">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">F
+                                        <input type="checkbox" name="friday">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="../images/profile-1.jpg">
+                                    <a href="edit-doctor.html"><p class="name">Loreen Baker</p></a>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">M
+                                        <input type="checkbox" name="monday">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">T
+                                        <input type="checkbox" name="tuesday">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">W
+                                        <input type="checkbox" name="wednesday">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">TH
+                                        <input type="checkbox" name="thursday">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">F
+                                        <input type="checkbox" name="friday">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="../images/profile-1.jpg">
+                                    <a href="edit-doctor.html"><p class="name">Zeinab Hijazi</p></a>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">M
+                                        <input type="checkbox" name="monday">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">T
+                                        <input type="checkbox" name="tuesday">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">W
+                                        <input type="checkbox" name="wednesday">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">TH
+                                        <input type="checkbox" name="thursday">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="check-container" id="check_display">F
+                                        <input type="checkbox" name="friday">
                                         <span class="checkmark"></span>
                                     </label>
                                 </td>
