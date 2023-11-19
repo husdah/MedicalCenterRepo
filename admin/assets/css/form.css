@@ -104,6 +104,8 @@
     border: 1px solid rgba(105, 105, 105, 0.397);
     border-radius: 10px;
     background: var(--grey);
+    font-weight: 600;
+    color: var(--dark);
   }
 
   .form label input[type="date"]
@@ -135,7 +137,7 @@
   }
 
   .form label select{
-    color: #0051a1;
+    color: #0051a1 !important;
     font-size: 1rem;
     font-weight: 600;
   }

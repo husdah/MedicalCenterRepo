@@ -299,9 +299,9 @@
   .input-field i {
 	text-align: center;
 	line-height: 55px;
-	color: #acacac;
+	color: var(--dark-grey);
 	transition: 0.5s;
-	font-size: 1.1rem;
+	font-size: 1.5rem;
   }
   
   .input-field input {
@@ -309,12 +309,12 @@
 	outline: none;
 	border: none;
 	line-height: 1;
-	/* font-weight: 600; */
+	font-weight: 600;
 	font-size: .8rem;
-	/* color: #333; */
+	color: var(--dark);
   }
   
   .input-field input::placeholder {
-	color: #aaa;
+	color: var(--dark-grey);
 	font-weight: 500;
   }
