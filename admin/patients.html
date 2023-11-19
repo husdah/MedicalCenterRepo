@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/expandSearchBox.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- magnific-popup css -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
 </head>
 
 <body>
@@ -118,7 +120,9 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <img src="../images/profile-1.jpg">
+                                    <a href="/images/profile-1.jpg" class="imageLB"> 
+                                        <img src="/images/profile-1.jpg" alt="patient Image">
+                                    </a>
                                     <a href="view-patient.html">
                                         <p class="name">Hussein Daher</p>
                                     </a>
@@ -129,7 +133,9 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <img src="../images/profile-1.jpg">
+                                    <a href="/images/profile-1.jpg" class="imageLB"> 
+                                        <img src="/images/profile-1.jpg" alt="patient Image">
+                                    </a>
                                     <a href="view-patient.html">
                                         <p class="name">Haya Tfaily</p>
                                     </a>
@@ -140,7 +146,9 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <img src="../images/profile-1.jpg">
+                                    <a href="/images/profile-1.jpg" class="imageLB"> 
+                                        <img src="/images/profile-1.jpg" alt="patient Image">
+                                    </a>
                                     <a href="view-patient.html">
                                         <p class="name">Zeinab Hijazi</p>
                                     </a>
@@ -151,7 +159,9 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <img src="../images/profile-1.jpg">
+                                    <a href="/images/profile-1.jpg" class="imageLB"> 
+                                        <img src="/images/profile-1.jpg" alt="patient Image">
+                                    </a>
                                     <a href="view-patient.html">
                                         <p class="name">Loreen Baker</p>
                                     </a>
@@ -250,9 +260,22 @@
     </div>
 
     <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!-- magnifier popup js cdn link -->
+    <script src="assets/js/jquery.magnific-popup.js"></script>
     <script src="assets/js/index.js"></script>
     <script src="assets/js/expandSearchBox.js"></script>
 
-</body>
+    <script> 
+        $('.imageLB').magnificPopup({
+            type: 'image',
+            mainClass: 'mfp-with-zoom',
+            zoom: {
+                enabled: true,
+                duration: 300,
+                easing: 'ease-in-out',
+            }
+        });
+    </script>
 
+</body>
 </html>
