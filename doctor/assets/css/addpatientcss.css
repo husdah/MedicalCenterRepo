@@ -52,7 +52,7 @@
     align-self: stretch;
 
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     margin-right: 30px;
 }
 .txt
