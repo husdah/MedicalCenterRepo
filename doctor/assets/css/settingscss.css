@@ -110,15 +110,20 @@
 }
 .changepass form
 {
-    display: grid;
-    grid-template-columns:45% 55%;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 .changepass div
 {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 15px;
+}
+.changepass div label
+{
+    width: 50%;
+    align-self: center;
 }
 .changepass input
 {
@@ -135,7 +140,7 @@
     border: none;
     color: white;
     background: var(--primary);
-    margin-left:100px;
+    margin-left:330px;
     margin-top: 20px;
     width: 100px;
     text-align: center;
