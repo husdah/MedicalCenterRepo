@@ -26,13 +26,14 @@
     font-size: 2rem;
     margin-top: 20px;
     margin-left: 20px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
    
 }
 .leftright
 {
     display:flex;
-    margin-top: 80px;
+    /* margin-top: 80px; */
+    margin-top: 30px;
     gap: 30px;
 }
 .left form
@@ -46,11 +47,13 @@
     flex-direction: column;
     border-radius: 20px;
     width: 30%;
-    height: 80vh;
+    /* height: 80vh; */
+    flex: 1;
+    align-self: stretch;
+
     align-items: center;
     justify-content: center;
     margin-right: 30px;
-
 }
 .txt
 {
@@ -96,14 +99,13 @@
     background-color: white;
     border-radius: 20px;
     width: 70%;
-    
-    height: 80vh;
-   
-
+    /* height: 80vh; */
+    align-self: stretch;
 }
 .right .tablediv
 {
-    height: 60vh;
+    /* height: 60vh; */
+    height: 70vh;
     overflow: scroll;
     margin-top: 40px;
 }
