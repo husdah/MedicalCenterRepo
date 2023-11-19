@@ -49,6 +49,8 @@
 .title1
 {
     position:relative;
+    height: fit-content;
+    width: fit-content;
 }
 .title1 img
 {
@@ -56,16 +58,16 @@
     height: 150px;
     object-fit: cover;
     border-radius: 100%;
-    margin-left: 20px;
+   /*  margin-left: 20px; */
 }
 
 .title1 i
 {
     position: absolute;
     top: 50%;
-    left: 55%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 50px;
+    font-size: 45px;
     color: var(--primary);
     display: none; 
     z-index: 1000;
