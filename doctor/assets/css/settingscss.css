@@ -27,10 +27,7 @@
     justify-content: center;
     /* align-items: center; */
 }
-.center
-{
-    margin-left: 500px;
-}
+
  h2
 {
     color:var(--dark);
@@ -49,6 +46,10 @@
     gap: 20px;
     height: 20%;
 }
+.title1
+{
+    position:relative;
+}
 .title1 img
 {
     width: 150px;
@@ -56,6 +57,28 @@
     object-fit: cover;
     border-radius: 100%;
     margin-left: 20px;
+}
+
+.title1 i
+{
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    color: var(--primary);
+    display: none; 
+    z-index: 1000;
+}
+.title1 img:hover
+{
+    cursor: pointer;
+    opacity:0.7;
+}
+.title1:hover i
+{
+    display: block;
+    cursor: pointer;
 }
 .title2
 {
@@ -85,9 +108,15 @@
 }
 .changepass form
 {
+    display: grid;
+    grid-template-columns:45% 55%;
+    gap: 20px;
+}
+.changepass div
+{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
 }
 .changepass input
 {
@@ -98,19 +127,22 @@
     border-radius: 10px;
     padding:10px;
 }
-.submit
-{
-    display: flex;
-    justify-content:flex-end;
-}
+
 #submit
 {
     border: none;
     color: white;
     background: var(--primary);
-    margin-right: 900px;
+    margin-left:100px;
+    margin-top: 20px;
     width: 100px;
     text-align: center;
     padding: 0;
     cursor: pointer;
+    transition: 0.3s transform;
+}
+#submit:hover
+{
+    transform: scale(1.1);
+    background-color: var(--light-primary);
 }

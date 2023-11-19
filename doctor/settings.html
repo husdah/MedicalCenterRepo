@@ -25,10 +25,9 @@
             <label class="user-clinic">Cardiology</label>
         </div>
         <ul class="side-menu">
-            <li class="active"><a href="dashboard.html"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-            <li><a href="#"><i class='bx bx-group'></i>Patients</a></li>
-            <li><a href="addpatient.html"><i class='bx bx-calendar-edit'></i>manage Appointments</a></li>
-            <li><a href="settings.html"><i class='bx bx-cog'></i>Settings</a></li>
+            <li ><a href="dashboard.html"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li><a href="addpatient.html"><i class='bx bx-calendar-edit'></i>Manage Appointments</a></li>
+            <li class="active"><a href="settings.html"><i class='bx bx-cog'></i>Settings</a></li>
         </ul>
         <ul class="side-menu">
             <li class="log-li">
@@ -46,6 +45,7 @@
        <div class="title">
         <div class="title1">
             <img src="../images/dr1.jpg" alt="">
+            <i class="fa-solid fa-camera"></i>
         </div>
         <div class="title2">
             <div class="title2i">
@@ -60,7 +60,7 @@
        </div>
        <div class="changepass">
         <h3>Do you want to change the passsword?</h3>
-        <form action="">
+        <!-- <form action="">
             <div>
             <label for="cpass">Current Password:</label> <input type="text" name="cpass" id="cpass">
             </div>
@@ -74,7 +74,24 @@
                 <input type="submit" value="change" name="submit" id="submit">
             </div>
             
+        </form> -->
+        <form action="">
+            <div>
+                <label for="cpass">Current Password:</label>
+                <label for="cpass">New password:</label>
+                <label for="cpass">Re-type new password:</label>
+            </div>
+            <div>
+                <input type="text" name="cpass" id="cpass">
+                <input type="text" name="npass" id="npass">
+                <input type="text" name="rnpass" id="rnpass">
+                <div class="submit">
+                    <input type="submit" value="change" name="submit" id="submit">
+                </div>
+            </div>
+            
         </form>
+        
        </div>
     </div>
     </div>
