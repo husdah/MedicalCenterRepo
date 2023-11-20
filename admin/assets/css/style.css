@@ -796,8 +796,12 @@ body{
         min-width: 280px;
     } */
 
+    .content main .header .left h1{
+        font-size: 30px;
+    }
+
     .content main .bottom-data .reminders{
-        max-width: 300px;
+        max-width: 320px;
     }
 
     .content main .bottom-data .reminders .task-list{
@@ -810,6 +814,14 @@ body{
 }
 
 @media screen and (max-width: 375px) {
+    .content main .header .left h1{
+        font-size: 22px;
+    }
+
+    .content main .bottom-data .reminders{
+        max-width: 300px;
+    }
+
     .content main .bottom-data .orders .header h3{
         font-size: 18px;
     }
