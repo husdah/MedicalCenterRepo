@@ -1,3 +1,24 @@
+/* Add Button: Book Appointment */
+.button-app{
+    position:fixed;
+    z-index: 1;
+    right: 0;
+    margin-right: 20px;
+    bottom: 5%;
+    width: 50px;
+    height:50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    background-color: #0051a1;
+    cursor: pointer;
+}
+.button-app a{
+    color: #fff;
+}
+
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 :root {
@@ -22,14 +43,19 @@
     font-family: 'Poppins', sans-serif;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+:target::before{
+    content: '';
+    display: block;
+    height: 100px;
+    margin-top: -100px;
+}
 body{
     background-color: var(--grey);
 }
-p{
-    font-size:15px;
-    font-weight:100;
-    line-height: 18px;
-}
+
 /*banner section*/
 section.banner{
     width: 100%;
@@ -90,6 +116,20 @@ section.banner::after{
     border-radius: 4px;
     padding:10px 25px;
 }
+.why-us-grid-col1.col1-content{
+    text-align: left!important;
+    color:#fff;
+}
+.why-us-grid-col1 h3{
+    padding: 30px 0px;
+    font-size: 34px;
+    font-weight: 700;
+}
+.why-us-grid-col1 ul li{
+    font-size: 15px;
+    font-weight: 300;
+    margin-bottom: 15px;
+}
 .why-us-grid-col2{
     display:flex;
     flex-direction: column;
@@ -102,78 +142,30 @@ section.banner::after{
     text-align: center;
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
-.why-us-grid-col1 h3{
-    padding: 30px 0px;
-    font-size: 34px;
-    font-weight: 700;
-}
-.why-us-grid-col1 p{
-    margin-bottom: 30px;
-}
-.why-us-grid-col1.col1-content{
-    text-align: left!important;
-    color:#fff;
-}
-.why-us-grid-col1.col1-content .more-btn {
-    display: inline-block;
-    background-color: var(--light-primary);
-    color: #fff;
-    transition: all ease-in-out 0.4s;
-}
-.why-us-grid-col1.col1-content .more-btn:hover {
-    color: var(--light-primary);
-    background-color: #fff;
-}
 .why-us-grid-col2 .icon-box i{
     color: var(--primary);
     font-size: 45px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 .why-us-grid-col2 .icon-box h4 {
     color:var(--primary);
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
-    margin: 0 0 30px 0;
+    margin: 0 0 15px 0;
 }
 .why-us-grid-col2 .icon-box p {
+    font-size: 15px;
+    font-weight: 100;
+    line-height: 21px;
     padding: 0 20px 30px 20px;
     color:var(--primary);
 }
-.home-btn{
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    display: inline-block;
-    padding: 12px 30px;
-    border-radius: 50px;
-}
 
-/* Add Button: Book Appointment */
-.button-app{
-    position:fixed;
-    z-index: 1;
-    right: 0;
-    margin-right: 20px;
-    bottom: 5%;
-    width: 50px;
-    height:50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 25px;
-    background-color: #0051a1;
-    cursor: pointer;
-}
-.button-app a{
-    color: #fff;
-}
 /* About Us */
 section.about{
     width: 100%;
     height: 500px;
-    margin-top:300px;
+    margin: 320px 0 100px 0;
 }
 .about-container{
     width: 100%;
@@ -189,11 +181,18 @@ section.about{
     align-items: center;
 }
 .about-col1 img{
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    height:420px;
+    width: 420px;
     border-radius:50%;
-    height:480px;
-    width: 480px;
-    
+    position:relative;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    left:-100%;
+    animation: slideIn 4s ease-in-out forwards;    
+}
+@keyframes slideIn{
+    to{
+        left:0;
+    }
 }
 .about-col2{
     padding: 0 60px 0px 40px;
@@ -206,8 +205,11 @@ section.about{
     margin-bottom: 15px;
 }
 .about-col2 p{
+    font-size: 15px;
+    font-weight: 100;
     line-height: 21px;
     margin-bottom: 30px;
+    text-align: justify;
 }
 .about-container .icon-box{
     display:grid;
@@ -227,6 +229,9 @@ section.about{
     font-size:32px;
     color:var(--primary);
 }
+.icon-box .icon i.bx{
+    font-size:45px;
+}
 .about .icon-box:hover .icon {
     background: #1977cc;
     border-color: #1977cc;
@@ -235,12 +240,17 @@ section.about{
     color:#fff;
 }
 .title-description .title{
+    font-size: 18px;
     font-weight: 700;
     color:#000;
     margin-bottom: 10px;
-    font-size: 18px;
 }
 .title-description p{
+    font-size: 15px;
+    font-weight: 100;
+    line-height: 21px;
+    text-align: justify;
+    margin-bottom: 30px;
     color:#000;
 }
 /* Count */
@@ -298,12 +308,13 @@ section.counts{
     font-weight: 600;
     color: var(--primary);
 }
+
 /* Titles */
 .section-title {
     text-align: center;
     padding-bottom: 30px;
 }
-.section-title h2 {
+.section-title h2{
     font-size: 40px;
     font-weight: bold;
     margin-bottom: 20px;
@@ -337,11 +348,12 @@ section.home-heading{
     justify-content: center;
     align-items: center;
 }
+
 /* Services */
 section.service{
     width:100%;
-    height:520px;
-    margin-bottom:70px;
+    height:400px;
+    margin-bottom:130px;
 }
 .service-container{
     height:100%;
@@ -359,14 +371,38 @@ section.service{
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding:30px;
 }
-.col.col-1 .service-column img,
-.col.col-3 .service-column img{
-    width:70px;
-    height:70px;
-    margin-bottom: 20px;
+.service-column{
+    margin: 30px;
+    padding:0 25px;
+    border-left: 5px solid #0051a1;
+    border-radius: 12px;
+    border-right: 5px solid #0051a1;
 }
+.service-column:hover{
+    background-color: var(--light-primary);
+    border-radius:12px;
+} 
+.service-column i{
+    font-size: 38px;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+.service-column h1{
+   font-size: 20px;
+   font-weight: 700;
+   letter-spacing: 0.005px;
+   line-height: 23px;
+   text-transform: capitalize;
+   color: var(--primary);
+   margin-bottom: 20px;
+}
+.service-column p{
+    
+    color:#000;
+    padding: 0 30px;
+    
+ }
 .col.col-2{
     display: flex;
     justify-content: center;
@@ -374,35 +410,10 @@ section.service{
     text-align: center
 }
 .col.col-2 .service-image{
-    width:350px;
-    height:350px;
+    width:300px;
+    height:300px;
     border-radius: 50%;
 }
-.service-column:hover{
-    background-color: var(--light-primary);
-    border-radius:12px;
-} 
-.service-column h1{
-   font-size: 20px;
-   font-weight: 400;
-   letter-spacing: 0.005px;
-   line-height: 23px;
-   text-transform: capitalize;
-   color: var(--primary);
-   margin-bottom: 20px;
-}
-.service-column h1.mb{
-    margin-bottom: 50px;
-}
-.service-column p{
-    color:#000;
-    padding: 0 20px;
-    margin-bottom: 20px;
- }
-.service-column.mt{
-    margin-top:10px;
- }
-
 /* Doctor*/
 section.doctor{
     background: url(../../images/wave.svg);
@@ -544,82 +555,134 @@ section.clinics{
 /* Donation */
 section.donation{
     width:100%;
-    height:210px;
-    display: flex;
-    justify-content: center;
+    height:400px;
 }
-.donation-container{
-    border:2px solid #0051a1;
-    border-radius: 12px 12px 0 0;
-    width:20%;
+.donation-panel{
+    width: 80%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-}
-.donation-image{
-    margin-bottom: -23px;
-    background-color: #e0e5e9;
-    border:2px solid #0051a1;
-    width: 130px;
-    height: 130px;
-    border-radius:50%;
-    border-bottom-color: transparent;
-    border-left-color: transparent;
-    transform: rotate(-45deg);
-}
-.donation-image img{
-    transform: rotate(45deg);
-    width: 120px; 
-    height:120px;
-    margin-left: 5px;
-}
-.donation-content{
-    padding: 20px 0 20px 0;
-    width:100%;
-    height: 80%;
+    margin: auto;
+} 
+
+.donation-form{
+    width: 80%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: auto;
+} 
+
+.donation-panel h1,
+.donation-form h1{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Lobster';
+    text-transform: capitalize;
+    color: var(--primary); 
+    text-shadow: 3px 1px 1px rgba(159, 195, 231, 1); 
+    margin-bottom: 25px;   
 }
-input[type='text']{
+.donation-panel h1 i,
+.donation-form h1 i{
+    font-size: 40px;
+    margin: -30px 20px 0 20px;
+}
+.donation-panel img{
+    width:360px;
+}
+.click-to-donate{
+    margin-top:-100px;
+    margin-left: 10px;
+    font-size: 13px;
+    color:#fff;
+    background-color: transparent;
+    border:none;
+}
+.donation-content{
+    margin:auto;
+    width: 40%;
+    padding:20px;
+    background-color: var(--primary);
+    border:2px solid #fff;
+    border-top-left-radius: 70px;
+    border-bottom-right-radius: 70px;
+    color:#fff;
+}
+.donation-content i{
+    font-size: 30px;
+    float:right;
+}
+.donation-content .sectionOne{
+    display: flex;
+    justify-content: center;
+}
+.donation-content img{
+    justify-content: center;
+    width:120px;
+    height:120px;
+}
+.donation-content p,label{
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 7px;
+}
+.donation-content input[type='text']{
     border: 0;
     height: 40px;
-    width: 85%;
-    border-bottom: 3px solid #0051a1;
-    margin-bottom: 20px;
+    width: 52%;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 10px;
     background-color: transparent;
 }
-input[type='text']::placeholder {
-    color: #aaa;
-    font-weight: 500;
+.donation-content input[type='text']::placeholder {
+    color: #fff;
+    font-weight: 300;
     padding-bottom: 25px;
-  }
-  input[type='text']:focus{
+}
+input[type='text']:focus{
     outline: none;
 }
-.donation-container label{
-    color:#0051a1;
-    font-size: 15px;
-    font-weight: bold;
-    text-transform: capitalize;
-    margin-bottom:25px;
-}  
 select{
     border: none;
     border-radius: 50px;
-    background: #0051a1;
-    color: #fff;
+    background: #fff;
+    color: var(--primary);
     font-weight: 500;
     outline: none;
     width: 70px;
-    height: 40px;
+    height: 30px;
     text-align: center;
 }
-
-
+.donation-form{
+    display: none;
+}
+.view{
+    display: block;
+}
+.hide{
+    display: none;
+}
+.donation-content i{
+    color:#fff;
+}
+.btn-send{
+    background-color: #fff;
+    color: var(--primary);
+    border: 1px solid #fff;
+    margin-top: 5px;
+    width:20%;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: bold;
+    padding:10px;
+}
 
 
 /* Responsive */

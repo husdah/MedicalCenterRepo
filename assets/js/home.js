@@ -44,3 +44,12 @@ var swiper = new Swiper(".mySwiper", {
 
   });
 
+/* For donation section */
+$(document).ready(function () {
+  $(document).on('click','.click-to-donate', function (e) {
+      e.preventDefault();
+      var id = $(this).val();
+      document.getElementById('donatPanel').classList.add('hide');
+      document.getElementById('donateForm').classList.add('view');
+ }); 
+});
