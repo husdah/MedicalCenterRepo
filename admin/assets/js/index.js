@@ -33,8 +33,12 @@ searchBtn.addEventListener('click', function (e) {
     }
 });
 
+if (window.innerWidth < 800) {
+    sideBar.classList.add('close');
+}
+
 window.addEventListener('resize', () => {
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 800) {
         sideBar.classList.add('close');
     } else {
         sideBar.classList.remove('close');
