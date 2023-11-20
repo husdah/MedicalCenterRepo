@@ -428,10 +428,8 @@ input[type="date"]{
     grid-row: 1 / 2;
   }
 
-  .image {
-    width: 200px;
-    transition: transform 0.9s ease-in-out;
-    transition-delay: 0.6s;
+  img {
+    display: none;
   }
 
   .panel .content {
@@ -498,7 +496,7 @@ input[type="date"]{
     padding: 0 1.5rem;
   }
 
-  .image {
+  img {
     display: none;
   }
   .panel .content {
