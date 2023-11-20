@@ -647,6 +647,12 @@ body{
     flex-basis: 300px;
 }
 
+.content main .bottom-data .centerBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .content main .bottom-data .reminders .task-list{
     width: 100%;
 }
@@ -734,7 +740,7 @@ body{
         grid-template-columns: 1fr;
     }
 
-    .content main .bottom-data .header{
+/*     .content main .bottom-data .header{
         min-width: 340px;
     }
 
@@ -744,6 +750,72 @@ body{
 
     .content main .bottom-data .reminders .task-list{
         min-width: 340px;
+    } */
+
+    .content main .bottom-data .header{
+        max-width: 340px;
+    }
+
+    .content main .bottom-data .orders table{
+        min-width: 350px;
+    }
+
+    .content main .bottom-data .reminders .task-list{
+        max-width: 340px;
+    }
+
+
+
+    .content main .bottom-data .orders{
+        overflow-x:scroll;
+    }
+
+    .content main .bottom-data .centerBox .header h3{
+        font-size: 18px;
+    }
+
+    .btn-delete span,
+    .btn-edit span{
+        display: none;
+    }
+
+    .btn-delete i,
+    .btn-edit i{
+        font-size: 1rem;
+        margin-right: 0;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+  /*   .content main .bottom-data .reminders{
+        min-width: 300px;
+    }
+
+    .content main .bottom-data .reminders .task-list{
+        min-width: 280px;
+    } */
+
+    .content main .bottom-data .reminders{
+        max-width: 300px;
+    }
+
+    .content main .bottom-data .reminders .task-list{
+        max-width: 280px;
+    } 
+
+    .content main .bottom-data .header{
+        max-width: fit-content;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .content main .bottom-data .orders .header h3{
+        font-size: 18px;
+    }
+
+    .content main .bottom-data .centerBox .header h3{
+        font-size: 14px;
     }
 
 }

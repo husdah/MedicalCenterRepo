@@ -15,7 +15,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-width: 350px;
+    /* max-width: 350px; */
     background-color: var(--light);
     padding: 20px;
     border-radius: 20px;
@@ -56,7 +56,7 @@
     animation: pulse 1s linear infinite;
   }
   
-  .message, .signin {
+  .message{
     color: rgba(88, 87, 87, 0.822);
     font-size: 14px;
   }
@@ -87,7 +87,8 @@
 
 .flex3 {
   display: flex;
-  width: max-content;
+  width: inherit;
+  justify-content:space-evenly;
   align-items: center;
   gap: 6px;
 }
@@ -191,9 +192,36 @@
   }
 
   .view{
-    display: block;
+   /*  display: block; */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .hide{
     display: none;
+  }
+
+  @media screen and (max-width: 450px) {
+    .message{
+      font-size: 12px;
+    }
+
+    .flex3 input[type= "text"]{
+      width: 160px;
+    }
+
+    .flex {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 6px;
+    }
+  }
+
+  @media screen and (max-width: 375px) {
+    .message{
+      font-size: 9px;
+    }
   }

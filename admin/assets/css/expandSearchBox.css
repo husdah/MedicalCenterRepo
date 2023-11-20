@@ -132,3 +132,22 @@
 .expanding-search-form .search-button .icon {
     font-size: 20px;
 }
+
+
+@media screen and (max-width: 450px) {
+    .expanding-search-form .search-input {
+        width: 90px;
+    }
+
+    .expanding-search-form .search-input:focus {
+        width: 100px;
+        outline: none;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .expanding-search-form .search-input:focus {
+        width: 90px;
+        outline: none;
+    }
+}
