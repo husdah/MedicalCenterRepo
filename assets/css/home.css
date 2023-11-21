@@ -184,15 +184,10 @@ section.about{
     height:420px;
     width: 420px;
     border-radius:50%;
-    position:relative;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    position:absolute;
     left:-100%;
-    animation: slideIn 4s ease-in-out forwards;    
-}
-@keyframes slideIn{
-    to{
-        left:0;
-    }
+    animation: left 1000s ease-in-out;    
 }
 .about-col2{
     padding: 0 60px 0px 40px;
@@ -556,13 +551,14 @@ section.clinics{
 section.donation{
     width:100%;
     height:400px;
+    margin-bottom: 20px;
 }
 .donation-panel{
     width: 80%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     margin: auto;
 } 
@@ -595,8 +591,10 @@ section.donation{
 }
 .donation-panel img{
     width:360px;
+    margin-top: 50px;
 }
 .click-to-donate{
+    cursor: pointer;
     margin-top:-100px;
     margin-left: 10px;
     font-size: 13px;
@@ -664,13 +662,14 @@ select{
     display: none;
 }
 .view{
-    display: block;
+    display:flex;
 }
 .hide{
     display: none;
 }
 .donation-content i{
     color:#fff;
+    cursor: pointer;
 }
 .btn-send{
     background-color: #fff;
@@ -685,69 +684,178 @@ select{
 }
 
 
-/* Responsive */
+/* Responsive on Ipad */
 
 @media(max-width:900px){
-
+    html,body{
+        overflow-x: hidden;
+    }
+    
+    /* banner */
     section.banner{
         height: 100%;
         margin-top: 45px;
+        background-image: url(../../images/bg15-Ipad.jpg);
+        background-size: contain;
+        object-fit: contain;
     }
-    .banner .banner-container{
-        padding-top: 80px;
+    .banner .banner-container h1 {
+        font-size: 26px;
     }
     .why-us-container {
         margin: 80px 0 0 43px;
         display: grid;
         grid-template-columns: 50% 50%;
     }
-
+    
     /* About */
     section.about{
-        margin-top:0;
+        margin: 50px 0;
+        padding: 0 20px;
+        height: 100%;
     }
-
     .about-container {
-        grid-template-columns: 100%;
-    } 
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
     .about-col1 img{
         display: none;
     }
-   
-    /* Service */
-    .col.col-1, .col.col-3 {
-        padding: 0;
-    }
-    .service-column h1 {
-        font-size: 18px;
-    }
-    .service-column h1.mb {
-        margin-bottom: 43px;
-    }
-    .service-column p{
-        padding: 0;
-    }
-    .padding-on-ipad{
-        margin-top:43px;
-    }
-    .col.col-2 .service-image {
-        width: 200px;
-        height: 200px;
+    .about-col2 {
+        padding: 0 30px 0px 0px;
     }
 
+    /* count */
+    section.counts{
+        margin: 0 0 70px 0;
+    }
+
+    /* Services */
+    section.service {
+        margin-bottom: 20px;
+    }
+    .col.col-2 {
+        display: none;
+    }
+    .service-container {
+        grid-template-columns: 50% 50%;
+    }
+    .service-column{
+        padding:0;
+        margin: 20px;
+    }
+
+    /* Doctor */
+    .team__item img {
+        height: 130px;
+        width: 130px;
+    }
+    .team__item h5 {
+        font-size: 16px;
+    }
+    .team__item h5 {
+        font-size: 16px;
+    }
+    .team__item .team__item__social a {
+        font-size: 17px;
+    }
+
+    /* Donation */
+    .donation-panel h1, .donation-form h1 {
+        font-size: 33px;
+    }
+    .donation-content {
+        width: 60%;
+    }    
 }
+
+/* Responsive on Phone */
 @media(max-width:500px){
-    
+    section.banner{
+        height: 100%;
+        margin-top: 45px;
+        background-image: url(../../images/bg15-phone.jpg);
+        background-size: contain;
+        object-fit: contain;
+        background-attachment: scroll;
+    }
+    section.banner::after{
+        opacity: 0.6;
+    }
+    .banner .banner-container {
+        padding-top: 70px;
+    }
+    .banner .banner-container {
+        width: 93%;
+    }
+    .banner .banner-container h1 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+    .why-us-container {
+        margin: 80px 0 0 43px;
+        display: grid;
+        grid-template-columns: 100%;
+    }
+    /* About */
+    .about-col2 {
+        padding: 0;
+    }
+    .about-col2 h3 {
+        font-size: 25px;
+    }
+    .about-container .icon-box {
+        grid-template-columns: 20% 80%;
+    }
+    .icon-box .icon {
+        width: 55px;
+        height: 55px;
+    }
+
+    /* Counts */
+    section.counts {
+        height: 370px;
+    }
+    .count-sub-container {
+        grid-template-columns: 50% 50%;
+    }
+    .count-sub-container .count-box {
+        margin: 25px;
+    }
+
+    /* Services */
+    .service-container {
+        grid-template-columns: 100%;
+    }
+    section.service {
+        height: 780px;
+        margin-bottom: 0;
+    }
+
+    /* Doctor */
     section.doctor{
         height: 680px;
     }
     .doctor-container{
         grid-template-columns: 50% 50%;
     }
+
     /* clinic */
     .clinic-container {
         width: 200px;
     }
 
+    /* Donation */
+    .donation-panel h1 i, .donation-form h1 i {
+        display:none;
+    }
+    .donation-panel h1, .donation-form h1 {
+        font-size: 25px;
+    }
+    .donation-content {
+        width: 100%;
+    }
 }
  
