@@ -220,7 +220,7 @@ textarea:focus{
         margin-left: 40px;
     }
 }
-@media(max-width:600px){
+@media(max-width:500px){
     html,body{
         overflow-x: hidden;
     }
