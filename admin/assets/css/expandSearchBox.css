@@ -134,6 +134,13 @@
 }
 
 
+@media screen and (max-width: 1024px) {
+    .expanding-search-form .search-input:focus {
+        width: 115px;
+        outline: none;
+    }
+}
+
 @media screen and (max-width: 450px) {
     .expanding-search-form .search-input {
         width: 90px;

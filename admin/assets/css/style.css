@@ -392,7 +392,7 @@ body{
     align-items: center;
     justify-content: space-between;
     grid-gap: 16px;
-    flex-wrap: wrap;
+    flex-wrap:wrap;
 }
 
 .content main .header .left h1{
@@ -703,6 +703,10 @@ body{
         left: 200px;
     }
 
+    .content nav .bx.bx-menu{
+        visibility: hidden;
+    }
+
 }
 
 @media screen and (max-width: 576px) {
@@ -771,7 +775,7 @@ body{
     }
 
     .content main .bottom-data .centerBox .header h3{
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .btn-delete span,
@@ -800,6 +804,11 @@ body{
         font-size: 30px;
     }
 
+    .content main .bottom-data .orders .header h3,
+    .content main .bottom-data .centerBox .header h3{
+        font-size: 18px;
+    }
+
     .content main .bottom-data .reminders{
         max-width: 320px;
     }
@@ -816,6 +825,10 @@ body{
 @media screen and (max-width: 375px) {
     .content main .header .left h1{
         font-size: 22px;
+    }
+
+    .content main .header .report span{
+        font-size: .8rem;
     }
 
     .content main .bottom-data .reminders{

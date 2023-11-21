@@ -323,4 +323,72 @@
     .forms-section {
 		margin-top: 40px;
 	}
+
+	@keyframes showLogin {
+		0% {
+			background: #0051a1;
+			transform: translate(40%, 10px);
+		}
+		50% {
+			transform: translate(0, 0);
+		}
+		100% {
+			background-color: var(--light);
+			transform: translate(50%, -20px);
+		}
+	}
+	
+	@keyframes hideLogin {
+		0% {
+			background-color: var(--light);
+			transform: translate(50%, -20px);
+		}
+		50% {
+			transform: translate(0, 0);
+		}
+		100% {
+			background: #0051a1;
+			transform: translate(40%, 10px);
+		}
+	}
+
+	@keyframes showSignup {
+		0% {
+			background: #0051a1;
+			transform: translate(-40%, 10px) scaleY(.8);
+		}
+		50% {
+			transform: translate(0, 0) scaleY(.8);
+		}
+		100% {
+			background-color: var(--light);
+			transform: translate(-50%, -20px) scaleY(1);
+		}
+	}
+	
+	@keyframes hideSignup {
+		0% {
+			background-color: var(--light);
+			transform: translate(-50%, -20px) scaleY(1);
+		}
+		50% {
+			transform: translate(0, 0) scaleY(.8);
+		}
+		100% {
+			background: #0051a1;
+			transform: translate(-40%, 10px) scaleY(.8);
+		}
+	}
   }
+
+  @media screen and (max-width: 375px) {
+	.section-title {
+		font-size: 20px;
+	}
+
+	.switcher {
+		font-size: 12px;
+		font-weight: bold;
+		letter-spacing: .1px;
+	}
+}
