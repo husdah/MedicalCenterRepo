@@ -165,7 +165,7 @@ section.banner::after{
 section.about{
     width: 100%;
     height: 500px;
-    margin: 320px 0 100px 0;
+    margin-top:200px;
 }
 .about-container{
     width: 100%;
@@ -253,7 +253,7 @@ section.counts{
     width:100%;
     height:300px;
     background-color: var(--light-primary);
-    margin: 70px 0;
+    margin-bottom: 70px;
 }
 .Counts-container{
     height: 100%;
@@ -348,7 +348,7 @@ section.home-heading{
 section.service{
     width:100%;
     height:400px;
-    margin-bottom:130px;
+    margin-bottom:100px;
 }
 .service-container{
     height:100%;
@@ -682,33 +682,88 @@ select{
     font-weight: bold;
     padding:10px;
 }
-
-
-/* Responsive on Ipad */
-
-@media(max-width:900px){
-    html,body{
-        overflow-x: hidden;
+html,body{
+    overflow-x: hidden;
+}
+/* Responsive on width 1440 */
+@media(max-width:1440px){
+    section.banner{
+        height: 90vh;
     }
-    
-    /* banner */
+    section.about{
+        margin-top: 300px;
+    }
+}
+/* Responsive on width 1024 */
+@media(max-width:1024px){
+    .banner .banner-container{
+        padding-top: 60px;
+    }
+    .why-us-container {
+        margin: 64px 0 0 43px;
+    }
+    .why-us-container{
+        width:95%;
+    }
+    .why-us-grid-col1{
+        width:330px;
+        height:315px;
+    }
+    .why-us-grid-col1 h3 {
+        font-size: 21px;
+    }
+    .why-us-grid-col2{
+        margin: 15px; 
+    }
+    section.about {
+        margin-top: 250px;
+    }
+    .about-col1 img {
+        height: 380px;
+        width: 380px;
+    }
+    .icon-box .icon {
+        height: 55px;
+        width: 55px;
+    }
+    .service-container{
+        width: 98%;
+    }
+    .service-column {
+        margin: 15px;
+        padding:0;
+    }
+    .col.col-2 .service-image {
+        width: 250px;
+        height: 250px;
+    }
+    section.service{
+        margin-bottom: 10px;
+    }
+    .donation-form,
+    .donation-panel {
+        width: 100%;
+    }
+}
+/* Responsive on width 768 */
+@media(max-width:768px){
     section.banner{
         height: 100%;
         margin-top: 45px;
         background-image: url(../../images/bg15-Ipad.jpg);
         background-size: contain;
+        background-attachment: scroll;
         object-fit: contain;
     }
     .banner .banner-container h1 {
         font-size: 26px;
+        line-height: 36px;
     }
     .why-us-container {
         margin: 80px 0 0 43px;
         display: grid;
         grid-template-columns: 50% 50%;
     }
-    
-    /* About */
     section.about{
         margin: 50px 0;
         padding: 0 20px;
@@ -726,13 +781,9 @@ select{
     .about-col2 {
         padding: 0 30px 0px 0px;
     }
-
-    /* count */
     section.counts{
         margin: 0 0 70px 0;
     }
-
-    /* Services */
     section.service {
         margin-bottom: 20px;
     }
@@ -746,8 +797,6 @@ select{
         padding:0;
         margin: 20px;
     }
-
-    /* Doctor */
     .team__item img {
         height: 130px;
         width: 130px;
@@ -761,18 +810,20 @@ select{
     .team__item .team__item__social a {
         font-size: 17px;
     }
-
-    /* Donation */
+    .donation-form,
+    .donation-panel {
+        width: 87%;
+    }
     .donation-panel h1, .donation-form h1 {
         font-size: 33px;
     }
     .donation-content {
         width: 60%;
-    }    
+    }  
 }
 
-/* Responsive on Phone */
-@media(max-width:500px){
+/* Responsive on width 375 */
+@media(max-width:375px){
     section.banner{
         height: 100%;
         margin-top: 45px;
@@ -785,21 +836,19 @@ select{
         opacity: 0.6;
     }
     .banner .banner-container {
-        padding-top: 70px;
-    }
-    .banner .banner-container {
         width: 93%;
+        padding-top: 50px;
+        margin-left: 20px;
     }
     .banner .banner-container h1 {
-        font-size: 24px;
+        font-size: 21px;
         line-height: 30px;
     }
     .why-us-container {
-        margin: 80px 0 0 43px;
+        margin: 50px 20px 0 20px;
         display: grid;
         grid-template-columns: 100%;
     }
-    /* About */
     .about-col2 {
         padding: 0;
     }
@@ -813,8 +862,6 @@ select{
         width: 55px;
         height: 55px;
     }
-
-    /* Counts */
     section.counts {
         height: 370px;
     }
@@ -824,8 +871,9 @@ select{
     .count-sub-container .count-box {
         margin: 25px;
     }
-
-    /* Services */
+    .section-title h2 {
+        font-size: 30px;
+    }
     .service-container {
         grid-template-columns: 100%;
     }
@@ -833,21 +881,25 @@ select{
         height: 780px;
         margin-bottom: 0;
     }
-
-    /* Doctor */
+    section#doctor-heading {
+        padding: 0 20px;
+    }
     section.doctor{
         height: 680px;
     }
     .doctor-container{
         grid-template-columns: 50% 50%;
     }
-
-    /* clinic */
     .clinic-container {
         width: 200px;
     }
-
-    /* Donation */
+    section.donation{
+        height: 420px;
+    }
+    .donation-form,
+    .donation-panel {
+        width: 90%;
+    }
     .donation-panel h1 i, .donation-form h1 i {
         display:none;
     }

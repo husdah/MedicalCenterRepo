@@ -64,12 +64,15 @@ var swiper = new Swiper(".mySwiper", {
   0: {
       slidesPerView: 1,
   },
-  700: {
+  768: {
       slidesPerView: 5,
   },
   1000: {
-      slidesPerView: 5,
+    slidesPerView: 5,
   },
+  1024: {
+      slidesPerView: 5,
+  }
   },
    pagination: {
       el: ".swiper-pagination",

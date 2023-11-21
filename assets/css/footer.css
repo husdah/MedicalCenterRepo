@@ -126,7 +126,23 @@ span.sat {
     padding-top: 15px; 
 }
 
-/* Responsive */
+/* Responsive: width=1440px */
+@media(max-width: 1440px){
+    .container-copyright {
+        max-width: 1440px;
+    }
+    .box-copyright .copyright-text {
+        padding-left: 55px;
+    }
+}
+
+/* Responsive: width=1024px */
+@media(max-width: 1024px){
+    .box-copyright .copyright-text {
+        padding-left: 49px;
+    }
+}
+/* Responsive: width=900px */
 @media(max-width: 900px){
     .footer{
         padding:50px 20px;
@@ -141,36 +157,8 @@ span.sat {
         padding-left: 20px;
         
     }
-    /*
-    .footer .logo {
-        width: 140px;
-        height: 140px;
-    }
-    .footer-column2 {
-        margin-top: 8px;
-        padding-left: 40px;
-    }
-    .footer-column3 {
-        margin-top: 7px;
-    }
-    .footer-column4 {
-        margin-left: 21px;
-        margin-top: 7px;
-    }
-    h4 {
-        font-size: 16px;
-    }
-    .footer-column2 .footer-links li a, 
-    .footer-column3 .opening-hour li, 
-    .footer-column4 .footer-links li a,
-    .footer-column1 p {
-        font-size: 14px;
-    }
-    .box-copyright{
-        margin-bottom: 800px;
-    }
-    */
 }
+/* Responsive: width=500px */
 @media(max-width: 500px){
     .footer{
         padding:20px;
