@@ -640,7 +640,7 @@ section.donation{
     background-color: transparent;
 }
 .donation-content input[type='text']::placeholder {
-    color: #fff;
+    color: #ccc;
     font-weight: 300;
     padding-bottom: 25px;
 }
@@ -822,8 +822,8 @@ html,body{
     }  
 }
 
-/* Responsive on width 375 */
-@media(max-width:375px){
+/* Responsive on width 425 */
+@media(max-width:425px){
     section.banner{
         height: 100%;
         margin-top: 45px;
