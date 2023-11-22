@@ -83,16 +83,20 @@ body{
   padding: 8px 12px;
   display: none;
   width: 100%;
-  cursor: default;
+  cursor: pointer;
   border-radius: 3px;
   background: var(--light);
 }
 
 .searchInput.active .resultBox li{
-  display: block;
+  display: flex;
 }
 .resultBox li:hover{
   background: var(--light-primary);
+}
+
+.resultBox li a{
+  width: 100%;
 }
 
 .searchInput .icon{
