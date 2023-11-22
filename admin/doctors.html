@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/form.css">
     <link rel="stylesheet" href="assets/css/expandSearchBox.css">
+    <link rel="stylesheet" href="assets/css/autocomplete.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- magnific-popup css -->
@@ -48,8 +49,15 @@
             <i class='bx bx-menu'></i>
             <form action="#">
                 <div class="form-input">
-                    <input type="search" placeholder="Search...">
-                    <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+                    <div class="container">
+                        <div class="searchInput">
+                          <input type="search" placeholder="Search...">
+                          <div class="resultBox">
+                            <!-- here list are inserted from javascript -->
+                          </div>
+                          <button class="icon" type="submit"><i class="bx bx-search"></i></button>
+                        </div>
+                    </div>
                 </div>
             </form>
             <input type="checkbox" id="theme-toggle" hidden>
@@ -218,6 +226,7 @@
     <script src="assets/js/jquery.magnific-popup.js"></script>
     <script src="assets/js/index.js"></script>
     <script src="assets/js/expandSearchBox.js"></script>
+    <script src="assets/js/autocomplete.js"></script> 
 
     <script> 
         $('.imageLB').magnificPopup({
