@@ -17,8 +17,10 @@ body{
 } */
 
 .container{
-  max-width: 450px;
-  margin: 150px auto;
+ /*  max-width: 450px;
+  margin: 150px auto; */
+
+  width: 100%;
 }
 
 .container .searchInput{
@@ -67,6 +69,7 @@ body{
   overflow-y: auto;
   position: absolute;
   top: 28px;
+  width: 85%;
 }
 
 .searchInput.active .resultBox{
@@ -89,7 +92,7 @@ body{
   display: block;
 }
 .resultBox li:hover{
-  background: #efefef;
+  background: var(--light-primary);
 }
 
 .searchInput .icon{
