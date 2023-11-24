@@ -6,8 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Book Appointment </title>
   <!--css style sheet-->
-  <link rel="stylesheet" href="assets/css/navbar.css">
   <link rel="stylesheet" href="assets/css/clinics.css">
+  <link rel="stylesheet" href="assets/css/nav.css">
+  <link rel="stylesheet" href="assets/css/dropdown.css">
   <!--awesome link-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
@@ -15,37 +16,44 @@
 </head>
 
 <body>
-  <header>
-
-    <div class="nav">
-    <a href="home.html" class="logo"><img src="images/logoNav.png"></a>
-
-    <div class="menu-icon" id="menu-icon"><i class="fa-solid fa-bars"></i></div>
-
-    <ul class="navbar" id="navbar">
-        <li><a href="home.html"> Home </a></li>
-        <li><a href="home.html#about"> About </a></li>
-        <li><a href="home.html#service-heading"> Services </a></li>
-        <li><a href="clinics.html"> Clinics </a></li>
-        <li><a href="home.html#doctor-heading"> Doctors </a></li>
-        <li><a href="contact.html"> Contact </a></li>
+  
+  <nav>
+    <a href="home.html" class="navlogo">
+        <img src="images/logoNav.png" alt="Logo Image">
+    </a>
+    <div class="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+    <ul class="nav-links">
+        <div class="links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="home.html#about">About</a></li>
+            <li><a href="home.html#service-heading">Services</a></li>
+            <li><a href="clinics.html">Clinics</a></li>
+            <li><a href="home.html#doctor-heading">Doctors</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </div>
+        <div class="icons">
+          <li class="dropdown dropdown-6">
+            <button class="login-button" href="#"><i class="fa-solid fa-user"></i> Log in</button>
+            <ul class="dropdown_menu dropdown_menu--animated dropdown_menu-6">
+              <li class="dropdown_item-1">Log in</li>
+             <li class="dropdown_item-2">SignUp</li>
+            </ul>
+          </li>
+        <li class="dropdown dropdown-6">
+            <button class="join-button" href="#"><i class="fa-solid fa-globe"></i> EN</button>
+            <ul class="dropdown_menu dropdown_menu--animated dropdown_menu-6">
+                <li class="dropdown_item-1">EN</li>
+                <li class="dropdown_item-2">AR</li>
+            </ul>
+        </li>
+        </div>
     </ul>
-    <div class="icons">
-        <i class="fa-solid fa-globe"></i>
-        <i class="fa-solid fa-user"></i>
-    </div>
-    </div>
+</nav>
 
-    <div class="dropdown" id="drop">
-        <li><a href="home.html"> Home </a></li>
-        <li><a href="home.html#about"> About </a></li>
-        <li><a href="home.html#service-heading"> Services </a></li>
-        <li><a href="clinics.html"> Clinics </a></li>
-        <li><a href="home.html#doctor-heading"> Doctors </a></li>
-        <li><a href="contact.html"> Contact </a></li>
-    </div>
-
-</header>
   <div class="container">
     <div class="sidebar">
       <img src="images/hayaClinic.jpg" alt="">
@@ -167,7 +175,7 @@
       </div>
     </div>
   </div>
-  <script src="assets/js/navbar.js"></script>
-</body>
 
+  <script src="assets/js/nav.js"></script>
+</body>
 </html>
