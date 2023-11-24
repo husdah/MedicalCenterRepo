@@ -1,16 +1,4 @@
-/* For animated image in about section */
-document.addEventListener("DOMContentLoaded", function() {
-  var animatedImage = document.getElementById("aboutImage");// Get the animated image element
-  var sectionOffsetTop = document.querySelector(".about").offsetTop;// Get the offsetTop of the section
-  // Add a scroll event listener
-  window.addEventListener("scroll", function() {
-    // Check if the user has scrolled to the section
-    if (window.scrollY >= sectionOffsetTop - window.innerHeight / 2) {
-      // Animate the image by setting its left property to 0
-        animatedImage.style.left = "43px";
-    }
-  });
-});
+
 
 
 /* For counters in count section */
