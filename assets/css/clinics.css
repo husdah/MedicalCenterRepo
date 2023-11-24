@@ -130,6 +130,59 @@ i
 {
     font-size: 20px;
 }
+/**********max********/
+@media(max-width:1440px)
+{
+    .container
+    {
+        margin-top: 70px;
+    }
+    .sidebar img
+    {
+        height: 80%;  
+    }
+    .main-content
+    {
+        width: 100%;
+    }
+    .main-content h1
+    {
+        font-size: 23px;
+    }
+    .main-content h2
+    {
+        font-size: 19px;
+    }
+    .clinics
+    {
+        grid-template-columns: repeat(4,1fr);
+        padding-left: 26px;
+        row-gap: 40px;
+    }
+    .item
+    {
+        width:130px;
+        height:130px;
+        gap: 1px;
+
+    }
+    i
+{
+    font-size: 30px;
+    margin: auto 5px;
+    margin-bottom: 5px;
+    
+}
+.name
+{
+    font-size: 18px;
+}
+.des
+{
+    font-size: 10px;
+    padding-top: 3px;
+}
+}
 /********Large***********/
 @media(max-width:1180px)
 {
@@ -157,6 +210,7 @@ i
     {
         grid-template-columns: repeat(4,1fr);
         padding-left: 26px;
+        row-gap: 40px;
     }
     .item
     {
