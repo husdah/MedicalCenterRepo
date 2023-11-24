@@ -196,7 +196,7 @@ a
         gap: 1px;
 
     }
-    i
+    .item i
 {
     font-size: 30px;
     margin: auto 5px;
@@ -225,6 +225,10 @@ a
     {
         
     } */
+    .sidebar
+    {
+        display: none;
+    }
 
     .main-content
     {
