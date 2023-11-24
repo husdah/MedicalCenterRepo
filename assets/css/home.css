@@ -164,8 +164,7 @@ section.banner::after{
 /* About Us */
 section.about{
     width: 100%;
-    height: 500px;
-    margin-top:200px;
+    height: 700px;
 }
 .about-container{
     width: 100%;
@@ -185,9 +184,6 @@ section.about{
     width: 420px;
     border-radius:50%;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    position:absolute;
-    left:-100%;
-    animation: left 1000s ease-in-out;    
 }
 .about-col2{
     padding: 0 60px 0px 40px;
@@ -691,7 +687,7 @@ html,body{
         height: 90vh;
     }
     section.about{
-        margin-top: 300px;
+        margin-top: 120px;
     }
 }
 /* Responsive on width 1024 */
@@ -715,9 +711,9 @@ html,body{
     .why-us-grid-col2{
         margin: 15px; 
     }
-    section.about {
+    /*section.about {
         margin-top: 250px;
-    }
+    }*/
     .about-col1 img {
         height: 380px;
         width: 380px;
