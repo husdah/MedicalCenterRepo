@@ -163,6 +163,7 @@ a
 /********Large***********/
 @media(max-width:1180px)
 {
+
 /*     .container
     {
         margin-top: 70px;
@@ -171,6 +172,7 @@ a
     {
         
     } */
+
     .main-content
     {
         width: 100%;
@@ -195,6 +197,7 @@ a
         gap: 1px;
 
     }
+
     .item i
 {
     font-size: 30px;
@@ -219,6 +222,8 @@ a
     {
         margin-top: 45px;
     } */
+
+
     .sidebar
     {
         display: none;
@@ -247,6 +252,7 @@ a
         gap: 1px;
 
     }
+  
     .item i
 {
     font-size: 30px;
@@ -267,10 +273,12 @@ a
 /*******Phone******/
 @media(max-width:554px)
 {
+
 /*     .container
     {
         margin-top: 45px;
     } */
+
     .sidebar
     {
         display: none;
@@ -299,7 +307,9 @@ a
         gap: 1px;
 
     }
+
     .item i
+
 {
     font-size: 30px;
     margin: auto 5px;
