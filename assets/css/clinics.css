@@ -17,10 +17,31 @@
     --success: #388E3C;
     --light-success: #BBF7D0;
 }
-body
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+:target::before{
+    content: '';
+    display: block;
+    height: 100px;
+    margin-top: -100px;
+}
+body{
+    background-color: var(--grey);
+}
+
+/* body
 {
     background-color:  #c7c6c6;
-}
+} */
 a
 {
     text-decoration: none;

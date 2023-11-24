@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/errorpage.css">
     <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/dropdown.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <!--awesome link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -32,8 +33,20 @@
                 <li><a href="contact.html">Contact Us</a></li>
             </div>
             <div class="icons">
-                <li><button class="login-button" href="#"><i class="fa-solid fa-user"></i> Login</button></li>
-                <li><button class="join-button" href="#"><i class="fa-solid fa-globe"></i> EN</button></li>
+                <li class="dropdown dropdown-6">
+                    <button class="login-button" href="#"><i class="fa-solid fa-user"></i> Log in</button>
+                    <ul class="dropdown_menu dropdown_menu--animated dropdown_menu-6">
+                      <li class="dropdown_item-1">Log in</li>
+                     <li class="dropdown_item-2">SignUp</li>
+                    </ul>
+                  </li>
+                <li class="dropdown dropdown-6">
+                    <button class="join-button" href="#"><i class="fa-solid fa-globe"></i> EN</button>
+                    <ul class="dropdown_menu dropdown_menu--animated dropdown_menu-6">
+                        <li class="dropdown_item-1">EN</li>
+                        <li class="dropdown_item-2">AR</li>
+                    </ul>
+                </li>
             </div>
         </ul>
     </nav>
