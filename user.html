@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> User Page </title>
+    <script 
+      src="https://kit.fontawesome.com/64d58efce2.js" 
+crossorigin="anonymous"></script> 
+    <link rel="stylesheet" href="assets/css/user.css" /> 
+</head>
+<body>
+
+    <div class="container">
+            <div class="header">
+                <div class="title">
+                <label>Welcome, </label><span>User</span><br>
+                <label class="date" id="date"></label>
+                </div>
+                <div class="buttons">
+                    <a href="home.html"><button><i class="fas fa-arrow-left"></i>  Back</button></a>
+                    <a href="sign-in-up.html"><button class="log-out">Log out</button></a>
+                </div>
+            </div>
+            <div class="tables">
+                <div class="table1">
+                    <h2>Your Appointments</h2>
+                    <table>
+                        <tr>
+                            <th>Doctor</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td>doctor1</td>
+                            <td>11/11/2023</td>
+                            <td>11:00 am</td>
+                            <td><button id="cancel-btn">Cancel</button></td>
+                        </tr>
+                        <tr>
+                            <td>doctor1</td>
+                            <td>1/12/2023</td>
+                            <td>10:00 am</td>
+                            <td><button id="cancel-btn">Cancel</button></td>
+                        </tr>
+                        <tr>
+                            <td>doctor2</td>
+                            <td>12/12/2023</td>
+                            <td>10:30 am</td>
+                            <td><button id="cancel-btn">Cancel</button></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="table2">
+                    <h2>Update Info</h2>
+                    <form class="update-info">
+                        <div class="input-field"> 
+                            <i class="fas fa-user"></i> 
+                            <input type="text" placeholder="fullname" name="fullname" /> 
+                          </div> 
+                          <div class="input-field"> 
+                            <i class="fas fa-envelope"></i> 
+                            <input type="email" placeholder="Email" /> 
+                          </div> 
+                          <div class="labels"> 
+                            <label>Date of Birth</label> 
+                            <label>Gender</label> 
+                          </div> 
+                          <div class="row">
+                          <div class="info"> 
+                            <div class="date-of-birth"> 
+                              <input type="date" name="date" class="date"> 
+                            </div> 
+                            <div class="gender"> 
+                              <input class="radio-input" type="radio" name="gender" id="female" value="female"><label for="female" class="radio-label">Female</label> 
+                              <input class="radio-input" type="radio" name="gender" id="male" value="male"><label for="male" class="radio-label">Male</label> 
+                            </div> 
+                            </div>
+                          </div> 
+                          <div class="blood-group"> 
+                            <label for="mySelect">Select your blood group:</label> 
+                            <select id="mySelect" name="mySelect"> 
+                            <option value="A+">A+</option> 
+                            <option value="B+">B+</option> 
+                            <option value="O+">O+</option> 
+                            <option value="AB+">AB+</option> 
+                            <option value="A-">A-</option> 
+                            <option value="B-">B-</option> 
+                            <option value="O-">O-</option> 
+                            <option value="AB-">AB-</option> 
+                            </select> 
+                        </div>
+                        <input type="submit" class="update-btn" name="update" value="Update">
+                    </form>
+                    <h2>Change Password</h2>
+                    <form class="change-pwd">
+                        <div class="input-field"> 
+                        <i class="fas fa-lock"></i> 
+                        <input type="password" placeholder="Current Password" name="password" /> 
+                        </div> 
+                        <div class="input-field"> 
+                        <i class="fas fa-lock"></i> 
+                        <input type="password" placeholder="New Password" name="password" /> 
+                        </div> 
+                        <div class="input-field"> 
+                        <i class="fas fa-lock"></i> 
+                        <input type="password" placeholder="Confirm Password" name="password" /> 
+                        </div> 
+                        <input type="submit" name="change-btn" value="Change" class="change-btn">
+                    </form> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/user.js"></script>
+</body>
+</html>
