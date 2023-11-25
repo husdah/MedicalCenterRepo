@@ -49,15 +49,21 @@ a
     gap: 10px;
     width:calc(100% - 10px);
     height: 100vh;
+    /* height: 100%; */
     /* margin-top:75px; */
     margin-top: 6rem;
-    margin-left: 10px;  
+    margin-left: 8px;  
+
+    border: 5px solid red;
 }
 .sidebar
 
 { 
     width:38%;
-    margin-top: 20px; 
+    /* margin-top: 20px;  */
+    /* flex-grow: 1; */
+    border: 1px solid yellow;
+    padding-top: 20px;
 }
 .sidebar img
 {
@@ -70,8 +76,14 @@ a
 .main-content
 {
     width: 62%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    gap: 15px;
+    /* flex: 1; */
+    /* flex-grow: 1; */
+
+    border: 1px solid blue;
 }
 .main-content h1,h2
 {
@@ -98,8 +110,8 @@ a
     background-position: right center; */
     background-color: white;
     margin-top: 20px;
-   margin-right: 10px;
-    margin-bottom:0px;
+    margin-right: 10px;
+    /* margin-bottom:0px; */
     box-shadow: rgb(61, 91, 123) 0px 20px 30px -10px;
    
     
@@ -110,30 +122,53 @@ a
     padding-top: 10px;
 }
 
+.clinicsContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 20px;
+    /* border: 1px solid yellow; */
+   /*  margin-top: 10px; */
+    margin-right:10px;
+    padding: 15px 0;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    height: 100%;
+    border: 1px solid green;
+}
+
 .clinics
 {
-    margin-top: 10px;
+    /* margin-top: 10px; */
     display: grid;
+    text-align: center;
     grid-template-columns: repeat(4,1fr);
-    gap: 10px;
-    background-color: white;
+    gap: 20px;
+   /*  background-color: white; */
     max-width: 100%;
-    padding: 20px;
-    border-radius: 20px;
-    padding-left: 60px;
-    margin-right:10px;
-    padding-bottom: 35px;
-    padding-top: 35px;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    width: 90%;
+    /* padding: 20px; */
+    /* border-radius: 20px; */
+    /* padding-left: 60px; */
+    /* margin-right:10px; */
+   /*  padding-bottom: 35px;
+    padding-top: 35px; */
+    
     /* box-shadow:5px 5px 10px  rgb(83, 82, 82); */
+
+    /* border: 1px solid red; */
+
+    border: 1px solid black;
 }
 .item
 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    justify-self: center;
+    /* gap: 10px; */
     width: 150px;
+    /* width: fit-content; */
     height: 150px;
     background-color: var(--primary);
     justify-content: center;
@@ -141,6 +176,8 @@ a
     text-align:center;
     box-shadow:5px 5px 10px  rgb(83, 82, 82);
     transition: transform 0.3s;
+
+    /* border: 1px solid green; */
 }
 .item:hover
 {
@@ -161,12 +198,37 @@ a
     font-size: 20px;
 }
 /**********max********/
+@media(max-width:2560px)
+{
+    .item{
+        width: 200px;
+        height: 200px;
+    }
+
+    .item i
+    {
+        font-size: 40px;
+        margin: auto 5px;
+        margin-bottom: 5px;
+        
+    }
+    .name
+    {
+        font-size: 22px;
+    }
+    .des
+    {
+        font-size: 12px;
+        padding-top: 3px;
+    }
+}
+
 @media(max-width:1440px)
 {
-    .container
+/*     .container
     {
         margin-top: 70px;
-    }
+    } */
     .sidebar img
     {
         height: 100%;  
@@ -186,7 +248,7 @@ a
     .clinics
     {
         grid-template-columns: repeat(4,1fr);
-        padding-left: 26px;
+        /* padding-left: 26px; */
         row-gap: 40px;
     }
     .item
@@ -217,10 +279,10 @@ a
 @media(max-width:1180px)
 {
 
-/*     .container
+    .container
     {
-        margin-top: 70px;
-    } */
+        height: 100%;
+    }
 /*     .sidebar
     {
         
@@ -245,7 +307,7 @@ a
     .clinics
     {
         grid-template-columns: repeat(4,1fr);
-        padding-left: 26px;
+        /* padding-left: 26px; */
         row-gap: 40px;
     }
     .item
@@ -301,7 +363,7 @@ a
     .clinics
     {
         grid-template-columns: repeat(3,1fr);
-        padding-left: 26px;
+        /* padding-left: 26px; */
     }
     .item
     {
@@ -356,7 +418,7 @@ a
     .clinics
     {
         grid-template-columns: repeat(2,1fr);
-        padding-left: 26px;
+        /* padding-left: 26px; */
     }
     .item
     {
@@ -383,4 +445,30 @@ a
     font-size: 10px;
     padding-top: 3px;
 }
+
+
+.clinicsContainer{
+
+    margin-right:0px;
+    padding: 15px 0px;
+}
+
+.clinics{
+    width: 100%;
+}
+
+}
+
+@media(max-width:325px)
+{
+    .clinics
+    {
+        grid-template-columns: 1fr;
+        /* padding-left: 26px; */
+    }
+
+    .main-content h1{
+        font-size: 15px;
+    }
+
 }
