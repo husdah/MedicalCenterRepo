@@ -1,70 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-:root {
-    --light: #f6f6f9;
-    --primary: #0051a1;
-    --light-primary: #9fc3e7;
-    --grey: #e0e5e9;
-    --dark-grey: #AAAAAA;
-    --dark: #363949;
-    --danger: #D32F2F;
-  --light-danger: #FECDD3;
-    --warning: #FBC02D;
-    --light-warning: #FFF2C6;
-    --success: #388E3C;
-    --light-success: #BBF7D0;
-}
-*{
-    box-sizing: border-box;
-    margin: 0;
-    list-style: none;
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-}
-body{
-    background-color: var(--grey);
-}
-.contact.body{
-    margin-top: 75px;
+.contact-section{
+    height: 100%;
+    width: 100%;
+    margin-top: 80px;
     padding-bottom: 30px;
 }
-.contact-banner{
-    height:200px;
-    width:100%;
-    background-image: linear-gradient(to left, rgba(255,0,0,0), #0051a1);
-    
+.contact.banner{
+    width: 100%;
+    height: 180px;
+    background-image: linear-gradient(to left, rgba(255,0,0,0), var(--primary));
 }
-.banner-content{
-    height: 100%;
-    width:250px;
+.content.banner{
+    height: inherit;
+    width: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding-left: 50px;
-    color:#fff;
+    color: #fff;
 }
 .banner-content h2{
     font-size: 40px;
     font-weight: bold;
 }
-.breadcrumb{
+ul.breadcrumb{
     display: flex;
 }
-.breadcrumb li{
-    font-size:13px;
+ul.breadcrumb li{
+    font-size: 13px;
     font-weight: 100;
-    margin:25px 20px 0 5px;
+    margin: 25px 20px 0 5px;
 }
-.breadcrumb li a{
+ul.breadcrumb li a{
     color: var(--light-primary);
 }
-.breadcrumb li a:hover{
-    color: var(--primary);
+ul.breadcrumb li a:hover{
+    color: #fff;
 }
-.row{
-    height:  600px;
+.contact.container{
+    height: 600px;
+    width: 85%;
     display: flex;
     grid-template-columns: 70% 30%;
-    margin:50px 0 25px 146px;
+    margin: 50px auto;
 }
 .column-left{
     width: 100%;
@@ -73,41 +50,6 @@ body{
     border-radius: 12px 0px 0px 12px;
     box-shadow: 2px 4px 10px #555;
     padding: 50px 0px 50px 20px;
-}
-.column-right{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    margin-left: -40px;
-}
-.get-in-touch{
-    display: flex;
-    flex-direction: column;
-    width:400px;
-    height:350px;
-    padding:20px 0;
-    background-color: var(--primary);
-    border-radius: 12px 0 0 12px;
-    box-shadow: 2px 4px 5px var(--primary);
-}
-.column-right span i{
-    color:#fff;
-    margin-right:20px;
-}
-h1, h2, h3, span, a{
-    font-style: normal;
-}
-h1, h2, h3{
-    text-transform: capitalize;
-}
-.Banner .container .col h1{ 
-    font-size: 50px;
-    font-weight: bold;
-    text-align: center;
-    color: #fff;
-    margin-top: 50px;
-    padding-top: 20px;
 }
 .contact-form h2{
     color: var(--primary);
@@ -123,7 +65,24 @@ h1, h2, h3{
     line-height: 18px;
     margin-bottom: 10px;
 }
-.column-right h3{
+.column-right{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: -40px;
+}
+.column-right .get-in-touch{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 350px;
+    padding: 20px 0;
+    background-color: var(--primary);
+    border-radius: 12px 0 0 12px;
+    box-shadow: 2px 4px 5px var(--primary);
+}
+.column-right .get-in-touch h3{
     color: #fff;
     font-size: 40px;
     font-weight: bold;
@@ -133,124 +92,69 @@ h1, h2, h3{
 }
 .column-right span{
     margin-left: 100px;
+    transition: transform .4s;
+}
+.column-right span:hover{
+    transform: scale(1.1);
+}
+.column-right .get-in-touch span i{
+    color: #fff;
+    margin-right: 20px;
 }
 .column-right span a{
     color: #fff;
     font-size: 15px;
     font-weight: 500;
-    text-decoration: none;
     line-height: 40px;
-}
-.column-right span{
-    transition: transform .4s;
-}
-.column-right span:hover{
-    color: #9fc3e7;
-    transform: scale(1.1);
-}
-input[type="text"]{
-    height: 40px;
-}
-
-input[type="text"], 
-textarea{
-    border: 0;
-    width: 50%;
-    border-bottom: 3px solid var(--primary);
-    margin-bottom: 20px;
-}
-input[type="text"]:focus,
-textarea:focus{
-    outline:none;
-} 
-
-::placeholder {
-    color: #000;
-    opacity: 0.6;
-    margin-left: 5px;
-    font-size: 13px;
-    font-weight: 300;
-    padding-bottom: 10px;
-}
-
-.contact-form .contact-btn{
-    color: #fff;
-    font-size: 13px;
-    font-weight: 300;
-    padding: 15px 40px;
-    border: none;
-    background-color: var(--primary);
-    border-radius: 6px;
-    width: 50%;
-    cursor: pointer;
-}
-.contact-form .contact-btn:hover{
-    color: #fff;
-    background-color: var(--light-primary);
 }
 .map{
     width: 100%;
     height: 350px;
     border: 0;
 }
-/* Responsive */
-@media(max-width:900px){
-    .contact.body {
-        margin-top: 45px;
-        padding-bottom: 2px;
-    }
-    .row{
-        margin: 20px;
+
+/* Responsive on width 768px */
+@media(max-width:768px){
+    .contact.container{
         height: 600px;
+        width: 90%;
     }
-    .column-left{
+    .contact.container .column-left{
         padding: 50px 40px 0 20px;
     }
-    input[type="text"], textarea {
-        width: 70%;
+    .contact.container .column-right{
+        width: 45%;
     }
-    .column-right h3 {
+    .contact.container .column-right .get-in-touch h3 {
         font-size: 31px;
         padding-left: 40px;
     }
-    .column-right{
-        width:40%;
-    }
-    .column-right span {
+    .contact.container .column-right .get-in-touch span {
         margin-left: 40px;
     }
 }
-@media(max-width:500px){
-    html,body{
-        overflow-x: hidden;
-    }
-    .contact-banner {
-        height: 150px;
-    }
-    .banner-content h2 {
-        font-size: 30px;
-    }
-    .row{
-        padding: 20px;
-        height:  800px;
+
+/* Responsive on width 425px */
+@media(max-width:425px){
+    .contact.container{
+        height:  100%;
         display: flex;
         flex-direction: column-reverse;
         grid-template-columns: 50% 50%;
-        margin-top:250px;
     }
-    .column-left{
+    .contact.container .column-left{
+        height: 100%;
+        width: 100%;
         border-radius: 12px;
-        margin-top: 20px;
         padding: 50px 20px;
+        margin-top: 20px;
     }
-    input[type="text"], textarea {
+    .contact.container .column-right{
+        height: 100%;
         width: 100%;
-    }
-    .column-right{
         margin-left: 0;
-        width: 100%;
     }
-    .get-in-touch{
+    .contact.container .column-right .get-in-touch{
         border-radius: 12px;
         padding: 20px 0;
     }

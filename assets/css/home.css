@@ -1,60 +1,12 @@
-/* Add Button: Book Appointment */
-.button-app{
-    position:fixed;
-    z-index: 1;
-    right: 0;
-    margin-right: 20px;
-    bottom: 5%;
-    width: 50px;
-    height:50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 25px;
-    background-color: #0051a1;
-    cursor: pointer;
-}
-.button-app a{
-    color: #fff;
-}
-
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
-:root {
-    --light: #f6f6f9;
-    --primary: #0051a1;
-    --light-primary: #9fc3e7;
-    --grey: #e0e5e9;
-    --dark-grey: #AAAAAA;
-    --dark: #363949;
-    --danger: #D32F2F;
-  --light-danger: #FECDD3;
-    --warning: #FBC02D;
-    --light-warning: #FFF2C6;
-    --success: #388E3C;
-    --light-success: #BBF7D0;
-}
-
-*{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
 html{
     scroll-behavior: smooth;
 }
-:target::before{
+/*:target::before{
     content: '';
     display: block;
     height: 100px;
     margin-top: -100px;
-}
-body{
-    background-color: var(--grey);
-}
+}*/
 
 /*banner section*/
 section.banner{
@@ -67,7 +19,7 @@ section.banner{
     object-fit: cover;
     background-repeat: no-repeat;
     isolation: isolate;/*we can put z-index:1;*/
-    margin-top: 75px;
+    margin-top: 80px;
 }
 /* overlay for banner image*/
 section.banner::after{
@@ -79,7 +31,7 @@ section.banner::after{
     opacity:0.2;
 }
 .banner .banner-container {
-    width: 50%;
+    width: 53%;
     margin-left: 43px;
     justify-content: center;
     padding-top: 120px;
@@ -163,8 +115,10 @@ section.banner::after{
 
 /* About Us */
 section.about{
+    margin-top: 195px;
     width: 100%;
-    height: 700px;
+    height: 500px;
+    margin-bottom: 100px;
 }
 .about-container{
     width: 100%;
@@ -243,6 +197,25 @@ section.about{
     text-align: justify;
     margin-bottom: 30px;
     color:#000;
+}
+/* Add Button: Book Appointment */
+.button-app{
+    position:fixed;
+    z-index: 1;
+    right: 0;
+    margin-right: 20px;
+    bottom: 5%;
+    width: 50px;
+    height:50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    background-color: #0051a1;
+    cursor: pointer;
+}
+.button-app a{
+    color: #fff;
 }
 /* Count */
 section.counts{
@@ -678,16 +651,20 @@ select{
     font-weight: bold;
     padding:10px;
 }
-html,body{
-    overflow-x: hidden;
-}
+
 /* Responsive on width 1440 */
 @media(max-width:1440px){
     section.banner{
         height: 90vh;
     }
     section.about{
-        margin-top: 120px;
+        margin-top: 90px;
+        margin-bottom: 0;
+    }
+}
+@media(max-width:1370px){
+    section.about{
+        margin-top: 195px;
     }
 }
 /* Responsive on width 1024 */
@@ -711,9 +688,10 @@ html,body{
     .why-us-grid-col2{
         margin: 15px; 
     }
-    /*section.about {
-        margin-top: 250px;
-    }*/
+    section.about {
+        margin-top: 170px;
+        margin-bottom:0;
+    }
     .about-col1 img {
         height: 380px;
         width: 380px;
@@ -756,6 +734,7 @@ html,body{
         line-height: 36px;
     }
     .why-us-container {
+        width: 94%;
         margin: 80px 0 0 43px;
         display: grid;
         grid-template-columns: 50% 50%;
@@ -844,6 +823,9 @@ html,body{
         margin: 50px 20px 0 20px;
         display: grid;
         grid-template-columns: 100%;
+    }
+    .why-us-grid-col2 {
+        margin: 15px 0;
     }
     .about-col2 {
         padding: 0;
