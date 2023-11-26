@@ -206,11 +206,17 @@ nav{
         transition: all 1s ease-out;
         pointer-events: none;
         justify-content: space-evenly;
+        margin-top: 5rem;
     }
     .nav-links .links{
         flex-direction: column;
-        gap: 30px;
+        /* gap: 30px; */
         margin: 0;
+        height: 45%;
+    }
+    .icons{
+        align-items: start;
+        height: 40%;
     }
     .nav-links.open{
         clip-path: circle(1000px at 90% -10%);
