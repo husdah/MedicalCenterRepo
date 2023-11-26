@@ -651,7 +651,18 @@ select{
     font-weight: bold;
     padding:10px;
 }
-
+/* Responsive on width 1920 */
+@media(max-width:1920px){
+    .count-sub-container {
+        width: 95%;
+    }
+    .clinic-container {
+        width: 90%;
+    }
+    .donation-content {
+        padding: 20px 100px;
+    }
+}
 /* Responsive on width 1440 */
 @media(max-width:1440px){
     section.banner{
@@ -660,6 +671,9 @@ select{
     section.about{
         margin-top: 90px;
         margin-bottom: 0;
+    }
+    .donation-content {
+        padding: 20px 60px;
     }
 }
 @media(max-width:1370px){
@@ -714,9 +728,18 @@ select{
     section.service{
         margin-bottom: 10px;
     }
+    .clinic-container {
+        width: 1200px;
+    }
+    .clinic-container {
+        width: 1200px;
+    }
     .donation-form,
     .donation-panel {
         width: 100%;
+    }
+    .donation-content {
+        padding: 20px;
     }
 }
 /* Responsive on width 768 */
@@ -888,4 +911,57 @@ select{
         width: 100%;
     }
 }
- 
+/* Responsive on width 320 */ 
+@media(max-width:320px){
+    .banner .banner-container {
+        width: 90%;
+    }
+    .banner .banner-container h1 {
+        font-size: 18px;
+    }
+    .banner .banner-container h2 {
+        font-size: 15px;
+    }
+    .why-us-container {
+        width: 90%;
+        margin: 30px 20px 0 20px;
+    }
+    .why-us-grid-col1 {
+        width: 280px;
+    }
+    .why-us-grid-col2 {
+        width: 283px;
+    }
+    .about-container .icon-box {
+        grid-template-columns: 100%;
+    }
+    .icon-box .icon {
+        display: none;
+    }
+    .count-sub-container .count-box {
+        margin: 18px;
+    }
+    .count-box p{
+        font-size: 13px;
+    }
+
+    section.service {
+        height: 100%;
+    }
+    .team__item h5 {
+        font-size: 14px;
+    }
+    .clinic-heading p {
+        padding: 0 10px;
+    }
+    .donation-form, .donation-panel {
+        width: 98%;
+    }
+    .donation-content input[type='text'] {
+        width: 73%;
+    }
+    .btn-send {
+        margin-top: 20px;
+    }
+    
+}
