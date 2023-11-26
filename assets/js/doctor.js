@@ -27,4 +27,12 @@ const showSocial = (toggleClass, socialClass) => {
   }
   
   showSocial('card__social-toggle', 'card__social');
+
+
+  let sideMenu = document.getElementById("sideMenu");
+  let sidebar = document.getElementById("sidebar");
+
+  sideMenu.addEventListener("click", () =>{
+    sidebar.classList.toggle("open");
+  });
   

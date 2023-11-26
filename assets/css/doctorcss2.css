@@ -17,6 +17,10 @@
 {
     display:flex;
 } */
+
+/* #sideMenu{
+    border: 1px solid orangered;
+} */
 .sidebar
 {
 /*     position:sticky;
@@ -41,7 +45,7 @@
     overflow: hidden;
     background-color: var(--primary);
 
-    border: 2px solid red;
+    /* border: 2px solid red; */
 
     display: flex;
     flex-direction: column;
@@ -50,9 +54,35 @@
 }
 .sidebar:hover
 {
-    width:300px;
+    width:250px;
     transition:0.5s;
 }
+
+.sidebar:hover + .main--content
+{
+    width: calc(100% - 250px);
+    left: 250px;
+    transition:0.5s;
+}
+
+.sidebar.open{
+    width:250px;
+    transition:0.5s;
+}
+
+.sidebar.open + .main--content
+{
+    width: calc(100% - 250px);
+    left: 250px;
+    transition:0.5s;
+}
+
+/* .sidebar:hover + .main--content .container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    transition:0.5s;
+}
+ */
 .logo
 {
     display: flex;
@@ -75,7 +105,7 @@
     list-style-type: none;
     padding: 0;
 
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
 }
 .menu li
 {
@@ -122,7 +152,7 @@
     left: 111px;
     transition: all 0.3s ease;
     height: 100%;
-    border: 3px solid black;
+    /* border: 3px solid black; */
 }
 .search-box img
 {
@@ -190,6 +220,32 @@
     width: calc(100% - 90px);
     left: 90px;
 }
+
+.sidebar:hover
+{
+    width:250px;
+    transition:0.5s;
+}
+
+.sidebar:hover + .main--content
+{
+    width: calc(100% - 90px);
+    left: 90px;
+    transition:0.5s;
+}
+
+.sidebar.open
+{
+    width:250px;
+    transition:0.5s;
+}
+
+.sidebar.open + .main--content
+{
+    width: calc(100% - 90px);
+    left: 90px;
+    transition:0.5s;
+}
     .menu a i
 {
     font-size: 1.5rem;
@@ -229,15 +285,33 @@
         padding: 10px 1rem;
     } */
 }
-/* @media(max-width:376px)
+@media(max-width:376px)
 {
-    .sidebar
+/*     .sidebar
     {
         width: 150px;
     }
     .main--content
     {
         width: 78%;
-    }
+    } */
+
+    .header--wrapper
+{
+    align-items: flex-start;
+    padding: 10px .8rem;
+}
+
+    .search-box
+{
+    gap:5px;
+    padding:4px 8px;
+}
+
+.search-box input
+{
+    background:transparent;
+    padding: 8px;
+}
    
-} */
+}
