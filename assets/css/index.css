@@ -15,12 +15,14 @@
     --success: #388E3C;
     --light-success: #BBF7D0;
 }
-
 *{
     margin:0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+}
+html{
+    scroll-behavior: smooth;
 }
 html,body{
     overflow-x: hidden;
