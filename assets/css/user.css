@@ -135,7 +135,7 @@ button,
     border: none;
     color: var(--light);
     background: var(--primary);
-    border-radius: 5px;
+    border-radius: 50px;
     padding: 5px 10px;
     cursor: pointer;
     transition: all .4s ease-in-out;
@@ -293,10 +293,11 @@ form .input-field {
 
 .table2 form .update-btn,
 .table2 form .change-btn{
-   display: flex;
-   justify-content: right;
-   align-items: flex-end;
-   margin: 15px 10px;
+    width: 95%;
+    height: 40px;
+    margin: 15px 10px;
+    border-radius: 50px;
+    font-size: 15px;
 }
 
 .tables .table2{
@@ -317,10 +318,24 @@ form .input-field {
 
 /* Responsive */
 
-@media (max-width: 1440px){
+@media(max-width:1920px){
+    .tables .table1{
+        width: 1000px;
+    }
 
-    .table2 form{
-       width: 100%;
+    .tables .table2 .update-info,
+    .tables .table2 .change-pwd{
+        padding: 20px 100px;
+    }
+}
+
+@media (max-width: 1440px){
+    .tables .table1{
+        width: 800px;
+    }
+    .tables .table2 .update-info,
+    .tables .table2 .change-pwd{
+        padding: 20px 60px;
     }
 }
 
@@ -328,6 +343,10 @@ form .input-field {
     .tables .table1{
         width: 570px;
         margin-right: 0;
+    }
+    .tables .table2 .update-info,
+    .tables .table2 .change-pwd{
+        padding: 10px 30px;
     }
 }
 
@@ -342,6 +361,10 @@ form .input-field {
 @media (max-width: 768px){
     .tables .table1{
         width: 350px;
+    }
+    .tables .table2 .update-info,
+    .tables .table2 .change-pwd{
+        padding: 5px 10px;
     }
 }
 
