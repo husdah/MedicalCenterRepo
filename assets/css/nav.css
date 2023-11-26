@@ -180,7 +180,7 @@ nav{
 }
 
 /*Stying for small screens*/
-@media screen and (max-width: 900px){
+@media screen and (max-width: 950px){
     nav{
         position: fixed;
         z-index: 3;
