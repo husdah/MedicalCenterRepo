@@ -12,20 +12,31 @@
     --success: #388E3C;
     --light-success: #BBF7D0;
 }
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 .mainContent
 {
     position: relative;
     left: 230px;
-    width: calc(100% - 260px);
-    height: 90vh;
-    margin-left: 15px;
-    margin-top: 20px;
-    margin-right: 20px;
+    width: calc(100% - 230px);
+    height: 100%;
+    margin-left:10px;
+    margin-top: 10px;
+    /* margin-bottom: 10px; */
+    margin-right:10px;
     background:var(--light);
     border-radius: 20px;
     display: flex;
     justify-content: center;
     /* align-items: center; */
+}
+.center
+{
+    height: 100%;
 }
 
  h2
@@ -141,7 +152,7 @@
     color: white;
     background: var(--primary);
     margin-left:330px;
-    margin-top: 20px;
+    margin-bottom: 20px;
     width: 100px;
     text-align: center;
     padding: 0;
@@ -152,4 +163,95 @@
 {
     transform: scale(1.1);
     background-color: var(--light-primary);
+}
+@media(max-width:1441px)
+{
+    .sidebar.close + .mainContent
+{
+    width: calc(100% - 70px);
+    left: 70px;
+    transition:0.5s;
+}
+}
+@media(max-width:720px)
+{
+    h2
+    {
+        padding-top: 0px;
+        text-align: center;
+    }  
+    .title
+    {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+    .title2
+    {
+        margin-top: 0px;
+    }
+    .changepass
+    {
+        /* margin-top: 150px; */
+    }
+    .changepass h3 
+    {
+        font-size: 15px;
+        text-align: center;
+    }
+    .changepass div
+    {
+        flex-direction: column;
+        align-items: center;
+    }
+    .title2 .title2i input
+    {
+        font-size: 15px;
+    }
+    .title2i
+    {
+        width: 230px;
+    }
+   
+    .changepass input
+    {
+        width: 220px;
+    }
+    .changepass label
+    {
+        font-size: 16px;
+    }
+    #submit
+    {
+        margin-left:230px;
+    }
+}
+@media(max-width:611px)
+{
+    .mainContent
+    {
+        
+    width: calc(100% - 70px);
+    left: 70px;
+    }
+    #submit
+    {
+        margin-left:200px;
+    }
+}
+@media(max-width:411px)
+{
+    .changepass h3 
+    {
+        font-size: 13px;
+    }
+    #submit
+    {
+        margin-left:160px;
+    }
+    .changepass div label
+    {
+        font-size: 15px;
+        width: 80%;
+    }
 }
