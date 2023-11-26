@@ -20,4 +20,13 @@ $(document).ready(function () {
       document.getElementById('donateForm').classList.add('hide');
  }); 
 });
-
+/* click send button */
+let btn_click = document.getElementById("click_donate");
+btn_click.addEventListener('click', function() {
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: "Something went wrong!",
+    footer: '<a href="#">Why do I have this issue?</a>'
+  });
+});
