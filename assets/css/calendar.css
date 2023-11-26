@@ -452,3 +452,14 @@
   padding: 0  0 10% 0;
 }
 }
+@media(max-width: 360px)
+{
+  #calendar .ui-datepicker .ui-datepicker-calendar {
+    width: 100%;
+    font-size: 12px;
+}
+.content main .bottom-data>div
+{
+  padding: 10px;
+}
+}
