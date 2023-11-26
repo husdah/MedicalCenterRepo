@@ -19,6 +19,12 @@
     left: 230px;
 }
 
+.sidebar.close~.main-content{
+    width: calc(100% - 70px); 
+    left: 70px;
+    transition:0.5s;
+}
+
 .title h2
 {
     color:var(--dark);
@@ -126,6 +132,8 @@
 .titlesearch
 {
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     justify-content: space-between;
     margin-top: 20px;
     margin-left: 20px;
@@ -193,7 +201,7 @@
 }
 
 }
-@media(max-width:900px)
+@media(max-width:950px)
 {
     .leftright
     {
@@ -201,7 +209,7 @@
     }
     .left
     {
-        width: 90%;
+        width: 90%;   
     }
     .right
     {
@@ -250,7 +258,7 @@
     .main-content
     {
         width: calc(100% - 100px); 
-        left: 60px;
+        left: 70px;
     }
     .left
     {
