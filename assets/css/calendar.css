@@ -406,3 +406,49 @@
     font-size:0.8em;
   }
 }
+@media(max-width: 556px)
+{
+  .overlay h1
+  {
+    font-size: 26px;
+  }
+  /* .wrapper .timepicker
+  {
+    width:70%;
+  } */
+  #calendar .ui-datepicker .ui-datepicker-calendar {
+    width: 100%;
+    font-size: 15px;
+}
+#calendar .ui-datepicker
+{
+  padding: 10% 5px 10% 5px;
+}
+.inner-wrap {
+  padding: 0 0;
+}
+.wrapper {
+  padding: 0  2px 10% 2px;
+}
+}
+@media(max-width: 376px)
+{
+  .overlay h1
+  {
+    font-size: 26px;
+  }
+  #calendar .ui-datepicker .ui-datepicker-calendar {
+    width: 100%;
+    font-size: 15px;
+}
+.inner-wrap {
+  padding: 0 0;
+}
+#calendar .ui-datepicker
+{
+  padding: 10% 10px 10% 10px;
+}
+.wrapper {
+  padding: 0  0 10% 0;
+}
+}
