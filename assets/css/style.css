@@ -516,3 +516,21 @@ input[type="date"]{
     left: 50%;
   }
 }
+
+@media (max-width: 720px) {
+  .btn.solid.up{
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 375px) {
+  .btn.solid.up{
+    margin-left: 200px;
+  }
+}
+
+@media (max-width: 320px) {
+  .btn.solid.up{
+    margin-left: 160px;
+  }
+}
