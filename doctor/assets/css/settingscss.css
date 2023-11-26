@@ -190,10 +190,10 @@
     {
         margin-top: 0px;
     }
-    .changepass
+    /* .changepass
     {
-        /* margin-top: 150px; */
-    }
+        margin-top: 150px;
+    } */
     .changepass h3 
     {
         font-size: 15px;
@@ -231,7 +231,7 @@
     .mainContent
     {
         
-    width: calc(100% - 70px);
+    width: calc(100% - 90px);
     left: 70px;
     }
     #submit
