@@ -233,7 +233,7 @@ img {
     transition:0.5s;
   }
 }
-@media(max-width:1024px)
+@media(max-width:1200px)
 {
   .container {
      grid-template-columns: repeat(3,1fr);
@@ -335,7 +335,7 @@ img {
    }
    .card__profession
    {
-    font-size:12px;
+    /* font-size:12px; */
     text-align: center;
    }
 }

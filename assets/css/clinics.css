@@ -142,7 +142,6 @@ a
     text-align:center;
     box-shadow:5px 5px 10px  rgb(83, 82, 82);
     transition: transform 0.3s;
-
 }
 .item:hover
 {
@@ -280,7 +279,7 @@ a
 }
 .name
 {
-    font-size: 18px;
+    font-size: 16px;
 }
 .des
 {
@@ -336,7 +335,7 @@ a
 }
 .name
 {
-    font-size: 18px;
+    font-size: 16px;
 }
 .des
 {
