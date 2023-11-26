@@ -553,6 +553,31 @@ body{
         margin: 30px;
     }
 }
+@media(max-width:612px)
+{
+    .sidebar{
+        width: 70px;
+    }
+
+    .sidebar .logo,.sidebar .logo-name,
+    .sidebar .user-clinic,.sidebar .user-name{
+        opacity: 0;
+    } 
+
+    .sidebar .side-menu li a{
+        width: calc(48px - (4px * 2));
+        transition: all 0.3s ease;
+    }
+
+    .sidebar .sidebar-header .bx.bx-menu{
+        display: none;
+    }
+
+    .sidebar~.content{
+        width: calc(100% - 100px); 
+        left: 60px;
+    }
+}
 
 @media(max-width:425px){
     .sidebar{
