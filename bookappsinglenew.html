@@ -83,7 +83,7 @@
                 <div class="user--info">
                     <div class="search-box">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" placeholder="search">
+                        <input type="text" placeholder="search" id="search">
                     </div>
                 </div>
             </div>
@@ -130,7 +130,7 @@
                     <img src="images/doctorapp.jpg" alt="card image" class="card__img">
                 </div>
 
-                <h3 class="card__name">Dr Salem Hachem</h3>
+                <h3 class="card__name">Dr Hassan Hachem</h3>
                 <span class="card__profession">Cardiology/electrophysiology</span>
 
                 <div class="card__social" id="card-social">
@@ -383,6 +383,20 @@
 
 
     </div>
+    <script>
+ var filterInput = document.getElementById('search');
+ var cards=document.querySelectorAll('.card');
+
+filterInput.addEventListener('input', function() {
+  var filterValue = filterInput.value.toLowerCase();
+  cards.forEach(card => {
+    cardname=card.querySelector('.card__name').textContent.toLowerCase();
+    card.style.display = cardname.includes(filterValue) ? 'block' : 'none';
+
+  });
+  }
+);
+    </script>
 
         <!--=============== MAIN JS ===============-->
         <script src="assets/js/doctor.js"></script>
