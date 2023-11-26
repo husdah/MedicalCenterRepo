@@ -74,11 +74,11 @@
                 <div class="left">
                     <h1>Admin Settings</h1>
                     <ul class="breadcrumb">
-                        <li><a href="#">
+                        <li id="viewMode"><a href="#">
                                 View
                             </a></li>
                             /
-                        <li><a href="#" class="active">Update</a></li>
+                        <li id="changeMode"><a href="#" class="active">Update</a></li>
                     </ul>
                 </div>
             </div>
@@ -111,7 +111,7 @@
             <section class="forms-section">
                 <h1 class="section-title">Login Information</h1>
                 <div class="forms">
-                  <div class="form-wrapper is-active">
+                  <div id="viewWrapper" class="form-wrapper is-active">
                     <button type="button" class="switcher switcher-login">
                       View
                       <span class="underline"></span>
@@ -147,7 +147,7 @@
                       <!-- <button type="submit" class="btn-login">Login</button> -->
                     </form>
                   </div>
-                  <div class="form-wrapper">
+                  <div id="changeWrapper" class="form-wrapper">
                     <button type="button" class="switcher switcher-signup">
                       Change
                       <span class="underline"></span>

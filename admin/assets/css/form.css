@@ -218,6 +218,10 @@
       width: 100%;
       gap: 6px;
     }
+
+    .form {  
+      padding: 5px;
+    }
   }
 
   @media screen and (max-width: 375px) {

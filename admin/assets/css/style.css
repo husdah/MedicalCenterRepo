@@ -844,3 +844,33 @@ body{
     }
 
 }
+
+@media screen and (max-width: 320px) {
+    .content main .header .left h1{
+        font-size: 22px;
+    }
+
+    .content main .header .report span{
+        font-size: .8rem;
+    }
+
+    .content main .bottom-data .reminders{
+        max-width: 300px;
+    }
+
+    .content main .bottom-data .orders .header h3{
+        font-size: 16px;
+    }
+
+    .content main .bottom-data .reminders .header h3{
+        font-size: 16px;
+    }
+
+    .content main .bottom-data .centerBox .header h3{
+        font-size: 14px;
+    }
+    
+    .content nav{
+        grid-gap: 20px;
+    }
+}
