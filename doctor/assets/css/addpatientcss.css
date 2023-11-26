@@ -157,3 +157,138 @@
 {
     padding-right: 10px;
 }
+@media(max-width:1115px)
+{
+    .right
+{
+    width: 60%;
+}
+.left
+{
+    width: 40%;
+}
+.right td 
+{
+    padding: 5px;
+}
+.titlesearch h2 
+{
+    font-size: 1.5rem;
+}
+.titlesearch .searchbox input 
+{
+    width: 125px;
+}
+.leftright
+{
+    gap: 8px;
+}
+.title h2
+{
+    font-size: 1.5rem;
+}
+.txt input
+{
+    width: 190px;
+}
+
+}
+@media(max-width:900px)
+{
+    .leftright
+    {
+        flex-direction: column;
+    }
+    .left
+    {
+        width: 90%;
+    }
+    .right
+    {
+        width: 90%;
+    }
+    .right td 
+{
+    padding: 5px;
+}
+.titlesearch h2 
+{
+    font-size: 1.7rem;
+}
+.titlesearch .searchbox input 
+{
+    width: 150px;
+    height: 30px;
+}
+.title h2
+{
+    font-size: 2rem;
+}
+.txt input
+{
+    width: 260px;
+}
+}
+@media(max-width:700px)
+{
+    .titlesearch h2 
+{
+    font-size: 1.3rem;
+}
+.titlesearch .searchbox 
+{
+    height: 33px;
+}
+.titlesearch .searchbox input 
+{
+    width: 120px;
+    height: 20px;
+}  
+}
+@media(max-width:611px)
+{
+    .main-content
+    {
+        width: calc(100% - 100px); 
+        left: 60px;
+    }
+    .left
+    {
+        width: 100%;
+    }
+    .right
+    {
+        width: 100%;
+    }
+}
+@media(max-width:425px)
+{
+    .right td
+    {
+        font-size: 12px;
+    }
+    .right th
+    {
+        font-size: 13px;
+    }
+    .titlesearch h2 
+    {
+        font-size: 1rem;
+    }
+    .titlesearch .searchbox 
+    {
+        height: 30px;
+    }
+    .titlesearch .searchbox input 
+    {
+        width: 100px;
+        height: 19px;
+    }  
+    .txt input
+{
+    width: 200px;
+}
+.title h2 {
+    font-size: 1.5rem;
+}
+}
