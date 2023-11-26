@@ -797,8 +797,8 @@ select{
     }  
 }
 
-/* Responsive on width 425 */
-@media(max-width:425px){
+/* Responsive on width 500 */
+@media(max-width:500px){
     section.banner{
         height: 100%;
         margin-top: 45px;
