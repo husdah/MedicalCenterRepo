@@ -274,17 +274,6 @@ body{
 }
 @media(max-width: 426px) 
 {
-    .content main .bottom-data .header{
-        min-width: 300px;
-    }
-
-    .content main .bottom-data .orders table{
-        min-width: 300px;
-    }
-
-    .content main .bottom-data .feedbacks .task-list{
-        min-width: 300px;
-    }
     .content main .header .left h1 
     {
         font-size: 25px;
@@ -294,15 +283,15 @@ body{
 @media(max-width: 376px) 
 {
     .content main .bottom-data .header{
-        min-width: 270px;
+        min-width: 280px;
     }
 
     .content main .bottom-data .orders table{
-        min-width: 270px;
+        min-width: 280px;
     }
 
     .content main .bottom-data .feedbacks .task-list{
-        min-width: 270px;
+        min-width: 280px;
     }
     .content main .header .left h1 
     {
