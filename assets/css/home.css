@@ -835,7 +835,7 @@ select{
     }
     .banner .banner-container {
         width: 93%;
-        padding-top: 50px;
+        padding-top: 130px;
         margin-left: 20px;
     }
     .banner .banner-container h1 {
@@ -843,7 +843,7 @@ select{
         line-height: 30px;
     }
     .why-us-container {
-        margin: 50px 20px 0 20px;
+        margin: 80px 20px 0 20px;
         display: grid;
         grid-template-columns: 100%;
     }
@@ -880,7 +880,7 @@ select{
     }
     section.service {
         height: 780px;
-        margin-bottom: 0;
+        margin-bottom: 50px;
     }
     section#doctor-heading {
         padding: 0 20px;
@@ -911,6 +911,23 @@ select{
         width: 100%;
     }
 }
+
+/* Responsive on width 375 */ 
+@media(max-width:375px){
+    .banner .banner-container {
+        padding-top: 90px;
+    }
+    .why-us-container {
+        margin: 20px 20px 0 20px;
+    }
+    .doctor-heading p{
+        padding: 0 20px;
+    }
+
+}
+
+
+
 /* Responsive on width 320 */ 
 @media(max-width:320px){
     .banner .banner-container {
@@ -944,7 +961,6 @@ select{
     .count-box p{
         font-size: 13px;
     }
-
     section.service {
         height: 100%;
     }
