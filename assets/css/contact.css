@@ -134,8 +134,8 @@ ul.breadcrumb li a:hover{
     }
 }
 
-/* Responsive on width 425px */
-@media(max-width:425px){
+/* Responsive on width 550px */
+@media(max-width:550px){
     .contact.container{
         height:  100%;
         display: flex;
