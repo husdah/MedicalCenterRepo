@@ -226,7 +226,7 @@ body{
 
 .sidebar.close~.content{
     width: calc(100% - 100px); 
-    left: 80px;
+    left: 70px;
 }
 
 .content{
