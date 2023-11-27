@@ -254,7 +254,7 @@ form .input-field {
     color: #444;
     background: #f0f0f0;
     cursor: pointer;
-    transition: background 0.1s;
+    transition: 0.1s;
   }
   
   .radio-label::before{
@@ -388,7 +388,7 @@ form .input-field {
         margin: 20px;
     }
 
-@media (max-width:375px){
+@media (max-width:390px){
     .container .header label,
     .container .header span{
         font-size: 15px;
