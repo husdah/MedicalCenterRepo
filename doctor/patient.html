@@ -40,6 +40,7 @@
     <!-- Start of Content -->
 
     <div class="content">
+        <div class="left-side">
         <h3>Patient's Info</h3>
         <div class="patient-info">
             <div class="left">
@@ -125,15 +126,21 @@
                 </tr>
             </table>
         </div>
+        </div>
 
+        <div class="right-side">
         <div class="notes">
             <div class="page">
             <h2>Health Hub</h2>
             <form id="patient-from" class="patient-from">
-                <label>First Name </label><input type="text" name="first-name">
-                <label>Last Name </label><input type="text" name="last-name">
-                <label>Age</label><input type="number" name="age">
-                <label class="date">Date </label><input type="date" name="first-name">
+                <div class="inputs">
+                <div class="input-field"><label>First Name </label><input type="text" name="first-name"></div>
+                <div class="input-field"><label>Last Name </label><input type="text" name="last-name"></div>
+                </div>
+                <div class="inputs">
+                <div class="input-field"><label>Age</label><input type="number" name="age"></div>
+                <div class="input-field"><label class="date">Date </label><input type="date" name="first-name"></div>
+                </div>
                 <textarea id="myTextarea" rows="7"></textarea>
             </form>
             <div class="signature">
@@ -141,6 +148,7 @@
             </div>
             </div>
             <button>Print</button>
+        </div>
         </div>
     </div>
 

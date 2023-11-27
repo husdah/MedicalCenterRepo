@@ -225,17 +225,27 @@ body{
 }
 
 .sidebar.close~.content{
-    width: calc(100% - 60px); 
-    left: 150px;
+    width: calc(100% - 100px); 
+    left: 80px;
 }
 
 .content{
     position: relative;
     display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
     margin-left: 15px;
     width: calc(100% - 230px);
     left: 230px;
     transition: all 0.3s ease;
+}
+
+.content .left-side{
+    grid-column: 1 / 2;
+}
+
+.content .right-side{
+    grid-column: 2 / 3;
 }
 
 .content h3{
@@ -250,7 +260,7 @@ body{
     border-radius: 15px;
     text-align: center;
     color: var(--dark);
-    width: 600px;
+   /* width: 600px;*/
     margin-bottom: 30px;
     margin-left: 10px;
 }
@@ -301,7 +311,7 @@ body{
 
 .content .patient-info .right .info{
     text-align: center;
-    width: 250px;
+    width: 100%;
 }
 
 .content .patient-info .right .info .cell
@@ -357,7 +367,8 @@ body{
     background: var(--light);
     margin-top: 10px;
     border-radius: 15px;
-    width: 600px;
+    width: 100%;
+   /* width: 600px; */
     border-collapse: collapse;
     border-spacing: 5px 0;
     cursor: pointer;
@@ -406,11 +417,9 @@ body{
 }
 
 .content .notes{
-    position: absolute;
-    top: 52px;
-    left: 650px;
+    position: relative;
+    margin: 50px 0px;
     height: 91%;
-    width: 450px;
     background: var(--light);
     border-radius: 15px;
     padding: 10px;
@@ -457,17 +466,26 @@ body{
     font-size: 12px;
     color: var(--dark);
     font-weight: 500;
-    margin: 10px 0;
+    margin-right: 5px;
+    width: 70px;
 }
 
-.content .notes .page form .date{
-    margin-left: 45px;
+.content .notes .page .inputs{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.content .notes .page .inputs .input-field{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .content .notes .page input{
-    margin: 10px 5px;
-    width: 110px;
     background: none;
+    width: 120px;
     border: none;
     border-bottom: 1px solid var(--dark);
     color: var(--dark);
@@ -496,4 +514,111 @@ body{
 
 .content .notes .page .signature input{
     border-bottom: none;
+}
+
+
+/* Responsive */
+
+@media(max-width:1024px){
+
+    .content .notes .page .inputs{
+        justify-content:left;
+    }
+
+    .content .notes .page .inputs .input-field{
+        margin-right: 10px;
+    }
+
+    .content .notes .page input{
+        width: 60%;
+    }
+
+    .content .notes .page label{
+        width: 37%;
+    }
+}
+
+@media(max-width:1000px){
+
+    .sidebar~.content{
+        width: calc(100% - 230px); 
+        left: 215px;
+    }
+
+    .content{
+        display: block;
+        margin-right: 10px;
+    }
+
+    .content .notes{
+        min-height: 480px;
+        margin-left: 20px;
+    }
+
+    .content .notes .page .inputs{
+        justify-content: space-around;
+    }
+}
+
+@media(max-width:650px){
+
+    .content{
+        margin: 10px;
+    }
+
+    .content .patient-info,
+    .content .apps-table{
+        overflow-x: scroll;
+    }
+
+    .content .apps-table table{
+        min-width: 400px;
+    }
+
+}
+
+@media(max-width:610px){
+    .sidebar{
+        width: 70px;
+    }
+
+    .sidebar .logo,.sidebar .logo-name,
+    .sidebar .user-clinic,.sidebar .user-name{
+        opacity: 0;
+    } 
+
+    .sidebar .side-menu li a{
+        width: calc(48px - (4px * 2));
+        transition: all 0.3s ease;
+    }
+
+    .sidebar .sidebar-header .bx.bx-menu{
+        display: none;
+    }
+
+    .sidebar~.content{
+        width: calc(100% - 100px); 
+        left: 60px;
+    }
+
+}
+
+@media(max-width:490px){
+    .content .patient-info{
+        overflow-x: scroll;
+    }
+
+    .content .apps-table{
+        overflow-x: scroll;
+    }
+
+    .content .apps-table table{
+        min-width: 400px;
+    }
+}
+
+@media(max-width:380px){
+    .content .notes{
+        display: none;
+    }
 }
