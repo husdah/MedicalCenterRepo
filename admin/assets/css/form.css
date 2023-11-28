@@ -162,6 +162,15 @@
   
   .form label .input:valid + span {
     color: green;
+    /* color: var(--primary); */
+  }
+
+  .form label .input.required + span {
+    color: red;
+  }
+
+  .form label .input.required {
+    border: 1px solid red;
   }
   
   .submit {
