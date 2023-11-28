@@ -242,6 +242,13 @@ body{
 
 .content .left-side{
     grid-column: 1 / 2;
+    margin: 0 15px;
+}
+
+.content .right{
+    grid-column: 2 / 3;
+    margin-right: 15px;
+    padding: 0 15px;
 }
 
 .content .top{
@@ -266,7 +273,7 @@ body{
     /*width: 560px;*/
     height: 120px;
     color: var(--light);
-    margin: 10px 15px;
+    margin: 10px 0;
     background: var(--primary);
     border-radius: 20px;
     padding: 10px;
@@ -288,64 +295,52 @@ body{
 }
 
 .content .insights{
-    /*width: 560px;*/
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 15px 13px;
+    margin: 25px 0;
+  
 }
 
-.content .insights .insight{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    align-items: center;
-    width: 30%;
-    height: 100px;
-    margin: 15px 5px;
-    border-radius: 15px;
+.content .insights li{
     background: var(--light);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 10px;
+    width: 30%;
     cursor: pointer;
-    overflow: hidden;
-    transition: transform .4s;
+    box-shadow: 1px 2px 5px #555;
+    transition: all .5s ease-in-out;
 }
 
-.content .insights .insight:hover{
+.content .insights li:hover{
     transform: scale(1.1);
+    box-shadow: 3px 5px 12px #555;
 }
 
-.content .insights .insight i{
-    background: #0050a134;
-    color: var(--primary);
-    border-radius: 5px;
-    font-size: 30px;
-    padding: 5px;
-}
-
-.content .insights .insight .labels{
+.content .insights li .insight{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: var(--dark);
-}
-
-.content .insights .insight .labels .patients-nb,
-.content .insights .insight .labels .appointments-nb,
-.content .insights .insight .labels .calls-nb
-{
-    font-size: 25px;
-    font-weight: 500;
-}
-
-.content .insights .insight .labels .label{
-    font-weight: 400;
     font-size: 11px;
+    font-weight: 400;
+   
 }
+
+.content .insights li i{
+    color: var(--primary);
+    background: var(--light-primary);
+    padding: 5px;
+    margin: 7px;
+    border-radius: 5px;
+}
+
 
 .content .request{
-    margin-left: 20px;
+    margin: 0;
 }
 
 .content .request h4{
@@ -353,7 +348,7 @@ body{
 }
 
 .content .request-table{
-    width: 96%;
+    width: 100%;
     border: none;
     border-radius: 15px;
     border-collapse: collapse;
@@ -399,30 +394,27 @@ body{
     box-shadow: 3px 5px 12px #555;
 }
 
-.content .right-side{
-    /*position: absolute;
-    top: 90px;*/
-    grid-column: 2 / 3;
+.content .right .right-side{
     background: var(--light);
     border-radius: 15px;
-   margin: 50px 30px;
+    margin-top: 102px;
     padding: 10px;
     height: 100%;
     overflow-y: auto;
 }
 
-.content .right-side .top{
+.content .right .right-side .top{
     /*width: 400px;*/
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.content .right-side .top h2{
+.content .right .right-side .top h2{
     color: var(--dark);
 }
 
-.content .right-side .top .filter{
+.content .right .right-side .top .filter{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -434,7 +426,7 @@ body{
     overflow: hidden;
 }
 
-.content .right-side .top .filter input{
+.content .right .right-side .top .filter input{
     width: inherit;
     color: var(--dark);
     font-weight: 400;
@@ -445,18 +437,18 @@ body{
     padding: 5px;
 }
 
-.content .right-side .top .filter i{
+.content .right .right-side .top .filter i{
     color: var(--primary);
     cursor: pointer;
     transition: all .4s ease-in-out;
 }
 
-.content .right-side .top .filter i:hover{
+.content .right .right-side .top .filter i:hover{
     transform:  scale(1.1);
     color: var(--light-primary);
 }
 
-.content .right-side .appointments{
+.content .right .right-side .appointments{
     width: 100%;
     height: 100%;
     border-collapse: separate;
@@ -508,24 +500,17 @@ body{
 
 /* Responsive */
 
-@media(max-width:1920px){
-    .content .left-side .insights .insight i{
-        margin: 0 30px;
+@media(max-width:1260px){
+    .content .insights li .insight{
+        font-size: 10px;
     }
 
-    .content .left-side .insights .insight i{
-        margin: 5px;
-        padding: 5px;
+    .content .insights li i{
         font-size: 20px;
-    }
-
-    .content .left-side .insights .insight .labelsn.label{
-        margin-right: 10px;
-        font-size: 7px;
     }
 }
 
-@media(max-width:1024px){
+@media(max-width:1150px){
 
     .content{
         display: block;
@@ -534,61 +519,68 @@ body{
         transition: all 0.3s ease;
         margin: 10px;
     }
+
+    .content .left-side{
+        margin: 0 25px;
+    }
+
+    .content .right{
+        margin: 10px 25px;
+        padding: 0;
+    }
+
+    .content .right .right-side{
+        margin: 0;
+    }
+
     .sidebar.close~.content{
         width: calc(100% - 100px); 
         left: 85px;
     }
 
-    .content .left-side .insights .insight i{
-        margin: 5px;
-        padding: 5px;
-        font-size: 40px;
+    .content .insights li{
+        justify-content: space-around;
     }
 
-    .content .left-side .insights .insight .labelsn.label{
-        margin-right: 10px;
-        font-size: 7px;
-    }
-}
-
-@media(max-width:900px){
-
-    .content .left-side{
-        margin: 15px;
+    .content .insights li .insight{
+        font-size: 15px;
     }
 
-    .content .left-side .insights .insight i{
-        margin-left: 15px;
-    }
-
-    .content .right-side{
-        margin: 30px;
+    .content .insights li i{
+        font-size: 35px;
     }
 }
-@media(max-width:612px)
+
+@media(max-width:830px){
+
+    .content .insights li .insight{
+        font-size: 10px;
+    }
+
+    .content .insights li i{
+        font-size: 20px;
+    }
+   
+}
+@media(max-width:670px)
 {
-    .sidebar{
-        width: 70px;
-    }
+   .content .insights{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+   }
 
-    .sidebar .logo,.sidebar .logo-name,
-    .sidebar .user-clinic,.sidebar .user-name{
-        opacity: 0;
-    } 
+   .content .insights li{
+    width: 100%;
+   }
 
-    .sidebar .side-menu li a{
-        width: calc(48px - (4px * 2));
-        transition: all 0.3s ease;
-    }
+   .content .insights li .insight{
+    font-size: 12px;
+}
 
-    .sidebar .sidebar-header .bx.bx-menu{
-        display: none;
-    }
-
-    .sidebar~.content{
-        width: calc(100% - 100px); 
-        left: 60px;
-    }
+.content .insights li i{
+    font-size: 30px;
+}
 }
 
 @media(max-width:700px){
@@ -596,13 +588,6 @@ body{
         display: none;
     }
 
-    .content .left-side .insights .insight i{
-        font-size: 17px;
-    }
-
-    .insights .insight .labels{
-        font-size: 13px;
-    }
 }
 
 @media(max-width:610px){
@@ -626,50 +611,14 @@ body{
 
     .sidebar~.content{
         width: calc(100% - 100px); 
-        left: 60px;
+        left: 65px;
     }
 
-    .content .left-side .insights .insight i{
-        font-size: 25px;
-    }
 }
 
 @media(max-width:550px){
     .content .banner{
         display: none;
-    }
-
-    .content .left-side .insights{
-        display: block;
-        margin: 15px;
-    }
-
-    .content .left-side .insights .insight{
-        width: 100%;
-        height: 130px;
-    }
-
-    .content .left-side .insights .insight i{
-        margin: 0 15px;
-        font-size: 40px;
-        padding: 15px;
-    }
-
-    .content .insights .insight .labels{
-        margin-left: 10px;
-    }
-    
-    .content .insights .insight .labels .patients-nb,
-    .content .insights .insight .labels .appointments-nb,
-    .content .insights .insight .labels .calls-nb
-    {
-        font-size: 35px;
-        font-weight: 500;
-    }
-    
-    .content .insights .insight .labels .label{
-        font-weight: 400;
-        font-size: 15px;
     }
 
     .content .right-side{
@@ -685,14 +634,15 @@ body{
     }
 }
 
+@media(max-width:440px){
+    .content .insights{
+       grid-template-columns: 1fr;
+    }
+}
+
 @media(max-width:390px){
 
-    .content .insights .insight .labels .label{
-        font-weight: 400;
-        font-size: 12px;
-    }
-
-    .content .right-side .top .filter{
+    .content .right .right-side .top .filter{
         display: none;
     }
     
