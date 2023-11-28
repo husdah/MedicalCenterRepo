@@ -230,7 +230,7 @@
         padding-right: 20px;
     }
 } */
-@media(max-width:800px)
+@media(max-width:950px)
 {
     .center
     {
@@ -313,6 +313,11 @@
 }
 @media(max-width:450px)
 {
+    .mainContent{
+        height: 100%;
+        padding: 5px 0;
+    }
+
     .title
     {
         flex-direction: column;
@@ -325,7 +330,7 @@
     }
     .changepass
     {
-        margin-top: 150px;
+        margin-top: 50px;
         width: 100%;
     }
 
@@ -333,6 +338,11 @@
     {
         flex-direction: column;
         align-items: center;
+    }
+
+    .submit{
+        flex-direction: row !important;
+        align-items: end !important;
     }
 
     .changepass h3 
@@ -351,5 +361,35 @@
 
     .changepass div input{
         width: 90%;
+    }
+}
+
+@media(max-width:450px)
+{
+    .title
+    {
+        width: 100%;
+        gap: 2px;
+    }
+    .title2
+    {
+        width: 90%;
+    }
+
+        .title2 .title2i input
+    {
+        width: 80%;
+    }
+
+    .title2i
+    {
+        width: 100%;
+    }
+}
+
+@media(max-height:600px){
+    .mainContent{
+        height: 100%;
+        padding: 5px 0;
     }
 }
