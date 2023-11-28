@@ -396,7 +396,7 @@ form .input-field {
     }
 }
 
-@media (max-width:375px){
+@media (max-width:390px){
     .container .header label,
     .container .header span{
         font-size: 15px;
@@ -417,5 +417,9 @@ form .input-field {
     .container .header .buttons .back{
         display: none;
     }
+
+    .info{
+        flex-direction: row;
+      }
 }
 }
