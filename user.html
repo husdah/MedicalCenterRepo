@@ -55,7 +55,7 @@ crossorigin="anonymous"></script>
                 <div class="table2">
                     <h2>Update Info</h2>
                     <form class="update-info">
-                        <div class="input-field"> 
+                          <div class="input-field"> 
                             <i class="fas fa-user"></i> 
                             <input type="text" placeholder="fullname" name="fullname" /> 
                           </div> 
@@ -63,21 +63,23 @@ crossorigin="anonymous"></script>
                             <i class="fas fa-envelope"></i> 
                             <input type="email" placeholder="Email" /> 
                           </div> 
-                          <div class="labels"> 
-                            <label>Date of Birth</label> 
-                            <label>Gender</label> 
-                          </div> 
+
                           <div class="row">
                           <div class="info"> 
+                            <label>Date of Birth</label>
                             <div class="date-of-birth"> 
                               <input type="date" name="date" class="date"> 
                             </div> 
-                            <div class="gender"> 
+                          </div>
+                          <div class="info">
+                            <label>Gender</label>
+                            <div class="gender">
                               <input class="radio-input" type="radio" name="gender" id="female" value="female"><label for="female" class="radio-label">Female</label> 
                               <input class="radio-input" type="radio" name="gender" id="male" value="male"><label for="male" class="radio-label">Male</label> 
                             </div> 
                             </div>
                           </div> 
+
                           <div class="blood-group"> 
                             <label for="mySelect">Select your blood group:</label> 
                             <select id="mySelect" name="mySelect"> 
@@ -111,7 +113,6 @@ crossorigin="anonymous"></script>
                     </form> 
                 </div>
             </div>
-        </div>
     </div>
 
     <script src="assets/js/user.js"></script>
