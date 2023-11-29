@@ -193,6 +193,15 @@
   font-weight: 600;
   color: #667483;
 }
+.error 
+{
+  display: none;
+}
+.forerror
+{
+  display: flex;
+  flex-direction: column;
+}
 
 .inner-wrap .form-name label {
   position: absolute;
@@ -220,7 +229,7 @@
   top: 0%;
 }
 
-.inner-wrap .form-name input:invalid {
+/* .inner-wrap .form-name input:invalid {
   border-bottom: 2px solid #c23616;
   color: #c23616;
 }
@@ -230,7 +239,7 @@
   color: #c23616;
   left: .15rem;
   top: 0%;
-}
+} */
 
 .inner-wrap .form-name:last-of-type {
   margin-bottom: 50px;
