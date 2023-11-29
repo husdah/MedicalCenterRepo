@@ -19,52 +19,41 @@ form.addEventListener('submit', e => {
     validateForm();
 });
 
-    /*if(fnameValue === '' && lnameValue === '' && emailValue === '' && subjectValue === '' && messageValue === ''){
-        fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your First Name.';
-        lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your Last Name.';
-        emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your Email.';
-        subjectError.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your Subject.';
-        messageError.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your Message.';
-    }*/
 function validateForm(){
     const fnameValue   = fname_input.value;
     const lnameValue   = lname_input.value;
     const emailValue   = email_input.value;
     const subjectValue = subject_input.value;
     const messageValue = message_input.value;
-    const message = '';
+    var message1 = '';
+    var message2 = '';
+    var message3 = '';
+    var message4 = '';
+    var message5 = '';
 
-        if(fnameValue === ''){
-            fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your First Name.';
-            
-        }
-        else{
-            if(validateFirstname){
-                const message = 'true';
-            }
-        }
-        if(lnameValue === ''){
-            lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your Last Name.';
-        }
-        if(emailValue === ''){
-            emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your Email.';
-        }
-        if(subjectValue === ''){
-             subjectError.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your Subject.';
-        }
-        if(messageValue === ''){
-            messageError.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your Message.';
-        }
-    /*if(fnameValue === '' && lnameValue === '' && emailValue === '' && subjectValue === '' && messageValue === ''){
+    if(fnameValue === ''){
+        fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your First Name.';  
     }
-    else if(fnameValue === '' || lnameValue === '' || emailValue === '' || subjectValue === '' || messageValue === ''){
-            alert('Fill the empty field(s).');
-    }*/
-    /*else if(fnameValue != '' || lnameValue != '' || emailValue != '' || subjectValue != '' || messageValue != '') {
-            if(validateFirstname() || validateLastname() || validateEmail() || validateSubject() || validateMessage()){
-                alert('Successfully Submitted');
-            }
-    }*/
+    if(lnameValue === ''){
+        lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your Last Name.';
+    }
+    if(emailValue === ''){
+        emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your Email.';  
+    }
+    if(subjectValue === ''){
+        subjectError.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your Subject.';  
+    }
+    if(messageValue === ''){
+        messageError.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your Message.';   
+    }
+
+    else if(validateFirstname() && validateLastname() && validateEmail() && validateSubject() && validateMessage()){
+        alert('Successfully Submitted');
+    }
+    else{
+        alert('Please check if the structure of inputs is correct!');
+    }
+    
 }
 const validateNameStructure = (name) => {
     return name.match(/^[a-zA-Z]{3,}$/);
