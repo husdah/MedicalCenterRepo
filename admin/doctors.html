@@ -194,24 +194,25 @@
                         </label>
 
                         <label>
-                            <select id="doctorClinic" name="doctorClinic" class="input s2">
+                            <select id="doctorClinic" name="doctorClinic" class="input s2" required>
+                                <option value="clinic">Choose Profession</option>
                                 <option value="Surgery">Surgery</option>
                                 <option value="Cardiology">Cardiology</option>
                                 <option value="Physio">Physio</option>
                                 <option value="Dental">Dental</option>
                             </select>
-                            <span>Clinic</span>
+                            <span id="doctorClinicError">Clinic</span>
                         </label> 
                             
                         <label>
-                            <input required="" placeholder="" type="password" class="input">
-                            <span>Password</span>
+                            <input id="doctorPass" name="doctorPass" required placeholder="" type="password" class="input">
+                            <span id="doctorPassError" class="sm">Password</span>
                         </label>
                         <label>
-                            <input required="" placeholder="" type="password" class="input">
-                            <span>Confirm password</span>
+                            <input id="doctorPassConfirm" name="doctorPassConfirm" required placeholder="" type="password" class="input">
+                            <span id="doctorPassConfirmError">Confirm password</span>
                         </label>
-                        <button class="submit">Submit</button>
+                        <button id="addDoctorFormBtn" type="button" class="submit">Submit</button>
                     </form>
                 </div>
                 <!-- End of Reminders-->
@@ -227,6 +228,7 @@
     <script src="assets/js/index.js"></script>
     <script src="assets/js/expandSearchBox.js"></script>
     <script src="assets/js/autocomplete.js"></script> 
+    <script src="assets/js/validation.js"></script> 
 
     <script> 
         $('.imageLB').magnificPopup({
