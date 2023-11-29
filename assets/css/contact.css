@@ -37,7 +37,7 @@ ul.breadcrumb li a:hover{
     color: #fff;
 }
 .contact.container{
-    height: 600px;
+    height: 630px;
     width: 85%;
     display: flex;
     grid-template-columns: 70% 30%;
