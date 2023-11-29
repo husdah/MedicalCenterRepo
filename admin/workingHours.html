@@ -378,11 +378,12 @@
                         <i class='bx bx-timer'></i>
                         <h3>Working Hours</h3>
                     </div>
-                    <form class="form">
+                    <form class="form" id="manageWHForm">
                         <p class="title">Manage WH</p>
                         <p class="message">Please Enter The Needed Information. </p>
                         <label>
-                            <select name="" id="" class="input">
+                            <select name="WHDay" id="WHDay" class="input" required>
+                                <option value="WHDay">Day</option>
                                 <option value="Monday">Monday</option>
                                 <option value="Tuesday">Tuesday</option>
                                 <option value="Wednesday">Wednesday</option>
@@ -391,27 +392,27 @@
                                 <option value="Saturday">Saturday</option>
                                 <option value="Sunday">Sunday</option>
                             </select>
-                            <span>Day</span>
+                            <span id="WHDayError">WHD</span>
                         </label>
 
                         <div class="flex">
                             <label>From:
-                                <input required="" placeholder="" type="time" class="input">
-                                <!-- <span>From</span> -->
+                                <input id="WHFrom" name="WHFrom" required placeholder="" type="time" class="input">
+                                <p id="WHFromError" class="imgError">From</p>
                             </label>
                     
                             <label>To:
-                                <input required="" placeholder="" type="time" class="input">
-                                <!-- <span>To</span> -->
+                                <input id="WHTO" name="WHTO" required placeholder="" type="time" class="input">
+                                <p id="WHTOError" class="imgError">To</p>
                             </label>
                         </div>                        
                         
                         <label class="check-container" id="check_display">Closed
-                            <input type="checkbox" name="closed">
+                            <input type="checkbox" name="closed" id="closed">
                             <span class="checkmark"></span>
                         </label>
 
-                        <button class="submit">Submit</button>
+                        <button id="manageWHFormBtn" type="button" class="submit">Submit</button>
                     </form>
                 </div>
                 <!-- End of Reminders-->
@@ -427,6 +428,7 @@
     <script src="assets/js/index.js"></script>
     <script src="assets/js/expandSearchBox.js"></script>
     <script src="assets/js/autocomplete.js"></script> 
+    <script src="assets/js/validation.js"></script> 
 
     <script> 
         $('.imageLB').magnificPopup({

@@ -181,21 +181,23 @@
                         <i class='bx bx-clinic'></i>
                         <h3 id="FormTitle">ADD Clinic</h3>
                     </div>
-                    <form class="form">
+                    <form class="form" id="addClinicForm">
                         <p class="title">Fill The Form</p>
                         <p class="message">Please Enter The Needed Information. </p>
 
                         <label>
-                            <input required="" placeholder="" type="text" class="input">
-                            <span>Clinic name</span>
+                            <input id="clinicName" name="clinicName" required placeholder="" type="text" class="input">
+                            <span id="clinicNameError">Clinic name</span>
                         </label>           
                         <label>
-                            <textarea class="input" name="description" id="" cols="30" rows="5" placeholder="Enter Description"></textarea>
+                            <textarea class="input" name="clinicDesc" id="clinicDesc" required cols="30" rows="5" maxlength="50" placeholder="Enter Description"></textarea>
+                            <p id="clinicDescError">Counter</p>
                         </label> 
                         <label>
-                            <input required="" placeholder="Upload Image" type="file" class="input">
+                            <input id="clinicImg" name="clinicImg" required="" placeholder="Upload Image" type="file" accept="image/*" class="input">
+                            <p id="clinicImgError" class="imgError">error</p>
                         </label> 
-                        <button class="submit">Submit</button>
+                        <button id="addClinicFormBtn" type="button" class="submit">Submit</button>
                     </form>
                 </div>
                 <!-- End of Reminders-->
@@ -207,19 +209,21 @@
                     <i class='bx bx-pencil'></i>
                     <h3>Edit Clinic</h3>
                 </div>
-                <form class="form">
+                <form class="form" id="editClinicForm">
                     <p class="title">Fill The Form</p>
                     <p class="message">Please Enter The Needed Information. </p>
 
                     <label>
-                        <input required="" placeholder="" type="text" class="input">
-                        <span>Clinic name</span>
+                        <input id="editClinicName" name="editClinicName" required placeholder="" type="text" class="input">
+                        <span id="editClinicNameError">Clinic name</span>
                     </label>           
                     <label>
-                        <textarea class="input" name="description" id="" cols="30" rows="5" placeholder="Enter Description"></textarea>
+                        <textarea id="editClinicDesc" name="editClinicDesc" class="input" name="description" required cols="30" rows="5" maxlength="50" placeholder="Enter Description"></textarea>
+                        <p id="editClinicDescError">Counter</p>
                     </label> 
                     <label>
-                        <input required="" placeholder="Upload Image" type="file" class="input">
+                        <input  id="editClinicImg" name="editClinicImg" placeholder="Upload Image" type="file" class="input">
+                        <p id="editClinicImgError" class="imgError">error</p>
                     </label>
                     <label for=""><span>Current Image</span></label>
                     <label>
@@ -228,7 +232,7 @@
                         <img src="../images/profile-1.jpg" height="50px" width="50px" alt="category Image">
                       </a>    
                     </label>
-                    <button class="submit">Save Changes</button>
+                    <button id="editClinicFormBtn" type="button" class="submit">Save Changes</button>
                 </form>
             </div>
             <!-- End of Reminders-->
@@ -247,6 +251,7 @@
     <script src="assets/js/changeView.js"></script>
     <script src="assets/js/expandSearchBox.js">     
     </script><script src="assets/js/autocomplete.js"></script> 
+    </script><script src="assets/js/validation.js"></script> 
 
     <script> 
         $('.imageLB').magnificPopup({

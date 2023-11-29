@@ -62,7 +62,7 @@ toggler.addEventListener('change', function () {
 
 const account = document.getElementById('account');
 const reqs = document.getElementsByClassName('req');
-account.addEventListener('change', function () {
+account?.addEventListener('change', function () {
     if (this.checked) {
         for (var i = 0; i < reqs.length; i++) {
             reqs[i].required = true;
@@ -78,7 +78,7 @@ account.addEventListener('change', function () {
 var firstInput = document.getElementById('firstInput');
 var secondInput = document.getElementById('secondInput');
 
-firstInput.addEventListener('input', function() {
+firstInput?.addEventListener('input', function() {
 
     if (firstInput.value.trim() === '' && secondInput.value.trim() === '') {
         firstInput.required = true;
@@ -89,7 +89,7 @@ firstInput.addEventListener('input', function() {
 
 });
 
-secondInput.addEventListener('input', function() {
+secondInput?.addEventListener('input', function() {
 
     if (firstInput.value.trim() === '' && secondInput.value.trim() === '') {
         firstInput.required = true;

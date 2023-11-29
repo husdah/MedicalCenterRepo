@@ -152,7 +152,7 @@
                       Change
                       <span class="underline"></span>
                     </button>
-                    <form class="form form-signup">
+                    <form class="form form-signup" id="adminForm">
                       <fieldset>
                         <legend>Please, enter your email, password and password confirmation for sign up.</legend>
                         <div class="input-block">
@@ -160,7 +160,8 @@
                             <!-- <input id="signup-name" type="text" required> -->
                             <div class="input-field"> 
                               <i class="bx bx-user"></i> 
-                              <input id="signup-name" type="text" placeholder="name" required>
+                              <input id="signup-name" name="signup-name" type="text" placeholder="name" required>
+                              <span id="signup-nameError">Error</span>
                             </div>
                           </div>
                         <div class="input-block">
@@ -168,7 +169,8 @@
                           <!-- <input id="signup-email" type="email" required> -->
                           <div class="input-field"> 
                             <i class="bx bx-envelope"></i> 
-                            <input id="signup-email" type="email" placeholder="email" required>
+                            <input id="signup-email" name="signup-email" type="email" placeholder="email" required>
+                            <span id="signup-emailError">Error</span>
                           </div>
                         </div>
                         <div class="input-block">
@@ -176,7 +178,8 @@
                           <!-- <input id="signup-password" type="password" required> -->
                           <div class="input-field"> 
                             <i class="bx bx-lock"></i> 
-                            <input id="signup-password" type="password" placeholder="password" required>
+                            <input id="signup-password" name="signup-password" type="password" placeholder="password" required>
+                            <span id="signup-passwordError">Error</span>
                           </div>
                         </div>
                         <div class="input-block">
@@ -184,11 +187,12 @@
                           <!-- <input id="signup-password-confirm" type="password" required> -->
                           <div class="input-field"> 
                             <i class="bx bx-lock"></i> 
-                            <input id="signup-password-confirm" type="password" placeholder="password" required>
+                            <input id="signup-passwordConfirm" name="signup-passwordConfirm" type="password" placeholder="password" required>
+                            <span id="signup-passwordConfirmError">Error</span>
                           </div>
                         </div>
                       </fieldset>
-                      <button type="submit" class="btn-signup">Save</button>
+                      <button id="adminFormBtn" type="button" class="btn-signup">Save</button>
                     </form>
                   </div>
                 </div>
@@ -201,6 +205,7 @@
     <script src="assets/js/index.js"></script>
     <script src="assets/js/animatedLogin.js"></script>
     <script src="assets/js/autocomplete.js"></script> 
-    
+    <script src="assets/js/validation.js"></script> 
+
 </body>
 </html>

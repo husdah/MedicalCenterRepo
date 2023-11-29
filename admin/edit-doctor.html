@@ -345,45 +345,46 @@
                         <i class='bx bx-pencil'></i>
                         <h3>Edit Doctor Account</h3>
                     </div>
-                    <form class="form">
+                    <form class="form" id="editDoctorForm">
                         <p class="title">Update Info</p>
                         <p class="message">Please Enter The Needed Information. </p>
                         <div class="flex">
                             <label>
-                                <input required="" placeholder="" type="text" class="input">
-                                <span>Firstname</span>
+                                <input id="editDoctorFN" name="editDoctorFN" required placeholder="" type="text" class="input">
+                                <span id="editDoctorFNError">Firstname</span>
                             </label>
                     
                             <label>
-                                <input required="" placeholder="" type="text" class="input">
-                                <span>Lastname</span>
+                                <input id="editDoctorLN" name="editDoctorLN" required placeholder="" type="text" class="input">
+                                <span id="editDoctorLNError">Lastname</span>
                             </label>
                         </div>  
                                 
                         <label>
-                            <input required="" placeholder="" type="email" class="input">
-                            <span>Email</span>
+                            <input id="editDoctorEmail" name="editDoctorEmail" required placeholder="" type="email" class="input">
+                            <span id="editDoctorEmailError">Email</span>
                         </label> 
              
                         <label>
-                            <select name="" id="" class="input s2">
+                            <select id="editDoctorClinic" name="editDoctorClinic" class="input s2" required>
+                                <option value="clinic">Choose Profession</option>
                                 <option value="Surgery">Surgery</option>
                                 <option value="Cardiology">Cardiology</option>
                                 <option value="Physio">Physio</option>
                                 <option value="Dental">Dental</option>
                             </select>
-                            <span>Clinic</span>
+                            <span id="editDoctorClinicError">Clinic</span>
                         </label> 
                             
                         <label>
-                            <input required="" placeholder="" type="password" class="input">
-                            <span>Password</span>
+                            <input id="editDoctorPass" name="editDoctorPass" required placeholder="" type="password" class="input">
+                            <span id="editDoctorPassError" class="sm">Password</span>
                         </label>
                         <label>
-                            <input required="" placeholder="" type="password" class="input">
-                            <span>Confirm password</span>
+                            <input id="editDoctorPassConfirm" name="editDoctorPassConfirm" required placeholder="" type="password" class="input">
+                            <span id="editDoctorPassConfirmError">Confirm password</span>
                         </label>
-                        <button class="submit">Save Changes</button>
+                        <button id="editDoctorFormBtn" type="button" class="submit">Save Changes</button>
                     </form>
                 </div>
                 <!-- End of Reminders-->
@@ -397,6 +398,7 @@
     <script src="assets/js/index.js"></script>
     <script src="assets/js/expandSearchBox.js"></script>
     <script src="assets/js/autocomplete.js"></script> 
+    <script src="assets/js/validation.js"></script> 
     
 </body>
 </html>

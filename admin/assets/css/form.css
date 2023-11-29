@@ -107,6 +107,7 @@
     background: var(--grey);
     font-weight: 600;
     color: var(--dark);
+    resize: none;
   }
 
   .form label input[type="date"]
@@ -137,6 +138,22 @@
     transition: 0.3s ease;
   }
 
+  .form label .input + p{
+    position: absolute;
+    left: 10px;
+    bottom: 15px !important;
+    color: grey;
+    font-size: 0.7em;
+    font-weight: 600;
+    cursor: text;
+    transition: 0.3s ease;
+    visibility: hidden;
+  }
+
+  .form label .input + .imgError{
+    bottom: 2px !important;
+  }
+
   .form label select{
     color: #0051a1 !important;
     font-size: 1rem;
@@ -159,9 +176,28 @@
     font-size: 0.7em;
     font-weight: 600;
   }
+
+    .form label .input:focus + .sm,.form label .input:valid + .sm{
+      font-size: 0.5em !important;
+      font-weight: 700 !important;
+  }
   
   .form label .input:valid + span {
     color: green;
+    /* color: var(--primary); */
+  }
+
+  .form label .input.required + span {
+    color: red;
+  }
+
+  .form label .input.required {
+    border: 1px solid red;
+  }
+
+  .form label .input + p.count {
+    visibility: visible;
+    color: red;
   }
   
   .submit {
@@ -173,6 +209,7 @@
     color: #fff;
     font-size: 16px;
     transform: .3s ease;
+    cursor: pointer;
   }
   
   .submit:hover {
