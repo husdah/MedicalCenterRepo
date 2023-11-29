@@ -107,6 +107,7 @@
     background: var(--grey);
     font-weight: 600;
     color: var(--dark);
+    resize: none;
   }
 
   .form label input[type="date"]
@@ -135,6 +136,18 @@
     font-size: 0.9em;
     cursor: text;
     transition: 0.3s ease;
+  }
+
+  .form label .input + p{
+    position: absolute;
+    left: 10px;
+    bottom: 15px !important;
+    color: grey;
+    font-size: 0.7em;
+    font-weight: 600;
+    cursor: text;
+    transition: 0.3s ease;
+    visibility: hidden;
   }
 
   .form label select{
@@ -172,6 +185,11 @@
   .form label .input.required {
     border: 1px solid red;
   }
+
+  .form label .input + p.count {
+    visibility: visible;
+    color: red;
+  }
   
   .submit {
     border: none;
@@ -182,6 +200,7 @@
     color: #fff;
     font-size: 16px;
     transform: .3s ease;
+    cursor: pointer;
   }
   
   .submit:hover {

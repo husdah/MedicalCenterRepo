@@ -181,21 +181,23 @@
                         <i class='bx bx-clinic'></i>
                         <h3 id="FormTitle">ADD Clinic</h3>
                     </div>
-                    <form class="form" onsubmit="validateForm(event)">
+                    <form class="form" id="myForm" onsubmit="validateForm(event)">
                         <p class="title">Fill The Form</p>
                         <p class="message">Please Enter The Needed Information. </p>
 
                         <label>
                             <input id="clinicName" name="clinicName" required="" placeholder="" type="text" class="input">
-                            <span>Clinic name</span>
+                            <span id="clinicNameError">Clinic name</span>
                         </label>           
                         <label>
-                            <textarea class="input" name="description" id="" cols="30" rows="5" placeholder="Enter Description"></textarea>
+                            <textarea class="input" name="clinicDesc" id="clinicDesc" required cols="30" rows="5" maxlength="50" placeholder="Enter Description"></textarea>
+                            <p id="clinicDescError">Counter</p>
                         </label> 
                         <label>
-                            <input id="clinicImg" name="clinicImg" required="" placeholder="Upload Image" type="file" class="input">
+                            <input id="clinicImg" name="clinicImg" required="" placeholder="Upload Image" type="file" accept="image/*" class="input">
+                            <p id="clinicImgError">error</p>
                         </label> 
-                        <button type="submit" class="submit">Submit</button>
+                        <button id="clinicFormBtn" type="submit" class="submit">Submit</button>
                     </form>
                 </div>
                 <!-- End of Reminders-->
