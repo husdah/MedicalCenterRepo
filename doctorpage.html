@@ -11,6 +11,7 @@
  
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Lexend:wght@300&family=Open+Sans:wght@400;500;700&family=Poppins:wght@200;300;400;500&family=Rubik&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900|Source+Sans+Pro:400,600,700">
@@ -68,21 +69,25 @@
                         <div class="inner-wrap">
                         
                           <form>
-                            <div class="form-name">
-                              <input type="text" name="name" id="name">
-                              <label for="name">Your name</label>
+                            <div class="form-name" id="forfirstname">
+                              <input type="text" name="name" id="fname">
+                              <label for="name">Your first name</label>
                             </div>
                             
-                            <div class="form-name">
+                            <div class="form-name" id="forlastname">
+                              <input type="text" name="lname" id="lname">
+                              <label for="email">Your last name</label>
+                            </div>
+                            <div class="form-name"  id="foremail">
                               <input type="email" name="email" id="email">
                               <label for="email">Your email</label>
                             </div>
-                            <div class="form-name">
-                              <input type="email" name="email" id="email">
-                              <label for="email">Your email</label>
-                            </div>
+                            <div class="form-name" id="forphone">
+                                <input type="text" name="phnum" id="phnum">
+                                <label for="phnum">Your phone number</label>
+                              </div>
                             
-                            <button type="submit" class="request disabled">
+                            <button type="submit" class="request disabled" id="btn">
                               Request appointment <br class="break">
                               <span>on</span>
                               <span class="day"></span>
@@ -171,6 +176,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.2/owl.carousel.min.js"></script>
     <script src="assets/js/calendar.js"></script>
+    <script src="assets/js/appointment.js"></script>
     
 </body>
 </html>
