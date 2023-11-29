@@ -1,63 +1,100 @@
-/* function validateForm(event) {
-    event.preventDefault();
-
-    const name = document.getElementById('clinicName').value;
-    const desc = document.getElementById('DescriptionInput').value;
-    const image = document.getElementById('clinicImg').value;
-
-    const nameRegex = /^[a-zA-Z ]+$/;
-
-    if (name === '' || !nameRegex.test(name)) {
-        document.getElementById('clinicName').classList.add("required");
-    } else if (desc === '' || !nameRegex.test(name)) {
-        document.getElementById('DescriptionInput').classList.add("required");
-    } else if (image === '') {
-        document.getElementById('clinicImg').classList.add("required");
-    }
-} */
-
-  // Function to validate name
-  function validateName(name) {
-    // Regular expression for a valid name (letters only)
-    var nameRegex = /^[a-zA-Z]+$/;
+// Function to validate name
+function validateName(name) {
+    /* var nameRegex = /^[a-zA-Z]+$/; */
+    var nameRegex = /^[a-zA-Z\s]+$/;
     return nameRegex.test(name);
-  }
+}
 
-  function validateNameSubmit(name,nameInput,errorName) {
+// Function to handle submit events
+function validateNameSubmit(name, nameInput, errorName) {
     if (name == '' || !validateName(name)) {
         nameInput.classList.add("required");
 
         if (name == '') {
-            errorName.textContent = 'name required'; 
-        }else if (!validateName(name)) {
-            errorName.textContent = 'Invalid name. Only letters are allowed.'; 
+            errorName.textContent = 'name required';
+            return false;
+        } else if (!validateName(name)) {
+            errorName.textContent = 'Invalid name. Only letters are allowed.';
+            return false;
         }
-
-    } else {
-        nameInput.classList.remove("required");
-        errorName.textContent = 'name'; 
     }
-  }
+    return true;
+}
 
-  function validateDescSubmit(name,nameInput,errorName) {
+// Function to handle submit events
+function validateDescSubmit(name, nameInput, errorName) {
     if (name == '' || !validateName(name) || name.length < 5 || name.length > 50) {
         nameInput.classList.add("required");
         errorName.classList.add("count");
         if (name == '') {
-            errorName.textContent = 'description required'; 
-        }else if (!validateName(name)) {
-            errorName.textContent = 'Invalid description. Only letters are allowed.'; 
-        }else if(name.length < 5){
+            errorName.textContent = 'description required';
+            return false;
+        } else if (!validateName(name)) {
+            errorName.textContent = 'Invalid description. Only letters are allowed.';
+            return false;
+        } else if (name.length < 5) {
             errorName.textContent = "min length: 5";
+            return false;
         }
-        else if(name.length > 50){
+        else if (name.length > 50) {
             errorElement.textContent = "max length: 50";
+            return false;
         }
     }
-  }
+    return true;
+}
 
-  // Function to handle input events
-  function handleInputNameEvent(event) {
+// Function to validate file
+function validateFile() {
+    var fileInput = document.getElementById('clinicImg');
+    var errorElement = document.getElementById('clinicImgError');
+
+    if (fileInput.files.length <= 0) {
+        fileInput.classList.add("required");
+        errorElement.classList.add("count");
+        errorElement.textContent = 'image required';
+        return false;
+    } else if (fileInput.files.length > 0) {
+        var allowedTypes = ['image/jpeg', 'image/png'];
+        var fileType = fileInput.files[0].type;
+
+        if (allowedTypes.indexOf(fileType) === -1) {
+            fileInput.classList.add("required");
+            errorElement.classList.add("count");
+            errorElement.textContent = 'Invalid file type. Please choose a valid image file.';
+            return false;
+        }
+    }
+    errorElement.textContent = '';
+    fileInput.classList.remove("required");
+    errorElement.classList.remove("count");
+    return true;
+}
+
+// Function to validate file
+function validateFileEdit() {
+    var fileInput = document.getElementById('editClinicImg');
+    var errorElement = document.getElementById('editClinicImgError');
+
+    if (fileInput.files.length > 0) {
+        var allowedTypes = ['image/jpeg', 'image/png'];
+        var fileType = fileInput.files[0].type;
+
+        if (allowedTypes.indexOf(fileType) === -1) {
+            fileInput.classList.add("required");
+            errorElement.classList.add("count");
+            errorElement.textContent = 'Invalid file type. Please choose a valid image file.';
+            return false;
+        }
+    }
+    errorElement.textContent = '';
+    fileInput.classList.remove("required");
+    errorElement.classList.remove("count");
+    return true;
+}
+
+// Function to handle input events
+function handleInputNameEvent(event) {
     var inputElement = event.target;
     var errorElementId = inputElement.id + 'Error';
     var errorElement = document.getElementById(errorElementId);
@@ -66,18 +103,19 @@
         inputElement.classList.add("required");
 
         if (inputElement.value == '') {
-            errorElement.textContent = 'name required'; 
-        }else if (!validateName(inputElement.value)) {
-            errorElement.textContent = 'Invalid name. Only letters are allowed.'; 
+            errorElement.textContent = 'name required';
+        } else if (!validateName(inputElement.value)) {
+            errorElement.textContent = 'Invalid name. Only letters are allowed.';
         }
 
     } else {
         inputElement.classList.remove("required");
-        errorElement.textContent = 'name'; 
+        errorElement.textContent = 'name';
     }
-  }
+}
 
-  function handleInputDescEvent(event) {
+// Function to handle input events
+function handleInputDescEvent(event) {
     var inputElement = event.target;
     var errorElementId = inputElement.id + 'Error';
     var errorElement = document.getElementById(errorElementId);
@@ -85,96 +123,90 @@
     if (inputElement.value == '' || !validateName(inputElement.value) || inputElement.value.length < 5 || inputElement.value.length >= 50) {
         inputElement.classList.add("required");
         errorElement.classList.add("count");
-      
+
         if (inputElement.value == '') {
-            errorElement.textContent = 'description required'; 
-        }else if (!validateName(inputElement.value)) {
-            errorElement.textContent = 'Invalid description. Only letters are allowed.'; 
-        }else if(inputElement.value.length < 5){
+            errorElement.textContent = 'description required';
+        } else if (!validateName(inputElement.value)) {
+            errorElement.textContent = 'Invalid description. Only letters are allowed.';
+        } else if (inputElement.value.length < 5) {
             errorElement.textContent = "min length: 5";
         }
-        else if(inputElement.value.length >= 50){
+        else if (inputElement.value.length >= 50) {
             errorElement.textContent = "max length: 50";
         }
 
-    }else if(inputElement.value.length < 50 &&  (inputElement.value.length) > 5){
+    } else if (inputElement.value.length < 50 && (inputElement.value.length) > 5) {
         errorElement.classList.add("count");
-        errorElement.textContent = " counter:" +inputElement.value.length;
+        errorElement.textContent = " counter:" + inputElement.value.length;
     }
-     else {
+    else {
         inputElement.classList.remove("required");
         errorElement.classList.remove("count");
     }
 
-  }
+}
 
-  function validateFile() {
-    var fileInput = document.getElementById('clinicImg');
-    var errorElement = document.getElementById('clinicImgError');
+// Add event listeners to input fields
+//add clinic form
+var clinicNameInput = document.getElementById('clinicName');
+clinicNameInput.addEventListener('input', handleInputNameEvent);
 
-    if (fileInput.files.length > 0) {
-      var allowedTypes = ['image/jpeg', 'image/png'];
-      var fileType = fileInput.files[0].type;
+var clinicDescInput = document.getElementById('clinicDesc');
+clinicDescInput.addEventListener('input', handleInputDescEvent);
 
-      if (allowedTypes.indexOf(fileType) === -1) {
-        errorElement.classList.add("count");
-        errorElement.textContent = 'Invalid file type. Please choose a valid image file.';
-        /* return false; */
-      }
-    }
+var clinicImgInput = document.getElementById('clinicImg');
+var errorImg = document.getElementById('clinicImgError');
+clinicImgInput.addEventListener("change", validateFile);
 
-/*     errorElement.textContent = ''; // Clear error message
-    return true; */
-  }
+//edit clinic form
+var editClinicNameInput = document.getElementById('editClinicName');
+editClinicNameInput.addEventListener('input', handleInputNameEvent);
 
-  // Add event listeners to input fields
-  var clinicNameInput = document.getElementById('clinicName');
-  clinicNameInput.addEventListener('input', handleInputNameEvent);
+var editClinicDescInput = document.getElementById('editClinicDesc');
+editClinicDescInput.addEventListener('input', handleInputDescEvent);
 
-  var clinicDescInput = document.getElementById('clinicDesc');
-  clinicDescInput.addEventListener('input', handleInputDescEvent);
+var editClinicImgInput = document.getElementById('editClinicImg');
+var errorImg = document.getElementById('editClinicImgError');
+editClinicImgInput.addEventListener("change", validateFileEdit);
 
-  var clinicImgInput = document.getElementById('clinicImg').value;
 
-/*   let clinicFormBtn = document.getElementById("clinicFormBtn");
-clinicFormBtn.addEventListener("click", () =>{
+// event lister on Form Buttons
+let addClinicFormBtn = document.getElementById("addClinicFormBtn");
+addClinicFormBtn.addEventListener("click", () => {
     let name = clinicNameInput.value;
     let desc = clinicDescInput.value;
-    let image = clinicImgInput.value;
 
     let errorName = document.getElementById("clinicNameError");
     let errorDesc = document.getElementById("clinicDescError");
 
-    validateNameSubmit(name,clinicNameInput,errorName);
-    validateDescSubmit(desc,clinicDescInput,errorDesc);
+    validateNameSubmit(name, clinicNameInput, errorName);
+    validateDescSubmit(desc, clinicDescInput, errorDesc);
     validateFile();
-   
-}); */
 
-
-document.getElementById('myForm').addEventListener('submit', function(event) {
-    let name = clinicNameInput.value;
-    let desc = clinicDescInput.value;
-    let image = clinicImgInput.value;
-
-     let errorName = document.getElementById("clinicNameError");
-    let errorDesc = document.getElementById("clinicDescError");
-    clinicNameInput.classList.add("required");
-    errorName.textContent = 'name required'; 
-   /* validateNameSubmit(name,clinicNameInput,errorName);
-    validateDescSubmit(desc,clinicDescInput,errorDesc);
-    validateFile(); */
-
-    // Perform your custom validation here
-    if (name == '' || desc == '') {
-      // Prevent form submission
-      event.preventDefault();
-      // Additional actions or error messages can be added here
-      clinicNameInput.classList.add("required");
-        errorName.textContent = 'name required'; 
-    
+    if (!validateNameSubmit(name, clinicNameInput, errorName) || !validateDescSubmit(desc, clinicDescInput, errorDesc) || !validateFile()) {
+        /* alert("invalid form"); */
     } else {
-      // Continue with form submission
-      // (by default, the form will submit if event.preventDefault() is not called)
+        document.getElementById('addClinicForm').submit();
     }
-  });
+
+});
+
+let editClinicFormBtn = document.getElementById("editClinicFormBtn");
+editClinicFormBtn.addEventListener("click", () => {
+    let name = editClinicNameInput.value;
+    let desc = editClinicDescInput.value;
+
+    let errorName = document.getElementById("editClinicNameError");
+    let errorDesc = document.getElementById("editClinicDescError");
+
+    validateNameSubmit(name, editClinicNameInput, errorName);
+    validateDescSubmit(desc, editClinicDescInput, errorDesc);
+    validateFile();
+
+    if (!validateNameSubmit(name, editClinicNameInput, errorName) || !validateDescSubmit(desc, editClinicDescInput, errorDesc) || !validateFileEdit()) {
+        /* alert("invalid form"); */
+    } else {
+        document.getElementById('editClinicForm').submit();
+    }
+
+});

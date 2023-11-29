@@ -150,6 +150,10 @@
     visibility: hidden;
   }
 
+  .form label .input + .imgError{
+    bottom: 2px !important;
+  }
+
   .form label select{
     color: #0051a1 !important;
     font-size: 1rem;

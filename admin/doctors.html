@@ -173,28 +173,28 @@
                         <i class='bx bx-first-aid'></i>
                         <h3>Create Doctor Account</h3>
                     </div>
-                    <form class="form">
+                    <form class="form" id="addDoctorForm">
                         <p class="title">Register Doctor</p>
                         <p class="message">Please Enter The Needed Information. </p>
                         <div class="flex">
                             <label>
-                                <input required="" placeholder="" type="text" class="input">
-                                <span>Firstname</span>
+                                <input id="doctorFN" name="doctorFN" required placeholder="" type="text" class="input">
+                                <span id="doctorFNError">Firstname</span>
                             </label>
                     
                             <label>
-                                <input required="" placeholder="" type="text" class="input">
-                                <span>Lastname</span>
+                                <input id="doctorLN" name="doctorLN" required placeholder="" type="text" class="input">
+                                <span id="doctorLNError">Lastname</span>
                             </label>
                         </div>  
                                 
                         <label>
-                            <input required="" placeholder="" type="email" class="input">
-                            <span>Email</span>
+                            <input id="doctorEmail" name="doctorEmail" required placeholder="" type="email" class="input">
+                            <span id="doctorEmailError">Email</span>
                         </label>
 
                         <label>
-                            <select name="" id="" class="input s2">
+                            <select id="doctorClinic" name="doctorClinic" class="input s2">
                                 <option value="Surgery">Surgery</option>
                                 <option value="Cardiology">Cardiology</option>
                                 <option value="Physio">Physio</option>
