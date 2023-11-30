@@ -25,11 +25,6 @@ function validateForm(){
     const emailValue   = email_input.value;
     const subjectValue = subject_input.value;
     const messageValue = message_input.value;
-    var message1 = '';
-    var message2 = '';
-    var message3 = '';
-    var message4 = '';
-    var message5 = '';
 
     if(fnameValue === ''){
         fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your First Name.';  
@@ -50,7 +45,7 @@ function validateForm(){
     else if(validateFirstname() && validateLastname() && validateEmail() && validateSubject() && validateMessage()){
         alert('Successfully Submitted');
     }
-    else{
+    else if(validateFirstname() || validateLastname() || validateEmail() || validateSubject() || validateMessage()){
         alert('Please check if the structure of inputs is correct!');
     }
     
