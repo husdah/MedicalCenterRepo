@@ -16,20 +16,20 @@ function validateEmail(email) {
     return emailRegex.test(email);
 }
 
-// Function to validate email
+// Function to validate password
 function validatePass(pass) {
     var passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     return passRegex.test(pass);
 }
 
-// Function to validate email
+// Function to validate phone
 function validatePhone(phone) {
     var lebanesePhoneRegex = /^\d{8}$/;
     /* var lebanesePhoneRegex = /^(?:\+961|0\d{1,2}) \d{3} \d{3}$/; */
     return lebanesePhoneRegex.test(phone);
 }
 
-// Function to handle submit events
+// Function to handle submit Name events
 function validateNameSubmit(name, nameInput, errorName) {
     if (name == '' || !validateName(name)) {
         nameInput.classList.add("required");
@@ -45,7 +45,7 @@ function validateNameSubmit(name, nameInput, errorName) {
     return true;
 }
 
-// Function to handle submit events
+// Function to handle submit Email events
 function validateEmailSubmit(email, emailInput, erroremail) {
     if (email == '' || !validateEmail(email)) {
         emailInput.classList.add("required");
@@ -61,7 +61,7 @@ function validateEmailSubmit(email, emailInput, erroremail) {
     return true;
 }
 
-// Function to handle submit events
+// Function to handle submit Phone events
 function validatePhoneSubmit(phone, phoneInput, errorPhone) {
     if (phone == '' || !validatePhone(phone)) {
         phoneInput.classList.add("required");
@@ -77,7 +77,7 @@ function validatePhoneSubmit(phone, phoneInput, errorPhone) {
     return true;
 }
 
-// Function to handle submit events
+// Function to handle submit Password events
 function validatePassSubmit(pass, passInput, errorPass) {
     if (pass == '' || !validatePass(pass)) {
         passInput.classList.add("required");
@@ -93,6 +93,7 @@ function validatePassSubmit(pass, passInput, errorPass) {
     return true;
 }
 
+// Function to handle submit ConfPass events
 function ConfirmPassSubmit(confPass, confPassInput, pass, errorconfPass) {
     if (confPass == '' || confPass != pass) {
         confPassInput.classList.add("required");
@@ -108,7 +109,7 @@ function ConfirmPassSubmit(confPass, confPassInput, pass, errorconfPass) {
     return true;
 }
 
-// Function to handle submit events
+// Function to handle submit Desc events
 function validateDescSubmit(name, nameInput, errorName) {
     if (name == '' || !validateDesc(name) || name.length < 5 || name.length > 50) {
         nameInput.classList.add("required");
@@ -131,7 +132,7 @@ function validateDescSubmit(name, nameInput, errorName) {
     return true;
 }
 
-// Function to handle submit events
+// Function to handle submit SelectBOX events
 function validateSelectSubmit(selectInput, errorselect) {
     var selectedOption = selectInput.options[selectInput.selectedIndex];
     var selectedValue = selectedOption.value;
@@ -146,7 +147,7 @@ function validateSelectSubmit(selectInput, errorselect) {
     return true;
 }
 
-// Function to handle submit events
+// Function to handle submit DOB events
 function validateDOBSubmit(dobInput, errorDob) {
     var dobValue = dobInput.value;
     var dobDate = new Date(dobValue);
@@ -169,7 +170,7 @@ function validateDOBSubmit(dobInput, errorDob) {
     return true;
 }
 
-// Function to handle submit events
+// Function to handle submit GENDER events
 function validateGenderSubmit(maleInput, femaleInput) {
 
     if (!maleInput.checked && !femaleInput.checked) {
@@ -179,7 +180,7 @@ function validateGenderSubmit(maleInput, femaleInput) {
     return true;
 }
 
-// Function to handle submit events
+// Function to handle submit NUMBER events
 function validateNumberSubmit(numberInput, errorNumber) {
 
     if (numberInput.value == '' || numberInput.value <= 0) {
@@ -190,7 +191,7 @@ function validateNumberSubmit(numberInput, errorNumber) {
     return true;
 }
 
-// Function to handle submit events
+// Function to handle submit TIME events
 function validateTimeSubmit(timeInput, errorTime) {
 
     if (timeInput.value == '') {
@@ -229,7 +230,7 @@ function validateFile() {
     return true;
 }
 
-// Function to validate file
+// Function to validate Edit file 
 function validateFileEdit() {
     var fileInput = document.getElementById('editClinicImg');
     var errorElement = document.getElementById('editClinicImgError');
@@ -251,7 +252,7 @@ function validateFileEdit() {
     return true;
 }
 
-// Function to handle input events
+// Function to handle input NAME events
 function handleInputNameEvent(event) {
     var inputElement = event.target;
     var errorElementId = inputElement.id + 'Error';
@@ -272,7 +273,7 @@ function handleInputNameEvent(event) {
     }
 }
 
-// Function to handle input events
+// Function to handle input EMAIL events
 function handleInputEmailEvent(event) {
     var inputElement = event.target;
     var errorElementId = inputElement.id + 'Error';
@@ -293,7 +294,7 @@ function handleInputEmailEvent(event) {
     }
 }
 
-// Function to handle input events
+// Function to handle input PHONE events
 function handleInputPhoneEvent(event) {
     var inputElement = event.target;
     var errorElementId = inputElement.id + 'Error';
@@ -314,7 +315,7 @@ function handleInputPhoneEvent(event) {
     }
 }
 
-// Function to handle input events
+// Function to handle input PASSWORD events
 function handleInputPassEvent(event) {
     var inputElement = event.target;
     var errorElementId = inputElement.id + 'Error';
@@ -335,7 +336,7 @@ function handleInputPassEvent(event) {
     }
 }
 
-// Function to handle input events
+// Function to handle input CONFPASS events
 function handleInputConfPassEvent(event) {
     var inputElement = event.target;
     var errorElementId = inputElement.id + 'Error';
@@ -370,7 +371,7 @@ function handleInputConfPassEvent(event) {
     }
 }
 
-// Function to handle input events
+// Function to handle input DESC events
 function handleInputDescEvent(event) {
     var inputElement = event.target;
     var errorElementId = inputElement.id + 'Error';
@@ -402,7 +403,7 @@ function handleInputDescEvent(event) {
 
 }
 
-// Function to handle input events
+// Function to handle CHANGE SELECTBOX events
 function handleSelectEvent(event) {
     var inputElement = event.target;
     var errorElementId = inputElement.id + 'Error';
@@ -421,7 +422,7 @@ function handleSelectEvent(event) {
     }
 }
 
-// Function to handle input events
+// Function to handle input DOB events
 function handleDOBEvent(event) {
     var inputElement = event.target;
     var errorElementId = inputElement.id + 'Error';
@@ -448,7 +449,7 @@ function handleDOBEvent(event) {
     }
 }
 
-// Function to handle input events
+// Function to handle input URGENT BT events
 function handleInputNumberUrgentBTEvent(event) {
     var inputElement = event.target;
     var errorElementId = inputElement.id + 'Error';
@@ -464,7 +465,7 @@ function handleInputNumberUrgentBTEvent(event) {
     }
 }
 
-// Function to handle input events
+// Function to handle input TIME events
 function handleInputTimeEvent(event) {
     var inputElement = event.target;
     var errorElementId = inputElement.id + 'Error';
@@ -604,226 +605,271 @@ WHTOInput?.addEventListener('input', handleInputTimeEvent);
 
 // event lister on Form Buttons
 let addClinicFormBtn = document.getElementById("addClinicFormBtn");
-addClinicFormBtn?.addEventListener("click", () => {
-    let name = clinicNameInput.value;
-    let desc = clinicDescInput.value;
+addClinicFormBtn?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
 
-    let errorName = document.getElementById("clinicNameError");
-    let errorDesc = document.getElementById("clinicDescError");
+    }else{
+        let name = clinicNameInput.value;
+        let desc = clinicDescInput.value;
 
-    validateNameSubmit(name, clinicNameInput, errorName);
-    validateDescSubmit(desc, clinicDescInput, errorDesc);
-    validateFile();
+        let errorName = document.getElementById("clinicNameError");
+        let errorDesc = document.getElementById("clinicDescError");
 
-    if (!validateNameSubmit(name, clinicNameInput, errorName) || !validateDescSubmit(desc, clinicDescInput, errorDesc) || !validateFile()) {
-        /* alert("invalid form"); */
-    } else {
-        document.getElementById('addClinicForm').submit();
+        validateNameSubmit(name, clinicNameInput, errorName);
+        validateDescSubmit(desc, clinicDescInput, errorDesc);
+        validateFile();
+
+        if (!validateNameSubmit(name, clinicNameInput, errorName) || !validateDescSubmit(desc, clinicDescInput, errorDesc) || !validateFile()) {
+            /* alert("invalid form"); */
+        } else {
+            document.getElementById('addClinicForm').submit();
+        }
     }
-
 });
 
 let editClinicFormBtn = document.getElementById("editClinicFormBtn");
-editClinicFormBtn?.addEventListener("click", () => {
-    let name = editClinicNameInput.value;
-    let desc = editClinicDescInput.value;
+editClinicFormBtn?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
 
-    let errorName = document.getElementById("editClinicNameError");
-    let errorDesc = document.getElementById("editClinicDescError");
-
-    validateNameSubmit(name, editClinicNameInput, errorName);
-    validateDescSubmit(desc, editClinicDescInput, errorDesc);
-    validateFile();
-
-    if (!validateNameSubmit(name, editClinicNameInput, errorName) || !validateDescSubmit(desc, editClinicDescInput, errorDesc) || !validateFileEdit()) {
-        /* alert("invalid form"); */
-    } else {
-        document.getElementById('editClinicForm').submit();
+    }else{
+        let name = editClinicNameInput.value;
+        let desc = editClinicDescInput.value;
+    
+        let errorName = document.getElementById("editClinicNameError");
+        let errorDesc = document.getElementById("editClinicDescError");
+    
+        validateNameSubmit(name, editClinicNameInput, errorName);
+        validateDescSubmit(desc, editClinicDescInput, errorDesc);
+        validateFile();
+    
+        if (!validateNameSubmit(name, editClinicNameInput, errorName) || !validateDescSubmit(desc, editClinicDescInput, errorDesc) || !validateFileEdit()) {
+            /* alert("invalid form"); */
+        } else {
+            document.getElementById('editClinicForm').submit();
+        }
     }
-
 });
 
 let addDoctorFormBtn = document.getElementById("addDoctorFormBtn");
-addDoctorFormBtn?.addEventListener("click", () => {
-    let firstName= doctorFNInput.value;
-    let lastName= doctorLNInput.value;
-    let email = doctorEmailInput.value;
-    /* let clinic = doctorClinicInput.value; */
-    let password = doctorPassInput.value;
-    let confirm = doctorPassConfirmInput.value;
+addDoctorFormBtn?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
 
-    let errorFN = document.getElementById("doctorFNError");
-    let errorLN = document.getElementById("doctorLNError");
-    let errorEmail = document.getElementById("doctorEmailError");
-    let errorClinic = document.getElementById("doctorClinicError");
-    let errorPass = document.getElementById("doctorPassError");
-    let errorPassConfirm = document.getElementById("doctorPassConfirmError");
-
-    validateNameSubmit(firstName, doctorFNInput, errorFN);
-    validateNameSubmit(lastName, doctorLNInput, errorLN);
-    validateEmailSubmit(email, doctorEmailInput, errorEmail);
-    validatePassSubmit(password, doctorPassInput, errorPass);
-    ConfirmPassSubmit(confirm, doctorPassConfirmInput,password, errorPassConfirm);
-    validateSelectSubmit(doctorClinicInput, errorClinic);
-
-    if (!validateNameSubmit(firstName, doctorFNInput, errorFN) || !validateNameSubmit(lastName, doctorLNInput, errorLN) || !validateEmailSubmit(email, doctorEmailInput, errorEmail) || !validatePassSubmit(password, doctorPassInput, errorPass) || !ConfirmPassSubmit(confirm, doctorPassConfirmInput,password, errorPassConfirm) || !validateSelectSubmit(doctorClinicInput, errorClinic)) {
-        /* alert("invalid form"); */
-    } else {
-       /*  alert("done"); */
-        document.getElementById('addDoctorForm').submit();
-        
+    }else{
+        let firstName= doctorFNInput.value;
+        let lastName= doctorLNInput.value;
+        let email = doctorEmailInput.value;
+        /* let clinic = doctorClinicInput.value; */
+        let password = doctorPassInput.value;
+        let confirm = doctorPassConfirmInput.value;
+    
+        let errorFN = document.getElementById("doctorFNError");
+        let errorLN = document.getElementById("doctorLNError");
+        let errorEmail = document.getElementById("doctorEmailError");
+        let errorClinic = document.getElementById("doctorClinicError");
+        let errorPass = document.getElementById("doctorPassError");
+        let errorPassConfirm = document.getElementById("doctorPassConfirmError");
+    
+        validateNameSubmit(firstName, doctorFNInput, errorFN);
+        validateNameSubmit(lastName, doctorLNInput, errorLN);
+        validateEmailSubmit(email, doctorEmailInput, errorEmail);
+        validatePassSubmit(password, doctorPassInput, errorPass);
+        ConfirmPassSubmit(confirm, doctorPassConfirmInput,password, errorPassConfirm);
+        validateSelectSubmit(doctorClinicInput, errorClinic);
+    
+        if (!validateNameSubmit(firstName, doctorFNInput, errorFN) || !validateNameSubmit(lastName, doctorLNInput, errorLN) || !validateEmailSubmit(email, doctorEmailInput, errorEmail) || !validatePassSubmit(password, doctorPassInput, errorPass) || !ConfirmPassSubmit(confirm, doctorPassConfirmInput,password, errorPassConfirm) || !validateSelectSubmit(doctorClinicInput, errorClinic)) {
+            /* alert("invalid form"); */
+        } else {
+           /*  alert("done"); */
+            document.getElementById('addDoctorForm').submit();
+            
+        }
     }
-
 });
 
 let editDoctorFormBtn = document.getElementById("editDoctorFormBtn");
-editDoctorFormBtn?.addEventListener("click", () => {
-    let firstName= editDoctorFNInput.value;
-    let lastName= editDoctorLNInput.value;
-    let email = editDoctorEmailInput.value;
-    /* let clinic = editDoctorClinicInput.value; */
-    let password = editDoctorPassInput.value;
-    let confirm = editDoctorPassConfirmInput.value;
+editDoctorFormBtn?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
 
-    let errorFN = document.getElementById("editDoctorFNError");
-    let errorLN = document.getElementById("editDoctorLNError");
-    let errorEmail = document.getElementById("editDoctorEmailError");
-    let errorClinic = document.getElementById("editDoctorClinicError");
-    let errorPass = document.getElementById("editDoctorPassError");
-    let errorPassConfirm = document.getElementById("editDoctorPassConfirmError");
-
-    validateNameSubmit(firstName, editDoctorFNInput, errorFN);
-    validateNameSubmit(lastName, editDoctorLNInput, errorLN);
-    validateEmailSubmit(email, editDoctorEmailInput, errorEmail);
-    validatePassSubmit(password, editDoctorPassInput, errorPass);
-    ConfirmPassSubmit(confirm, editDoctorPassConfirmInput,password, errorPassConfirm);
-    validateSelectSubmit(editDoctorClinicInput, errorClinic);
-
-    if (!validateNameSubmit(firstName, editDoctorFNInput, errorFN) || !validateNameSubmit(lastName, editDoctorLNInput, errorLN) || !validateEmailSubmit(email, editDoctorEmailInput, errorEmail) || !validatePassSubmit(password, editDoctorPassInput, errorPass) || !ConfirmPassSubmit(confirm, editDoctorPassConfirmInput,password, errorPassConfirm) || !validateSelectSubmit(editDoctorClinicInput, errorClinic)) {
-        /* alert("invalid form"); */
-    } else {
-       /*  alert("done"); */
-        document.getElementById('editDoctorForm').submit();
-        
+    }else{
+        let firstName= editDoctorFNInput.value;
+        let lastName= editDoctorLNInput.value;
+        let email = editDoctorEmailInput.value;
+        /* let clinic = editDoctorClinicInput.value; */
+        let password = editDoctorPassInput.value;
+        let confirm = editDoctorPassConfirmInput.value;
+    
+        let errorFN = document.getElementById("editDoctorFNError");
+        let errorLN = document.getElementById("editDoctorLNError");
+        let errorEmail = document.getElementById("editDoctorEmailError");
+        let errorClinic = document.getElementById("editDoctorClinicError");
+        let errorPass = document.getElementById("editDoctorPassError");
+        let errorPassConfirm = document.getElementById("editDoctorPassConfirmError");
+    
+        validateNameSubmit(firstName, editDoctorFNInput, errorFN);
+        validateNameSubmit(lastName, editDoctorLNInput, errorLN);
+        validateEmailSubmit(email, editDoctorEmailInput, errorEmail);
+        validatePassSubmit(password, editDoctorPassInput, errorPass);
+        ConfirmPassSubmit(confirm, editDoctorPassConfirmInput,password, errorPassConfirm);
+        validateSelectSubmit(editDoctorClinicInput, errorClinic);
+    
+        if (!validateNameSubmit(firstName, editDoctorFNInput, errorFN) || !validateNameSubmit(lastName, editDoctorLNInput, errorLN) || !validateEmailSubmit(email, editDoctorEmailInput, errorEmail) || !validatePassSubmit(password, editDoctorPassInput, errorPass) || !ConfirmPassSubmit(confirm, editDoctorPassConfirmInput,password, errorPassConfirm) || !validateSelectSubmit(editDoctorClinicInput, errorClinic)) {
+            /* alert("invalid form"); */
+        } else {
+           /*  alert("done"); */
+            document.getElementById('editDoctorForm').submit();
+            
+        }
     }
 
 });
 
 let addPatientFormBtn = document.getElementById("addPatientFormBtn");
-addPatientFormBtn?.addEventListener("click", () => {
-    let firstName= patientFNInput.value;
-    let lastName= patientLNInput.value;
-    /* let dateOfBirth = patientDOBInput.value; */
-    let email = patientEmailInput.value;
-    let phone = patientPhoneInput.value;
-    let password = patientPassInput.value;
-    let confirm = patientPassConfirmInput.value;
+addPatientFormBtn?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
 
-    let errorFN = document.getElementById("patientFNError");
-    let errorLN = document.getElementById("patientLNError");
-    let errorDOB = document.getElementById("patientDOBError");
-    let errorEmail = document.getElementById("patientEmailError");
-    let errorPhone = document.getElementById("patientPhoneError");
-    let errorBT = document.getElementById("patientBTError");
-    let errorPass = document.getElementById("patientPassError");
-    let errorPassConfirm = document.getElementById("patientPassConfirmError");
-
-    validateNameSubmit(firstName, patientFNInput, errorFN);
-    validateNameSubmit(lastName, patientLNInput, errorLN);
-    validateGenderSubmit(patientMaleCheck,patientFemaleCheck);
-    validateDOBSubmit(patientDOBInput, errorDOB);
-    validateSelectSubmit(patientBloodTypeInput, errorBT);
-    if(patientAccountCheck.checked){
-        validateEmailSubmit(email, patientEmailInput, errorEmail);
-        validatePhoneSubmit(phone, patientPhoneInput, errorPhone);
-        validatePassSubmit(password, patientPassInput, errorPass);
-        ConfirmPassSubmit(confirm, patientPassConfirmInput,password, errorPassConfirm);
-    }
-
-    if (!validateNameSubmit(firstName, patientFNInput, errorFN) || !validateNameSubmit(lastName, patientLNInput, errorLN) || !validateGenderSubmit(patientMaleCheck,patientFemaleCheck) || !validateDOBSubmit(patientDOBInput, errorDOB) || !validateSelectSubmit(patientBloodTypeInput, errorBT) 
-        || (patientAccountCheck.checked && (
-            !validateEmailSubmit(email, patientEmailInput, errorEmail) 
-        || !validatePhoneSubmit(phone, patientPhoneInput, errorPhone) 
-        || !validatePassSubmit(password, patientPassInput, errorPass) 
-        || !ConfirmPassSubmit(confirm, patientPassConfirmInput,password, errorPassConfirm) ))
-        ) {
-        /* alert("invalid form"); */
-    } else {
-        /* alert("done"); */
-        document.getElementById('addPatientForm').submit();
-        
+    }else{
+        let firstName= patientFNInput.value;
+        let lastName= patientLNInput.value;
+        /* let dateOfBirth = patientDOBInput.value; */
+        let email = patientEmailInput.value;
+        let phone = patientPhoneInput.value;
+        let password = patientPassInput.value;
+        let confirm = patientPassConfirmInput.value;
+    
+        let errorFN = document.getElementById("patientFNError");
+        let errorLN = document.getElementById("patientLNError");
+        let errorDOB = document.getElementById("patientDOBError");
+        let errorEmail = document.getElementById("patientEmailError");
+        let errorPhone = document.getElementById("patientPhoneError");
+        let errorBT = document.getElementById("patientBTError");
+        let errorPass = document.getElementById("patientPassError");
+        let errorPassConfirm = document.getElementById("patientPassConfirmError");
+    
+        validateNameSubmit(firstName, patientFNInput, errorFN);
+        validateNameSubmit(lastName, patientLNInput, errorLN);
+        validateGenderSubmit(patientMaleCheck,patientFemaleCheck);
+        validateDOBSubmit(patientDOBInput, errorDOB);
+        validateSelectSubmit(patientBloodTypeInput, errorBT);
+        if(patientAccountCheck.checked){
+            validateEmailSubmit(email, patientEmailInput, errorEmail);
+            validatePhoneSubmit(phone, patientPhoneInput, errorPhone);
+            validatePassSubmit(password, patientPassInput, errorPass);
+            ConfirmPassSubmit(confirm, patientPassConfirmInput,password, errorPassConfirm);
+        }
+    
+        if (!validateNameSubmit(firstName, patientFNInput, errorFN) || !validateNameSubmit(lastName, patientLNInput, errorLN) || !validateGenderSubmit(patientMaleCheck,patientFemaleCheck) || !validateDOBSubmit(patientDOBInput, errorDOB) || !validateSelectSubmit(patientBloodTypeInput, errorBT) 
+            || (patientAccountCheck.checked && (
+                !validateEmailSubmit(email, patientEmailInput, errorEmail) 
+            || !validatePhoneSubmit(phone, patientPhoneInput, errorPhone) 
+            || !validatePassSubmit(password, patientPassInput, errorPass) 
+            || !ConfirmPassSubmit(confirm, patientPassConfirmInput,password, errorPassConfirm) ))
+            ) {
+            /* alert("invalid form"); */
+        } else {
+            /* alert("done"); */
+            document.getElementById('addPatientForm').submit();
+            
+        }
     }
 
 });
 
 let urgentBloodTypeFormBtn = document.getElementById("urgentBloodTypeFormBtn");
-urgentBloodTypeFormBtn?.addEventListener("click", () => {
-    let bloodType= urgentBTInput.value;
-    let number= urgentBTNInput.value;
+urgentBloodTypeFormBtn?.addEventListener("click",  function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
 
-    let errorBT= document.getElementById("urgentBTError");
-    let errorBTN = document.getElementById("urgentBTNError");
-
-    validateSelectSubmit(urgentBTInput, errorBT);
-    validateNumberSubmit(urgentBTNInput, errorBTN);
-
-    if (!validateSelectSubmit(urgentBTInput, errorBT) || !validateNumberSubmit(urgentBTNInput, errorBTN)) {
-        /* alert("invalid form"); */
-    } else {
-        /* alert("done"); */
-        document.getElementById('urgentBloodTypeForm').submit();
-        
+    }else{
+        let bloodType= urgentBTInput.value;
+        let number= urgentBTNInput.value;
+    
+        let errorBT= document.getElementById("urgentBTError");
+        let errorBTN = document.getElementById("urgentBTNError");
+    
+        validateSelectSubmit(urgentBTInput, errorBT);
+        validateNumberSubmit(urgentBTNInput, errorBTN);
+    
+        if (!validateSelectSubmit(urgentBTInput, errorBT) || !validateNumberSubmit(urgentBTNInput, errorBTN)) {
+            /* alert("invalid form"); */
+        } else {
+            /* alert("done"); */
+            document.getElementById('urgentBloodTypeForm').submit();
+            
+        }
     }
 
 });
 
 let adminFormBtn = document.getElementById("adminFormBtn");
-adminFormBtn?.addEventListener("click", () => {
-    let name= adminNameInput.value;
-    let email = adminEmailInput.value;
-    let password = adminPassInput.value;
-    let confirm = adminPassConfirmInput.value;
+adminFormBtn?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
 
-    let errorName= document.getElementById("signup-nameError");
-    let errorEmail = document.getElementById("signup-emailError");
-    let errorPass = document.getElementById("signup-passwordError");
-    let errorPassConfirm = document.getElementById("signup-passwordConfirmError");
-
-    validateNameSubmit(name, adminNameInput, errorName);
-    validateEmailSubmit(email, adminEmailInput, errorEmail);
-    validatePassSubmit(password, adminPassInput, errorPass);
-    ConfirmPassSubmit(confirm, adminPassConfirmInput,password, errorPassConfirm);
-
-    if (!validateNameSubmit(name, adminNameInput, errorName) || !validateEmailSubmit(email, adminEmailInput, errorEmail) || !validatePassSubmit(password, adminPassInput, errorPass) || !ConfirmPassSubmit(confirm, adminPassConfirmInput,password, errorPassConfirm) ) {
-        /* alert("invalid form"); */
-    } else {
-       /*  alert("done"); */
-        document.getElementById('adminForm').submit();
-        
+    }else{
+        let name= adminNameInput.value;
+        let email = adminEmailInput.value;
+        let password = adminPassInput.value;
+        let confirm = adminPassConfirmInput.value;
+    
+        let errorName= document.getElementById("signup-nameError");
+        let errorEmail = document.getElementById("signup-emailError");
+        let errorPass = document.getElementById("signup-passwordError");
+        let errorPassConfirm = document.getElementById("signup-passwordConfirmError");
+    
+        validateNameSubmit(name, adminNameInput, errorName);
+        validateEmailSubmit(email, adminEmailInput, errorEmail);
+        validatePassSubmit(password, adminPassInput, errorPass);
+        ConfirmPassSubmit(confirm, adminPassConfirmInput,password, errorPassConfirm);
+    
+        if (!validateNameSubmit(name, adminNameInput, errorName) || !validateEmailSubmit(email, adminEmailInput, errorEmail) || !validatePassSubmit(password, adminPassInput, errorPass) || !ConfirmPassSubmit(confirm, adminPassConfirmInput,password, errorPassConfirm) ) {
+            /* alert("invalid form"); */
+        } else {
+           /*  alert("done"); */
+            document.getElementById('adminForm').submit();
+            
+        }
     }
 
 });
 
 let manageWHFormBtn = document.getElementById("manageWHFormBtn");
-manageWHFormBtn?.addEventListener("click", () => {
-    let day= WHDayInput.value;
-    let TFrom= WHFromInput.value;
-    let TTo= WHTOInput.value;
+manageWHFormBtn?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
 
-    let errorDay= document.getElementById("WHDayError");
-    let errorTFrom= document.getElementById("WHFromError");
-    let errorTTo= document.getElementById("WHTOError");
-
-    validateSelectSubmit(WHDayInput, errorDay);
-    validateTimeSubmit(WHFromInput, errorTFrom);
-    validateTimeSubmit(WHTOInput, errorTTo);
-
-    if (!validateSelectSubmit(WHDayInput, errorDay) || !validateTimeSubmit(WHFromInput, errorTFrom) || !validateTimeSubmit(WHTOInput, errorTTo)) {
-        /* alert("invalid form"); */
-    } else {
-        /* alert("done"); */
-        document.getElementById('manageWHForm').submit();
-        
+    }else{
+        let day= WHDayInput.value;
+        let TFrom= WHFromInput.value;
+        let TTo= WHTOInput.value;
+    
+        let errorDay= document.getElementById("WHDayError");
+        let errorTFrom= document.getElementById("WHFromError");
+        let errorTTo= document.getElementById("WHTOError");
+    
+        validateSelectSubmit(WHDayInput, errorDay);
+        validateTimeSubmit(WHFromInput, errorTFrom);
+        validateTimeSubmit(WHTOInput, errorTTo);
+    
+        if (!validateSelectSubmit(WHDayInput, errorDay) || !validateTimeSubmit(WHFromInput, errorTFrom) || !validateTimeSubmit(WHTOInput, errorTTo)) {
+            /* alert("invalid form"); */
+        } else {
+            /* alert("done"); */
+            document.getElementById('manageWHForm').submit();
+            
+        }
     }
 
 });

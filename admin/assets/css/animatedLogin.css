@@ -341,9 +341,30 @@
 
 
   @media screen and (max-width: 450px) {
-    .forms-section {
+    /* .forms-section {
 		margin-top: 40px;
+	} */
+
+	.switcher {
+		display: none;
 	}
+
+	.section-title {
+		display: none;
+	}
+
+	.forms-section {
+		margin-top: 0px;
+	}
+
+	.form {
+		max-width: 250px;
+		padding: 15px 6px;
+	}
+
+	.input-field {
+		max-width: 240px;
+	  }
 
 	@keyframes showLogin {
 		0% {
