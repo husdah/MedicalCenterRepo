@@ -385,12 +385,12 @@
         </div>
     </section>
 
-    <!-- Section Donation -->
+    <!-- Section Donation 
      <section id="donation" class="donation">
         <div id="donatPanel" class="donation-panel">
             <h1><i class='bx bxs-quote-alt-left'></i>people live when people give<i class='bx bxs-quote-alt-right'></i></h1>
             <img src="images/donate-bg1-removebg-preview.png" alt="">
-            <button id="btn-donate" class="click-to-donate"><span>Click Here</span></button>
+            <button id="btn-donate" class="click-to-donate"><span class="clickHere">Donate</span></button>
         </div>
         <div id="donateForm" class="donation-form">
             <h1><i class='bx bxs-quote-alt-left'></i>people live when people give<i class='bx bxs-quote-alt-right'></i></h1>
@@ -419,7 +419,47 @@
                 <input type="submit" value="Send" id="click_donate" name="btn-send" class="btn-send">
             </div>
         </div>
-    </section> 
+    </section> -->
+
+    <section id="donation" class="donation">
+        <div id="donatPanel" class="donation-panel">
+            <h1><i class='bx bxs-quote-alt-left'></i>people live when people give<i class='bx bxs-quote-alt-right'></i></h1>
+            <img src="images/donate-bg1-removebg-preview.png" alt="">
+            <button id="btn-donate" class="click-to-donate"><span class="clickHere">Donate</span></button>
+        </div>
+        <div id="donateForm" class="donation-form">
+            <h1><i class='bx bxs-quote-alt-left'></i>people live when people give<i class='bx bxs-quote-alt-right'></i></h1>
+            <div class="donation-content">
+                <i class="fa-solid fa-xmark"></i>
+
+
+                <div class="sectionOne">
+                    <img src="images/donate-bg2-removebg-preview.png">
+                </div>
+                <p>Please, Fill Out This Information:</p>
+                <div class="email-input">  
+                    <input type="text" name="email-phone" class="donation-input" placeholder="Enter Email or Phone Number">
+                </div>
+                <div class="blood-group"> 
+                    <label for="mySelect">Select your blood group:</label> 
+                    <select id="mySelect" name="mySelect"> 
+                    <option value="A+">A+</option> 
+                    <option value="B+">B+</option> 
+                    <option value="O+">O+</option> 
+                    <option value="AB+">AB+</option> 
+                    <option value="A-">A-</option> 
+                    <option value="B-">B-</option> 
+                    <option value="O-">O-</option> 
+                    <option value="AB-">AB-</option> 
+                    </select> 
+                </div> 
+                <input type="submit" value="Send" id="click_donate" name="btn-send" class="btn-send">
+            </div>
+        </div>
+    </section>
+
+
+
 
     <footer class="footer">
         <div class="grid-container">
@@ -486,6 +526,8 @@
     <script src="assets/js/scrollSection.js"></script>
     <!-- <script src="assets/js/navbar.js"></script> -->
     <script src="assets/js/nav.js"></script>
+    <script src="assets/js/donationFormValidation.js"></script>
+
     
     
 </body>

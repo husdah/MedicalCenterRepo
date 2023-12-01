@@ -563,16 +563,50 @@ section.donation{
 }
 .click-to-donate{
     cursor: pointer;
-    margin-top:-100px;
-    margin-left: 10px;
+    margin-top:-120px;
+    margin-left: 5px;
     font-size: 13px;
-    color:#fff;
+    color: #fff;
     background-color: transparent;
     border:none;
 }
+.clickHere::before, .clickHere::after {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    margin-top:25px;
+    border-radius: 50%;
+    left: 49.4%;
+    background-color: #fff;
+  }
+  
+  .clickHere::before {
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+  }
+  
+  .clickHere::after {
+    width: 18px;
+    height: 18px;
+    animation: pulse 1s linear infinite;
+  }
+  @keyframes pulse {
+    from {
+      transform: scale(0.9);
+      opacity: 1;
+    }
+  
+    to {
+      transform: scale(1.8);
+      opacity: 0;
+    }
+  }
+
 .donation-content{
     margin:auto;
-    width: 40%;
+    width: 40%;/*width: 70%;*/
     padding:20px;
     background-color: var(--primary);
     border:2px solid #fff;
@@ -650,6 +684,11 @@ select{
     font-weight: bold;
     padding:10px;
 }
+
+
+
+
+
 /* Responsive on width 1920 */
 @media(max-width:1920px){
     .count-sub-container {

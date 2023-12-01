@@ -1,10 +1,12 @@
 .contact-form{
     padding: 30px 10px;
 }
-input[type="text"]{
+input[type="text"],
+input[type="email"]{
     height: 40px;
 }
-input[type="text"], 
+input[type="text"],
+input[type="email"],
 textarea{
     border: 0;
     width: 85%;
@@ -12,13 +14,15 @@ textarea{
     border-bottom: 3px solid var(--primary);
     margin-bottom: 10px;
 }
-input[type="text"].fw {
+input[type="text"].fw,
+input[type="email"].fw {
     width: 92%;
 }
 textarea{
     width: 92%;
 }
 input[type="text"]:focus,
+input[type="email"]:focus,
 textarea:focus{
     background-color: #fff;
     outline: none;
