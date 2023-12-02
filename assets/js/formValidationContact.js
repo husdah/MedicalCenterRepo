@@ -110,7 +110,7 @@ message_input.addEventListener('focusout', checkMessage);
 const validateFirstname = () => {
     const fnameValue   = fname_input.value;
     if(!validateNameStructure(fnameValue)){
-        fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Must be at least 3 letters.';
+        fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Must contain only and at least 3 Letters.';
         return false;
     }
     else{
@@ -123,7 +123,7 @@ fname_input.addEventListener('input', validateFirstname);
 const validateLastname = () => {
     const lnameValue   = lname_input.value;
     if(!validateNameStructure(lnameValue)){
-        lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Must be at least 3 letters.';
+        lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Must contain only and at least 3 Letters.';
         return false;
     }
     else{

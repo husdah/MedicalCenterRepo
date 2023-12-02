@@ -684,7 +684,7 @@ section.donation{
     padding:10px;
 }
 span#errorInput{
-    color: #a94442;
+    color: #aaa;
     font-size: 13px;
     margin-left:12px;
 }
@@ -693,7 +693,7 @@ span i.fa-regular.fa-circle-check{
     font-size: 20px;
 }    
 span i.fa-solid.fa-circle-exclamation{
-    color: #a94442;
+    color: #aaa;
     font-size: 14px;
 }
 
