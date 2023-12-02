@@ -40,7 +40,7 @@ const validateName=(name)=>{
 
 //validate the email
 email.addEventListener('focusout', () => {
-    if (!validateEmail(email.value) && !errorDisplayed) {
+    if (email.value==="" && !errorDisplayed) {
         const errorDiv = document.createElement('div');
         errorDiv.id = 'email-error';
         errorDiv.style.color = 'red';
@@ -235,7 +235,7 @@ lastname.addEventListener('input', () => {
 //validate the phone number
 
 phone.addEventListener('focusout', () => {
-    if (!validatePhone(phone.value) && !errorphoneDisplayed) {
+    if (phone.value==="" && !errorphoneDisplayed) {
         const errorDiv = document.createElement('div');
         errorDiv.id = 'phone-error';
         errorDiv.style.color = 'red';
