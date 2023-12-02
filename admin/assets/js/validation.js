@@ -141,7 +141,7 @@ function validateSelectSubmit(selectInput, errorselect) {
         /* selectInput.classList.add("required"); */
 
         selectInput.classList.add("required");
-        errorselect.textContent = "Clinic required";
+        errorselect.textContent = selectInput.options[0].value +" required";
         return false;
     }
     return true;
@@ -414,11 +414,11 @@ function handleSelectEvent(event) {
 
     if (inputElement.value == '' || inputElement.value == selectedValue) {
         inputElement.classList.add("required");
-        errorElement.textContent = 'Clinic required';
+        errorElement.textContent = selectedValue +' required';
 
     } else {
         inputElement.classList.remove("required");
-        errorElement.textContent = 'Clinic';
+        errorElement.textContent = selectedValue;
     }
 }
 
