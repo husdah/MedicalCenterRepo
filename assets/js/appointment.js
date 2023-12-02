@@ -337,6 +337,10 @@ document.getElementById('btn').addEventListener('click',(e)=>
         forfirstname.insertAdjacentElement('afterend', errorDiv);
         sub4=true;
     }
+    if(suc1 && suc2 && suc3 && suc4)
+    {
+        document.getElementById('form').submit();
+    }
 }
 });
 phone.addEventListener('input', () => {
