@@ -219,6 +219,18 @@ form .input-field {
     align-items: center;
     flex-direction: column;
   }
+  .display{
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    max-width: 380px;
+  }
+  .message{
+    font-size: 12px;
+    font-weight: 500;
+    color: rgb(196, 0, 0);
+  }
+  
   
   input[type="date"]{
     margin: 10px 5px;
