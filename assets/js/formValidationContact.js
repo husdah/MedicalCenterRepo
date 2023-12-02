@@ -20,73 +20,144 @@ form.addEventListener('submit', e => {
 });
 
 function validateForm(){
-    const fnameValue   = fname_input.value;
-    const lnameValue   = lname_input.value;
-    const emailValue   = email_input.value;
-    const subjectValue = subject_input.value;
-    const messageValue = message_input.value;
-
-    if(fnameValue === ''){
-        fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your First Name.';  
+    if(checkFirstname() && checkLastname() && checkEmail() && checkSubject() && checkMessage() && validateFirstname() && validateLastname() && validateEmail() && validateSubject() && validateMessage()){
+        alert('Submit Done');
     }
-    if(lnameValue === ''){
-        lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your Last Name.';
+    else{
+        checkFirstname();
+        checkLastname();
+        checkEmail();
+        checkSubject();
+        checkMessage();
+        
     }
-    if(emailValue === ''){
-        emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your Email.';  
-    }
-    if(subjectValue === ''){
-        subjectError.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your Subject.';  
-    }
-    if(messageValue === ''){
-        messageError.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Please Enter Your Message.';   
-    }
-
-    else if(validateFirstname() && validateLastname() && validateEmail() && validateSubject() && validateMessage()){
-        alert('Successfully Submitted');
-    }
-    else if(validateFirstname() || validateLastname() || validateEmail() || validateSubject() || validateMessage()){
-        alert('Please check if the structure of inputs is correct!');
-    }
-    
 }
+
+
+// Function to validate name
 const validateNameStructure = (name) => {
     return name.match(/^[a-zA-Z]{3,}$/);
 };
+
+// Function to validate email
 const validateEmailStructure = (email) => {
     return email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 };
+
+// Function to validate subject
 const validateSubjectStructure = (subject) => {
     return subject.match(/^.{1,}$/);
 };
 
+
+//Validation on Focusout Event For Empty Input
 const checkFirstname = () => {
-    if(fname_input.value !== ''){
-        fnameError.innerHTML   = "";
+    if(fname_input.value === ''){
+        fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
+        return false;
+    }
+    else{
+        return true;
     }
 }
-fname_input.addEventListener('input', checkFirstname);
+fname_input.addEventListener('focusout', checkFirstname);
 
 const checkLastname = () => {
-    if(lname_input.value !== ''){
-        lnameError.innerHTML   = "";
+    if(lname_input.value === ''){
+        lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
+        return false;
+    }
+    else{
+        return true;
     }
 }
-lname_input.addEventListener('input', checkLastname);
+lname_input.addEventListener('focusout', checkLastname);
 
 const checkEmail = () => {
-    if(email_input.value !== ''){
-        emailError.innerHTML   = "";
+    if(email_input.value === ''){
+        emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
+        return false;
+    }
+    else{
+        return true;
     }
 }
-email_input.addEventListener('input', checkEmail);
+email_input.addEventListener('focusout', checkEmail);
 
 const checkSubject = () => {
-    if(subject_input.value !== ''){
-        subjectError.innerHTML   = "";
+    if(subject_input.value === ''){
+        subjectError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
+        return false;
+    }
+    else{
+        return true;
     }
 }
-subject_input.addEventListener('input', checkSubject);
+subject_input.addEventListener('focusout', checkSubject);
+
+const checkMessage = () => {
+    if(message_input.value === ''){
+        messageError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+message_input.addEventListener('focusout', checkMessage);
+
+//Validation on Input Event For Format
+const validateFirstname = () => {
+    const fnameValue   = fname_input.value;
+    if(!validateNameStructure(fnameValue)){
+        fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Must be at least 3 letters.';
+        return false;
+    }
+    else{
+        fnameError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
+        return true;
+    }    
+}
+fname_input.addEventListener('input', validateFirstname);
+
+const validateLastname = () => {
+    const lnameValue   = lname_input.value;
+    if(!validateNameStructure(lnameValue)){
+        lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Must be at least 3 letters.';
+        return false;
+    }
+    else{
+        lnameError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
+        return true;
+    }
+}
+lname_input.addEventListener('input', validateLastname);
+
+const validateEmail = () => {
+    const emailValue   = email_input.value;
+    if(!validateEmailStructure(emailValue)){
+        emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Exapmle: example@hotmail.com';
+        return false;
+    }
+    else{
+        emailError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
+        return true;
+    }
+}
+email_input.addEventListener('input', validateEmail);
+
+const validateSubject = () => {
+    const subjectValue   = subject_input.value;
+    if(!validateSubjectStructure(subjectValue)){
+        subjectError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Subject must be clear.';
+        return false;
+    }
+    else{
+        subjectError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
+        return true;
+    }
+}
+subject_input.addEventListener('input', validateSubject);
 
 const validateMessage = () => {
     if(message_input.value !== ''){
@@ -106,55 +177,3 @@ const validateMessage = () => {
     }
 }
 message_input.addEventListener('input', validateMessage);
-
-const validateFirstname = () => {
-    const fnameValue   = fname_input.value;
-    if(!validateNameStructure(fnameValue)){
-        fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> The name must be at least 3 letters.';
-        return false;
-    }
-    else{
-        fnameError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
-        return true;
-    }
-}
-fname_input.addEventListener('focusout', validateFirstname);
-
-const validateLastname = () => {
-    const lnameValue   = lname_input.value;
-    if(!validateNameStructure(lnameValue)){
-        lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> The name must be at least 3 letters.';
-        return false;
-    }
-    else{
-        lnameError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
-        return true;
-    }
-}
-lname_input.addEventListener('focusout', validateLastname);
-
-const validateEmail = () => {
-    const emailValue   = email_input.value;
-    if(!validateEmailStructure(emailValue)){
-        emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Email must have such a structure: example@hotmail.com';
-        return false;
-    }
-    else{
-        emailError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
-        return true;
-    }
-}
-email_input.addEventListener('focusout', validateEmail);
-
-const validateSubject = () => {
-    const subjectValue   = subject_input.value;
-    if(!validateSubjectStructure(subjectValue)){
-        subjectError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Subject must be clear.';
-        return false;
-    }
-    else{
-        subjectError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
-        return true;
-    }
-}
-subject_input.addEventListener('focusout', validateSubject);
