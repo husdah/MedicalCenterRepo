@@ -174,3 +174,19 @@ $(document).on('click', '.ui-datepicker-prev', function(){
 $(window).on('resize', function(){
   $(".timepicker").css('top', $(".timepicker-cf").offset().top - 2);
 });
+
+//hide timepicker when clicking outside
+$(document).on('click', function(event) {
+  // Check if the click target is not within the timepicker
+  if (!$(event.target).closest('.timepicker, .timepicker-cf').length) {
+      // Remove or hide the timepicker
+      $(".timepicker, .timepicker-cf").animate({
+          'height': '0px'
+      });
+  }
+});
+
+// Prevent the click event from propagating within the timepicker element
+$('.timepicker, .timepicker-cf').on('click', function(event) {
+  event.stopPropagation();
+});
