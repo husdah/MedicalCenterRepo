@@ -8,8 +8,12 @@ var forfirstname = document.getElementById('forfirstname');
 var forlastname = document.getElementById('forlastname');
 var errorDisplayed = false;
 var errorphoneDisplayed=false;
+var errorDisplayed3=false;
+var errorDisplayed4=false; 
 var suc1=false;
 var suc2=false;
+var suc3=false;
+var suc4=false;
 var sub1=false;
 var sub2=false;
 var sub3=false;
@@ -27,9 +31,31 @@ const validatePhone = (phone) => {
     );
 };
 
+
+const validateName=(name)=>{
+    return name.match(
+        /^[a-zA-Z]{3,}$/
+    );
+};
+
 //validate the email
 email.addEventListener('focusout', () => {
     if (!validateEmail(email.value) && !errorDisplayed) {
+        const errorDiv = document.createElement('div');
+        errorDiv.id = 'email-error';
+        errorDiv.style.color = 'red';
+        
+        
+        const icon = document.createElement('i');
+        icon.className = 'fa-solid fa-triangle-exclamation';
+        errorDiv.appendChild(icon);
+
+        errorDiv.innerHTML += ' This field is required';
+        
+        foremail.insertAdjacentElement('afterend', errorDiv);
+        errorDisplayed = true;
+    }
+    else if (!validateEmail(email.value) && !errorDisplayed) {
         const errorDiv = document.createElement('div');
         errorDiv.id = 'email-error';
         errorDiv.style.color = 'red';
@@ -43,16 +69,6 @@ email.addEventListener('focusout', () => {
         
         foremail.insertAdjacentElement('afterend', errorDiv);
         errorDisplayed = true;
-    }
-    if (validateEmail(email.value) && !suc1) {
-        const icon = document.createElement('i');
-        icon.className = 'fa-regular fa-circle-check';
-        icon.id='suc1';
-        icon.style.color = '#049f0e';
-        icon.style.marginLeft='-40px';
-        icon.style.paddingBottom='14px';
-        foremail.appendChild(icon);
-        suc1=true;
     }
     
 });
@@ -73,12 +89,168 @@ email.addEventListener('input', () => {
             suc1 = false;
         }   
     }
+    if (validateEmail(email.value) && !suc1) {
+        const icon = document.createElement('i');
+        icon.className = 'fa-regular fa-circle-check';
+        icon.id='suc1';
+        icon.style.color = '#049f0e';
+        icon.style.marginLeft='-40px';
+        icon.style.paddingBottom='14px';
+        foremail.appendChild(icon);
+        suc1=true;
+    }
+
    
 });
+//validate the first name
+firstname.addEventListener('focusout', () => {
+    if (firstname.value==="" && !errorDisplayed3) {
+        const errorDiv = document.createElement('div');
+        errorDiv.id = 'fname-error';
+        errorDiv.style.color = 'red';
+        
+        
+        const icon = document.createElement('i');
+        icon.className = 'fa-solid fa-triangle-exclamation';
+        errorDiv.appendChild(icon);
+
+        errorDiv.innerHTML += 'This field is required';
+        
+        forfirstname.insertAdjacentElement('afterend', errorDiv);
+        errorDisplayed3 = true;
+    }
+    else if (!validateName(firstname.value) && !errorDisplayed3) {
+        const errorDiv = document.createElement('div');
+        errorDiv.id = 'fname-error';
+        errorDiv.style.color = 'red';
+        
+        
+        const icon = document.createElement('i');
+        icon.className = 'fa-solid fa-triangle-exclamation';
+        errorDiv.appendChild(icon);
+
+        errorDiv.innerHTML += ' your name should not contain numbers and at least 3 character';
+        
+        forfirstname.insertAdjacentElement('afterend', errorDiv);
+        errorDisplayed3 = true;
+    }
+    
+    
+});
+
+firstname.addEventListener('input', () => {
+    if (errorDisplayed3) {
+        const errorDiv = document.getElementById('fname-error');
+        if (errorDiv) {
+            errorDiv.remove();
+            errorDisplayed3 = false;
+        }
+    }
+    if(suc3)
+    {
+        const suc = document.getElementById('suc3');
+        if (suc) {
+            suc.remove();
+            suc3 = false;
+        }   
+    }
+    if (validateName(firstname.value) && !suc3) {
+        const icon = document.createElement('i');
+        icon.className = 'fa-regular fa-circle-check';
+        icon.id='suc3';
+        icon.style.color = '#049f0e';
+        icon.style.marginLeft='-40px';
+        icon.style.paddingBottom='14px';
+        forfirstname.appendChild(icon);
+        suc3=true;
+    }
+   
+});
+//validate the last name
+lastname.addEventListener('focusout', () => {
+    if (lastname.value==="" && !errorDisplayed4) {
+        const errorDiv = document.createElement('div');
+        errorDiv.id = 'lname-error';
+        errorDiv.style.color = 'red';
+        
+        
+        const icon = document.createElement('i');
+        icon.className = 'fa-solid fa-triangle-exclamation';
+        errorDiv.appendChild(icon);
+
+        errorDiv.innerHTML += ' This field is required';
+        
+        forlastname.insertAdjacentElement('afterend', errorDiv);
+        errorDisplayed4 = true;
+    }
+     else if(!validateName(lastname.value) && !errorDisplayed4)
+    {
+        const errorDiv = document.createElement('div');
+        errorDiv.id = 'lname-error';
+        errorDiv.style.color = 'red';
+        
+        
+        const icon = document.createElement('i');
+        icon.className = 'fa-solid fa-triangle-exclamation';
+        errorDiv.appendChild(icon);
+
+        errorDiv.innerHTML += 'your last name should not contain numbers and at least 3 character';
+        
+        forlastname.insertAdjacentElement('afterend', errorDiv);
+        errorDisplayed4 = true;
+    }
+    
+    
+});
+
+lastname.addEventListener('input', () => {
+    if (errorDisplayed4) {
+        const errorDiv = document.getElementById('lname-error');
+        if (errorDiv) {
+            errorDiv.remove();
+            errorDisplayed4 = false;
+        }
+    }
+    if(suc4)
+    {
+        const suc = document.getElementById('suc4');
+        if (suc) {
+            suc.remove();
+            suc4 = false;
+        }   
+    }
+    if (validateName(lastname.value) && !suc4) {
+        const icon = document.createElement('i');
+        icon.className = 'fa-regular fa-circle-check';
+        icon.id='suc4';
+        icon.style.color = '#049f0e';
+        icon.style.marginLeft='-40px';
+        icon.style.paddingBottom='14px';
+        forlastname.appendChild(icon);
+        suc4=true;
+    }
+   
+});
+
 //validate the phone number
 
 phone.addEventListener('focusout', () => {
     if (!validatePhone(phone.value) && !errorphoneDisplayed) {
+        const errorDiv = document.createElement('div');
+        errorDiv.id = 'phone-error';
+        errorDiv.style.color = 'red';
+        
+        
+        const icon = document.createElement('i');
+        icon.className = 'fa-solid fa-triangle-exclamation';
+        errorDiv.appendChild(icon);
+
+        errorDiv.innerHTML += 'This field is required';
+        
+        forphone.insertAdjacentElement('afterend', errorDiv);
+        errorphoneDisplayed = true;
+    }
+    else if (!validatePhone(phone.value) && !errorphoneDisplayed) {
         const errorDiv = document.createElement('div');
         errorDiv.id = 'phone-error';
         errorDiv.style.color = 'red';
@@ -93,16 +265,7 @@ phone.addEventListener('focusout', () => {
         forphone.insertAdjacentElement('afterend', errorDiv);
         errorphoneDisplayed = true;
     }
-    if (validatePhone(phone.value) && !suc2) {
-        const icon = document.createElement('i');
-        icon.className = 'fa-regular fa-circle-check';
-        icon.id='suc2';
-        icon.style.color = '#049f0e';
-        icon.style.marginLeft='-40px';
-        icon.style.paddingBottom='14px';
-        forphone.appendChild(icon);
-        suc2=true;
-    }
+   
 });
 //test when submit the form
 document.getElementById('btn').addEventListener('click',(e)=>
@@ -121,7 +284,7 @@ document.getElementById('btn').addEventListener('click',(e)=>
         icon.className = 'fa-solid fa-triangle-exclamation';
         errorDiv.appendChild(icon);
 
-        errorDiv.innerHTML += ' Enter your phone number';
+        errorDiv.innerHTML += ' This field is required';
         
         forphone.insertAdjacentElement('afterend', errorDiv);
         sub1=true;
@@ -137,7 +300,7 @@ document.getElementById('btn').addEventListener('click',(e)=>
         icon.className = 'fa-solid fa-triangle-exclamation';
         errorDiv.appendChild(icon);
 
-        errorDiv.innerHTML += ' Enter your email';
+        errorDiv.innerHTML += ' This field is required';
         
         foremail.insertAdjacentElement('afterend', errorDiv);
         sub2=true;
@@ -153,7 +316,7 @@ document.getElementById('btn').addEventListener('click',(e)=>
         icon.className = 'fa-solid fa-triangle-exclamation';
         errorDiv.appendChild(icon);
 
-        errorDiv.innerHTML += ' Enter your last name';
+        errorDiv.innerHTML += ' This field is required';
         
         forlastname.insertAdjacentElement('afterend', errorDiv);
         sub3=true;
@@ -169,7 +332,7 @@ document.getElementById('btn').addEventListener('click',(e)=>
         icon.className = 'fa-solid fa-triangle-exclamation';
         errorDiv.appendChild(icon);
 
-        errorDiv.innerHTML += ' Enter your first name';
+        errorDiv.innerHTML += ' This field is required';
         
         forfirstname.insertAdjacentElement('afterend', errorDiv);
         sub4=true;
@@ -197,6 +360,16 @@ phone.addEventListener('input', () => {
             suc.remove();
             suc2 = false;
         }   
+    }
+    if (validatePhone(phone.value) && !suc2) {
+        const icon = document.createElement('i');
+        icon.className = 'fa-regular fa-circle-check';
+        icon.id='suc2';
+        icon.style.color = '#049f0e';
+        icon.style.marginLeft='-40px';
+        icon.style.paddingBottom='14px';
+        forphone.appendChild(icon);
+        suc2=true;
     }
 });
 phone.addEventListener('focus', () => {
