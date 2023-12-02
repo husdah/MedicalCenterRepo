@@ -10,6 +10,10 @@ var errorDisplayed = false;
 var errorphoneDisplayed=false;
 var suc1=false;
 var suc2=false;
+var sub1=false;
+var sub2=false;
+var sub3=false;
+var sub4=false;
 
 const validateEmail = (email) => {
     return email.match(
@@ -106,7 +110,7 @@ document.getElementById('btn').addEventListener('click',(e)=>
     e.preventDefault();
     if(!errorDisplayed && !errorphoneDisplayed)
     {
-    if(phone.value==="")
+    if(phone.value==="" && !sub1)
     {
         const errorDiv = document.createElement('div');
         errorDiv.id = 'phone-error2';
@@ -120,8 +124,9 @@ document.getElementById('btn').addEventListener('click',(e)=>
         errorDiv.innerHTML += ' Enter your phone number';
         
         forphone.insertAdjacentElement('afterend', errorDiv);
+        sub1=true;
     }
-    if(email.value==="")
+    if(email.value==="" && !sub2)
     {
         const errorDiv = document.createElement('div');
         errorDiv.id = 'email-error2';
@@ -135,8 +140,9 @@ document.getElementById('btn').addEventListener('click',(e)=>
         errorDiv.innerHTML += ' Enter your email';
         
         foremail.insertAdjacentElement('afterend', errorDiv);
+        sub2=true;
     }
-    if(lastname.value==="")
+    if(lastname.value==="" && !sub3)
     {
         const errorDiv = document.createElement('div');
         errorDiv.id = 'l-error2';
@@ -150,8 +156,9 @@ document.getElementById('btn').addEventListener('click',(e)=>
         errorDiv.innerHTML += ' Enter your last name';
         
         forlastname.insertAdjacentElement('afterend', errorDiv);
+        sub3=true;
     }
-     if(firstname.value==="")
+     if(firstname.value==="" && !sub4)
     {
         const errorDiv = document.createElement('div');
         errorDiv.id = 'f-error2';
@@ -165,6 +172,7 @@ document.getElementById('btn').addEventListener('click',(e)=>
         errorDiv.innerHTML += ' Enter your first name';
         
         forfirstname.insertAdjacentElement('afterend', errorDiv);
+        sub4=true;
     }
 }
 });
@@ -180,6 +188,7 @@ phone.addEventListener('input', () => {
     if(errorDiv2)
     {
         errorDiv2.remove();
+        sub1=false;
     }
     if(suc2)
     {
@@ -196,6 +205,7 @@ phone.addEventListener('focus', () => {
     if(errorDiv2)
     {
         errorDiv2.remove();
+        sub1=false;
     }
 });
 email.addEventListener('focus', () => {
@@ -204,6 +214,7 @@ email.addEventListener('focus', () => {
     if(errorDiv2)
     {
         errorDiv2.remove();
+        sub2=false;
     }
 });
 firstname.addEventListener('focus', () => {
@@ -212,6 +223,7 @@ firstname.addEventListener('focus', () => {
     if(errorDiv2)
     {
         errorDiv2.remove();
+        sub4=false;
     }
 });
 lastname.addEventListener('focus', () => {
@@ -220,6 +232,7 @@ lastname.addEventListener('focus', () => {
     if(errorDiv2)
     {
         errorDiv2.remove();
+        sub3=false;
     }
 });
 
