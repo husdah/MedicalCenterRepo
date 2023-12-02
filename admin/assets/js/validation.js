@@ -35,7 +35,7 @@ function validateNameSubmit(name, nameInput, errorName) {
         nameInput.classList.add("required");
 
         if (name == '') {
-            errorName.textContent = 'name required';
+            errorName.textContent = errorName.className +' required';
             return false;
         } else if (!validateName(name)) {
             errorName.textContent = 'Only letters are allowed.';
@@ -262,14 +262,14 @@ function handleInputNameEvent(event) {
         inputElement.classList.add("required");
 
         if (inputElement.value == '') {
-            errorElement.textContent = 'name required';
+            errorElement.textContent = errorElement.className +' required';
         } else if (!validateName(inputElement.value)) {
             errorElement.textContent = 'Only letters are allowed.';
         }
 
     } else {
         inputElement.classList.remove("required");
-        errorElement.textContent = 'name';
+        errorElement.textContent = errorElement.className;
     }
 }
 
@@ -483,6 +483,26 @@ function handleInputTimeEvent(event) {
     }
 }
 
+// Function to handle input Acount CHECk events
+function handleAccountCheckEvent(event) {
+    var inputElement = event.target;
+
+    if(!inputElement.checked){
+        patientEmailInput.classList.remove("required"); 
+        document.getElementById(patientEmailInput.id + 'Error').textContent = "Email";
+
+        patientPhoneInput.classList.remove("required");
+        document.getElementById(patientPhoneInput.id + 'Error').textContent = "Phone";
+
+        patientPassInput.classList.remove("required");
+         document.getElementById(patientPassInput.id + 'Error').textContent = "Password";
+
+        patientPassConfirmInput.classList.remove("required");
+        document.getElementById(patientPassConfirmInput.id + 'Error').textContent = "Confirm password";
+    }
+}
+
+
 // Add event listeners to input fields
 //add clinic form
 var clinicNameInput = document.getElementById('clinicName');
@@ -553,7 +573,9 @@ patientLNInput?.addEventListener('input', handleInputNameEvent);
 
 var patientMaleCheck = document.getElementById('male');
 var patientFemaleCheck = document.getElementById('female');
+
 var patientAccountCheck = document.getElementById('account');
+patientAccountCheck?.addEventListener("change",handleAccountCheckEvent);
 
 var patientDOBInput = document.getElementById('patientDOB');
 patientDOBInput?.addEventListener('input', handleDOBEvent);

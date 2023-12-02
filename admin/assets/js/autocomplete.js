@@ -69,6 +69,13 @@ input.onkeyup = (e)=>{
     }
 }
 
+input.addEventListener("input",() =>{
+    let userData = input.value;
+    if(userData == ''){
+        searchInput.classList.remove("active");
+    }
+});
+
 function showSuggestions(list){
     let listData;
     if(!list.length){
