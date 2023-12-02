@@ -43,7 +43,7 @@ const validateSelect = () => {
     var selectedValue  = selectedOption.value;
     console.log(selectedValue);
     if(selectedValue == 'Blood-Type'){
-        bloodType.style.color = '#a94442';
+        bloodType.style.color = 'red';
         return false;
     }
     else{
