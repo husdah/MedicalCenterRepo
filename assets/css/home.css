@@ -552,8 +552,8 @@ section.donation{
     text-shadow: 3px 1px 1px rgba(159, 195, 231, 1); 
     margin-bottom: 25px;   
 }
-.donation-panel h1 i,
-.donation-form h1 i{
+.donation-panel h1 i.fa-solid.fa-xmark,
+.donation-form h1 i.fa-solid.fa-xmark{
     font-size: 40px;
     margin: -30px 20px 0 20px;
 }
@@ -606,7 +606,7 @@ section.donation{
 
 .donation-content{
     margin:auto;
-    width: 40%;/*width: 70%;*/
+    width: 50%;
     padding:20px;
     background-color: var(--primary);
     border:2px solid #fff;
@@ -614,8 +614,10 @@ section.donation{
     border-bottom-right-radius: 70px;
     color:#fff;
 }
-.donation-content i{
+.donation-content i.fa-solid.fa-xmark{
     font-size: 30px;
+    color:#fff;
+    cursor: pointer;
     float:right;
 }
 .donation-content .sectionOne{
@@ -623,10 +625,10 @@ section.donation{
     justify-content: center;
 }
 .donation-content img{
-    justify-content: center;
-    width:120px;
-    height:120px;
+    width: 170px;
+    height: 120px;
 }
+
 .donation-content p,label{
     font-size: 15px;
     font-weight: 300;
@@ -637,6 +639,7 @@ section.donation{
     border: 0;
     height: 40px;
     width: 52%;
+    color: #fff;
     border-bottom: 1px solid #fff;
     margin-bottom: 10px;
     background-color: transparent;
@@ -646,17 +649,17 @@ section.donation{
     font-weight: 300;
     padding-bottom: 25px;
 }
-input[type='text']:focus{
+.donation-content input[type='text']:focus{
     outline: none;
 }
-select{
+.donation-content select{
     border: none;
     border-radius: 50px;
     background: #fff;
     color: var(--primary);
     font-weight: 500;
     outline: none;
-    width: 70px;
+    width: 110px;
     height: 30px;
     text-align: center;
 }
@@ -669,10 +672,6 @@ select{
 .hide{
     display: none;
 }
-.donation-content i{
-    color:#fff;
-    cursor: pointer;
-}
 .btn-send{
     background-color: #fff;
     color: var(--primary);
@@ -684,10 +683,19 @@ select{
     font-weight: bold;
     padding:10px;
 }
-
-
-
-
+span#errorInput{
+    color: #a94442;
+    font-size: 13px;
+    margin-left:12px;
+}
+span i.fa-regular.fa-circle-check{
+    color: seagreen;
+    font-size: 20px;
+}    
+span i.fa-solid.fa-circle-exclamation{
+    color: #a94442;
+    font-size: 14px;
+}
 
 /* Responsive on width 1920 */
 @media(max-width:1920px){
