@@ -95,9 +95,21 @@ newpass.addEventListener('input', () => {
 
    
 });
+newpass.addEventListener('focus', () => {
+
+    const errorDiv2 = document.getElementById('newpass-error2');
+    if(errorDiv2)
+    {
+        errorDiv2.remove();
+        sub1=false;
+    }
+    
+
+   
+});
 //validation for re-type new password
 renewpass.addEventListener('focusout', () => {
-    if (renewpass.value==="" && !errorDisplayed2) {
+    if (renewpass.value==="" && !errorDisplayed2 ) {
         const errorDiv = document.createElement('div');
         errorDiv.id = 'renewpass-error';
         errorDiv.className='error';
@@ -166,6 +178,18 @@ renewpass.addEventListener('input', () => {
         divpass3.appendChild(icon);
         suc2=true;
     }
+
+   
+});
+renewpass.addEventListener('focus', () => {
+
+    const errorDiv3 = document.getElementById('renewpass-error2');
+    if(errorDiv3)
+    {
+        errorDiv3.remove();
+        sub2=false;
+    }
+    
 
    
 });
