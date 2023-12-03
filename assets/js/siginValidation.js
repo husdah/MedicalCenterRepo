@@ -127,8 +127,15 @@ function isPasswordEmpty(pwdInput,pwdMsg){
     }
 }
 
-pwdInput1?.addEventListener('focusout',function(){
-    isPasswordEmpty(pwdInput1,pwdMsg1);
+pwdInput1?.addEventListener('input',function(){
+    const pwd = pwdInput1.value;
+    if(pwd === ""){
+        pwdMsg1.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required';
+        return false;
+    }else{
+        pwdMsg1.innerHTML = '';
+        return true;
+    }
 });
 pwdInput2?.addEventListener('focusout',function(){
     isPasswordEmpty(pwdInput2,pwdMsg2);
@@ -136,8 +143,15 @@ pwdInput2?.addEventListener('focusout',function(){
 confirmInput?.addEventListener('focusout',function(){
     isPasswordEmpty(confirmInput,confirmMsg);
 });
-currentPasswordInput?.addEventListener('focusout',function(){
-    isPasswordEmpty(currentPasswordInput,currentMsg);
+currentPasswordInput?.addEventListener('input',function(){
+    const pwd = currentPasswordInput.value;
+    if(pwd === ""){
+        currentMsg.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required';
+        return false;
+    }else{
+        currentMsg.innerHTML = '';
+        return true;
+    }
 });
 newPasswordInput?.addEventListener('focusout',function(){
     isPasswordEmpty(newPasswordInput,newMsg);
@@ -159,23 +173,45 @@ function validatePwd(pwdInput,pwdMsg){
     return true;
 }
 
-pwdInput1?.addEventListener('input',function(){
+/*pwdInput1?.addEventListener('input',function(){
     validatePwd(pwdInput1,pwdMsg1);
-});
+});*/
 pwdInput2?.addEventListener('input',function(){
     validatePwd(pwdInput2,pwdMsg2);
 });
-confirmInput?.addEventListener('input',function(){
+/*confirmInput?.addEventListener('input',function(){
     validatePwd(confirmInput,confirmMsg);
-});
-currentPasswordInput?.addEventListener('input',function(){
+});*/
+/*currentPasswordInput?.addEventListener('input',function(){
     validatePwd(currentPasswordInput,currentMsg);
-});
+});*/
 newPasswordInput?.addEventListener('input',function(){
     validatePwd(newPasswordInput,newMsg);
 });
-cPasswordInput?.addEventListener('input',function(){
+/*cPasswordInput?.addEventListener('input',function(){
     validatePwd(cPasswordInput,cMsg);
+});*/
+
+// Compare Password and Confirm password
+
+function comparePasswords(firstPasswordInput,SecondPasswordInput,secondMsg){
+    const firstPassword = firstPasswordInput.value;
+    const secondPassword = SecondPasswordInput.value;
+
+    if(firstPassword !== secondPassword){
+        secondMsg.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Password Confirmation is Incorrect.'
+        return false;
+    }else{
+        secondMsg.innerHTML = '';
+        return true;
+    }
+}
+
+confirmInput?.addEventListener('input',function(){
+    comparePasswords(pwdInput2,confirmInput,confirmMsg);
+});
+cPasswordInput?.addEventListener('input',function(){
+    comparePasswords(newPasswordInput,cPasswordInput,cMsg);
 });
 
 
@@ -210,7 +246,7 @@ function validateName(nameInput,nameMessage){
     const name = nameInput.value;
     
     if(!name.match(/^[a-zA-Z]+$/) || name.length<=3){
-        nameMessage.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Name should be at least 3 letters and only letters are allowed.';
+        nameMessage.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Must contain only and at least 3 letters.';
         return false;
     }
     nameMessage.innerHTML = '';
@@ -245,47 +281,60 @@ function validatePhone(phone,msg){
 phoneInput?.addEventListener('input',function(){
     validatePhone(phoneInput,phoneMsg);
 });
+phoneInput?.addEventListener('input',function(){
+    if(phoneInput.value.length == 0){
+        phoneMsg.innerHTML = '';
+        return true;
+    }
+})
 
 //Check if Gender and Date are Empty
+var genderInputs = document.getElementsByName('gender');
+const genderMsg = document.getElementById('radioMsg');
 
-function isEmpty(){
-    var genderInputs = document.getElementsByName('gender');
-    var date = dateInput.value;
+function isEmpty(radioInputs,msg){
     var genderSelected = false;
 
-    for (var i = 0; i < genderInputs.length; i++) {
-        if (genderInputs[i].checked) {
+    for (var i = 0; i < radioInputs.length; i++) {
+        if (radioInputs[i].checked) {
             genderSelected = true;
             break;
         }
     }
-    if(!genderSelected || date === ""){
-        infoMsg.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required';
+    if(!genderSelected){
+        msg.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required';
         return false;
     }else{
-        infoMsg.innerHTML = '';
+        msg.innerHTML = '';
         return true;
     }
 }
+
+//genderInputs?.addEventListener('focusout',isEmpty(genderInputs,genderMsg));
 
 //Check if date is empty
 
-function isDateEmpty(){
-    const date = updateDate.value;
+function isDateEmpty(datesInput,msg){
+    const date = datesInput.value;
     if(date === ''){
-        dateMessage.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required';
+        msg.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required';
         return false;
     }else{
-        dateMessage.innerHTML = '';
+        msg.innerHTML = '';
         return true;
     }
 }
 
-updateDate?.addEventListener('focusout',isDateEmpty);
+updateDate?.addEventListener('focusout',function(){
+    isDateEmpty(updateDate,dateMessage);
+});
+dateInput?.addEventListener('input', function(){
+    isDateEmpty(dateInput,infoMsg);
+});
 
 function validateSigninForm(){
     
-    if(isEmailEmpty(emailInput1,emailMsg1) && isPasswordEmpty(pwdInput1,pwdMsg1) && validateEmail(emailInput1,emailMsg1) && validatePwd(pwdInput1,pwdMsg1)){
+    if(isEmailEmpty(emailInput1,emailMsg1) && isPasswordEmpty(pwdInput1,pwdMsg1) && validateEmail(emailInput1,emailMsg1)){
         alert('Submitted Successfully');
         signinForm.submit();
     }else{
@@ -297,10 +346,10 @@ function validateSigninForm(){
 
 function validateSignupForm(){
     
-    if(validateEmail(emailInput2,emailMsg2) && validatePwd(pwdInput2,pwdMsg2) && validatePwd(confirmInput,confirmMsg)
-    && validateName(lnameInput,nameMsg2) && validateName(fnameInput,nameMsg) && isEmailEmpty(emailInput2,emailMsg2)
-     && isPasswordEmpty(pwdInput2,pwdMsg2) && isPasswordEmpty(confirmInput,confirmMsg) && isNameEmpty(lnameInput,nameMsg2) && isNameEmpty(fnameInput,nameMsg) 
-     && isEmpty()){
+    if(validateEmail(emailInput2,emailMsg2) && validatePwd(pwdInput2,pwdMsg2) && validateName(lnameInput,nameMsg2) && validateName(fnameInput,nameMsg)
+     && isEmailEmpty(emailInput2,emailMsg2) && isPasswordEmpty(pwdInput2,pwdMsg2) && isPasswordEmpty(confirmInput,confirmMsg) && isNameEmpty(lnameInput,nameMsg2)
+     && isNameEmpty(fnameInput,nameMsg) && isEmpty(genderInputs,genderMsg) && comparePasswords(pwdInput2,confirmInput,confirmMsg)
+     && isDateEmpty(dateInput,infoMsg)){
 
         alert('Submitted Successfully!');
         signupForm.submit();
@@ -310,7 +359,8 @@ function validateSignupForm(){
         isPasswordEmpty(confirmInput,confirmMsg);
         isNameEmpty(lnameInput,nameMsg2);
         isNameEmpty(fnameInput,nameMsg);
-        isEmpty();
+        isEmpty(genderInputs,genderMsg);
+        isDateEmpty(dateInput,infoMsg);
     }
 }
 
@@ -331,7 +381,7 @@ function validateUpdateForm(){
 
 function validatePasswordForm(){
     if(isPasswordEmpty(currentPasswordInput,currentMsg) && isPasswordEmpty(newPasswordInput,newMsg) && isPasswordEmpty(cPasswordInput,cMsg)
-    &&validatePwd(currentPasswordInput,currentMsg) && validatePwd(newPasswordInput,newMsg) && validatePwd(cPasswordInput,cMsg) ){
+     && validatePwd(newPasswordInput,newMsg) && comparePasswords(newPasswordInput,cPasswordInput,cMsg)){
 
         alert('Submitted successfully!');
         passwordForm.submit();
