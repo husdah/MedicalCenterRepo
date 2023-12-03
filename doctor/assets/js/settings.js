@@ -231,10 +231,16 @@ oldpass.addEventListener('input', () => {
 });
 
 //when submit the form
-document.getElementById('submit').addEventListener('click',(e)=>
+
+document.getElementById('formsubmit').addEventListener('submit',(e)=>
 { 
+    if (suc1 && suc2 && oldpass.value !== "") {
+        document.getElementById('formsubmit').submit();
+
+    };
     e.preventDefault();
-    if(!errorDisplayed && !errorDisplayed2 && !errorDisplayed3)
+
+ if(!errorDisplayed && !errorDisplayed2 && !errorDisplayed3)
     {
     if(newpass.value==="" && !sub1)
     {
@@ -287,11 +293,7 @@ document.getElementById('submit').addEventListener('click',(e)=>
         forpass1.appendChild(errorDiv);
         sub3=true;
     }
-     
-    if(suc1 && suc2 && oldpass.value!=="")
-    {
-        console.log("submitted");
-        document.getElementById('form1').submit();
-    }
+   
+
 }
 });
