@@ -33,6 +33,11 @@ document.addEventListener("DOMContentLoaded", function() {
     formattedDate = formattedDate.replace(/,/g, '');
     
     // Set the formatted date inside the HTML element
-    currentDateElement.textContent = formattedDate;
-    currentDayElement.textContent = formattedDay;
+    if(currentDateElement){
+        currentDateElement.textContent = formattedDate;
+    }
+    if(currentDayElement){
+        currentDayElement.textContent = formattedDay;
+    }
+    
 });
