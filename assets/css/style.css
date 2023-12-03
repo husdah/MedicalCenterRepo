@@ -18,6 +18,8 @@ input {
   min-height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
+
+  /* border: 6px solid orange; */
 }
 
 .forms-container {
@@ -26,11 +28,13 @@ input {
   height: 100%;
   top: 30px;
   left: 0;
+
+ /*  border: 2px solid black; */
 }
 
 .signin-signup {
   position: absolute;
-  top: 50%;
+  top: 30%;
   transform: translate(-50%, -50%);
   left: 75%;
   width: 50%;
@@ -38,6 +42,8 @@ input {
   display: grid;
   grid-template-columns: 1fr;
   z-index: 5;
+
+  /* border: 5px solid green; */
 }
 
 .fullname{
@@ -57,6 +63,8 @@ form {
   overflow: hidden;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
+  /* height: 100%; */
+  /* border: 1px solid red; */
 }
 
 form.sign-up-form {
@@ -73,6 +81,16 @@ form.sign-in-form {
   font-size: 2.2rem;
   color: #444;
   margin-bottom: 10px;
+}
+
+.content-field{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  /* border: 1px solid red; */
+  width: 100%;
+  max-width: 380px;
 }
 
 .input-field {
@@ -214,6 +232,11 @@ input[type="date"]{
 .blood-group{
   margin: 10px 0;
   height: 55px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+ /*  border: 1px solid red; */
 }
 
 .blood-group label{
@@ -347,6 +370,7 @@ input[type="date"]{
 .right-panel {
   pointer-events: none;
   padding: 3rem 12% 2rem 17%;
+  /* border:  3px solid white; */
 }
 
 .panel .content {
@@ -426,16 +450,36 @@ input[type="date"]{
   pointer-events: all;
 }
 
+@media (max-width: 1560px){
+  .signin-signup {
+    position: absolute;
+    top: 30%;
+  }
+}
+
 @media (max-width: 870px) {
   .container {
-    min-height: 800px;
     height: 100vh;
+    /* height: 100vhpx; */
+    overflow-y: hidden;
+    /* border: 5px solid green; */
   }
+
+  .forms-container {
+    top: 0px;
+  }
+
   .signin-signup {
     width: 100%;
     top: 95%;
     transform: translate(-50%, -100%);
     transition: 1s 0.8s ease-in-out;
+  }
+
+  form.sign-up-form {
+    opacity: 0;
+    z-index: 1;
+    margin-top: 10px;
   }
 
   .signin-signup,
@@ -454,6 +498,8 @@ input[type="date"]{
     align-items: center;
     padding: 2.5rem 8%;
     grid-column: 1 / 2;
+
+    /* border: 1px solid blue; */
   }
 
   .right-panel {
@@ -502,7 +548,7 @@ input[type="date"]{
 
   .container.sign-up-mode:before {
     transform: translate(-50%, 100%);
-    bottom: 32%;
+    bottom: 25%;
     right: initial;
   }
 
@@ -519,15 +565,31 @@ input[type="date"]{
   .right-panel .image,
   .right-panel .content {
     transform: translateY(300px);
+    /* border: 1px solid white; */
   }
 
   .container.sign-up-mode .signin-signup {
-    top: 5%;
+    top: 0%;
     transform: translate(-50%, 0);
+    /* border: 1px solid brown; */
+
   }
 }
 
 @media (max-width: 570px) {
+  .container {
+    height: 120vh;
+    /* height: 100vhpx; */
+    overflow-y: hidden;
+    /* border: 5px solid green; */
+  }
+
+  .right-panel {
+    pointer-events: none;
+    padding: 0;
+    /* border:  3px solid orange; */
+  }
+
   form {
     padding: 0 1.5rem;
   }
@@ -548,8 +610,10 @@ input[type="date"]{
   }
 
   .container.sign-up-mode:before {
-    bottom: 28%;
+    bottom: 20%;
     left: 50%;
+   /*  border: 8px solid yellow; */
+    /* display: none; */
   }
 }
 
@@ -561,7 +625,7 @@ input[type="date"]{
 
 @media (max-width: 375px) {
   .btn.solid.up{
-    margin-left: 200px;
+    margin-left: 180px;
   }
 
   .fullname{
@@ -580,5 +644,24 @@ input[type="date"]{
 @media (max-width: 320px) {
   .btn.solid.up{
     margin-left: 160px;
+  }
+
+  form {
+    padding: 0rem .5rem;
+  }
+
+  input[type="date"]{
+    padding: 8px 2px;
+    width: 130px;
+  }
+}
+
+
+@media (max-height: 780px) {
+  .container {
+    height: 160vh;
+    /* height: 100vhpx; */
+    overflow-y: hidden;
+   /*  border: 5px solid green; */
   }
 }
