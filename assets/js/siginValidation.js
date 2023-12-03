@@ -15,6 +15,7 @@ const emailInput2 = document.getElementById('email2');
 const pwdInput2 = document.getElementById('pwd2');
 const dateInput = document.getElementById('date');
 const phoneInput = document.getElementById('phone');
+const phoneInput2 = document.getElementById('phone2');
 const confirmInput = document.getElementById('confirm-pwd');
 const updateFname = document.getElementById('update-fname');
 const updateLname = document.getElementById('update-lname');
@@ -33,6 +34,7 @@ const nameMsg = document.getElementById('name');
 const nameMsg2 = document.getElementById('name2');
 const infoMsg = document.getElementById('infoMsg');
 const phoneMsg = document.getElementById('pMsg');
+const phoneMsg2 = document.getElementById('pMsg2');
 const confirmMsg = document.getElementById('confirmMsg');
 const firstMsg = document.getElementById('firstmsg');
 const lastMsg = document.getElementById('lastmsg');
@@ -41,6 +43,7 @@ const dateMessage = document.getElementById('dateMessage');
 const currentMsg = document.getElementById('currentmsg');
 const newMsg = document.getElementById('newmsg');
 const cMsg = document.getElementById('cmsg');
+const genderMsg = document.getElementById('radioMsg');
 
 //Buttons
 const signinBtn = document.getElementById('signin-btn');
@@ -266,66 +269,46 @@ updateLname?.addEventListener('input',function(){
     validateName(updateLname,lastMsg);
 });
 
+
 //Phone Structure Validation
 
 function validatePhone(phone,msg){
     const nb = phone.value;
-    if(nb.length != 8){
+    if(nb.length == 8 || nb.length == 0){
+        msg.innerHTML = '';
+        return true;
+    }else{
         msg.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Phone number should be 8 characters';
         return false;
     }
-    msg.innerHTML = '';
-    return true;
+    
 }
 
 phoneInput?.addEventListener('input',function(){
     validatePhone(phoneInput,phoneMsg);
 });
-phoneInput?.addEventListener('input',function(){
-    if(phoneInput.value.length == 0){
-        phoneMsg.innerHTML = '';
-        return true;
-    }
-})
 
-//Check if Gender and Date are Empty
-var genderInputs = document.getElementsByClassName('radio-input');
-console.log(genderInputs);
-const genderMsg = document.getElementById('radioMsg');
+phoneInput2?.addEventListener('input',function(){
+    validatePhone(phoneInput2,phoneMsg2);
+});
 
-function isEmpty(radioInputs,msg){
-    var genderSelected = false;
-
-    for (var i = 0; i < radioInputs.length; i++) {
-        if (radioInputs[i].checked) {
-            genderSelected = true;
-            break;
-        }
-    }
-    if(!genderSelected){
-        msg.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required';
-        return false;
-    }else{
-        msg.innerHTML = '';
-        return true;
-    }
-}
-
-/* genderInputs?.addEventListener('change',isEmpty(genderInputs,genderMsg)); */
-
-var maleCheck = document.getElementById('male');
-maleCheck?.addEventListener("change",genderCheck);
-var femaleCheck = document.getElementById('female');
-femaleCheck?.addEventListener("change",genderCheck);
+//Check if Gender is Empty
 
 function genderCheck(){
     if(maleCheck.checked || femaleCheck.checked){
-        /* genderMsg.style.display = "none"; */
         genderMsg.innerHTML = '';
-        
+        return true;
+    }else{
+        genderMsg.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required';
+        return false;
     }
+
 }
 
+var maleCheck = document.getElementById('male');
+maleCheck?.addEventListener("change", genderCheck);
+var femaleCheck = document.getElementById('female');
+femaleCheck?.addEventListener("change",genderCheck);
 
 //Check if date is empty
 
@@ -363,8 +346,8 @@ function validateSignupForm(){
     
     if(validateEmail(emailInput2,emailMsg2) && validatePwd(pwdInput2,pwdMsg2) && validateName(lnameInput,nameMsg2) && validateName(fnameInput,nameMsg)
      && isEmailEmpty(emailInput2,emailMsg2) && isPasswordEmpty(pwdInput2,pwdMsg2) && isPasswordEmpty(confirmInput,confirmMsg) && isNameEmpty(lnameInput,nameMsg2)
-     && isNameEmpty(fnameInput,nameMsg) && isEmpty(genderInputs,genderMsg) && comparePasswords(pwdInput2,confirmInput,confirmMsg)
-     && isDateEmpty(dateInput,infoMsg)){
+     && isNameEmpty(fnameInput,nameMsg)  && comparePasswords(pwdInput2,confirmInput,confirmMsg) && validatePhone(phoneInput,phoneMsg)
+     && isDateEmpty(dateInput,infoMsg) && genderCheck() ){
 
         alert('Submitted Successfully!');
         signupForm.submit();
@@ -374,15 +357,16 @@ function validateSignupForm(){
         isPasswordEmpty(confirmInput,confirmMsg);
         isNameEmpty(lnameInput,nameMsg2);
         isNameEmpty(fnameInput,nameMsg);
-        isEmpty(genderInputs,genderMsg);
         isDateEmpty(dateInput,infoMsg);
+        genderCheck();
     }
 }
 
 function validateUpdateForm(){
 
     if(validateEmail(updateEmail,emailMessage) && isEmailEmpty(updateEmail,emailMessage) && validateName(updateFname,firstMsg)
-    && validateName(updateLname,lastMsg) && isNameEmpty(updateFname,firstMsg) && isNameEmpty(updateLname,lastMsg) && isDateEmpty(updateDate,dateMessage)){
+    && validateName(updateLname,lastMsg) && isNameEmpty(updateFname,firstMsg) && isNameEmpty(updateLname,lastMsg) && isDateEmpty(updateDate,dateMessage)
+    && validatePhone(phoneInput2,phoneMsg2)){
         
         alert('Submitted Successfully!');
         updateForm.submit();
