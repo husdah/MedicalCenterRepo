@@ -142,7 +142,7 @@
 .error
 {
     
-    max-width:500px;
+    max-width:450px;
     font-size: 15px;
 
 }
@@ -287,7 +287,7 @@
         width: 100%;
     }
 
-    .changepass div
+    .changepass .div
     {
         flex-direction: column;
         align-items: center;
@@ -306,13 +306,13 @@
     {
         margin-left:160px;
     } */
-    .changepass div label
+    .changepass .div label
     {
         font-size: 15px;
         width:80%;
     }
 
-    .changepass div input{
+    .changepass .div input{
         width: 90%;
     }
 }

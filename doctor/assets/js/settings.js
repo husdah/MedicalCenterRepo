@@ -9,6 +9,8 @@ var errorDisplayed=false;
 var errorDisplayed2=false;
 var suc1=false;
 var suc2=false;
+var sub1=false;
+var sub2=false;
 
 const validatePassword = (password) => {
     return password.match(
@@ -67,6 +69,12 @@ newpass.addEventListener('input', () => {
             suc.remove();
             suc1 = false;
         }   
+    }
+    const errorDiv2 = document.getElementById('newpass-error2');
+    if(errorDiv2)
+    {
+        errorDiv2.remove();
+        sub1=false;
     }
     if (validatePassword(newpass.value) && !suc1) {
         const icon = document.createElement('i');
@@ -135,6 +143,12 @@ renewpass.addEventListener('input', () => {
             suc2 = false;
         }   
     }
+    const errorDiv2 = document.getElementById('renewpass-error2');
+    if(errorDiv2)
+    {
+        errorDiv2.remove();
+        sub2=false;
+    }
     if (renewpass.value!=="" && renewpass.value===newpass.value && validatePassword(newpass.value)&& !suc2) {
         const icon = document.createElement('i');
         icon.className = 'fa-regular fa-circle-check';
@@ -148,4 +162,51 @@ renewpass.addEventListener('input', () => {
     }
 
    
+});
+//when submit the form
+document.getElementById('btn').addEventListener('click',(e)=>
+{ 
+    e.preventDefault();
+    if(!errorDisplayed && !errorDisplayed2)
+    {
+    if(newpass.value==="" && !sub1)
+    {
+        const errorDiv = document.createElement('div');
+        errorDiv.id = 'newpass-error2';
+        errorDiv.className="error";
+        errorDiv.style.color = 'red';
+        
+        
+        const icon = document.createElement('i');
+        icon.className = 'fa-solid fa-triangle-exclamation';
+        errorDiv.appendChild(icon);
+
+        errorDiv.innerHTML += ' This field is required';
+        
+        forpass2.appendChild(errorDiv);
+        sub1=true;
+    }
+    if(renewpass.value==="" && !sub2)
+    {
+        const errorDiv = document.createElement('div');
+        errorDiv.id = 'renewpass-error2';
+        errorDiv.className="error";
+        errorDiv.style.color = 'red';
+        
+        
+        const icon = document.createElement('i');
+        icon.className = 'fa-solid fa-triangle-exclamation';
+        errorDiv.appendChild(icon);
+
+        errorDiv.innerHTML += ' This field is required';
+        
+        forpass3.appendChild(errorDiv);
+        sub2=true;
+    }
+     
+    if(suc1 && suc2)
+    {
+        document.getElementById('form').submit();
+    }
+}
 });
