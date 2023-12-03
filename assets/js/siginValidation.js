@@ -289,7 +289,8 @@ phoneInput?.addEventListener('input',function(){
 })
 
 //Check if Gender and Date are Empty
-var genderInputs = document.getElementsByName('gender');
+var genderInputs = document.getElementsByClassName('radio-input');
+console.log(genderInputs);
 const genderMsg = document.getElementById('radioMsg');
 
 function isEmpty(radioInputs,msg){
@@ -310,7 +311,21 @@ function isEmpty(radioInputs,msg){
     }
 }
 
-//genderInputs?.addEventListener('focusout',isEmpty(genderInputs,genderMsg));
+/* genderInputs?.addEventListener('change',isEmpty(genderInputs,genderMsg)); */
+
+var maleCheck = document.getElementById('male');
+maleCheck?.addEventListener("change",genderCheck);
+var femaleCheck = document.getElementById('female');
+femaleCheck?.addEventListener("change",genderCheck);
+
+function genderCheck(){
+    if(maleCheck.checked || femaleCheck.checked){
+        /* genderMsg.style.display = "none"; */
+        genderMsg.innerHTML = '';
+        
+    }
+}
+
 
 //Check if date is empty
 
