@@ -90,6 +90,9 @@ input[type="text"]:hover{
 /* Responsive at width 425px*/
 @media(max-width:425px){
     input[type="text"], textarea {
-        width: 100%;
+        width: 80%;
+    }
+    textarea{
+        width: 94%;
     }
 }
