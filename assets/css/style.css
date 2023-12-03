@@ -356,21 +356,21 @@ input[type="date"]{
 .panel {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-around;
+  align-items: flex-start;
+  /* justify-content: space-around; */
+  gap: 20px;
   text-align: center;
   z-index: 6;
 }
 
 .left-panel {
   pointer-events: all;
-  padding: 3rem 17% 2rem 12%;
+  padding: 2rem 17% 2rem 12%;
 }
 
 .right-panel {
   pointer-events: none;
   padding: 3rem 12% 2rem 17%;
-  /* border:  3px solid white; */
 }
 
 .panel .content {
@@ -657,7 +657,7 @@ input[type="date"]{
 }
 
 
-@media (max-height: 780px) {
+@media (max-height: 800px) {
   .container {
     height: 160vh;
     /* height: 100vhpx; */
