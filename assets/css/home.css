@@ -957,6 +957,9 @@ span i.fa-solid.fa-circle-exclamation{
     .donation-content {
         width: 100%;
     }
+    .donation-content input[type='text'] {
+        width: 60%;
+    }
 }
 
 /* Responsive on width 375 */ 
@@ -970,7 +973,12 @@ span i.fa-solid.fa-circle-exclamation{
     .doctor-heading p{
         padding: 0 20px;
     }
-
+    .donation-content input[type='text'] {
+        width: 70%;
+    }
+    .donation-content select {
+        margin: 5px 0;
+    }
 }
 
 
@@ -1025,6 +1033,9 @@ span i.fa-solid.fa-circle-exclamation{
     }
     .btn-send {
         margin-top: 20px;
+    }
+    section.donation {
+        height: 450px;
     }
     
 }
