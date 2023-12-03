@@ -1,16 +1,20 @@
 var oldpass=document.getElementById('cpass');
 var newpass=document.getElementById('npass');
 var renewpass=document.getElementById('rnpass');
+var forpass1=document.getElementById('forpass1');
 var forpass2=document.getElementById('forpass2');
 var divpass2=document.getElementById('div2');
 var divpass3=document.getElementById('div3');
 var forpass3=document.getElementById('forpass3');
 var errorDisplayed=false;
 var errorDisplayed2=false;
+var errorDisplayed3=false;
 var suc1=false;
 var suc2=false;
+var suc3=false;
 var sub1=false;
 var sub2=false;
+var sub3=false;
 
 const validatePassword = (password) => {
     return password.match(
@@ -44,6 +48,7 @@ newpass.addEventListener('focusout', () => {
         
         const icon = document.createElement('i');
         icon.className = 'fa-solid fa-triangle-exclamation';
+        icon.style.marginRight='8px';
         errorDiv.appendChild(icon);
 
         errorDiv.innerHTML += 'Password must be at least 8 characters long, include at least one uppercase letter, one lowercase letter, and one digit.';
@@ -117,6 +122,7 @@ renewpass.addEventListener('focusout', () => {
         
         const icon = document.createElement('i');
         icon.className = 'fa-solid fa-triangle-exclamation';
+        icon.style.marginRight='8px';
         errorDiv.appendChild(icon);
 
         errorDiv.innerHTML += 'Password confirmation is incorrect';
@@ -163,11 +169,48 @@ renewpass.addEventListener('input', () => {
 
    
 });
+//validation for old password
+oldpass.addEventListener('focusout', () => {
+    if (oldpass.value==="" && !errorDisplayed3) {
+        const errorDiv = document.createElement('div');
+        errorDiv.id = 'oldpass-error';
+        errorDiv.className='error';
+        errorDiv.style.color = 'red';
+        
+        
+        const icon = document.createElement('i');
+        icon.className = 'fa-solid fa-triangle-exclamation';
+        errorDiv.appendChild(icon);
+
+        errorDiv.innerHTML += ' This field is required';
+        
+        forpass1.appendChild(errorDiv);
+        errorDisplayed3 = true;
+    }
+});
+oldpass.addEventListener('input', () => {
+    if (errorDisplayed3) {
+        const errorDiv = document.getElementById('oldpass-error');
+        if (errorDiv) {
+            errorDiv.remove();
+            errorDisplayed3 = false;
+        }
+    }
+    const errorDiv2 = document.getElementById('oldpass-error2');
+    if(errorDiv2)
+    {
+        errorDiv2.remove();
+        sub3=false;
+    }
+
+   
+});
+
 //when submit the form
-document.getElementById('btn').addEventListener('click',(e)=>
+document.getElementById('submit').addEventListener('click',(e)=>
 { 
     e.preventDefault();
-    if(!errorDisplayed && !errorDisplayed2)
+    if(!errorDisplayed && !errorDisplayed2 && !errorDisplayed3)
     {
     if(newpass.value==="" && !sub1)
     {
@@ -203,10 +246,28 @@ document.getElementById('btn').addEventListener('click',(e)=>
         forpass3.appendChild(errorDiv);
         sub2=true;
     }
-     
-    if(suc1 && suc2)
+    if(oldpass.value==="" && !sub3)
     {
-        document.getElementById('form').submit();
+        const errorDiv = document.createElement('div');
+        errorDiv.id = 'oldpass-error2';
+        errorDiv.className="error";
+        errorDiv.style.color = 'red';
+        
+        
+        const icon = document.createElement('i');
+        icon.className = 'fa-solid fa-triangle-exclamation';
+        errorDiv.appendChild(icon);
+
+        errorDiv.innerHTML += ' This field is required';
+        
+        forpass1.appendChild(errorDiv);
+        sub3=true;
+    }
+     
+    if(suc1 && suc2 && oldpass.value!=="")
+    {
+        console.log("submitted");
+        document.getElementById('form1').submit();
     }
 }
 });
