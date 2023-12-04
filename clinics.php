@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Book Appointment </title>
+  <link rel="icon" href="images/favicon.PNG" type="image/x-icon">
   <!--css style sheet-->
   <link rel="stylesheet" href="assets/css/clinics.css">
   <link rel="stylesheet" href="assets/css/nav.css">
@@ -17,44 +18,7 @@
 
 <body>
   
-  <nav>
-    <a href="home.html" class="navlogo">
-        <img src="images/logoNav.png" alt="Logo Image">
-    </a>
-    <div class="hamburger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-    </div>
-    <ul class="nav-links">
-        <div class="links">
-            <li><a href="home.html">Home</a></li>
-            <li><a href="home.html#aboutSection">About</a></li>
-            <li><a href="home.html#serviceSection">Services</a></li>
-            <li><a href="clinics.html">Clinics</a></li>
-            <li><a href="home.html#doctorSection">Doctors</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-        </div>
-        <div class="icons">
-            <li class="dropdown dropdown-6">
-                <button class="login-button" href="#"><i class="fa-solid fa-user"></i> Log in</button>
-                <ul class="dropdown_menu dropdown_menu--animated dropdown_menu-6">
-                  <li class="dropdown_item-1">Log in</li>
-                 <li class="dropdown_item-2">SignUp</li>
-                </ul>
-              </li>
-            <li class="dropdown dropdown-6">
-                <button class="join-button" href="#"><i class="fa-solid fa-globe"></i> EN</button>
-                <ul class="dropdown_menu dropdown_menu--animated dropdown_menu-6">
-                    <li class="dropdown_item-1">EN</li>
-                    <li class="dropdown_item-2">AR</li>
-                </ul>
-            </li>
-            <!-- <li><button class="login-button" href="#"><i class="fa-solid fa-user"></i> Login</button></li> -->
-            <!-- <li><button class="join-button" href="#"><i class="fa-solid fa-globe"></i> EN</button></li> -->
-        </div>
-    </ul>
-</nav>
+  <?php include("includes/navbar.php") ?>
 
   <div class="container">
     <div class="sidebar">
@@ -68,7 +32,7 @@
       <div class="clinicsContainer">
       <div class="clinics">
         <div class="item">
-          <a href="bookappsinglenew.html">
+          <a href="bookappsinglenew.php">
             <i class="fa-solid fa-heart-pulse"></i>
             <div class="name"> Cardiology</div>
             <div class="des">
@@ -77,7 +41,7 @@
           </a>
         </div>
         <div class="item">
-          <a href="bookappsinglenew.html">
+          <a href="bookappsinglenew.php">
             <i class="fa-solid fa-brain"></i>
             <div class="name"> Neurology</div>
             <div class="des">
@@ -86,7 +50,7 @@
           </a>
         </div>
         <div class="item">
-          <a href="bookappsinglenew.html">
+          <a href="bookappsinglenew.php">
             <i class="fa-regular fa-eye"></i>
             <div class="name"> Ophtalmology</div>
             <div class="des">
@@ -95,7 +59,7 @@
           </a>
         </div>
         <div class="item">
-          <a href="bookappsinglenew.html">
+          <a href="bookappsinglenew.php">
             <i class="fa-solid fa-heart-pulse"></i>
             <div class="name"> Cardiology</div>
             <div class="des">
@@ -104,7 +68,7 @@
           </a>
         </div>
         <div class="item">
-          <a href="bookappsinglenew.html">
+          <a href="bookappsinglenew.php">
             <i class="fa-solid fa-brain"></i>
             <div class="name"> Neurology</div>
             <div class="des">
@@ -113,7 +77,7 @@
           </a>
         </div>
         <div class="item">
-          <a href="bookappsinglenew.html">
+          <a href="bookappsinglenew.php">
             <i class="fa-regular fa-eye"></i>
             <div class="name"> Ophtalmology</div>
             <div class="des">
@@ -122,7 +86,7 @@
           </a>
         </div>
         <div class="item">
-          <a href="bookappsinglenew.html">
+          <a href="bookappsinglenew.php">
             <i class="fa-solid fa-heart-pulse"></i>
             <div class="name"> Cardiology</div>
             <div class="des">
@@ -131,7 +95,7 @@
           </a>
         </div>
         <div class="item">
-          <a href="bookappsinglenew.html">
+          <a href="bookappsinglenew.php">
             <i class="fa-solid fa-brain"></i>
             <div class="name"> Neurology</div>
             <div class="des">
@@ -140,7 +104,7 @@
           </a>
         </div>
         <div class="item">
-          <a href="bookappsinglenew.html">
+          <a href="bookappsinglenew.php">
             <i class="fa-regular fa-eye"></i>
             <div class="name"> Ophtalmology</div>
             <div class="des">
@@ -149,7 +113,7 @@
           </a>
         </div>
         <div class="item">
-          <a href="bookappsinglenew.html">
+          <a href="bookappsinglenew.php">
             <i class="fa-solid fa-brain"></i>
             <div class="name"> Neurology</div>
             <div class="des">
@@ -158,7 +122,7 @@
           </a>
         </div>
         <div class="item">
-          <a href="bookappsinglenew.html">
+          <a href="bookappsinglenew.php">
             <i class="fa-regular fa-eye"></i>
             <div class="name"> Ophtalmology</div>
             <div class="des">
@@ -167,7 +131,7 @@
           </a>
         </div>
         <div class="item">
-          <a href="bookappsinglenew.html">
+          <a href="bookappsinglenew.php">
             <i class="fa-regular fa-eye"></i>
             <div class="name"> Ophtalmology</div>
             <div class="des">

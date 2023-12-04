@@ -6,7 +6,8 @@
 
         <!--=============== REMIXICONS ===============-->
         <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-
+        <link rel="icon" href="images/favicon.PNG" type="image/x-icon">
+        
         <!--=============== CSS ===============-->
         <link rel="stylesheet" href="assets/css/doctorcss.css">
         <link rel="stylesheet" href="assets/css/doctorcss2.css">
@@ -64,7 +65,7 @@
                 </li>
                 <div class="back">
                 <li>
-                    <a href="clinics.html">
+                    <a href="clinics.php">
                         <i class="fa-solid fa-arrow-left"></i>
                         <span>Back</span>
                     </a>
@@ -105,7 +106,7 @@
                             <i class="ri-add-line"></i>
                         </div>
     
-                        <a href="doctorpage.html"><span class="card__social-text">Book Appointment</span></a>
+                        <a href="doctorpage.php"><span class="card__social-text">Book Appointment</span></a>
     
                         <!-- Card social -->
                         <ul class="card__social-list">
@@ -140,7 +141,7 @@
                             <i class="ri-add-line"></i>
                         </div>
     
-                        <a href="doctorpage.html"><span class="card__social-text">Book Appointment</span></a>
+                        <a href="doctorpage.php"><span class="card__social-text">Book Appointment</span></a>
     
                         <!-- Card social -->
                         <ul class="card__social-list">
@@ -177,7 +178,7 @@
                             <i class="ri-add-line"></i>
                         </div>
                         
-                        <a href="doctorpage.html"><span class="card__social-text">Book Appointment</span></a>
+                        <a href="doctorpage.php"><span class="card__social-text">Book Appointment</span></a>
     
                         <!-- Card social -->
                         <ul class="card__social-list">
@@ -213,7 +214,7 @@
                             <i class="ri-add-line"></i>
                         </div>
     
-                        <a href="doctorpage.html"><span class="card__social-text">Book Appointment</span></a>
+                        <a href="doctorpage.php"><span class="card__social-text">Book Appointment</span></a>
     
                         <!-- Card social -->
                         <ul class="card__social-list">
@@ -249,80 +250,7 @@
                             <i class="ri-add-line"></i>
                         </div>
     
-                        <a href="doctorpage.html"><span class="card__social-text">Book Appointment</span></a>
-    
-                        <!-- Card social -->
-                        <ul class="card__social-list">
-                            <a href="https://www.facebook.com/" target="_blank" class="card__social-link">
-                                <i class="fa-brands fa-facebook"></i>
-                            </a>
-    
-                            <a href="https://www.instagram.com/" target="_blank" class="card__social-link">
-                                <i class="fa-brands fa-instagram"></i>
-                            </a>
-    
-                            <a href="https://twitter.com/" target="_blank" class="card__social-link">
-                                <i class="fa-brands fa-x-twitter"></i>
-                            </a>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div class="card">
-                <div class="card__border">
-                    <img src="images/doctorapp.jpg" alt="card image" class="card__img">
-                </div>
-
-                <h3 class="card__name">Dr Salem Hachem</h3>
-                <span class="card__profession">Cardiology/electrophysiology</span>
-
-                <div class="card__social" id="card-social">
-                    <div class="card__social-control">
-                        <!-- Toggle button -->
-                        <div class="card__social-toggle" id="card-toggle">
-                            <i class="ri-add-line"></i>
-                        </div>
-    
-                        <a href="doctorpage.html"><span class="card__social-text">Book Appointment</span></a>
-    
-                        <!-- Card social -->
-                        <ul class="card__social-list">
-                            <a href="https://www.facebook.com/" target="_blank" class="card__social-link">
-                                <i class="fa-brands fa-facebook"></i>
-                            </a>
-    
-                            <a href="https://www.instagram.com/" target="_blank" class="card__social-link">
-                                <i class="fa-brands fa-instagram"></i>
-                            </a>
-    
-                            <a href="https://twitter.com/" target="_blank" class="card__social-link">
-                                <i class="fa-brands fa-x-twitter"></i>
-                            </a>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card">
-                <div class="card__border">
-                    <img src="images/doctorapp.jpg" alt="card image" class="card__img">
-                </div>
-
-                <h3 class="card__name">Dr Salem Hachem</h3>
-                <span class="card__profession">Cardiology/electrophysiology</span>
-
-                <div class="card__social" id="card-social">
-                    <div class="card__social-control">
-                        <!-- Toggle button -->
-                        <div class="card__social-toggle" id="card-toggle">
-                            <i class="ri-add-line"></i>
-                        </div>
-    
-                        <a href="doctorpage.html"><span class="card__social-text">Book Appointment</span></a>
+                        <a href="doctorpage.php"><span class="card__social-text">Book Appointment</span></a>
     
                         <!-- Card social -->
                         <ul class="card__social-list">
@@ -359,7 +287,80 @@
                             <i class="ri-add-line"></i>
                         </div>
     
-                        <a href="doctorpage.html"><span class="card__social-text">Book Appointment</span></a>
+                        <a href="doctorpage.php"><span class="card__social-text">Book Appointment</span></a>
+    
+                        <!-- Card social -->
+                        <ul class="card__social-list">
+                            <a href="https://www.facebook.com/" target="_blank" class="card__social-link">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+    
+                            <a href="https://www.instagram.com/" target="_blank" class="card__social-link">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+    
+                            <a href="https://twitter.com/" target="_blank" class="card__social-link">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card__border">
+                    <img src="images/doctorapp.jpg" alt="card image" class="card__img">
+                </div>
+
+                <h3 class="card__name">Dr Salem Hachem</h3>
+                <span class="card__profession">Cardiology/electrophysiology</span>
+
+                <div class="card__social" id="card-social">
+                    <div class="card__social-control">
+                        <!-- Toggle button -->
+                        <div class="card__social-toggle" id="card-toggle">
+                            <i class="ri-add-line"></i>
+                        </div>
+    
+                        <a href="doctorpage.php"><span class="card__social-text">Book Appointment</span></a>
+    
+                        <!-- Card social -->
+                        <ul class="card__social-list">
+                            <a href="https://www.facebook.com/" target="_blank" class="card__social-link">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+    
+                            <a href="https://www.instagram.com/" target="_blank" class="card__social-link">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+    
+                            <a href="https://twitter.com/" target="_blank" class="card__social-link">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card">
+                <div class="card__border">
+                    <img src="images/doctorapp.jpg" alt="card image" class="card__img">
+                </div>
+
+                <h3 class="card__name">Dr Salem Hachem</h3>
+                <span class="card__profession">Cardiology/electrophysiology</span>
+
+                <div class="card__social" id="card-social">
+                    <div class="card__social-control">
+                        <!-- Toggle button -->
+                        <div class="card__social-toggle" id="card-toggle">
+                            <i class="ri-add-line"></i>
+                        </div>
+    
+                        <a href="doctorpage.php"><span class="card__social-text">Book Appointment</span></a>
     
                         <!-- Card social -->
                         <ul class="card__social-list">

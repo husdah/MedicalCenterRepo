@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> User Page </title>
+    <link rel="icon" href="images/favicon.PNG" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/user.css" /> 
 </head>
@@ -16,8 +17,8 @@
                 <label class="date" id="date"></label>
                 </div>
                 <div class="buttons">
-                    <a href="home.html" class="back"><button><i class="fas fa-arrow-left"></i>  Back</button></a>
-                    <a href="sign-in-up.html"><button class="log-out">Log out</button></a>
+                    <a href="home.php" class="back"><button><i class="fas fa-arrow-left"></i>  Back</button></a>
+                    <a href="sign-in-up.php"><button class="log-out">Log out</button></a>
                 </div>
             </div>
             <div class="tables">

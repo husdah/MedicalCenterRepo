@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HealthHub Doctor Page</title>
-
+    
+    <link rel="icon" href="images/favicon.PNG" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/doctorpage.css">
     <link rel="stylesheet" href="assets/css/calendar.css">
  
@@ -40,7 +41,7 @@
                     </ul>
                 </div>
                 </div>
-                <a href="bookappsinglenew.html" class="report">
+                <a href="bookappsinglenew.php" class="report">
                     <i class='bx bx-arrow-back'></i>
                     <span>Back</span>
                 </a>
