@@ -1,4 +1,4 @@
-const form          = document.getElementById('form2');
+const form  = document.getElementById('form2');
 
 const fname_input   = document.getElementById('fname');
 const fnameError    = document.getElementById('fname-error');
@@ -14,7 +14,7 @@ const messageError  = document.getElementById('message-error');
 const btnsend       = document.getElementById('btnSend');
 var errorDisplayed = false;
 
-form.addEventListener('submit', e => { 
+form?.addEventListener('submit', e => { 
     e.preventDefault();
     validateForm();
 });
@@ -60,7 +60,7 @@ const checkFirstname = () => {
         return true;
     }
 }
-fname_input.addEventListener('focusout', checkFirstname);
+fname_input?.addEventListener('focusout', checkFirstname);
 
 const checkLastname = () => {
     if(lname_input.value === ''){
@@ -71,7 +71,7 @@ const checkLastname = () => {
         return true;
     }
 }
-lname_input.addEventListener('focusout', checkLastname);
+lname_input?.addEventListener('focusout', checkLastname);
 
 const checkEmail = () => {
     if(email_input.value === ''){
@@ -82,7 +82,7 @@ const checkEmail = () => {
         return true;
     }
 }
-email_input.addEventListener('focusout', checkEmail);
+email_input?.addEventListener('focusout', checkEmail);
 
 const checkSubject = () => {
     if(subject_input.value === ''){
@@ -93,7 +93,7 @@ const checkSubject = () => {
         return true;
     }
 }
-subject_input.addEventListener('focusout', checkSubject);
+subject_input?.addEventListener('focusout', checkSubject);
 
 const checkMessage = () => {
     if(message_input.value === ''){
@@ -104,7 +104,7 @@ const checkMessage = () => {
         return true;
     }
 }
-message_input.addEventListener('focusout', checkMessage);
+message_input?.addEventListener('focusout', checkMessage);
 
 //Validation on Input Event For Format
 const validateFirstname = () => {
@@ -118,7 +118,7 @@ const validateFirstname = () => {
         return true;
     }    
 }
-fname_input.addEventListener('input', validateFirstname);
+fname_input?.addEventListener('input', validateFirstname);
 
 const validateLastname = () => {
     const lnameValue   = lname_input.value;
@@ -131,7 +131,7 @@ const validateLastname = () => {
         return true;
     }
 }
-lname_input.addEventListener('input', validateLastname);
+lname_input?.addEventListener('input', validateLastname);
 
 const validateEmail = () => {
     const emailValue   = email_input.value;
@@ -144,7 +144,7 @@ const validateEmail = () => {
         return true;
     }
 }
-email_input.addEventListener('input', validateEmail);
+email_input?.addEventListener('input', validateEmail);
 
 const validateSubject = () => {
     const subjectValue   = subject_input.value;
@@ -157,7 +157,7 @@ const validateSubject = () => {
         return true;
     }
 }
-subject_input.addEventListener('input', validateSubject);
+subject_input?.addEventListener('input', validateSubject);
 
 const validateMessage = () => {
     if(message_input.value !== ''){
@@ -176,4 +176,4 @@ const validateMessage = () => {
         return true;
     }
 }
-message_input.addEventListener('input', validateMessage);
+message_input?.addEventListener('input', validateMessage);

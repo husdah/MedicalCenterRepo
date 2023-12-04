@@ -13,7 +13,7 @@ function validateInput(input) {
         return input.match(emailRegex);
     }
 }
-const checkEmail = () => {
+const checkEmail2 = () => {
     if(emailText.value == ''){
         errorDisplay.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
         return false;
@@ -22,9 +22,9 @@ const checkEmail = () => {
         return true;
     }
 }
-emailText?.addEventListener('focusout', checkEmail);
+emailText?.addEventListener('focusout', checkEmail2);
 
-const validateEmail = () => {
+const validateEmail2 = () => {
     if(!validateInput(emailText.value)){
         errorDisplay.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Phone or Email';
         return false;
@@ -34,7 +34,7 @@ const validateEmail = () => {
         return true;
     }
 }
-emailText?.addEventListener('input', validateEmail);
+emailText?.addEventListener('input', validateEmail2);
 
 var bloodType = document.getElementById('mySelect');
 const validateSelect = () => {
@@ -55,12 +55,12 @@ bloodType?.addEventListener('change', validateSelect)
 
 const clickDonate = () => {
     
-    if(validateSelect() && checkEmail() && validateEmail()){
+    if(validateSelect() && checkEmail2() && validateEmail2()){
         alert('Submit');
     }
     else{
         validateSelect();
-        checkEmail();
+        checkEmail2();
         //alert('something wrong');
     }
 

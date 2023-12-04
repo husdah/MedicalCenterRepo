@@ -4,8 +4,8 @@ var inc = [];
 
 var countsID = document.getElementById("countsID");
 window.onscroll = function (){
-  var topElem = countsID.offsetTop;
-  var btmElem = countsID.offsetTop + countsID.clientHeight;
+  var topElem = countsID?.offsetTop;
+  var btmElem = countsID?.offsetTop + countsID?.clientHeight;
   var topScreen = window.pageYOffset;
   var btmScreen = window.pageYOffset + window.innerHeight;
   if(btmScreen > topElem && topScreen < btmElem){
