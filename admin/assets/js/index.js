@@ -2,7 +2,7 @@ const sideLinks = document.querySelectorAll('.sidebar .side-menu li a:not(.logou
 
 sideLinks.forEach(item => {
     const li = item.parentElement;
-    item.addEventListener('click', () => {
+    item?.addEventListener('click', () => {
         sideLinks.forEach(i => {
             i.parentElement.classList.remove('active');
         })
@@ -13,7 +13,7 @@ sideLinks.forEach(item => {
 const menuBar = document.querySelector('.content nav .bx.bx-menu');
 const sideBar = document.querySelector('.sidebar');
 
-menuBar.addEventListener('click', () => {
+menuBar?.addEventListener('click', () => {
     sideBar.classList.toggle('close');
 });
 
@@ -21,7 +21,7 @@ const searchBtn = document.querySelector('.content nav form .form-input button')
 const searchBtnIcon = document.querySelector('.content nav form .form-input button .bx');
 const searchForm = document.querySelector('.content nav form');
 
-searchBtn.addEventListener('click', function (e) {
+searchBtn?.addEventListener('click', function (e) {
     if (window.innerWidth < 576) {
         e.preventDefault;
         searchForm.classList.toggle('show');
@@ -51,7 +51,7 @@ window.addEventListener('resize', () => {
 
 const toggler = document.getElementById('theme-toggle');
 
-toggler.addEventListener('change', function () {
+toggler?.addEventListener('change', function () {
     if (this.checked) {
         document.body.classList.add('dark');
     } else {

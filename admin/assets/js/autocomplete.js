@@ -69,7 +69,7 @@ input.onkeyup = (e)=>{
     }
 }
 
-input.addEventListener("input",() =>{
+input?.addEventListener("input",() =>{
     let userData = input.value;
     if(userData == ''){
         searchInput.classList.remove("active");

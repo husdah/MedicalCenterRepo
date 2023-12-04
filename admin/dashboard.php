@@ -1,284 +1,190 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthHub Admin Panel</title>
+<?php
+    include('includes/header.php');
+?>
 
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/form.css">
-    <link rel="stylesheet" href="assets/css/seachBox.css">
-    <link rel="stylesheet" href="assets/css/expandSearchBox.css">
-    <link rel="stylesheet" href="assets/css/autocomplete.css">
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <!-- magnific-popup css -->
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
-</head>
+    <main>
+        <div class="header">
+            <div class="left">
+                <h1>Dashboard</h1>
+                <ul class="breadcrumb">
+                    <li><a href="#">
+                            Analytics
+                        </a></li>
+                    /
+                    <li><a href="#" class="active">Appointments</a></li>
+                </ul>
+            </div>
+            <a href="#" class="report">
+                <i class='bx bx-receipt'></i>
+                <span>View Appointments</span>
+            </a>
+        </div>
 
-<body>
-
-     <!-- Sidebar -->
-     <aside class="sidebar">
-        <a href="dashboard.html" class="logo">
-            <i class='bx bx-pulse'></i>
-            <div class="logo-name"><span>Health</span>Hub</div>
-        </a>
-        <ul class="side-menu">
-            <li class="active"><a href="dashboard.html"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-            <li><a href="clinics.html"><i class='bx bx-store-alt'></i>Clinics</a></li>
-            <li><a href="doctors.html"><i class='bx bx-first-aid'></i>Doctors</a></li>
-            <li><a href="patients.html"><i class='bx bx-group'></i>Patients</a></li>
-            <li><a href="donors.html"><i class='bx bx-donate-blood'></i>Donors</a></li>
-            <li><a href="workingHours.html"><i class='bx bx-time'></i>Working Hours</a></li>
-            <li><a href="settings.html"><i class='bx bx-cog'></i>Settings</a></li>
-        </ul>
-        <ul class="side-menu">
-            <li class="log-li">
-                <a href="/sign-in-up.html" class="logout">
-                    <i class='bx bx-log-out-circle'></i>
-                    Logout
-                </a>
+        <!-- Insights -->
+        <ul class="insights">
+            <li>
+                <i class='bx bx-clinic'></i>
+                <span class="info">
+                    <h3>
+                        1,074
+                    </h3>
+                    <p>Clinics</p>
+                </span>
+            </li>
+            <li><i class='bx bx-first-aid'></i>
+                <span class="info">
+                    <h3>
+                        3,944
+                    </h3>
+                    <p>Doctors</p>
+                </span>
+            </li>
+            <li><i class='bx bx-group'></i>
+                <span class="info">
+                    <h3>
+                        14,721
+                    </h3>
+                    <p>Patients</p>
+                </span>
+            </li>
+            <li><i class='bx bx-donate-blood'></i>
+                <span class="info">
+                    <h3>
+                        6,742
+                    </h3>
+                    <p>Donors</p>
+                </span>
             </li>
         </ul>
-     </aside>
-    <!-- End of Sidebar -->
+        <!-- End of Insights -->
 
-    <!-- Main Content -->
-    <div class="content">
-        <!-- Navbar -->
-        <nav>
-            <i class='bx bx-menu'></i>
-            <form action="#">
-                <div class="form-input">
-                   <!--  <input type="search" placeholder="Search...">
-                    <button class="search-btn" type="submit"><i class='bx bx-search'></i></button> -->
-                    <div class="container">
-                        <div class="searchInput">
-                          <input type="search" placeholder="Search...">
-                          <div class="resultBox">
-                            <!-- here list are inserted from javascript -->
-                          </div>
-                          <button class="icon" type="submit"><i class="bx bx-search"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <input type="checkbox" id="theme-toggle" hidden>
-            <label for="theme-toggle" class="theme-toggle"></label>
-            <a href="#" class="notif">
-                <i class='bx bx-bell'></i>
-                <span class="count">12</span>
-            </a>
-            <a href="#" class="profile">
-                <img src="../images/HealthHubLogo.png">
-            </a>
-        </nav>
-        <!-- End of Navbar -->
-
-        <main>
-            <div class="header">
-                <div class="left">
-                    <h1>Dashboard</h1>
-                    <ul class="breadcrumb">
-                        <li><a href="#">
-                                Analytics
-                            </a></li>
-                        /
-                        <li><a href="#" class="active">Appointments</a></li>
-                    </ul>
-                </div>
-                <a href="#" class="report">
+        <div class="bottom-data">
+            <div class="orders">
+                <div class="header">
                     <i class='bx bx-receipt'></i>
-                    <span>View Appointments</span>
-                </a>
+                    <h3>Recent Appts</h3>
+                    <form class="expanding-search-form">
+                        <div class="search-dropdown">
+                            <button class="button dropdown-toggle" type="button">
+                            <span class="toggle-active">Name</span>
+                            <span class="ion-arrow-down-b"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                            <li class="menu-active"><a href="#">Name</a></li>
+                            <li><a href="#">Date</a></li>
+                            <li><a href="#">Status</a></li>
+                            </ul>
+                        </div>
+                        <input class="search-input" id="global-search" type="search" placeholder="Search">
+                        <button class="button search-button" type="button">
+                            <span class="icon ion-search">
+                                <span class="sr-only">Search</span>
+                            </span>
+                        </button>
+                    </form>
+                </div>
+                <table id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Patient</th>
+                            <th>Appointment Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <!-- <img src="../images/profile-1.jpg"> -->
+                                <a href="../images/profile-1.jpg" class="imageLB"> 
+                                    <img src="../images/profile-1.jpg" alt="patient Image">
+                                </a>
+                                <a href="view-patient.php"><p class="name">Hussein Daher</p></a>
+                            </td>
+                            <td class="date">18-08-2023</td>
+                            <td><span class="status completed">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="../images/profile-1.jpg" class="imageLB"> 
+                                    <img src="../images/profile-1.jpg" alt="patient Image">
+                                </a>
+                                <a href="view-patient.php"><p class="name">Haya Tfaily</p></a>
+                            </td>
+                            <td class="date">17-08-2023</td>
+                            <td><span class="status pending">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="../images/profile-1.jpg" class="imageLB"> 
+                                    <img src="../images/profile-1.jpg" alt="patient Image">
+                                </a>
+                                <a href="view-patient.php"><p class="name">Loreen Baker</p></a>
+                            </td>
+                            <td class="date">16-08-2023</td>
+                            <td><span class="status process">Processing</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="../images/profile-1.jpg" class="imageLB"> 
+                                    <img src="../images/profile-1.jpg" alt="patient Image">
+                                </a>
+                                <a href="view-patient.php"><p class="name">Zeinab Hijazi</p></a>
+                            </td>
+                            <td class="date">15-08-2023</td>
+                            <td><span class="status process">Processing</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <!-- Insights -->
-            <ul class="insights">
-                <li>
-                    <i class='bx bx-clinic'></i>
-                    <span class="info">
-                        <h3>
-                            1,074
-                        </h3>
-                        <p>Clinics</p>
-                    </span>
-                </li>
-                <li><i class='bx bx-first-aid'></i>
-                    <span class="info">
-                        <h3>
-                            3,944
-                        </h3>
-                        <p>Doctors</p>
-                    </span>
-                </li>
-                <li><i class='bx bx-group'></i>
-                    <span class="info">
-                        <h3>
-                            14,721
-                        </h3>
-                        <p>Patients</p>
-                    </span>
-                </li>
-                <li><i class='bx bx-donate-blood'></i>
-                    <span class="info">
-                        <h3>
-                            6,742
-                        </h3>
-                        <p>Donors</p>
-                    </span>
-                </li>
-            </ul>
-            <!-- End of Insights -->
-
-            <div class="bottom-data">
-                <div class="orders">
-                    <div class="header">
-                        <i class='bx bx-receipt'></i>
-                        <h3>Recent Appts</h3>
-                        <form class="expanding-search-form">
-                            <div class="search-dropdown">
-                              <button class="button dropdown-toggle" type="button">
-                                <span class="toggle-active">Name</span>
-                                <span class="ion-arrow-down-b"></span>
-                              </button>
-                              <ul class="dropdown-menu">
-                                <li class="menu-active"><a href="#">Name</a></li>
-                                <li><a href="#">Date</a></li>
-                                <li><a href="#">Status</a></li>
-                              </ul>
-                            </div>
-                            <input class="search-input" id="global-search" type="search" placeholder="Search">
-                            <button class="button search-button" type="button">
-                                <span class="icon ion-search">
-                                    <span class="sr-only">Search</span>
-                                </span>
-                            </button>
-                        </form>
-                    </div>
-                    <table id="dataTable">
-                        <thead>
-                            <tr>
-                                <th>Patient</th>
-                                <th>Appointment Date</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <!-- <img src="../images/profile-1.jpg"> -->
-                                    <a href="../images/profile-1.jpg" class="imageLB"> 
-                                        <img src="../images/profile-1.jpg" alt="patient Image">
-                                    </a>
-                                    <a href="view-patient.html"><p class="name">Hussein Daher</p></a>
-                                </td>
-                                <td class="date">18-08-2023</td>
-                                <td><span class="status completed">Completed</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="../images/profile-1.jpg" class="imageLB"> 
-                                        <img src="../images/profile-1.jpg" alt="patient Image">
-                                    </a>
-                                    <a href="view-patient.html"><p class="name">Haya Tfaily</p></a>
-                                </td>
-                                <td class="date">17-08-2023</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="../images/profile-1.jpg" class="imageLB"> 
-                                        <img src="../images/profile-1.jpg" alt="patient Image">
-                                    </a>
-                                    <a href="view-patient.html"><p class="name">Loreen Baker</p></a>
-                                </td>
-                                <td class="date">16-08-2023</td>
-                                <td><span class="status process">Processing</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="../images/profile-1.jpg" class="imageLB"> 
-                                        <img src="../images/profile-1.jpg" alt="patient Image">
-                                    </a>
-                                    <a href="view-patient.html"><p class="name">Zeinab Hijazi</p></a>
-                                </td>
-                                <td class="date">15-08-2023</td>
-                                <td><span class="status process">Processing</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Reminders -->
-                <div class="reminders">
-                    <div class="header">
-                        <i class='bx bx-note'></i>
-                        <h3>Remiders</h3>
-                        <div id="reminderContainer" class="searchContainer">
-                            <span id="searchIcon" onclick="toggleReminderBox()"><i class='bx bx-plus'></i></span>
-                            <div id="reminderBox" class="reminderBox">
-                                <form action="" class="form">
-                                    <label for="">
-                                        <input class="input" type="text" id="searchInput" placeholder="Enter Reminders...">
-                                        <span>reminder</span>
-                                    </label>
-                                    <button class="submit" onclick="performSearch()">ADD</button>
-                                </form>
-                            </div>
+            <!-- Reminders -->
+            <div class="reminders">
+                <div class="header">
+                    <i class='bx bx-note'></i>
+                    <h3>Remiders</h3>
+                    <div id="reminderContainer" class="searchContainer">
+                        <span id="searchIcon" onclick="toggleReminderBox()"><i class='bx bx-plus'></i></span>
+                        <div id="reminderBox" class="reminderBox">
+                            <form action="" class="form">
+                                <label for="">
+                                    <input class="input" type="text" id="searchInput" placeholder="Enter Reminders...">
+                                    <span>reminder</span>
+                                </label>
+                                <button class="submit" onclick="performSearch()">ADD</button>
+                            </form>
                         </div>
                     </div>
-                    <ul class="task-list">
-                        <li class="completed">
-                            <div class="task-title">
-                                <i class='bx bx-check-circle'></i>
-                                <p>Start Our Meeting</p>
-                            </div>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                        <li class="completed">
-                            <div class="task-title">
-                                <i class='bx bx-check-circle'></i>
-                                <p>Analyse Our Site</p>
-                            </div>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                        <li class="not-completed">
-                            <div class="task-title">
-                                <i class='bx bx-x-circle'></i>
-                                <p>Play Footbal</p>
-                            </div>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                    </ul>
                 </div>
-                <!-- End of Reminders-->
-
+                <ul class="task-list">
+                    <li class="completed">
+                        <div class="task-title">
+                            <i class='bx bx-check-circle'></i>
+                            <p>Start Our Meeting</p>
+                        </div>
+                        <i class='bx bx-dots-vertical-rounded'></i>
+                    </li>
+                    <li class="completed">
+                        <div class="task-title">
+                            <i class='bx bx-check-circle'></i>
+                            <p>Analyse Our Site</p>
+                        </div>
+                        <i class='bx bx-dots-vertical-rounded'></i>
+                    </li>
+                    <li class="not-completed">
+                        <div class="task-title">
+                            <i class='bx bx-x-circle'></i>
+                            <p>Play Footbal</p>
+                        </div>
+                        <i class='bx bx-dots-vertical-rounded'></i>
+                    </li>
+                </ul>
             </div>
+            <!-- End of Reminders-->
 
-        </main>
+        </div>
 
-    </div>
-    <script src="assets/js/jquery-3.7.1.min.js"></script>
-    <!-- magnifier popup js cdn link -->
-    <script src="assets/js/jquery.magnific-popup.js"></script>
-    <script src="assets/js/index.js"></script>
-    <script src="assets/js/searchBox.js"></script>
-    <script src="assets/js/expandSearchBox.js"></script>
-    <script src="assets/js/autocomplete.js"></script> 
+    </main>
 
-    <script> 
-        $('.imageLB').magnificPopup({
-            type: 'image',
-            mainClass: 'mfp-with-zoom',
-            zoom: {
-                enabled: true,
-                duration: 300,
-                easing: 'ease-in-out',
-            }
-        });
-    </script>
-    
-</body>
-</html>
+<?php
+    include('includes/footer.php');
+?>

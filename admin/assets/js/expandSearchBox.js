@@ -44,10 +44,10 @@ $('.dropdown-toggle').click(function(e) {
 // Get references to the input and the table
 var filterInput = document.getElementById('global-search');
 var dataTable = document.getElementById('dataTable');
-var rows = dataTable.getElementsByTagName('tr');
+var rows = dataTable?.getElementsByTagName('tr');
 
 // Attach an event listener to the input for the 'input' event
-filterInput.addEventListener('input', function() {
+filterInput?.addEventListener('input', function() {
   // Get the current value of the input
   var filterValue = filterInput.value.toLowerCase();
   var sortBy = document.querySelector('.menu-active').textContent.toLowerCase();
