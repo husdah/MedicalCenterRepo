@@ -71,22 +71,22 @@
                         
                           <form id="form">
                             <div class="form-name" id="forfirstname">
-                              <input type="text" name="name" id="fname">
-                              <label for="name">Your first name</label>
+                              <input type="text" name="fname" id="fname">
+                              <label for="fname">Your first name</label>
                             </div>
                             
                             <div class="form-name" id="forlastname">
                               <input type="text" name="lname" id="lname">
-                              <label for="email">Your last name</label>
+                              <label for="lname">Your last name</label>
                             </div>
-                            <div class="form-name"  id="foremail">
+<!--                             <div class="form-name"  id="foremail">
                               <input type="email" name="email" id="email">
                               <label for="email">Your email</label>
                             </div>
                             <div class="form-name" id="forphone">
                                 <input type="text" name="phnum" id="phnum">
                                 <label for="phnum">Your phone number</label>
-                              </div>
+                              </div> -->
                             
                             <button type="submit" class="request disabled" id="btn">
                               Request appointment <br class="break">

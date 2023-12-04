@@ -1,35 +1,35 @@
-var email = document.getElementById('email');
-var phone = document.getElementById('phnum');
+/* var email = document.getElementById('email');
+var phone = document.getElementById('phnum'); */
 var firstname=document.getElementById('fname');
 var lastname=document.getElementById('lname');
-var foremail = document.getElementById('foremail');
-var forphone = document.getElementById('forphone');
+/* var foremail = document.getElementById('foremail');
+var forphone = document.getElementById('forphone'); */
 var forfirstname = document.getElementById('forfirstname');
 var forlastname = document.getElementById('forlastname');
-var errorDisplayed = false;
-var errorphoneDisplayed=false;
+/* var errorDisplayed = false;
+var errorphoneDisplayed=false; */
 var errorDisplayed3=false;
 var errorDisplayed4=false; 
-var suc1=false;
-var suc2=false;
+/* var suc1=false;
+var suc2=false; */
 var suc3=false;
 var suc4=false;
-var sub1=false;
-var sub2=false;
+/* var sub1=false;
+var sub2=false; */
 var sub3=false;
 var sub4=false;
 
-const validateEmail = (email) => {
+/* const validateEmail = (email) => {
     return email.match(
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
-};
+}; */
 
-const validatePhone = (phone) => {
+/* const validatePhone = (phone) => {
     return phone.match(
         /^(76|03|71|70)\d{6}$/
     );
-};
+}; */
 
 
 const validateName=(name)=>{
@@ -39,7 +39,7 @@ const validateName=(name)=>{
 };
 
 //validate the email
-email.addEventListener('focusout', () => {
+/* email.addEventListener('focusout', () => {
     if (email.value==="" && !errorDisplayed) {
         const errorDiv = document.createElement('div');
         errorDiv.id = 'email-error';
@@ -101,7 +101,7 @@ email.addEventListener('input', () => {
     }
 
    
-});
+}); */
 //validate the first name
 firstname.addEventListener('focusout', () => {
     if (firstname.value==="" && !errorDisplayed3) {
@@ -234,7 +234,7 @@ lastname.addEventListener('input', () => {
 
 //validate the phone number
 
-phone.addEventListener('focusout', () => {
+/* phone.addEventListener('focusout', () => {
     if (phone.value==="" && !errorphoneDisplayed) {
         const errorDiv = document.createElement('div');
         errorDiv.id = 'phone-error';
@@ -266,14 +266,14 @@ phone.addEventListener('focusout', () => {
         errorphoneDisplayed = true;
     }
    
-});
+}); */
 //test when submit the form
 document.getElementById('btn').addEventListener('click',(e)=>
 { 
     e.preventDefault();
-    if(!errorDisplayed && !errorphoneDisplayed)
-    {
-    if(phone.value==="" && !sub1)
+    if(!errorDisplayed3 && !errorDisplayed4)
+    { 
+/*     if(phone.value==="" && !sub1)
     {
         const errorDiv = document.createElement('div');
         errorDiv.id = 'phone-error2';
@@ -304,7 +304,7 @@ document.getElementById('btn').addEventListener('click',(e)=>
         
         foremail.insertAdjacentElement('afterend', errorDiv);
         sub2=true;
-    }
+    } */
     if(lastname.value==="" && !sub3)
     {
         const errorDiv = document.createElement('div');
@@ -337,13 +337,13 @@ document.getElementById('btn').addEventListener('click',(e)=>
         forfirstname.insertAdjacentElement('afterend', errorDiv);
         sub4=true;
     }
-    if(suc1 && suc2 && suc3 && suc4)
+    if(suc3 && suc4)
     {
         document.getElementById('form').submit();
     }
 }
 });
-phone.addEventListener('input', () => {
+/* phone.addEventListener('input', () => {
     if (errorphoneDisplayed) {
         const errorDiv = document.getElementById('phone-error');
         if (errorDiv) {
@@ -393,7 +393,7 @@ email.addEventListener('focus', () => {
         errorDiv2.remove();
         sub2=false;
     }
-});
+}); */
 firstname.addEventListener('focus', () => {
     
     const errorDiv2 = document.getElementById('f-error2');
