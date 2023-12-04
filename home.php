@@ -22,44 +22,9 @@
 </head>
 <body>
 
-    <nav>
-        <a href="home.html" class="navlogo">
-            <img src="images/logoNav.png" alt="Logo Image">
-        </a>
-        <div class="hamburger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
-        <ul class="nav-links">
-            <div class="links">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="home.html#aboutSection">About</a></li>
-                <li><a href="home.html#serviceSection">Services</a></li>
-                <li><a href="clinics.html">Clinics</a></li>
-                <li><a href="home.html#doctorSection">Doctors</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </div>
-            <div class="icons">
-                <li class="dropdown dropdown-6">
-                    <button class="login-button" href="#"><i class="fa-solid fa-user"></i> Log in</button>
-                    <ul class="dropdown_menu dropdown_menu--animated dropdown_menu-6">
-                      <li class="dropdown_item-1">Log in</li>
-                     <li class="dropdown_item-2">SignUp</li>
-                    </ul>
-                  </li>
-                <li class="dropdown dropdown-6">
-                    <button class="join-button" href="#"><i class="fa-solid fa-globe"></i> EN</button>
-                    <ul class="dropdown_menu dropdown_menu--animated dropdown_menu-6">
-                        <li class="dropdown_item-1">EN</li>
-                        <li class="dropdown_item-2">AR</li>
-                    </ul>
-                </li>
-                <!-- <li><button class="login-button" href="#"><i class="fa-solid fa-user"></i> Login</button></li> -->
-                <!-- <li><button class="join-button" href="#"><i class="fa-solid fa-globe"></i> EN</button></li> -->
-            </div>
-        </ul>
-    </nav>
+    <?php
+        //include('header.php');
+    ?>
     
     <!-- Section Banner -->
     <section id="banner" class="banner">
@@ -425,61 +390,9 @@
         </div>
     </section> 
 
-    <footer class="footer">
-        <div class="grid-container">
-            <div class="footer-column1">
-                <a href="home.html"><img src="images/HealthHubLogo-removebg-preview.png" alt="HealthHubLogo" class="logo"></a>
-                <p class="text-justify">Welcome to Health Hub, where compassionate care and medical excellence meet. To prioritize your well-being with state-of-the-art facilities and a patient-focused approach at every stage of your healthcare journey.</p>
-            </div>
-
-            <div class="footer-column2">
-                <h4 class="footer-heading">Quick Link</h4>
-                <hr>
-                <ul class="footer-links">
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="home.html#aboutSection">About Us</a></li>
-                    <li><a href="home.html#serviceSection">Services</a></li>
-                    <li><a href="home.html#doctorSection">Doctors</a></li>
-                    <li><a href="clinics.html">Clinics</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column3">
-                <h4 class="footer-heading">Opening Hours</h4>
-                <hr>
-                <ul class="opening-hour">
-                    <li>Mon: <span class="mon">7 AM - 4 PM</span></li>
-                    <li>Tue: <span class="tue">8 AM - 5 PM</span></li>
-                    <li>Wed: <span class="wed">7 AM - 7 PM</span></li>
-                    <li>Thu: <span class="thu">8 AM - 5 PM</span></li>
-                    <li>Fri: <span class="fri">7 AM - 7 PM</span></li>
-                    <li>Sat - Sun: <span class="sat">Closed</span></li>
-                </ul>
-            </div>
-            <div class="footer-column4">
-                <h4 class="footer-heading">Contact Info</h4>
-                <hr>
-                <div class="footer-links">
-                    <ul>
-                        <li><a href="https://www.google.com/maps/place/Beyrouth/@33.8892114,35.4630826,13z/data=!3m1!4b1!4m6!3m5!1s0x151f17215880a78f:0x729182bae99836b4!8m2!3d33.8937913!4d35.5017767!16zL20vMDlianY?entry=ttu" target="_blank"><i class="fa-solid fa-location-dot"></i>Beirut, Lebanon</a></li></br>
-                        <li><a href="tel:0096178960304"><i class="fa-solid fa-phone"></i>+ 961 78960304</a></li></br>
-                        <li><a href="mailto:hijazizeinab5@gmail.com"><i class="fa-regular fa-envelope"></i>info@gmail.com</a></li></br>
-                    </ul>
-                </div>
-                <ul class="social-icons mt">
-                    <li><a class="facebook" href="#"><i class="fa-brands fa-facebook"></i></a></li>
-                    <li><a class="instagram" href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a class="linkdin" href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </footer> 
-    <div class="box-copyright">
-        <div class="container-copyright">    
-            <p class="copyright-text">&copy; 2023 Health Hub Medical Center. All Rights Reserved.</p>
-        </div>
-    </div>
+    <?php 
+        include('includes/footer.php'); 
+    ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- Swiper JS -->
