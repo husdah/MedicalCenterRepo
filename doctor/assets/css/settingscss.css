@@ -24,7 +24,7 @@
     position: relative;
     left: 230px;
     width: calc(100% - 230px);
-    height: 100vh;
+    height: 100%;
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -154,7 +154,7 @@
 }
 .changepass .div label
 {
-    width: 50%;
+    width: 180px;
     align-self: center;
 }
 .changepass input
@@ -174,7 +174,24 @@
     justify-content: end;
 }
 
-#submit
+.submit .submitBtn{
+    border: none;
+    color: white;
+    background: var(--primary);
+    width: 100px;
+    text-align: center;
+    padding: 0;
+    cursor: pointer;
+    transition: 0.3s transform;
+}
+
+.submit .submitBtn:hover
+{
+    transform: scale(1.1);
+    background-color: var(--light-primary);
+} 
+
+/* #submit
 {
     border: none;
     color: white;
@@ -189,7 +206,7 @@
 {
     transform: scale(1.1);
     background-color: var(--light-primary);
-}
+} */
 
 @media(max-width:1441px)
 {
