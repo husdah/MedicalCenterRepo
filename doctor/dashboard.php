@@ -8,9 +8,10 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+
     <!-- Sidebar -->
     <?php
-    include('./includes/sidebar.php');
+        include('./includes/sidebar.php');
     ?>
     <!-- End of Sidebar -->
 
@@ -127,7 +128,7 @@
                 </td>
                 <td>
                     <div class="view-btn">
-                        <a href="patient.html"><button id="view" name="view">View</button></a>
+                        <a href="patient.php"><button id="view" name="view">View</button></a>
                     </div>
                 </td>
             </tr>
@@ -141,7 +142,7 @@
                 </td>
                 <td>
                     <div class="view-btn">
-                        <a href="patient.html"><button id="view" name="view">View</button></a>
+                        <a href="patient.php"><button id="view" name="view">View</button></a>
                     </div>
                 </td>
             </tr>
@@ -155,7 +156,7 @@
                 </td>
                 <td>
                     <div class="view-btn">
-                        <a href="patient.html"><button id="view" name="view">View</button></a>
+                        <a href="patient.php"><button id="view" name="view">View</button></a>
                     </div>
                 </td>
             </tr>
@@ -169,7 +170,7 @@
                 </td>
                 <td>
                     <div class="view-btn">
-                        <a href="patient.html"><button id="view" name="view">View</button></a>
+                        <a href="patient.php"><button id="view" name="view">View</button></a>
                     </div>
                 </td>
             </tr>

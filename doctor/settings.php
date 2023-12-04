@@ -10,11 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+
     <!-- Sidebar -->
     <?php
-    include('./includes/sidebar.php');
+        include('./includes/sidebar.php');
     ?>
     <!-- End of Sidebar -->
+
     <div class="mainContent">
         <div class="center">
         <h2>Settings</h2>
@@ -60,6 +62,7 @@
        </div>
     </div>
     </div>
+    
     <!-- <script src="assets/js/dashboard.js"></script> -->
     <script src="assets/js/settings.js"></script>
  </body>

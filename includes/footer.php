@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Footer</title>
-    <link rel="stylesheet" href="../assets/css/footer.css">
-    <link rel="stylesheet" href="../assets/css/index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
+
     <footer class="footer">
         <div class="grid-container">
             <div class="footer-column1">
@@ -59,10 +49,24 @@
             </div>
         </div>
     </footer> 
+
     <div class="box-copyright">
         <div class="container-copyright">    
             <p class="copyright-text">&copy; 2023 Health Hub Medical Center. All Rights Reserved.</p>
         </div>
     </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="assets/js/donation.js"></script>
+    <script src="assets/js/swiper.js"></script>
+    <script src="assets/js/counters.js"></script>
+    <script src="assets/js/scrollSection.js"></script>
+    <!-- <script src="assets/js/navbar.js"></script> -->
+    <script src="../assets/js/navbar.js"></script>
+    <script src="assets/js/donationFormValidation.js"></script>
+
 </body>
 </html>

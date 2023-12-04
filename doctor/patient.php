@@ -8,13 +8,14 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-     <!-- Sidebar -->
-     <?php
-    include('./includes/sidebar.php');
+
+    <!-- Sidebar -->
+    <?php
+        include('./includes/sidebar.php');
     ?>
     <!-- End of Sidebar -->
-    <!-- Start of Content -->
 
+    <!-- Start of Content -->
     <div class="content">
         <div class="left-side">
         <h3>Patient's Info</h3>
@@ -127,8 +128,6 @@
         </div>
         </div>
     </div>
-
-
     <!-- End of Content -->
 
     <script src="assets/js/patient.js"></script>

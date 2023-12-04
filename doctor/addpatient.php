@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+
     <!-- Sidebar -->
     <?php
-    include('./includes/sidebar.php');
+        include('./includes/sidebar.php');
     ?>
     <!-- End of Sidebar -->
 
@@ -142,49 +143,27 @@
      </div>
      <!-------end l section l jdide---------->
      <script>
-        // function searchTable()
-        // {
-        //     var input,filter,table,tr,td,txtvalue,i;
-        //     input=document.getElementById('search');
-        //     table=document.getElementById('stable');
-        //     td=table.getElementsByTagName('tr');
-        //     filter=input.value.toLowerCase();
-        //     for(i=0;i<tr.length;i++)
-        //     {
-        //         td=tr[i].getElementsByTagName('tr')[0];
-        //         txtvalue=td.textContent;
-        //         if(txtvalue.toLowerCase().indexOf(filter)>-1)
-        //               tr[i].style.display='table-row';
-        //         else
-        //               tr[i].style.display='none';
-        //     }
 
-        // }
-        // document.getElementById('search').addEventListener('input', searchTable);
+        var filterInput = document.getElementById('search');
+        var dataTable = document.getElementById('stable');
+        var rows = dataTable.getElementsByTagName('tr');
 
-       
-var filterInput = document.getElementById('search');
-var dataTable = document.getElementById('stable');
-var rows = dataTable.getElementsByTagName('tr');
-
-filterInput.addEventListener('input', function() {
-  var filterValue = filterInput.value.toLowerCase();
-  for (var i = 1; i < rows.length; i++) {
-    var row = rows[i];
-    var cells = row.getElementsByTagName('td');
-    var shouldShow = false;
-    for (var j = 0; j < cells.length; j++) {
-      var cellText = cells[j].textContent.toLowerCase();
-      if (cellText.includes(filterValue)) {
-        shouldShow = true;
-        break;
-      }
-    }
-    row.style.display = shouldShow ? 'table-row' : 'none';
-  }
-});
-
-
+        filterInput.addEventListener('input', function() {
+        var filterValue = filterInput.value.toLowerCase();
+        for (var i = 1; i < rows.length; i++) {
+            var row = rows[i];
+            var cells = row.getElementsByTagName('td');
+            var shouldShow = false;
+            for (var j = 0; j < cells.length; j++) {
+            var cellText = cells[j].textContent.toLowerCase();
+            if (cellText.includes(filterValue)) {
+                shouldShow = true;
+                break;
+            }
+            }
+            row.style.display = shouldShow ? 'table-row' : 'none';
+        }
+        });
         
      </script>
 
