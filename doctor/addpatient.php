@@ -11,33 +11,9 @@
 </head>
 <body>
     <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="sidebar-header">
-            <a href="#" class="logo">
-                <i class='bx bx-pulse'></i>
-                <div class="logo-name"><span>Health</span>Hub</div>
-            </a>
-        <i class="bx bx-menu"></i>
-        </div>
-        <div class="user">
-            <img src="../images/dr1.jpg" class="user-img">
-            <label class="user-name">Dr. Doctor</label>
-            <label class="user-clinic">Cardiology</label>
-        </div>
-        <ul class="side-menu">
-            <li><a href="dashboard.html"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-            <li class="active"><a href="addpatient.html"><i class='bx bx-calendar-edit'></i>Manage Appointments</a></li>
-            <li><a href="settings.html"><i class='bx bx-cog'></i>Settings</a></li>
-        </ul>
-        <ul class="side-menu">
-            <li class="log-li">
-                <a href="#" class="logout">
-                    <i class='bx bx-log-out-circle'></i>
-                    Logout
-                </a>
-            </li>
-        </ul>
-     </aside>
+    <?php
+    include('./includes/sidebar.php');
+    ?>
     <!-- End of Sidebar -->
 
      <!-------section jdide-->
