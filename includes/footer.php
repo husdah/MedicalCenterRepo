@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Footer Design</title>
+    <title>Footer</title>
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -12,7 +12,7 @@
     <footer class="footer">
         <div class="grid-container">
             <div class="footer-column1">
-                <a href="home.html"><img src="../images/HealthHubLogo-removebg-preview.png" alt="HealthHubLogo" class="logo"></a>
+                <a href="home.php"><img src="../images/HealthHubLogo-removebg-preview.png" alt="HealthHubLogo" class="logo"></a>
                 <p class="text-justify">Welcome to Health Hub, where compassionate care and medical excellence meet. To prioritize your well-being with state-of-the-art facilities and a patient-focused approach at every stage of your healthcare journey.</p>
             </div>
 
@@ -20,12 +20,12 @@
                 <h4 class="footer-heading">Quick Link</h4>
                 <hr>
                 <ul class="footer-links">
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="home.html#about">About Us</a></li>
-                    <li><a href="home.html#service">Services</a></li>
-                    <li><a href="home.html#doctor">Doctors</a></li>
-                    <li><a href="clinics.html">Clinics</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="home.php">Home</a></li>
+                    <li><a href="home.php#aboutSection">About Us</a></li>
+                    <li><a href="home.php#serviceSection">Services</a></li>
+                    <li><a href="home.php#doctorSection">Doctors</a></li>
+                    <li><a href="clinics.php">Clinics</a></li>
+                    <li><a href="contact.php">Contact Us</a></li>
                 </ul>
             </div>
 
