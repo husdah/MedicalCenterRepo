@@ -1,16 +1,4 @@
-/* *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-  }
-  body {
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background-color: #e8e8e8;
-    font-family:arial;
-  } */
+
   .form {
     display: flex;
     flex-direction: column;
@@ -118,15 +106,6 @@
    border-radius: 10px;
    background: var(--grey);
  }
-
-/*  .form label input[type="date"]::-webkit-datetime-edit-text,
- .form label input[type="date"]::-webkit-datetime-edit-month-field,
- .form label input[type="date"]::-webkit-datetime-edit-day-field,
- .form label input[type="date"]::-webkit-datetime-edit-year-field
- {
-  -webkit-appearance:none;
-  display: none;
-} */
   
   .form label .input + span{
     position: absolute;
@@ -184,7 +163,6 @@
   
   .form label .input:valid + span {
     color: green;
-    /* color: var(--primary); */
   }
 
   .form label .input.required + span {
