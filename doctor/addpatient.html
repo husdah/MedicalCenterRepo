@@ -139,20 +139,20 @@
                 <div class="title">
                     <h2>Add Patient</h2>
                 </div>
-                <form action="">
-                    <div class="txt">
+                <form action="" id="form">
+                    <div class="txt" id="forpatient">
                        <label for="pname">Patient Name</label>
                        <input type="text" name="pname" id="pname">
                     </div>
-                    <div class="txt">
+                    <div class="txt" id="forlastapp">
                         <label for="lappdate">Last appointment date</label>
                         <input type="date" name="lappdate" id="lappdate">
                      </div>
-                     <div class="txt">
+                     <div class="txt" id="fornewapp">
                         <label for="nappdate">New appointment date</label>
                         <input type="date" name="nappdate" id="nappdate">
                      </div>
-                     <div class="txt">
+                     <div class="txt" id="fortime">
                         <label for="tapp">Time appointment</label>
                         <input type="text" name="tapp" id="tapp">
                      </div>
@@ -213,6 +213,7 @@ filterInput.addEventListener('input', function() {
      </script>
 
     <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/addpatient.js"></script>
 
 </body>
 </html>
