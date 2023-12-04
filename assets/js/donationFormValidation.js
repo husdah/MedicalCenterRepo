@@ -22,7 +22,7 @@ const checkEmail = () => {
         return true;
     }
 }
-emailText.addEventListener('focusout', checkEmail);
+emailText?.addEventListener('focusout', checkEmail);
 
 const validateEmail = () => {
     if(!validateInput(emailText.value)){
@@ -34,7 +34,7 @@ const validateEmail = () => {
         return true;
     }
 }
-emailText.addEventListener('input', validateEmail);
+emailText?.addEventListener('input', validateEmail);
 
 var bloodType = document.getElementById('mySelect');
 const validateSelect = () => {
@@ -51,7 +51,7 @@ const validateSelect = () => {
         return true;
     }
 }
-bloodType.addEventListener('change', validateSelect)
+bloodType?.addEventListener('change', validateSelect)
 
 const clickDonate = () => {
     
@@ -65,4 +65,4 @@ const clickDonate = () => {
     }
 
 }
-btn_send.addEventListener('click', clickDonate);
+btn_send?.addEventListener('click', clickDonate);
