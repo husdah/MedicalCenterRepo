@@ -63,7 +63,7 @@
     <script src="assets/js/donation.js"></script>
     <script src="assets/js/swiper.js"></script>
     <script src="assets/js/counters.js"></script>
-    <script src="assets/js/scrollSection.js"></script>
+    <!-- <script src="assets/js/scrollSection.js"></script> -->
     <!-- <script src="assets/js/navbar.js"></script> -->
     <script src="../assets/js/nav.js"></script>
     <script src="assets/js/donationFormValidation.js"></script>
