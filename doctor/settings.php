@@ -37,6 +37,32 @@
             </div>
         </div>
        </div>
+
+       <div class="changepass">
+        <h3>Social Media</h3>
+        <form>
+            <div>
+                <div class="div">
+            <label>FaceBook:</label> <input type="text">
+        </div>
+            </div>
+            <div>
+                <div class="div">
+            <label>Instagram:</label> <input type="text">
+                </div>
+            </div>
+            <div>
+                <div class="div">
+            <label>Linkedin:</label> <input type="text">
+                </div>
+            </div>
+            <div class="submit">
+                <input type="submit" value="Add" name="submit" class="submitBtn">
+            </div>
+            
+        </form>
+       </div>
+
        <div class="changepass">
         <h3>Do you want to change the passsword?</h3>
         <form id="formsubmit">
@@ -56,7 +82,7 @@
                 </div>
             </div>
             <div class="submit">
-                <input type="submit" value="change" name="submit" id="submit">
+                <input type="submit" value="change" name="submit" id="submit" class="submitBtn">
             </div>
             
         </form>
