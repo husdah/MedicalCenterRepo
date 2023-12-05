@@ -122,10 +122,10 @@
                        <label for="pname">Patient Name</label>
                        <input type="text" name="pname" id="pname">
                     </div>
-                    <div class="txt" id="forlastapp">
+                    <!-- <div class="txt" id="forlastapp">
                         <label for="lappdate">Last appointment date</label>
                         <input type="date" name="lappdate" id="lappdate">
-                     </div>
+                     </div> -->
                      <div class="txt" id="fornewapp">
                         <label for="nappdate">New appointment date</label>
                         <input type="date" name="nappdate" id="nappdate">
