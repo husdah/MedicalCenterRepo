@@ -73,3 +73,8 @@
     display: flex;
     justify-content:space-evenly;
   }
+
+  .col{
+    display: flex;
+    flex-direction: column;
+  }

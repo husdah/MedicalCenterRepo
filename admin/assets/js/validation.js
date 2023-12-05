@@ -502,6 +502,37 @@ function handleAccountCheckEvent(event) {
     }
 }
 
+// Function to handle input Acount CHECk events
+function handleClosedCheckEvent(event) {
+    var inputElement = event.target;
+
+    if(inputElement.checked){
+        WHFromInput.classList.remove("required");
+        document.getElementById("WHFromError").classList.remove("count");
+        document.getElementById("WHFromError").textContent = "From";
+
+        WHTOInput.classList.remove("required");
+        document.getElementById("WHTOError").classList.remove("count");
+        document.getElementById("WHTOError").textContent = "To";
+    }
+}
+
+// Function to handle input Acount CHECk events
+function handleAvailableCheckEvent(event) {
+    var inputElement = event.target;
+
+    if(inputElement.checked){
+        DWHFromInput.classList.remove("required");
+        document.getElementById("DWHFromError").classList.remove("count");
+        document.getElementById("DWHFromError").textContent = "From";
+
+        DWHTOInput.classList.remove("required");
+        document.getElementById("DWHTOError").classList.remove("count");
+        document.getElementById("DWHTOError").textContent = "To";
+    }
+}
+
+
 
 // Add event listeners to input fields
 //add clinic form
@@ -615,7 +646,7 @@ adminPassInput?.addEventListener('input', handleInputPassEvent);
 var adminPassConfirmInput = document.getElementById('signup-passwordConfirm');
 adminPassConfirmInput?.addEventListener('input', handleInputConfPassEvent);
 
-//add working hours form
+//add center working hours form
 var WHDayInput = document.getElementById('WHDay');
 WHDayInput?.addEventListener('change', handleSelectEvent);
 
@@ -624,6 +655,25 @@ WHFromInput?.addEventListener('input', handleInputTimeEvent);
 
 var WHTOInput = document.getElementById('WHTO');
 WHTOInput?.addEventListener('input', handleInputTimeEvent);
+
+var WHClosedCheck = document.getElementById('closed');
+WHClosedCheck?.addEventListener("change",handleClosedCheckEvent);
+
+//add doctor working hours form
+var docNameInput = document.getElementById('docName');
+docNameInput?.addEventListener('input', handleInputNameEvent);
+
+var DWHDayInput = document.getElementById('DWHDay');
+DWHDayInput?.addEventListener('change', handleSelectEvent);
+
+var DWHFromInput = document.getElementById('DWHFrom');
+DWHFromInput?.addEventListener('input', handleInputTimeEvent);
+
+var DWHTOInput = document.getElementById('DWHTO');
+DWHTOInput?.addEventListener('input', handleInputTimeEvent);
+
+var DWHAvailableCheck = document.getElementById('available');
+DWHAvailableCheck?.addEventListener("change",handleAvailableCheckEvent);
 
 // event lister on Form Buttons
 let addClinicFormBtn = document.getElementById("addClinicFormBtn");
@@ -882,14 +932,48 @@ manageWHFormBtn?.addEventListener("click", function(event) {
         let errorTTo= document.getElementById("WHTOError");
     
         validateSelectSubmit(WHDayInput, errorDay);
-        validateTimeSubmit(WHFromInput, errorTFrom);
-        validateTimeSubmit(WHTOInput, errorTTo);
+        if(!WHClosedCheck.checked){
+            validateTimeSubmit(WHFromInput, errorTFrom);
+            validateTimeSubmit(WHTOInput, errorTTo);
+        }
     
-        if (!validateSelectSubmit(WHDayInput, errorDay) || !validateTimeSubmit(WHFromInput, errorTFrom) || !validateTimeSubmit(WHTOInput, errorTTo)) {
+        if (!validateSelectSubmit(WHDayInput, errorDay)  || (!WHClosedCheck.checked && ( !validateTimeSubmit(WHFromInput, errorTFrom) || !validateTimeSubmit(WHTOInput, errorTTo)))) {
             /* alert("invalid form"); */
         } else {
             /* alert("done"); */
             document.getElementById('manageWHForm').submit();
+            
+        }
+    }
+
+});
+
+let manageDWHFormBtn = document.getElementById("manageDWHFormBtn");
+manageDWHFormBtn?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
+
+    }else{
+        let docName= docNameInput.value;
+    
+        let errorDay= document.getElementById("DWHDayError");
+        let errorTFrom= document.getElementById("DWHFromError");
+        let errorTTo= document.getElementById("DWHTOError");
+        let errorName = document.getElementById("docNameError");
+    
+        validateNameSubmit(docName, docNameInput, errorName);
+        validateSelectSubmit(DWHDayInput, errorDay);
+        if(!DWHAvailableCheck.checked){
+            validateTimeSubmit(DWHFromInput, errorTFrom);
+            validateTimeSubmit(DWHTOInput, errorTTo);
+        }
+    
+        if (!validateNameSubmit(docName, docNameInput, errorName) || !validateSelectSubmit(DWHDayInput, errorDay) || (!DWHAvailableCheck.checked && ( !validateTimeSubmit(DWHFromInput, errorTFrom) || !validateTimeSubmit(DWHTOInput, errorTTo)))) {
+            /* alert("invalid form"); */
+        } else {
+            /* alert("done"); */
+            document.getElementById('manageDWHForm').submit();
             
         }
     }

@@ -586,12 +586,10 @@ body{
     padding: 16px 5px;
 }
 
-.content main .bottom-data .orders .whTable tr td:nth-child(2),
-.content main .bottom-data .orders .whTable tr td:nth-child(4),
-.content main .bottom-data .orders .whTable tr td:nth-child(6){
+.content main .bottom-data .orders .whTable tr td:nth-child(even){
     background-color: var(--grey);
     padding: 5px;
-}
+} 
 
 .content main .bottom-data .orders .exceptionTable tr td{
     padding: 10px 10px 20px 10px;
