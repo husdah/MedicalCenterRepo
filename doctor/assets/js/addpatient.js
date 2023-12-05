@@ -1,5 +1,5 @@
 var patientname=document.getElementById('pname');
-var lastappdate=document.getElementById('lappdate');
+// var lastappdate=document.getElementById('lappdate');
 var newappdate=document.getElementById('nappdate');
 var timeapp=document.getElementById('tapp');
 var forpatientname=document.getElementById('forpatient');

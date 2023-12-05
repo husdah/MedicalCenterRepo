@@ -122,8 +122,24 @@
 
 
 .inner-wrap {
-  padding: 0 10%;
+  margin-top: 30px;
 
+}
+.notyou 
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+}
+.notyou p
+{
+  font-weight: 500;
+}
+.notyou a
+{
+  text-decoration: underline;
+  color: #0051A1;
 }
 
 .inner-wrap .request {
