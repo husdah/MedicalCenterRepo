@@ -171,9 +171,9 @@ $(document).on('click', '.ui-datepicker-prev', function(){
   }, 200);
 });
 
-$(window).on('resize', function(){
+/* $(window).on('resize', function(){
   $(".timepicker").css('top', $(".timepicker-cf").offset().top - 2);
-});
+}); */
 
 //hide timepicker when clicking outside
 $(document).on('click', function(event) {

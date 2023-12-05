@@ -180,7 +180,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.2/owl.carousel.min.js"></script>
     <script src="assets/js/calendar.js"></script>
-    <script src="assets/js/appointment.js"></script>
+    <!-- <script src="assets/js/appointment.js"></script> -->
     
 </body>
 </html>
