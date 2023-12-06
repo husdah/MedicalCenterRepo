@@ -180,7 +180,7 @@
                             </span>
                         </button>
                     </form>
-                    <form class="form" style="background: transparent;">
+<!--                     <form class="form" style="background: transparent;">
                         <div class="flex3">     
                             <label>ADD Exception: </label>
                             <label>
@@ -192,8 +192,38 @@
                             </label>
                             <button class="submit">ADD</button>
                         </div>
-                        <!-- <button class="submit">ADD Exception</button> -->
-                    </form>
+                    </form> -->
+                    <form class="form" id="manageExceptionForm">
+                    <p class="title">Working Exceptions</p>
+                    <p class="message">ADD Exception:</p>
+
+                    <div class="flex">
+                        <label>Date:
+                            <input placeholder="" required type="date" class="input">
+                        </label>
+                        <label>From:
+                            <input id="DWHFrom" name="DWHFrom" required placeholder="" type="time" class="input">
+                            <p id="DWHFromError" class="imgError">From</p>
+                        </label>
+                
+                        <label>To:
+                            <input id="DWHTO" name="DWHTO" required placeholder="" type="time" class="input">
+                            <p id="DWHTOError" class="imgError">To</p>
+                        </label>
+                    </div>
+
+                    <label>
+                        <input id="docName" name="docName" required placeholder="" type="text" class="input">
+                        <span class="DoctorName" id="docNameError">reason</span>
+                    </label>                        
+                    
+                    <label class="check-container" id="check_display">Available
+                        <input type="checkbox" name="available" id="available">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <button id="manageDWHFormBtn" type="button" class="submit">ADD</button>
+                </form>
                 </div>
                 <table id="dataTable" class="exceptionTable">
                     <thead>
