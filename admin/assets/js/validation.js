@@ -521,7 +521,7 @@ function handleClosedCheckEvent(event) {
 function handleAvailableCheckEvent(event) {
     var inputElement = event.target;
 
-    if(inputElement.checked){
+    if(!inputElement.checked){
         DWHFromInput.classList.remove("required");
         document.getElementById("DWHFromError").classList.remove("count");
         document.getElementById("DWHFromError").textContent = "From";
@@ -529,6 +529,21 @@ function handleAvailableCheckEvent(event) {
         DWHTOInput.classList.remove("required");
         document.getElementById("DWHTOError").classList.remove("count");
         document.getElementById("DWHTOError").textContent = "To";
+    }
+}
+
+// Function to handle input Acount CHECk events
+function handleAvailableExcepCheckEvent(event) {
+    var inputElement = event.target;
+
+    if(!inputElement.checked){
+        exceptionFromInput.classList.remove("required");
+        document.getElementById("exceptionFromError").classList.remove("count");
+        document.getElementById("exceptionFromError").textContent = "From";
+
+        exceptionTOInput.classList.remove("required");
+        document.getElementById("exceptionTOError").classList.remove("count");
+        document.getElementById("exceptionTOError").textContent = "To";
     }
 }
 
@@ -674,6 +689,19 @@ DWHTOInput?.addEventListener('input', handleInputTimeEvent);
 
 var DWHAvailableCheck = document.getElementById('available');
 DWHAvailableCheck?.addEventListener("change",handleAvailableCheckEvent);
+
+//add exception working hours form
+var exceptionDayInput = document.getElementById('exceptionDay');
+exceptionDayInput?.addEventListener('input', handleInputTimeEvent);
+
+var exceptionFromInput = document.getElementById('exceptionFrom');
+exceptionFromInput?.addEventListener('input', handleInputTimeEvent);
+
+var exceptionTOInput = document.getElementById('exceptionTO');
+exceptionTOInput?.addEventListener('input', handleInputTimeEvent);
+
+var exceptionAvailableCheck = document.getElementById('availableException');
+exceptionAvailableCheck?.addEventListener("change",handleAvailableExcepCheckEvent);
 
 // event lister on Form Buttons
 let addClinicFormBtn = document.getElementById("addClinicFormBtn");
@@ -964,16 +992,44 @@ manageDWHFormBtn?.addEventListener("click", function(event) {
     
         validateNameSubmit(docName, docNameInput, errorName);
         validateSelectSubmit(DWHDayInput, errorDay);
-        if(!DWHAvailableCheck.checked){
+        if(DWHAvailableCheck.checked){
             validateTimeSubmit(DWHFromInput, errorTFrom);
             validateTimeSubmit(DWHTOInput, errorTTo);
         }
     
-        if (!validateNameSubmit(docName, docNameInput, errorName) || !validateSelectSubmit(DWHDayInput, errorDay) || (!DWHAvailableCheck.checked && ( !validateTimeSubmit(DWHFromInput, errorTFrom) || !validateTimeSubmit(DWHTOInput, errorTTo)))) {
+        if (!validateNameSubmit(docName, docNameInput, errorName) || !validateSelectSubmit(DWHDayInput, errorDay) || (DWHAvailableCheck.checked && ( !validateTimeSubmit(DWHFromInput, errorTFrom) || !validateTimeSubmit(DWHTOInput, errorTTo)))) {
             /* alert("invalid form"); */
         } else {
             /* alert("done"); */
             document.getElementById('manageDWHForm').submit();
+            
+        }
+    }
+
+});
+
+let manageExceptionFormBtn = document.getElementById("manageExceptionFormBtn");
+manageExceptionFormBtn?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
+
+    }else{  
+        let errorDay= document.getElementById("exceptionDayError");
+        let errorTFrom= document.getElementById("exceptionFromError");
+        let errorTTo= document.getElementById("exceptionTOError");
+    
+        validateTimeSubmit(exceptionDayInput,errorDay);
+        if(exceptionAvailableCheck.checked){
+            validateTimeSubmit(exceptionFromInput, errorTFrom);
+            validateTimeSubmit(exceptionTOInput, errorTTo);
+        }
+    
+        if (!validateTimeSubmit(exceptionDayInput,errorDay)  || (exceptionAvailableCheck.checked && ( !validateTimeSubmit(exceptionFromInput, errorTFrom) || !validateTimeSubmit(exceptionTOInput, errorTTo)))) {
+            /* alert("invalid form"); */
+        } else {
+            /* alert("done"); */
+            document.getElementById('manageExceptionForm').submit();
             
         }
     }
