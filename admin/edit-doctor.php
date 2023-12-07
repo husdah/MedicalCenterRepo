@@ -180,7 +180,7 @@
                             </span>
                         </button>
                     </form>
-                    <form class="form" style="background: transparent;">
+<!--                     <form class="form" style="background: transparent;">
                         <div class="flex3">     
                             <label>ADD Exception: </label>
                             <label>
@@ -192,77 +192,89 @@
                             </label>
                             <button class="submit">ADD</button>
                         </div>
-                        <!-- <button class="submit">ADD Exception</button> -->
-                    </form>
+                    </form> -->
+                    <form class="form" id="manageExceptionForm">
+                    <p class="title">Working Exceptions</p>
+                    <p class="message">ADD Exception:</p>
+
+                    <div class="flex">
+                        <label>Date:
+                            <input id="exceptionDay" name="exceptionDay" placeholder="" required type="date" class="input">
+                            <p id="exceptionDayError" class="imgError">From</p>
+                        </label>
+                        <label>From:
+                            <input id="exceptionFrom" name="exceptionFrom" required placeholder="" type="time" class="input">
+                            <p id="exceptionFromError" class="imgError">From</p>
+                        </label>
+                
+                        <label>To:
+                            <input id="exceptionTO" name="exceptionTO" required placeholder="" type="time" class="input">
+                            <p id="exceptionTOError" class="imgError">To</p>
+                        </label>
+                    </div>
+
+                   <!--  <label>
+                        <input id="docName" name="docName" required placeholder="" type="text" class="input">
+                        <span class="DoctorName" id="docNameError">reason</span>
+                    </label>    -->                     
+                    
+                    <label class="check-container" id="check_display">Available
+                        <input type="checkbox" name="availableException" id="availableException">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <button id="manageExceptionFormBtn" type="button" class="submit">ADD</button>
+                </form>
                 </div>
                 <table id="dataTable" class="exceptionTable">
                     <thead>
                         <tr>
                             <th>Day</th>  
-                            <th>Exception</th>
+                            <th>From</th>  
+                            <th>To</th>  
+                            <th>Available</th>  
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <form action="" class="form">
                         <tr>
-                            <td class="day">15-12-2023</td>
-                            <td style="background: transparent;">
-                                <div class="form" style="background: transparent;">
-                                    <label>
-                                        <input required="" placeholder="" type="text" class="input">
-                                        <span>reason</span>
-                                    </label>
-                                </div>
+                            <td>11-12-2023</td>
+                            <td>10:00 AM</td>
+                            <td>2:00 PM</td>
+                            <td>
+                                <label class="check-container" id="check_display"><i class="bx bx-check"></i>   
+                                    <input type="checkbox" name="av">
+                                    <span class="checkmark"></span>
+                                </label>
                             </td>
+                            <!-- <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td> -->
                             <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                         </tr>
                         <tr>
-                            <td class="day">12-12-2023</td>
+                            <td>11-12-2023</td>
+                            <td>10:00 AM</td>
+                            <td>2:00 PM</td>
                             <td>
-                                <div class="form" style="background: transparent;">
-                                    <label>
-                                        <input required="" placeholder="" type="text" class="input">
-                                        <span>reason</span>
-                                    </label>
-                                </div>
+                                <label class="check-container" id="check_display"><i class="bx bx-check"></i>   
+                                    <input type="checkbox" name="av">
+                                    <span class="checkmark"></span>
+                                </label>
                             </td>
+                            <!-- <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td> -->
                             <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                         </tr>
                         <tr>
-                            <td class="day">11-12-2023</td>
+                            <td>11-12-2023</td>
+                            <td>10:00 AM</td>
+                            <td>2:00 PM</td>
                             <td>
-                                <div class="form" style="background: transparent;">
-                                    <label>
-                                        <input required="" placeholder="" type="text" class="input">
-                                        <span>reason</span>
-                                    </label>
-                                </div>
+                                <label class="check-container" id="check_display"><i class="bx bx-check"></i>   
+                                    <input type="checkbox" name="av">
+                                    <span class="checkmark"></span>
+                                </label>
                             </td>
-                            <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
-                        </tr>
-                        <tr>
-                            <td class="day">9-12-2023</td>
-                            <td>
-                                <div class="form" style="background: transparent;">
-                                    <label>
-                                        <input required="" placeholder="" type="text" class="input">
-                                        <span>reason</span>
-                                    </label>
-                                </div>
-                            </td>
-                            <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
-                        </tr>
-                        <tr>
-                            <td class="day">10-12-2023</td>
-                            <td>
-                                <div class="form" style="background: transparent;">
-                                    <label>
-                                        <input required="" placeholder="" type="text" class="input">
-                                        <span>reason</span>
-                                    </label>
-                                </div>
-                            </td>
+                            <!-- <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td> -->
                             <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                         </tr>
                         </form>

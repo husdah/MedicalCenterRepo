@@ -110,196 +110,57 @@
             </div> -->
 
 
-            <div class="orders">
+
+
+            <!-- Reminders -->
+            <div class="reminders centerBox">
                 <div class="header">
-                    <i class='bx bx-time'></i>
-                    <h3>Working Hours</h3>
-                    <form class="expanding-search-form">
-                        <div class="search-dropdown">
-                            <button class="button dropdown-toggle" type="button">
-                            <span class="toggle-active">Name</span>
-                            <span class="ion-arrow-down-b"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                            <li class="menu-active"><a href="#">Name</a></li>
-                            </ul>
-                        </div>
-                        <input class="search-input" id="global-search" type="search" placeholder="Search">
-                        <button class="button search-button" type="button">
-                            <span class="icon ion-search">
-                                <span class="sr-only">Search</span>
-                            </span>
-                        </button>
-                    </form>                    
+                    <i class='bx bx-timer'></i>
+                    <h3>Doctor WHours</h3>
                 </div>
-                <table id="dataTable" class="whTable">
-                    <thead>
-                        <tr>
-                            <th>Doctors</th>
-                            <!-- <th>M</th>
-                            <th>T</th>
-                            <th>W</th>
-                            <th>TH</th>
-                            <th>F</th> -->
-                            <th class="action_center" colspan="5">Days Available</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <a href="../images/profile-1.jpg" class="imageLB"> 
-                                    <img src="../images/profile-1.jpg" alt="doctor Image">
-                                </a>
-                                <a href="edit-doctor.php"><p class="name">Haya Tfaily</p></a>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">M
-                                    <input type="checkbox" name="monday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">T
-                                    <input type="checkbox" name="tuesday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">W
-                                    <input type="checkbox" name="wednesday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">TH
-                                    <input type="checkbox" name="thursday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">F
-                                    <input type="checkbox" name="friday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="../images/profile-1.jpg" class="imageLB"> 
-                                    <img src="../images/profile-1.jpg" alt="doctor Image">
-                                </a>
-                                <a href="edit-doctor.php"><p class="name">Hussein Daher</p></a>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">M
-                                    <input type="checkbox" name="monday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">T
-                                    <input type="checkbox" name="tuesday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">W
-                                    <input type="checkbox" name="wednesday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">TH
-                                    <input type="checkbox" name="thursday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">F
-                                    <input type="checkbox" name="friday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="../images/profile-1.jpg" class="imageLB"> 
-                                    <img src="../images/profile-1.jpg" alt="doctor Image">
-                                </a>
-                                <a href="edit-doctor.php"><p class="name">Loreen Baker</p></a>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">M
-                                    <input type="checkbox" name="monday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">T
-                                    <input type="checkbox" name="tuesday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">W
-                                    <input type="checkbox" name="wednesday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">TH
-                                    <input type="checkbox" name="thursday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">F
-                                    <input type="checkbox" name="friday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="../images/profile-1.jpg" class="imageLB"> 
-                                    <img src="../images/profile-1.jpg" alt="doctor Image">
-                                </a>
-                                <a href="edit-doctor.php"><p class="name">Zeinab Hijazi</p></a>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">M
-                                    <input type="checkbox" name="monday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">T
-                                    <input type="checkbox" name="tuesday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">W
-                                    <input type="checkbox" name="wednesday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">TH
-                                    <input type="checkbox" name="thursday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <label class="check-container" id="check_display">F
-                                    <input type="checkbox" name="friday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <form class="form" id="manageDWHForm">
+                    <p class="title">Manage WH</p>
+                    <p class="message">Please Enter The Needed Information. </p>
+                    <label>
+                        <input id="docName" name="docName" required placeholder="" type="text" class="input">
+                        <span class="DoctorName" id="docNameError">Doctor name</span>
+                    </label>
+
+                    <label>
+                        <select name="DWHDay" id="DWHDay" class="input" required>
+                            <option value="WHDay">Day</option>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thurday">Thurday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                        </select>
+                        <span id="DWHDayError">WHD</span>
+                    </label>
+
+                    <div class="flex">
+                        <label>From:
+                            <input id="DWHFrom" name="DWHFrom" required placeholder="" type="time" class="input">
+                            <p id="DWHFromError" class="imgError">From</p>
+                        </label>
+                
+                        <label>To:
+                            <input id="DWHTO" name="DWHTO" required placeholder="" type="time" class="input">
+                            <p id="DWHTOError" class="imgError">To</p>
+                        </label>
+                    </div>                        
+                    
+                    <label class="check-container" id="check_display">Available
+                        <input type="checkbox" name="available" id="available">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <button id="manageDWHFormBtn" type="button" class="submit">Submit</button>
+                </form>
             </div>
+            <!-- End of Reminders-->
 
             <!-- Reminders -->
             <div class="reminders centerBox">
@@ -345,6 +206,359 @@
                 </form>
             </div>
             <!-- End of Reminders-->
+
+            <div class="orders">
+                <div class="header">
+                    <i class='bx bx-time'></i>
+                    <h3>Working Hours</h3>
+                    <form class="expanding-search-form">
+                        <div class="search-dropdown">
+                            <button class="button dropdown-toggle" type="button">
+                            <span class="toggle-active">Name</span>
+                            <span class="ion-arrow-down-b"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                            <li class="menu-active"><a href="#">Name</a></li>
+                            </ul>
+                        </div>
+                        <input class="search-input" id="global-search" type="search" placeholder="Search">
+                        <button class="button search-button" type="button">
+                            <span class="icon ion-search">
+                                <span class="sr-only">Search</span>
+                            </span>
+                        </button>
+                    </form>                    
+                </div>
+                <table id="dataTable" class="whTable">
+                    <thead>
+                        <tr>
+                            <th>Doctors</th>
+                            <th>Monday</th>
+                            <th>Tuesday</th>
+                            <th>Wednesday</th>
+                            <th>Thursday</th>
+                            <th>Friday</th>
+                            <th>Saturday</th>
+                            <th>Sunday</th>
+                            <!-- <th class="action_center" colspan="5">Days Available</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a href="../images/profile-1.jpg" class="imageLB"> 
+                                    <img src="../images/profile-1.jpg" alt="doctor Image">
+                                </a>
+                                <a href="edit-doctor.php"><p class="name">Haya Tfaily</p></a>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="../images/profile-1.jpg" class="imageLB"> 
+                                    <img src="../images/profile-1.jpg" alt="doctor Image">
+                                </a>
+                                <a href="edit-doctor.php"><p class="name">Haya Tfaily</p></a>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="../images/profile-1.jpg" class="imageLB"> 
+                                    <img src="../images/profile-1.jpg" alt="doctor Image">
+                                </a>
+                                <a href="edit-doctor.php"><p class="name">Haya Tfaily</p></a>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="../images/profile-1.jpg" class="imageLB"> 
+                                    <img src="../images/profile-1.jpg" alt="doctor Image">
+                                </a>
+                                <a href="edit-doctor.php"><p class="name">Haya Tfaily</p></a>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="check-container" id="check_display">
+                                    <div class="col">
+                                        <span>9:00 AM</span>
+                                        <span>1:00 PM</span>
+                                    </div>
+                                    <input type="checkbox" name="monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
 
