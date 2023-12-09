@@ -113,3 +113,13 @@ timeapp.addEventListener('change', () => {
         sub3=false;
     }
 });
+//on editing
+document.getElementById('stable').addEventListener('click', function (event) {
+   
+   
+        if (event.target.classList.contains('edit')) {
+            var foredit = event.target.closest('tr');
+           console.log(foredit)
+        }
+
+});

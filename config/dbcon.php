@@ -67,6 +67,7 @@
 
         );";
         $createTableDoctorQuery_run = mysqli_query($con,$createTableDoctorQuery);
+
     
         $createTableAppointementQuery= "CREATE TABLE IF NOT EXISTS appointement (
             appId INT PRIMARY KEY AUTO_INCREMENT,

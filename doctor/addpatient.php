@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Doctor Dashboard</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="icon" href="/images/favicon.PNG" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <link rel="stylesheet" href="assets/css/addpatientcss.css">
@@ -38,73 +39,85 @@
                         <th>Name of Patient</th>
                         <th>Date</th>
                         <th>Time</th>
+                        <th>Actions</th>
                        
                     </tr>
                     </thead>
                     <tr>
                         <td>patient 1</td>
-                        <td>11/12/2023</td>
-                        <td>10:00 am</td>
+                        <td>2023-12-11</td>
+                        <td>23:00</td>
+                        <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
                        
                     </tr>
                     <tr>
                         <td>patient 2</td>
-                        <td>11/12/2023</td>
-                        <td>10:00 am</td>
+                        <td>2023-12-11</td>
+                        <td>10:00</td>
+                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
                        
                     </tr>
                     <tr>
                         <td>patient 3</td>
-                        <td>11/16/2023</td>
-                        <td>12:00 pm</td>
+                        <td>2023-11-16</td>
+                        <td>12:00</td>
+                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
                        
                     </tr>
                     <tr>
                         <td>patient 4</td>
-                        <td>11/20/2023</td>
-                        <td>13:00 pm</td>
+                        <td>2023-11-20</td>
+                        <td>13:00</td>
+                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
                       
                     </tr>
                     <tr>
                         <td>patient 2</td>
-                        <td>11/12/2023</td>
-                        <td>10:00 am</td>
+                        <td>2023-12-11</td>
+                        <td>10:00</td>
+                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
                        
                     </tr>
                     <tr>
                         <td>patient 3</td>
-                        <td>11/16/2023</td>
-                        <td>12:00 pm</td>
+                        <td>2023-11-16</td>
+                        <td>12:00</td>
+                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
                        
                     </tr>
                     <tr>
                         <td>patient 4</td>
-                        <td>11/20/2023</td>
-                        <td>13:00 pm</td>
+                        <td>2023-11-20</td>
+                        <td>13:00 </td>
+                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
                       
                     </tr>
                     <tr>
                         <td>patient 2</td>
-                        <td>11/12/2023</td>
-                        <td>10:00 am</td>
+                        <td>2023-12-11</td>
+                        <td>10:00</td>
+                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
                        
                     </tr>
                     <tr>
                         <td>patient 3</td>
-                        <td>11/16/2023</td>
-                        <td>12:00 pm</td>
+                        <td>2023-11-16</td>
+                        <td>12:00</td>
+                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
                        
                     </tr>
                     <tr>
                         <td>patient 3</td>
-                        <td>11/16/2023</td>
-                        <td>12:00 pm</td>
+                        <td>2023-11-16</td>
+                        <td>12:00</td>
+                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
                        
                     </tr>
                     <tr>
                         <td>patient 3</td>
-                        <td>11/16/2023</td>
-                        <td>12:00 pm</td>
+                        <td>2023-11-16</td>
+                        <td>12:00</td>
+                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
                        
                     </tr>
                     
@@ -135,7 +148,8 @@
                         <input type="time" name="tapp" id="tapp">
                      </div>
                      <div class="btn">
-                        <input type="submit" value="Add" name="submit" >
+                        <input type="submit" value="Add" name="submit" id="add">
+                        <input type="submit" value="Edit" name="submit" id="edit">
                      </div>
 
                 </form>
@@ -167,6 +181,28 @@
         });
         
      </script>
+     <script>
+    $(document).ready(function () {
+       
+        $(".foredit").click(function (e) {
+            e.preventDefault(); 
+
+            var name = $(this).closest("tr").find("td:eq(0)").text();
+            var date = $(this).closest("tr").find("td:eq(1)").text();
+            var time = $(this).closest("tr").find("td:eq(2)").text();
+            console.log(time);
+
+            document.getElementById('pname').value=name;
+            document.getElementById('nappdate').value=date;
+            document.getElementById('tapp').value=time;
+
+            document.getElementById('edit').style.display="block";
+            document.getElementById('add').style.display="none";
+        
+        });
+    });
+</script>
+
 
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/addpatient.js"></script>
