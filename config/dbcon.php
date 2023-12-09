@@ -15,11 +15,33 @@
             Fname VARCHAR(200) NOT NULL,
             Lname VARCHAR(200) NOT NULL,
             email VARCHAR(200) UNIQUE NOT NULL,
-            password VARCHAR(200) NOT NULL,
+            password longtext NOT NULL,
             role int NOT NULL,
             registrationDate timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
         );";
         $createTableUserQuery_run = mysqli_query($con,$createTableUserQuery);
+
+        $role = 0;
+        // Check if the admin already exists
+        $checkExistingQuery = "SELECT * FROM user WHERE role = $role";
+        $checkExistingResult = mysqli_query($con, $checkExistingQuery);
+
+        if (mysqli_num_rows($checkExistingResult) == 0) {
+            // The role doesn't exist, so insert the new admin
+            $addAdminQuery = "INSERT INTO `user`(`Fname`, `Lname`, `email`, `password`, `role`) 
+                            VALUES ('admin', 'root', 'healthHubAdmin@gmail.com', 'Admin123', $role)";
+            $addAdminQuery_run = mysqli_query($con, $addAdminQuery);
+
+        }
+
+        $createTableClinicQuery= "CREATE TABLE IF NOT EXISTS clinic (
+            clinicId INT PRIMARY KEY AUTO_INCREMENT,
+            name VARCHAR(200) NOT NULL,
+            description VARCHAR(200) NOT NULL,
+            photo VARCHAR(200) NOT NULL
+
+        );";
+        $createTableClinicQuery_run = mysqli_query($con,$createTableClinicQuery);
 
         $createTablePatientQuery= "CREATE TABLE IF NOT EXISTS patient (
             patientId INT PRIMARY KEY AUTO_INCREMENT,
@@ -33,27 +55,18 @@
         );";
         $createTablePatientQuery_run = mysqli_query($con,$createTablePatientQuery);
 
-    
+        $createTableDoctorQuery= "CREATE TABLE IF NOT EXISTS doctor (
+            doctorId INT PRIMARY KEY AUTO_INCREMENT,
+            userId INT NOT NULL,
+            clinicId INT NULL,
+            phoneNumber int UNIQUE NULL,
+            profilePic varchar(200) NULL,
+            deleted tinyint NOT NULL DEFAULT 0,
+            FOREIGN KEY (userId) REFERENCES user(userId),
+            FOREIGN KEY (clinicId) REFERENCES clinic(clinicId) ON DELETE SET NULL
 
-$createTableClinicQuery = "CREATE TABLE IF NOT EXISTS clinic (
-    clinicId INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(200) NOT NULL,
-    description VARCHAR(200) NOT NULL,
-    photo VARCHAR(200) NOT NULL
-);";
-$createTableClinicQuery_run = mysqli_query($con, $createTableClinicQuery);
-
-$createTableDoctorQuery = "CREATE TABLE IF NOT EXISTS doctor (
-    doctorId INT PRIMARY KEY AUTO_INCREMENT,
-    userId INT NOT NULL,
-    clinicId INT NOT NULL,
-    phoneNumber int UNIQUE NULL,
-    profilePic varchar(200) NULL,
-    FOREIGN KEY (userId) REFERENCES user(userId),
-    FOREIGN KEY (clinicId) REFERENCES clinic(clinicId)
-);";
-$createTableDoctorQuery_run = mysqli_query($con, $createTableDoctorQuery);
-
+        );";
+        $createTableDoctorQuery_run = mysqli_query($con,$createTableDoctorQuery);
 
     
         $createTableAppointementQuery= "CREATE TABLE IF NOT EXISTS appointement (
@@ -148,5 +161,43 @@ $createTableDoctorQuery_run = mysqli_query($con, $createTableDoctorQuery);
 
         );";
         $createTableWorkingExceptionQuery_run = mysqli_query($con,$createTableWorkingExceptionQuery);
+
+        // Check if the stored procedure exists
+        $checkProcedureQuery = "SHOW PROCEDURE STATUS LIKE 'delete_doctor_children'";
+        $checkProcedureResult = mysqli_query($con, $checkProcedureQuery);
+
+        if (mysqli_num_rows($checkProcedureResult) == 0) {
+            // The stored procedure doesn't exist, so create it
+            $deleteDocChildrenQuery = "
+                CREATE PROCEDURE delete_doctor_children(IN doctorId INT)
+                BEGIN
+                    -- Delete child records based on the doctorId
+                    DELETE FROM media WHERE doctorId = doctorId;
+                    DELETE FROM feedback WHERE doctorId = doctorId;
+                    DELETE FROM workingException WHERE doctorId = doctorId;
+                    DELETE FROM doctorHours WHERE doctorId = doctorId;
+                END";
+            $deleteDocChildrenQuery_run = mysqli_query($con, $deleteDocChildrenQuery);
+        }
+
+        // Check if the trigger exists
+        $checkTriggerQuery = "SHOW TRIGGERS LIKE 'before_update_doctor'";
+        $checkTriggerResult = mysqli_query($con, $checkTriggerQuery);
+
+        if (mysqli_num_rows($checkTriggerResult) == 0) {
+            // The trigger doesn't exist, so create it
+            $createTriggerQuery = "
+                CREATE TRIGGER before_update_doctor
+                BEFORE UPDATE ON doctor
+                FOR EACH ROW
+                BEGIN
+                    IF NEW.deleted = 1 THEN
+                        -- Call a stored procedure to handle the cascading delete
+                        CALL delete_doctor_children(NEW.doctorId);
+                    END IF;
+                END";
+            $createTriggerQuery_run = mysqli_query($con, $createTriggerQuery);
+        }
     }
+    
 ?>
