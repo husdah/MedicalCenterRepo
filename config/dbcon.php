@@ -33,26 +33,28 @@
         );";
         $createTablePatientQuery_run = mysqli_query($con,$createTablePatientQuery);
 
-        $createTableDoctorQuery= "CREATE TABLE IF NOT EXISTS doctor (
-            doctorId INT PRIMARY KEY AUTO_INCREMENT,
-            userId INT NOT NULL,
-            clinicId INT NOT NULL,
-            phoneNumber int UNIQUE NULL,
-            profilePic varchar(200) NULL,
-            FOREIGN KEY (userId) REFERENCES user(userId),
-            FOREIGN KEY (clinicId) REFERENCES clinic(clinicId)
+    
 
-        );";
-        $createTableDoctorQuery_run = mysqli_query($con,$createTableDoctorQuery);
+$createTableClinicQuery = "CREATE TABLE IF NOT EXISTS clinic (
+    clinicId INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(200) NOT NULL,
+    description VARCHAR(200) NOT NULL,
+    photo VARCHAR(200) NOT NULL
+);";
+$createTableClinicQuery_run = mysqli_query($con, $createTableClinicQuery);
 
-        $createTableClinicQuery= "CREATE TABLE IF NOT EXISTS clinic (
-            clinicId INT PRIMARY KEY AUTO_INCREMENT,
-            name VARCHAR(200) NOT NULL,
-            description VARCHAR(200) NOT NULL,
-            photo VARCHAR(200) NOT NULL
+$createTableDoctorQuery = "CREATE TABLE IF NOT EXISTS doctor (
+    doctorId INT PRIMARY KEY AUTO_INCREMENT,
+    userId INT NOT NULL,
+    clinicId INT NOT NULL,
+    phoneNumber int UNIQUE NULL,
+    profilePic varchar(200) NULL,
+    FOREIGN KEY (userId) REFERENCES user(userId),
+    FOREIGN KEY (clinicId) REFERENCES clinic(clinicId)
+);";
+$createTableDoctorQuery_run = mysqli_query($con, $createTableDoctorQuery);
 
-        );";
-        $createTableClinicQuery_run = mysqli_query($con,$createTableClinicQuery);
+
     
         $createTableAppointementQuery= "CREATE TABLE IF NOT EXISTS appointement (
             appId INT PRIMARY KEY AUTO_INCREMENT,

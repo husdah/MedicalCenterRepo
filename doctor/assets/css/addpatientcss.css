@@ -48,7 +48,7 @@
 }
 .left
 {
-    background-color: white;
+    background-color: var(--light);
     display: flex;
     flex-direction: column;
     border-radius: 20px;
@@ -102,7 +102,7 @@
 }
 .right 
 {
-    background-color: white;
+    background-color: var(--light);
     border-radius: 20px;
     width: 70%;
     /* height: 80vh; */
@@ -158,12 +158,24 @@
 .titlesearch .searchbox input
 {
     border: none;
+    margin-left: 10px;
     padding-left: 10px;
     outline: none;
+    background-color: var(--light);
 }
 .titlesearch .searchbox i
 {
     padding-right: 10px;
+}
+td a 
+{
+    font-weight:400 ;
+    color: #0051a1;
+    font-size: 17px;
+}
+#edit
+{
+    display: none;
 }
 @media(max-width:1115px)
 {
