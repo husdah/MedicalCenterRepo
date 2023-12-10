@@ -222,6 +222,7 @@ td a
     .left
     {
         width: 90%;   
+        position: relative;
     }
     .right
     {
@@ -265,6 +266,41 @@ td a
     height: 20px;
 }  
 }
+#suggestions-container {
+    position: absolute;
+    width: 250px;
+    margin-top: -10px;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color:white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 10px;
+    border-radius: 5px;
+    z-index: 100;
+    top: 197px;
+}
+
+
+#suggestions-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#suggestions-list li {
+    padding: 8px;
+    cursor: pointer;
+}
+#suggestions-list a
+{
+    text-decoration:none;
+    color: black;
+}
+
+#suggestions-list li:hover {
+    background-color: #f2f2f2;
+}
+
 @media(max-width:611px)
 {
     .main-content

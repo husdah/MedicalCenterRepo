@@ -130,15 +130,14 @@
                 <div class="title">
                     <h2>Add Patient</h2>
                 </div>
+
                 <form action="" id="form">
                     <div class="txt" id="forpatient">
                        <label for="pname">Patient Name</label>
-                       <input type="text" name="pname" id="pname">
+                       <input type="text" name="pname" id="pname"  onkeyup="showHint(this.value)">
+                       <input type="hidden" name="pid" id="pid">
+                       <div id="suggestions-container" class="suggestions-container"></div>
                     </div>
-                    <!-- <div class="txt" id="forlastapp">
-                        <label for="lappdate">Last appointment date</label>
-                        <input type="date" name="lappdate" id="lappdate">
-                     </div> -->
                      <div class="txt" id="fornewapp">
                         <label for="nappdate">New appointment date</label>
                         <input type="date" name="nappdate" id="nappdate">
@@ -151,8 +150,8 @@
                         <input type="submit" value="Add" name="submit" id="add">
                         <input type="submit" value="Edit" name="submit" id="edit">
                      </div>
-
                 </form>
+
             </div>
         </div>
      </div>
@@ -201,6 +200,68 @@
         
         });
     });
+    $(function(){
+    $("#add").on("click",function(e){
+        e.preventDefault();
+     var formData = new FormData(document.getElementById("form"));
+    
+     $.ajax({
+      method:"POST",
+      url:"../addPatientDb.php",
+      processData: false,
+       contentType: false, 
+       cache: false,
+       enctype: 'multipart/form-data',
+      data:formData,
+      success:function(){
+        console.log(formData.get("tapp"));
+      }
+     })
+    })
+  })
+    function showHint(str) {
+    if (str == "") {
+        document.getElementById("suggestions-container").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                    try {
+                        var myArr = JSON.parse(this.responseText);
+                        insertIntoList(myArr);
+                    } catch (error) {
+                        console.error("Error parsing JSON:", error);
+                    }
+                } else {
+                    console.error("HTTP error:", this.status);
+                }
+            }
+        };
+        xmlhttp.open("GET", "../getPatientsName.php?keyword=" + str, true);
+        xmlhttp.send();
+    }
+}
+
+function insertIntoList(array) {
+    var out = "<ul id=\"suggestions-list\" style=''>";
+
+    for (var i = 0; i < array.length; i++) {
+        var Fname = array[i].Fname;
+        var Fid=array[i].userId;
+        out += "<li><a href='#' onclick='fillInput(\"" + Fname + "\",\"" + Fid + "\")'>" + Fname + "</a></li>";
+    }
+    out += "</ul>";
+    document.getElementById("suggestions-container").innerHTML = out;
+    
+}
+function fillInput(value1,value2) {
+    console.log("Clicked: " + value1); // Debugging statement
+    document.getElementById("pname").value = value1;
+    document.getElementById("pid").value=value2;
+    document.getElementById("suggestions-container").innerHTML = ""; // Clear suggestions
+}
 </script>
 
 
