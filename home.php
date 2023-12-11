@@ -1,7 +1,13 @@
 
     <?php
         include('includes/header.php');
-    ?>
+        include('homeFunctions.php');
+
+        $doctorCount  = getRowCount('doctor');
+        $patientCount = getRowCount('patient');
+        $clinicCount  = getRowCount('clinic');
+        $donorCount   = getRowCount('donor');                
+    ?>                
     
     <!-- Section Banner -->
     <section id="banner" class="banner">
@@ -48,7 +54,7 @@
 
     <!-- Book Appointment -->
     <div class="button-app">
-        <a href="bookappsinglenew.html"><i class="fa-solid fa-plus"></i></a>
+        <a href="bookappsinglenew.php"><i class="fa-solid fa-plus"></i></a>
     </div>
 
     <!-- Section About Us -->
@@ -89,23 +95,23 @@
             <div class="count-sub-container">
                 <div class="count-box">
                     <i class="fas fa-user-md"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="40" data-purecounter-duration="0" class="count">0</span>
-                    <p>Doctors</p>
+                    <span data-purecounter-start="0" data-purecounter-end="<?php echo $doctorCount-1; ?>" data-purecounter-duration="0" class="count">0</span>
+                    <p>Doctors</p> 
                 </div>
                 <div class="count-box">
-                    <i class="far fa-hospital"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="0" class="count">0</span>
-                    <p>Departments</p>
+                    <i class="bx bx-group"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="<?php echo $patientCount-1; ?>" data-purecounter-duration="0" class="count">0</span>
+                    <p>Patients</p>
                 </div>
                 <div class="count-box">
-                    <i class="fas fa-flask"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="0" class="count">0</span>
-                    <p>Research Labs</p>
+                    <i class="bx bx-clinic"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="<?php echo $clinicCount-1; ?>" data-purecounter-duration="0" class="count">0</span>
+                    <p>Clinics</p>
                 </div>
                 <div class="count-box">
-                    <i class="fas fa-award"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="100" data-purecounter-duration="0" class="count">0</span>
-                    <p>Awards</p>
+                    <i class="bx bx-donate-blood"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="<?php echo $donorCount-1; ?>" data-purecounter-duration="0" class="count">0</span>
+                    <p>Donors</p>
                 </div>
             </div>
         </div>
@@ -164,56 +170,32 @@
     <!-- Section Doctors -->
     <section id="doctor" class = "doctor" >
         <div class="doctor-container">
-            <div class="doctor-column1">
+        <?php
+            $doctors  = getDoctors();
+            $rowcount = mysqli_num_rows($doctors);
+            if($rowcount == 0){
+                echo '<script>alert("No record found")</script>';  
+            }else{
+                /*while($selectdata = mysqli_fetch_array($result)){*/
+                for($i=0; $i<4; $i++){
+                    $selectdata = mysqli_fetch_array($doctors);
+            ?>
+            <div class="doctor-column<?php echo $i; ?>">
                 <div class="team__item">
-                    <img src="images/doctor4.jpg" alt="">
-                    <h5>Dr. Issam Abbass</h5>
-                    <span>Cardiology</span>
+                    <img src="<?php echo $selectdata['doctorPhoto']; ?>" alt="">
+                    <h5>Dr. <?php echo $selectdata['FullName']; ?></h5>
+                    <span><?php echo $selectdata['clinicName']; ?></span>
                     <div class="team__item__social">
-                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-brands  fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="<?php echo $selectdata['facebook']; ?>"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="<?php echo $selectdata['instagram']; ?>"><i class="fa-brands  fa-instagram"></i></a>
+                        <a href="<?php echo $selectdata['linkedin']; ?>"><i class="fa-brands fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
-
-            <div class="doctor-column2">
-                <div class="team__item">
-                    <img src="images/doctor4.jpg" alt="">
-                    <h5>Dr. Rafik Fayad</h5>
-                    <span>Gastroenterology</span>
-                    <div class="team__item__social">
-                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="doctor-column3">
-                <div class="team__item">
-                    <img src="images/doctor4.jpg" alt="">
-                    <h5>Dr. Ibrahim Abdou</h5>
-                    <span>Ear, Nose & Throat</span>
-                    <div class="team__item__social">
-                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="doctor-column4">
-                <div class="team__item">
-                    <img src="images/doctor4.jpg" alt="">
-                    <h5> Dr. Ibrahim Al Khatib </h5>
-                    <span>Dentist</span>
-                    <div class="team__item__social">
-                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
+            <?php
+                    }
+                }
+            ?>
         </div> 
     </section>
 
@@ -227,103 +209,33 @@
     <!-- Section Clinics -->
     <section id="clinics" class="clinics">
         <div class="clinic-container">
-              <div class="swiper mySwiper">
-                    <div class="swiper-wrapper">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                <?php
+                    $clinics  = getClinics();
+                    $rowcount = mysqli_num_rows($clinics);
+                    if($rowcount == 0){
+                        echo '<script>alert("No record found")</script>';  
+                    }else{
+                        /*while($selectdata = mysqli_fetch_array($result)){*/
+                        for ($i = 0; $i < 10; $i++) {
+                            $selectdata = mysqli_fetch_array($clinics);
+                    ?>
                         <div class="swiper-slide item">
                             <div class="clinic-img">
-                                <img src="images/heart.png" class="w-80" alt="Cadriology Clinic">
+                                <img src="<?php echo $selectdata['photo']; ?>" class="w-80" alt="<?php echo $selectdata['name']; ?> clinic">
                             </div>
                             <div class="clinic-info">
-                                <h3>Cardiology</h3>
-                                <p>Cardiac care, tailored to your heart's health</p>
+                                <h3><?php echo $selectdata['name']; ?></h3>
+                                <p><?php echo $selectdata['description']; ?></p>
                             </div>
                         </div>
-
-                        <div class="swiper-slide item">
-                            <div class="clinic-img">
-                                <img src="images/radiology.png" class="w-100 h-80" alt="Radiology Clinic">
-                            </div>
-                            <div class="clinic-info">
-                                <h3>Radiology</h3>
-                                <p> Experience advanced imaging and diagnostics </p>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide item">
-                            <div class="clinic-img">
-                                <img src="images/Gastroenterology-removebg-preview.png" class="w-70" alt="Gastroenterology Clinic">
-                            </div>
-                            <div class="clinic-info">
-                                <h3>Gastroenterology</h3>
-                                <p> Comprehensive digestive care </p>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide item">
-                            <div class="clinic-img">
-                                <img src="images/dentist.png" class="w-100" alt="Dentist Clinic">
-                            </div>
-                            <div class="clinic-info">
-                                <h3>Dentist</h3>
-                                <p> Smile confidently with exceptional dental care </p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide item">
-                            <div class="clinic-img">
-                                <img src="images/Ophthalmology-removebg-preview.png" class="w-50" alt="Ophthalmology Clinic">
-                            </div>
-                            <div class="clinic-info">
-                                <h3>Ophthalmology</h3>
-                                <p>Protect and enhance your vision </p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide item">
-                            <div class="clinic-img">
-                                <img src="images/surgery.png" class="w-50" alt="Surgery Clinic">
-                            </div>
-                            <div class="clinic-info">
-                                <h3>Surgery</h3>
-                                <p> Expertise and cutting-edge methods </p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide item">
-                            <div class="clinic-img">
-                                <img src="images/ears.png" class="w-100" alt="Ear Nose & Throat Clinic">
-                            </div>
-                            <div class="clinic-info">
-                                <h3>Ear, Nose & Throat</h3>
-                                <p> Balance your hearing and respiratory wellnesss </p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide item">
-                            <div class="clinic-img">
-                                <img src="images/skin-removebg-preview.png" class="" alt="Dermatology Clinic">
-                            </div>
-                            <div class="clinic-info">
-                                <h3>Dermatology</h3>
-                                <p>Revitalize your skin health</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide item">
-                            <div class="clinic-img">
-                                <img src="images/orthopedics-removebg-preview.png" class="" alt="Orthopedics Clinic">
-                            </div>
-                            <div class="clinic-info">
-                                <h3>Orthopedics</h3>
-                                <p>Rediscover mobility and strength</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide item">
-                            <div class="clinic-img">
-                                <img src="images/Neurology-removebg-preview.png" class="" alt="Neurology Clinic">
-                            </div>
-                            <div class="clinic-info">
-                                <h3>Neurology</h3>
-                                <p>Unlocking the complexities of neurological health</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <?php
+                           }
+                        }
+                    ?>
+                </div>  
+            </div>
             <div class="swiper-pagination"></div>
         </div>
     </section>
@@ -343,26 +255,27 @@
                     <img src="images/donate-bg2-removebg-preview.png">
                 </div>
                 <p>Please, Fill Out This Information:</p>
-                <div class="email-input">  
-                    <input type="text" id="email" name="email-phone" class="donation-input" placeholder="Enter Email or Phone Number">
-                    <span id="errorInput"></span>
-                </div>
-                <div class="blood-group"> 
-                    <label for="mySelect">Select your blood group:</label> 
-                    <select id="mySelect" name="mySelect"> 
-                    <option value="Blood-Type">Blood Type</option> 
-                    <option value="A+">A+</option> 
-                    <option value="B+">B+</option> 
-                    <option value="O+">O+</option> 
-                    <option value="AB+">AB+</option> 
-                    <option value="A-">A-</option> 
-                    <option value="B-">B-</option> 
-                    <option value="O-">O-</option> 
-                    <option value="AB-">AB-</option> 
-                    </select>
-                </div> 
-                
-                <input type="button" value="Send" id="click_donate" name="btn-send" class="btn-send">
+                <form id = "donateform" action="homeFunctions.php" method="post" enctype="multipart/form-data">
+                    <div class="email-input">  
+                        <input type="text" id="email" name="email-phone" class="donation-input" placeholder="Enter Email or Phone Number">
+                        <span id="errorInput"></span>
+                    </div>
+                    <div class="blood-group"> 
+                        <label for="mySelect">Select your blood group:</label> 
+                        <select id="mySelect" name="mySelect"> 
+                            <option value="Blood-Type">Blood Type</option> 
+                            <option value="A+">A+</option> 
+                            <option value="B+">B+</option> 
+                            <option value="O+">O+</option> 
+                            <option value="AB+">AB+</option> 
+                            <option value="A-">A-</option> 
+                            <option value="B-">B-</option> 
+                            <option value="O-">O-</option> 
+                            <option value="AB-">AB-</option> 
+                        </select>
+                    </div> 
+                    <input type="button" value="Send" id="click_donate" name="btn_send" class="btn-send">
+                </form>
             </div>
         </div>
     </section> 
