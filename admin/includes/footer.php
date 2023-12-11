@@ -11,6 +11,10 @@
     <script src="assets/js/autocomplete.js"></script>
     <script src="assets/js/validation.js"></script> 
 
+    <script src="assets/js/custom.js"></script> 
+    <!-- sweetalert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <script> 
         $('.imageLB').magnificPopup({
             type: 'image',

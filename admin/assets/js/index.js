@@ -54,11 +54,37 @@ const toggler = document.getElementById('theme-toggle');
 toggler?.addEventListener('change', function () {
     if (this.checked) {
         document.body.classList.add('dark');
+        toggleDarkMode();
     } else {
         document.body.classList.remove('dark');
+        toggleDarkMode();
     }
 });
 
+// Function to toggle dark mode
+function toggleDarkMode() {
+    const body = document.body;
+    /* body.classList.toggle('dark-mode'); */
+
+    // Save dark mode preference to local storage
+    const isDarkMode = body.classList.contains('dark');
+    localStorage.setItem('darkMode', isDarkMode);
+}
+
+// Function to load dark mode preference
+function loadDarkModePreference() {
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    const body = document.body;
+
+    if (isDarkMode) {
+        body.classList.add('dark');
+    } else {
+        body.classList.remove('dark');
+    }
+}
+
+// Load dark mode preference when the page loads
+window.addEventListener('load', loadDarkModePreference);
 
 const account = document.getElementById('account');
 const reqs = document.getElementsByClassName('req');

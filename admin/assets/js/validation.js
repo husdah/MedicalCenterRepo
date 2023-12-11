@@ -115,10 +115,11 @@ function validateDescSubmit(name, nameInput, errorName) {
         nameInput.classList.add("required");
         errorName.classList.add("count");
         if (name == '') {
-            errorName.textContent = 'description required';
+            let st = errorName.className.split(" ");
+            errorName.textContent =  st[0] +' required';
             return false;
         } else if (!validateDesc(name)) {
-            errorName.textContent = 'Invalid description. Only letters are allowed.';
+            errorName.textContent = 'Only letters are allowed.';
             return false;
         } else if (name.length < 5) {
             errorName.textContent = "min length: 5";
@@ -315,6 +316,27 @@ function handleInputPhoneEvent(event) {
     }
 }
 
+function handleInputPhoneEvent2(event) {
+    var inputElement = event.target;
+    var errorElementId = inputElement.id + 'Error';
+    var errorElement = document.getElementById(errorElementId);
+
+    if (!validatePhone(inputElement.value)) {
+        inputElement.classList.add("required");
+
+        errorElement.textContent = 'Invalid Phone';
+
+    } else {
+        inputElement.classList.remove("required");
+        errorElement.textContent = 'Phone';
+    }
+
+    if(inputElement.value == ""){
+        inputElement.classList.remove("required");
+        errorElement.textContent = 'Phone';
+    }
+}
+
 // Function to handle input PASSWORD events
 function handleInputPassEvent(event) {
     var inputElement = event.target;
@@ -382,9 +404,10 @@ function handleInputDescEvent(event) {
         errorElement.classList.add("count");
 
         if (inputElement.value == '') {
-            errorElement.textContent = 'description required';
+            let st = errorName.className.split(" ");
+            errorElement.textContent = st[0] +' required';
         } else if (!validateDesc(inputElement.value)) {
-            errorElement.textContent = 'Invalid description. Only letters are allowed.';
+            errorElement.textContent = 'Only letters are allowed.';
         } else if (inputElement.value.length < 5) {
             errorElement.textContent = "min length: 5";
         }
@@ -582,6 +605,9 @@ doctorLNInput?.addEventListener('input', handleInputNameEvent);
 var doctorEmailInput = document.getElementById('doctorEmail');
 doctorEmailInput?.addEventListener('input', handleInputEmailEvent);
 
+var doctorPhoneInput = document.getElementById('doctorPhone');
+doctorPhoneInput?.addEventListener('input', handleInputPhoneEvent);
+
 var doctorClinicInput = document.getElementById('doctorClinic');
 doctorClinicInput?.addEventListener('change', handleSelectEvent);
 
@@ -703,6 +729,10 @@ exceptionTOInput?.addEventListener('input', handleInputTimeEvent);
 var exceptionAvailableCheck = document.getElementById('availableException');
 exceptionAvailableCheck?.addEventListener("change",handleAvailableExcepCheckEvent);
 
+//add reminder form
+var reminderInput = document.getElementById('reminderInput');
+reminderInput?.addEventListener('input', handleInputDescEvent);
+
 // event lister on Form Buttons
 let addClinicFormBtn = document.getElementById("addClinicFormBtn");
 addClinicFormBtn?.addEventListener("click", function(event) {
@@ -764,13 +794,14 @@ addDoctorFormBtn?.addEventListener("click", function(event) {
         let firstName= doctorFNInput.value;
         let lastName= doctorLNInput.value;
         let email = doctorEmailInput.value;
-        /* let clinic = doctorClinicInput.value; */
+        let phone = doctorPhoneInput.value;
         let password = doctorPassInput.value;
         let confirm = doctorPassConfirmInput.value;
     
         let errorFN = document.getElementById("doctorFNError");
         let errorLN = document.getElementById("doctorLNError");
         let errorEmail = document.getElementById("doctorEmailError");
+        let errorPhone = document.getElementById("doctorPhoneError");
         let errorClinic = document.getElementById("doctorClinicError");
         let errorPass = document.getElementById("doctorPassError");
         let errorPassConfirm = document.getElementById("doctorPassConfirmError");
@@ -778,11 +809,12 @@ addDoctorFormBtn?.addEventListener("click", function(event) {
         validateNameSubmit(firstName, doctorFNInput, errorFN);
         validateNameSubmit(lastName, doctorLNInput, errorLN);
         validateEmailSubmit(email, doctorEmailInput, errorEmail);
+        validatePhoneSubmit(phone, doctorPhoneInput, errorPhone);
         validatePassSubmit(password, doctorPassInput, errorPass);
         ConfirmPassSubmit(confirm, doctorPassConfirmInput,password, errorPassConfirm);
         validateSelectSubmit(doctorClinicInput, errorClinic);
     
-        if (!validateNameSubmit(firstName, doctorFNInput, errorFN) || !validateNameSubmit(lastName, doctorLNInput, errorLN) || !validateEmailSubmit(email, doctorEmailInput, errorEmail) || !validatePassSubmit(password, doctorPassInput, errorPass) || !ConfirmPassSubmit(confirm, doctorPassConfirmInput,password, errorPassConfirm) || !validateSelectSubmit(doctorClinicInput, errorClinic)) {
+        if (!validateNameSubmit(firstName, doctorFNInput, errorFN) || !validateNameSubmit(lastName, doctorLNInput, errorLN) || !validateEmailSubmit(email, doctorEmailInput, errorEmail) || !validatePhoneSubmit(phone, doctorPhoneInput, errorPhone) || !validatePassSubmit(password, doctorPassInput, errorPass) || !ConfirmPassSubmit(confirm, doctorPassConfirmInput,password, errorPassConfirm) || !validateSelectSubmit(doctorClinicInput, errorClinic)) {
             /* alert("invalid form"); */
         } else {
            /*  alert("done"); */
@@ -1030,6 +1062,29 @@ manageExceptionFormBtn?.addEventListener("click", function(event) {
         } else {
             /* alert("done"); */
             document.getElementById('manageExceptionForm').submit();
+            
+        }
+    }
+
+});
+
+let addReminderFormBtn = document.getElementById("addReminderFormBtn");
+addReminderFormBtn?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
+
+    }else{  
+        let errorReminder= document.getElementById("reminderInputError");
+        let reminder = reminderInput.value;
+
+        validateDescSubmit(reminder,reminderInput,errorReminder);
+
+        if (!validateDescSubmit(reminder,reminderInput,errorReminder)) {
+            /* alert("invalid form"); */
+        } else {
+            /* alert("done"); */
+            document.getElementById('addReminderForm').submit();
             
         }
     }
