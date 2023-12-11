@@ -136,7 +136,7 @@ lname_input?.addEventListener('input', validateLastname);
 const validateEmail = () => {
     const emailValue   = email_input.value;
     if(!validateEmailStructure(emailValue)){
-        emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Exapmle: example@hotmail.com';
+        emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> example@hotmail.com';
         return false;
     }
     else{

@@ -54,7 +54,7 @@
 
     <!-- Book Appointment -->
     <div class="button-app">
-        <a href="bookappsinglenew.html"><i class="fa-solid fa-plus"></i></a>
+        <a href="bookappsinglenew.php"><i class="fa-solid fa-plus"></i></a>
     </div>
 
     <!-- Section About Us -->
@@ -255,7 +255,7 @@
                     <img src="images/donate-bg2-removebg-preview.png">
                 </div>
                 <p>Please, Fill Out This Information:</p>
-                <form id = "donateform" action="" method = $_POST>
+                <form id = "donateform" action="homeFunctions.php" method="post" enctype="multipart/form-data">
                     <div class="email-input">  
                         <input type="text" id="email" name="email-phone" class="donation-input" placeholder="Enter Email or Phone Number">
                         <span id="errorInput"></span>
@@ -263,18 +263,18 @@
                     <div class="blood-group"> 
                         <label for="mySelect">Select your blood group:</label> 
                         <select id="mySelect" name="mySelect"> 
-                        <option value="Blood-Type">Blood Type</option> 
-                        <option value="A+">A+</option> 
-                        <option value="B+">B+</option> 
-                        <option value="O+">O+</option> 
-                        <option value="AB+">AB+</option> 
-                        <option value="A-">A-</option> 
-                        <option value="B-">B-</option> 
-                        <option value="O-">O-</option> 
-                        <option value="AB-">AB-</option> 
-                            </select>
+                            <option value="Blood-Type">Blood Type</option> 
+                            <option value="A+">A+</option> 
+                            <option value="B+">B+</option> 
+                            <option value="O+">O+</option> 
+                            <option value="AB+">AB+</option> 
+                            <option value="A-">A-</option> 
+                            <option value="B-">B-</option> 
+                            <option value="O-">O-</option> 
+                            <option value="AB-">AB-</option> 
+                        </select>
                     </div> 
-                    <input type="button" value="Send" id="click_donate" name="btn-send" class="btn-send">
+                    <input type="button" value="Send" id="click_donate" name="btn_send" class="btn-send">
                 </form>
             </div>
         </div>
