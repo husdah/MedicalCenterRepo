@@ -75,4 +75,28 @@ function getSpecificDoc($deleted){
     return $query_run;
 }
 
+function getDocInfoById($id){
+    global $con;
+    $query= "SELECT user.Fname AS Fname, user.Lname AS Lname, user.email AS email, user.password AS password, doctor.userId As userId, doctor.clinicId As clinicId, doctor.phoneNumber As phoneNumber 
+    FROM user, doctor 
+    WHERE user.userId = doctor.userId
+    AND doctor.doctorId = $id";
+    $query_run = mysqli_query($con,$query);
+    return $query_run;
+}
+
+function getExceptionsById($id){
+    global $con;
+    $query= "SELECT * FROM workingexception WHERE doctorId = $id";
+    $query_run = mysqli_query($con,$query);
+    return $query_run;
+}
+
+function getAdminInfo(){
+    global $con;
+    $query= "SELECT * FROM user WHERE role =0";
+    $query_run = mysqli_query($con,$query);
+    return $query_run;
+}
+
 ?>

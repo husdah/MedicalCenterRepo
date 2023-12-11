@@ -105,7 +105,18 @@
                                             <a href="../uploads/<?= $profilePic; ?>" class="imageLB"> 
                                                 <img src="../uploads/<?= $profilePic; ?>" alt="doctor Image">
                                             </a>
-                                            <a href="edit-doctor.php"><p class="doctor"><?= $docName; ?></p></a>
+                                            <?php
+                                             if($item['deleted'] == 0){
+                                                ?>
+                                                <a href="edit-doctor.php?doctorId=<?= $item['doctorId']; ?>"><p class="doctor"><?= $docName; ?></p></a>
+                                                <?php
+                                            }else if($item['deleted'] == 1){
+                                                ?>
+                                                <p class="doctor"><?= $docName; ?></p>
+                                                <?php
+                                            }
+
+                                            ?>
                                         </td>
                                         <td class="clinic"><?= $clinicName; ?></td>
                                         <td>

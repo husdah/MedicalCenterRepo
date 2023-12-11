@@ -195,6 +195,169 @@ else if(isset($_POST['restoreDocBtn'])){
         echo 500;
     }
 }
+else if(isset($_POST['editDoctorFormId']) && isset($_POST['editUserId']) && isset($_POST['editDoctorFN']) && isset($_POST['editDoctorLN']) && isset($_POST['editDoctorEmail']) && isset($_POST['editDoctorPhone']) && isset($_POST['editDoctorClinic']) && isset($_POST['editDoctorPass']) && isset($_POST['editDoctorPassConfirm'])){
+    $doctorId = $_POST['editDoctorFormId'];
+    $userId = $_POST['editUserId'];
+    $fname = $_POST['editDoctorFN'];
+    $lname = $_POST['editDoctorLN'];
+    $email = $_POST['editDoctorEmail'];
+    $phone = $_POST['editDoctorPhone'];
+    $clinicId = $_POST['editDoctorClinic'];
+    $password = $_POST['editDoctorPass'];
+    $confirmation = $_POST['editDoctorPassConfirm'];
+
+    if($fname != "" && $lname != "" && $email != "" && $phone != "" && $clinicId != "clinic" && $password != "" && $confirmation != "" && $password == $confirmation){
+
+        $user_query = "UPDATE user SET Fname='$fname', Lname='$lname', email='$email', password='$password' WHERE userId= $userId";
+        $user_query_run = mysqli_query($con,$user_query);
+
+        if($user_query_run){
+
+            $doctor_query = "UPDATE doctor SET clinicId= $clinicId, phoneNumber= $phone WHERE doctorId = $doctorId";
+            $doctor_query_run = mysqli_query($con,$doctor_query);
+
+            if($doctor_query_run)
+            {
+                /* redirect('dashboard.php',"reminder Added Successfully!"); */
+                header('Location: ../edit-doctor.php?doctorId='.$doctorId);
+        
+            }else{
+                /* redirect('dashboard.php',"Something Went Wrong!"); */
+                header('Location: ../edit-doctor.php?doctorId='.$doctorId);
+            }
+            
+        }
+    }
+
+}
+else if(isset($_POST['exceptionDay']) && isset($_POST['docId'])){
+    $doctorId=$_POST['docId'];
+    $date=$_POST['exceptionDay'];
+    $from=$_POST['exceptionFrom'];
+    $to=$_POST['exceptionTO'];
+    $available= isset($_POST['availableException']) ? "1":"0";
+
+    if($date != ""){
+        $exception_query= "INSERT INTO workingexception (doctorId, date, fromHour, toHour, available) VALUES ('$doctorId', '$date', '$from', '$to', '$available');";
+
+        $exception_query_run = mysqli_query($con,$exception_query);
+        if($exception_query_run)
+        {
+            /* redirect('dashboard.php',"exception Added Successfully!"); */
+            header('Location: ../edit-doctor.php?doctorId='.$doctorId);
+    
+        }else{
+            /* redirect('dashboard.php',"Something Went Wrong!"); */
+            header('Location: ../edit-doctor.php?doctorId='.$doctorId);
+        }
+    }
+}
+else if(isset($_POST['deleteWExceptionBtn'])){
+
+    $wExId= mysqli_real_escape_string($con, $_POST['wExcId']); 
+    
+    $delete_query= "DELETE FROM workingexception WHERE wExcepId='$wExId';";
+    $delete_query_run = mysqli_query($con,$delete_query);  
+
+    if($delete_query_run)
+    {
+      echo 200;
+
+    }else{
+        echo 500;
+    }
+
+}
+else if(isset($_POST['urgentBT']) && isset($_POST['urgentBTN'])){
+    $urgentBT=$_POST['urgentBT'];
+    $number=$_POST['urgentBTN'];
+
+    if($urgentBT != "" && $number != ""){
+        $urgentbt_query= "INSERT INTO urgentbt (bloodType, number) VALUES ('$urgentBT', $number);";
+
+        $urgentbt_query_run = mysqli_query($con,$urgentbt_query);
+        if($urgentbt_query_run)
+        {
+            /* redirect('dashboard.php',"urgentbt Added Successfully!"); */
+            header('Location: ../donors.php');
+    
+        }else{
+            /* redirect('donors.php',"Something Went Wrong!"); */
+            header('Location: ../donors.php');
+        }
+    }
+}
+else if(isset($_POST['delete_reminder_btn'])){
+
+    $remiderId= mysqli_real_escape_string($con, $_POST['reminderId']); 
+    
+    $delete_query= "DELETE FROM reminders WHERE reminderId='$remiderId';";
+    $delete_query_run = mysqli_query($con,$delete_query);  
+
+    if($delete_query_run)
+    {
+      echo 200;
+
+    }else{
+        echo 500;
+    }
+
+}
+else if(isset($_POST['deleteDonorBtn'])){
+
+    $donorId= mysqli_real_escape_string($con, $_POST['donorId']); 
+    
+    $delete_query= "DELETE FROM donor WHERE donorId='$donorId';";
+    $delete_query_run = mysqli_query($con,$delete_query);  
+
+    if($delete_query_run)
+    {
+      echo 200;
+
+    }else{
+        echo 500;
+    }
+
+}
+else if(isset($_POST['deleteUrgentBTBtn'])){
+
+    $urgentBTId= mysqli_real_escape_string($con, $_POST['urgentBTId']); 
+    
+    $delete_query= "DELETE FROM urgentbt WHERE urgentBTId='$urgentBTId';";
+    $delete_query_run = mysqli_query($con,$delete_query);  
+
+    if($delete_query_run)
+    {
+      echo 200;
+
+    }else{
+        echo 500;
+    }
+
+}
+else if(isset($_POST['signup-name']) && isset($_POST['signup-email']) && isset($_POST['signup-password']) && isset($_POST['signup-passwordConfirm'])){
+    $name = $_POST['signup-name'];
+    $email = $_POST['signup-email'];
+    $password = $_POST['signup-password'];
+    $confirmation = $_POST['signup-passwordConfirm'];
+
+    if($name != "" && $email != "" && $password != "" && $confirmation != "" && $password == $confirmation){
+
+        $user_query = "UPDATE user SET Fname='$name', Lname='$name', email='$email', password='$password' WHERE role=0";
+        $user_query_run = mysqli_query($con,$user_query);
+
+        if($user_query_run)
+        {
+            /* redirect('dashboard.php',"reminder Added Successfully!"); */
+            header('Location: ../settings.php');
+    
+        }else{
+            /* redirect('dashboard.php',"Something Went Wrong!"); */
+            header('Location: ../settings.php');
+        }
+    }
+
+}
 else{
     header('Location: ../dashboard.php');
 }

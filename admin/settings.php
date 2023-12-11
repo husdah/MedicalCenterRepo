@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    include("functions/myfunctions.php");
     include('includes/header.php');
 ?>
 
@@ -19,6 +21,13 @@
       <section class="forms-section">
           <h1 class="section-title">Login Information</h1>
           <div class="forms">
+          <?php 
+            $admin= getAdminInfo();
+            if(mysqli_num_rows($admin) >0){
+                foreach($admin as $info)
+                {
+                  $name = $info['Fname'] ." " .$info['Lname'];
+                  ?>
             <div id="viewWrapper" class="form-wrapper is-active">
               <button type="button" class="switcher switcher-login">
                 View
@@ -32,7 +41,7 @@
                     <!-- <input id="login-name" type="text" required disabled> -->
                     <div class="input-field"> 
                       <i class="bx bx-user"></i> 
-                      <input id="login-name" type="text" placeholder="name" required disabled>
+                      <input id="login-name" type="text" value="<?= $name;?>" placeholder="name" required disabled>
                     </div>
                   </div>
                   <div class="input-block">
@@ -40,7 +49,7 @@
                     <!-- <input id="login-email" type="email" required disabled> -->
                     <div class="input-field"> 
                       <i class="bx bx-envelope"></i> 
-                      <input id="login-email" type="email" placeholder="email" required disabled>
+                      <input id="login-email" type="email" value="<?= $info['email'];?>" placeholder="email" required disabled>
                     </div>
                   </div>
                   <div class="input-block">
@@ -48,11 +57,10 @@
                       <!-- <input id="login-password" type="password" required disabled> -->
                       <div class="input-field"> 
                         <i class="bx bx-lock"></i> 
-                        <input id="login-password" type="password" placeholder="password" required disabled>
+                        <input id="login-password" type="password" value="<?= $info['password'];?>" placeholder="password" required disabled>
                       </div>
                   </div>
-                </fieldset>
-                <!-- <button type="submit" class="btn-login">Login</button> -->
+                </fieldset>    
               </form>
             </div>
             <div id="changeWrapper" class="form-wrapper">
@@ -60,7 +68,7 @@
                 Change
                 <span class="underline"></span>
               </button>
-              <form class="animated-form form-signup" id="adminForm">
+              <form class="animated-form form-signup" id="adminForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
                 <fieldset>
                   <legend>Please, enter your email, password and password confirmation for sign up.</legend>
                   <div class="input-block">
@@ -68,7 +76,7 @@
                       <!-- <input id="signup-name" type="text" required> -->
                       <div class="input-field"> 
                         <i class="bx bx-user"></i> 
-                        <input id="signup-name" name="signup-name" type="text" placeholder="name" required>
+                        <input id="signup-name" name="signup-name" value="<?= $name;?>" type="text" placeholder="name" required>
                         <span class="Name" id="signup-nameError">SignUp Name</span>
                       </div>
                     </div>
@@ -77,7 +85,7 @@
                     <!-- <input id="signup-email" type="email" required> -->
                     <div class="input-field"> 
                       <i class="bx bx-envelope"></i> 
-                      <input id="signup-email" name="signup-email" type="email" placeholder="email" required>
+                      <input id="signup-email" name="signup-email" value="<?= $info['email'];?>" type="email" placeholder="email" required>
                       <span id="signup-emailError">SignUp Email</span>
                     </div>
                   </div>
@@ -86,7 +94,7 @@
                     <!-- <input id="signup-password" type="password" required> -->
                     <div class="input-field"> 
                       <i class="bx bx-lock"></i> 
-                      <input id="signup-password" name="signup-password" type="password" placeholder="password" required>
+                      <input id="signup-password" name="signup-password" value="<?= $info['password'];?>" type="password" placeholder="password" required>
                       <span id="signup-passwordError">SignUp Password</span>
                     </div>
                   </div>
@@ -95,7 +103,7 @@
                     <!-- <input id="signup-password-confirm" type="password" required> -->
                     <div class="input-field"> 
                       <i class="bx bx-lock"></i> 
-                      <input id="signup-passwordConfirm" name="signup-passwordConfirm" type="password" placeholder="password" required>
+                      <input id="signup-passwordConfirm" name="signup-passwordConfirm" value="<?= $info['password'];?>" type="password" placeholder="password" required>
                       <span id="signup-passwordConfirmError">Confirm Password</span>
                     </div>
                   </div>
@@ -103,6 +111,10 @@
                 <button id="adminFormBtn" type="button" class="btn-signup">Save</button>
               </form>
             </div>
+            <?php
+                      }
+                    }
+                    ?>
           </div>
         </section>
 
