@@ -1,8 +1,13 @@
 
     <?php
         include('includes/header.php');
-        include('config/dbcon.php');
-    ?>
+        include('homeFunctions.php');
+
+        $doctorCount  = getRowCount('doctor');
+        $patientCount = getRowCount('patient');
+        $clinicCount  = getRowCount('clinic');
+        $donorCount   = getRowCount('donor');                
+    ?>                
     
     <!-- Section Banner -->
     <section id="banner" class="banner">
@@ -90,27 +95,6 @@
             <div class="count-sub-container">
                 <div class="count-box">
                     <i class="fas fa-user-md"></i>
-                    <?php
-                        $query1  = 'SELECT COUNT(doctorId)  AS doctorCount  FROM doctor';
-                        $query2  = 'SELECT COUNT(patientId) AS patientCount FROM patient';
-                        $query3  = 'SELECT COUNT(clinicId)  AS clinicCount  FROM clinic';
-                        $query4  = 'SELECT COUNT(donorId)   AS donorCount   FROM donor';
-                        
-                        $result1 = mysqli_query($con,$query1);
-                        $result2 = mysqli_query($con,$query2);
-                        $result3 = mysqli_query($con,$query3);
-                        $result4 = mysqli_query($con,$query4);
-
-                        $row1 = mysqli_fetch_assoc($result1);
-                        $row2 = mysqli_fetch_assoc($result2);
-                        $row3 = mysqli_fetch_assoc($result3);
-                        $row4 = mysqli_fetch_assoc($result4);
-
-                        $doctorCount  = $row1['doctorCount'];
-                        $patientCount = $row2['patientCount'];
-                        $clinicCount  = $row3['clinicCount'];
-                        $donorCount   = $row4['donorCount'];
-                    ?>
                     <span data-purecounter-start="0" data-purecounter-end="<?php echo $doctorCount-1; ?>" data-purecounter-duration="0" class="count">0</span>
                     <p>Doctors</p> 
                 </div>
@@ -187,20 +171,14 @@
     <section id="doctor" class = "doctor" >
         <div class="doctor-container">
         <?php
-                $query    = 'SELECT CONCAT(user.Fname, " ", user.Lname) AS FullName, doctor.profilePic AS doctorPhoto, clinic.name AS clinicName, media.facebook, media.instagram, media.linkedin
-                            FROM user
-                            JOIN doctor ON user.userId = doctor.doctorId
-                            JOIN clinic ON clinic.clinicId = doctor.clinicId
-                            JOIN media ON  doctor.doctorId = media.doctorId;
-                            ';
-                $result   = mysqli_query($con,$query); 
-                $rowcount = mysqli_num_rows($result);
-                if($rowcount == 0){
-                    echo '<script>alert("No record found")</script>';  
-                }else{
-                    /*while($selectdata = mysqli_fetch_array($result)){*/
-                    for($i=0; $i<4; $i++){
-                        $selectdata = mysqli_fetch_array($result);
+            $doctors  = getDoctors();
+            $rowcount = mysqli_num_rows($doctors);
+            if($rowcount == 0){
+                echo '<script>alert("No record found")</script>';  
+            }else{
+                /*while($selectdata = mysqli_fetch_array($result)){*/
+                for($i=0; $i<4; $i++){
+                    $selectdata = mysqli_fetch_array($doctors);
             ?>
             <div class="doctor-column<?php echo $i; ?>">
                 <div class="team__item">
@@ -234,15 +212,14 @@
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                 <?php
-                    $query    = 'SELECT * FROM clinic ';
-                    $result   = mysqli_query($con,$query); 
-                    $rowcount = mysqli_num_rows($result);
+                    $clinics  = getClinics();
+                    $rowcount = mysqli_num_rows($clinics);
                     if($rowcount == 0){
                         echo '<script>alert("No record found")</script>';  
                     }else{
                         /*while($selectdata = mysqli_fetch_array($result)){*/
                         for ($i = 0; $i < 10; $i++) {
-                            $selectdata = mysqli_fetch_array($result);
+                            $selectdata = mysqli_fetch_array($clinics);
                     ?>
                         <div class="swiper-slide item">
                             <div class="clinic-img">
@@ -254,7 +231,7 @@
                             </div>
                         </div>
                     <?php
-                            }
+                           }
                         }
                     ?>
                 </div>  
@@ -278,26 +255,27 @@
                     <img src="images/donate-bg2-removebg-preview.png">
                 </div>
                 <p>Please, Fill Out This Information:</p>
-                <div class="email-input">  
-                    <input type="text" id="email" name="email-phone" class="donation-input" placeholder="Enter Email or Phone Number">
-                    <span id="errorInput"></span>
-                </div>
-                <div class="blood-group"> 
-                    <label for="mySelect">Select your blood group:</label> 
-                    <select id="mySelect" name="mySelect"> 
-                    <option value="Blood-Type">Blood Type</option> 
-                    <option value="A+">A+</option> 
-                    <option value="B+">B+</option> 
-                    <option value="O+">O+</option> 
-                    <option value="AB+">AB+</option> 
-                    <option value="A-">A-</option> 
-                    <option value="B-">B-</option> 
-                    <option value="O-">O-</option> 
-                    <option value="AB-">AB-</option> 
-                    </select>
-                </div> 
-                
-                <input type="button" value="Send" id="click_donate" name="btn-send" class="btn-send">
+                <form id = "donateform" action="" method = $_POST>
+                    <div class="email-input">  
+                        <input type="text" id="email" name="email-phone" class="donation-input" placeholder="Enter Email or Phone Number">
+                        <span id="errorInput"></span>
+                    </div>
+                    <div class="blood-group"> 
+                        <label for="mySelect">Select your blood group:</label> 
+                        <select id="mySelect" name="mySelect"> 
+                        <option value="Blood-Type">Blood Type</option> 
+                        <option value="A+">A+</option> 
+                        <option value="B+">B+</option> 
+                        <option value="O+">O+</option> 
+                        <option value="AB+">AB+</option> 
+                        <option value="A-">A-</option> 
+                        <option value="B-">B-</option> 
+                        <option value="O-">O-</option> 
+                        <option value="AB-">AB-</option> 
+                            </select>
+                    </div> 
+                    <input type="button" value="Send" id="click_donate" name="btn-send" class="btn-send">
+                </form>
             </div>
         </div>
     </section> 

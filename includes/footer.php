@@ -24,14 +24,12 @@
                 <hr>
                 <ul class="opening-hour">
                     <?php
-                        include('config/dbcon.php');
-                        $query    = 'SELECT * FROM medicalhours';
-                        $result   = mysqli_query($con,$query); 
-                        $rowcount = mysqli_num_rows($result);
+                        $openHour = getOpeningHour();
+                        $rowcount = mysqli_num_rows($openHour);
                         if($rowcount == 0){
                             echo '<script>alert("No record found")</script>';  
                         }else{
-                            while($selectdata = mysqli_fetch_array($result)){
+                            while($selectdata = mysqli_fetch_array($openHour)){
                     ?>
                             <li><?php echo $selectdata['day']; ?>: <span class="<?php echo $selectdata['day']; ?>">
                             <?php 
@@ -40,7 +38,6 @@
 
                                 $fromHour = date("h A", strtotime($fromHourDB));
                                 $toHour   = date("h A", strtotime($toHourDB));
-
                                 if($selectdata['closed'] == 0){
                                     echo $fromHour. " - " .$toHour;
                                 }
