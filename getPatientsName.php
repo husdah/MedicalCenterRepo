@@ -7,7 +7,7 @@ if (isset($_GET['keyword'])) {
     $keyword = $_GET['keyword'];
 }
 
-$sql = "SELECT userId,Fname FROM user WHERE (Fname LIKE '%" . addslashes($keyword) . "%' AND role='2')";
+$sql = "SELECT userId,email FROM user WHERE (Fname LIKE '%" . addslashes($keyword) . "%' AND role='2')";
 
 
 $res = mysqli_query($con, $sql);
@@ -18,7 +18,7 @@ $patients = array();
 while ($row = mysqli_fetch_assoc($res)) {
     $patients[$i] = array(
         'userId' => $row['userId'],
-        'Fname' => $row['Fname']
+        'email' => $row['email']
     );
     $i++;
 }

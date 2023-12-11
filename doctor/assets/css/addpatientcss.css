@@ -29,7 +29,7 @@
 {
     color:var(--dark);
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1.6rem;
     margin-top: 20px;
     margin-left: 20px;
     /* margin-bottom: 20px; */
@@ -45,6 +45,14 @@
 .left form
 {
     margin: 30px;
+}
+#eid
+{
+    display: none;
+}
+.appId
+{
+    display: none;
 }
 .left
 {
