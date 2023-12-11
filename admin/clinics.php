@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    include("functions/myfunctions.php");
     include('includes/header.php');
 ?>
 
@@ -53,7 +55,35 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                    <?php 
+                        $clinics= getAll('clinic');
+                        if(mysqli_num_rows($clinics) >0){
+                            foreach($clinics as $item)
+                            {
+                                ?>
+                                    <tr>
+                                        <td class="ClinicNameRow"><p class="name"><?= $item['name']; ?></p></td>
+                                        <td class="ClinicImgRow">
+                                            <a href="/../uploads/<?= $item['photo']; ?>" class="imageLB"> 
+                                                <img src="/../uploads/<?= $item['photo']; ?>" alt="category Image">
+                                            </a>
+                                        </td>
+                                        <td class="action_center">
+                                            <input  class="desc" type="hidden" value="<?= $item['description']; ?>">
+                                            <button class="btn-edit editClinic" id="edit" value="<?= $item['clinicId']; ?>"><i class="bx bx-edit"></i><span>Edit</span></button>
+                                            <button class="btn-delete deleteClinicBtn" value="<?= $item['clinicId']; ?>"><i class="bx bx-trash-alt"></i><span>Delete</span></button>
+                                        </td>
+                                     </tr>
+
+                                <?php
+
+                            }
+
+                        }else{
+                            echo "<tr><td colspan ='3'>no clinics found</td></tr>";
+                        }
+                    ?>
+   <!--                      <tr>
                             <td><a href="#clinicEdit"><p class="name">Cardiology</p></a></td>
                             <td>
                                 <a href="../images/profile-1.jpg" class="imageLB"> 
@@ -64,43 +94,7 @@
                                 <button class="btn-edit" id="edit" value="1"><i class="bx bx-edit"></i><span>Edit</span></button>
                                 <button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button>
                             </td>
-                        </tr>
-                        <tr>
-                            <td><a href="#clinicEdit"><p class="name">Dental</p></a></td>
-                            <td>
-                                <a href="../images/profile-1.jpg" class="imageLB"> 
-                                    <img src="../images/profile-1.jpg" alt="category Image">
-                                </a>
-                            </td>
-                            <td class="action_center">
-                                <button class="btn-edit" id="edit" value="2"><i class="bx bx-edit"></i><span>Edit</span></button>
-                                <button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="#clinicEdit"><p class="name">Surgery</p></a></td>
-                            <td>
-                                <a href="../images/profile-1.jpg" class="imageLB"> 
-                                    <img src="../images/profile-1.jpg" alt="category Image">
-                                </a>
-                            </td>
-                            <td class="action_center">
-                                <button class="btn-edit" id="edit" value="3"><i class="bx bx-edit"></i><span>Edit</span></button>
-                                <button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="#clinicEdit"><p class="name">Physiology</p></a></td>
-                            <td>
-                                <a href="../images/profile-1.jpg" class="imageLB"> 
-                                    <img src="../images/profile-1.jpg" alt="category Image">
-                                </a>
-                            </td>
-                            <td class="action_center">
-                                <button class="btn-edit" id="edit" value="4"><i class="bx bx-edit"></i><span>Edit</span></button>
-                                <button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button>
-                            </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -111,7 +105,7 @@
                     <i class='bx bx-clinic'></i>
                     <h3 id="FormTitle">ADD Clinic</h3>
                 </div>
-                <form class="form" id="addClinicForm">
+                <form class="form" id="addClinicForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
                     <p class="title">Fill The Form</p>
                     <p class="message">Please Enter The Needed Information. </p>
 
@@ -121,28 +115,29 @@
                     </label>           
                     <label>
                         <textarea class="input" name="clinicDesc" id="clinicDesc" required cols="30" rows="5" maxlength="50" placeholder="Enter Description"></textarea>
-                        <p id="clinicDescError">Counter</p>
+                        <p class="description" id="clinicDescError">Counter</p>
                     </label> 
                     <label>
                         <input id="clinicImg" name="clinicImg" required="" placeholder="Upload Image" type="file" accept="image/*" class="input">
                         <p id="clinicImgError" class="imgError">error</p>
                     </label> 
-                    <button id="addClinicFormBtn" type="button" class="submit">Submit</button>
+                    <button id="addClinicFormBtn" name="addClinicFormBtn" type="button" class="submit">Submit</button>
                 </form>
             </div>
             <!-- End of Reminders-->
 
 
-                <!-- Reminders -->
+            <!-- Reminders -->
             <div class="reminders hide" id="clinicEdit">
             <div class="header">
                 <i class='bx bx-pencil'></i>
                 <h3>Edit Clinic</h3>
+                <i id="viewAddForm" class='bx bx-plus'></i>
             </div>
-            <form class="form" id="editClinicForm">
+            <form class="form" id="editClinicForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
                 <p class="title">Fill The Form</p>
                 <p class="message">Please Enter The Needed Information. </p>
-
+                <input type="hidden" value="" id="editClinicFormId" name="editClinicFormId">
                 <label>
                     <input id="editClinicName" name="editClinicName" required placeholder="" type="text" class="input">
                     <span class="clinicName" id="editClinicNameError">Clinic name</span>
@@ -157,12 +152,12 @@
                 </label>
                 <label for=""><span>Current Image</span></label>
                 <label>
-                    <input type="hidden" name="old_image" value="">
-                    <a href="../images/profile-1.jpg" class="imageLB"> 
-                    <img src="../images/profile-1.jpg" height="50px" width="50px" alt="category Image">
+                    <input type="hidden" id="old_image" name="old_image" value="">
+                    <a href="" class="imageLB" id="oldClinicImgDisplayer"> 
+                        <img id="oldClinicImg" name="oldClinicImg" src="" height="50px" width="50px" alt="category Image">
                     </a>    
                 </label>
-                <button id="editClinicFormBtn" type="button" class="submit">Save Changes</button>
+                <button id="editClinicFormBtn" name="editClinicFormBtn" type="button" class="submit">Save Changes</button>
             </form>
         </div>
         <!-- End of Reminders-->

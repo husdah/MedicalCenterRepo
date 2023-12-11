@@ -682,7 +682,8 @@ body{
 }
 
 .content main .bottom-data .reminders .task-list li.completed{
-    border-left: 10px solid var(--success);
+    /* border-left: 10px solid var(--success); */
+    border-left: 10px solid var(--primary); 
 }
 
 .content main .bottom-data .reminders .task-list li.not-completed{
@@ -691,6 +692,16 @@ body{
 
 .content main .bottom-data .reminders .task-list li:last-child{
    margin-bottom: 0;
+}
+
+.content main .bottom-data .reminders .task-list li .delete_reminder_btn{
+    background: none;
+    border: none;
+    color: var(--dark);
+}
+
+.content main .bottom-data .reminders .task-list li .delete_reminder_btn:hover{
+    color: var(--danger);
 }
 
 @media screen and (max-width: 768px) {

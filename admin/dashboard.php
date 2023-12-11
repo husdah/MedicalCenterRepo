@@ -1,5 +1,13 @@
 <?php
+    session_start();
+    include("functions/myfunctions.php");
     include('includes/header.php');
+
+    $clinicsNb= getRowCount("clinic");
+    $doctorsNb= getRowCount("doctor");
+    $patientsNb= getRowCount("patient");
+    $donorsNb= getRowCount("donor");
+
 ?>
 
     <main>
@@ -26,7 +34,8 @@
                 <i class='bx bx-clinic'></i>
                 <span class="info">
                     <h3>
-                        1,074
+                        <!-- 1,074 -->
+                        <?= $clinicsNb ?>
                     </h3>
                     <p>Clinics</p>
                 </span>
@@ -34,7 +43,8 @@
             <li><i class='bx bx-first-aid'></i>
                 <span class="info">
                     <h3>
-                        3,944
+                        <!-- 3,944 -->
+                        <?= $doctorsNb ?>
                     </h3>
                     <p>Doctors</p>
                 </span>
@@ -42,7 +52,8 @@
             <li><i class='bx bx-group'></i>
                 <span class="info">
                     <h3>
-                        14,721
+                        <!-- 14,721 -->
+                        <?= $patientsNb ?>
                     </h3>
                     <p>Patients</p>
                 </span>
@@ -50,7 +61,8 @@
             <li><i class='bx bx-donate-blood'></i>
                 <span class="info">
                     <h3>
-                        6,742
+                        <!-- 6,742 -->
+                        <?= $donorsNb ?>
                     </h3>
                     <p>Donors</p>
                 </span>
@@ -87,43 +99,36 @@
                     <thead>
                         <tr>
                             <th>Patient</th>
-                            <th>Appointment Date</th>
+                            <th>Date</th>
+                            <th>Time</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <!-- <img src="../images/profile-1.jpg"> -->
-                                <a href="../images/profile-1.jpg" class="imageLB"> 
-                                    <img src="../images/profile-1.jpg" alt="patient Image">
-                                </a>
-                                <a href="view-patient.php"><p class="name">Hussein Daher</p></a>
-                            </td>
-                            <td class="date">18-08-2023</td>
-                            <td><span class="status completed">Completed</span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="../images/profile-1.jpg" class="imageLB"> 
-                                    <img src="../images/profile-1.jpg" alt="patient Image">
-                                </a>
-                                <a href="view-patient.php"><p class="name">Haya Tfaily</p></a>
-                            </td>
-                            <td class="date">17-08-2023</td>
-                            <td><span class="status pending">Pending</span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="../images/profile-1.jpg" class="imageLB"> 
-                                    <img src="../images/profile-1.jpg" alt="patient Image">
-                                </a>
-                                <a href="view-patient.php"><p class="name">Loreen Baker</p></a>
-                            </td>
-                            <td class="date">16-08-2023</td>
-                            <td><span class="status process">Processing</span></td>
-                        </tr>
-                        <tr>
+                    <?php 
+                        $appt= getAppointments();
+                        if(mysqli_num_rows($appt) >0){
+                            foreach($appt as $item)
+                            {
+                                ?>
+                                    <tr>
+                                        <td>
+                                            <a href="view-patient.php"><p class="name"><?= $item['Fname']; ?> <?= $item['Lname'] ?></p></a>
+                                        </td>
+                                        <td class="date"><?= $item['date']; ?></td>
+                                        <td class="date"><?= $item['time']; ?></td>
+                                        <td><span class="status <?= $item['status']; ?>"><?= $item['status']; ?></span></td>
+                                    </tr>
+
+                                <?php
+
+                            }
+
+                        }else{
+                            echo "<tr><td colspan ='4'>no appointments found</td></tr>";
+                        }
+                    ?>
+                        <!--  
                             <td>
                                 <a href="../images/profile-1.jpg" class="imageLB"> 
                                     <img src="../images/profile-1.jpg" alt="patient Image">
@@ -132,7 +137,7 @@
                             </td>
                             <td class="date">15-08-2023</td>
                             <td><span class="status process">Processing</span></td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -141,42 +146,56 @@
             <div class="reminders">
                 <div class="header">
                     <i class='bx bx-note'></i>
-                    <h3>Remiders</h3>
+                    <h3>Reminders</h3>
                     <div id="reminderContainer" class="searchContainer">
                         <span id="searchIcon" onclick="toggleReminderBox()"><i class='bx bx-plus'></i></span>
                         <div id="reminderBox" class="reminderBox">
-                            <form action="" class="form">
+                            <form class="form" id="addReminderForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
                                 <label for="">
-                                    <input class="input" type="text" id="searchInput" placeholder="Enter Reminders...">
-                                    <span>reminder</span>
+                                    <input class="input" type="text" id="reminderInput" name="reminderInput" required placeholder="">
+                                    <span class="reminder" id="reminderInputError">reminder</span>
                                 </label>
-                                <button class="submit" onclick="performSearch()">ADD</button>
+                                <button id="addReminderFormBtn" name="addReminderFormBtn" type="button" class="submit">ADD</button>
                             </form>
                         </div>
                     </div>
                 </div>
-                <ul class="task-list">
-                    <li class="completed">
-                        <div class="task-title">
-                            <i class='bx bx-check-circle'></i>
-                            <p>Start Our Meeting</p>
-                        </div>
-                        <i class='bx bx-dots-vertical-rounded'></i>
-                    </li>
-                    <li class="completed">
-                        <div class="task-title">
-                            <i class='bx bx-check-circle'></i>
-                            <p>Analyse Our Site</p>
-                        </div>
-                        <i class='bx bx-dots-vertical-rounded'></i>
-                    </li>
-                    <li class="not-completed">
+                <ul class="task-list" id="reminders_list">
+                <?php 
+                        $reminders= getReminders();
+                        if(mysqli_num_rows($reminders) >0){
+                            foreach($reminders as $item)
+                            {
+                                $originalDate = $item['date'];
+                                $dateTime = new DateTime($originalDate);
+                                $formattedDate = $dateTime->format('Y-m-d H:i');
+
+                                ?>
+                                    <li class="completed">
+                                        <div class="task-title">
+                                            <i class='bx bx-timer'></i>
+                                            <div>
+                                                <p><?= $item['reminder']; ?></p>
+                                                <p><?= $formattedDate; ?></p>
+                                            </div>
+                                        </div>
+                                        <button class="delete_reminder_btn" value="<?= $item['reminderId']; ?>"><i class="bx bx-trash-alt"></i></button>
+                                    </li>
+
+                                <?php
+
+                            }
+
+                        }
+                    ?>
+                   
+                    <!--  <li class="not-completed">
                         <div class="task-title">
                             <i class='bx bx-x-circle'></i>
                             <p>Play Footbal</p>
                         </div>
                         <i class='bx bx-dots-vertical-rounded'></i>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <!-- End of Reminders-->

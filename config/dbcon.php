@@ -1,7 +1,7 @@
 <?php
     $server='localhost';
     $user='root';
-    $pass='';
+    $pass='#Daher@123#123@blizboy@123#';
     $mydb='healthhubdb';
 
     $con=mysqli_connect($server, $user, $pass, $mydb);
@@ -59,7 +59,7 @@
             doctorId INT PRIMARY KEY AUTO_INCREMENT,
             userId INT NOT NULL,
             clinicId INT NULL,
-            phoneNumber int UNIQUE NULL,
+            phoneNumber int UNIQUE NOT NULL,
             profilePic varchar(200) NULL,
             deleted tinyint NOT NULL DEFAULT 0,
             FOREIGN KEY (userId) REFERENCES user(userId),
@@ -67,9 +67,8 @@
 
         );";
         $createTableDoctorQuery_run = mysqli_query($con,$createTableDoctorQuery);
-
     
-        $createTableAppointementQuery= "CREATE TABLE IF NOT EXISTS appointement (
+        $createTableAppointmentQuery= "CREATE TABLE IF NOT EXISTS appointment (
             appId INT PRIMARY KEY AUTO_INCREMENT,
             doctorId INT NOT NULL,
             patientId INT NOT NULL,
@@ -80,7 +79,7 @@
             FOREIGN KEY (patientId) REFERENCES patient(patientId)
 
         );";
-        $createTableAppointementQuery_run = mysqli_query($con,$createTableAppointementQuery);
+        $createTableAppointmentQuery_run = mysqli_query($con,$createTableAppointmentQuery);
     
         $createTableDoctorHoursQuery= "CREATE TABLE IF NOT EXISTS doctorHours (
             doctorHourId INT PRIMARY KEY AUTO_INCREMENT,
@@ -127,7 +126,7 @@
         $createTableMedicalHoursQuery= "CREATE TABLE IF NOT EXISTS medicalHours (
             medHourId INT PRIMARY KEY AUTO_INCREMENT,
             day varchar(200) NOT NULL,
-            formHour time NULL,
+            fromHour time NULL,
             toHour time NULL,
             closed int NOT NULL
 
