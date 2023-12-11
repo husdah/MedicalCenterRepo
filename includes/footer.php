@@ -23,12 +23,36 @@
                 <h4 class="footer-heading">Opening Hours</h4>
                 <hr>
                 <ul class="opening-hour">
-                    <li>Mon: <span class="mon">7 AM - 4 PM</span></li>
-                    <li>Tue: <span class="tue">8 AM - 5 PM</span></li>
-                    <li>Wed: <span class="wed">7 AM - 7 PM</span></li>
-                    <li>Thu: <span class="thu">8 AM - 5 PM</span></li>
-                    <li>Fri: <span class="fri">7 AM - 7 PM</span></li>
-                    <li>Sat - Sun: <span class="sat">Closed</span></li>
+                    <?php
+                        include('config/dbcon.php');
+                        $query    = 'SELECT * FROM medicalhours';
+                        $result   = mysqli_query($con,$query); 
+                        $rowcount = mysqli_num_rows($result);
+                        if($rowcount == 0){
+                            echo '<script>alert("No record found")</script>';  
+                        }else{
+                            while($selectdata = mysqli_fetch_array($result)){
+                    ?>
+                            <li><?php echo $selectdata['day']; ?>: <span class="<?php echo $selectdata['day']; ?>">
+                            <?php 
+                                $fromHourDB = $selectdata['fromHour'];
+                                $toHourDB   = $selectdata['toHour'];
+
+                                $fromHour = date("h A", strtotime($fromHourDB));
+                                $toHour   = date("h A", strtotime($toHourDB));
+
+                                if($selectdata['closed'] == 0){
+                                    echo $fromHour. " - " .$toHour;
+                                }
+                                else{
+                                    echo "closed"; 
+                                }
+                            ?>
+                            </span></li>
+                    <?php
+                            }
+                        }
+                    ?>
                 </ul>
             </div>
             <div class="footer-column4">

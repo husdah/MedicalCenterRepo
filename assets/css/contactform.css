@@ -27,7 +27,7 @@ textarea:focus{
     background-color: #fff;
     outline: none;
 } 
-input[type="text"]:hover{
+.input-control input[type="text"]:hover{
     background-color: #fff;
 } 
 ::placeholder {

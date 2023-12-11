@@ -256,6 +256,11 @@ section.counts{
     width: 48px;
     height: 48px;
 }
+.count-sub-container .count-box i.bx.bx-group,
+.count-sub-container .count-box i.bx.bx-clinic,
+.count-sub-container .count-box i.bx.bx-donate-blood {
+    font-size: 25px;
+}
 .count-sub-container .count-box span {
     font-size: 30px;
     margin: 10px 0;
