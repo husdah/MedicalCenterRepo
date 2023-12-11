@@ -85,7 +85,7 @@
             doctorHourId INT PRIMARY KEY AUTO_INCREMENT,
             doctorId INT NOT NULL,
             day varchar(200) NOT NULL,
-            formHour time NULL,
+            fromHour time NULL,
             toHour time NULL,
             available int NOT NULL,
             FOREIGN KEY (doctorId) REFERENCES doctor(doctorId)
@@ -153,7 +153,7 @@
             wExcepId INT PRIMARY KEY AUTO_INCREMENT,
             doctorId INT NOT NULL,
             date date NOT NULL,
-            formHour time NULL,
+            fromHour time NULL,
             toHour time NULL,
             available int NOT NULL,
             FOREIGN KEY (doctorId) REFERENCES doctor(doctorId)

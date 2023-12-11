@@ -627,6 +627,9 @@ editDoctorLNInput?.addEventListener('input', handleInputNameEvent);
 var editDoctorEmailInput = document.getElementById('editDoctorEmail');
 editDoctorEmailInput?.addEventListener('input', handleInputEmailEvent);
 
+var editDoctorPhoneInput = document.getElementById('editDoctorPhone');
+editDoctorPhoneInput?.addEventListener('input', handleInputPhoneEvent);
+
 var editDoctorClinicInput = document.getElementById('editDoctorClinic');
 editDoctorClinicInput?.addEventListener('change', handleSelectEvent);
 
@@ -834,13 +837,14 @@ editDoctorFormBtn?.addEventListener("click", function(event) {
         let firstName= editDoctorFNInput.value;
         let lastName= editDoctorLNInput.value;
         let email = editDoctorEmailInput.value;
-        /* let clinic = editDoctorClinicInput.value; */
+        let phone = editDoctorPhoneInput.value;
         let password = editDoctorPassInput.value;
         let confirm = editDoctorPassConfirmInput.value;
     
         let errorFN = document.getElementById("editDoctorFNError");
         let errorLN = document.getElementById("editDoctorLNError");
         let errorEmail = document.getElementById("editDoctorEmailError");
+        let errorPhone = document.getElementById("editDoctorPhoneError");
         let errorClinic = document.getElementById("editDoctorClinicError");
         let errorPass = document.getElementById("editDoctorPassError");
         let errorPassConfirm = document.getElementById("editDoctorPassConfirmError");
@@ -848,11 +852,12 @@ editDoctorFormBtn?.addEventListener("click", function(event) {
         validateNameSubmit(firstName, editDoctorFNInput, errorFN);
         validateNameSubmit(lastName, editDoctorLNInput, errorLN);
         validateEmailSubmit(email, editDoctorEmailInput, errorEmail);
+        validatePhoneSubmit(phone, editDoctorPhoneInput, errorPhone);
         validatePassSubmit(password, editDoctorPassInput, errorPass);
         ConfirmPassSubmit(confirm, editDoctorPassConfirmInput,password, errorPassConfirm);
         validateSelectSubmit(editDoctorClinicInput, errorClinic);
     
-        if (!validateNameSubmit(firstName, editDoctorFNInput, errorFN) || !validateNameSubmit(lastName, editDoctorLNInput, errorLN) || !validateEmailSubmit(email, editDoctorEmailInput, errorEmail) || !validatePassSubmit(password, editDoctorPassInput, errorPass) || !ConfirmPassSubmit(confirm, editDoctorPassConfirmInput,password, errorPassConfirm) || !validateSelectSubmit(editDoctorClinicInput, errorClinic)) {
+        if (!validateNameSubmit(firstName, editDoctorFNInput, errorFN) || !validateNameSubmit(lastName, editDoctorLNInput, errorLN) || !validateEmailSubmit(email, editDoctorEmailInput, errorEmail) || !validatePhoneSubmit(phone, editDoctorPhoneInput, errorPhone) || !validatePassSubmit(password, editDoctorPassInput, errorPass) || !ConfirmPassSubmit(confirm, editDoctorPassConfirmInput,password, errorPassConfirm) || !validateSelectSubmit(editDoctorClinicInput, errorClinic)) {
             /* alert("invalid form"); */
         } else {
            /*  alert("done"); */
