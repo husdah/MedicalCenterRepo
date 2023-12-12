@@ -1,3 +1,8 @@
+<?php 
+require('../config/dbcon.php');
+$query="select appId,email,date,time from user,patient,appointement where user.userId=patient.userId AND patient.patientId=appointement.patientId";
+$res=mysqli_query($con,$query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Doctor Dashboard</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     <link rel="icon" href="/images/favicon.PNG" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <link rel="stylesheet" href="assets/css/addpatientcss.css">
@@ -36,90 +43,36 @@
                 <table class="table" id="stable">
                     <thead>
                     <tr>
-                        <th>Name of Patient</th>
+                        <th class="appId">AppId</th>
+                        <th>Email of Patient</th>
                         <th>Date</th>
                         <th>Time</th>
                         <th>Actions</th>
                        
                     </tr>
                     </thead>
-                    <tr>
+                    <?php
+                    while($row=mysqli_fetch_assoc($res))
+                    {
+                        echo '
+                        <tr>
+                        <td class="appId">'.$row['appId'].'</td>
+                        <td>'.$row['email'].'</td>
+                        <td>'.$row['date'].'</td>
+                        <td>'.$row['time'].'</td>
+                        <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
+                         </tr>
+                        ';
+                    }
+                    ?>
+                    <!-- <tr>
                         <td>patient 1</td>
                         <td>2023-12-11</td>
                         <td>23:00</td>
                         <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
                        
-                    </tr>
-                    <tr>
-                        <td>patient 2</td>
-                        <td>2023-12-11</td>
-                        <td>10:00</td>
-                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
-                       
-                    </tr>
-                    <tr>
-                        <td>patient 3</td>
-                        <td>2023-11-16</td>
-                        <td>12:00</td>
-                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
-                       
-                    </tr>
-                    <tr>
-                        <td>patient 4</td>
-                        <td>2023-11-20</td>
-                        <td>13:00</td>
-                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
-                      
-                    </tr>
-                    <tr>
-                        <td>patient 2</td>
-                        <td>2023-12-11</td>
-                        <td>10:00</td>
-                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
-                       
-                    </tr>
-                    <tr>
-                        <td>patient 3</td>
-                        <td>2023-11-16</td>
-                        <td>12:00</td>
-                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
-                       
-                    </tr>
-                    <tr>
-                        <td>patient 4</td>
-                        <td>2023-11-20</td>
-                        <td>13:00 </td>
-                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
-                      
-                    </tr>
-                    <tr>
-                        <td>patient 2</td>
-                        <td>2023-12-11</td>
-                        <td>10:00</td>
-                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
-                       
-                    </tr>
-                    <tr>
-                        <td>patient 3</td>
-                        <td>2023-11-16</td>
-                        <td>12:00</td>
-                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
-                       
-                    </tr>
-                    <tr>
-                        <td>patient 3</td>
-                        <td>2023-11-16</td>
-                        <td>12:00</td>
-                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
-                       
-                    </tr>
-                    <tr>
-                        <td>patient 3</td>
-                        <td>2023-11-16</td>
-                        <td>12:00</td>
-                       <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
-                       
-                    </tr>
+                    </tr> -->
+                  
                     
                 </table>
 
@@ -128,17 +81,16 @@
             </div>
             <div class="left">
                 <div class="title">
-                    <h2>Add Patient</h2>
+                    <h2>Add Appointment</h2>
                 </div>
+
                 <form action="" id="form">
                     <div class="txt" id="forpatient">
-                       <label for="pname">Patient Name</label>
-                       <input type="text" name="pname" id="pname">
+                       <label for="pname">Patient Email</label>
+                       <input type="text" name="pname" id="pname"  onkeyup="showHint(this.value)">
+                       <input type="hidden" name="eid" id="eid">
+                       <div id="suggestions-container" class="suggestions-container"></div>
                     </div>
-                    <!-- <div class="txt" id="forlastapp">
-                        <label for="lappdate">Last appointment date</label>
-                        <input type="date" name="lappdate" id="lappdate">
-                     </div> -->
                      <div class="txt" id="fornewapp">
                         <label for="nappdate">New appointment date</label>
                         <input type="date" name="nappdate" id="nappdate">
@@ -148,11 +100,11 @@
                         <input type="time" name="tapp" id="tapp">
                      </div>
                      <div class="btn">
-                        <input type="submit" value="Add" name="submit" id="add">
-                        <input type="submit" value="Edit" name="submit" id="edit">
+                        <input type="submit" value="Add" name="submit" id="add" class="add">
+                        <input type="submit" value="Edit" name="submit" id="edit" class="edit">
                      </div>
-
                 </form>
+
             </div>
         </div>
      </div>
@@ -187,20 +139,114 @@
         $(".foredit").click(function (e) {
             e.preventDefault(); 
 
-            var name = $(this).closest("tr").find("td:eq(0)").text();
-            var date = $(this).closest("tr").find("td:eq(1)").text();
-            var time = $(this).closest("tr").find("td:eq(2)").text();
+            var eid  =$(this).closest("tr").find("td:eq(0)").text();
+            var name = $(this).closest("tr").find("td:eq(1)").text();
+            var date = $(this).closest("tr").find("td:eq(2)").text();
+            var time = $(this).closest("tr").find("td:eq(3)").text();
             console.log(time);
 
+            document.getElementById('eid').value=eid;
             document.getElementById('pname').value=name;
             document.getElementById('nappdate').value=date;
             document.getElementById('tapp').value=time;
 
             document.getElementById('edit').style.display="block";
             document.getElementById('add').style.display="none";
+            document.getElementById('eid').style.display="block";
         
         });
+        $(".fordelete").click(function (e) {
+        e.preventDefault(); 
+        deleteAction($(this).closest("tr").find("td:eq(0)").text());
     });
+    });
+    
+//     function deleteAction(r){ 
+//         console.log(r);
+//     $.ajax({
+// 			     url:'../deleteApp.php',
+// 						type: 'get',
+// 						data: {id:r},
+    
+// 			success: function(data) {  
+// 			       location.reload();
+
+// 		},
+// 				error: function (jXHR, textStatus, errorThrown) {
+// 					alert(errorThrown);
+// 				}
+// 		}); 
+// }
+function deleteAction(r) {
+    // Use SweetAlert for confirmation
+    Swal.fire({
+        title: 'Are you sure?',
+        text: 'You won\'t be able to revert this!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // User clicked "Yes, delete it!" in SweetAlert
+            $.ajax({
+                url: '../deleteApp.php',
+                type: 'get',
+                data: { id: r },
+                success: function (data) {
+                    location.reload();
+                },
+                error: function (jXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        }
+    });
+}
+
+    
+    function showHint(str) {
+    if (str == "") {
+        document.getElementById("suggestions-container").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                    try {
+                        var myArr = JSON.parse(this.responseText);
+                        insertIntoList(myArr);
+                    } catch (error) {
+                        console.error("Error parsing JSON:", error);
+                    }
+                } else {
+                    console.error("HTTP error:", this.status);
+                }
+            }
+        };
+        xmlhttp.open("GET", "../getPatientsName.php?keyword=" + str, true);
+        xmlhttp.send();
+    }
+}
+
+function insertIntoList(array) {
+    var out = "<ul id=\"suggestions-list\" style=''>";
+
+    for (var i = 0; i < array.length; i++) {
+        var email = array[i].email;
+        out += "<li><a href='#' onclick='fillInput(\"" + email + "\")'>" + email + "</a></li>";
+    }
+    out += "</ul>";
+    document.getElementById("suggestions-container").innerHTML = out;
+    
+}
+function fillInput(value) {
+    console.log("Clicked: " + value); // Debugging statement
+    document.getElementById("pname").value = value;
+    document.getElementById("suggestions-container").innerHTML = ""; // Clear suggestions
+}
 </script>
 
 
