@@ -42,6 +42,7 @@
                     <div class="input-field"> 
                       <i class="bx bx-user"></i> 
                       <input id="login-name" type="text" value="<?= $name;?>" placeholder="name" required disabled>
+                      <span>Login Name</span>
                     </div>
                   </div>
                   <div class="input-block">
@@ -50,6 +51,7 @@
                     <div class="input-field"> 
                       <i class="bx bx-envelope"></i> 
                       <input id="login-email" type="email" value="<?= $info['email'];?>" placeholder="email" required disabled>
+                      <span>Login Email</span>
                     </div>
                   </div>
                   <div class="input-block">
@@ -58,6 +60,7 @@
                       <div class="input-field"> 
                         <i class="bx bx-lock"></i> 
                         <input id="login-password" type="password" value="<?= $info['password'];?>" placeholder="password" required disabled>
+                        <span>Login Password</span>
                       </div>
                   </div>
                 </fieldset>    

@@ -87,7 +87,7 @@
             </div>
 
             <!-- Reminders -->
-            <div class="reminders centerBox">
+<!--             <div class="reminders centerBox">
                 <div class="header">
                     <i class='bx bx-donate-blood'></i>
                     <h3>Urgent Blood Type</h3>
@@ -116,14 +116,14 @@
                     </label>
                     <button id="urgentBloodTypeFormBtn" type="button" class="submit">Submit</button>
                 </form>
-            </div>
+            </div> -->
             <!-- End of Reminders-->
 
             <div class="orders">
                 <div class="header">
                     <i class='bx bx-receipt'></i>
                     <h3>Urgent BloodTypes</h3>
-                    <form class="expanding-search-form">
+      <!--               <form class="expanding-search-form">
                         <div class="search-dropdown">
                             <button class="button dropdown-toggle" type="button">
                             <span class="toggle-active">bloodType</span>
@@ -139,7 +139,34 @@
                                 <span class="sr-only">Search</span>
                             </span>
                         </button>
-                    </form>
+                    </form> -->
+                    <form class="form" id="urgentBloodTypeForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
+                    <p class="title">ADD Needed Blood Type </p>
+                    <p class="message">Please Enter The Needed Information. </p>
+                    <div class="flex">
+                        <label>
+                            <select name="urgentBT" id="urgentBT" class="input" required>
+                                <option value="BT">Blood Type</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                            <span id="urgentBTError">BT</span>
+                        </label>
+                
+                        <label>
+                            <input id="urgentBTN" name="urgentBTN" required placeholder="" type="number" min="0" class="input">
+                            <span id="urgentBTNError">Number Needed</span>
+                        </label>
+                    
+                        <button id="urgentBloodTypeFormBtn" type="button" class="submit">ADD</button>
+                    </div>
+                </form>
                 </div>
                 <table id="dataTable2">
                     <thead>

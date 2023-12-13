@@ -173,112 +173,105 @@
                         </tbody>
                     </table>
                 </div> -->
-    
-                <div class="orders">
-                    <div class="header">
-                        <i class='bx bx-time'></i>
-                        <h3>Manage Exceptions</h3>
-                        <form class="expanding-search-form">
-                            <div class="search-dropdown">
-                                <button class="button dropdown-toggle" type="button">
-                                <span class="toggle-active">Day</span>
-                                <span class="ion-arrow-down-b"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                <li class="menu-active"><a href="#">Day</a></li>
-                                </ul>
-                            </div>
-                            <input class="search-input" id="global-search" type="search" placeholder="Search">
-                            <button class="button search-button" type="button">
-                                <span class="icon ion-search">
-                                    <span class="sr-only">Search</span>
-                                </span>
-                            </button>
-                        </form>
-    <!--                     <form class="form" style="background: transparent;">
-                            <div class="flex3">     
-                                <label>ADD Exception: </label>
-                                <label>
-                                    <input required="" placeholder="" type="date" class="input">
-                                </label>
-                                <label>
-                                    <input required="" placeholder="" type="text" class="input">
-                                    <span>reason</span>
-                                </label>
-                                <button class="submit">ADD</button>
-                            </div>
-                        </form> -->
-                    <form class="form" id="manageExceptionForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
-                        <p class="title">Working Exceptions</p>
-                        <p class="message">ADD Exception:</p>
 
-                        <input type="hidden" value="<?= $id; ?>" id="docId" name="docId">
-
-                        <div class="flex">
-                            <label>Date:
-                                <input id="exceptionDay" name="exceptionDay" placeholder="" required type="date" class="input">
-                                <p id="exceptionDayError" class="imgError">From</p>
-                            </label>
-                            <label>From:
-                                <input id="exceptionFrom" name="exceptionFrom" required placeholder="" type="time" class="input">
-                                <p id="exceptionFromError" class="imgError">From</p>
-                            </label>
-                    
-                            <label>To:
-                                <input id="exceptionTO" name="exceptionTO" required placeholder="" type="time" class="input">
-                                <p id="exceptionTOError" class="imgError">To</p>
-                            </label>
-                        </div>               
-                        
-                        <label class="check-container" id="check_display">Available
-                            <input type="checkbox" name="availableException" id="availableException">
-                            <span class="checkmark"></span>
-                        </label>
-    
-                        <button id="manageExceptionFormBtn" type="button" class="submit">ADD</button>
-                    </form>
-                    </div>
-                    <table id="dataTable" class="exceptionTable">
-                        <thead>
-                            <tr>
-                                <th>Day</th>  
-                                <th>From</th>  
-                                <th>To</th>  
-                                <th>Available</th>  
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $exception = getExceptionsById($id);
-                            if(mysqli_num_rows($exception) >0){
-                                foreach($exception as $item){
-
-                                    $fromHour = date('h:i A', strtotime($item['fromHour']));
-                                    $toHour = date('h:i A', strtotime($item['toHour']));
-                                    ?>
-                                        <tr>
-                                            <td><?= $item['date']; ?></td>
-                                            <td><?= $fromHour; ?></td>
-                                            <td><?= $toHour; ?></td>
-                                            <td>
-                                                <label class="check-container" id="check_display"><i class="bx bx-check"></i>   
-                                                    <input disabled type="checkbox" name="av" <?php if($item['available'] == 1){ echo "checked";}; ?>>
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </td>
-                                            <td><button class="btn-delete deleteWExceptionBtn" value="<?= $item['wExcepId']; ?>"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
-                                        </tr>
-
-                                    <?php
-                                }
-                            }else{
-                                echo "<tr><td colspan ='5'>no exceptions found</td></tr>";
-                            }
-                            ?>
-                        </tbody>
-                    </table>
+            <!-- Reminders -->
+            <div class="reminders centerBox">
+                <div class="header">
+                    <i class='bx bx-timer'></i>
+                    <h3>Doctor WHours</h3>
                 </div>
+                <form class="form" id="manageDWHForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
+                    <p class="title">Manage WH</p>
+                    <p class="message">Please Enter The Needed Information. </p>
+
+                    <input id="manageDWHFormId" name="manageDWHFormId" value="<?= $id; ?>" required type="hidden">
+
+                    <label>
+                        <select name="DWHDay" id="DWHDay" class="input" required>
+                            <option value="WHDay">Day</option>
+                            <!-- <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thurday">Thurday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option> -->
+                            <?php
+                                $wDays = getWorkingDays();
+                                if(mysqli_num_rows($wDays) >0){
+                                    foreach($wDays as $item){
+                                        ?>
+                                        <option value="<?= $item['day']; ?>">
+                                            <?= $item['day']; ?>
+                                        </option>                                                           
+                                        <?php
+                                    }
+                                }
+                            ?>
+                        </select>
+                        <span id="DWHDayError">WHD</span>
+                    </label>
+
+                    <div class="flex">
+                        <label>From:
+                            <input id="DWHFrom" name="DWHFrom" required placeholder="" type="time" class="input">
+                            <p id="DWHFromError" class="imgError">From</p>
+                        </label>
+                
+                        <label>To:
+                            <input id="DWHTO" name="DWHTO" required placeholder="" type="time" class="input">
+                            <p id="DWHTOError" class="imgError">To</p>
+                        </label>
+                    </div>                        
+                    
+                    <label class="check-container" id="check_display">Available
+                        <input type="checkbox" name="available" id="available" checked>
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <button id="manageDWHFormBtn" type="button" class="submit">Submit</button>
+                </form>
+            </div>
+            <!-- End of Reminders-->
+
+                        <!-- Reminders -->
+                        <div class="reminders centerBox">
+                <div class="header">
+                    <i class='bx bx-timer'></i>
+                    <h3>Exception Hours</h3>
+                </div>
+                <form class="form" id="manageExceptionForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
+                    <p class="title">Working Exceptions</p>
+                    <p class="message">ADD Exception:</p>
+
+                    <input type="hidden" value="<?= $id; ?>" id="docId" name="docId">
+
+                    
+                    <label>Date:
+                        <input id="exceptionDay" name="exceptionDay" placeholder="" required type="date" class="input">
+                        <p id="exceptionDayError" class="imgError">From</p>
+                    </label>
+                    <div class="flex">
+                        <label>From:
+                            <input id="exceptionFrom" name="exceptionFrom" required placeholder="" type="time" class="input">
+                            <p id="exceptionFromError" class="imgError">From</p>
+                        </label>
+                
+                        <label>To:
+                            <input id="exceptionTO" name="exceptionTO" required placeholder="" type="time" class="input">
+                            <p id="exceptionTOError" class="imgError">To</p>
+                        </label>
+                    </div>               
+                    
+                    <label class="check-container" id="check_display">Available
+                        <input type="checkbox" name="availableException" id="availableException" checked>
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <button id="manageExceptionFormBtn" type="button" class="submit">ADD</button>
+                </form>
+            </div>
+            <!-- End of Reminders-->
     
                 <!-- Reminders -->
                 <div class="reminders centerBox">
@@ -355,6 +348,118 @@
                     </form>
                 </div>
                 <!-- End of Reminders-->
+    
+                <div class="orders">
+                    <div class="header">
+                        <i class='bx bx-time'></i>
+                        <h3>Manage Exceptions</h3>
+                        <form class="expanding-search-form">
+                            <div class="search-dropdown">
+                                <button class="button dropdown-toggle" type="button">
+                                <span class="toggle-active">Day</span>
+                                <span class="ion-arrow-down-b"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                <li class="menu-active"><a href="#">Day</a></li>
+                                </ul>
+                            </div>
+                            <input class="search-input" id="global-search" type="search" placeholder="Search">
+                            <button class="button search-button" type="button">
+                                <span class="icon ion-search">
+                                    <span class="sr-only">Search</span>
+                                </span>
+                            </button>
+                        </form>
+    <!--                     <form class="form" style="background: transparent;">
+                            <div class="flex3">     
+                                <label>ADD Exception: </label>
+                                <label>
+                                    <input required="" placeholder="" type="date" class="input">
+                                </label>
+                                <label>
+                                    <input required="" placeholder="" type="text" class="input">
+                                    <span>reason</span>
+                                </label>
+                                <button class="submit">ADD</button>
+                            </div>
+                        </form> -->
+<!--                     <form class="form" id="manageExceptionForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
+                        <p class="title">Working Exceptions</p>
+                        <p class="message">ADD Exception:</p>
+
+                        <input type="hidden" value="<?= $id; ?>" id="docId" name="docId">
+
+                        <div class="flex">
+                            <label>Date:
+                                <input id="exceptionDay" name="exceptionDay" placeholder="" required type="date" class="input">
+                                <p id="exceptionDayError" class="imgError">From</p>
+                            </label>
+                            <label>From:
+                                <input id="exceptionFrom" name="exceptionFrom" required placeholder="" type="time" class="input">
+                                <p id="exceptionFromError" class="imgError">From</p>
+                            </label>
+                    
+                            <label>To:
+                                <input id="exceptionTO" name="exceptionTO" required placeholder="" type="time" class="input">
+                                <p id="exceptionTOError" class="imgError">To</p>
+                            </label>
+                        </div>               
+                        
+                        <label class="check-container" id="check_display">Available
+                            <input type="checkbox" name="availableException" id="availableException">
+                            <span class="checkmark"></span>
+                        </label>
+    
+                        <button id="manageExceptionFormBtn" type="button" class="submit">ADD</button>
+                    </form> -->
+                    </div>
+                    <table id="dataTable" class="exceptionTable">
+                        <thead>
+                            <tr>
+                                <th>Day</th>  
+                                <th>From</th>  
+                                <th>To</th>  
+                                <th>Available</th>  
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $exception = getExceptionsById($id);
+                            if(mysqli_num_rows($exception) >0){
+                                foreach($exception as $item){
+
+                                    $fromHour="00:00:00";
+                                    $toHour = '00:00:00';
+                                    if($item['fromHour'] != '00:00:00'){
+                                        $fromHour = date('h:i A', strtotime($item['fromHour']));
+                                    }
+                                    if($item['toHour'] != '00:00:00'){
+                                        $toHour = date('h:i A', strtotime($item['toHour']));
+                                    }
+                                    ?>
+                                        <tr>
+                                            <td><?= $item['date']; ?></td>
+                                            <td><?= $fromHour; ?></td>
+                                            <td><?= $toHour; ?></td>
+                                            <td>
+                                                <label class="check-container" id="check_display"><i class="bx bx-check"></i>   
+                                                    <input disabled type="checkbox" name="av" <?php if($item['available'] == 1){ echo "checked";}; ?>>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </td>
+                                            <td><button class="btn-delete deleteWExceptionBtn" value="<?= $item['wExcepId']; ?>"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
+                                        </tr>
+
+                                    <?php
+                                }
+                            }else{
+                                echo "<tr><td colspan ='5'>no exceptions found</td></tr>";
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
     
             </div>
     

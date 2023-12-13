@@ -236,6 +236,40 @@ $(document).ready(function () {
                 });
             }
           });
+    });
+    
+    $(document).on('click','.deleteMedHoursBtn', function (e) {
+        e.preventDefault();
+
+        var id = $(this).val();
+
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    method:"POST",
+                    url: "functions/code.php",
+                    data: {
+                        'medHourId': id,
+                        'deleteMedHoursBtn': true
+                    },
+                    success: function(response){
+                        if(response == 200){
+                            swal("Success!", "Medical Hour deleted Successfully!", "success");
+                            $('#dataTable2').load(location.href + " #dataTable2");
+                        }else if(response == 500){
+                            swal("Error!", "Something Went Wrong!", "error");
+                        }
+                    }
+                });
+            }
+          });
     });    
     
 });

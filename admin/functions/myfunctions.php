@@ -99,4 +99,36 @@ function getAdminInfo(){
     return $query_run;
 }
 
+function getDocWhours(){
+    global $con;
+    $query= "SELECT user.Fname AS Fname, user.Lname AS Lname, doctor.doctorId As doctorId , doctor.profilePic As profilePic
+    FROM user, doctor
+    WHERE user.userId = doctor.userId";
+    $query_run = mysqli_query($con,$query);
+    return $query_run;
+}
+
+/* , wh.day As day, wh.fromHour As fromHour, wh.toHour As toHour, wh.available As available  */
+
+function getDocWhours2($id){
+    global $con;
+    $query= "SELECT d.day As day, d.fromHour AS fromHour , d.toHour AS toHour , d.available AS available  FROM doctorhours AS d  WHERE d.doctorId = $id  ORDER BY FIELD(day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');";
+    $query_run = mysqli_query($con,$query);
+    return $query_run;
+}
+
+function getMedHours(){
+    global $con;
+    $query= "SELECT * FROM medicalhours ORDER BY FIELD(day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');";
+    $query_run = mysqli_query($con,$query);
+    return $query_run;
+}
+
+function getWorkingDays(){
+    global $con;
+    $query= "SELECT day FROM medicalhours WHERE closed=0 ORDER BY FIELD(day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');";
+    $query_run = mysqli_query($con,$query);
+    return $query_run;
+}
+
 ?>

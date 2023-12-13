@@ -78,12 +78,14 @@
                             foreach($doctors as $item)
                             {
                                 $docName= "";
-                                $clinicName = "";
+                                $clinicName = "undefined";
                                 $profilePic = "";
-                                $clinic = getClinicById($item['clinicId']);
-                                foreach($clinic as $name)
-                                {
-                                    $clinicName = $name['name'];
+                                if($item['clinicId'] != null){
+                                    $clinic = getClinicById($item['clinicId']);
+                                    foreach($clinic as $name)
+                                    {
+                                        $clinicName = $name['name'];
+                                    }
                                 }
                                 $doctorName = getNameById($item['doctorId']);
                                 foreach($doctorName as $name)

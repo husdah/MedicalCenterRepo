@@ -38,7 +38,8 @@
             clinicId INT PRIMARY KEY AUTO_INCREMENT,
             name VARCHAR(200) NOT NULL,
             description VARCHAR(200) NOT NULL,
-            photo VARCHAR(200) NOT NULL
+            photo VARCHAR(200) NOT NULL,
+            icon VARCHAR(200) NOT NULL
 
         );";
         $createTableClinicQuery_run = mysqli_query($con,$createTableClinicQuery);
@@ -82,14 +83,13 @@
         $createTableAppointmentQuery_run = mysqli_query($con,$createTableAppointmentQuery);
     
         $createTableDoctorHoursQuery= "CREATE TABLE IF NOT EXISTS doctorHours (
-            doctorHourId INT PRIMARY KEY AUTO_INCREMENT,
             doctorId INT NOT NULL,
-            day varchar(200) NOT NULL,
-            fromHour time NULL,
-            toHour time NULL,
-            available int NOT NULL,
+            day VARCHAR(200) NOT NULL,
+            fromHour TIME NULL,
+            toHour TIME NULL,
+            available INT NOT NULL,
+            PRIMARY KEY (doctorId, day),
             FOREIGN KEY (doctorId) REFERENCES doctor(doctorId)
-
         );";
         $createTableDoctorHoursQuery_run = mysqli_query($con,$createTableDoctorHoursQuery);
 
@@ -125,7 +125,7 @@
     
         $createTableMedicalHoursQuery= "CREATE TABLE IF NOT EXISTS medicalHours (
             medHourId INT PRIMARY KEY AUTO_INCREMENT,
-            day varchar(200) NOT NULL,
+            day varchar(200) UNIQUE NOT NULL,
             fromHour time NULL,
             toHour time NULL,
             closed int NOT NULL
