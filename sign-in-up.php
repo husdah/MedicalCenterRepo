@@ -11,8 +11,10 @@
   <body> 
     <div class="container"> 
       <div class="forms-container"> 
+
         <div class="signin-signup"> 
-          <form action="#" class="sign-in-form" id="sign-in"> 
+
+        <form class="sign-in-form" id="sign-in" action="doctor/queryFunctions/phpCode.php" method="post"> 
             <h2 class="title">Sign in</h2> 
             <div class="input-field"> 
               <i class="fas fa-user"></i> 
@@ -26,17 +28,18 @@
             <div class="display"><p class="message pwd" id="pwdMsg"></p></div>
             <div class="form-footer"> 
             <a class="forget-link" href="#"> Forget your password? </a> 
-            <input type="submit" value="Login" class="btn solid" name="submit" id="signin-btn" /> 
+            <input type="submit" value="Login" class="btn solid" name="loginBtn" id="signin-btn" /> 
             </div> 
           </form> 
-          <form action="#" class="sign-up-form" id="sign-up"> 
+
+          <form action="sign-in-up.php" method="post" class="sign-up-form" id="sign-up"> 
             <h2 class="title">Sign up</h2> 
 
             <div class="fullname">
               <div class="content-field">
                 <div class="input-field name first"> 
                   <i class="fas fa-user"></i> 
-                  <input type="text" placeholder="First Name" name="First Name" id="First-Name" /> 
+                  <input type="text" placeholder="First Name" name="FirstName" id="First-Name" /> 
                 </div>
                 <div><p class="message" id="name"></p></div>
               </div>
@@ -44,7 +47,7 @@
               <div class="content-field">
                 <div class="input-field name last"> 
                   <i class="fas fa-user"></i>
-                  <input type="text" placeholder="Last Name" name="Last Name" id="Last-Name"/> 
+                  <input type="text" placeholder="Last Name" name="LastName" id="Last-Name"/> 
                 </div>
                 <div><p class="message" id="name2"></p></div>
               </div>
@@ -53,7 +56,7 @@
             <div class="content-field">
               <div class="input-field"> 
                 <i class="fas fa-envelope"></i> 
-                <input type="email" placeholder="Email" class="email" id="email2" /> 
+                <input type="email" placeholder="Email" class="email" name="email2" id="email2" /> 
               </div> 
               <div class="display"><p class="message" id="emailMsg2"></p></div>
            </div>
@@ -61,7 +64,7 @@
             <div class="content-field">
               <div class="input-field"> 
                 <i class="fas fa-phone"></i> 
-                <input type="number" placeholder="Phone Number" class="contact" id="phone" /> 
+                <input type="number" placeholder="Phone Number"name="contact" class="contact" id="phone" /> 
               </div> 
               <div class="display"><p class="message" id="pMsg"></p></div>
             </div>
@@ -82,12 +85,6 @@
               <div class="display"><p class="message pwd" id="confirmMsg"></p></div>
             </div>
 
-           <!--  <div class="labels"> 
-              <label>Date of Birth</label> 
-              <label>Gender</label> 
-            </div>  -->
-
-            
             <div class="info"> 
               <div class="content-field">
                 <label>Date of Birth</label> 
@@ -121,7 +118,7 @@
               </select> 
             </div>
 
-            <input type="submit" class="btn solid up" value="Sign up" id="signup-btn" />
+            <input type="submit" name="submit" class="btn solid up" value="Sign up" id="signup-btn" />
           </form> 
         </div> 
       </div> 

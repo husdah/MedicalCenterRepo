@@ -1,3 +1,12 @@
+<?php
+session_start();
+include("queryFunctions/queryfunctions.php");
+if (isset($_GET['id'])) {
+    $patientId = $_GET['id'];
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,19 +29,24 @@
     <div class="content">
         <div class="left-side">
         <h3>Patient's Info</h3>
+        <?php 
+            $specificPatient = getPatientById($patientId);
+            if(mysqli_num_rows($specificPatient) > 0){
+            foreach($specificPatient as $patient){
+            ?>
         <div class="patient-info">
             <div class="left">
-            <label class="name" id="name">Patients Name</label>
-            <label class="email" id="email">patientemail@gmail.com</label>
+            <h2 class="name" id="name"><?= $patient['Fname'] ?> <?= $patient['Lname']?></h2>
+            <p class="email" id="email"><?= $patient['email'] ?></p>
             <h5>Appointments</h5>
             <table class="apps">
                 <tr>
                 <td>
-                    <h2 class="past" id="past">4</h2>
+                    <h2 class="past" id="past"><?= getPastAppointments($patientId) ?></h2>
                     <label>Past</label>
                 </td>
                 <td>
-                    <h2 class="upcoming" id="upcoming">2</h2>
+                    <h2 class="upcoming" id="upcoming"><?= getUpcomingAppointments($patientId) ?></h2>
                     <label>Upcoming</label>
                 </td>
                 </tr>
@@ -45,13 +59,13 @@
                     <td>
                         <div class="cell">
                         <label>Gender</label>
-                        <span>Female</span>
+                        <span><?= $patient['gender'] ?></span>
                         </div>
                     </td>
                     <td>
                         <div class="cell">
                         <label>Birthday</label>
-                        <span>Dec 31,1995</span>
+                        <span><?= $patient['dateOfBirth'] ?></span>
                         </div>
                     </td>
                 </tr>
@@ -59,16 +73,19 @@
                     <td>
                         <div class="cell">
                         <label>Blood Group</label>
-                        <span>A+</span>
+                        <span><?= $patient['bloodType'] ?></span>
                         </div>
                     </td>
                     <td>
                         <div class="cell">
                         <label>Registration Date</label>
-                        <span>Nov 16,2023</span>
+                        <span><?= $patient['registrationDate'] ?></span>
                         </div>
                     </td>
                 </tr>
+            <?php
+            }}
+            ?>
                 </table>
                 <button class="send-email">Send Email</button>
             </div>
@@ -81,16 +98,19 @@
                 <tr>
                     <th>Date</th>
                     <th>Time</th>
-                    <th>Treatment Type</th>
                     <th>Status</th>
                 </tr>
+                <?php 
+                $apps = getAppointmentById($patientId);
+                if(mysqli_num_rows($apps) > 0){
+                foreach($apps as $app){
+                ?>
                 <tr>
-                    <td>sep,11 2023</td>
-                    <td>11:00 am</td>
-                    <td>Consultation</td>
-                    <td><span class="Completed">Completed</span></td>
+                    <td><?= $app['date'] ?></td>
+                    <td><?= $app['time'] ?></td>
+                    <td><span class="<?= $app['status']; ?>"><?= $app['status'] ?></span></td>
                 </tr>
-                <tr>
+               <!-- <tr>
                     <td>sep,15 2023</td>
                     <td>11:00 am</td>
                     <td>Follow-up</td>
@@ -101,7 +121,15 @@
                     <td>10:30 am</td>
                     <td>Follow-up</td>
                     <td><span class="Pending">Pending</span></td>
-                </tr>
+                </tr> -->
+                <?php
+
+                            }
+
+                        }else{
+                            echo "<tr><td colspan ='4'>no appointments found</td></tr>";
+                        }
+                    ?>
             </table>
         </div>
         </div>

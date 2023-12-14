@@ -371,6 +371,10 @@ body{
     cursor: pointer;
 }
 
+.content .apps-table table tr{
+    width: 100%;
+}
+
 .content .apps-table table th{
     width: 150px;
     height: 50px;
@@ -378,7 +382,6 @@ body{
 }
 
 .content .apps-table table td{
-    width: 150px;
     height: 60px;
     text-align: center;
     font-weight: 500;
@@ -391,15 +394,19 @@ body{
     font-size: 12px;
 }
 
-.content .apps-table table td .Completed{
+.content .apps-table table td .completed{
     background: var(--success);
 }
 
-.content .apps-table table td .Pending{
+.content .apps-table table td .accepted{
+    background: var(--primary);
+}
+
+.content .apps-table table td .pending{
     background: var(--warning);
 }
 
-.content .apps-table table td .Canceled{
+.content .apps-table table td .canceled{
     background: var(--danger);
 }
 
