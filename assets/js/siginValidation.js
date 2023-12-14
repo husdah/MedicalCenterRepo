@@ -154,6 +154,7 @@ currentPasswordInput?.addEventListener('input',function(){
     }else{
         currentMsg.innerHTML = '';
         return true;
+    
     }
 });
 newPasswordInput?.addEventListener('focusout',function(){

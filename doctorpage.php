@@ -1,4 +1,18 @@
- 
+<?php 
+$did='2';
+$enabledDays=array();
+require('config/dbcon.php');
+$query="select Fname, Lname,ProfilePic,phoneNumber,linkedin,instagram,facebook,doctor.clinicId,name from user join doctor on user.userId=doctor.userId  left join media on doctor.doctorId=media.doctorId left join clinic on doctor.clinicId = clinic.clinicId where doctor.doctorId=$did";
+$result=mysqli_query($con,$query);
+$query2="select message from feedback where doctorId=$did";
+$result2=mysqli_query($con,$query2);
+$query4="select day from doctorhours where doctorId=$did";
+$result4=mysqli_query($con,$query4);
+
+while ($row = mysqli_fetch_assoc($result4)) {
+    $enabledDays[] = $row['day'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,24 +41,32 @@
         <main>
             <div class="header">
                 <div class="left">
-                    <div class="photo">
-                        <img src="images/doctorrr.png" alt="">
+                    <?php 
+                    while($row=mysqli_fetch_assoc($result))
+                    {
+                        echo '
+                        <div class="photo">
+                        <img src="'.$row["ProfilePic"].'" alt="">
                     </div>
-                    <div>
-                    <h1>Dr Salem Hachem</h1>
+                    <div class="drInfo">
+                    <h1>Dr '.$row['Fname'].' '.$row['Lname'].'</h1>
                     <ul class="breadcrumb">
-                        <li><a href="#" class="active">Cardiology</a></li>
+                        <li><a href="#" class="active">'.$row['name'].'</a></li>
                         /
-                        <li><a href="#" class="active"><i class="bx bxl-facebook-circle"></i></a></li>
-                        <li><a href="#" class="active"><i class="bx bxl-instagram"></i></a></li>
-                        <li><a href="#" class="active"><i class="bx bxl-linkedin"></i></a></li>
+                        <li><a href="'.$row["facebook"].'" class="active"><i class="bx bxl-facebook-circle"></i></a></li>
+                        <li><a href="'.$row["instagram"].'" class="active"><i class="bx bxl-instagram"></i></a></li>
+                        <li><a href="'.$row["linkedin"].'" class="active"><i class="bx bxl-linkedin"></i></a></li>
                     </ul>
+                    <span class="forCall"><i class="fa-solid fa-phone"></i><span class="phoneNum">:'.$row["phoneNumber"].'</span></span>
                 </div>
                 </div>
-                <a href="bookappsinglenew.php" class="report">
-                    <i class='bx bx-arrow-back'></i>
+                <a href="bookappsinglenew.php?cid='.$row["clinicId"].'" class="report">
+                    <i class="bx bx-arrow-back"></i>
                     <span>Back</span>
                 </a>
+                        ';
+                    }
+                    ?>
             </div>
 
             <div class="bottom-data">
@@ -69,24 +91,7 @@
                         
                          <div class="inner-wrap">
                         
-                         <!-- <form id="form">
-                            <div class="form-name" id="forfirstname">
-                              <input type="text" name="fname" id="fname">
-                              <label for="fname">Your first name</label>
-                            </div>
-                            
-                            <div class="form-name" id="forlastname">
-                              <input type="text" name="lname" id="lname">
-                              <label for="lname">Your last name</label>
-                            </div> -->
-<!--                             <div class="form-name"  id="foremail">
-                              <input type="email" name="email" id="email">
-                              <label for="email">Your email</label>
-                            </div>
-                            <div class="form-name" id="forphone">
-                                <input type="text" name="phnum" id="phnum">
-                                <label for="phnum">Your phone number</label>
-                              </div> -->
+                        
                             
                             <button type="submit" class="request disabled" id="btn">
                               Request appointment <br class="break">
@@ -104,22 +109,22 @@
                         </div>
                         
                         <div class='timepicker'>
-                          <div class="owl">
-                            <div>06:00</div>
-                            <div>07:00</div>
-                            <div>08:00</div>
-                            <div>09:00</div>
-                            <div>10:00</div>
-                            <div>11:00</div>
-                            <div>12:00</div>
-                            <div>13:00</div>
-                            <div>14:00</div>
-                            <div>15:00</div>
-                            <div>16:00</div>
-                            <div>17:00</div>
-                            <div>18:00</div>
-                            <div>19:00</div>
-                            <div>20:00</div>
+                          <div class="owl" id="owl1">
+                           <?php 
+                           
+                                $day=$_POST['selectedDay'];
+                                $query3="select formHour,toHour,day from doctorhours where doctorId=$did and day='$day'";
+                                $result3=mysqli_query($con,$query3);
+                           while ($row = mysqli_fetch_assoc($result3)) {
+                                $startTime = new DateTime($row['formHour']);
+                              $endTime = new DateTime($row['toHour']);
+                                  while ($startTime <= $endTime) {
+                               echo '<div>' . $startTime->format('H:i') . '</div>';
+                             $startTime->modify('+1 hour'); 
+                               }
+                               }
+
+                           ?>
                           </div>
                           <div class="fade-l"></div>
                           <div class="fade-r"></div>
@@ -138,34 +143,30 @@
                     </div>
 
                     <ul class="task-list">
-                        <li class="completed">
+                        <?php 
+                        while($row=mysqli_fetch_assoc($result2))
+                        {
+                            echo'
+                            <li class="completed">
                             <div class="task-title">
-                                <i class='bx bx-group'></i>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                                <i class="bx bx-group"></i>
+                                <p>'.$row["message"].'</p>
                             </div>
-                            <i class='bx bx-dots-vertical-rounded'></i>
+                            <i class="bx bx-dots-vertical-rounded"></i>
                         </li>
-                        <li class="completed">
-                            <div class="task-title">
-                                <i class='bx bx-group'></i>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi et vitae, velit ratione, quae ipsa voluptas distinctio architecto quidem molestias ea molestiae?</p>
-                            </div>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                        <li class="not-completed">
-                            <div class="task-title">
-                                <i class='bx bx-group'></i>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, voluptatibus tempora, aperiam modi commodi fuga voluptate voluptatum, autem alias consequatur pariatur. Quis commodi, quas consequatur facilis quidem distinctio harum esse?</p>
-                            </div>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
+                            ';
+                        }
+                        ?>
                     </ul>
                     
-                    <form class="form" id="yourFB">
+                    <form class="form" id="yourFB" action="functions/addfeedback.php" method="POST">
                         <p class="message">Enter Your Feedback Here. </p>        
                         <label>
-                            <textarea class="input" name="description" id="" cols="50" rows="2" placeholder="Write Your Feedback"></textarea>
+                            <textarea class="input" name="feedback" id="description" cols="50" rows="2" placeholder="Write Your Feedback"></textarea>
+                            <input type="hidden" value="<?=$did?>" name="did">
+                            <div id="errmsg"></div>
                         </label>
+                        <button type="submit" class="addfb" id="addfb">Add your feedback</button>
                     </form>
                 </div>
                 <!-- End of feedbacks-->
@@ -176,10 +177,15 @@
 
     </div>
 
+    <script>
+             var enabledDays = <?php echo json_encode($enabledDays); ?>;
+             console.log(enabledDays);
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.2/owl.carousel.min.js"></script>
     <script src="assets/js/calendar.js"></script>
+    <script src="assets/js/doctorpage.js"></script>
     <!-- <script src="assets/js/appointment.js"></script> -->
     
 </body>
