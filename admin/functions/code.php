@@ -1,6 +1,13 @@
 <?php
 session_start();
-include('../../config/dbcon.php');
+require('../../config/dbcon.php');
+
+function redirect($url, $message){
+    $_SESSION['message']= $message;
+    header('Location: ' .$url);
+    exit();
+}
+
 
 if(isset($_POST['reminderInput'])){
     $reminder=$_POST['reminderInput'];
@@ -11,12 +18,11 @@ if(isset($_POST['reminderInput'])){
         $reminder_query_run = mysqli_query($con,$reminder_query);
         if($reminder_query_run)
         {
-            /* redirect('dashboard.php',"reminder Added Successfully!"); */
-            header('Location: ../dashboard.php');
+            redirect('../dashboard.php',"reminder Added Successfully!");
+            /* header('Location: ../dashboard.php'); */
     
         }else{
-            /* redirect('dashboard.php',"Something Went Wrong!"); */
-            header('Location: ../dashboard.php');
+            redirect('../dashboard.php',"Something Went Wrong!");
         }
     }
 }
@@ -52,8 +58,7 @@ else if(isset($_POST['clinicName']) && isset($_POST['clinicDesc'])){
     $clinic_check_query= "SELECT * FROM clinic WHERE name='$name';";
     $clinic_check_query_run = mysqli_query($con,$clinic_check_query);
     if(mysqli_num_rows($clinic_check_query_run) >0){
-        /* redirect('category.php',"Category already exist!"); */
-        header('Location: ../patient.php');
+        redirect('../clinics.php',"Clinic already exist!");
     }
 
     if($name != "" && $description != "" && $filename != "" && $filename2 != ""){
@@ -62,14 +67,12 @@ else if(isset($_POST['clinicName']) && isset($_POST['clinicDesc'])){
         $clinic_query_run = mysqli_query($con,$clinic_query);
         if($clinic_query_run)
         {
-            /* redirect('dashboard.php',"reminder Added Successfully!"); */
             move_uploaded_file($_FILES['clinicImg']['tmp_name'],$path.'/'.$filename);
             move_uploaded_file($_FILES['clinicIcon']['tmp_name'],$path.'/'.$filename2);
-            header('Location: ../clinics.php');
+            redirect('../clinics.php',"Clinic Added Successfully!");
     
         }else{
-            /* redirect('dashboard.php',"Something Went Wrong!"); */
-            header('Location: ../clinics.php');
+            redirect('../clinics.php',"Something Went Wrong!");
         }
     }
    
@@ -117,7 +120,6 @@ else if(isset($_POST['editClinicFormId']) && isset($_POST['editClinicName']) && 
         $update_filename= time().'.'.$image_ext;
     }else{
         $update_filename = $old_image;
-        $update_filename2 = $old_icon;
     }
 
     if($new_icon !=""){
@@ -146,15 +148,12 @@ else if(isset($_POST['editClinicFormId']) && isset($_POST['editClinicName']) && 
                 if(file_exists("../../uploads/".$old_icon)){
                     unlink("../../uploads/".$old_icon);
                 }
-            }else{
-                header('Location: ../doctors.php');
             }
-            header('Location: ../clinics.php');
-            /* redirect("edit-project.php?id=$project_id","Project Updated Successfully!"); */
+
+            redirect("../clinics.php","Clinic Updated Successfully!");
     
         }else{
-            header('Location: ../dashboard.php');
-            /* redirect("edit-project.php?id=$project_id","Something Went Wrong!"); */
+            redirect('../clinics.php',"Something Went Wrong!");
         }
     }
 
@@ -185,12 +184,10 @@ else if(isset($_POST['editClinicFormId']) && isset($_POST['editClinicName']) && 
 
                     if($doctor_query_run)
                     {
-                        /* redirect('dashboard.php',"reminder Added Successfully!"); */
-                        header('Location: ../doctors.php');
+                        redirect('../doctors.php',"Doctor Added Successfully!");
                 
                     }else{
-                        /* redirect('dashboard.php',"Something Went Wrong!"); */
-                        header('Location: ../doctors.php');
+                        redirect('../doctors.php',"Something Went Wrong!");
                     }
                 }
             }
@@ -247,12 +244,11 @@ else if(isset($_POST['editDoctorFormId']) && isset($_POST['editUserId']) && isse
 
             if($doctor_query_run)
             {
-                /* redirect('dashboard.php',"reminder Added Successfully!"); */
-                header('Location: ../edit-doctor.php?doctorId='.$doctorId);
+                redirect('../edit-doctor.php?doctorId='.$doctorId,"Doctor Account Updated Successfully!");
+                /* header('Location: ../edit-doctor.php?doctorId='.$doctorId); */
         
             }else{
-                /* redirect('dashboard.php',"Something Went Wrong!"); */
-                header('Location: ../edit-doctor.php?doctorId='.$doctorId);
+                redirect('../edit-doctor.php?doctorId='.$doctorId,"Something Went Wrong!");
             }
             
         }
@@ -267,17 +263,32 @@ else if(isset($_POST['exceptionDay']) && isset($_POST['docId'])){
     $available= isset($_POST['availableException']) ? "1":"0";
 
     if($date != ""){
-        $exception_query= "INSERT INTO workingexception (doctorId, date, fromHour, toHour, available) VALUES ('$doctorId', '$date', '$from', '$to', '$available');";
+        $clinic_check_query= "SELECT * FROM workingexception WHERE doctorId=$doctorId AND date='$date';";
+        $clinic_check_query_run = mysqli_query($con,$clinic_check_query);
+        if(mysqli_num_rows($clinic_check_query_run) >0){
 
-        $exception_query_run = mysqli_query($con,$exception_query);
-        if($exception_query_run)
-        {
-            /* redirect('dashboard.php',"exception Added Successfully!"); */
-            header('Location: ../edit-doctor.php?doctorId='.$doctorId);
-    
+            $exception_query= "UPDATE workingexception SET fromHour='$from' , toHour='$to' , available='$available' WHERE doctorId=$doctorId AND date='$date';";
+
+            $exception_query_run = mysqli_query($con,$exception_query);
+            if($exception_query_run)
+            {
+                redirect('../edit-doctor.php?doctorId='.$doctorId,"Exception Updated Successfully!");
+        
+            }else{
+                redirect('../edit-doctor.php?doctorId='.$doctorId,"Something Went Wrong!");
+            }
+            
         }else{
-            /* redirect('dashboard.php',"Something Went Wrong!"); */
-            header('Location: ../edit-doctor.php?doctorId='.$doctorId);
+            $exception_query= "INSERT INTO workingexception (doctorId, date, fromHour, toHour, available) VALUES ('$doctorId', '$date', '$from', '$to', '$available');";
+
+            $exception_query_run = mysqli_query($con,$exception_query);
+            if($exception_query_run)
+            {
+                redirect('../edit-doctor.php?doctorId='.$doctorId,"Exception Added Successfully!");
+        
+            }else{
+                redirect('../edit-doctor.php?doctorId='.$doctorId,"Something Went Wrong!");
+            }
         }
     }
 }
@@ -307,12 +318,10 @@ else if(isset($_POST['urgentBT']) && isset($_POST['urgentBTN'])){
         $urgentbt_query_run = mysqli_query($con,$urgentbt_query);
         if($urgentbt_query_run)
         {
-            /* redirect('dashboard.php',"urgentbt Added Successfully!"); */
-            header('Location: ../donors.php');
+            redirect('../donors.php',"UrgentBT Added Successfully!");
     
         }else{
-            /* redirect('donors.php',"Something Went Wrong!"); */
-            header('Location: ../donors.php');
+            redirect('../donors.php',"Something Went Wrong!");
         }
     }
 }
@@ -380,12 +389,10 @@ else if(isset($_POST['signup-name']) && isset($_POST['signup-email']) && isset($
 
         if($user_query_run)
         {
-            /* redirect('dashboard.php',"reminder Added Successfully!"); */
-            header('Location: ../settings.php');
+            redirect('../settings.php',"Account Updated Successfully!");
     
         }else{
-            /* redirect('dashboard.php',"Something Went Wrong!"); */
-            header('Location: ../settings.php');
+            redirect('../settings.php',"Something Went Wrong!");
         }
     }
 
@@ -407,12 +414,10 @@ else if(isset($_POST['WHDay'])){
     
             if($update_query_run)
             {
-                /* redirect('dashboard.php',"reminder Added Successfully!"); */
-                header('Location: ../workingHours.php');
+                redirect('../workingHours.php',"Medical Hour Updated Successfully!");
         
             }else{
-                /* redirect('dashboard.php',"Something Went Wrong!"); */
-                header('Location: ../workingHours.php');
+                redirect('../workingHours.php',"Something Went Wrong!");
             }
 
         }else{
@@ -421,12 +426,10 @@ else if(isset($_POST['WHDay'])){
             $medicalHours_query_run = mysqli_query($con,$medicalHours_query);
             if($medicalHours_query_run)
             {
-                /* redirect('dashboard.php',"medicalHours Added Successfully!"); */
-                header('Location: ../workingHours.php');
+                redirect('../workingHours.php',"Medical Hour Added Successfully!");
         
             }else{
-                /* redirect('dashboard.php',"Something Went Wrong!"); */
-                header('Location: ../workingHours.php');
+                redirect('../workingHours.php',"Something Went Wrong!");
             }
         }
 
@@ -464,8 +467,8 @@ else if(isset($_POST['manageDWHFormId']) && isset($_POST['DWHDay'])){
         $select_query= "SELECT * FROM medicalhours WHERE day='$day';";
         $select_query_run = mysqli_query($con,$select_query);
         $medicalHours_data=mysqli_fetch_array($select_query_run);
-        $medFrom = strtotime($medicalHours_data['fromHour']);
-        $medTo = strtotime($medicalHours_data['toHour']);
+        $medFrom = $medicalHours_data['fromHour'];
+        $medTo = $medicalHours_data['toHour'];
 
         if($from >= $medFrom && $to <= $medTo){
 
@@ -476,12 +479,10 @@ else if(isset($_POST['manageDWHFormId']) && isset($_POST['DWHDay'])){
         
                 if($update_query_run)
                 {
-                    /* redirect('dashboard.php',"reminder Added Successfully!"); */
-                    header('Location: ../edit-doctor.php?doctorId='.$doctorId);
+                    redirect('../edit-doctor.php?doctorId='.$doctorId,"Doctor WH Updated Successfully!");
             
                 }else{
-                    /* redirect('dashboard.php',"Something Went Wrong!"); */
-                    header('Location: ../edit-doctor.php?doctorId='.$doctorId);
+                    redirect('../edit-doctor.php?doctorId='.$doctorId,"Something Went Wrong!");
                 }
     
             }else{
@@ -490,21 +491,91 @@ else if(isset($_POST['manageDWHFormId']) && isset($_POST['DWHDay'])){
                 $doctorHours_query_run = mysqli_query($con,$doctorHours_query);
                 if($doctorHours_query_run)
                 {
-                    /* redirect('dashboard.php',"medicalHours Added Successfully!"); */
-                    header('Location: ../edit-doctor.php?doctorId='.$doctorId);
+                    redirect('../edit-doctor.php?doctorId='.$doctorId,"Doctor WH Added Successfully!");
             
                 }else{
-                    /* redirect('dashboard.php',"Something Went Wrong!"); */
-                    header('Location: ../edit-doctor.php?doctorId='.$doctorId);
+                    redirect('../edit-doctor.php?doctorId='.$doctorId,"Something Went Wrong!");
                 }
             }
 
         }else{
-            /* redirect('dashboard.php',"Something Went Wrong!"); */
-            header('Location: ../clinics.php');
+            redirect('../edit-doctor.php?doctorId='.$doctorId,"Working Hour Not In Range!");
         }
     }
-   
+    
+}
+else if(isset($_POST['restrictUserBtn'])){
+    $userId= mysqli_real_escape_string($con, $_POST['userId']);
+    
+    $delete_query= "UPDATE user SET restricted=1 WHERE userId='$userId';";
+    $delete_query_run = mysqli_query($con,$delete_query);  
+
+    if($delete_query_run)
+    {
+        echo 200;
+    }else{
+        echo 500;
+    }
+}
+else if(isset($_POST['restoreUserBtn'])){
+    $userId= mysqli_real_escape_string($con, $_POST['userId']);
+    
+    $delete_query= "UPDATE user SET restricted=0 WHERE userId='$userId';";
+    $delete_query_run = mysqli_query($con,$delete_query);  
+
+    if($delete_query_run)
+    {
+        echo 200;
+    }else{
+        echo 500;
+    }
+}
+else if(isset($_POST['patientFN']) && isset($_POST['patientLN']) && isset($_POST['gender']) && isset($_POST['patientDOB']) && isset($_POST['patientEmail']) && isset($_POST['patientPass']) && isset($_POST['patientPassConfirm'])){
+    $fname = $_POST['patientFN'];
+    $lname = $_POST['patientLN'];
+    $gender = $_POST['gender'];
+    $DOB = $_POST['patientDOB'];
+    $bloodType = $_POST['patientBT'];
+    if($bloodType == "BT"){
+        $bloodType = "";
+    }
+    $email = $_POST['patientEmail'];
+    $phone = $_POST['patientPhone'];
+    $password = $_POST['patientPass'];
+    $confirmation = $_POST['patientPassConfirm'];
+    $role = 2;
+
+    if($fname != "" && $lname != "" && $gender != "" && $DOB != "" && $email != "" && $password != "" && $confirmation != "" && $password == $confirmation){
+
+        $user_query = "INSERT INTO user (Fname, Lname, email, password, role) VALUES ('$fname', '$lname', '$email', '$password', $role);";
+        $user_query_run = mysqli_query($con,$user_query);
+
+        if($user_query_run){
+            $getUserId_query = "SELECT userId FROM user WHERE email = '$email';";
+            $getUserId_query_run = mysqli_query($con, $getUserId_query);
+
+            if(mysqli_num_rows($getUserId_query_run) >0){
+                foreach($getUserId_query_run as $item){
+                    $userId = $item["userId"];
+                    if($phone == ""){
+                        $patient_query = "INSERT INTO patient (userId, gender, bloodType, dateOfBirth) VALUES ($userId , '$gender', '$bloodType', '$DOB');";
+                    }else{
+                        $patient_query = "INSERT INTO patient (userId, gender, bloodType, dateOfBirth, phoneNumber) VALUES ($userId , '$gender', '$bloodType', '$DOB', $phone);";
+                    }
+                    $patient_query_run = mysqli_query($con,$patient_query);
+
+                    if($patient_query_run)
+                    {
+                        redirect('../patients.php',"Patient Added Successfully!");
+                
+                    }else{
+                        redirect('../patients.php',"Something Went Wrong!");
+                    }
+                }
+            }
+        }
+    }
+
 }
 else{
     header('Location: ../dashboard.php');

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include("functions/myfunctions.php");
+    require("functions/myfunctions.php");
     include('includes/header.php');
 ?>
 

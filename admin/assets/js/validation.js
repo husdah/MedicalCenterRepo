@@ -98,6 +98,15 @@ function validatePhoneSubmit(phone, phoneInput, errorPhone) {
     return true;
 }
 
+function validatePhoneSubmit2(phone, phoneInput, errorPhone) {
+    if (phone != '' && !validatePhone(phone)) {
+        phoneInput.classList.add("required");
+        errorPhone.textContent = 'Invalid Phone';
+        return false;
+    }
+    return true;
+}
+
 // Function to handle submit Password events
 function validatePassSubmit(pass, passInput, errorPass) {
     if (pass == '' || !validatePass(pass)) {
@@ -603,7 +612,7 @@ function handleInputTimeEvent(event) {
 }
 
 // Function to handle input Acount CHECk events
-function handleAccountCheckEvent(event) {
+/* function handleAccountCheckEvent(event) {
     var inputElement = event.target;
 
     if(!inputElement.checked){
@@ -619,7 +628,7 @@ function handleAccountCheckEvent(event) {
         patientPassConfirmInput.classList.remove("required");
         document.getElementById(patientPassConfirmInput.id + 'Error').textContent = "Confirm password";
     }
-}
+} */
 
 // Function to handle input Acount CHECk events
 function handleClosedCheckEvent(event) {
@@ -774,20 +783,20 @@ patientLNInput?.addEventListener('input', handleInputNameEvent);
 var patientMaleCheck = document.getElementById('male');
 var patientFemaleCheck = document.getElementById('female');
 
-var patientAccountCheck = document.getElementById('account');
-patientAccountCheck?.addEventListener("change",handleAccountCheckEvent);
+/* var patientAccountCheck = document.getElementById('account');
+patientAccountCheck?.addEventListener("change",handleAccountCheckEvent); */
 
 var patientDOBInput = document.getElementById('patientDOB');
 patientDOBInput?.addEventListener('input', handleDOBEvent);
 
 var patientBloodTypeInput = document.getElementById('patientBT');
-patientBloodTypeInput?.addEventListener('change', handleSelectEvent);
+/* patientBloodTypeInput?.addEventListener('change', handleSelectEvent); */
 
 var patientEmailInput = document.getElementById('patientEmail');
 patientEmailInput?.addEventListener('input', handleInputEmailEvent);
 
 var patientPhoneInput = document.getElementById('patientPhone');
-patientPhoneInput?.addEventListener('input', handleInputPhoneEvent);
+patientPhoneInput?.addEventListener('input', handleInputPhoneEvent2);
 
 var patientPassInput = document.getElementById('patientPass');
 patientPassInput?.addEventListener('input', handleInputPassEvent);
@@ -1014,7 +1023,7 @@ addPatientFormBtn?.addEventListener("click", function(event) {
         let errorDOB = document.getElementById("patientDOBError");
         let errorEmail = document.getElementById("patientEmailError");
         let errorPhone = document.getElementById("patientPhoneError");
-        let errorBT = document.getElementById("patientBTError");
+        /* let errorBT = document.getElementById("patientBTError"); */
         let errorPass = document.getElementById("patientPassError");
         let errorPassConfirm = document.getElementById("patientPassConfirmError");
     
@@ -1022,20 +1031,20 @@ addPatientFormBtn?.addEventListener("click", function(event) {
         validateNameSubmit(lastName, patientLNInput, errorLN);
         validateGenderSubmit(patientMaleCheck,patientFemaleCheck);
         validateDOBSubmit(patientDOBInput, errorDOB);
-        validateSelectSubmit(patientBloodTypeInput, errorBT);
-        if(patientAccountCheck.checked){
+        /* validateSelectSubmit(patientBloodTypeInput, errorBT); */
+       /*  if(patientAccountCheck.checked){ */
             validateEmailSubmit(email, patientEmailInput, errorEmail);
-            validatePhoneSubmit(phone, patientPhoneInput, errorPhone);
+            validatePhoneSubmit2(phone, patientPhoneInput, errorPhone);
             validatePassSubmit(password, patientPassInput, errorPass);
             ConfirmPassSubmit(confirm, patientPassConfirmInput,password, errorPassConfirm);
-        }
+        /* } */
     
-        if (!validateNameSubmit(firstName, patientFNInput, errorFN) || !validateNameSubmit(lastName, patientLNInput, errorLN) || !validateGenderSubmit(patientMaleCheck,patientFemaleCheck) || !validateDOBSubmit(patientDOBInput, errorDOB) || !validateSelectSubmit(patientBloodTypeInput, errorBT) 
-            || (patientAccountCheck.checked && (
+        if (!validateNameSubmit(firstName, patientFNInput, errorFN) || !validateNameSubmit(lastName, patientLNInput, errorLN) || !validateGenderSubmit(patientMaleCheck,patientFemaleCheck) || !validateDOBSubmit(patientDOBInput, errorDOB) /* || !validateSelectSubmit(patientBloodTypeInput, errorBT)  */
+            || /* (patientAccountCheck.checked && ( */
                 !validateEmailSubmit(email, patientEmailInput, errorEmail) 
-            || !validatePhoneSubmit(phone, patientPhoneInput, errorPhone) 
+            || !validatePhoneSubmit2(phone, patientPhoneInput, errorPhone) 
             || !validatePassSubmit(password, patientPassInput, errorPass) 
-            || !ConfirmPassSubmit(confirm, patientPassConfirmInput,password, errorPassConfirm) ))
+            || !ConfirmPassSubmit(confirm, patientPassConfirmInput,password, errorPassConfirm) /* )) */
             ) {
             /* alert("invalid form"); */
         } else {
