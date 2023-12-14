@@ -52,10 +52,43 @@ const signupBtn = document.getElementById('signup-btn');
 //Forms Validation Functions
 signinForm?.addEventListener('submit', (e) => { 
     //prevents the default form submission behavior 
-    e.preventDefault();
-    validateSigninForm();
+    const isValid = validateSigninForm();
+
+    // If validation fails, prevent the default form submission
+    if (!isValid) {
+        e.preventDefault();
+    }
 });
 
+/*document.getElementById('sign-in').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    var formData = new FormData(document.getElementById('sign-in'));
+    
+    // Log the form data for debugging purposes
+    for (var pair of formData.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]);
+    }
+
+    $.ajax({
+        method: 'POST',
+        url: './test.php',
+        processData: false,
+        contentType: false,
+        cache: false,
+        data: formData,
+        success: function(response) {
+            // Handle success, you can log the response for debugging
+            console.log(response);
+            // Redirect to a new page or handle the response accordingly
+        },
+        error: function(xhr, status, error) {
+            // Handle error
+            console.error(xhr.responseText);
+        }
+    });
+});
+*/
 signupForm?.addEventListener('submit', (e) => { 
     //prevents the default form submission behavior 
     e.preventDefault();
@@ -334,10 +367,11 @@ function validateSigninForm(){
     
     if(isEmailEmpty(emailInput1,emailMsg1) && isPasswordEmpty(pwdInput1,pwdMsg1) && validateEmail(emailInput1,emailMsg1)){
         alert('Submitted Successfully');
-        signinForm.submit();
+        return true;
     }else{
         isEmailEmpty(emailInput1,emailMsg1);
         isPasswordEmpty(pwdInput1,pwdMsg1);
+        return false;
     }
     
 }
@@ -350,7 +384,6 @@ function validateSignupForm(){
      && isDateEmpty(dateInput,infoMsg) && genderCheck() ){
 
         alert('Submitted Successfully!');
-        signupForm.submit();
     }else{
         isEmailEmpty(emailInput2,emailMsg2);
         isPasswordEmpty(pwdInput2,pwdMsg2);
@@ -369,7 +402,6 @@ function validateUpdateForm(){
     && validatePhone(phoneInput2,phoneMsg2)){
         
         alert('Submitted Successfully!');
-        updateForm.submit();
     }else{
         isEmailEmpty(updateEmail,emailMessage);
         isNameEmpty(updateFname,firstMsg);
@@ -383,7 +415,6 @@ function validatePasswordForm(){
      && validatePwd(newPasswordInput,newMsg) && comparePasswords(newPasswordInput,cPasswordInput,cMsg)){
 
         alert('Submitted successfully!');
-        passwordForm.submit();
     }else{
         isPasswordEmpty(currentPasswordInput,currentMsg);
         isPasswordEmpty(newPasswordInput,newMsg);

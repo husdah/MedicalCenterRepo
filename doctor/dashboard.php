@@ -1,3 +1,18 @@
+<?php
+session_start();
+include("queryFunctions/queryfunctions.php");
+
+$doctor = $_SESSION['doctor_id'];
+$doctorId = getDoctorId($doctor); 
+
+$patientsNb = getPatientCount($doctorId);
+$AppointmentsNb = getAppoinmentCount($doctorId);
+$requestNb = getRequestCount($doctorId);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +49,7 @@
             <i class='bx bx-group'></i>
             <span class="insight">
                 <h3>
-                    333
+                 <?= $patientsNb ?>
                 </h3>
                 <p>Patients</p>
             </span>
@@ -43,18 +58,18 @@
             <i class='bx bx-calendar-check'></i>
             <span class="insight">
                 <h3>
-                    52
+                <?= $AppointmentsNb ?>
                 </h3>
                 <p>Appointments</p>
             </span>
         </li>
         <li>
-            <i class='bx bx-phone-call'></i>
+            <i class='bx bx-comment-dots'></i>
             <span class="insight">
                 <h3>
-                    7
+                <?= $requestNb ?>
                 </h3>
-                <p>Consultations</p>
+                <p>Requests</p>
             </span>
         </li>
     </ul>
@@ -71,43 +86,36 @@
                 <th>Action</th>
             </tr>
             </thead>
-            <tr>
-                <td>patient 1</td>
-                <td>11/12/2023</td>
-                <td>10:00 am</td>
-                <td>
-                    <button class="acc-btn"><i class='bx bx-check-circle'></i></button>
-                    <button class="del-btn"><i class='bx bx-x-circle'></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>patient 2</td>
-                <td>11/12/2023</td>
-                <td>10:00 am</td>
-                <td>
-                    <button class="acc-btn"><i class='bx bx-check-circle'></i></button>
-                    <button class="del-btn"><i class='bx bx-x-circle'></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>patient 3</td>
-                <td>11/16/2023</td>
-                <td>12:00 pm</td>
-                <td>
-                    <button class="acc-btn"><i class='bx bx-check-circle'></i></button>
-                    <button class="del-btn"><i class='bx bx-x-circle'></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>patient 4</td>
-                <td>11/20/2023</td>
-                <td>13:00 pm</td>
-                <td>
-                    <button class="acc-btn"><i class='bx bx-check-circle'></i></button>
-                    <button class="del-btn"><i class='bx bx-x-circle'></i></button>
-                </td>
-            </tr>
+            <tbody>
+                    <?php 
+                        $appointments= getAppointmentRequest($doctorId);
+                        if(mysqli_num_rows($appointments) >0){
+                            foreach($appointments as $item)
+                            {
+                                ?>
+                                    <tr>
+                                        <td>
+                                        <p class="name"><?= $item['Fname']; ?> <?= $item['Lname'] ?></p>
+                                        </td>
+                                        <td><?= $item['date']; ?></td>
+                                        <td><?= $item['time']; ?></td>
+                                        <td>
+                                        <button class="acc-btn"><i class='bx bx-check-circle'></i></button>
+                                        <button class="del-btn"><i class='bx bx-x-circle'></i></button>
+                                       </td>
+                                    </tr>
+
+                    <?php
+
+                            }
+
+                        }else{
+                            echo "<tr><td colspan ='4'>no appointments found</td></tr>";
+                        }
+                    ?>
+           
         </table>
+        
        </div>
        </div>
        <div class="right">
@@ -119,76 +127,34 @@
            </div>
            </div>
            <table class="appointments">
-            <tr>
+            <?php
+
+            $patients = getPatients();
+            if (mysqli_num_rows($patients) > 0){
+                foreach ($patients as $patient){
+            ?>   
+            <tr class="p-row">
                 <td>
                     <div class="info">
-                    <h3 id="name">Name</h3>
-                    <label><i class='bx bxs-phone' >Phone:</i><span id="phone">12345560</span></label>
-                    <label><i class='bx bxs-envelope' ></i>Email:<span id="email">email@gmail.com</span></label>
-                </div>  
+                    <h3 id="name"><?= $patient['Fname']; ?> <?= $patient['Lname'] ?></h3>
+                    <label><i class='bx bxs-phone' >Phone:</i><span id="phone"><?= $patient['phoneNumber']?></span></label>
+                    <label><i class='bx bxs-envelope' ></i>Email:<span id="email"><?= $patient['email']?></span></label>
+                    </div>  
                 </td>
                 <td>
                     <div class="view-btn">
-                        <a href="patient.php"><button id="view" name="view">View</button></a>
+                        <a href="patient.php?id=<?= $patient['patientId'] ?>"><button id="view" name="view">View</button></a>
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <div class="info">
-                    <h3 id="name">Name</h3>
-                    <label><i class='bx bxs-phone' >Phone:</i><span id="phone">12345560</span></label>
-                    <label><i class='bx bxs-envelope' ></i>Email:<span id="email">email@gmail.com</span></label>
-                </div>  
-                </td>
-                <td>
-                    <div class="view-btn">
-                        <a href="patient.php"><button id="view" name="view">View</button></a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="info">
-                    <h3 id="name">Name</h3>
-                    <label><i class='bx bxs-phone' >Phone:</i><span id="phone">12345560</span></label>
-                    <label><i class='bx bxs-envelope' ></i>Email:<span id="email">email@gmail.com</span></label>
-                </div>  
-                </td>
-                <td>
-                    <div class="view-btn">
-                        <a href="patient.php"><button id="view" name="view">View</button></a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="info">
-                    <h3 id="name">Name</h3>
-                    <label><i class='bx bxs-phone' >Phone:</i><span id="phone">12345560</span></label>
-                    <label><i class='bx bxs-envelope' ></i>Email:<span id="email">email@gmail.com</span></label>
-                </div>  
-                </td>
-                <td>
-                    <div class="view-btn">
-                        <a href="patient.php"><button id="view" name="view">View</button></a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="info">
-                    <h3 id="name">Name</h3>
-                    <label><i class='bx bxs-phone' >Phone:</i><span id="phone">12345560</span></label>
-                    <label><i class='bx bxs-envelope' ></i>Email:<span id="email">email@gmail.com</span></label>
-                </div>  
-                </td>
-                <td>
-                    <div class="view-btn">
-                        <a href="patient.html"><button id="view" name="view">View</button></a>
-                    </div>
-                </td>
-            </tr>
+            <?php
+
+                }
+
+                }else{
+                        echo "<tr><td colspan ='4'>no appointments found</td></tr>";
+                    }
+            ?>
            </table>
         </div>
         </div>
