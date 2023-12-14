@@ -270,6 +270,74 @@ $(document).ready(function () {
                 });
             }
           });
-    });    
+    }); 
+
+    $(document).on('click','.restrictUserBtn', function (e) {
+        e.preventDefault();
+
+        var id = $(this).val();
+
+        swal({
+            title: "Are you sure?",
+            text: "User will be restricted from logging in.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    method:"POST",
+                    url: "functions/code.php",
+                    data: {
+                        'userId': id,
+                        'restrictUserBtn': true
+                    },
+                    success: function(response){
+                        if(response == 200){
+                            swal("Success!", "User Account Restricted Successfully!", "success");
+                            $('#dataTable').load(location.href + " #dataTable");
+                        }else if(response == 500){
+                            swal("Error!", "Something Went Wrong!", "error");
+                        }
+                    }
+                });
+            }
+          });
+    });
+    
+    $(document).on('click','.restoreUserBtn', function (e) {
+        e.preventDefault();
+
+        var id = $(this).val();
+
+        swal({
+            title: "Are you sure?",
+            text: "User Account will be restored.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    method:"POST",
+                    url: "functions/code.php",
+                    data: {
+                        'userId': id,
+                        'restoreUserBtn': true
+                    },
+                    success: function(response){
+                        if(response == 200){
+                            swal("Success!", "User Account Restored Successfully!", "success");
+                            $('#dataTable').load(location.href + " #dataTable");
+                        }else if(response == 500){
+                            swal("Error!", "Something Went Wrong!", "error");
+                        }
+                    }
+                });
+            }
+          });
+    });
     
 });

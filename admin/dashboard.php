@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include("functions/myfunctions.php");
+    require("functions/myfunctions.php");
     include('includes/header.php');
 
     $clinicsNb= getRowCount("clinic");
@@ -117,7 +117,7 @@
                                             <a href="view-patient.php"><p class="name"><?= $item['Fname']; ?> <?= $item['Lname'] ?></p></a>
                                         </td>
                                         <td class="date"><?= $item['date']; ?></td>
-                                        <td class="date"><?= $time; ?></td>
+                                        <td><?= $time; ?></td>
                                         <td><span class="status <?= $item['status']; ?>"><?= $item['status']; ?></span></td>
                                     </tr>
 

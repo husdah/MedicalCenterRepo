@@ -1,6 +1,6 @@
 <?php
 
-include("../config/dbcon.php");
+require("../config/dbcon.php");
 
 function redirect($url, $message){
     $_SESSION['message']= $message;
@@ -27,6 +27,17 @@ function getAppointments(){
         on app.patientId = patient.patientId
         INNER JOIN user
         on patient.userId = user.userId;";
+    $query_run = mysqli_query($con,$query);
+    return $query_run;
+}
+
+function getAppByPatient($id){
+    global $con;
+    $query = "SELECT user.Fname AS fname, user.Lname AS lname, app.date AS date, app.time AS time, app.status AS status, doctor.doctorId As doctorId , doctor.profilePic As profilePic
+        FROM user, appointment AS app, patient, doctor
+        WHERE app.patientId = patient.patientId 
+        AND doctor.userId = user.userId
+        AND patient.patientId = $id ";
     $query_run = mysqli_query($con,$query);
     return $query_run;
 }
@@ -61,6 +72,16 @@ function getNameById($id){
     return $query_run;
 }
 
+function getPatientInfoById($id){
+    global $con;
+    $query= "SELECT user.Fname AS Fname, user.Lname AS Lname, user.email AS email, patient.patientId As patientId , patient.gender AS gender, patient.bloodType AS bloodType, patient.dateOfBirth AS dateOfBirth, patient.phoneNumber AS phoneNumber
+    FROM user, patient 
+    WHERE user.userId = patient.userId
+    AND user.userId = $id";
+    $query_run = mysqli_query($con,$query);
+    return $query_run;
+}
+
 function getProfilePicById($id){
     global $con;
     $query= "SELECT profilePic FROM doctor WHERE doctorId = $id";
@@ -81,6 +102,13 @@ function getDocInfoById($id){
     FROM user, doctor 
     WHERE user.userId = doctor.userId
     AND doctor.doctorId = $id";
+    $query_run = mysqli_query($con,$query);
+    return $query_run;
+}
+
+function getPatients(){
+    global $con;
+    $query= "SELECT userId, Fname, Lname, registrationDate, restricted FROM user WHERE role = 2";
     $query_run = mysqli_query($con,$query);
     return $query_run;
 }

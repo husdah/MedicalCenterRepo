@@ -17,7 +17,8 @@
             email VARCHAR(200) UNIQUE NOT NULL,
             password longtext NOT NULL,
             role int NOT NULL,
-            registrationDate timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+            registrationDate timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            restricted int NOT NULL DEFAULT 0
         );";
         $createTableUserQuery_run = mysqli_query($con,$createTableUserQuery);
 
