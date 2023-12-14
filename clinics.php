@@ -1,3 +1,8 @@
+<?php
+require('config/dbcon.php');
+$query="select clinicId,name,description,icon from clinic";
+$res=mysqli_query($con,$query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,114 +36,22 @@
       </div>
       <div class="clinicsContainer">
       <div class="clinics">
-        <div class="item">
-          <a href="bookappsinglenew.php">
-            <i class="fa-solid fa-heart-pulse"></i>
-            <div class="name"> Cardiology</div>
+<?php 
+while($row=mysqli_fetch_assoc($res))
+{
+  echo '
+       <div class="item">
+          <a href="bookappsinglenew.php?cid='.$row["clinicId"].'">
+            <img src="'.$row["icon"].'" alt="">
+            <div class="name">'.$row["name"].'</div>
             <div class="des">
-              Lorem ipsum dolor sit amet consectetur adipisicing e
+              '.$row["description"].'
             </div>
           </a>
         </div>
-        <div class="item">
-          <a href="bookappsinglenew.php">
-            <i class="fa-solid fa-brain"></i>
-            <div class="name"> Neurology</div>
-            <div class="des">
-              Lorem ipsum dolor sit amet consectetur adipisicing e
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="bookappsinglenew.php">
-            <i class="fa-regular fa-eye"></i>
-            <div class="name"> Ophtalmology</div>
-            <div class="des">
-              Lorem ipsum dolor sit amet consectetur adipisicing e
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="bookappsinglenew.php">
-            <i class="fa-solid fa-heart-pulse"></i>
-            <div class="name"> Cardiology</div>
-            <div class="des">
-              Lorem ipsum dolor sit amet consectetur adipisicing e
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="bookappsinglenew.php">
-            <i class="fa-solid fa-brain"></i>
-            <div class="name"> Neurology</div>
-            <div class="des">
-              Lorem ipsum dolor sit amet consectetur adipisicing e
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="bookappsinglenew.php">
-            <i class="fa-regular fa-eye"></i>
-            <div class="name"> Ophtalmology</div>
-            <div class="des">
-              Lorem ipsum dolor sit amet consectetur adipisicing e
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="bookappsinglenew.php">
-            <i class="fa-solid fa-heart-pulse"></i>
-            <div class="name"> Cardiology</div>
-            <div class="des">
-              Lorem ipsum dolor sit amet consectetur adipisicing e
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="bookappsinglenew.php">
-            <i class="fa-solid fa-brain"></i>
-            <div class="name"> Neurology</div>
-            <div class="des">
-              Lorem ipsum dolor sit amet consectetur adipisicing e
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="bookappsinglenew.php">
-            <i class="fa-regular fa-eye"></i>
-            <div class="name"> Ophtalmology</div>
-            <div class="des">
-              Lorem ipsum dolor sit amet consectetur adipisicing e
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="bookappsinglenew.php">
-            <i class="fa-solid fa-brain"></i>
-            <div class="name"> Neurology</div>
-            <div class="des">
-              Lorem ipsum dolor sit amet consectetur adipisicing e
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="bookappsinglenew.php">
-            <i class="fa-regular fa-eye"></i>
-            <div class="name"> Ophtalmology</div>
-            <div class="des">
-              Lorem ipsum dolor sit amet consectetur adipisicing e
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="bookappsinglenew.php">
-            <i class="fa-regular fa-eye"></i>
-            <div class="name"> Ophtalmology</div>
-            <div class="des">
-              Lorem ipsum dolor sit amet consectetur adipisicing e
-            </div>
-          </a>
-        </div>
+  ';
+}
+?>
       </div>
     </div>
     </div>

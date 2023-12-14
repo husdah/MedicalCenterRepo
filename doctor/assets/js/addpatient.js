@@ -1,5 +1,5 @@
+
 var patientname=document.getElementById('pname');
-// var lastappdate=document.getElementById('lappdate');
 var newappdate=document.getElementById('nappdate');
 var timeapp=document.getElementById('tapp');
 var forpatientname=document.getElementById('forpatient');
@@ -27,7 +27,39 @@ var sub3=false;
 document.getElementById('form').addEventListener('submit',(e)=>{
     if(patientname.value!=="" && newappdate.value!=="" && timeapp.value!=="")
     {
-        document.getElementById('form').submit();
+                e.preventDefault();
+                var formData = new FormData(document.getElementById("form"));
+                if(e.submitter.id === 'add'){
+             $.ajax({
+              method:"POST",
+              url:"../../../addPatientDb.php",
+              processData: false,
+               contentType: false, 
+               cache: false,
+               enctype: 'multipart/form-data',
+              data:formData,
+              success:function(){
+                //hon 3afaset
+              location.reload();
+              }
+             })
+            }
+            else if(e.submitter.id === 'edit')
+            {
+                $.ajax({
+                    method:"POST",
+                    url:"../../../editPatientDb.php",
+                    processData: false,
+                     contentType: false, 
+                     cache: false,
+                     enctype: 'multipart/form-data',
+                    data:formData,
+                    success:function(){
+                      location.reload();
+                    }
+                   })
+            }
+          
     }
     e.preventDefault();
     if(patientname.value==="" && !sub1)

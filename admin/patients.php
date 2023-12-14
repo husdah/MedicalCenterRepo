@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    require("functions/myfunctions.php");
     include('includes/header.php');
 ?>
 
@@ -53,54 +55,39 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <a href="../images/profile-1.jpg" class="imageLB"> 
-                                    <img src="../images/profile-1.jpg" alt="patient Image">
-                                </a>
-                                <a href="view-patient.php">
-                                    <p class="name">Hussein Daher</p>
-                                </a>
-                            </td>
-                            <td class="date">17-08-2023</td>
-                            <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="../images/profile-1.jpg" class="imageLB"> 
-                                    <img src="../images/profile-1.jpg" alt="patient Image">
-                                </a>
-                                <a href="view-patient.php">
-                                    <p class="name">Haya Tfaily</p>
-                                </a>
-                            </td>
-                            <td class="date">16-08-2023</td>
-                            <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="../images/profile-1.jpg" class="imageLB"> 
-                                    <img src="../images/profile-1.jpg" alt="patient Image">
-                                </a>
-                                <a href="view-patient.php">
-                                    <p class="name">Zeinab Hijazi</p>
-                                </a>
-                            </td>
-                            <td class="date">15-08-2023</td>
-                            <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="../images/profile-1.jpg" class="imageLB"> 
-                                    <img src="../images/profile-1.jpg" alt="patient Image">
-                                </a>
-                                <a href="view-patient.php">
-                                    <p class="name">Loreen Baker</p>
-                                </a>
-                            </td>
-                            <td class="date">14-08-2023</td>
-                            <td><button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
-                        </tr>
+                        <?php
+                        $patients = getPatients();
+                        if(mysqli_num_rows($patients) >0){
+                            foreach($patients as $patient){
+                                $name = $patient['Fname'] ." " .$patient['Lname']; 
+                                ?>
+                                    <tr>
+                                        <td>
+                                            <a href="view-patient.php?userId=<?= $patient['userId']; ?>">
+                                                <p class="name"><?= $name; ?></p>
+                                            </a>
+                                        </td>
+                                        <td class="date"><?= $patient['registrationDate']; ?></td>
+                                        <?php
+                                            if($patient['restricted'] == 0){
+                                                ?>
+                                                    <td><button value="<?= $patient['userId']; ?>" class="btn-delete restrictUserBtn"><i class="bx bx-block"></i><span>Restrict</span></button></td>
+                                                <?php
+                                            }else if($patient['restricted'] == 1){
+                                                ?>
+                                                    <td><button value="<?= $patient['userId']; ?>" class="btn-delete restoreUserBtn"><i class="bx bx-refresh"></i><span>Restore</span></button></td>
+                                                <?php
+                                            }
+                                        ?>
+                                        
+                                    </tr>
+                                <?php
+                            }
+                        }else{
+                            echo "<tr><td colspan ='3'>no patients found</td></tr>";
+                        }
+
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -111,7 +98,7 @@
                     <i class='bx bx-group'></i>
                     <h3>Create Patient Account</h3>
                 </div>
-                <form class="form" id="addPatientForm">
+                <form class="form" id="addPatientForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
                     <p class="title">Register Patient</p>
                     <p class="message">Please Enter The Needed Information. </p>
                     <div class="flex">
@@ -158,18 +145,18 @@
                         <span id="patientBTError">BT</span>
                     </label>
 
-                    <div class="flex">
+                    <!-- <div class="flex"> -->
                         <label>
                             <input id="patientEmail" name="patientEmail" required placeholder="" type="email" id="firstInput" class="input req">
                             <span id="patientEmailError">Email</span>
                         </label>
-                        <label>or</label>
+                        <!-- <label>or</label> -->
                         <label>
                             <!-- pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" maxlength="12" -->
-                            <input id="patientPhone" name="patientPhone" required placeholder="" type="tel" id="secondInput" class="input req">
+                            <input id="patientPhone" name="patientPhone" placeholder="" type="number" id="secondInput" class="input req">
                             <span id="patientPhoneError">Phone</span>
                         </label>
-                    </div>
+                    <!-- </div> -->
                         
                     <label>
                         <input id="patientPass" name="patientPass" required placeholder="" type="password" class="input req">
@@ -180,10 +167,10 @@
                         <span id="patientPassConfirmError">Confirm password</span>
                     </label>
 
-                    <label class="check-container" id="check_display">Create Account
+                    <!-- <label class="check-container" id="check_display">Create Account
                         <input checked type="checkbox" name="account" id="account" value="account">
                         <span class="checkmark"></span>
-                    </label>
+                    </label> -->
 
                     <button id="addPatientFormBtn" type="button" class="submit">Submit</button>
                 </form>

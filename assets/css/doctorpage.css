@@ -93,9 +93,9 @@ body{
 }
 
 .content main .header .left h1{
-    font-size: 36px;
+    font-size: 33px;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     color: var(--dark);
 }
 
@@ -117,6 +117,16 @@ body{
 .content main .header .left .breadcrumb li a.active{
     color: var(--primary);
     pointer-events: none;
+}
+.content main .header .left .forCall
+{
+    font-size: 19px;
+}
+.content main .header .left .forCall i
+{
+    color: #0051a1;
+    padding-right: 4px;
+    filter: drop-shadow(0px 0px 4px var(--light-primary));
 }
 
 .content main .header .report{
@@ -181,6 +191,8 @@ body{
 }
 
 .content main .bottom-data .feedbacks .task-list{
+    max-height: 400px;
+    overflow-y: auto;
     width: 100%;
 }
 
@@ -218,6 +230,18 @@ body{
 
 .content main .bottom-data .feedbacks .task-list li:last-child{
    margin-bottom: 0;
+}
+.addfb
+{
+    background-color: #0051a1;
+    outline: none;
+    border: none;
+    padding: 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 

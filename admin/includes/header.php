@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/expandSearchBox.css">
     <link rel="stylesheet" href="assets/css/animatedLogin.css">
     <link rel="stylesheet" href="assets/css/autocomplete.css">
+    <link rel="stylesheet" href="assets/css/alert.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- magnific-popup css -->
@@ -25,6 +26,24 @@
 <?php
     include('includes/sidebar.php');
 ?>
+
+    <?php 
+      if(isset($_SESSION['message'])) 
+      {   
+          ?>
+
+          <div class="alert show showAlert">
+            <span class="bx bx-message-square-error"></span>
+            <span class="msg"><?= $_SESSION['message']; ?>!</span>
+            <div class="close-btn">
+                <span class="bx bx-x"></span>
+            </div>
+          </div>
+
+          <?php
+          unset($_SESSION['message']);
+      } 
+    ?>
 
 <!-- Main Content -->
 <div class="content">

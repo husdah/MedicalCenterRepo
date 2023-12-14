@@ -413,6 +413,10 @@
   pointer-events: none;
 
 }
+.ui-datepicker-calendar .disabled-day a {
+  color: blue; /* Blue color */
+  cursor: not-allowed;
+}
 
 #calendar .ui-datepicker .ui-datepicker-calendar .ui-datepicker-other-month .ui-state-default {
   color: #919BA3;

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include("functions/myfunctions.php");
+    require("functions/myfunctions.php");
     include('includes/header.php');
 
     $clinicsNb= getRowCount("clinic");
@@ -110,13 +110,14 @@
                         if(mysqli_num_rows($appt) >0){
                             foreach($appt as $item)
                             {
+                                $time = date('h:i A', strtotime($item['time']));
                                 ?>
                                     <tr>
                                         <td>
                                             <a href="view-patient.php"><p class="name"><?= $item['Fname']; ?> <?= $item['Lname'] ?></p></a>
                                         </td>
                                         <td class="date"><?= $item['date']; ?></td>
-                                        <td class="date"><?= $item['time']; ?></td>
+                                        <td><?= $time; ?></td>
                                         <td><span class="status <?= $item['status']; ?>"><?= $item['status']; ?></span></td>
                                     </tr>
 

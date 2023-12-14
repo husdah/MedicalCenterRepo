@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include("functions/myfunctions.php");
+    require("functions/myfunctions.php");
     include('includes/header.php');
 ?>
 
@@ -51,6 +51,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Image</th>
+                            <th>Icon</th>
                             <th class="action_center">Action</th>
                         </tr>
                     </thead>
@@ -66,6 +67,11 @@
                                         <td class="ClinicImgRow">
                                             <a href="/../uploads/<?= $item['photo']; ?>" class="imageLB"> 
                                                 <img src="/../uploads/<?= $item['photo']; ?>" alt="category Image">
+                                            </a>
+                                        </td>
+                                        <td class="ClinicIconRow">
+                                            <a href="/../uploads/<?= $item['icon']; ?>" class="imageLB"> 
+                                                <img src="/../uploads/<?= $item['icon']; ?>" alt="category Image">
                                             </a>
                                         </td>
                                         <td class="action_center">
@@ -118,9 +124,15 @@
                         <p class="description" id="clinicDescError">Counter</p>
                     </label> 
                     <label>
+                        Image:
                         <input id="clinicImg" name="clinicImg" required="" placeholder="Upload Image" type="file" accept="image/*" class="input">
                         <p id="clinicImgError" class="imgError">error</p>
-                    </label> 
+                    </label>
+                    <label>
+                        Icon:
+                        <input id="clinicIcon" name="clinicIcon" required="" placeholder="Upload Image" type="file" accept="image/*" class="input">
+                        <p id="clinicIconError" class="imgError">error</p>
+                    </label>  
                     <button id="addClinicFormBtn" name="addClinicFormBtn" type="button" class="submit">Submit</button>
                 </form>
             </div>
@@ -157,6 +169,18 @@
                         <img id="oldClinicImg" name="oldClinicImg" src="" height="50px" width="50px" alt="category Image">
                     </a>    
                 </label>
+                <label>
+                    Icon:
+                    <input id="editClinicIcon" name="editClinicIcon" required="" placeholder="Upload Image" type="file" accept="image/*" class="input">
+                    <p id="editClinicIconError" class="imgError">error</p>
+                </label>
+                <label for=""><span>Current Icon</span></label>
+                <label>
+                    <input type="hidden" id="old_icon" name="old_icon" value="">
+                    <a href="" class="imageLB" id="oldClinicIconDisplayer"> 
+                        <img id="oldClinicIcon" name="oldClinicIcon" src="" height="50px" width="50px" alt="category Image">
+                    </a>    
+                </label>  
                 <button id="editClinicFormBtn" name="editClinicFormBtn" type="button" class="submit">Save Changes</button>
             </form>
         </div>

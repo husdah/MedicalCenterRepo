@@ -21,6 +21,14 @@ $(document).ready(function () {
         let string = imageSrc.substring(n-1);
         $('#old_image').val(string);
 
+        var iconSrc = $(this).closest('tr').find('.ClinicIconRow').find('.imageLB').find('img').attr('src');
+        $('#oldClinicIconDisplayer').attr('href', iconSrc);
+        $('#oldClinicIcon').attr('src', iconSrc);
+
+        let m = iconSrc.length - path.length;
+        let string2 = iconSrc.substring(m-1);
+        $('#old_icon').val(string2);
+
         document.getElementById('clinicAdd').classList.add('hide');
         document.getElementById('clinicAdd').classList.remove('view');
 

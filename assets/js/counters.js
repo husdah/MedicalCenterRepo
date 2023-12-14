@@ -1,5 +1,5 @@
 var count = document.querySelectorAll('.count');
-console.log(count);
+//console.log(count);
 var inc = [];
 
 var countsID = document.getElementById("countsID");

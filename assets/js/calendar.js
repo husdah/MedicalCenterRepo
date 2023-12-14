@@ -4,7 +4,9 @@ var month;
 var year;
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 var center;
+var dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+// console.log(enabledDays);
 // remove border if the selected date is today's date
 function todayEqualActive(){
   setTimeout(function(){
@@ -23,7 +25,7 @@ function todayEqualActive(){
 
 // call the above function on document ready
 todayEqualActive();
-
+/***************Hon sheghle**************** */
 $('#calendar').datepicker({
   inline: true,
   firstDay: 1,
@@ -31,12 +33,39 @@ $('#calendar').datepicker({
   onChangeMonthYear: function(){
     todayEqualActive();
   },
+  // beforeShowDay: function (date) {
+  //   var day = date.getDay(); // 0-Sunday, 1-Monday, ..., 6-Saturday\
+  //   return [(day !== 1 && day !== 6), (day === 1 || day === 6) ? 'disabled-day' : ''];
+  // },
+  beforeShowDay: function (date) {
+    var day = date.getDay(); 
+    var isEnabled = enabledDays.includes(dayNames[day]);
+
+    return [
+      isEnabled, 
+      isEnabled ? '' : 'disabled-day' 
+    ];
+  },
   onSelect: function(dateText, inst){
     var date = $(this).datepicker('getDate'),
     day  = date.getDate(),
     month = date.getMonth() + 1,
     year =  date.getFullYear();
-    
+  
+    var dayOfWeek = $.datepicker.formatDate('DD', $(this).datepicker('getDate'));
+    $.ajax({
+      method: "POST",
+      url: "../../doctorpage.php",
+      data: { selectedDay: dayOfWeek },
+      success: function(response) {
+        $('#owl1').load(location.href + " #owl1");
+      },
+      error: function(xhr, status, error) {
+         console.error("AJAX Request Failed. Status:", status, "Error:", error);
+      }
+   });
+   
+    /************Hon bde eshteghel*********/
     // display day and month on submit button
     var monthName = months[month - 1];
     $(".request .day").text(monthName + " " + day);
@@ -90,6 +119,7 @@ $('#calendar').datepicker({
     center.next("div").addClass("center-n");
   }
 });
+/******************************/ 
 
 // if the inputs arent empty force ":focus state"
 $(".form-name input").each(function(){
@@ -148,7 +178,9 @@ $('.owl').owlCarousel({
       items:7
     }
   }
+  
 });
+
 
 $(document).on('click', '.ui-datepicker-next', function(e){
   $(".timepicker-cf").hide(0);

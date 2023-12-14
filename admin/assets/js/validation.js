@@ -45,6 +45,27 @@ function validateNameSubmit(name, nameInput, errorName) {
     return true;
 }
 
+// Function to handle submit Name events
+function validateAdminNameSubmit(name, nameInput, errorName) {
+    let strArray = name.split(" ");
+    if (name == '' || !validateDesc(name) || strArray.length !=2) {
+        nameInput.classList.add("required");
+
+        if (name == '') {
+            errorName.textContent = errorName.className +' required';
+            return false;
+        } else if (!validateDesc(name)) {
+            errorName.textContent = 'Only letters are allowed.';
+            return false;
+        }else if(strArray.length !=2){
+            errorName.textContent = 'Should enter First and last name.';
+            return false;
+        }
+    }
+    return true;
+}
+
+
 // Function to handle submit Email events
 function validateEmailSubmit(email, emailInput, erroremail) {
     if (email == '' || !validateEmail(email)) {
@@ -73,6 +94,15 @@ function validatePhoneSubmit(phone, phoneInput, errorPhone) {
             errorPhone.textContent = 'Invalid Phone';
             return false;
         }
+    }
+    return true;
+}
+
+function validatePhoneSubmit2(phone, phoneInput, errorPhone) {
+    if (phone != '' && !validatePhone(phone)) {
+        phoneInput.classList.add("required");
+        errorPhone.textContent = 'Invalid Phone';
+        return false;
     }
     return true;
 }
@@ -231,10 +261,60 @@ function validateFile() {
     return true;
 }
 
+// Function to validate file2
+function validateFile2() {
+    var fileInput = document.getElementById('clinicIcon');
+    var errorElement = document.getElementById('clinicIconError');
+
+    if (fileInput.files.length <= 0) {
+        fileInput.classList.add("required");
+        errorElement.classList.add("count");
+        errorElement.textContent = 'icon required';
+        return false;
+    } else if (fileInput.files.length > 0) {
+        var allowedTypes = ['image/jpeg', 'image/png'];
+        var fileType = fileInput.files[0].type;
+
+        if (allowedTypes.indexOf(fileType) === -1) {
+            fileInput.classList.add("required");
+            errorElement.classList.add("count");
+            errorElement.textContent = 'Invalid file type. Please choose a valid image file.';
+            return false;
+        }
+    }
+    errorElement.textContent = '';
+    fileInput.classList.remove("required");
+    errorElement.classList.remove("count");
+    return true;
+}
+
+
 // Function to validate Edit file 
 function validateFileEdit() {
     var fileInput = document.getElementById('editClinicImg');
     var errorElement = document.getElementById('editClinicImgError');
+
+    if (fileInput.files.length > 0) {
+        var allowedTypes = ['image/jpeg', 'image/png'];
+        var fileType = fileInput.files[0].type;
+
+        if (allowedTypes.indexOf(fileType) === -1) {
+            fileInput.classList.add("required");
+            errorElement.classList.add("count");
+            errorElement.textContent = 'Invalid file type. Please choose a valid image file.';
+            return false;
+        }
+    }
+    errorElement.textContent = '';
+    fileInput.classList.remove("required");
+    errorElement.classList.remove("count");
+    return true;
+}
+
+// Function to validate Edit file 2
+function validateFileEdit2() {
+    var fileInput = document.getElementById('editClinicIcon');
+    var errorElement = document.getElementById('editClinicIconError');
 
     if (fileInput.files.length > 0) {
         var allowedTypes = ['image/jpeg', 'image/png'];
@@ -266,6 +346,31 @@ function handleInputNameEvent(event) {
             errorElement.textContent = errorElement.className +' required';
         } else if (!validateName(inputElement.value)) {
             errorElement.textContent = 'Only letters are allowed.';
+        }
+
+    } else {
+        inputElement.classList.remove("required");
+        errorElement.textContent = errorElement.className;
+    }
+}
+
+// Function to handle input Admin NAME events
+function handleInputAdminNameEvent(event) {
+    var inputElement = event.target;
+    var errorElementId = inputElement.id + 'Error';
+    var errorElement = document.getElementById(errorElementId);
+
+    var strArray= inputElement.value.split(" ");
+
+    if (inputElement.value == '' || !validateDesc(inputElement.value) || strArray.length !=2) {
+        inputElement.classList.add("required");
+
+        if (inputElement.value == '') {
+            errorElement.textContent = errorElement.className +' required';
+        } else if (!validateDesc(inputElement.value)) {
+            errorElement.textContent = 'Only letters are allowed.';
+        }else if(strArray.length !=2){
+            errorElement.textContent = 'Should enter First and last name.';
         }
 
     } else {
@@ -507,7 +612,7 @@ function handleInputTimeEvent(event) {
 }
 
 // Function to handle input Acount CHECk events
-function handleAccountCheckEvent(event) {
+/* function handleAccountCheckEvent(event) {
     var inputElement = event.target;
 
     if(!inputElement.checked){
@@ -523,7 +628,7 @@ function handleAccountCheckEvent(event) {
         patientPassConfirmInput.classList.remove("required");
         document.getElementById(patientPassConfirmInput.id + 'Error').textContent = "Confirm password";
     }
-}
+} */
 
 // Function to handle input Acount CHECk events
 function handleClosedCheckEvent(event) {
@@ -531,27 +636,41 @@ function handleClosedCheckEvent(event) {
 
     if(inputElement.checked){
         WHFromInput.classList.remove("required");
+        WHFromInput.disabled = true;
+        WHFromInput.value = "";
         document.getElementById("WHFromError").classList.remove("count");
         document.getElementById("WHFromError").textContent = "From";
 
         WHTOInput.classList.remove("required");
+        WHTOInput.disabled = true;
+        WHTOInput.value = "";
         document.getElementById("WHTOError").classList.remove("count");
         document.getElementById("WHTOError").textContent = "To";
+    }else{
+        WHFromInput.disabled = false;
+        WHTOInput.disabled = false;
     }
 }
 
-// Function to handle input Acount CHECk events
+// Function to handle input available CHECk events
 function handleAvailableCheckEvent(event) {
     var inputElement = event.target;
 
     if(!inputElement.checked){
         DWHFromInput.classList.remove("required");
+        DWHFromInput.disabled = true;
+        DWHFromInput.value = "";
         document.getElementById("DWHFromError").classList.remove("count");
         document.getElementById("DWHFromError").textContent = "From";
 
         DWHTOInput.classList.remove("required");
+        DWHTOInput.disabled = true;
+        DWHTOInput.value = "";
         document.getElementById("DWHTOError").classList.remove("count");
         document.getElementById("DWHTOError").textContent = "To";
+    }else{
+        DWHFromInput.disabled = false;
+        DWHTOInput.disabled = false;
     }
 }
 
@@ -561,12 +680,19 @@ function handleAvailableExcepCheckEvent(event) {
 
     if(!inputElement.checked){
         exceptionFromInput.classList.remove("required");
+        exceptionFromInput.disabled = true;
+        exceptionFromInput.value = "";
         document.getElementById("exceptionFromError").classList.remove("count");
         document.getElementById("exceptionFromError").textContent = "From";
 
         exceptionTOInput.classList.remove("required");
+        exceptionTOInput.disabled = true;
+        exceptionTOInput.value = "";
         document.getElementById("exceptionTOError").classList.remove("count");
         document.getElementById("exceptionTOError").textContent = "To";
+    }else{
+        exceptionFromInput.disabled = false;
+        exceptionTOInput.disabled = false;
     }
 }
 
@@ -584,6 +710,10 @@ var clinicImgInput = document.getElementById('clinicImg');
 var errorImg = document.getElementById('clinicImgError');
 clinicImgInput?.addEventListener("change", validateFile);
 
+var clinicIconInput = document.getElementById('clinicIcon');
+var errorIcon = document.getElementById('clinicIconError');
+clinicIconInput?.addEventListener("change", validateFile2);
+
 //edit clinic form
 var editClinicNameInput = document.getElementById('editClinicName');
 editClinicNameInput?.addEventListener('input', handleInputNameEvent);
@@ -594,6 +724,10 @@ editClinicDescInput?.addEventListener('input', handleInputDescEvent);
 var editClinicImgInput = document.getElementById('editClinicImg');
 var errorImg = document.getElementById('editClinicImgError');
 editClinicImgInput?.addEventListener("change", validateFileEdit);
+
+var editClinicIconInput = document.getElementById('editClinicIcon');
+var errorIcon = document.getElementById('editClinicIconError');
+editClinicIconInput?.addEventListener("change", validateFileEdit2);
 
 //add doctor form
 var doctorFNInput = document.getElementById('doctorFN');
@@ -627,6 +761,9 @@ editDoctorLNInput?.addEventListener('input', handleInputNameEvent);
 var editDoctorEmailInput = document.getElementById('editDoctorEmail');
 editDoctorEmailInput?.addEventListener('input', handleInputEmailEvent);
 
+var editDoctorPhoneInput = document.getElementById('editDoctorPhone');
+editDoctorPhoneInput?.addEventListener('input', handleInputPhoneEvent);
+
 var editDoctorClinicInput = document.getElementById('editDoctorClinic');
 editDoctorClinicInput?.addEventListener('change', handleSelectEvent);
 
@@ -646,20 +783,20 @@ patientLNInput?.addEventListener('input', handleInputNameEvent);
 var patientMaleCheck = document.getElementById('male');
 var patientFemaleCheck = document.getElementById('female');
 
-var patientAccountCheck = document.getElementById('account');
-patientAccountCheck?.addEventListener("change",handleAccountCheckEvent);
+/* var patientAccountCheck = document.getElementById('account');
+patientAccountCheck?.addEventListener("change",handleAccountCheckEvent); */
 
 var patientDOBInput = document.getElementById('patientDOB');
 patientDOBInput?.addEventListener('input', handleDOBEvent);
 
 var patientBloodTypeInput = document.getElementById('patientBT');
-patientBloodTypeInput?.addEventListener('change', handleSelectEvent);
+/* patientBloodTypeInput?.addEventListener('change', handleSelectEvent); */
 
 var patientEmailInput = document.getElementById('patientEmail');
 patientEmailInput?.addEventListener('input', handleInputEmailEvent);
 
 var patientPhoneInput = document.getElementById('patientPhone');
-patientPhoneInput?.addEventListener('input', handleInputPhoneEvent);
+patientPhoneInput?.addEventListener('input', handleInputPhoneEvent2);
 
 var patientPassInput = document.getElementById('patientPass');
 patientPassInput?.addEventListener('input', handleInputPassEvent);
@@ -676,7 +813,7 @@ urgentBTNInput?.addEventListener('input', handleInputNumberUrgentBTEvent);
 
 //admin settings form
 var adminNameInput = document.getElementById('signup-name');
-adminNameInput?.addEventListener('input', handleInputNameEvent);
+adminNameInput?.addEventListener('input', handleInputAdminNameEvent);
 
 var adminEmailInput = document.getElementById('signup-email');
 adminEmailInput?.addEventListener('input', handleInputEmailEvent);
@@ -701,8 +838,8 @@ var WHClosedCheck = document.getElementById('closed');
 WHClosedCheck?.addEventListener("change",handleClosedCheckEvent);
 
 //add doctor working hours form
-var docNameInput = document.getElementById('docName');
-docNameInput?.addEventListener('input', handleInputNameEvent);
+/* var docNameInput = document.getElementById('docName');
+docNameInput?.addEventListener('input', handleInputNameEvent); */
 
 var DWHDayInput = document.getElementById('DWHDay');
 DWHDayInput?.addEventListener('change', handleSelectEvent);
@@ -750,8 +887,9 @@ addClinicFormBtn?.addEventListener("click", function(event) {
         validateNameSubmit(name, clinicNameInput, errorName);
         validateDescSubmit(desc, clinicDescInput, errorDesc);
         validateFile();
+        validateFile2();
 
-        if (!validateNameSubmit(name, clinicNameInput, errorName) || !validateDescSubmit(desc, clinicDescInput, errorDesc) || !validateFile()) {
+        if (!validateNameSubmit(name, clinicNameInput, errorName) || !validateDescSubmit(desc, clinicDescInput, errorDesc) || !validateFile() || !validateFile2()) {
             /* alert("invalid form"); */
         } else {
             document.getElementById('addClinicForm').submit();
@@ -834,13 +972,14 @@ editDoctorFormBtn?.addEventListener("click", function(event) {
         let firstName= editDoctorFNInput.value;
         let lastName= editDoctorLNInput.value;
         let email = editDoctorEmailInput.value;
-        /* let clinic = editDoctorClinicInput.value; */
+        let phone = editDoctorPhoneInput.value;
         let password = editDoctorPassInput.value;
         let confirm = editDoctorPassConfirmInput.value;
     
         let errorFN = document.getElementById("editDoctorFNError");
         let errorLN = document.getElementById("editDoctorLNError");
         let errorEmail = document.getElementById("editDoctorEmailError");
+        let errorPhone = document.getElementById("editDoctorPhoneError");
         let errorClinic = document.getElementById("editDoctorClinicError");
         let errorPass = document.getElementById("editDoctorPassError");
         let errorPassConfirm = document.getElementById("editDoctorPassConfirmError");
@@ -848,11 +987,12 @@ editDoctorFormBtn?.addEventListener("click", function(event) {
         validateNameSubmit(firstName, editDoctorFNInput, errorFN);
         validateNameSubmit(lastName, editDoctorLNInput, errorLN);
         validateEmailSubmit(email, editDoctorEmailInput, errorEmail);
+        validatePhoneSubmit(phone, editDoctorPhoneInput, errorPhone);
         validatePassSubmit(password, editDoctorPassInput, errorPass);
         ConfirmPassSubmit(confirm, editDoctorPassConfirmInput,password, errorPassConfirm);
         validateSelectSubmit(editDoctorClinicInput, errorClinic);
     
-        if (!validateNameSubmit(firstName, editDoctorFNInput, errorFN) || !validateNameSubmit(lastName, editDoctorLNInput, errorLN) || !validateEmailSubmit(email, editDoctorEmailInput, errorEmail) || !validatePassSubmit(password, editDoctorPassInput, errorPass) || !ConfirmPassSubmit(confirm, editDoctorPassConfirmInput,password, errorPassConfirm) || !validateSelectSubmit(editDoctorClinicInput, errorClinic)) {
+        if (!validateNameSubmit(firstName, editDoctorFNInput, errorFN) || !validateNameSubmit(lastName, editDoctorLNInput, errorLN) || !validateEmailSubmit(email, editDoctorEmailInput, errorEmail) || !validatePhoneSubmit(phone, editDoctorPhoneInput, errorPhone) || !validatePassSubmit(password, editDoctorPassInput, errorPass) || !ConfirmPassSubmit(confirm, editDoctorPassConfirmInput,password, errorPassConfirm) || !validateSelectSubmit(editDoctorClinicInput, errorClinic)) {
             /* alert("invalid form"); */
         } else {
            /*  alert("done"); */
@@ -883,7 +1023,7 @@ addPatientFormBtn?.addEventListener("click", function(event) {
         let errorDOB = document.getElementById("patientDOBError");
         let errorEmail = document.getElementById("patientEmailError");
         let errorPhone = document.getElementById("patientPhoneError");
-        let errorBT = document.getElementById("patientBTError");
+        /* let errorBT = document.getElementById("patientBTError"); */
         let errorPass = document.getElementById("patientPassError");
         let errorPassConfirm = document.getElementById("patientPassConfirmError");
     
@@ -891,20 +1031,20 @@ addPatientFormBtn?.addEventListener("click", function(event) {
         validateNameSubmit(lastName, patientLNInput, errorLN);
         validateGenderSubmit(patientMaleCheck,patientFemaleCheck);
         validateDOBSubmit(patientDOBInput, errorDOB);
-        validateSelectSubmit(patientBloodTypeInput, errorBT);
-        if(patientAccountCheck.checked){
+        /* validateSelectSubmit(patientBloodTypeInput, errorBT); */
+       /*  if(patientAccountCheck.checked){ */
             validateEmailSubmit(email, patientEmailInput, errorEmail);
-            validatePhoneSubmit(phone, patientPhoneInput, errorPhone);
+            validatePhoneSubmit2(phone, patientPhoneInput, errorPhone);
             validatePassSubmit(password, patientPassInput, errorPass);
             ConfirmPassSubmit(confirm, patientPassConfirmInput,password, errorPassConfirm);
-        }
+        /* } */
     
-        if (!validateNameSubmit(firstName, patientFNInput, errorFN) || !validateNameSubmit(lastName, patientLNInput, errorLN) || !validateGenderSubmit(patientMaleCheck,patientFemaleCheck) || !validateDOBSubmit(patientDOBInput, errorDOB) || !validateSelectSubmit(patientBloodTypeInput, errorBT) 
-            || (patientAccountCheck.checked && (
+        if (!validateNameSubmit(firstName, patientFNInput, errorFN) || !validateNameSubmit(lastName, patientLNInput, errorLN) || !validateGenderSubmit(patientMaleCheck,patientFemaleCheck) || !validateDOBSubmit(patientDOBInput, errorDOB) /* || !validateSelectSubmit(patientBloodTypeInput, errorBT)  */
+            || /* (patientAccountCheck.checked && ( */
                 !validateEmailSubmit(email, patientEmailInput, errorEmail) 
-            || !validatePhoneSubmit(phone, patientPhoneInput, errorPhone) 
+            || !validatePhoneSubmit2(phone, patientPhoneInput, errorPhone) 
             || !validatePassSubmit(password, patientPassInput, errorPass) 
-            || !ConfirmPassSubmit(confirm, patientPassConfirmInput,password, errorPassConfirm) ))
+            || !ConfirmPassSubmit(confirm, patientPassConfirmInput,password, errorPassConfirm) /* )) */
             ) {
             /* alert("invalid form"); */
         } else {
@@ -960,12 +1100,12 @@ adminFormBtn?.addEventListener("click", function(event) {
         let errorPass = document.getElementById("signup-passwordError");
         let errorPassConfirm = document.getElementById("signup-passwordConfirmError");
     
-        validateNameSubmit(name, adminNameInput, errorName);
+        validateAdminNameSubmit(name, adminNameInput, errorName);
         validateEmailSubmit(email, adminEmailInput, errorEmail);
         validatePassSubmit(password, adminPassInput, errorPass);
         ConfirmPassSubmit(confirm, adminPassConfirmInput,password, errorPassConfirm);
     
-        if (!validateNameSubmit(name, adminNameInput, errorName) || !validateEmailSubmit(email, adminEmailInput, errorEmail) || !validatePassSubmit(password, adminPassInput, errorPass) || !ConfirmPassSubmit(confirm, adminPassConfirmInput,password, errorPassConfirm) ) {
+        if (!validateAdminNameSubmit(name, adminNameInput, errorName) || !validateEmailSubmit(email, adminEmailInput, errorEmail) || !validatePassSubmit(password, adminPassInput, errorPass) || !ConfirmPassSubmit(confirm, adminPassConfirmInput,password, errorPassConfirm) ) {
             /* alert("invalid form"); */
         } else {
            /*  alert("done"); */
@@ -1015,21 +1155,21 @@ manageDWHFormBtn?.addEventListener("click", function(event) {
         alert("stop submit");
 
     }else{
-        let docName= docNameInput.value;
+        /* let docName= docNameInput.value; */
     
         let errorDay= document.getElementById("DWHDayError");
         let errorTFrom= document.getElementById("DWHFromError");
         let errorTTo= document.getElementById("DWHTOError");
-        let errorName = document.getElementById("docNameError");
+        /* let errorName = document.getElementById("docNameError"); */
     
-        validateNameSubmit(docName, docNameInput, errorName);
+        /* validateNameSubmit(docName, docNameInput, errorName); */
         validateSelectSubmit(DWHDayInput, errorDay);
         if(DWHAvailableCheck.checked){
             validateTimeSubmit(DWHFromInput, errorTFrom);
             validateTimeSubmit(DWHTOInput, errorTTo);
         }
     
-        if (!validateNameSubmit(docName, docNameInput, errorName) || !validateSelectSubmit(DWHDayInput, errorDay) || (DWHAvailableCheck.checked && ( !validateTimeSubmit(DWHFromInput, errorTFrom) || !validateTimeSubmit(DWHTOInput, errorTTo)))) {
+        if (!validateSelectSubmit(DWHDayInput, errorDay) || (DWHAvailableCheck.checked && ( !validateTimeSubmit(DWHFromInput, errorTFrom) || !validateTimeSubmit(DWHTOInput, errorTTo)))) {
             /* alert("invalid form"); */
         } else {
             /* alert("done"); */

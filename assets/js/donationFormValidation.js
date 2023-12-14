@@ -13,6 +13,7 @@ function validateInput(input) {
         return input.match(emailRegex);
     }
 }
+
 const checkEmail2 = () => {
     if(emailText.value == ''){
         errorDisplay.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
@@ -39,9 +40,7 @@ emailText?.addEventListener('input', validateEmail2);
 var bloodType = document.getElementById('mySelect');
 const validateSelect = () => {
     var selectedOption = bloodType.options[bloodType.selectedIndex];
-    console.log(selectedOption);
     var selectedValue  = selectedOption.value;
-    console.log(selectedValue);
     if(selectedValue == 'Blood-Type'){
         bloodType.style.color = 'red';
         return false;
@@ -56,12 +55,14 @@ bloodType?.addEventListener('change', validateSelect)
 const clickDonate = () => {
     
     if(validateSelect() && checkEmail2() && validateEmail2()){
-        alert('Submit');
+        /* alert('Submit'); */
+        // Submit the form manually
+        document.getElementById('donateform').submit();
     }
     else{
         validateSelect();
         checkEmail2();
-        //alert('something wrong');
+        /* alert('something wrong'); */
     }
 
 }
