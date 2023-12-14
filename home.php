@@ -177,12 +177,16 @@
                 echo '<script>alert("No record found")</script>';  
             }else{
                 /*while($selectdata = mysqli_fetch_array($result)){*/
-                for($i=0; $i<4; $i++){
+                for($i=0; $i<$rowcount; $i++){
                     $selectdata = mysqli_fetch_array($doctors);
+                    $profilePic = "docImgPlaceholder.jpg";
+                    if($selectdata['doctorPhoto'] != null){
+                        $profilePic = $selectdata['doctorPhoto'];
+                    }
             ?>
             <div class="doctor-column<?php echo $i; ?>">
                 <div class="team__item">
-                    <img src="<?php echo $selectdata['doctorPhoto']; ?>" alt="">
+                    <img src="uploads/<?php echo $profilePic; ?>" alt="">
                     <h5>Dr. <?php echo $selectdata['FullName']; ?></h5>
                     <span><?php echo $selectdata['clinicName']; ?></span>
                     <div class="team__item__social">
@@ -218,12 +222,12 @@
                         echo '<script>alert("No record found")</script>';  
                     }else{
                         /*while($selectdata = mysqli_fetch_array($result)){*/
-                        for ($i = 0; $i < 10; $i++) {
+                        for ($i = 0; $i < $rowcount; $i++) {
                             $selectdata = mysqli_fetch_array($clinics);
                     ?>
                         <div class="swiper-slide item">
                             <div class="clinic-img">
-                                <img src="<?php echo $selectdata['photo']; ?>" class="w-80" alt="<?php echo $selectdata['name']; ?> clinic">
+                                <img src="uploads/<?php echo $selectdata['photo']; ?>" class="w-80" alt="<?php echo $selectdata['name']; ?> clinic">
                             </div>
                             <div class="clinic-info">
                                 <h3><?php echo $selectdata['name']; ?></h3>

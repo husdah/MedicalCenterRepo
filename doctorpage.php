@@ -1,5 +1,5 @@
 <?php 
-$did='2';
+$did=$_GET['did'];
 $enabledDays=array();
 require('config/dbcon.php');
 $query="select Fname, Lname,ProfilePic,phoneNumber,linkedin,instagram,facebook,doctor.clinicId,name from user join doctor on user.userId=doctor.userId  left join media on doctor.doctorId=media.doctorId left join clinic on doctor.clinicId = clinic.clinicId where doctor.doctorId=$did";
@@ -44,21 +44,25 @@ while ($row = mysqli_fetch_assoc($result4)) {
                     <?php 
                     while($row=mysqli_fetch_assoc($result))
                     {
+                        $profilePic = "docImgPlaceholder.jpg";
+                        if($row['ProfilePic'] != null){
+                            $profilePic = $row['ProfilePic'];
+                        }
                         echo '
                         <div class="photo">
-                        <img src="'.$row["ProfilePic"].'" alt="">
-                    </div>
-                    <div class="drInfo">
-                    <h1>Dr '.$row['Fname'].' '.$row['Lname'].'</h1>
-                    <ul class="breadcrumb">
-                        <li><a href="#" class="active">'.$row['name'].'</a></li>
-                        /
-                        <li><a href="'.$row["facebook"].'" class="active"><i class="bx bxl-facebook-circle"></i></a></li>
-                        <li><a href="'.$row["instagram"].'" class="active"><i class="bx bxl-instagram"></i></a></li>
-                        <li><a href="'.$row["linkedin"].'" class="active"><i class="bx bxl-linkedin"></i></a></li>
-                    </ul>
-                    <span class="forCall"><i class="fa-solid fa-phone"></i><span class="phoneNum">:'.$row["phoneNumber"].'</span></span>
-                </div>
+                            <img src="uploads/'.$profilePic.'" alt="">
+                        </div>
+                        <div class="drInfo">
+                            <h1>Dr '.$row['Fname'].' '.$row['Lname'].'</h1>
+                            <ul class="breadcrumb">
+                                <li><a href="#" class="active">'.$row['name'].'</a></li>
+                                /
+                                <li><a href="'.$row["facebook"].'" class="active"><i class="bx bxl-facebook-circle"></i></a></li>
+                                <li><a href="'.$row["instagram"].'" class="active"><i class="bx bxl-instagram"></i></a></li>
+                                <li><a href="'.$row["linkedin"].'" class="active"><i class="bx bxl-linkedin"></i></a></li>
+                            </ul>
+                            <span class="forCall"><i class="fa-solid fa-phone"></i><span class="phoneNum">:'.$row["phoneNumber"].'</span></span>
+                        </div>
                 </div>
                 <a href="bookappsinglenew.php?cid='.$row["clinicId"].'" class="report">
                     <i class="bx bx-arrow-back"></i>
@@ -79,7 +83,6 @@ while ($row = mysqli_fetch_assoc($result4)) {
                     </div>
 
                     <div class="wrapper">
-  
                         <div id="calendar">
                           <div class="header">
                             <div class="overlay">
@@ -90,9 +93,6 @@ while ($row = mysqli_fetch_assoc($result4)) {
                         </div>
                         
                          <div class="inner-wrap">
-                        
-                        
-                            
                             <button type="submit" class="request disabled" id="btn">
                               Request appointment <br class="break">
                               <span>on</span>
@@ -108,27 +108,15 @@ while ($row = mysqli_fetch_assoc($result4)) {
                       
                         </div>
                         
+                        <input type="hidden" id="docId_Get" value="<?= $did;?>">
                         <div class='timepicker'>
-                          <div class="owl" id="owl1">
-                           <?php 
-                           
-                                $day=$_POST['selectedDay'];
-                                $query3="select formHour,toHour,day from doctorhours where doctorId=$did and day='$day'";
-                                $result3=mysqli_query($con,$query3);
-                           while ($row = mysqli_fetch_assoc($result3)) {
-                                $startTime = new DateTime($row['formHour']);
-                              $endTime = new DateTime($row['toHour']);
-                                  while ($startTime <= $endTime) {
-                               echo '<div>' . $startTime->format('H:i') . '</div>';
-                             $startTime->modify('+1 hour'); 
-                               }
-                               }
+                            <div class="owl" id="owl1">
 
-                           ?>
-                          </div>
-                          <div class="fade-l"></div>
-                          <div class="fade-r"></div>
+                            </div>
+                            <div class="fade-l"></div>
+                            <div class="fade-r"></div>
                         </div>
+
                           
                     </div>
 

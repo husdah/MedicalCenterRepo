@@ -1,6 +1,8 @@
 
     <?php
         include('includes/header.php');
+        include('homeFunctions.php');
+
     ?>
 
     <section id="contact-section" class="contact-section">

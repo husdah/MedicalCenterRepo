@@ -50,7 +50,7 @@ $res=mysqli_query($con,$query);
                 echo '
                 <li>
                     <a href="bookappsinglenew.php?cid='.$row["clinicId"].'">
-                    <img src="'.$row["icon"].'" alt="">
+                    <img src="uploads/'.$row["icon"].'" alt="">
                         <span>'.$row["name"].'</span>
                     </a>
                 </li>
@@ -89,10 +89,14 @@ $res=mysqli_query($con,$query);
           <?php
               while($row=mysqli_fetch_assoc($result2))
               {
+                 $profilePic = "docImgPlaceholder.jpg";
+                    if($row['ProfilePic'] != null){
+                        $profilePic = $row['ProfilePic'];
+                    }
                 echo '
                 <div class="card">
                 <div class="card__border">
-                    <img src="'.$row["ProfilePic"].'" alt="card image" class="card__img">
+                    <img src="uploads/'.$profilePic.'" alt="card image" class="card__img">
                 </div>
 
                 <h3 class="card__name">Dr '.$row['Fname'].' '.$row['Lname'].'</h3>

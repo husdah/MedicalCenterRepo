@@ -53,7 +53,7 @@ $('#calendar').datepicker({
     year =  date.getFullYear();
   
     var dayOfWeek = $.datepicker.formatDate('DD', $(this).datepicker('getDate'));
-    $.ajax({
+   /*  $.ajax({
       method: "POST",
       url: "../../doctorpage.php",
       data: { selectedDay: dayOfWeek },
@@ -63,7 +63,22 @@ $('#calendar').datepicker({
       error: function(xhr, status, error) {
          console.error("AJAX Request Failed. Status:", status, "Error:", error);
       }
-   });
+   }); */
+
+
+  let doctorId= document.getElementById("docId_Get").value;
+  $.ajax({
+    method: "POST",
+    url: "timePickerSet.php", // Update this with the actual path to your PHP script
+    data: { selectedDay: dayOfWeek, did: doctorId },
+    success: function(response) {
+        // Assuming your PHP script returns only the working hours HTML
+        $('#owl1').html(response);
+    },
+    error: function(xhr, status, error) {
+        console.error("AJAX Request Failed. Status:", status, "Error:", error);
+    }
+});
    
     /************Hon bde eshteghel*********/
     // display day and month on submit button

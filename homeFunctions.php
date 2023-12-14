@@ -13,11 +13,11 @@ function getRowCount($table){
 // Doctor Section
 function getDoctors(){
     global $con;
-    $query    = 'SELECT doctor.profilePic AS doctorPhoto, CONCAT(user.Fname, " ", user.Lname) AS FullName, clinic.name AS clinicName, media.facebook, media.instagram, media.linkedin
+    $query= 'SELECT doctor.profilePic AS doctorPhoto, CONCAT(user.Fname, " ", user.Lname) AS FullName, clinic.name AS clinicName, media.facebook, media.instagram, media.linkedin
     FROM doctor
-    JOIN user   ON doctor.userId = user.userId
-    JOIN clinic ON clinic.clinicId = doctor.clinicId
-    JOIN media  ON doctor.doctorId = media.doctorId;
+    LEFT JOIN user   ON doctor.userId = user.userId
+    LEFT JOIN clinic ON clinic.clinicId = doctor.clinicId
+    LEFT JOIN media  ON doctor.doctorId = media.doctorId;
     ';
     $result   = mysqli_query($con,$query); 
     return $result;
@@ -77,7 +77,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email-phone']) && isset
 // Footer Section
 function getOpeningHour(){
     global $con;
-    $query    = 'SELECT * FROM medicalhours';
+    $query    = "SELECT * FROM medicalhours ORDER BY FIELD(day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');";
     $result   = mysqli_query($con,$query); 
     return $result;
 }
