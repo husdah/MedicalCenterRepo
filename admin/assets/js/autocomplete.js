@@ -34,25 +34,25 @@ input.onkeyup = (e)=>{
             /* return data = '<li>'+ data +'</li>'; */
 
             if(data == 'patients' || data == 'patient registration'){
-                return data = '<li><a href="patients.html">'+ data +'</a></li>';
+                return data = '<li><a href="patients.php">'+ data +'</a></li>';
             }
             else if(data == 'doctors' || data == 'doctor registration'){
-                return data = '<li><a href="doctors.html">'+ data +'</a></li>';
+                return data = '<li><a href="doctors.php">'+ data +'</a></li>';
             }
             else if(data == 'recent appointments' || data == 'reminders'){
-                return data = '<li><a href="dashboard.html">'+ data +'</a></li>';
+                return data = '<li><a href="dashboard.php">'+ data +'</a></li>';
             }
             else if(data == 'clinics' || data == 'add clinic'){
-                return data = '<li><a href="clinics.html">'+ data +'</a></li>';
+                return data = '<li><a href="clinics.php">'+ data +'</a></li>';
             }
             else if(data == 'donors'){
-                return data = '<li><a href="donors.html">'+ data +'</a></li>';
+                return data = '<li><a href="donors.php">'+ data +'</a></li>';
             }
             else if(data == 'working hours'){
-                return data = '<li><a href="workingHours.html">'+ data +'</a></li>';
+                return data = '<li><a href="workingHours.php">'+ data +'</a></li>';
             }
             else if(data == 'settings'){
-                return data = '<li><a href="settings.html">'+ data +'</a></li>';
+                return data = '<li><a href="settings.php">'+ data +'</a></li>';
             }else{
                 return data = '<li>'+ data +'</li>';
             }

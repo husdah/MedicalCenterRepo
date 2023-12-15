@@ -42,7 +42,7 @@ while($row=mysqli_fetch_assoc($res))
   echo '
        <div class="item">
           <a href="bookappsinglenew.php?cid='.$row["clinicId"].'">
-            <img src="'.$row["icon"].'" alt="">
+            <img src="uploads/'.$row["icon"].'" alt="">
             <div class="name">'.$row["name"].'</div>
             <div class="des">
               '.$row["description"].'
