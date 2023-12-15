@@ -537,6 +537,20 @@ body{
     margin-bottom: 24px;
 }
 
+.content main .bottom-data .header2{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+}
+
+.content main .bottom-data .header2 .df{
+    display: flex;
+    align-items: center;
+}
+
 .content main .bottom-data .header h3{
     margin-right: auto;
     font-size: 24px;

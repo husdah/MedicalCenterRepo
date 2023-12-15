@@ -141,10 +141,12 @@
 
             <!-- Reminders -->
             <div class="reminders hide" id="clinicEdit">
-            <div class="header">
-                <i class='bx bx-pencil'></i>
-                <h3>Edit Clinic</h3>
-                <i id="viewAddForm" class='bx bx-plus'></i>
+            <div class="header header2">
+                <div class="df">
+                    <i class='bx bx-pencil'></i>
+                    <h3>Edit Clinic</h3>
+                </div>
+                <i id="viewAddForm" class='bx bx-plus-circle'></i>
             </div>
             <form class="form" id="editClinicForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
                 <p class="title">Fill The Form</p>

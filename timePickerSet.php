@@ -22,7 +22,8 @@ require('config/dbcon.php');
     
                 while ($startTime <= $endTime) {
                     echo '<div>' . $startTime->format('H:i') . '</div>';
-                    $startTime->modify('+1 hour'); 
+                    $startTime->modify('+1 hour');  
+
                 }
             }
         } else {

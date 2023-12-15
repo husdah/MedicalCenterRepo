@@ -25,7 +25,7 @@
                             <li><a href="#">
                                     View Info
                                 </a></li>
-                            /
+                            ->
                             <li><a href="#" class="active"><?= $patientName; ?></a></li>
                         </ul>
                     </div>
@@ -87,7 +87,7 @@
                                                     <a href="../uploads/<?= $profilePic; ?>" class="imageLB"> 
                                                         <img src="../uploads/<?= $profilePic; ?>" alt="doctor Image">
                                                     </a>
-                                                    <a href="edit-doctor.php"><p class="name"><?= $docName; ?></p></a>
+                                                    <a href="edit-doctor.php?doctorId=<?= $app['doctorId']; ?>"><p class="name"><?= $docName; ?></p></a>
                                                 </td>
                                                 <td class="date"><?= $app['date']; ?></td>
                                                 <td><?= $time; ?></td>

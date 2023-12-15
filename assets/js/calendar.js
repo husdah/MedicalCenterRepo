@@ -53,18 +53,6 @@ $('#calendar').datepicker({
     year =  date.getFullYear();
   
     var dayOfWeek = $.datepicker.formatDate('DD', $(this).datepicker('getDate'));
-   /*  $.ajax({
-      method: "POST",
-      url: "../../doctorpage.php",
-      data: { selectedDay: dayOfWeek },
-      success: function(response) {
-        $('#owl1').load(location.href + " #owl1");
-      },
-      error: function(xhr, status, error) {
-         console.error("AJAX Request Failed. Status:", status, "Error:", error);
-      }
-   }); */
-
 
   let doctorId= document.getElementById("docId_Get").value;
   $.ajax({
@@ -73,7 +61,17 @@ $('#calendar').datepicker({
     data: { selectedDay: dayOfWeek, did: doctorId },
     success: function(response) {
         // Assuming your PHP script returns only the working hours HTML
-        $('#owl1').html(response);
+
+      if (owlInstance) {
+        owlInstance.trigger('destroy.owl.carousel');
+    }
+
+    // Append the response to the desired container
+    $('#owl1').empty().append(response);
+
+    // Reinitialize Owl Carousel after content is added
+    initOwlCarousel();
+        
     },
     error: function(xhr, status, error) {
         console.error("AJAX Request Failed. Status:", status, "Error:", error);
@@ -153,7 +151,7 @@ $(".form-name input").each(function(){
   });
 });
 
-$(".timepicker").on('click', '.owl-next', function(){
+ $(".timepicker").on('click', '.owl-next', function(){
   time = $(".owl-stage .center").text();
   $(".request .time").text(time);
   
@@ -173,28 +171,35 @@ $(".timepicker").on('click', '.owl-prev', function(){
   center.next("div").addClass("center-n");
 });
 
-$('.owl').owlCarousel({
-  center: true,
-  loop: true,
-  items: 5,
-  dots: false,
-  nav: true,
-  navText: " ",
-  mouseDrag: false,
-  touchDrag: true,
-  responsive: {
-    0:{
-      items:3
-    },
-    700:{
-      items:5
-    },
-    1200:{
-      items:7
+var owlInstance; // Declare a variable to store the Owl Carousel instance
+
+    function initOwlCarousel() {
+        // Initialize Owl Carousel
+        owlInstance = $('.owl').owlCarousel({
+            // Your Owl Carousel options here
+            center: true,
+            loop: true,
+            items: 5,
+            dots: false,
+            nav: true,
+            navText: " ",
+            mouseDrag: false,
+            touchDrag: true,
+            responsive: {
+                0:{
+                    items:3
+                },
+                700:{
+                    items:5
+                },
+                1200:{
+                    items:7
+                }
+            }
+        });
     }
-  }
-  
-});
+
+    initOwlCarousel();
 
 
 $(document).on('click', '.ui-datepicker-next', function(e){

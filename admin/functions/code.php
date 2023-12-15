@@ -258,11 +258,47 @@ else if(isset($_POST['editDoctorFormId']) && isset($_POST['editUserId']) && isse
 else if(isset($_POST['exceptionDay']) && isset($_POST['docId'])){
     $doctorId=$_POST['docId'];
     $date=$_POST['exceptionDay'];
-    $from=$_POST['exceptionFrom'];
-    $to=$_POST['exceptionTO'];
+    $from= "";
+    if(isset($_POST['exceptionFrom'])){
+        $from= $_POST['exceptionFrom'];
+    }
+    $to= "";
+    if(isset($_POST['exceptionTO'])){
+        $to= $_POST['exceptionTO'];
+    }
     $available= isset($_POST['availableException']) ? "1":"0";
 
     if($date != ""){
+        $day= date("l", strtotime($date));
+        $select_query= "SELECT * FROM medicalhours WHERE day='$day';";
+        $select_query_run = mysqli_query($con,$select_query);
+        $medicalHours_data=mysqli_fetch_array($select_query_run);
+        $medFrom = $medicalHours_data['fromHour'];
+        $medTo = $medicalHours_data['toHour'];
+
+        // Split the MFrom and MTo into hours, minutes, and seconds
+        list($MFrom_hours, $MFrom_minutes, $MFrom_seconds) = explode(":", $medFrom);
+        list($MTo_hours, $MTo_minutes, $MTo_seconds) = explode(":", $medTo);
+
+        // Now, create DateTime objects for MFrom and MTo
+        $MFrom_datetime = new DateTime("1970-01-01 $medFrom");
+        $MTo_datetime = new DateTime("1970-01-01 $medTo");
+
+        $MFrom_time = $MFrom_datetime->format('H:i:s');
+        $MTo_time = $MTo_datetime->format('H:i:s');
+
+        if($to != "" && $from != ""){
+            // Now, create DateTime objects for DFrom and DTO with the same format
+            $DFrom_datetime = new DateTime("1970-01-01 $from");
+            $DTO_datetime = new DateTime("1970-01-01 $to");
+
+            $DFrom_time = $DFrom_datetime->format('H:i:s');
+            $DTO_time = $DTO_datetime->format('H:i:s');
+            if($DFrom_time < $MFrom_time || $DTO_time > $MTo_time){
+                redirect('../edit-doctor.php?doctorId='.$doctorId,"Exception Hour Not In Range!");
+            }
+        }
+
         $clinic_check_query= "SELECT * FROM workingexception WHERE doctorId=$doctorId AND date='$date';";
         $clinic_check_query_run = mysqli_query($con,$clinic_check_query);
         if(mysqli_num_rows($clinic_check_query_run) >0){
@@ -456,8 +492,14 @@ else if(isset($_POST['deleteMedHoursBtn'])){
 else if(isset($_POST['manageDWHFormId']) && isset($_POST['DWHDay'])){
     $doctorId=$_POST['manageDWHFormId'];
     $day=$_POST['DWHDay'];
-    $from= $_POST['DWHFrom'];
-    $to= $_POST['DWHTO'];
+    $from= "";
+    if(isset($_POST['DWHFrom'])){
+        $from= $_POST['DWHFrom'];
+    }
+    $to= "";
+    if(isset($_POST['DWHTO'])){
+        $to= $_POST['DWHTO'];
+    }
     $available= isset($_POST['available']) ? "1":"0";
     
     if($day!= "" && $day != "WHDay"){
@@ -470,7 +512,32 @@ else if(isset($_POST['manageDWHFormId']) && isset($_POST['DWHDay'])){
         $medFrom = $medicalHours_data['fromHour'];
         $medTo = $medicalHours_data['toHour'];
 
-        if($from >= $medFrom && $to <= $medTo){
+        // Split the MFrom and MTo into hours, minutes, and seconds
+        list($MFrom_hours, $MFrom_minutes, $MFrom_seconds) = explode(":", $medFrom);
+        list($MTo_hours, $MTo_minutes, $MTo_seconds) = explode(":", $medTo);
+
+        // Now, create DateTime objects for MFrom and MTo
+        $MFrom_datetime = new DateTime("1970-01-01 $medFrom");
+        $MTo_datetime = new DateTime("1970-01-01 $medTo");
+
+        $MFrom_time = $MFrom_datetime->format('H:i:s');
+        $MTo_time = $MTo_datetime->format('H:i:s');
+
+        if($to != "" && $from != ""){
+            // Now, create DateTime objects for DFrom and DTO with the same format
+            $DFrom_datetime = new DateTime("1970-01-01 $from");
+            $DTO_datetime = new DateTime("1970-01-01 $to");
+
+            $DFrom_time = $DFrom_datetime->format('H:i:s');
+            $DTO_time = $DTO_datetime->format('H:i:s');
+            if($DFrom_time < $MFrom_time || $DTO_time > $MTo_time){
+                redirect('../edit-doctor.php?doctorId='.$doctorId,"Working Hour Not In Range!");
+            /* die("DFrom->" .$DFrom_time ." MFrom->"  .$MFrom_time  ." DTO->" .$DTO_time  ." MTo->" .$MTo_time); */
+            }
+        }
+
+        /* $from >= $medFrom && $to <= $medTo */
+        /* if($DFrom_time >= $MFrom_time && $DTO_time <= $MTo_time) */
 
             if(mysqli_num_rows($check_query_run) >0){
 
@@ -484,10 +551,10 @@ else if(isset($_POST['manageDWHFormId']) && isset($_POST['DWHDay'])){
                 }else{
                     redirect('../edit-doctor.php?doctorId='.$doctorId,"Something Went Wrong!");
                 }
-    
+
             }else{
                 $doctorHours_query= "INSERT INTO doctorhours (doctorId,day, fromHour, toHour, available) VALUES ($doctorId,'$day', '$from', '$to', '$available');";
-    
+
                 $doctorHours_query_run = mysqli_query($con,$doctorHours_query);
                 if($doctorHours_query_run)
                 {
@@ -496,11 +563,7 @@ else if(isset($_POST['manageDWHFormId']) && isset($_POST['DWHDay'])){
                 }else{
                     redirect('../edit-doctor.php?doctorId='.$doctorId,"Something Went Wrong!");
                 }
-            }
-
-        }else{
-            redirect('../edit-doctor.php?doctorId='.$doctorId,"Working Hour Not In Range!");
-        }
+            }  
     }
     
 }
