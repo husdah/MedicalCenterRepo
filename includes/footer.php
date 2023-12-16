@@ -31,7 +31,7 @@
                         }else{
                             while($selectdata = mysqli_fetch_array($openHour)){
                     ?>
-                            <li><?php echo $selectdata['day']; ?>: <span class="<?php echo $selectdata['day']; ?>">
+                            <li><?php echo $selectdata['shortDay']; ?>: <span class="<?php echo $selectdata['shortDay']; ?>">
                             <?php 
                                 $fromHourDB = $selectdata['fromHour'];
                                 $toHourDB   = $selectdata['toHour'];

@@ -1,7 +1,7 @@
 
     <?php
         include('includes/header.php');
-        include('homeFunctions.php');
+        include('selectData.php');
 
     ?>
 
