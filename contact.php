@@ -17,9 +17,10 @@
             </div>
         </div>
         
-        <div id="contact-container" class="contact container" action="">
+        <div id="contact-container" class="contact container" >
             <div class="column-left">
-                <form id="form2" class="contact-form" name="cForm">
+                <!-- <form id="form2" class="contact-form" name="cForm" action="https://formsubmit.co/hijazizeinab5@gmail.com" method="POST"> -->
+                <form id="form2" class="contact-form" name="cForm" action="sendEmail.php" method="POST">
                     <h2>Contact Us</h2>
                     <h3>please feel free to contact us any time. we will get back to you as soon as possible.</h3>
                     <div class="input-control">
@@ -46,6 +47,8 @@
                         <textarea cols="50" rows="5" id="message" name="message" placeholder="Message"></textarea>
                         <div id="message-error" class="error"></div>
                     </div>
+                    <input type="hidden" name="_template" value="box"></input>
+                    <input type="hidden" name="_next" value="https://yourdomain.co/thanks.html">
                     <input type="submit" id="btnSend"  class="contact-btn" name="btn-send" value="Send">
                 </form>
             </div>
