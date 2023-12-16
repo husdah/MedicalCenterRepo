@@ -33,10 +33,7 @@ $('#calendar').datepicker({
   onChangeMonthYear: function(){
     todayEqualActive();
   },
-  // beforeShowDay: function (date) {
-  //   var day = date.getDay(); // 0-Sunday, 1-Monday, ..., 6-Saturday\
-  //   return [(day !== 1 && day !== 6), (day === 1 || day === 6) ? 'disabled-day' : ''];
-  // },
+  
   beforeShowDay: function (date) {
     var day = date.getDay(); 
     var isEnabled = enabledDays.includes(dayNames[day]);
@@ -81,7 +78,8 @@ $('#calendar').datepicker({
     /************Hon bde eshteghel*********/
     // display day and month on submit button
     var monthName = months[month - 1];
-    $(".request .day").text(monthName + " " + day);
+    var fullDate = monthName + " " + day + ", " + year; 
+$(".request .day").text(fullDate);
     
     todayEqualActive();    
 
@@ -170,6 +168,27 @@ $(".timepicker").on('click', '.owl-prev', function(){
   center.prev("div").addClass("center-n");
   center.next("div").addClass("center-n");
 });
+// $(".request").on("click",function () {
+//   var day = $(".day").text();
+//   var time = $(".time").text();
+
+//   $.ajax({
+//       method: "POST",
+//       url: "../../functions/makeApp.php",
+//       processData: false,
+//       contentType: JSON,
+//       cache: false,
+//       enctype: 'multipart/form-data',
+//       data: { day: '2002-08-06', time: time },
+//       success: function () {
+//           console.log("success");
+//       },
+//       error: function (error) {
+//           console.error(error);
+//           // Handle errors here
+//       }
+//   });
+// });
 
 var owlInstance; // Declare a variable to store the Owl Carousel instance
 

@@ -24,8 +24,9 @@ while ($row = mysqli_fetch_assoc($result4)) {
     <link rel="stylesheet" href="assets/css/doctorpage.css">
     <link rel="stylesheet" href="assets/css/calendar.css">
  
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.2/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Lexend:wght@300&family=Open+Sans:wght@400;500;700&family=Poppins:wght@200;300;400;500&family=Rubik&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -50,7 +51,7 @@ while ($row = mysqli_fetch_assoc($result4)) {
                         }
                         echo '
                         <div class="photo">
-                            <img src="uploads/'.$profilePic.'" alt="">
+                            <img src="'.$profilePic.'" alt="">
                         </div>
                         <div class="drInfo">
                             <h1>Dr '.$row['Fname'].' '.$row['Lname'].'</h1>
@@ -171,11 +172,27 @@ while ($row = mysqli_fetch_assoc($result4)) {
 
     <script>
              var enabledDays = <?php echo json_encode($enabledDays); ?>;
-             console.log(enabledDays);
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.2/owl.carousel.min.js"></script>
+    <script>
+
+
+    $(".request").on("click",function (e) {
+        e.preventDefault();
+        var urlParams = new URLSearchParams(window.location.search);
+        var did = urlParams.get('did');
+        var day = $(".day").text();
+        var time = $(".time").text();
+        var dateObj = new Date(day + ' ' + new Date().getFullYear());
+        var mysqlDate = dateObj.toISOString().slice(0, 10);
+        console.log(mysqlDate);
+
+        $.post("./functions/makeApp.php", { did: did, day:mysqlDate, time: time }, function(response) {
+    console.log("Response:", response);
+});
+
+    });
+
+    </script>
     <script src="assets/js/calendar.js"></script>
     <script src="assets/js/doctorpage.js"></script>
     <!-- <script src="assets/js/appointment.js"></script> -->
