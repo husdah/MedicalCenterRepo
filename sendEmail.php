@@ -22,8 +22,8 @@
             $mail->SMTPAuth = true;//enable smtp authentication
             $mail->SMTPSecure = 'tls';//set type of encryption 
             $mail->Port = 587;//set port to connect smtp
-            $mail->Username = "hijazizeinab5@gmail.com";//set gmail username    
-            $mail->Password = "pkpkmtbjsqzsizpz";//set gmail password
+            $mail->Username = "";//set gmail username    
+            $mail->Password = "";//set gmail password
             
             $mail->setFrom('hijazizeinab5@gmail.com', 'zeinab hijazi');
             $mail->addAddress("hijazizeinab5@gmail.com");//add recipient
