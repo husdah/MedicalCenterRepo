@@ -1,7 +1,8 @@
 
     <?php
         include('includes/header.php');
-        include('homeFunctions.php');
+        include('selectData.php');
+        include('insertData.php');
 
         $doctorCount  = getRowCount('doctor');
         $patientCount = getRowCount('patient');
@@ -167,17 +168,16 @@
         </div>
     </section>
 
-    <!-- Section Doctors -->
     <section id="doctor" class = "doctor" >
         <div class="doctor-container">
         <?php
             $doctors  = getDoctors();
             $rowcount = mysqli_num_rows($doctors);
-            if($rowcount == 0){
-                echo '<script>alert("No record found")</script>';  
-            }else{
+            //echo $rowcount;
+            $max = 4;
+            if($rowcount > 0){
                 /*while($selectdata = mysqli_fetch_array($result)){*/
-                for($i=0; $i<$rowcount; $i++){
+                for($i=0; $i < $max; $i++){
                     $selectdata = mysqli_fetch_array($doctors);
                     $profilePic = "docImgPlaceholder.jpg";
                     if($selectdata['doctorPhoto'] != null){
@@ -190,9 +190,9 @@
                     <h5>Dr. <?php echo $selectdata['FullName']; ?></h5>
                     <span><?php echo $selectdata['clinicName']; ?></span>
                     <div class="team__item__social">
-                        <a href="<?php echo $selectdata['facebook']; ?>"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="<?php echo $selectdata['instagram']; ?>"><i class="fa-brands  fa-instagram"></i></a>
-                        <a href="<?php echo $selectdata['linkedin']; ?>"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="<?= $selectdata['facebook']  != "" ?  $selectdata['facebook']  : "#" ?>"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="<?= $selectdata['instagram'] != "" ?  $selectdata['instagram'] : "#" ?>"><i class="fa-brands  fa-instagram"></i></a>
+                        <a href="<?= $selectdata['linkedin']  != "" ?  $selectdata['linkedin']  : "#" ?>"><i class="fa-brands fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
@@ -218,25 +218,24 @@
                 <?php
                     $clinics  = getClinics();
                     $rowcount = mysqli_num_rows($clinics);
-                    if($rowcount == 0){
-                        echo '<script>alert("No record found")</script>';  
-                    }else{
-                        /*while($selectdata = mysqli_fetch_array($result)){*/
-                        for ($i = 0; $i < $rowcount; $i++) {
-                            $selectdata = mysqli_fetch_array($clinics);
+                    //echo $rowcount;
+                    $max = 10;
+                    if($rowcount > 0){
+                        for($i=0; $i < $max; $i++){
+                            $selectdata = mysqli_fetch_assoc($clinics);
                     ?>
-                        <div class="swiper-slide item">
-                            <div class="clinic-img">
-                                <img src="uploads/<?php echo $selectdata['photo']; ?>" class="w-80" alt="<?php echo $selectdata['name']; ?> clinic">
+                            <div class="swiper-slide item">
+                                <div class="clinic-img">
+                                    <img src="uploads/<?php echo $selectdata['photo']; ?>" class="w-80" alt="<?php echo $selectdata['name']; ?> clinic">
+                                </div>
+                                <div class="clinic-info">
+                                    <h3><?php echo $selectdata['name']; ?></h3>
+                                    <p><?php echo $selectdata['description']; ?></p>
+                                </div>
                             </div>
-                            <div class="clinic-info">
-                                <h3><?php echo $selectdata['name']; ?></h3>
-                                <p><?php echo $selectdata['description']; ?></p>
-                            </div>
-                        </div>
                     <?php
-                           }
                         }
+                    }
                     ?>
                 </div>  
             </div>

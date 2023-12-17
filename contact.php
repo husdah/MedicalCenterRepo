@@ -1,7 +1,7 @@
 
     <?php
         include('includes/header.php');
-        include('homeFunctions.php');
+        include('selectData.php');
 
     ?>
 
@@ -47,8 +47,8 @@
                         <textarea cols="50" rows="5" id="message" name="message" placeholder="Message"></textarea>
                         <div id="message-error" class="error"></div>
                     </div>
-                    <input type="hidden" name="_template" value="box"></input>
-                    <input type="hidden" name="_next" value="https://yourdomain.co/thanks.html">
+                    <!-- <input type="hidden" name="_template" value="box"></input>
+                    <input type="hidden" name="_next" value="https://yourdomain.co/thanks.html">-->
                     <input type="submit" id="btnSend"  class="contact-btn" name="btn-send" value="Send">
                 </form>
             </div>
