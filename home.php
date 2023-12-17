@@ -258,7 +258,7 @@
                     <img src="images/donate-bg2-removebg-preview.png">
                 </div>
                 <p>Please, Fill Out This Information:</p>
-                <form id = "donateform" action="homeFunctions.php" method="post" enctype="multipart/form-data">
+                <form id = "donateform" action="insertData.php" method="post" enctype="multipart/form-data">
                     <div class="email-input">  
                         <input type="text" id="email" name="email-phone" class="donation-input" placeholder="Enter Email or Phone Number">
                         <span id="errorInput"></span>

@@ -1,4 +1,5 @@
 <?php
+    include("config/dbcon.php");
     // Donation Section
     if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email-phone']) && isset($_POST['mySelect'])){
         /* echo '<script> alert("Clicked.")</script>'; */

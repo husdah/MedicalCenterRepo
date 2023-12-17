@@ -25,12 +25,12 @@
         
                 //Email Composition
                 $mail->setFrom($email, $name);// Set "From" address to the user-entered email
-                $mail->addReplyTo($email, $name);
+                //$mail->addReplyTo($email, $name);
                 $mail->addAddress('healthhubcenter23@gmail.com'); // Add recipient
                 $mail->isHTML(true); // Set sender email
                 $mail->Subject = "Subject: $subject"; // Set email subject
                 $mail->Body = "$message "; // Set email body
-        
+                $mail->SMTPDebug = 2; // Enable verbose debugging
                 $mail->Send(); 
                 echo "Message has been sent";
             } catch (Exception $e) {
