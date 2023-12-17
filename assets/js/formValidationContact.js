@@ -15,13 +15,13 @@ const btnsend       = document.getElementById('btnSend');
 var errorDisplayed = false;
 
 form?.addEventListener('submit', e => { 
-    e.preventDefault();
+    //e.preventDefault();
     validateForm();
 });
 
 function validateForm(){
     if(checkFirstname() && checkLastname() && checkEmail() && checkSubject() && checkMessage() && validateFirstname() && validateLastname() && validateEmail() && validateSubject() && validateMessage()){
-        alert('Submit Done');
+        // alert('Submit Done');
     }
     else{
         checkFirstname();
