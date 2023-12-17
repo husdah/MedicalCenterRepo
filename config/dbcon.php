@@ -37,7 +37,7 @@
 
         $createTableClinicQuery= "CREATE TABLE IF NOT EXISTS clinic (
             clinicId INT PRIMARY KEY AUTO_INCREMENT,
-            name VARCHAR(200) NOT NULL,
+            name VARCHAR(200) NOT NULL UNIQUE,
             description VARCHAR(200) NOT NULL,
             photo VARCHAR(200) NOT NULL,
             icon VARCHAR(200) NOT NULL
@@ -125,8 +125,7 @@
         $createTableMediaQuery_run = mysqli_query($con,$createTableMediaQuery);
     
         $createTableMedicalHoursQuery= "CREATE TABLE IF NOT EXISTS medicalHours (
-            medHourId INT PRIMARY KEY AUTO_INCREMENT,
-            day varchar(200) UNIQUE NOT NULL,
+            day varchar(200) PRIMARY KEY,
             fromHour time NULL,
             toHour time NULL,
             closed int NOT NULL
@@ -151,12 +150,12 @@
         $createTableUrgentBTQuery_run = mysqli_query($con,$createTableUrgentBTQuery);
     
         $createTableWorkingExceptionQuery= "CREATE TABLE IF NOT EXISTS workingException (
-            wExcepId INT PRIMARY KEY AUTO_INCREMENT,
             doctorId INT NOT NULL,
             date date NOT NULL,
             fromHour time NULL,
             toHour time NULL,
             available int NOT NULL,
+            PRIMARY KEY (doctorId, date),
             FOREIGN KEY (doctorId) REFERENCES doctor(doctorId)
 
         );";
