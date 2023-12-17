@@ -448,7 +448,10 @@
                                                     <span class="checkmark"></span>
                                                 </label>
                                             </td>
-                                            <td><button class="btn-delete deleteWExceptionBtn" value="<?= $item['wExcepId']; ?>"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
+                                            <td>
+                                                <input class="drExId" type="hidden" value="<?= $id; ?>">
+                                                <button class="btn-delete deleteWExceptionBtn" value="<?= $item['date']; ?>"><i class="bx bx-trash-alt"></i><span>Delete</span></button>
+                                            </td>
                                         </tr>
 
                                     <?php

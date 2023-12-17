@@ -64,10 +64,10 @@
                                 {
                                     $fromHour="00:00:00";
                                     $toHour = '00:00:00';
-                                    if($info['fromHour'] != '00:00:00'){
+                                    if($info['fromHour'] != '00:00:00' && $info['fromHour'] != ""){
                                         $fromHour = date('h:i A', strtotime($info['fromHour']));
                                     }
-                                    if($info['toHour'] != '00:00:00'){
+                                    if($info['toHour'] != '00:00:00' &&  $info['toHour'] != ""){
                                         $toHour = date('h:i A', strtotime($info['toHour']));
                                     }
                                     ?>
@@ -81,7 +81,7 @@
                                                     <span class="checkmark"></span>
                                                 </label>
                                             </td>
-                                            <td><button class="btn-delete deleteMedHoursBtn" value="<?= $info['medHourId']; ?>"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
+                                            <td><button class="btn-delete deleteMedHoursBtn" value="<?= $info['day']; ?>"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                                         </tr>
                                     <?php
                                 }

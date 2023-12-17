@@ -139,7 +139,8 @@ $(document).ready(function () {
     $(document).on('click','.deleteWExceptionBtn', function (e) {
         e.preventDefault();
 
-        var id = $(this).val();
+        var date = $(this).val();
+        var id = $(this).closest('td').find('.drExId').val();
 
         swal({
             title: "Are you sure?",
@@ -154,7 +155,8 @@ $(document).ready(function () {
                     method:"POST",
                     url: "functions/code.php",
                     data: {
-                        'wExcId': id,
+                        'drId': id,
+                        'date': date,
                         'deleteWExceptionBtn': true
                     },
                     success: function(response){
@@ -241,7 +243,7 @@ $(document).ready(function () {
     $(document).on('click','.deleteMedHoursBtn', function (e) {
         e.preventDefault();
 
-        var id = $(this).val();
+        var day = $(this).val();
 
         swal({
             title: "Are you sure?",
@@ -256,7 +258,7 @@ $(document).ready(function () {
                     method:"POST",
                     url: "functions/code.php",
                     data: {
-                        'medHourId': id,
+                        'medDay': day,
                         'deleteMedHoursBtn': true
                     },
                     success: function(response){
