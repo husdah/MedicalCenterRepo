@@ -10,7 +10,7 @@
             <div class="content banner">
                 <h2>Contct Us</h2>
                 <ul class="breadcrumb">
-                    <li><a href= "home.html">Home</a></li>
+                    <li><a href= "home.php">Home</a></li>
                     <li> | </li>
                     <li>Contact Us</li>
                 </ul>

@@ -1,5 +1,5 @@
-const form  = document.getElementById('form2');
-
+//variables for contact page
+const contactForm   = document.getElementById('form2');
 const fname_input   = document.getElementById('fname');
 const fnameError    = document.getElementById('fname-error');
 const lname_input   = document.getElementById('lname');
@@ -10,29 +10,35 @@ const subject_input = document.getElementById('subject');
 const subjectError  = document.getElementById('subject-error');
 const message_input = document.getElementById('message');
 const messageError  = document.getElementById('message-error');
-
 const btnsend       = document.getElementById('btnSend');
-var errorDisplayed = false;
 
-form?.addEventListener('submit', e => { 
-    //e.preventDefault();
-    validateForm();
+//variables for donation section on homepage
+var donateForm   = document.getElementById('donateform');
+var emailText    = document.getElementById('email');
+var errorDisplay = document.getElementById('errorInput');
+var bloodType    = document.getElementById('mySelect');
+var btn_send     = document.getElementById('click_donate');
+
+
+//Forms Validation Functions
+contactForm?.addEventListener('submit', (e) => { 
+    //prevents the default form submission behavior 
+    const isValid = validateContactForm();
+
+    // If validation fails, prevent the default form submission
+    if (!isValid) {
+        e.preventDefault();
+    }
 });
+donateForm?.addEventListener('submit', (e) => { 
+    //prevents the default form submission behavior 
+    const isValid = validateDonateForm();
 
-function validateForm(){
-    if(checkFirstname() && checkLastname() && checkEmail() && checkSubject() && checkMessage() && validateFirstname() && validateLastname() && validateEmail() && validateSubject() && validateMessage()){
-        // alert('Submit Done');
+    // If validation fails, prevent the default form submission
+    if (!isValid) {
+        e.preventDefault();
     }
-    else{
-        checkFirstname();
-        checkLastname();
-        checkEmail();
-        checkSubject();
-        checkMessage();
-        
-    }
-}
-
+});
 
 // Function to validate name
 const validateNameStructure = (name) => {
@@ -49,6 +55,17 @@ const validateSubjectStructure = (subject) => {
     return subject.match(/^.{1,}$/);
 };
 
+// Function to handle submit email and phone events
+function validateInput(input) {
+    var lebanesePhoneRegex = /^\d{8}$/;
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (lebanesePhoneRegex.test(input)) {
+      return input.match(lebanesePhoneRegex);
+    }
+    if (emailRegex.test(input)) {
+        return input.match(emailRegex);
+    }
+}
 
 //Validation on Focusout Event For Empty Input
 const checkFirstname = () => {
@@ -60,8 +77,6 @@ const checkFirstname = () => {
         return true;
     }
 }
-fname_input?.addEventListener('focusout', checkFirstname);
-
 const checkLastname = () => {
     if(lname_input.value === ''){
         lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
@@ -71,8 +86,6 @@ const checkLastname = () => {
         return true;
     }
 }
-lname_input?.addEventListener('focusout', checkLastname);
-
 const checkEmail = () => {
     if(email_input.value === ''){
         emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
@@ -82,8 +95,6 @@ const checkEmail = () => {
         return true;
     }
 }
-email_input?.addEventListener('focusout', checkEmail);
-
 const checkSubject = () => {
     if(subject_input.value === ''){
         subjectError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
@@ -93,8 +104,6 @@ const checkSubject = () => {
         return true;
     }
 }
-subject_input?.addEventListener('focusout', checkSubject);
-
 const checkMessage = () => {
     if(message_input.value === ''){
         messageError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
@@ -104,7 +113,15 @@ const checkMessage = () => {
         return true;
     }
 }
-message_input?.addEventListener('focusout', checkMessage);
+const checkEmail2 = () => {
+    if(emailText.value == ''){
+        errorDisplay.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
+        return false;
+    }
+    else{
+        return true;
+    }
+}
 
 //Validation on Input Event For Format
 const validateFirstname = () => {
@@ -118,8 +135,6 @@ const validateFirstname = () => {
         return true;
     }    
 }
-fname_input?.addEventListener('input', validateFirstname);
-
 const validateLastname = () => {
     const lnameValue   = lname_input.value;
     if(!validateNameStructure(lnameValue)){
@@ -131,8 +146,6 @@ const validateLastname = () => {
         return true;
     }
 }
-lname_input?.addEventListener('input', validateLastname);
-
 const validateEmail = () => {
     const emailValue   = email_input.value;
     if(!validateEmailStructure(emailValue)){
@@ -144,8 +157,6 @@ const validateEmail = () => {
         return true;
     }
 }
-email_input?.addEventListener('input', validateEmail);
-
 const validateSubject = () => {
     const subjectValue   = subject_input.value;
     if(!validateSubjectStructure(subjectValue)){
@@ -157,8 +168,6 @@ const validateSubject = () => {
         return true;
     }
 }
-subject_input?.addEventListener('input', validateSubject);
-
 const validateMessage = () => {
     if(message_input.value !== ''){
         messageError.innerHTML   = "";
@@ -176,4 +185,78 @@ const validateMessage = () => {
         return true;
     }
 }
+const validateEmail2 = () => {
+    if(!validateInput(emailText.value)){
+        errorDisplay.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Phone or Email';
+        return false;
+    }
+    else{
+        errorDisplay.innerHTML = '<i class="fa-regular fa-circle-check"></i>'
+        return true;
+    }
+}
+const validateSelect = () => {
+    var selectedOption = bloodType.options[bloodType.selectedIndex];
+    var selectedValue  = selectedOption.value;
+    if(selectedValue == 'Blood-Type'){
+        bloodType.style.color = 'red';
+        return false;
+    }
+    else{
+        bloodType.style.color = '#0051a1';
+        return true;
+    }
+}
+
+// Add event listeners to input fields
+fname_input?.addEventListener('focusout', checkFirstname);
+lname_input?.addEventListener('focusout', checkLastname);
+email_input?.addEventListener('focusout', checkEmail);
+subject_input?.addEventListener('focusout', checkSubject);
+message_input?.addEventListener('focusout', checkMessage);
+emailText?.addEventListener('focusout', checkEmail2);
+fname_input?.addEventListener('input', validateFirstname);
+lname_input?.addEventListener('input', validateLastname);
+email_input?.addEventListener('input', validateEmail);
+subject_input?.addEventListener('input', validateSubject);
 message_input?.addEventListener('input', validateMessage);
+emailText?.addEventListener('input', validateEmail2);
+bloodType?.addEventListener('change', validateSelect)
+
+
+//validates Form 
+function validateContactForm(){
+    if(checkFirstname() && checkLastname() && checkEmail() && checkSubject() && checkMessage() && validateFirstname() && validateLastname() && validateEmail() && validateSubject() && validateMessage()){
+        //alert('Submit Done');
+        console.log('Submit Successfully');
+        return true;
+    }
+    else{
+        checkFirstname();
+        checkLastname();
+        checkEmail();
+        checkSubject();
+        checkMessage();
+        //alert('something wrong'); 
+        console.log('something wrong');
+        return false;
+    }
+}
+function validateDonateForm(){
+    if(validateSelect() && checkEmail2() && validateEmail2()){
+        //alert('Submit Done');
+        console.log('Submit Successfully');
+        return true;
+    }
+    else{
+        validateSelect();
+        checkEmail2();
+        //alert('something wrong'); 
+        console.log('something wrong');
+        return false;
+    }
+}
+
+
+
+

@@ -285,7 +285,7 @@
                             <option value="AB-">AB-</option> 
                         </select>
                     </div> 
-                    <input type="button" value="Send" id="click_donate" name="btn_send" class="btn-send">
+                    <input type="submit" value="Send" id="click_donate" name="btn_send" class="btn-send">
                 </form>
             </div>
         </div>

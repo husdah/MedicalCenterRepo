@@ -29,7 +29,7 @@
                 $mail->addAddress('healthhubcenter23@gmail.com'); // Add recipient
                 $mail->isHTML(true); // Set sender email
                 $mail->Subject = "Subject: $subject"; // Set email subject
-                $mail->Body = "Email: $email <br> $message "; // Set email body
+                $mail->Body = " $message "; // Set email body
                 $mail->Send(); 
                 echo "Message has been sent";
             } catch (Exception $e) {
