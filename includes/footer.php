@@ -2,7 +2,7 @@
     <footer class="footer">
         <div class="grid-container">
             <div class="footer-column1">
-                <a href="home.php"><img src="../images/HealthHubLogo-removebg-preview.png" alt="HealthHubLogo" class="logo"></a>
+                <a href="home.php"><img src="./images/HealthHubLogo-removebg-preview.png" alt="HealthHubLogo" class="logo"></a>
                 <p class="text-justify">Welcome to Health Hub, where compassionate care and medical excellence meet. To prioritize your well-being with state-of-the-art facilities and a patient-focused approach at every stage of your healthcare journey.</p>
             </div>
 
@@ -79,17 +79,22 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- sweetalert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
     <script src="assets/js/donation.js"></script>
     <script src="assets/js/swiper.js"></script>
     <script src="assets/js/counters.js"></script>
     <!-- <script src="assets/js/scrollSection.js"></script> -->
     <!-- <script src="assets/js/navbar.js"></script> -->
     <script src="../assets/js/nav.js"></script>
-    <script src="assets/js/donationFormValidation.js"></script>
-    <script src="assets/js/formValidationContact.js"></script>
+    <script src="assets/js/validation.js"></script>
     <script src="assets/js/errorpage.js"></script>
+    <script src="assets/js/insertOperation.js"></script>
 
 </body>
 </html>

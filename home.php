@@ -2,7 +2,7 @@
     <?php
         include('includes/header.php');
         include('selectData.php');
-        include('insertData.php');
+        include('donateData.php');
 
         $doctorCount  = getRowCount('doctor');
         $patientCount = getRowCount('patient');
@@ -55,7 +55,7 @@
 
     <!-- Book Appointment -->
     <div class="button-app">
-        <a href="bookappsinglenew.php"><i class="fa-solid fa-plus"></i></a>
+        <a href="clinics.php"><i class="fa-solid fa-plus"></i></a>
     </div>
 
     <!-- Section About Us -->
@@ -174,15 +174,19 @@
             $doctors  = getDoctors();
             $rowcount = mysqli_num_rows($doctors);
             //echo $rowcount;
-            $max = 4;
+            $max = 0;
             if($rowcount > 0){
                 /*while($selectdata = mysqli_fetch_array($result)){*/
-                for($i=0; $i < $max; $i++){
+                for($i=0; $i < $rowcount ; $i++){
+                    $max++;
+                    if($max > 4){
+                        break;
+                    }
                     $selectdata = mysqli_fetch_array($doctors);
                     $profilePic = "docImgPlaceholder.jpg";
                     if($selectdata['doctorPhoto'] != null){
                         $profilePic = $selectdata['doctorPhoto'];
-                    }
+                    }   
             ?>
             <div class="doctor-column<?php echo $i; ?>">
                 <div class="team__item">
@@ -196,10 +200,10 @@
                     </div>
                 </div>
             </div>
-            <?php
-                    }
+        <?php
                 }
-            ?>
+            }
+        ?>
         </div> 
     </section>
 
@@ -219,9 +223,13 @@
                     $clinics  = getClinics();
                     $rowcount = mysqli_num_rows($clinics);
                     //echo $rowcount;
-                    $max = 10;
+                    $max = 0;
                     if($rowcount > 0){
-                        for($i=0; $i < $max; $i++){
+                        for($i=0; $i < $rowcount; $i++){
+                            $max++;
+                            if($max > 10){
+                                break;
+                            }
                             $selectdata = mysqli_fetch_assoc($clinics);
                     ?>
                             <div class="swiper-slide item">
@@ -258,7 +266,7 @@
                     <img src="images/donate-bg2-removebg-preview.png">
                 </div>
                 <p>Please, Fill Out This Information:</p>
-                <form id = "donateform" action="homeFunctions.php" method="post" enctype="multipart/form-data">
+                <form id = "donateform" method="post" enctype="multipart/form-data">    
                     <div class="email-input">  
                         <input type="text" id="email" name="email-phone" class="donation-input" placeholder="Enter Email or Phone Number">
                         <span id="errorInput"></span>
@@ -277,7 +285,7 @@
                             <option value="AB-">AB-</option> 
                         </select>
                     </div> 
-                    <input type="button" value="Send" id="click_donate" name="btn_send" class="btn-send">
+                    <input type="submit" value="Send" id="click_donate" name="btn_send" class="btn-send">
                 </form>
             </div>
         </div>
