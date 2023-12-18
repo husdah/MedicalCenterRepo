@@ -92,10 +92,9 @@
     <!-- <script src="assets/js/scrollSection.js"></script> -->
     <!-- <script src="assets/js/navbar.js"></script> -->
     <script src="../assets/js/nav.js"></script>
-    <!--<script src="assets/js/donationFormValidation.js"></script> -->
-    <!--<script src="assets/js/formValidationContact.js"></script>-->
     <script src="assets/js/validation.js"></script>
     <script src="assets/js/errorpage.js"></script>
+    <script src="assets/js/insertOperation.js"></script>
 
 </body>
 </html>

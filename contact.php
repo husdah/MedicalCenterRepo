@@ -20,7 +20,7 @@
         <div id="contact-container" class="contact container" >
             <div class="column-left">
                 <!-- <form id="form2" class="contact-form" name="cForm" action="https://formsubmit.co/hijazizeinab5@gmail.com" method="POST"> -->
-                <form id="form2" class="contact-form" name="cForm" action="sendEmail.php" method="POST">
+                <form id="form2" class="contact-form" name="cForm" method="POST">
                     <h2>Contact Us</h2>
                     <h3>please feel free to contact us any time. we will get back to you as soon as possible.</h3>
                     <div class="input-control">
