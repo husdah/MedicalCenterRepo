@@ -16,8 +16,8 @@ $currentPage = ($currentScript == 'dashboard.php') ? 'dashboard.php' :
         <i class="bx bx-menu"></i>
         </div>
         <div class="user">
-            <img src="../images/dr1.jpg" class="user-img">
-            <label class="user-name">Dr. Doctor</label>
+            <img src="../../uploads/doctor.webp" class="user-img">
+            <label class="user-name">Dr. Salem</label>
             <label class="user-clinic">Cardiology</label>
         </div>
         <ul class="side-menu">
