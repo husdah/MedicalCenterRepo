@@ -163,7 +163,7 @@
 
     <section id="doctorSection" class="doctor-heading">
         <div class="section-title">
-            <h2>Doctors</h2>
+            <h2>Examples of Our Doctors</h2>
             <p>Dedicated to Your Health: Our Esteemed Team of Physicians</p>
         </div>
     </section>
