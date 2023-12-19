@@ -1,6 +1,8 @@
 var oldpass=document.getElementById('cpass');
 var newpass=document.getElementById('npass');
 var renewpass=document.getElementById('rnpass');
+var demail=document.getElementById('demail');
+var dphnum=document.getElementById('dphnum');
 var forpass1=document.getElementById('forpass1');
 var forpass2=document.getElementById('forpass2');
 var divpass2=document.getElementById('div2');
@@ -16,9 +18,21 @@ var sub1=false;
 var sub2=false;
 var sub3=false;
 
+
 const validatePassword = (password) => {
     return password.match(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+{};:'",<.>\/?\\[\]`~])(.{8,})$/
+    );
+};
+const validateEmail = (email) => {
+    return email.match(
+        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
+const validatePhone = (phone) => {
+    return phone.match(
+        /^(76|03|71|70)\d{6}$/
     );
 };
 //validation for new password
@@ -235,9 +249,21 @@ oldpass.addEventListener('input', () => {
 document.getElementById('formsubmit').addEventListener('submit',(e)=>
 { 
     if (suc1 && suc2 && oldpass.value !== "") {
-        document.getElementById('formsubmit').submit();
-
-    };
+        e.preventDefault();
+        var formData =new FormData(document.getElementById('formsubmit'));
+        formData.append('submit2','submit2');
+            $.ajax({
+            method:"POST",
+            url:"queryFunctions/forSettings.php",
+            processData: false,
+            contentType: false, 
+            cache: false,
+            data:formData,
+            success:function(response){
+                console.log(formData);
+                document.getElementById('errcurrentpass').innerText=response;
+            }
+            }) }
     e.preventDefault();
 
  if(!errorDisplayed && !errorDisplayed2 && !errorDisplayed3)
@@ -295,5 +321,74 @@ document.getElementById('formsubmit').addEventListener('submit',(e)=>
     }
    
 
+}
+});
+//for email and phone number validations
+document.getElementById('forminfo').addEventListener('submit',(e)=>
+{ 
+    if(!validateEmail(demail.value) && !validatePhone(dphnum.value))
+    {
+        e.preventDefault();
+        document.getElementById('emailerror').innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Enter a valid email";
+        document.getElementById('emailerror').style.display="block";
+        document.getElementById('phoneerror').innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Enter a valid phone number";
+        document.getElementById('phoneerror').style.display="block";
+    }
+    else if(!validateEmail(demail.value))
+    {
+        e.preventDefault();
+        document.getElementById('emailerror').innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Enter a valid email";
+        document.getElementById('emailerror').style.display="block";
+    }
+    else if(!validatePhone(dphnum.value))
+    {
+        e.preventDefault();
+        document.getElementById('phoneerror').innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Enter a valid phone error";
+        document.getElementById('phoneerror').style.display="block";
+    }
+    else
+    {
+        e.preventDefault();
+        var formData = new FormData(document.getElementById('forminfo'));
+        formData.append("submitinfo", "submitinfo");
+
+        $.ajax({
+            method: "POST",
+            url: "queryFunctions/forSettings.php",
+            processData: false,
+            contentType: false,
+            cache: false,
+            data: formData,
+            success: function (response) {
+                if(response.includes('Phone') && response.includes('Email'))
+                {
+                    const icon = document.createElement('i');
+                    icon.className = 'fa-solid fa-triangle-exclamation';
+                    document.getElementById('phoneerror').innerHTML = `<i class='fa-solid fa-triangle-exclamation'></i> ${response} `;
+                    document.getElementById('phoneerror').style.display="block";
+                }
+                else if(response.includes('Phone'))  
+                {
+                    const icon = document.createElement('i');
+                    icon.className = 'fa-solid fa-triangle-exclamation';
+                    document.getElementById('phoneerror').appendChild(icon);
+                    document.getElementById('phoneerror').innerHTML = `<i class='fa-solid fa-triangle-exclamation'></i> ${response} `;
+                    document.getElementById('emailerror').innerHTML = `<i class='fa-solid fa-triangle-exclamation'></i> ${response} `;
+                    document.getElementById('phoneerror').style.display="block";
+                }
+                else if(response.includes('Email'))  
+                {
+                    const icon = document.createElement('i');
+                    icon.className = 'fa-solid fa-triangle-exclamation';
+                    document.getElementById('emailerror').innerHTML = `<i class='fa-solid fa-triangle-exclamation'></i> ${response} `;
+                    document.getElementById('emailerror').style.display="block";
+                }
+                else
+                {
+                    location.reload();
+                }
+            }
+        
+        });
 }
 });

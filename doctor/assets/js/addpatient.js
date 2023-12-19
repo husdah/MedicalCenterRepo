@@ -39,8 +39,7 @@ document.getElementById('form').addEventListener('submit',(e)=>{
                enctype: 'multipart/form-data',
               data:formData,
               success:function(){
-                //hon 3afaset
-              location.reload();
+                location.reload();
               }
              })
             }

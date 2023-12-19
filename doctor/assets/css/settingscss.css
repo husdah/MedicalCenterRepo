@@ -72,29 +72,40 @@
     height: 150px;
     object-fit: cover;
     border-radius: 100%;
+    margin-top: 30px;
 }
-
-.title1 i
-{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 45px;
+ .title1 i {
     color: var(--primary);
-    display: none; 
-    z-index: 1000;
-}
-.title1 img:hover
-{
-    cursor: pointer;
-    opacity:0.7;
-}
+    font-size: 21px;
+    padding-left: 3px;
+    padding-top: 10px;
+ }
 .title1:hover i
 {
-    display: block;
     cursor: pointer;
 }
+.round{
+    position: absolute;
+    bottom:10px;
+    right:10px;
+    background: rgb(207, 206, 206);
+    width: 40px;
+    height: 40px;
+    line-height: 33px;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .round input[type = "file"]{
+    position: absolute;
+    transform: scale(2);
+    opacity: 0;
+  }
+  
+  input[type=file]::-webkit-file-upload-button{
+      cursor: pointer;
+  }
 .title2
 {
     display: flex;
@@ -146,6 +157,18 @@
     font-size: 15px;
 
 }
+.emailerror
+{
+    display:none;
+    color: red;
+}
+.phoneerror
+{
+    display: none;
+    color: red;
+    font-size: 14px;
+    margin-top: 0px;
+}
 .changepass .div
 {
     display: flex;
@@ -190,23 +213,30 @@
     transform: scale(1.1);
     background-color: var(--light-primary);
 } 
-
-/* #submit
+.divsubmit
+{
+    display: flex;
+    justify-content: flex-end;
+}
+.submitinfo
 {
     border: none;
-    color: white;
-    background: var(--primary);
+    color:white;
+    background: rgb(97, 97, 97);
     width: 100px;
+    height: 30px;
     text-align: center;
     padding: 0;
     cursor: pointer;
     transition: 0.3s transform;
+    border-radius: 10px;
 }
-#submit:hover
+.submitinfo:hover
 {
     transform: scale(1.1);
-    background-color: var(--light-primary);
-} */
+    background-color: rgb(146, 146, 146);
+} 
+
 
 @media(max-width:1441px)
 {

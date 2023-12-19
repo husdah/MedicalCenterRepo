@@ -161,24 +161,8 @@ $res=mysqli_query($con,$query);
     });
     });
     
-//     function deleteAction(r){ 
-//         console.log(r);
-//     $.ajax({
-// 			     url:'../deleteApp.php',
-// 						type: 'get',
-// 						data: {id:r},
-    
-// 			success: function(data) {  
-// 			       location.reload();
 
-// 		},
-// 				error: function (jXHR, textStatus, errorThrown) {
-// 					alert(errorThrown);
-// 				}
-// 		}); 
-// }
 function deleteAction(r) {
-    // Use SweetAlert for confirmation
     Swal.fire({
         title: 'Are you sure?',
         text: 'You won\'t be able to revert this!',
@@ -189,7 +173,6 @@ function deleteAction(r) {
         confirmButtonText: 'Yes'
     }).then((result) => {
         if (result.isConfirmed) {
-            // User clicked "Yes, delete it!" in SweetAlert
             $.ajax({
                 url: '../deleteApp.php',
                 type: 'get',

@@ -50,7 +50,7 @@ $res=mysqli_query($con,$query);
                 echo '
                 <li>
                     <a href="bookappsinglenew.php?cid='.$row["clinicId"].'">
-                    <img src="uploads/'.$row["icon"].'" alt="">
+                    <img src="'.$row["icon"].'" alt="">
                         <span>'.$row["name"].'</span>
                     </a>
                 </li>

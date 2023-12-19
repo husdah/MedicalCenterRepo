@@ -4,8 +4,7 @@ $enabledDays=array();
 require('config/dbcon.php');
 $query="select Fname, Lname,ProfilePic,phoneNumber,linkedin,instagram,facebook,doctor.clinicId,name from user join doctor on user.userId=doctor.userId  left join media on doctor.doctorId=media.doctorId left join clinic on doctor.clinicId = clinic.clinicId where doctor.doctorId=$did";
 $result=mysqli_query($con,$query);
-$query2="select message from feedback where doctorId=$did";
-$result2=mysqli_query($con,$query2);
+
 $query4="select day from doctorhours where doctorId=$did";
 $result4=mysqli_query($con,$query4);
 
@@ -23,7 +22,7 @@ while ($row = mysqli_fetch_assoc($result4)) {
     <link rel="icon" href="images/favicon.PNG" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/doctorpage.css">
     <link rel="stylesheet" href="assets/css/calendar.css">
- 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.2/owl.carousel.min.js"></script>
@@ -51,7 +50,7 @@ while ($row = mysqli_fetch_assoc($result4)) {
                         }
                         echo '
                         <div class="photo">
-                            <img src="'.$profilePic.'" alt="">
+                            <img src="uploads/'.$profilePic.'" alt="">
                         </div>
                         <div class="drInfo">
                             <h1>Dr '.$row['Fname'].' '.$row['Lname'].'</h1>
@@ -135,28 +134,15 @@ while ($row = mysqli_fetch_assoc($result4)) {
                         <a href="#yourFB"><i class='bx bx-pencil'></i></a>
                     </div>
 
-                    <ul class="task-list">
-                        <?php 
-                        while($row=mysqli_fetch_assoc($result2))
-                        {
-                            echo'
-                            <li class="completed">
-                            <div class="task-title">
-                                <i class="bx bx-group"></i>
-                                <p>'.$row["message"].'</p>
-                            </div>
-                            <i class="bx bx-dots-vertical-rounded"></i>
-                        </li>
-                            ';
-                        }
-                        ?>
+                    <ul class="task-list" id="feedback_list">
+                      
                     </ul>
                     
-                    <form class="form" id="yourFB" action="functions/addfeedback.php" method="POST">
+                    <form class="form" id="yourFB">
                         <p class="message">Enter Your Feedback Here. </p>        
                         <label>
                             <textarea class="input" name="feedback" id="description" cols="50" rows="2" placeholder="Write Your Feedback"></textarea>
-                            <input type="hidden" value="<?=$did?>" name="did">
+                            <input type="hidden" value="<?=$did?>" name="did" id="did">
                             <div id="errmsg"></div>
                         </label>
                         <button type="submit" class="addfb" id="addfb">Add your feedback</button>
@@ -195,7 +181,7 @@ while ($row = mysqli_fetch_assoc($result4)) {
     </script>
     <script src="assets/js/calendar.js"></script>
     <script src="assets/js/doctorpage.js"></script>
-    <!-- <script src="assets/js/appointment.js"></script> -->
+
     
 </body>
 </html>
