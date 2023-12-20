@@ -3,7 +3,6 @@ const TableData = document.getElementById('patient-app');
 const updatePhone     = document.getElementById('phone2');
 const updateGenderF   = document.getElementById('female');
 const updateGenderM   = document.getElementById('male');
-const updateDOB       = document.getElementById('update-date');
 const updateBloodType = document.getElementById('mySelect');
 
 const currentPass = document.getElementById('current-pwd');
@@ -16,28 +15,74 @@ const btn_update = document.getElementById('updateBtn');
 const btn_change = document.getElementById('changeBtn');
 
 
-/*const getPatientProfile = async(id) => {
-    const response  = await fetch('././getPatientData.php');
-    const data = await response.json();
+const getPatientProfile = async() => {
+    const response      = await fetch('././getPatientInfo.php');
+    const res = await response.json();
+    console.log('patient info record:', res);
+    if (res.length > 0) {
+        res.forEach( patient => {
+            updateFname.value = patient.firstName;
+            updateLname.value = patient.lastName;
+            updateEmail.value = patient.email;
+            updateDate.value  = patient.date;
+            updatePhone.value= patient.phoneNumber;
+            if (patient.gender === "male") {
+                updateGenderM.checked = true;
+            } else {
+                updateGenderF.checked = true;
+            }
+            updateBloodType.value = patient.bloodType;
+        });
+    } else {
+        console.log('No patient data received.');
+    }
+}
 
-    //console.log(received_data);
-    patient => {
-        fnameInput.value      = patient.firstName;
-        lnameInput.value      = patient.lastName;
-        emailInput1.value     = patient.email;
-        updatePhone.value     = patient.phoneNumber;
-        updateDOB.value       = patient.DOB;
-        //updateGenderF.value   = patient.gender
-        //updateGenderM.value   =
-        updateBloodType.value = patient.bloodType;
+const updatePatient = () => {
+    //alert('update Btn');
+    const genderRadio = document.querySelector('input[name="gender"]:checked');
+    const updateGender = genderRadio ? genderRadio.value : null;
+
+    const requestBody = {
+        updateFname: updateFname.value,
+        updateLname: updateLname.value,
+        updateEmail: updateEmail.value,
+        updatePhone: updatePhone.value,
+        updateDate: updateDate.value,
+        updateGender: updateGender,
+        updateBloodType: updateBloodType.value
     };
-}*/
+    fetch('././updatePatientInfo.php', {
+        method: 'POST',
+        body: JSON.stringify(requestBody),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        if(data.response == 200){
+            swal("Error!", "All fields are required.", "error");
+        }
+        /*else if(data.response == 300){
+            swal("Error!", "All fields must be validated.", "error");
+        }*/
+        else if(data.response == 500){
+            swal("Updated!", "Your informations are updated successfully.", "success");
+            passwordForm.reset();
+        }
+    })
+    .catch(error => {
+        console.error('Something went wrong:', error);
+    })
+    //patientForm.reset();
+}
 
 const getPatientApp = async() => {
     const res = await fetch('././getPatientData.php');
     const received_data = await res.json();
     TableData.innerHTML = "";
-    //console.log(received_data);
+    console.log('App records:',received_data);
     received_data.forEach(user => {
         TableData.innerHTML += `<tr>
                                     <td>${user.doctor}</td>
@@ -45,23 +90,21 @@ const getPatientApp = async() => {
                                     <td>${user.time}</td>
                                     <td><button id="cancel-btn" onclick ='del(${user.id})'>Cancel</button></td>
                                 </tr>`
+
     });
 }
 
-function del(id){
-    fetch('././deleteAppointmentByPatient.php',{
+function del(id) {
+    fetch('././deleteAppointmentByPatient.php', {
         method: 'POST',
         body: JSON.stringify({
-            id:id
+            id: id
         }),
-        headers:{
+        headers: {
             'Content-type': 'application/json, charset=UTF-8'
         }
-    }) 
-    
-    .then((response) => {
-        return response.json();
     })
+    .then((response) => response.json())
     .then((data) => {
         swal({
             title: "Are you sure?",
@@ -71,53 +114,17 @@ function del(id){
             dangerMode: true,
         })
         .then((willDelete) => {
-            if (willDelete) {
-                if(data.response == 200){
-                    swal("Success!", "Appointment deleted Successfully!", "success");
-                }
-                else if(data.response == 300){
-                    swal("Error!", "Something Went Wrong!", "error");
-                }
-                console.log(data);
+            if (willDelete && data.response == 200) {
+                swal("Success!", "Appointment deleted Successfully!", "success");
                 getPatientApp();
-        
+            } else {
+                swal("Error!", "Something Went Wrong!", "error");
             }
         });
     })
-    .catch(function(error){
+    .catch(function (error) {
         console.log('something went wrong.', error);
     });
-}
-
-const updatePatient = () => {
-    //alert('update Btn');
-    fetch('././updatePatientInfo.php',{
-        method:'POST',
-        body: JSON.stringify({
-            updateFname: updateFname.value,
-            updateLname: updateLname.value,
-            updateEmail: updateEmail.value,
-            updatePhone: updatePhone.value,
-            updateDate: updateDate.value,
-            updateGenderF: updateGenderF.value,
-            updateGenderM: updateGenderM.value,
-            updateBloodType: updateBloodType.value
-        }),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8'
-        }
-    })
-    .then((response) => {
-        return response.json();
-    })
-    .then((result) => {
-      console.log(result);
-
-    })
-    .catch(function(error){
-        console.log('something went wrong.', error);
-    });
-    patientForm.reset();
 }
 
 const changePassword = () => {
