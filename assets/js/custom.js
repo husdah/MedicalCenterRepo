@@ -95,35 +95,35 @@ const getPatientApp = async() => {
 }
 
 function del(id) {
-    fetch('././deleteAppointmentByPatient.php', {
-        method: 'POST',
-        body: JSON.stringify({
-            id: id
-        }),
-        headers: {
-            'Content-type': 'application/json, charset=UTF-8'
-        }
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
     })
-    .then((response) => response.json())
-    .then((data) => {
-        swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete && data.response == 200) {
-                swal("Success!", "Appointment deleted Successfully!", "success");
+    .then((willDelete) => {
+        if (willDelete) {
+            fetch('././deleteAppointmentByPatient.php', {
+                method: 'POST',
+                body: JSON.stringify({
+                    id: id
+                }),
+                headers: {
+                    'Content-type': 'application/json, charset=UTF-8'
+                }
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                if(data.response == 200){
+                    swal("Deleted", "Your appointment deleted successfully.", "success");
+                }
+                else if(data.response == 500){
+                    swal("Error!", "could not delete from database.", "error");
+                } 
                 getPatientApp();
-            } else {
-                swal("Error!", "Something Went Wrong!", "error");
-            }
-        });
-    })
-    .catch(function (error) {
-        console.log('something went wrong.', error);
+            })
+        }
     });
 }
 
