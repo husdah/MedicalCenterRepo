@@ -55,52 +55,8 @@
                             <th class="action_center">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    <?php 
-                        $clinics= getAll('clinic');
-                        if(mysqli_num_rows($clinics) >0){
-                            foreach($clinics as $item)
-                            {
-                                ?>
-                                    <tr>
-                                        <td class="ClinicNameRow"><p class="name"><?= $item['name']; ?></p></td>
-                                        <td class="ClinicImgRow">
-                                            <a href="/../uploads/<?= $item['photo']; ?>" class="imageLB"> 
-                                                <img src="/../uploads/<?= $item['photo']; ?>" alt="category Image">
-                                            </a>
-                                        </td>
-                                        <td class="ClinicIconRow">
-                                            <a href="/../uploads/<?= $item['icon']; ?>" class="imageLB"> 
-                                                <img src="/../uploads/<?= $item['icon']; ?>" alt="category Image">
-                                            </a>
-                                        </td>
-                                        <td class="action_center">
-                                            <input  class="desc" type="hidden" value="<?= $item['description']; ?>">
-                                            <button class="btn-edit editClinic" id="edit" value="<?= $item['clinicId']; ?>"><i class="bx bx-edit"></i><span>Edit</span></button>
-                                            <button class="btn-delete deleteClinicBtn" value="<?= $item['clinicId']; ?>"><i class="bx bx-trash-alt"></i><span>Delete</span></button>
-                                        </td>
-                                     </tr>
-
-                                <?php
-
-                            }
-
-                        }else{
-                            echo "<tr><td colspan ='3'>no clinics found</td></tr>";
-                        }
-                    ?>
-   <!--                      <tr>
-                            <td><a href="#clinicEdit"><p class="name">Cardiology</p></a></td>
-                            <td>
-                                <a href="../images/profile-1.jpg" class="imageLB"> 
-                                    <img src="../images/profile-1.jpg" alt="category Image">
-                                </a>
-                            </td>
-                            <td class="action_center">
-                                <button class="btn-edit" id="edit" value="1"><i class="bx bx-edit"></i><span>Edit</span></button>
-                                <button class="btn-delete"><i class="bx bx-trash-alt"></i><span>Delete</span></button>
-                            </td>
-                        </tr> -->
+                    <tbody id="clincTbody">
+   
                     </tbody>
                 </table>
             </div>
@@ -111,7 +67,7 @@
                     <i class='bx bx-clinic'></i>
                     <h3 id="FormTitle">ADD Clinic</h3>
                 </div>
-                <form class="form" id="addClinicForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
+                <form class="form" id="addClinicForm">
                     <p class="title">Fill The Form</p>
                     <p class="message">Please Enter The Needed Information. </p>
 
@@ -148,7 +104,7 @@
                 </div>
                 <i id="viewAddForm" class='bx bx-plus-circle'></i>
             </div>
-            <form class="form" id="editClinicForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
+            <form class="form" id="editClinicForm">
                 <p class="title">Fill The Form</p>
                 <p class="message">Please Enter The Needed Information. </p>
                 <input type="hidden" value="" id="editClinicFormId" name="editClinicFormId">

@@ -56,37 +56,8 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <?php 
-                            $medicalHours= getMedHours();
-                            if(mysqli_num_rows($medicalHours) >0){
-                                foreach($medicalHours as $info)
-                                {
-                                    $fromHour="00:00:00";
-                                    $toHour = '00:00:00';
-                                    if($info['fromHour'] != '00:00:00' && $info['fromHour'] != ""){
-                                        $fromHour = date('h:i A', strtotime($info['fromHour']));
-                                    }
-                                    if($info['toHour'] != '00:00:00' &&  $info['toHour'] != ""){
-                                        $toHour = date('h:i A', strtotime($info['toHour']));
-                                    }
-                                    ?>
-                                        <tr>
-                                            <td class="day"><?= $info['day']; ?></td>
-                                            <td class="from"><?= $fromHour; ?></td>
-                                            <td class="to"><?= $toHour; ?></td>
-                                            <td>
-                                                <label class="check-container" id="check_display">Closed
-                                                    <input type="checkbox" disabled <?php if($info['closed'] == 1){echo "checked";}; ?>>
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </td>
-                                            <td><button class="btn-delete deleteMedHoursBtn" value="<?= $info['day']; ?>"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
-                                        </tr>
-                                    <?php
-                                }
-                            }
-                            ?>
+                    <tbody id="centerWHTbody">
+
                     </tbody>
                 </table>
             </div>
@@ -97,7 +68,7 @@
                     <i class='bx bx-timer'></i>
                     <h3>Medical Hours</h3>
                 </div>
-                <form class="form" id="manageWHForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
+                <form class="form" id="manageWHForm">
                     <p class="title">Manage WH</p>
                     <p class="message">Please Enter The Needed Information. </p>
                     <label>
@@ -139,7 +110,7 @@
             <div class="orders">
                 <div class="header">
                     <i class='bx bx-time'></i>
-                    <h3>Working Hours</h3>
+                    <h3>Doctors Working Hours</h3>
                     <form class="expanding-search-form">
                         <div class="search-dropdown">
                             <button class="button dropdown-toggle" type="button">
@@ -159,89 +130,13 @@
                     </form>                    
                 </div>
                 <table id="dataTable" class="whTable">
-                    <thead>
-                        <tr>
-                            <th>Doctors</th>
-                          <!--   <th>Monday</th>
-                            <th>Tuesday</th>
-                            <th>Wednesday</th>
-                            <th>Thursday</th>
-                            <th>Friday</th>
-                            <th>Saturday</th>
-                            <th>Sunday</th> -->
-                            <?php
-                                $wDays = getWorkingDays();
-                                if(mysqli_num_rows($wDays) >0){
-                                    foreach($wDays as $item){
-                                        ?>
-                                        <th><?= $item['day']; ?></th>                                                        
-                                        <?php
-                                    }
-                                }
-                            ?>
-                        </tr>
+                    <thead id="workingDaysTH">
+<!--                         <tr >
+
+                        </tr> -->
                     </thead>
-                    <tbody>
-                        <?php 
-                            $doctorHours= getDocWhours();
-                            if(mysqli_num_rows($doctorHours) >0){
-                                foreach($doctorHours as $info)
-                                {
-                                    $docName = $info['Fname'] ." " .$info['Lname'];
-                                    $profilePic = "docImgPlaceholder.jpg";
-/*                                     $fromHour = date('h:i A', strtotime($info['fromHour']));
-                                    $toHour = date('h:i A', strtotime($info['toHour'])); */
-                                    if($info['profilePic'] != null){
-                                        $profilePic = $info['profilePic'];
-                                    }
-                                    ?>
-                                        <tr>
-                                            <td>
-                                                <a href="../uploads/<?= $profilePic; ?>" class="imageLB"> 
-                                                    <img src="../uploads/<?= $profilePic; ?>" alt="doctor Image">
-                                                </a>
-                                                <a href="edit-doctor.php?doctorId=<?= $info['doctorId']; ?>"><p class="name"><?= $docName; ?></p></a>
-                                            </td>
-                                            <?php
-                                                $wHours = getDocWhours2($info['doctorId']);
-                                                if(mysqli_num_rows($wHours) >0){
-                                                    foreach($wHours as $item){
-                                                        $fromHour="00:00:00";
-                                                        $toHour = '00:00:00';
-                                                        $dispaly = false;
-                                                        if($item['fromHour'] != '00:00:00'){
-                                                            $fromHour = date('h:i A', strtotime($item['fromHour']));
-                                                        }
-                                                        if($item['toHour'] != '00:00:00'){
-                                                            $toHour = date('h:i A', strtotime($item['toHour']));
-                                                        }
-                                                        foreach($wDays as $day){
-                                                            if($item['day'] == $day['day']){
-                                                                $dispaly = true;
-                                                            }
-                                                        }
-                                                        if($dispaly){
-                                                        ?>
-                                                        <td>
-                                                            <label class="check-container" id="check_display">
-                                                                <div class="col">
-                                                                    <span><?= $fromHour; ?></span>
-                                                                    <span><?= $toHour; ?></span>
-                                                                </div>
-                                                                <input type="checkbox" disabled <?php if($item['available'] == 1){echo "checked";};?>>
-                                                                <span class="checkmark"></span>
-                                                            </label>
-                                                        </td>                                                        
-                                                        <?php
-                                                        }
-                                                    }
-                                                }
-                                            ?>
-                                        </tr>
-                                    <?php
-                                }
-                            }
-                        ?>
+                    <tbody id="doctorsWHTbody">
+ 
                     </tbody>
                 </table>
             </div>

@@ -106,9 +106,11 @@
         $createTableFeedbackQuery= "CREATE TABLE IF NOT EXISTS feedback (
             feedbackId INT PRIMARY KEY AUTO_INCREMENT,
             doctorId INT NOT NULL,
+            patientId INT NOT NULL,
             message mediumtext NOT NULL,
             date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (doctorId) REFERENCES doctor(doctorId)
+            FOREIGN KEY (doctorId) REFERENCES doctor(doctorId),
+            FOREIGN KEY (patientId) REFERENCES patient(patientId)
 
         );";
         $createTableFeedbackQuery_run = mysqli_query($con,$createTableFeedbackQuery);
@@ -196,7 +198,9 @@
                     END IF;
                 END";
             $createTriggerQuery_run = mysqli_query($con, $createTriggerQuery);
-        } 
+
+        }
+
     }
     
 ?>

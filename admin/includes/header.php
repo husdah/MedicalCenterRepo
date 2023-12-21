@@ -27,23 +27,13 @@
     include('includes/sidebar.php');
 ?>
 
-    <?php 
-      if(isset($_SESSION['message'])) 
-      {   
-          ?>
-
-          <div class="alert show showAlert">
-            <span class="bx bx-message-square-error"></span>
-            <span class="msg"><?= $_SESSION['message']; ?>!</span>
-            <div class="close-btn">
-                <span class="bx bx-x"></span>
-            </div>
-          </div>
-
-          <?php
-          unset($_SESSION['message']);
-      } 
-    ?>
+    <div class="alert hide showAlert">
+        <span class="bx bx-message-square-error"></span>
+        <span id="alertMsg" class="msg">!</span>
+        <div class="close-btn">
+            <span class="bx bx-x"></span>
+        </div>
+    </div>
 
 <!-- Main Content -->
 <div class="content">

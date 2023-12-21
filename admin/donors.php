@@ -54,34 +54,8 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    <?php 
-                        $donors= getAll('donor');
-                        if(mysqli_num_rows($donors) >0){
-                            foreach($donors as $item)
-                            {
-                                $email = $item['email'];
-                                $phone = $item['phoneNumber'];
-                                $contact= "";
-                                if($email != ""){
-                                    $contact = $email;
-                                }else if($phone != ""){
-                                    $contact = $phone;
-                                }
-                                ?>
-                                    <tr>
-                                        <td>
-                                            <p class="info"><?= $contact; ?></p>
-                                        </td>
-                                        <td class="bloodtype"><?= $item['bloodType']; ?></td>
-                                        <td><button class="btn-delete deleteDonorBtn" value="<?= $item['donorId']; ?>"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
-                                    </tr>
-                                <?php
-                            }
-                        }else{
-                            echo "<tr><td colspan ='3'>no donors found</td></tr>";
-                        }
-                        ?>
+                    <tbody id="donorsTbody">
+    
                     </tbody>
                 </table>
             </div>
@@ -140,7 +114,7 @@
                             </span>
                         </button>
                     </form> -->
-                    <form class="form" id="urgentBloodTypeForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
+                    <form class="form" id="urgentBloodTypeForm" >
                     <p class="title">ADD Needed Blood Type </p>
                     <p class="message">Please Enter The Needed Information. </p>
                     <div class="flex">
@@ -176,26 +150,8 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    <?php 
-                        $urgentBT= getAll('urgentbt');
-                        if(mysqli_num_rows($urgentBT) >0){
-                            foreach($urgentBT as $item)
-                            {
-                                ?>
-                                    <tr>
-                                        <td class="bloodtype"><?= $item['bloodType']; ?></td>
-                                        <td>
-                                            <p><?= $item['number']; ?></p>
-                                        </td>
-                                        <td><button class="btn-delete deleteUrgentBTBtn" value="<?= $item['urgentBTId']; ?>"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
-                                    </tr>
-                                <?php
-                            }
-                        }else{
-                            echo "<tr><td colspan ='3'>no Urgent BloodTypes found</td></tr>";
-                        }
-                        ?>
+                    <tbody id="urgentBTDetails">
+
                     </tbody>
                 </table>
             </div>

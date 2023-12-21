@@ -9,8 +9,11 @@ $(document).ready(function () {
         var name = $(this).closest('tr').find('.ClinicNameRow').find('.name').text();
         $('#editClinicName').val(name);
 
+/*         var desc = $(this).closest('.action_center').find('.desc').val();
+        document.getElementById('editClinicDesc').innerText = desc; */
+
         var desc = $(this).closest('.action_center').find('.desc').val();
-        document.getElementById('editClinicDesc').textContent = desc;
+        $('#editClinicDesc').val(desc);
 
         var imageSrc = $(this).closest('tr').find('.ClinicImgRow').find('.imageLB').find('img').attr('src');
         $('#oldClinicImgDisplayer').attr('href', imageSrc);
