@@ -9,12 +9,14 @@
     <link rel="stylesheet" href="assets/css/style.css" /> 
   </head> 
   <body> 
+
+
     <div class="container"> 
       <div class="forms-container"> 
 
         <div class="signin-signup"> 
 
-        <form class="sign-in-form" id="sign-in" action="doctor/queryFunctions/phpCode.php" method="post"> 
+        <form class="sign-in-form" id="sign-in" action="phpCode.php" method="post"> 
             <h2 class="title">Sign in</h2> 
             <div class="input-field"> 
               <i class="fas fa-user"></i> 
@@ -32,7 +34,7 @@
             </div> 
           </form> 
 
-          <form action="sign-in-up.php" method="post" class="sign-up-form" id="sign-up"> 
+          <form action="phpCode.php" method="post" class="sign-up-form" id="sign-up"> 
             <h2 class="title">Sign up</h2> 
 
             <div class="fullname">
@@ -155,5 +157,9 @@
  
     <script src="assets/js/app.js"></script> 
     <script src="assets/js/siginValidation.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="assets/js/sign-in-up.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
   </body> 
 </html>
