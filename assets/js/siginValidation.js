@@ -91,20 +91,30 @@ signinForm?.addEventListener('submit', (e) => {
 */
 signupForm?.addEventListener('submit', (e) => { 
     //prevents the default form submission behavior 
-    e.preventDefault();
-    validateSignupForm();
+    const isValid = validateSignupForm();
+
+    // If validation fails, prevent the default form submission
+    if (!isValid) {
+        e.preventDefault();
+    }
 });
 
 updateForm?.addEventListener('submit', (e) => { 
-    //prevents the default form submission behavior 
-    e.preventDefault();
-    validateUpdateForm();
+    const isValid = validateUpdateForm();
+
+    // If validation fails, prevent the default form submission
+    if (!isValid) {
+        e.preventDefault();
+    }
 });
 
 passwordForm?.addEventListener('submit', (e) => { 
-    //prevents the default form submission behavior 
-    e.preventDefault();
-    validatePasswordForm();
+    const isValid = validatePasswordForm();
+
+    // If validation fails, prevent the default form submission
+    if (!isValid) {
+        e.preventDefault();
+    }
 });
 
 //Check if the Email is Empty
@@ -367,7 +377,7 @@ dateInput?.addEventListener('input', function(){
 function validateSigninForm(){
     
     if(isEmailEmpty(emailInput1,emailMsg1) && isPasswordEmpty(pwdInput1,pwdMsg1) && validateEmail(emailInput1,emailMsg1)){
-        alert('Submitted Successfully');
+    //    alert('Submitted Successfully');
         return true;
     }else{
         isEmailEmpty(emailInput1,emailMsg1);
@@ -384,7 +394,8 @@ function validateSignupForm(){
      && isNameEmpty(fnameInput,nameMsg)  && comparePasswords(pwdInput2,confirmInput,confirmMsg) && validatePhone(phoneInput,phoneMsg)
      && isDateEmpty(dateInput,infoMsg) && genderCheck() ){
 
-        alert('Submitted Successfully!');
+    //    alert('Submitted Successfully!');
+    return true;
     }else{
         isEmailEmpty(emailInput2,emailMsg2);
         isPasswordEmpty(pwdInput2,pwdMsg2);
@@ -393,6 +404,7 @@ function validateSignupForm(){
         isNameEmpty(fnameInput,nameMsg);
         isDateEmpty(dateInput,infoMsg);
         genderCheck();
+        return false;
     }
 }
 
@@ -402,12 +414,14 @@ function validateUpdateForm(){
     && validateName(updateLname,lastMsg) && isNameEmpty(updateFname,firstMsg) && isNameEmpty(updateLname,lastMsg) && isDateEmpty(updateDate,dateMessage)
     && validatePhone(phoneInput2,phoneMsg2)){
         
-        alert('Submitted Successfully!');
+       // alert('Submitted Successfully!');
+       return true;
     }else{
         isEmailEmpty(updateEmail,emailMessage);
         isNameEmpty(updateFname,firstMsg);
         isNameEmpty(updateLname,lastMsg);
         isDateEmpty(updateDate,dateMessage);
+        return false;
     }
 }
 
@@ -415,10 +429,12 @@ function validatePasswordForm(){
     if(isPasswordEmpty(currentPasswordInput,currentMsg) && isPasswordEmpty(newPasswordInput,newMsg) && isPasswordEmpty(cPasswordInput,cMsg)
      && validatePwd(newPasswordInput,newMsg) && comparePasswords(newPasswordInput,cPasswordInput,cMsg)){
 
-        alert('Submitted successfully!');
+      //  alert('Submitted successfully!');
+      return true;
     }else{
         isPasswordEmpty(currentPasswordInput,currentMsg);
         isPasswordEmpty(newPasswordInput,newMsg);
         isPasswordEmpty(cPasswordInput,cMsg);
+        return false;
     }
 }

@@ -398,7 +398,7 @@ body{
     background: var(--success);
 }
 
-.content .apps-table table td .accepted{
+.content .apps-table table td .confirmed{
     background: var(--primary);
 }
 

@@ -4,7 +4,6 @@ include("queryFunctions/queryfunctions.php");
 
 $doctor = $_SESSION['doctor_id'];
 $doctorId = getDoctorId($doctor); 
-
 $patientsNb = getPatientCount($doctorId);
 $AppointmentsNb = getAppoinmentCount($doctorId);
 $requestNb = getRequestCount($doctorId);
@@ -22,6 +21,7 @@ $requestNb = getRequestCount($doctorId);
     <link rel="icon" href="/images/favicon.PNG" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
 </head>
 <body>
 
@@ -40,9 +40,10 @@ $requestNb = getRequestCount($doctorId);
        </div>
        <div class="banner">
         <div class="banner-img"><img src="../images/ban.png"></div>
-        <div class="title"><h2>Welcome, dr. <span>Doctor</span></h2>
+        <div class="title"><h2>Welcome, dr. <span></span></h2>
         <p>Have a nice day at work.</p></div>
        </div>
+
 
        <ul class="insights">
         <li>
@@ -77,7 +78,7 @@ $requestNb = getRequestCount($doctorId);
        
        <div class="request">
         <h4>Appointment Requests</h4>
-        <table class="request-table">
+        <table class="request-table" id="requestTable">
             <thead>
             <tr>
                 <th>Name of Patient</th>
@@ -100,8 +101,8 @@ $requestNb = getRequestCount($doctorId);
                                         <td><?= $item['date']; ?></td>
                                         <td><?= $item['time']; ?></td>
                                         <td>
-                                        <button class="acc-btn"><i class='bx bx-check-circle'></i></button>
-                                        <button class="del-btn"><i class='bx bx-x-circle'></i></button>
+                                        <button class="acc-btn" value="<?= $item['appId'] ?>"><i class='bx bx-check-circle'></i></button>
+                                        <button class="del-btn" value="<?= $item['appId'] ?>"><i class='bx bx-x-circle'></i></button>
                                        </td>
                                     </tr>
 
@@ -129,7 +130,7 @@ $requestNb = getRequestCount($doctorId);
            <table class="appointments">
             <?php
 
-            $patients = getPatients();
+            $patients = getPatients($doctorId);
             if (mysqli_num_rows($patients) > 0){
                 foreach ($patients as $patient){
             ?>   
@@ -161,7 +162,11 @@ $requestNb = getRequestCount($doctorId);
      </div>
      <!-- End of Main Content-->
 
+
     <script src="assets/js/dashboard.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="assets/js/buttonActions.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </body>
 </html>
