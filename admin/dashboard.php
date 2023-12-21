@@ -104,41 +104,8 @@
                             <th>Status</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    <?php 
-                        $appt= getAppointments();
-                        if(mysqli_num_rows($appt) >0){
-                            foreach($appt as $item)
-                            {
-                                $time = date('h:i A', strtotime($item['time']));
-                                ?>
-                                    <tr>
-                                        <td>
-                                            <a href="view-patient.php"><p class="name"><?= $item['Fname']; ?> <?= $item['Lname'] ?></p></a>
-                                        </td>
-                                        <td class="date"><?= $item['date']; ?></td>
-                                        <td><?= $time; ?></td>
-                                        <td><span class="status <?= $item['status']; ?>"><?= $item['status']; ?></span></td>
-                                    </tr>
+                    <tbody id="recentApptTbody">
 
-                                <?php
-
-                            }
-
-                        }else{
-                            echo "<tr><td colspan ='4'>no appointments found</td></tr>";
-                        }
-                    ?>
-                        <!--  
-                            <td>
-                                <a href="../images/profile-1.jpg" class="imageLB"> 
-                                    <img src="../images/profile-1.jpg" alt="patient Image">
-                                </a>
-                                <a href="view-patient.php"><p class="name">Zeinab Hijazi</p></a>
-                            </td>
-                            <td class="date">15-08-2023</td>
-                            <td><span class="status process">Processing</span></td>
-                        </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -151,7 +118,7 @@
                     <div id="reminderContainer" class="searchContainer">
                         <span id="searchIcon" onclick="toggleReminderBox()"><i class='bx bx-plus'></i></span>
                         <div id="reminderBox" class="reminderBox">
-                            <form class="form" id="addReminderForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
+                            <form class="form" id="addReminderForm">
                                 <label for="">
                                     <input class="input" type="text" id="reminderInput" name="reminderInput" required placeholder="">
                                     <span class="reminder" id="reminderInputError">reminder</span>
@@ -162,41 +129,7 @@
                     </div>
                 </div>
                 <ul class="task-list" id="reminders_list">
-                <?php 
-                        $reminders= getReminders();
-                        if(mysqli_num_rows($reminders) >0){
-                            foreach($reminders as $item)
-                            {
-                                $originalDate = $item['date'];
-                                $dateTime = new DateTime($originalDate);
-                                $formattedDate = $dateTime->format('Y-m-d H:i');
-
-                                ?>
-                                    <li class="completed">
-                                        <div class="task-title">
-                                            <i class='bx bx-timer'></i>
-                                            <div>
-                                                <p><?= $item['reminder']; ?></p>
-                                                <p><?= $formattedDate; ?></p>
-                                            </div>
-                                        </div>
-                                        <button class="delete_reminder_btn" value="<?= $item['reminderId']; ?>"><i class="bx bx-trash-alt"></i></button>
-                                    </li>
-
-                                <?php
-
-                            }
-
-                        }
-                    ?>
-                   
-                    <!--  <li class="not-completed">
-                        <div class="task-title">
-                            <i class='bx bx-x-circle'></i>
-                            <p>Play Footbal</p>
-                        </div>
-                        <i class='bx bx-dots-vertical-rounded'></i>
-                    </li> -->
+  
                 </ul>
             </div>
             <!-- End of Reminders-->

@@ -28,12 +28,12 @@
                     <i class='bx bx-receipt'></i>
                     <h3>Registered Doctors</h3>
                     <div class="filterContainer">
-                        <form class="form" method="get">
+                        <form class="form">
                             <label>
-                                <select name="doctorDisplay" id="doctorDisplay" onchange="this.form.submit()" class="input">
-                                    <option value="0" <?php if(isset($_GET['doctorDisplay']) && $_GET['doctorDisplay'] == 0){echo "selected";} ?>>Active</option>
-                                    <option value="1" <?php if(isset($_GET['doctorDisplay']) && $_GET['doctorDisplay'] == 1){echo "selected";} ?>>Inactive</option>
-                                    <option value="2" <?php if(isset($_GET['doctorDisplay']) && $_GET['doctorDisplay'] == 2){echo "selected";} ?>>All</option>
+                                <select name="doctorDisplay" id="doctorDisplay" class="input">
+                                    <option value="0" selected>Active</option>
+                                    <option value="1">Inactive</option>
+                                    <option value="2">All</option>
                                 </select>
                                 <span>Doctors</span>
                             </label> 
@@ -67,84 +67,8 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    <?php 
-                        $doctors= getSpecificDoc(0);
-                        if(isset($_GET['doctorDisplay'])){
-                            if($_GET['doctorDisplay'] == 0 || $_GET['doctorDisplay'] == 1){$doctors= getSpecificDoc($_GET['doctorDisplay']);}
-                            else if($_GET['doctorDisplay'] == 2){$doctors= getAll('doctor');}   
-                        }
-                        if(mysqli_num_rows($doctors) >0){
-                            foreach($doctors as $item)
-                            {
-                                $docName= "";
-                                $clinicName = "undefined";
-                                $profilePic = "";
-                                if($item['clinicId'] != null){
-                                    $clinic = getClinicById($item['clinicId']);
-                                    foreach($clinic as $name)
-                                    {
-                                        $clinicName = $name['name'];
-                                    }
-                                }
-                                $doctorName = getNameById($item['doctorId']);
-                                foreach($doctorName as $name)
-                                {
-                                    $docName = $name['Fname'] ." " .$name['Lname'];
-                                }
-                                $profile = getProfilePicById($item['doctorId']);
-                                foreach($profile as $pic)
-                                {
-                                    if($pic['profilePic'] == null){
-                                        $profilePic = "docImgPlaceholder.jpg";
-                                    }else{
-                                        $profilePic = $pic['profilePic'];
-                                    }
-                                }
-                                ?>
-                                    <tr>
-                                        <td>
-                                            <a href="../uploads/<?= $profilePic; ?>" class="imageLB"> 
-                                                <img src="../uploads/<?= $profilePic; ?>" alt="doctor Image">
-                                            </a>
-                                            <?php
-                                             if($item['deleted'] == 0){
-                                                ?>
-                                                <a href="edit-doctor.php?doctorId=<?= $item['doctorId']; ?>"><p class="doctor"><?= $docName; ?></p></a>
-                                                <?php
-                                            }else if($item['deleted'] == 1){
-                                                ?>
-                                                <p class="doctor"><?= $docName; ?></p>
-                                                <?php
-                                            }
-
-                                            ?>
-                                        </td>
-                                        <td class="clinic"><?= $clinicName; ?></td>
-                                        <td>
-                                            <?php
-                                             if($item['deleted'] == 0){
-                                                ?>
-                                                <button class="btn-delete deleteDocBtn" value="<?= $item['doctorId']; ?>"><i class="bx bx-trash-alt"></i><span>Delete</span></button>
-                                                <?php
-                                            }else if($item['deleted'] == 1){
-                                                ?>
-                                                <button class="btn-delete restoreDocBtn" value="<?= $item['doctorId']; ?>"><i class="bx bx-refresh"></i><span>Restore</span></button>
-                                                <?php
-                                            }
-
-                                            ?>
-                                        </td>
-                                    </tr>
-
-                                <?php
-
-                            }
-
-                        }else{
-                            echo "<tr><td colspan ='3'>no doctors found</td></tr>";
-                        }
-                    ?>
+                    <tbody id="doctorsTbody">
+    
                     </tbody>
                 </table>
             </div>
@@ -155,7 +79,7 @@
                     <i class='bx bx-first-aid'></i>
                     <h3>Create Doctor Account</h3>
                 </div>
-                <form class="form" id="addDoctorForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
+                <form class="form" id="addDoctorForm">
                     <p class="title">Register Doctor</p>
                     <p class="message">Please Enter The Needed Information. </p>
                     <div class="flex">
@@ -172,19 +96,7 @@
                     
                     <label>
                         <select id="doctorClinic" name="doctorClinic" class="input s2" required>
-                            <option value="clinic">Choose Profession</option>
-                            <?php
-                                $clinics = getAll('clinic');
-                                if(mysqli_num_rows($clinics) >0){
-                                    foreach($clinics as $item){
-                                        ?>
-                                        <option value="<?= $item['clinicId']; ?>">
-                                            <?= $item['name']; ?>
-                                        </option>                                                           
-                                        <?php
-                                    }
-                                }
-                            ?>
+  
                         </select>
                         <span id="doctorClinicError">Clinic</span>
                     </label> 

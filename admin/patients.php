@@ -27,24 +27,37 @@
                 <div class="header">
                     <i class='bx bx-receipt'></i>
                     <h3>Patients</h3>
-                    <form class="expanding-search-form">
-                        <div class="search-dropdown">
-                            <button class="button dropdown-toggle" type="button">
-                                <span class="toggle-active">Name</span>
-                                <span class="ion-arrow-down-b"></span>
+                    <div class="filterContainer">
+                        <form class="form">
+                            <label>
+                                <select name="patientDisplay" id="patientDisplay" class="input">
+                                    <option value="0" selected>Active</option>
+                                    <option value="1">Restricted</option>
+                                    <option value="2">All</option>
+                                </select>
+                                <span>Patients</span>
+                            </label> 
+                        </form>
+
+                        <form class="expanding-search-form">
+                            <div class="search-dropdown">
+                                <button class="button dropdown-toggle" type="button">
+                                    <span class="toggle-active">Name</span>
+                                    <span class="ion-arrow-down-b"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li class="menu-active"><a href="#">Name</a></li>
+                                    <li><a href="#">Date</a></li>
+                                </ul>
+                            </div>
+                            <input class="search-input" id="global-search" type="search" placeholder="Search">
+                            <button class="button search-button" type="button">
+                                <span class="icon ion-search">
+                                    <span class="sr-only">Search</span>
+                                </span>
                             </button>
-                            <ul class="dropdown-menu">
-                                <li class="menu-active"><a href="#">Name</a></li>
-                                <li><a href="#">Date</a></li>
-                            </ul>
-                        </div>
-                        <input class="search-input" id="global-search" type="search" placeholder="Search">
-                        <button class="button search-button" type="button">
-                            <span class="icon ion-search">
-                                <span class="sr-only">Search</span>
-                            </span>
-                        </button>
-                    </form>
+                        </form>
+                    </div>
                 </div>
                 <table id="dataTable">
                     <thead>
@@ -54,40 +67,8 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <?php
-                        $patients = getPatients();
-                        if(mysqli_num_rows($patients) >0){
-                            foreach($patients as $patient){
-                                $name = $patient['Fname'] ." " .$patient['Lname']; 
-                                ?>
-                                    <tr>
-                                        <td>
-                                            <a href="view-patient.php?userId=<?= $patient['userId']; ?>">
-                                                <p class="name"><?= $name; ?></p>
-                                            </a>
-                                        </td>
-                                        <td class="date"><?= $patient['registrationDate']; ?></td>
-                                        <?php
-                                            if($patient['restricted'] == 0){
-                                                ?>
-                                                    <td><button value="<?= $patient['userId']; ?>" class="btn-delete restrictUserBtn"><i class="bx bx-block"></i><span>Restrict</span></button></td>
-                                                <?php
-                                            }else if($patient['restricted'] == 1){
-                                                ?>
-                                                    <td><button value="<?= $patient['userId']; ?>" class="btn-delete restoreUserBtn"><i class="bx bx-refresh"></i><span>Restore</span></button></td>
-                                                <?php
-                                            }
-                                        ?>
-                                        
-                                    </tr>
-                                <?php
-                            }
-                        }else{
-                            echo "<tr><td colspan ='3'>no patients found</td></tr>";
-                        }
+                    <tbody id="patientsTbody">
 
-                        ?>
                     </tbody>
                 </table>
             </div>
@@ -98,7 +79,7 @@
                     <i class='bx bx-group'></i>
                     <h3>Create Patient Account</h3>
                 </div>
-                <form class="form" id="addPatientForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
+                <form class="form" id="addPatientForm">
                     <p class="title">Register Patient</p>
                     <p class="message">Please Enter The Needed Information. </p>
                     <div class="flex">
