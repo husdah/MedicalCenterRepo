@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  //$patientName = $_SESSION['patientName'];
+  $patientName = "Zeinab Hijazi";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,25 +18,30 @@
     <div class="container">
             <div class="header">
                 <div class="title">
-                <label>Welcome, </label><span>User</span><br>
+                <label>Welcome, </label><span><?php echo $patientName ?></span><br>
                 <label class="date" id="date"></label>
                 </div>
                 <div class="buttons">
-                    <a href="home.php" class="back"><button><i class="fas fa-arrow-left"></i>  Back</button></a>
-                    <a href="sign-in-up.php"><button class="log-out">Log out</button></a>
+                    <a href="home.php" class="back"><button type="button" id="back" name="back"><i class="fas fa-arrow-left"></i>  Back</button></a>
+                    <a href="logout.php"><button type="button" id="logout" name="logout" class="log-out">Log out</button></a>
                 </div>
             </div>
+
             <div class="tables">
                 <div class="table1">
                     <h2>Your Appointments</h2>
                     <table>
+                      <thead>
                         <tr>
                             <th>Doctor</th>
                             <th>Date</th>
                             <th>Time</th>
                             <th>Action</th>
                         </tr>
-                        <tr>
+                      </thead>
+                      <tbody id= "patient-app"> 
+
+                        <!--<tr>
                             <td>doctor1</td>
                             <td>11/11/2023</td>
                             <td>11:00 am</td>
@@ -48,7 +58,8 @@
                             <td>12/12/2023</td>
                             <td>10:30 am</td>
                             <td><button id="cancel-btn">Cancel</button></td>
-                        </tr>
+                        </tr>-->
+                      </tbody>
                     </table>
                 </div>
                 <div class="table2">
@@ -118,7 +129,7 @@
                             <option value="AB-">AB-</option> 
                             </select> 
                         </div>
-                        <input type="submit" class="update-btn" name="update" value="Update">
+                        <input type="submit" id="updateBtn" class="update-btn" name="update" value="Update">
                     </form>
                     <h2>Change Password</h2>
                     <form class="change-pwd" id="change-password">
@@ -147,7 +158,7 @@
                         <div class="display"><p class="message" id="cmsg"></p></div>
                       </div>
 
-                        <input type="submit" name="change-btn" value="Change" class="change-btn">
+                        <input type="submit" id="changeBtn" name="change-btn" value="Change" class="change-btn">
                     </form> 
                 </div>
             </div>
@@ -155,5 +166,8 @@
 
     <script src="assets/js/user.js"></script>
     <script src="assets/js/siginValidation.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <!-- sweetalert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

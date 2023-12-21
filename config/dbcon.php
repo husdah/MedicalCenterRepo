@@ -198,7 +198,9 @@
                     END IF;
                 END";
             $createTriggerQuery_run = mysqli_query($con, $createTriggerQuery);
+
         }
+
     }
     
 ?>

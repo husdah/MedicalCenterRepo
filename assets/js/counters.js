@@ -23,7 +23,7 @@ function counterFunc(){
       else{
         clearInterval(interval);
       }
-    }, 3000);
+    }, 1500);
   }
 }
 
