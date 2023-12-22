@@ -19,7 +19,7 @@ $(document).ready(function () {
         $('#oldClinicImgDisplayer').attr('href', imageSrc);
         $('#oldClinicImg').attr('src', imageSrc);
 
-        let path = "../../uploads";
+        let path = "../uploads";
         let n = imageSrc.length - path.length;
         let string = imageSrc.substring(n-1);
         $('#old_image').val(string);

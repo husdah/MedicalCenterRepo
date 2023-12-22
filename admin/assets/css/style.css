@@ -53,6 +53,10 @@ body.dark{
     --dark: #fbfbfb;
 }
 
+.content-hidden {
+    display: none;
+}
+
 body{
     background: var(--grey);
     overflow-x: hidden;
