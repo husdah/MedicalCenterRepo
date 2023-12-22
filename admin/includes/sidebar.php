@@ -18,7 +18,7 @@
 </ul>
 <ul class="side-menu">
     <li class="log-li">
-        <a href="/sign-in-up.php" class="logout">
+        <a href="../logout.php" class="logout">
             <i class='bx bx-log-out-circle'></i>
             Logout
         </a>

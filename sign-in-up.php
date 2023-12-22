@@ -1,3 +1,22 @@
+<?php 
+session_start(); 
+
+if(isset($_SESSION['auth'])){
+    /* $_SESSION['message']= "You are already logged in"; */
+
+    if($_SESSION['role_as'] == 0){
+      header('Location: admin/dashboard.php');
+      exit();
+    }else if($_SESSION['role_as'] == 1){
+      header('Location: doctor/dashboard.php');
+      exit();
+    }else{
+      header('Location: home.php');
+      exit();
+    }
+}
+?>
+
 <!DOCTYPE html> 
 <html lang="en"> 
   <head> 
@@ -16,7 +35,7 @@
 
         <div class="signin-signup"> 
 
-        <form class="sign-in-form" id="sign-in" action="phpCode.php" method="post"> 
+        <form class="sign-in-form" id="sign-in"> 
             <h2 class="title">Sign in</h2> 
             <div class="input-field"> 
               <i class="fas fa-user"></i> 
@@ -30,9 +49,9 @@
             <div class="display"><p class="message pwd" id="pwdMsg"></p></div>
             <div class="form-footer"> 
             <a class="forget-link" href="#"> Forget your password? </a> 
-            <input type="submit" value="Login" class="btn solid" name="loginBtn" id="signin-btn" /> 
+            <input type="button" value="Login" class="btn solid" name="loginBtn" id="signin-btn" />
             </div> 
-          </form> 
+        </form> 
 
           <form action="phpCode.php" method="post" class="sign-up-form" id="sign-up"> 
             <h2 class="title">Sign up</h2> 

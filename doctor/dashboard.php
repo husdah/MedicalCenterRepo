@@ -1,9 +1,13 @@
 <?php
-session_start();
+require('middleware/doctorMiddleware.php');
 include("queryFunctions/queryfunctions.php");
 
-$doctor = $_SESSION['doctor_id'];
-$doctorId = getDoctorId($doctor); 
+/* $doctor = $_SESSION['doctor_id']; */
+$userId = $_SESSION['auth_user']['user_id'];
+$userName = $_SESSION['auth_user']['name'];
+$userEmail = $_SESSION['auth_user']['email'];
+
+$doctorId = getDoctorId($userId); 
 $patientsNb = getPatientCount($doctorId);
 $AppointmentsNb = getAppoinmentCount($doctorId);
 $requestNb = getRequestCount($doctorId);

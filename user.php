@@ -1,5 +1,5 @@
 <?php
-  session_start();
+  require('middleware/patientMiddleware.php');
   //$patientName = $_SESSION['patientName'];
   $patientName = "Zeinab Hijazi";
 ?>
