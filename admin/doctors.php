@@ -16,7 +16,7 @@
                     <li><a href="#" class="active">View & Manage</a></li>
                 </ul>
             </div>
-            <a href="#" class="report">
+            <a href="dashboard.php#dashboardAppt" class="report">
                 <i class='bx bx-receipt'></i>
                 <span>View Appointments</span>
             </a>
