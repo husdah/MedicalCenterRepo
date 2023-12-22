@@ -1,6 +1,8 @@
 <?php
 session_start();
 include("queryFunctions/queryfunctions.php");
+$doctor = $_SESSION['doctor_id'];
+$doctorId = getDoctorId($doctor); 
 if (isset($_GET['id'])) {
     $patientId = $_GET['id'];
 }
@@ -42,11 +44,11 @@ if (isset($_GET['id'])) {
             <table class="apps">
                 <tr>
                 <td>
-                    <h2 class="past" id="past"><?= getPastAppointments($patientId) ?></h2>
+                    <h2 class="past" id="past"><?= getPastAppointments($patientId,$doctorId) ?></h2>
                     <label>Past</label>
                 </td>
                 <td>
-                    <h2 class="upcoming" id="upcoming"><?= getUpcomingAppointments($patientId) ?></h2>
+                    <h2 class="upcoming" id="upcoming"><?= getUpcomingAppointments($patientId,$doctorId) ?></h2>
                     <label>Upcoming</label>
                 </td>
                 </tr>
@@ -101,7 +103,7 @@ if (isset($_GET['id'])) {
                     <th>Status</th>
                 </tr>
                 <?php 
-                $apps = getAppointmentById($patientId);
+                $apps = getAppointmentById($patientId,$doctorId);
                 if(mysqli_num_rows($apps) > 0){
                 foreach($apps as $app){
                 ?>
