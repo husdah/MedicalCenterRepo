@@ -35,7 +35,7 @@ $(document).ready(function () {
         });
     });
 
-    $('#sign-in').submit(function(e) {
+/*     $('#sign-in').submit(function(e) {
         console.log("heloo");
         e.preventDefault();
         console.log("heloo222");
@@ -53,7 +53,7 @@ $(document).ready(function () {
                 }
               }
             });
-        });
+        }); */
 });
 
 // Function to display error message using SweetAlert

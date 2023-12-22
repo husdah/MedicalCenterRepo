@@ -1,6 +1,7 @@
 <?php
     session_start();
     require("functions/myfunctions.php");
+    require('middleware/adminMiddleware.php');
     include('includes/header.php');
 
     $clinicsNb= getRowCount("clinic");
@@ -24,7 +25,7 @@
             </div>
             <a href="settings.php" class="report">
                 <i class='bx bx-user'></i>
-                <span>Welcome: Admin Name</span>
+                <span>Welcome: <?= $_SESSION['auth_user']['name']; ?></span>
             </a>
         </div>
 

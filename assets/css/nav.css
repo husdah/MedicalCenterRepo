@@ -103,19 +103,19 @@ nav{
     transition: transform .4s;
 } */
 
-.nav-links li a{
+.nav-links .links li a{
     text-decoration: none;
     margin: 0 0.7vw;
     color: var(--light);
     font-family: 'Poppins', sans-serif;
 }
-.nav-links li a:hover {
+.nav-links .links li a:hover {
     color: var(--light-primary);
 }
 .nav-links li {
     position: relative;
 }
-.nav-links li a::before {
+.nav-links .links li a::before {
     content: "";
     display: block;
     height: 3px;
@@ -126,7 +126,7 @@ nav{
     transition: all ease-in-out 250ms;
     margin: 0 0 0 10%;
 }
-.nav-links li a:hover::before{
+.nav-links .links li a:hover::before{
     width: 80%;
 }
 

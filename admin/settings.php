@@ -1,6 +1,7 @@
 <?php
     session_start();
     require("functions/myfunctions.php");
+    require('middleware/adminMiddleware.php');
     include('includes/header.php');
 ?>
 

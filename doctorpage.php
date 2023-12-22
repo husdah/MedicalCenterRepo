@@ -1,4 +1,5 @@
-<?php 
+<?php
+require('middleware/patientMiddleware.php'); 
 $did=$_GET['did'];
 $enabledDays=array();
 require('config/dbcon.php');

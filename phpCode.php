@@ -26,7 +26,7 @@ function validatePhone($phone) {
     return preg_match($lebanesePhoneRegex, $phone);
 }
 
-if ( isset($_POST['email']) && $_POST['password']){
+/* if ( isset($_POST['email']) && $_POST['password']){
     $email = $_POST['email'];
     $pass = $_POST['password'];
 
@@ -58,7 +58,8 @@ if ( isset($_POST['email']) && $_POST['password']){
           echo "1";
     }
 }
- else if (isset($_POST['FirstName']) && isset($_POST['LastName']) && isset($_POST['email2']) && isset($_POST['password']) 
+ else */ 
+ if (isset($_POST['FirstName']) && isset($_POST['LastName']) && isset($_POST['email2']) && isset($_POST['password']) 
   && isset($_POST['cpassword']) && isset($_POST['date']) && isset($_POST['gender']) && isset($_POST['mySelect'])){
     
     $firtname = mysqli_real_escape_string($con,$_POST['FirstName']);
