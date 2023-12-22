@@ -26,9 +26,7 @@
                     <?php
                         $openHour = getOpeningHour();
                         $rowcount = mysqli_num_rows($openHour);
-                        if($rowcount == 0){
-                            echo '<script>alert("No record found")</script>';  
-                        }else{
+                        if($rowcount > 0){
                             while($selectdata = mysqli_fetch_array($openHour)){
                     ?>
                             <li><?php echo $selectdata['shortDay']; ?>: <span class="<?php echo $selectdata['shortDay']; ?>">

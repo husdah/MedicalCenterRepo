@@ -60,19 +60,19 @@ hr{
     color: var(--light-primary);
     padding-left: 10px;
 }
-span.mon {
+span.Mon {
     padding-left: 8px;
 }
-span.tue, span.thu {
+span.Tue, span.Thu {
     padding-left: 13px;
 }
-span.wed {
+span.Wed {
     padding-left: 5px;
 }
-span.fri {
+span.Fri {
     padding-left: 24px;
 }
-span.sat, span.sun {
+span.Sat, span.Sun {
     padding-left: 15px;
 }
 .footer-links ul li a i{

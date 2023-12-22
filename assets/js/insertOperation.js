@@ -30,17 +30,22 @@ $(document).ready(function () {
             url: "sendEmail.php",
             data: $('#form2').serialize(),
             success: function (response) {
-                if (response.trim() === '200') {
+                if (response.trim() === '100') {
                     swal("Thank You!", "Your data has been submitted successfully!", "success");
                     // Clear form inputs
                     $('#form2')[0].reset();
+                    //clear all error divs
                     document.getElementById('fname-error').innerHTML = '';
                     document.getElementById('lname-error').innerHTML = '';
                     document.getElementById('email-error').innerHTML = '';
                     document.getElementById('subject-error').innerHTML='';
                     document.getElementById('message-error').innerHTML='';
-                } else if (response.trim() === '500') {
+                } 
+                else if (response.trim() === '200') {
                     swal("Check!", "All Fileds should required* ", "error");
+                }
+                else if (response.trim() === '300') {
+                    swal("Check!", "All Fileds should validated ", "error");
                 }
             },
             error: function () {

@@ -9,7 +9,7 @@
 
     // Function to validate name
     function validateName($name) {
-        $nameRegex = '/^[a-zA-Z]+$/';
+        $nameRegex = '/^[a-zA-Z]{3,}$/';
         return preg_match($nameRegex, $name);
     }
 
@@ -34,8 +34,13 @@
         $message = test_input($_POST['message']);    //echo $message;
         
        
-        if(!empty($fname) && !empty($lname) && !empty($email) && !empty($subject) && !empty($message)
-        && validateName($fname) && validateName($lname) && validateEmail($email) && validateSubjectStructure($subject)) {    
+        if(empty($fname) || empty($lname) || empty($email) || empty($subject) || empty($message)){
+            echo '200';
+        }
+        else if(!validateName($fname) || !validateName($lname) || !validateEmail($email) || !validateSubjectStructure($subject)) {    
+            echo '300';
+        }
+        else{
             require_once('config/email.php');
             //Email Composition
             $mail->setFrom($email, $name);// Set "From" address to the user-entered email
@@ -45,10 +50,7 @@
             $mail->Subject = "Subject: $subject"; // Set email subject
             $mail->Body = " $message "; // Set email body
             $mail->Send(); 
-            echo '200';
+            echo '100';
         }
-        else{
-            echo '500';
-        }   
     }
 ?>

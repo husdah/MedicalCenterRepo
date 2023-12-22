@@ -47,7 +47,7 @@ const validateNameStructure = (name) => {
 
 // Function to validate email
 const validateEmailStructure = (email) => {
-    return email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    return email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 };
 
 // Function to validate subject
