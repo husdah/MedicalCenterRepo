@@ -20,7 +20,7 @@
         <div id="contact-container" class="contact container" >
             <div class="column-left">
                 <!-- <form id="form2" class="contact-form" name="cForm" action="https://formsubmit.co/hijazizeinab5@gmail.com" method="POST"> -->
-                <form id="form2" class="contact-form" name="cForm" method="POST">
+                <form id="contactForm" class="contact-form" name="cForm" method="POST">
                     <h2>Contact Us</h2>
                     <h3>please feel free to contact us any time. we will get back to you as soon as possible.</h3>
                     <div class="input-control">
@@ -49,7 +49,7 @@
                     </div>
                     <!-- <input type="hidden" name="_template" value="box"></input>
                     <input type="hidden" name="_next" value="https://yourdomain.co/thanks.html">-->
-                    <input type="submit" id="btnSend"  class="contact-btn" name="btn-send" value="Send">
+                    <button type="button" id="sendEmail"  class="contact-btn" name="btn-send" > Send </button>
                 </form>
             </div>
             <div class="column-right">

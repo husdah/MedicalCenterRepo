@@ -108,18 +108,12 @@ updateForm?.addEventListener('submit', (e) => {
     }
 });
 
-/*passwordForm?.addEventListener('submit', (e) => { 
+passwordForm?.addEventListener('submit', (e) => { 
     const isValid = validatePasswordForm();
-
     // If validation fails, prevent the default form submission
-    if (!isValid) {
+    if (!isValid ) {
         e.preventDefault();
     }
-});*/
-passwordForm?.addEventListener('submit', (e) => { 
-    //prevents the default form submission behavior 
-    e.preventDefault();
-    validatePasswordForm();
 });
 
 
@@ -437,11 +431,11 @@ function validatePasswordForm(){
      && validatePwd(newPasswordInput,newMsg) && comparePasswords(newPasswordInput,cPasswordInput,cMsg)){
 
       //  alert('Submitted successfully!');
-      //return true;
+      return true;
     }else{
         isPasswordEmpty(currentPasswordInput,currentMsg);
         isPasswordEmpty(newPasswordInput,newMsg);
         isPasswordEmpty(cPasswordInput,cMsg);
-        //return false;
+        return false;
     }
 }

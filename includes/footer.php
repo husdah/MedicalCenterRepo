@@ -92,7 +92,6 @@
     <script src="../assets/js/nav.js"></script>
     <script src="assets/js/validation.js"></script>
     <script src="assets/js/errorpage.js"></script>
-    <script src="assets/js/insertOperation.js"></script>
 
 </body>
 </html>
