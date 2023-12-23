@@ -83,7 +83,7 @@
                         <div class="content-field">
                           <div class="input-field"> 
                             <i class="fas fa-envelope"></i> 
-                            <input type="email" placeholder="Email" id="update-email"/> 
+                            <input type="email" placeholder="Email" name ="pat-email" id="update-email"/> 
                           </div> 
                           <div class="display"><p class="message" id="emailMessage"></p></div>
                         </div> 

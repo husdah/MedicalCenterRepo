@@ -1,7 +1,9 @@
 <?php
+ 
     session_start();
     $userId = $_SESSION['auth_user']['user_id'];
-    header('Content-type: application/json');
+
+    header('Content-type: application/json');  
 
     // Function to test input
     function test_input($data){
@@ -32,25 +34,29 @@
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $json = json_decode(file_get_contents('php://input'));
+        
+        $updateFname     = test_input($_POST['First-Name']);
+        $updateLname     = test_input($_POST['Last-Name']);
+        $updateEmail     = test_input($_POST['pat-email']);
 
-        $updateFname     = test_input($json->updateFname);
+        /*$updateFname     = test_input($json->updateFname);
         $updateLname     = test_input($json->updateLname);
         $updateEmail     = test_input($json->updateEmail);
         $updatePhone     = test_input($json->updatePhone);
         $updateDate      = test_input($json->updateDate);
         $updateGender    = test_input($json->updateGender);
-        $updateBloodType = test_input($json->updateBloodType);
+        $updateBloodType = test_input($json->updateBloodType);*/
 
-        $data     = [];
+        $data = [];
 
-        if(empty($updateFname) || empty($updateLname) || empty($updateEmail) || empty($updatePhone)) {
+        if(empty($updateFname) || empty($updateLname) || empty($updateEmail)) {
             $msg = "All fields are required!";
             $response = '200';
         }
         else{
             include('../config/dbcon.php');
             global $con;
-            $query  =  'UPDATE user
+            /*$query  =  'UPDATE user
                         JOIN patient ON user.userId = patient.userId
                         SET
                             user.Fname = ?,          
@@ -61,32 +67,35 @@
                             patient.gender = ?,      
                             patient.bloodType = ?    
                         WHERE user.userId = ?;     
-                        ';
+                        ';*/
+            $query  =  'UPDATE user
+                        SET
+                            user.Fname = ?,          
+                            user.Lname = ?,          
+                            user.email = ?,  
+                        WHERE user.userId = ?;     
+                        ';            
+
             $stmt = mysqli_prepare($con, $query);
             if ($stmt) {
-                mysqli_stmt_bind_param($stmt, "sssisssi", $updateFname, $updateLname, $updateEmail, $updatePhone, $updateDate, $updateGender, $updateBloodType, $userId);
-                
+                mysqli_stmt_bind_param($stmt, "sssi", $updateFname, $updateLname, $updateEmail, $userId);
                 $result = mysqli_stmt_execute($stmt);
                 if ($result) {
                     $msg = "Your informations are updated successfully.";
                     $response = '500';
-                } else {
-                    // Handle execution error
-                    $response = '100';
-                    $msg = "Error executing prepared statement: " . mysqli_error($con);
                 }
-                //mysqli_stmt_close($stmt);
+                else{
+                    $msg = "in bind parameter.";
+                    $response = '101';
+                }
             } 
-            else {
-                $msg = "Error preparing statement: " . mysqli_error($con);
-                $response = '101';
-            } 
+            else{
+                $msg = "before execution.";
+                $response = '100';
+            }
+            
         }
-        
-        
-        // Close the database connection
-        //mysqli_close($con);
-
+    
         $data["response"] = $response;
         $data["message"]  = $msg;
         echo json_encode($data);
