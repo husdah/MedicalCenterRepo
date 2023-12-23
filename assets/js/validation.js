@@ -338,7 +338,7 @@ btn_sendEmail?.addEventListener("click", function(event) {
             checkMessage();
             //alert("invalid form");
         } else {
-            const sendEmail = async() => {
+            /*const sendEmail = async() => {
                 const data = {
                     firstName : fname_input.value,
                     lastName : lname_input.value,
@@ -365,12 +365,12 @@ btn_sendEmail?.addEventListener("click", function(event) {
                     }  
                     else if(data.response === '100') {
                         swal("Thank you", "Your data has been submitted successfully!", "success");
-                        /*contactForm.reset();
+                        contactForm.reset();
                         fnameError.innerHTML   = "";
                         lnameError.innerHTML   = ""; 
                         emailError.innerHTML   = "";
                         subjectError.innerHTML = ""; 
-                        messageError.innerHTML = ""; */
+                        messageError.innerHTML = ""; 
                         console.log('message', data);
                     }   
                 })
@@ -378,7 +378,34 @@ btn_sendEmail?.addEventListener("click", function(event) {
                     console.error('Something went wrong:', error);
                 });
             }
-            sendEmail();
+            sendEmail();*/
+            $(document).ready(function () {
+            $('#sendEmail').click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    method: "POST",
+                    url: "functions/sendEmail.php",
+                    success: function (response) {
+                        if (response.trim() === '200') {
+                            swal("Error", "Please fill the fields", "error");
+                        } else if (response.trim() === '300') {
+                            swal("Error", "All fields must be validated", "error");
+                        } else if (response.trim() === '100') {
+                            swal("Thank you", "Your data has been submitted successfully!", "success");
+                            contactForm.reset();
+                            fnameError.innerHTML   = "";
+                            lnameError.innerHTML   = ""; 
+                            emailError.innerHTML   = "";
+                            subjectError.innerHTML = ""; 
+                            messageError.innerHTML = ""; 
+                        }
+                    },
+                    error: function () {
+                        swal("Error!", "Failed to communicate with the server.", "error");
+                    }
+                });
+            });
+            });
         }
     }
 });
