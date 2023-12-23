@@ -6,7 +6,7 @@
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $json = json_decode(file_get_contents('php://input'));
-        //var_dump($json);
+
         $updateFname     = $json->updateFname;
         $updateLname     = $json->updateLname;
         $updateEmail     = $json->updateEmail;
@@ -19,7 +19,7 @@
 
         if(empty($updateFname) || empty($updateLname) || empty($updateEmail) || empty($updatePhone)) {
             $response ='200';
-            //$msg = "All fileds shouldd be required!";
+            $msg = "All fileds shouldd be required!";
         }
         else{
             include('../config/dbcon.php');
@@ -39,14 +39,14 @@
             $stmt = mysqli_prepare($con, $query);
             mysqli_stmt_bind_param($stmt, "ssssssii", $updateFname, $updateLname, $updateEmail, $updateGender, $updateBloodType, $updateDate, $updatePhone, $userId);
             if (mysqli_query($con, $query)) {
-                /*$data = [
-                    'updateFname' => $updateFname,
-                    'updateLname' => $updateLname,
-                    'updateEmail' => $updateEmail,
-                    'updatePhone' => $updatePhone,
-                    'updateDate'  => $updateDate,
-                    'updateGender'=>$updateGender,
-                    'updateBloodType' => $updateBloodType
+                /*
+                    $data['updateFname'] = $updateFname,
+                    $data['updateLname'] = $updateLname,
+                    $data['updateEmail'] = $updateEmail,
+                    $data['updatePhone'] = $updatePhone,
+                    $data['updateDate']  = $updateDate,
+                    $data['updateGender']=$updateGender,
+                    $data['updateBloodType'] = $updateBloodType
                 ];
                 */
                 $response = '500';
@@ -60,7 +60,7 @@
 
 
         $data["response"] = $response;
-        $data["message"] = $msg;
+        $data["message"]  = $msg;
         echo json_encode($data);
     }
 ?>

@@ -356,7 +356,6 @@ btn_update?.addEventListener("click", function(event) {
 });
 */
 
-
 const btnUpdate = document.getElementById('updateBtn');
 btnUpdate?.addEventListener("click", function(event) {
     if (event.target.type === 'submit') {
