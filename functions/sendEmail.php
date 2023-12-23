@@ -14,7 +14,7 @@
         if(!empty($fname) && !empty($lname) && !empty($email) && !empty($subject) && !empty($message)
         && validateName($fname) && validateName($lname) && validateEmail($email) && validateSubjectStructure($subject)) {    
             //include('config/email.php');
-            include('config/email.php');
+            include('../config/email.php');
             //Email Composition
             $mail->setFrom($email, $name);// Set "From" address to the user-entered email
             $mail->addReplyTo($email, $name);

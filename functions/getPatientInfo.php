@@ -1,7 +1,9 @@
 <?php
+
     session_start();
-    $userId = 5; //$userId = $_SESSION['userId'];
     header('Content-type: application/json');
+    $userId = $_SESSION['auth_user']['user_id'];
+
     class patient{
         public $firstName;
         public $lastName;
@@ -11,7 +13,7 @@
         public $gender;
         public $bloodType;
     }
-    require_once('config/dbcon.php');
+    include('../config/dbcon.php');
     $select_patient_info = 'SELECT  
                     user.Fname, user.Lname, user.email, patient.phoneNumber, patient.dateOfBirth, patient.gender, patient.bloodType
             FROM 

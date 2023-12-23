@@ -1,16 +1,15 @@
 <?php
     session_start();
-    $userId = 5; //$userId = $_SESSION['userId'];
     header('Content-type: application/json');
-    
+    $userId = $_SESSION['auth_user']['user_id'];
     class user{
         public $id;
         public $doctor;
         public $date;
         public $time;
     }
-    
-    require_once('config/dbcon.php');
+    $patinetApp = [];
+    include('../config/dbcon.php');
     $query = 'SELECT
 	                appointment.appID AS appointmentID, concat(user.Fname, " ", user.Lname) AS doctor, appointment.date, appointment.time, patient.patientId, doctor.doctorId
                 FROM
@@ -30,7 +29,7 @@
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         if(mysqli_num_rows($result) > 0){
-            $patinetApp = [];
+            
             // output data of each row
             for ($i = 0; $row = $result->fetch_assoc(); $i++) {
                 $user = new user();

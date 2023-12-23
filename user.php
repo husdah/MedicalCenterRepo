@@ -1,7 +1,5 @@
 <?php
   require('middleware/patientMiddleware.php');
-  //$patientName = $_SESSION['patientName'];
-  $patientName = "Zeinab Hijazi";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +16,7 @@
     <div class="container">
             <div class="header">
                 <div class="title">
-                <label>Welcome, </label><span><?php echo $patientName ?></span><br>
+                <label>Welcome, </label><span><?= $_SESSION['auth_user']['name']; ?></span><br>
                 <label class="date" id="date"></label>
                 </div>
                 <div class="buttons">
@@ -165,7 +163,7 @@
     </div>
 
     <script src="assets/js/user.js"></script>
-    <!-- <script src="assets/js/siginValidation.js"></script>-->
+    <script src="assets/js/siginValidation.js"></script>
     <script src="assets/js/validation.js"></script>
     <!-- sweetalert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

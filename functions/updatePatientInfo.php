@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $userId = 11;//$id = $_SESSION['userId'];
+    $userId = $_SESSION['auth_user']['user_id'];
     header('Content-type: application/json');
 
     // Function to test input
@@ -38,11 +38,9 @@
         $updateEmail     = test_input($json->updateEmail);
         $updatePhone     = test_input($json->updatePhone);
         $updateDate      = test_input($json->updateDate);
-        $updateGender   = test_input($json->updateGender);
+        $updateGender    = test_input($json->updateGender);
         $updateBloodType = test_input($json->updateBloodType);
 
-        $msg      = "";
-        $response = "";
         $data     = [];
 
         if(empty($updateFname) || empty($updateLname) || empty($updateEmail) || empty($updatePhone)) {
@@ -50,8 +48,7 @@
             $response = '200';
         }
         else{
-            $msg = "Update!";
-            require_once('config/dbcon.php');
+            include('../config/dbcon.php');
             global $con;
             $query  =  'UPDATE user
                         JOIN patient ON user.userId = patient.userId
@@ -67,7 +64,6 @@
                         ';
             $stmt = mysqli_prepare($con, $query);
             if ($stmt) {
-               
                 mysqli_stmt_bind_param($stmt, "sssisssi", $updateFname, $updateLname, $updateEmail, $updatePhone, $updateDate, $updateGender, $updateBloodType, $userId);
                 
                 $result = mysqli_stmt_execute($stmt);
@@ -76,20 +72,22 @@
                     $response = '500';
                 } else {
                     // Handle execution error
+                    $response = '100';
                     $msg = "Error executing prepared statement: " . mysqli_error($con);
                 }
-                mysqli_stmt_close($stmt);
+                //mysqli_stmt_close($stmt);
             } 
             else {
                 $msg = "Error preparing statement: " . mysqli_error($con);
-            }  
-            
+                $response = '101';
+            } 
         }
-        $data["response"] = $response;
+        
         
         // Close the database connection
         //mysqli_close($con);
-        //$msg = "Submited ";
+
+        $data["response"] = $response;
         $data["message"]  = $msg;
         echo json_encode($data);
     }
