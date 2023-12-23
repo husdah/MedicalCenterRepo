@@ -1,6 +1,7 @@
 <?php
     session_start();
     require("functions/myfunctions.php");
+    require('middleware/adminMiddleware.php');
     include('includes/header.php');
 ?>
 
@@ -16,7 +17,7 @@
                     <li><a href="#" class="active">Available Doctors</a></li>
                 </ul>
             </div>
-            <a href="#" class="report">
+            <a href="dashboard.php#dashboardAppt" class="report">
                 <i class='bx bx-receipt'></i>
                 <span>View Appointments</span>
             </a>

@@ -1,8 +1,8 @@
 
     <?php
+        session_start();
         include('includes/header.php');
-        include('selectData.php');
-        include('donateData.php');
+        include('functions/selectData.php');
 
         $doctorCount  = getRowCount('doctor');
         $patientCount = getRowCount('patient');
@@ -285,7 +285,7 @@
                             <option value="AB-">AB-</option> 
                         </select>
                     </div> 
-                    <input type="submit" value="Send" id="click_donate" name="btn_send" class="btn-send">
+                    <button id="click_donate" name="btn_send" type="button" class="btn-send"> Donate </button>
                 </form>
             </div>
         </div>

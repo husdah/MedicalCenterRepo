@@ -49,8 +49,63 @@ const genderMsg = document.getElementById('radioMsg');
 const signinBtn = document.getElementById('signin-btn');
 const signupBtn = document.getElementById('signup-btn');
 
+signinBtn?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+
+    }else{  
+        let email= emailInput1.value;
+        let password = pwdInput1.value;
+
+        const isValid = validateSigninForm();
+
+        if (!isValid) {
+            /* alert("invalid form"); */
+        } else {
+
+           const checkAuth = async() => {
+            const data = {
+                email: email,
+                password: password
+            };
+            await fetch('functions/authcode.php', {
+                    method: 'POST', // or 'PUT'
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                .then((response) => response.json() )
+                .then((data) => {
+                    if(data.response == 200){
+                        window.location.href = 'admin/dashboard.php';
+                    } 
+                    else if(data.response == 201){
+                        window.location.href = 'doctor/dashboard.php';
+                    } 
+                    else if(data.response == 202){
+                        window.location.href = 'home.php';
+                    } 
+                    else if(data.response == 500){
+                        swal("Invalid!", data.message +"!", "warning");
+                    } 
+                    else {
+                        swal("Failed!", data.message +"!", "error");
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            }
+            checkAuth();
+            
+        }
+    }
+
+});
+
 //Forms Validation Functions
-signinForm?.addEventListener('submit', (e) => { 
+/* signinForm?.addEventListener('submit', (e) => { 
     //prevents the default form submission behavior 
     const isValid = validateSigninForm();
 
@@ -59,7 +114,7 @@ signinForm?.addEventListener('submit', (e) => {
         e.preventDefault();
     }
 });
-
+ */
 /*document.getElementById('sign-in').addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -110,12 +165,13 @@ updateForm?.addEventListener('submit', (e) => {
 
 passwordForm?.addEventListener('submit', (e) => { 
     const isValid = validatePasswordForm();
-
     // If validation fails, prevent the default form submission
-    if (!isValid) {
+    if (!isValid ) {
         e.preventDefault();
     }
 });
+
+
 
 //Check if the Email is Empty
 function isEmailEmpty(emailInput,emailMsg){

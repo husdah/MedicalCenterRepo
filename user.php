@@ -1,5 +1,5 @@
 <?php
-  session_start();
+  require('middleware/patientMiddleware.php');
   //$patientName = $_SESSION['patientName'];
   $patientName = "Zeinab Hijazi";
 ?>
@@ -129,7 +129,7 @@
                             <option value="AB-">AB-</option> 
                             </select> 
                         </div>
-                        <input type="submit" id="updateBtn" class="update-btn" name="update" value="Update">
+                        <button type="button" id="updateBtn" class="update-btn" name="update"> Update </button>
                     </form>
                     <h2>Change Password</h2>
                     <form class="change-pwd" id="change-password">
@@ -158,15 +158,15 @@
                         <div class="display"><p class="message" id="cmsg"></p></div>
                       </div>
 
-                        <input type="submit" id="changeBtn" name="change-btn" value="Change" class="change-btn">
+                      <button type="button" id="changeBtn" name="change-btn" class="change-btn"> Change </button>
                     </form> 
                 </div>
             </div>
     </div>
 
     <script src="assets/js/user.js"></script>
-    <script src="assets/js/siginValidation.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <!-- <script src="assets/js/siginValidation.js"></script>-->
+    <script src="assets/js/validation.js"></script>
     <!-- sweetalert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+require('middleware/doctorMiddleware.php');
 include("queryFunctions/queryfunctions.php");
 $doctor = $_SESSION['doctor_id'];
 $doctorId = getDoctorId($doctor); 

@@ -22,8 +22,8 @@
         <i class='bx bx-bell'></i>
         <span class="count">12</span>
     </a>
-    <a href="#" class="profile">
-        <img src="../images/HealthHubLogo.png">
+    <a href="../images/HealthHubLogo.png" class="imageLB profile"> 
+        <img src="../images/HealthHubLogo.png" alt="LOGO">
     </a>
 </nav>
 <!-- End of Navbar -->

@@ -1,6 +1,7 @@
 <?php 
+require('middleware/doctorMiddleware.php');
 require('../config/dbcon.php');
-$query="select appId,email,date,time from user,patient,appointement where user.userId=patient.userId AND patient.patientId=appointement.patientId";
+$query="select appId,email,date,time from user,patient,appointment where user.userId=patient.userId AND patient.patientId=appointment.patientId";
 $res=mysqli_query($con,$query);
 ?>
 <!DOCTYPE html>

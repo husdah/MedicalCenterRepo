@@ -1742,13 +1742,13 @@ const clinicDetails = async() => {
                 <tr>
                 <td class="ClinicNameRow"><p class="name">${c.name}</p></td>
                 <td class="ClinicImgRow">
-                    <a href="/../uploads/${c.photo}" class="imageLB"> 
-                        <img src="/../uploads/${c.photo}" alt="category Image">
+                    <a href="../uploads/${c.photo}" class="imageLB"> 
+                        <img src="../uploads/${c.photo}" alt="category Image">
                     </a>
                 </td>
                 <td class="ClinicIconRow">
-                    <a href="/../uploads/${c.icon}" class="imageLB"> 
-                        <img src="/../uploads/${c.icon}" alt="category Image">
+                    <a href="../uploads/${c.icon}" class="imageLB"> 
+                        <img src="../uploads/${c.icon}" alt="category Image">
                     </a>
                 </td>
                 <td class="action_center">
@@ -1819,13 +1819,11 @@ const donorDetails = async() => {
         console.log(received_data);
         if(received_data != 'empty'){
             received_data.forEach(dn => {
-                let email = `${dn.email}`;
-                let phone = `${dn.phoneNumber}`;
                 let contact= "";
-                if(email != ""){
-                    contact = email;
-                }else if(phone != ""){
-                    contact = phone;
+                if(dn.email != null){
+                    contact = dn.email;
+                }else if(dn.phoneNumber != null){
+                    contact = dn.phoneNumber;
                 }
                donorsTbody.innerHTML += `              
                 <tr>

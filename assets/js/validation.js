@@ -1,3 +1,10 @@
+//variables for donation section on homepage
+const donateForm   = document.getElementById('donateform');
+const emailText    = document.getElementById('email');
+const errorDisplay = document.getElementById('errorInput');
+const bloodType    = document.getElementById('mySelect');
+const btn_donate   = document.getElementById('click_donate');
+
 //variables for contact page
 const contactForm   = document.getElementById('form2');
 const fname_input   = document.getElementById('fname');
@@ -12,16 +19,29 @@ const message_input = document.getElementById('message');
 const messageError  = document.getElementById('message-error');
 const btnsend       = document.getElementById('btnSend');
 
-//variables for donation section on homepage
-var donateForm   = document.getElementById('donateform');
-var emailText    = document.getElementById('email');
-var errorDisplay = document.getElementById('errorInput');
-var bloodType    = document.getElementById('mySelect');
-var btn_send     = document.getElementById('click_donate');
+//variables for user page
+const TableData = document.getElementById('patient-app');
 
+const patientForm        = document.getElementById('update-form'); 
+const changePasswordForm = document.getElementById('change-password');
+
+const updateFname     = document.getElementById('update-fname');
+const updateLname     = document.getElementById('update-lname');
+const updateEmail     = document.getElementById('update-email');
+const updateDate      = document.getElementById('update-date');
+const updatePhone     = document.getElementById('phone2');
+const updateGenderF   = document.getElementById('female');
+const updateGenderM   = document.getElementById('male');
+const updateBloodType = document.getElementById('mySelect');
+const currentPass     = document.getElementById('current-pwd');
+const newPass         = document.getElementById('new-pwd');
+const confirmPass     = document.getElementById('c-pwd');
+
+const btn_update         = document.getElementById('updateBtn');
+const btn_changePassword = document.getElementById('changeBtn');
 
 //Forms Validation Functions
-contactForm?.addEventListener('submit', (e) => { 
+/* contactForm?.addEventListener('submit', (e) => { 
     //prevents the default form submission behavior 
     const isValid = validateContactForm();
 
@@ -29,17 +49,54 @@ contactForm?.addEventListener('submit', (e) => {
     if (!isValid) {
         e.preventDefault();
     }
-});
-donateForm?.addEventListener('submit', (e) => { 
-    //prevents the default form submission behavior 
-    const isValid = validateDonateForm();
+}); */
 
-    // If validation fails, prevent the default form submission
-    if (!isValid) {
+let sendBtn = document.getElementById("btnSend");
+sendBtn?.addEventListener('click', (e) =>{
+    if(e.target.type == "submit"){
         e.preventDefault();
+    }else{
+        /* validateContactForm(); */
+        const valid = validateContactForm();
+        console.log(valid);
+        if(valid){
+            const sendMail = async () => {
+                const form = document.getElementById('form2');
+                const formData = new FormData(form);
+            
+                await fetch('functions/sendMail.php', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.response == 200) {
+                            swal("Thank You!", "Your data has been submitted successfully!", "success");
+                            // Clear form inputs
+                            form.reset();
+                            document.getElementById('fname-error').innerHTML = '';
+                            document.getElementById('lname-error').innerHTML = '';
+                            document.getElementById('email-error').innerHTML = '';
+                            document.getElementById('subject-error').innerHTML='';
+                            document.getElementById('message-error').innerHTML='';
+            
+                        }else if(data.response == 500){
+                            swal("Note!", data.message +"!", "warning");
+                        }
+                        else {
+                            swal("Error!", "Failed: " + data.message, "error");
+                        }
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }
+            sendMail();
+        }
     }
-});
 
+})
 // Function to validate name
 const validateNameStructure = (name) => {
     return name.match(/^[a-zA-Z]{3,}$/);
@@ -47,7 +104,7 @@ const validateNameStructure = (name) => {
 
 // Function to validate email
 const validateEmailStructure = (email) => {
-    return email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    return email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 };
 
 // Function to validate subject
@@ -70,56 +127,80 @@ function validateInput(input) {
 //Validation on Focusout Event For Empty Input
 const checkFirstname = () => {
     if(fname_input.value === ''){
-        fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
-        return false;
+        //if(fnameError){
+            fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
+            return false;
+        //}
     }
     else{
-        return true;
+       // if(fnameError){
+            return true;
+       // }
     }
 }
 const checkLastname = () => {
     if(lname_input.value === ''){
-        lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
-        return false;
+        //if(lnameError){
+            lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
+            return false;
+        //}
     }
     else{
-        return true;
+        //if(lnameError){
+            return true;
+        //}
     }
 }
 const checkEmail = () => {
     if(email_input.value === ''){
-        emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
-        return false;
+        //if(emailError){    
+            emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
+            return false;
+        //}
     }
     else{
-        return true;
+       // if(emailError){  
+            return true;
+        //}
     }
 }
 const checkSubject = () => {
     if(subject_input.value === ''){
-        subjectError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
-        return false;
+       // if(subjectError){
+            subjectError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
+            return false;
+        //}
     }
     else{
-        return true;
+        //if(subjectError){
+            return true;
+        //}
     }
 }
 const checkMessage = () => {
     if(message_input.value === ''){
-        messageError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
-        return false;
+        //if(messageError){
+            messageError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
+            return false;
+       // }
     }
     else{
-        return true;
+        //if(messageError){
+            return true;
+       // }
     }
 }
 const checkEmail2 = () => {
     if(emailText.value == ''){
-        errorDisplay.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
-        return false;
+       // if(errorDisplay){
+            errorDisplay.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
+            return false;
+        //}
     }
     else{
-        return true;
+        //if(errorDisplay){
+            return true;
+        //}
     }
 }
 
@@ -127,45 +208,61 @@ const checkEmail2 = () => {
 const validateFirstname = () => {
     const fnameValue   = fname_input.value;
     if(!validateNameStructure(fnameValue)){
-        fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Must contain only and at least 3 Letters.';
-        return false;
+        //if(fnameError){
+            fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Must contain only and at least 3 Letters.';
+            return false;
+       // }
     }
     else{
-        fnameError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
-        return true;
+        //if(fnameError){
+            fnameError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
+            return true;
+        //}
     }    
 }
 const validateLastname = () => {
     const lnameValue   = lname_input.value;
     if(!validateNameStructure(lnameValue)){
-        lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Must contain only and at least 3 Letters.';
-        return false;
+        //if(lnameError){
+            lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Must contain only and at least 3 Letters.';
+            return false;
+        //}
     }
     else{
-        lnameError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
-        return true;
+        //if(lnameError){
+            lnameError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
+            return true;
+        //}
     }
 }
 const validateEmail = () => {
     const emailValue   = email_input.value;
     if(!validateEmailStructure(emailValue)){
-        emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> example@hotmail.com';
-        return false;
+       if(emailError){
+            emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> example@hotmail.com';
+            return false;
+        }
     }
     else{
-        emailError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
-        return true;
+       if(emailError){
+            emailError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
+            return true;
+        }
     }
 }
 const validateSubject = () => {
     const subjectValue   = subject_input.value;
     if(!validateSubjectStructure(subjectValue)){
-        subjectError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Subject must be clear.';
-        return false;
+        //if(subjectError){
+            subjectError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Subject must be clear.';
+            return false;
+        //}
     }
     else{
-        subjectError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
-        return true;
+        //if(subjectError){
+            subjectError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
+            return true;
+       // }
     }
 }
 const validateMessage = () => {
@@ -187,12 +284,16 @@ const validateMessage = () => {
 }
 const validateEmail2 = () => {
     if(!validateInput(emailText.value)){
-        errorDisplay.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Phone or Email';
-        return false;
+        if(errorDisplay){
+            errorDisplay.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Phone or Email';
+            return false;
+        }
     }
     else{
-        errorDisplay.innerHTML = '<i class="fa-regular fa-circle-check"></i>'
-        return true;
+        if(errorDisplay){
+            errorDisplay.innerHTML = '<i class="fa-regular fa-circle-check"></i>'
+            return true;
+        }
     }
 }
 const validateSelect = () => {
@@ -224,6 +325,58 @@ emailText?.addEventListener('input', validateEmail2);
 bloodType?.addEventListener('change', validateSelect)
 
 
+// event lister on Form Buttons
+btn_donate?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
+    }else{
+        if(!validateSelect() || !checkEmail2() || !validateEmail2()){
+            validateSelect();
+            checkEmail2();
+            //alert("invalid form");
+        } else {
+            //alert("valid form");
+            const addDonation = async() => {
+                const data = {
+                    email : emailText.value,
+                    bloodtype : bloodType.value
+                };
+                await fetch('functions/donate.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json; charset=UTF-8',
+                    },
+                    body: JSON.stringify(data),
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.response === '100') {
+                        swal("Thank You", "But you donated to us.", "success");
+                        console.log('message', data);
+                    }  
+                    else if(data.response === '300') {
+                        swal("Thank you", "Your data has been submitted successfully!", "success");
+                        donateForm.reset();
+                        errorDisplay.innerHTML = "";
+                        console.log('message', data);
+                    }  
+                    else if(data.response === '400') {
+                        swal("Error", "All fields must be validated", "error");
+                    }  
+                    else if(data.response === '500') {
+                        swal("Error", "Please fill the fields", "error");
+                    }  
+                })
+                .catch((error) => {
+                    console.error('Something went wrong:', error);
+                });
+            }
+            addDonation();
+        }
+    }
+});
+
 //validates Form 
 function validateContactForm(){
     if(checkFirstname() && checkLastname() && checkEmail() && checkSubject() && checkMessage() && validateFirstname() && validateLastname() && validateEmail() && validateSubject() && validateMessage()){
@@ -242,21 +395,183 @@ function validateContactForm(){
         return false;
     }
 }
-function validateDonateForm(){
-    if(validateSelect() && checkEmail2() && validateEmail2()){
-        //alert('Submit Done');
-        console.log('Submit Successfully');
-        return true;
-    }
-    else{
-        validateSelect();
-        checkEmail2();
-        //alert('something wrong'); 
-        console.log('something wrong');
-        return false;
+
+/* $(document).ready(function () {
+    $(document).on('click','#btnSend', function (e) {
+        e.preventDefault();
+        validateContactForm();
+        $.ajax({
+            method: "POST",
+            url: "functions/sendEmail.php",
+            data: $('#form2').serialize(),
+            success: function (response) {              
+                if (response.trim() === '500') {
+                    swal("Check!", "All Fileds should required* ", "error");
+                }else{
+                    swal("Thank You!", "Your data has been submitted successfully!", "success");
+                    // Clear form inputs
+                    $('#form2')[0].reset();
+                    document.getElementById('fname-error').innerHTML = '';
+                    document.getElementById('lname-error').innerHTML = '';
+                    document.getElementById('email-error').innerHTML = '';
+                    document.getElementById('subject-error').innerHTML='';
+                    document.getElementById('message-error').innerHTML='';
+                }
+            },
+            error: function () {
+                swal("Error!", "Failed to communicate with the server.", "error");
+            }
+        });
+    });
+}); */
+/*
+const getPatientApp = async() => {
+    const res = await fetch('././getPatientData.php');
+    const received_data = await res.json();
+    TableData.innerHTML = "";
+    console.log('App records:',received_data);
+    received_data.forEach(user => {
+        TableData.innerHTML += `<tr>
+                                    <td>${user.doctor}</td>
+                                    <td>${user.date}</td>
+                                    <td>${user.time}</td>
+                                    <td><button id="cancel-btn" onclick ='del(${user.id})'>Cancel</button></td>
+                                </tr>`
+
+    });
+}
+
+function del(id) {
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            fetch('././deleteAppointmentByPatient.php', {
+                method: 'POST',
+                body: JSON.stringify({
+                    id: id
+                }),
+                headers: {
+                    'Content-type': 'application/json, charset=UTF-8'
+                }
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                if(data.response == 200){
+                    swal("Deleted", "Your appointment deleted successfully.", "success");
+                }
+                else if(data.response == 500){
+                    swal("Error!", "could not delete from database.", "error");
+                } 
+                getPatientApp();
+            })
+        }
+    });
+}
+
+const getPatientProfile = async() => {
+    const response      = await fetch('././getPatientInfo.php');
+    const res = await response.json();
+    console.log('patient info record:', res);
+    if (res.length > 0) {
+        res.forEach( patient => {
+            updateFname.value = patient.firstName;
+            updateLname.value = patient.lastName;
+            updateEmail.value = patient.email;
+            updateDate.value  = patient.date;
+            updatePhone.value= patient.phoneNumber;
+            if (patient.gender === "male") {
+                updateGenderM.checked = true;
+            } else {
+                updateGenderF.checked = true;
+            }
+            updateBloodType.value = patient.bloodType;
+        });
+    } else {
+        console.log('No patient data received.');
     }
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    getPatientApp();
+    getPatientProfile();
+});
 
+const updatePatient = () => {
+    //alert('update Btn');
+    const genderRadio = document.querySelector('input[name="gender"]:checked');
+    const updateGender = genderRadio ? genderRadio.value : null;
 
+    const requestBody = {
+        updateFname: updateFname.value,
+        updateLname: updateLname.value,
+        updateEmail: updateEmail.value,
+        updatePhone: updatePhone.value,
+        updateDate: updateDate.value,
+        updateGender: updateGender,
+        updateBloodType: updateBloodType.value
+    };
+    fetch('././updatePatientInfo.php', {
+        method: 'POST',
+        body: JSON.stringify(requestBody),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        if(data.response == 200){
+            swal("Error!", "All fields are required.", "error");
+        }
+        else if(data.response == 500){
+            swal("Updated!", "Your informations are updated successfully.", "success");
+            passwordForm.reset();
+        }
+    })
+    .catch(error => {
+        console.error('Something went wrong:', error);
+    })
+    //patientForm.reset();
+}
 
+const changePassword = () => {
+    //alert('change Btn');
+    fetch('././changePatientPassword.php', {
+        method: 'POST',
+        body: JSON.stringify({
+            currentPassword: currentPass.value,
+            newPassword: newPass.value,
+            confirmPassword: confirmPass.value
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        if(data.response == 200){
+            swal("Error!", "All fields are required.", "error");
+        }
+        else if(data.response == 300){
+            swal("Error!", "All fields must be validated.", "error");
+        }
+        else if(data.response == 400){
+            swal("Error!", "New password and confirm password do not match.", "error");
+        }
+        else if(data.response == 500){
+            swal("Updated!", "Password updated successfully.", "success");
+            passwordForm.reset();
+        }
+        else if(data.response == 600){
+            swal("Error!", "Please enter the old password correct.", "error");
+        }
+    })
+    .catch(error => {
+        console.error('Something went wrong:', error);
+    })
+}*/

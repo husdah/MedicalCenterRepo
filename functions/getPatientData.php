@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $userId = 10; //$userId = $_SESSION['userId'];
+    $userId = 5; //$userId = $_SESSION['userId'];
     header('Content-type: application/json');
     
     class user{

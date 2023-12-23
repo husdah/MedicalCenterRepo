@@ -1,9 +1,11 @@
 
-    <?php
-        include('includes/header.php');
-        include('selectData.php');
 
-    ?>
+<?php
+    session_start();
+    include('includes/header.php');
+    include('functions/selectData.php');
+
+?>
 
     <section id="contact-section" class="contact-section">
         <div id="contact-banner" class="contact banner">
@@ -49,7 +51,7 @@
                     </div>
                     <!-- <input type="hidden" name="_template" value="box"></input>
                     <input type="hidden" name="_next" value="https://yourdomain.co/thanks.html">-->
-                    <input type="submit" id="btnSend"  class="contact-btn" name="btn-send" value="Send">
+                    <input type="button" id="btnSend"  class="contact-btn" name="btn-send" value="Send">
                 </form>
             </div>
             <div class="column-right">
