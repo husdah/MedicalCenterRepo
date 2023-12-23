@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+}
+.form-container {
+    width: 500px; /* Adjust width as needed */
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+.button{
+  width: 295px;
+  background-color: #0051a1;
+  border: none;
+  outline: none;
+  height: 55px;
+  border-radius: 49px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 0;
+  cursor: pointer;
+}
