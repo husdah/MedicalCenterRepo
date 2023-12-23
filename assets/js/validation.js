@@ -1,15 +1,12 @@
 //variables for donation section on homepage
 const donateForm   = document.getElementById('donateform');
-
 const emailText    = document.getElementById('email');
 const errorDisplay = document.getElementById('errorInput');
 const bloodType    = document.getElementById('mySelect');
-
 const btn_donate   = document.getElementById('click_donate');
 
 //variables for contact page
-const contactForm   = document.getElementById('contactForm');
-
+const contactForm   = document.getElementById('form2');
 const fname_input   = document.getElementById('fname');
 const fnameError    = document.getElementById('fname-error');
 const lname_input   = document.getElementById('lname');
@@ -20,8 +17,7 @@ const subject_input = document.getElementById('subject');
 const subjectError  = document.getElementById('subject-error');
 const message_input = document.getElementById('message');
 const messageError  = document.getElementById('message-error');
-
-const btn_sendEmail = document.getElementById('sendEmail');
+const btnsend       = document.getElementById('btnSend');
 
 //variables for user page
 const TableData = document.getElementById('patient-app');
@@ -44,6 +40,16 @@ const confirmPass     = document.getElementById('c-pwd');
 const btn_update         = document.getElementById('updateBtn');
 const btn_changePassword = document.getElementById('changeBtn');
 
+//Forms Validation Functions
+contactForm?.addEventListener('submit', (e) => { 
+    //prevents the default form submission behavior 
+    const isValid = validateContactForm();
+
+    // If validation fails, prevent the default form submission
+    if (!isValid) {
+        e.preventDefault();
+    }
+});
 
 // Function to validate name
 const validateNameStructure = (name) => {
@@ -325,17 +331,7 @@ btn_donate?.addEventListener("click", function(event) {
     }
 });
 
-//Forms Validation Function
-contactForm?.addEventListener('submit', (e) => { 
-    //prevents the default form submission behavior 
-    const isValid = validateContactForm();
-
-    // If validation fails, prevent the default form submission
-    if (!isValid) {
-        e.preventDefault();
-    }
-});
-//validates Contact Form 
+//validates Form 
 function validateContactForm(){
     if(checkFirstname() && checkLastname() && checkEmail() && checkSubject() && checkMessage() && validateFirstname() && validateLastname() && validateEmail() && validateSubject() && validateMessage()){
         //alert('Submit Done');
@@ -354,39 +350,32 @@ function validateContactForm(){
     }
 }
 $(document).ready(function () {
-    $('#contactForm').submit(function (e) {
+    $('#form2').submit(function (e) {
         e.preventDefault();
         $.ajax({
             method: "POST",
             url: "functions/sendEmail.php",
-            data: $('#contactForm').serialize(),
+            data: $('#form2').serialize(),
             success: function (response) {
-                /*if (response.trim() === '100') {
-                    swal("Check!", "All Fileds should required", "error");
-                    
-                } else if (response.trim() === '200') {
-                    swal("Check!", "All Fileds should Validated", "error");
-                }
-                else if (response.trim() === '300') {
+                if (response.trim() === '200') {
                     swal("Thank You!", "Your data has been submitted successfully!", "success");
                     // Clear form inputs
-                    $('#contactForm')[0].reset();
+                    $('#form2')[0].reset();
                     document.getElementById('fname-error').innerHTML = '';
                     document.getElementById('lname-error').innerHTML = '';
                     document.getElementById('email-error').innerHTML = '';
                     document.getElementById('subject-error').innerHTML='';
                     document.getElementById('message-error').innerHTML='';
-                }*/
+                } else if (response.trim() === '500') {
+                    swal("Check!", "All Fileds should required* ", "error");
+                }
             },
             error: function () {
                 swal("Error!", "Failed to communicate with the server.", "error");
             }
-        })
+        });
     });
 });
-
-
-
 /*
 const getPatientApp = async() => {
     const res = await fetch('././getPatientData.php');
