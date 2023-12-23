@@ -182,7 +182,7 @@
         }
 
         // Check if the trigger exists
-        $checkTriggerQuery = "SHOW TRIGGERS LIKE 'before_update_doctor'";
+        /*$checkTriggerQuery = "SHOW TRIGGERS LIKE 'before_update_doctor'";
         $checkTriggerResult = mysqli_query($con, $checkTriggerQuery);
 
         if (mysqli_num_rows($checkTriggerResult) == 0) {
@@ -199,7 +199,7 @@
                 END";
             $createTriggerQuery_run = mysqli_query($con, $createTriggerQuery);
 
-        }
+        }*/
 
     }
     

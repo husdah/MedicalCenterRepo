@@ -157,6 +157,11 @@ a
     margin-bottom: 20px;
     
 }
+.item img
+{
+    max-width: 35px;
+    max-height: 35px;
+}
 .name
 {
     font-size: 20px;

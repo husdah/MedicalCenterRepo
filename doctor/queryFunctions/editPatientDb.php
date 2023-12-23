@@ -1,6 +1,6 @@
 <?php
 //header('Content-Type: application/json');
-require('config/dbcon.php');
+require('../../config/dbcon.php');
 $pname=$_POST['pname'];
 
 $eid=$_POST['eid'];

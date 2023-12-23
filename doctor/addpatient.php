@@ -210,7 +210,7 @@ function deleteAction(r) {
                 }
             }
         };
-        xmlhttp.open("GET", "../getPatientsName.php?keyword=" + str, true);
+        xmlhttp.open("GET", "./queryFunctions/getPatientsName.php?keyword=" + str, true);
         xmlhttp.send();
     }
 }
