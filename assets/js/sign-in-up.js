@@ -12,6 +12,8 @@ $(document).ready(function () {
                     displayError("Please enter a valid name!");
                 } else if(response === '3') {
                     displayError("Please enter a valid email!");
+                }else if (response === '4'){
+                    displayError("Please enter a valid phone number!");
                 }else if(response === '5') {
                     displayError("Please enter a valid password!");
                 } else if(response === '6') {
@@ -21,8 +23,7 @@ $(document).ready(function () {
                 } else if(response === '8') {
                     displayError("Email already exists!");
                 } else if(response === '9') {
-                    displayError("Phone number already exists!");
-                    console.log("phone number");
+                    displayError("Phone number already exists!")
                 } else if(response === '10') {
                     displayError("User already exists!");
                 } else if(response === '11') {
@@ -34,8 +35,10 @@ $(document).ready(function () {
         });
     });
 
-    $('#sign-in').submit(function(e) {
+/*     $('#sign-in').submit(function(e) {
+        console.log("heloo");
         e.preventDefault();
+        console.log("heloo222");
         $.ajax({
             method: "POST",
             url: "phpCode.php",
@@ -43,10 +46,14 @@ $(document).ready(function () {
             success: function(response){
                 if(response === '1') {
                     displayError("Incorrect email or password. Please try again.");
+                    console.log("gggg");
+                }else if(response === '2') {
+                    displayError("test test.");
+                    console.log("hh");
                 }
               }
             });
-        });
+        }); */
 });
 
 // Function to display error message using SweetAlert

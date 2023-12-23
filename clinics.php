@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('config/dbcon.php');
 $query="select clinicId,name,description,icon from clinic";
 $res=mysqli_query($con,$query);

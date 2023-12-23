@@ -1,6 +1,7 @@
 <?php
     session_start();
     require("functions/myfunctions.php");
+    require('middleware/adminMiddleware.php');
     include('includes/header.php');
 
     $clinicsNb= getRowCount("clinic");
@@ -22,9 +23,9 @@
                     <li><a href="#" class="active">Appointments</a></li>
                 </ul>
             </div>
-            <a href="#" class="report">
-                <i class='bx bx-receipt'></i>
-                <span>View Appointments</span>
+            <a href="settings.php" class="report">
+                <i class='bx bx-user'></i>
+                <span>Welcome: <?= $_SESSION['auth_user']['name']; ?></span>
             </a>
         </div>
 
@@ -71,7 +72,7 @@
         <!-- End of Insights -->
 
         <div class="bottom-data">
-            <div class="orders">
+            <div class="orders" id="dashboardAppt">
                 <div class="header">
                     <i class='bx bx-receipt'></i>
                     <h3>Recent Appts</h3>

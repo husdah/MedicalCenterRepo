@@ -18,12 +18,36 @@
         </div>
         <div class="icons">
             <li class="dropdown dropdown-6">
-                <button class="login-button" href="#"><i class="fa-solid fa-user"></i> Log in</button>
-                <ul class="dropdown_menu dropdown_menu--animated dropdown_menu-6">
-                    <li class="dropdown_item-1">Log in</li>
-                    <li class="dropdown_item-2">SignUp</li>
-                </ul>
-                </li>
+                <?php
+                    if(isset($_SESSION['auth'])){
+                        $fullname = $_SESSION['auth_user']['name'];
+                        $nameArray = explode(' ', $fullname);
+                        $firstNameInitial = strtoupper(substr($nameArray[0], 0, 1));
+                        $lastNameInitial = strtoupper(substr(end($nameArray), 0, 1));
+                        ?>
+                        <button class="login-button"><i class="fa-solid fa-user"></i> <?= $firstNameInitial .'.' .$lastNameInitial .'. '; ?></button>
+                        <ul class="dropdown_menu dropdown_menu--animated dropdown_menu-6">
+                            <?php
+                                if($_SESSION['role_as'] == 2){
+                                    ?>
+                                        <a href="user.php"><li class="dropdown_item-2">Profile</li></a>
+                                    <?php
+                                }
+                            ?>
+                            <a href="logout.php"><li class="dropdown_item-1">Logout</li></a>
+                        </ul>
+                        <?php
+                    }else{
+                        ?>
+                        <button class="login-button"><i class="fa-solid fa-user"></i> Log in</button>
+                        <ul class="dropdown_menu dropdown_menu--animated dropdown_menu-6">
+                            <a href="sign-in-up.php"><li class="dropdown_item-1">Log in</li></a>
+                            <a href="sign-in-up.php"><li class="dropdown_item-2">SignUp</li></a>
+                        </ul>
+                        <?php
+                    }
+                ?>
+            </li>
             <li class="dropdown dropdown-6">
                 <button class="join-button" href="#"><i class="fa-solid fa-globe"></i> EN</button>
                 <ul class="dropdown_menu dropdown_menu--animated dropdown_menu-6">

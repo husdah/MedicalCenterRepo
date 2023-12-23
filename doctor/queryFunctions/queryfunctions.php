@@ -11,7 +11,7 @@ function redirect($url, $message){
 function getAppoinmentCount($id){
     global $con;
     $query = "SELECT * FROM `appointment`, `doctor` WHERE doctor.doctorId = appointment.doctorId
-     AND doctor.doctorId = ?";
+     AND doctor.doctorId = ? AND (appointment.status = 'completed' OR appointment.status = 'confirmed')";
 
     $stmt = mysqli_prepare($con, $query);
     mysqli_stmt_bind_param($stmt, 'i', $id);
@@ -38,13 +38,13 @@ function getRequestCount($id){
     return $num_rows;
 }
 
-function getPastAppointments($id){
+function getPastAppointments($id,$id2){
     global $con;
     $query = "SELECT * FROM `appointment`, `patient` WHERE patient.patientId = appointment.patientId
-     AND patient.patientId = ? AND appointment.status = 'completed'";
+     AND patient.patientId = ? AND appointment.status = 'completed' AND appointment.doctorId = ?";
 
     $stmt = mysqli_prepare($con, $query);
-    mysqli_stmt_bind_param($stmt, 'i', $id);
+    mysqli_stmt_bind_param($stmt, 'ii', $id,$id2);
     mysqli_stmt_execute($stmt);
     $query_run = mysqli_stmt_get_result($stmt);
     $num_rows = mysqli_num_rows($query_run);
@@ -53,12 +53,14 @@ function getPastAppointments($id){
     return $num_rows;
 }
 
-function getUpcomingAppointments($id){
+function getUpcomingAppointments($id,$id2){
     global $con;
-    $query = "SELECT * FROM `appointment`, `patient` WHERE patient.patientId = appointment.patientId AND patient.patientId = ? AND (appointment.status = 'pending' OR appointment.status = 'confirmed')";
+    $query = "SELECT * FROM `appointment`, `patient` WHERE patient.patientId = appointment.patientId AND 
+    patient.patientId = ? AND (appointment.status = 'pending' OR appointment.status = 'confirmed') AND
+    appointment.doctorId = ?";
 
     $stmt = mysqli_prepare($con, $query);
-    mysqli_stmt_bind_param($stmt, 'i', $id);
+    mysqli_stmt_bind_param($stmt, 'ii', $id,$id2);
     mysqli_stmt_execute($stmt);
     $query_run = mysqli_stmt_get_result($stmt);
     $num_rows = mysqli_num_rows($query_run);
@@ -149,13 +151,14 @@ function getAppointments(){
     return $query_run;
 }
 
-function getAppointmentById($id){
+function getAppointmentById($id,$id2){
     global $con;
     $query = "SELECT * FROM `appointment`, `patient`, `user` WHERE 
-    user.userId = patient.userId AND appointment.patientId = patient.patientId AND patient.patientId = ?";
+    user.userId = patient.userId AND appointment.patientId = patient.patientId AND patient.patientId = ?
+    AND appointment.doctorId = ?";
     
     $stmt = mysqli_prepare($con, $query);
-    mysqli_stmt_bind_param($stmt, 'i', $id);
+    mysqli_stmt_bind_param($stmt, 'ii', $id,$id2);
     mysqli_stmt_execute($stmt);
     $query_run = mysqli_stmt_get_result($stmt);
     mysqli_stmt_close($stmt);

@@ -21,7 +21,7 @@
 
 </head>
 
-<body>
+<body class="content-hidden">
 
 <?php
     include('includes/sidebar.php');

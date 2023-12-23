@@ -26,13 +26,14 @@ function validatePhone($phone) {
     return preg_match($lebanesePhoneRegex, $phone);
 }
 
-if ( isset($_POST['email']) && $_POST['password']){
+/* if ( isset($_POST['email']) && $_POST['password']){
     $email = $_POST['email'];
     $pass = $_POST['password'];
 
     $stmt = mysqli_prepare($con, "SELECT * FROM `user` WHERE email=? AND password=? ");
     mysqli_stmt_bind_param($stmt, "ss", $email, $pass);
-    mysqli_stmt_execute($stmt);
+    if (mysqli_stmt_execute($stmt)){
+
     $result = mysqli_stmt_get_result($stmt);
 
     if(mysqli_num_rows($result) > 0){
@@ -50,14 +51,15 @@ if ( isset($_POST['email']) && $_POST['password']){
           $_SESSION['doctor_email'] = $row['email'];
           $_SESSION['doctor_id'] = $row['userId'];
           header('location:doctor/dashboard.php');
-        }
+        }}
         } else {
           mysqli_stmt_close($stmt);
           mysqli_close($con);
           echo "1";
     }
 }
- else if (isset($_POST['FirstName']) && isset($_POST['LastName']) && isset($_POST['email2']) && isset($_POST['password']) 
+ else */ 
+ if (isset($_POST['FirstName']) && isset($_POST['LastName']) && isset($_POST['email2']) && isset($_POST['password']) 
   && isset($_POST['cpassword']) && isset($_POST['date']) && isset($_POST['gender']) && isset($_POST['mySelect'])){
     
     $firtname = mysqli_real_escape_string($con,$_POST['FirstName']);
@@ -92,6 +94,10 @@ if ( isset($_POST['email']) && $_POST['password']){
         echo "6";
     }else if($password != $cpassword){
         echo "7";
+    }else if($date == ""){
+        echo "1";
+    }else if(!isset($gender)){
+        echo "1";
     }else {
 
         $Email_check_query = "SELECT * FROM user WHERE email=?";
@@ -128,6 +134,7 @@ if ( isset($_POST['email']) && $_POST['password']){
                     echo "11";
                 }
             } else {
+                if (validatePhone($contact)){
                 $phoneCheckQuery = "SELECT phoneNumber FROM patient WHERE phoneNumber = ? 
                 UNION 
                 SELECT phoneNumber FROM doctor WHERE phoneNumber = ?";
@@ -140,9 +147,38 @@ if ( isset($_POST['email']) && $_POST['password']){
                     mysqli_stmt_close($phoneCheckQueryRun);
                     mysqli_close($con);
                     echo "9";
+                } else {
+                    $stmt_user = mysqli_prepare($con, "INSERT INTO `user` (Fname, Lname, email, password, role, restricted) VALUES (?, ?, ?, ?, 2, 0)");
+                    mysqli_stmt_bind_param($stmt_user, "ssss", $firtname, $lastname, $email, $password);
+                    if(mysqli_stmt_execute($stmt_user)){
+                    $userId = mysqli_insert_id($con);
+                    $stmt_patient = mysqli_prepare($con, "INSERT INTO `patient` (userId, gender, bloodType, dateOfBirth ,phoneNumber) VALUES (?,?, ?, ?, ?)");
+                    mysqli_stmt_bind_param($stmt_patient, "isssi", $userId, $gender, $bloodtype, $date, $contact);
+                    if (mysqli_stmt_execute($stmt_patient)) {
+                        mysqli_stmt_close($stmt_user);
+                        mysqli_stmt_close($stmt_patient);
+                        mysqli_close($con);
+                        echo "12";
+                    } else {
+                        mysqli_stmt_close($stmt_user);
+                        mysqli_stmt_close($stmt_patient);
+                        mysqli_close($con);
+                        echo "11";
+                    }
+                } else {
+                    mysqli_stmt_close($stmt_user);
+                    mysqli_close($con);
+                    echo "11";
                 }
+                }
+            } else {
+                mysqli_close($con);
+                echo "4";
             }
+          }
         }
     }
+} else {
+    echo "11";
 }
 ?>
