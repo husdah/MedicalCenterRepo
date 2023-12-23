@@ -48,8 +48,9 @@ if(isset($_SESSION['auth'])){
             </div> 
             <div class="display"><p class="message pwd" id="pwdMsg"></p></div>
             <div class="form-footer"> 
-            <a class="forget-link" href="#"> Forget your password? </a> 
-            <input type="button" value="Login" class="btn solid" name="loginBtn" id="signin-btn" />
+
+            <a class="forget-link" href="ResetPassword/resetPassword-Form.php"> Forget your password? </a> 
+            <input type="submit" value="Login" class="btn solid" name="loginBtn" id="signin-btn" /> 
             </div> 
         </form> 
 
