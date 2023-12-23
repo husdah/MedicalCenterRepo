@@ -25,16 +25,23 @@ const TableData = document.getElementById('patient-app');
 const patientForm        = document.getElementById('update-form'); 
 const changePasswordForm = document.getElementById('change-password');
 
+const updateFname     = document.getElementById('update-fname');
+const updateLname     = document.getElementById('update-lname');
+const updateEmail     = document.getElementById('update-email');
+const updateDate      = document.getElementById('update-date');
 const updatePhone     = document.getElementById('phone2');
 const updateGenderF   = document.getElementById('female');
 const updateGenderM   = document.getElementById('male');
 const updateBloodType = document.getElementById('mySelect');
+const currentPass     = document.getElementById('current-pwd');
+const newPass         = document.getElementById('new-pwd');
+const confirmPass     = document.getElementById('c-pwd');
 
 const btn_update         = document.getElementById('updateBtn');
 const btn_changePassword = document.getElementById('changeBtn');
 
 //Forms Validation Functions
-contactForm?.addEventListener('submit', (e) => { 
+/* contactForm?.addEventListener('submit', (e) => { 
     //prevents the default form submission behavior 
     const isValid = validateContactForm();
 
@@ -42,8 +49,54 @@ contactForm?.addEventListener('submit', (e) => {
     if (!isValid) {
         e.preventDefault();
     }
-});
+}); */
 
+let sendBtn = document.getElementById("btnSend");
+sendBtn?.addEventListener('click', (e) =>{
+    if(e.target.type == "submit"){
+        e.preventDefault();
+    }else{
+        /* validateContactForm(); */
+        const valid = validateContactForm();
+        console.log(valid);
+        if(valid){
+            const sendMail = async () => {
+                const form = document.getElementById('form2');
+                const formData = new FormData(form);
+            
+                await fetch('functions/sendMail.php', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.response == 200) {
+                            swal("Thank You!", "Your data has been submitted successfully!", "success");
+                            // Clear form inputs
+                            form.reset();
+                            document.getElementById('fname-error').innerHTML = '';
+                            document.getElementById('lname-error').innerHTML = '';
+                            document.getElementById('email-error').innerHTML = '';
+                            document.getElementById('subject-error').innerHTML='';
+                            document.getElementById('message-error').innerHTML='';
+            
+                        }else if(data.response == 500){
+                            swal("Note!", data.message +"!", "warning");
+                        }
+                        else {
+                            swal("Error!", "Failed: " + data.message, "error");
+                        }
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }
+            sendMail();
+        }
+    }
+
+})
 // Function to validate name
 const validateNameStructure = (name) => {
     return name.match(/^[a-zA-Z]{3,}$/);
@@ -139,15 +192,15 @@ const checkMessage = () => {
 }
 const checkEmail2 = () => {
     if(emailText.value == ''){
-        if(errorDisplay){
+       // if(errorDisplay){
             errorDisplay.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
             return false;
-        }
+        //}
     }
     else{
-        if(errorDisplay){
+        //if(errorDisplay){
             return true;
-        }
+        //}
     }
 }
 
@@ -182,7 +235,7 @@ const validateLastname = () => {
         //}
     }
 }
-const validateEmail3 = () => {
+const validateEmail = () => {
     const emailValue   = email_input.value;
     if(!validateEmailStructure(emailValue)){
        if(emailError){
@@ -265,7 +318,7 @@ message_input?.addEventListener('focusout', checkMessage);
 emailText?.addEventListener('focusout', checkEmail2);
 fname_input?.addEventListener('input', validateFirstname);
 lname_input?.addEventListener('input', validateLastname);
-email_input?.addEventListener('input', validateEmail3);
+email_input?.addEventListener('input', validateEmail);
 subject_input?.addEventListener('input', validateSubject);
 message_input?.addEventListener('input', validateMessage);
 emailText?.addEventListener('input', validateEmail2);
@@ -324,64 +377,6 @@ btn_donate?.addEventListener("click", function(event) {
     }
 });
 
-btn_update?.addEventListener("click", function(event) {
-    if (event.target.type === 'submit') {
-        event.preventDefault();
-        alert("stop submit");
-    }else{
-        if(!isEmailEmpty(updateEmail,emailMessage) ||  !isNameEmpty(updateFname,firstMsg) || !isNameEmpty(updateLname,lastMsg) || !isDateEmpty(updateDate,dateMessage)){
-            //alert("invalid form");
-            isEmailEmpty(updateEmail,emailMessage);
-            isNameEmpty(updateFname,firstMsg);
-            isNameEmpty(updateLname,lastMsg);
-            isDateEmpty(updateDate,dateMessage);
-        } else {
-            //alert("valid form");
-            const updatePatient = () => {
-                const genderRadio = document.querySelector('input[name="gender"]:checked');
-                const updateGender = genderRadio ? genderRadio.value : null;
-            
-                const requestBody = {
-                    updateFname: updateFname.value,
-                    updateLname: updateLname.value,
-                    updateEmail: updateEmail.value,
-                    updatePhone: updatePhone.value,
-                    updateDate: updateDate.value,
-                    updateGender: updateGender,
-                    updateBloodType: updateBloodType.value
-                };
-                fetch('functions/updatePatientInfo.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-type': 'application/json; charset=UTF-8'
-                    },
-                    body: JSON.stringify(requestBody),
-                })
-                .then((response) => response.json())
-                .then((data) => {
-                    if(data.response == 200){
-                        swal("Error!", "All fields are required.", "error");
-                    }
-                    else if(data.response == 500){
-                        swal("Updated!", "Your informations are updated successfully.", "success");
-                        //updateForm.reset();
-                    }
-                    else if(data.response == 100){
-                        swal("Error!", "Something wrong.", "error");
-                    }
-                    else if(data.response == 101){
-                        swal("Error!", "Something wronggggg .", "error");
-                    }
-                })
-                .catch(error => {
-                    console.error('Something went wrong:', error);
-                })
-            }
-            updatePatient();
-        }
-    }
-});
-
 //validates Form 
 function validateContactForm(){
     if(checkFirstname() && checkLastname() && checkEmail() && checkSubject() && checkMessage() && validateFirstname() && validateLastname() && validateEmail() && validateSubject() && validateMessage()){
@@ -401,8 +396,37 @@ function validateContactForm(){
     }
 }
 
+/* $(document).ready(function () {
+    $(document).on('click','#btnSend', function (e) {
+        e.preventDefault();
+        validateContactForm();
+        $.ajax({
+            method: "POST",
+            url: "functions/sendEmail.php",
+            data: $('#form2').serialize(),
+            success: function (response) {              
+                if (response.trim() === '500') {
+                    swal("Check!", "All Fileds should required* ", "error");
+                }else{
+                    swal("Thank You!", "Your data has been submitted successfully!", "success");
+                    // Clear form inputs
+                    $('#form2')[0].reset();
+                    document.getElementById('fname-error').innerHTML = '';
+                    document.getElementById('lname-error').innerHTML = '';
+                    document.getElementById('email-error').innerHTML = '';
+                    document.getElementById('subject-error').innerHTML='';
+                    document.getElementById('message-error').innerHTML='';
+                }
+            },
+            error: function () {
+                swal("Error!", "Failed to communicate with the server.", "error");
+            }
+        });
+    });
+}); */
+/*
 const getPatientApp = async() => {
-    const res = await fetch('functions/getPatientAppData.php');
+    const res = await fetch('././getPatientData.php');
     const received_data = await res.json();
     TableData.innerHTML = "";
     console.log('App records:',received_data);
@@ -416,6 +440,7 @@ const getPatientApp = async() => {
 
     });
 }
+
 function del(id) {
     swal({
         title: "Are you sure?",
@@ -426,7 +451,7 @@ function del(id) {
     })
     .then((willDelete) => {
         if (willDelete) {
-            fetch('functions/deleteAppointmentByPatient.php', {
+            fetch('././deleteAppointmentByPatient.php', {
                 method: 'POST',
                 body: JSON.stringify({
                     id: id
@@ -450,7 +475,7 @@ function del(id) {
 }
 
 const getPatientProfile = async() => {
-    const response      = await fetch('functions/getPatientInfo.php');
+    const response      = await fetch('././getPatientInfo.php');
     const res = await response.json();
     console.log('patient info record:', res);
     if (res.length > 0) {
@@ -477,40 +502,43 @@ document.addEventListener("DOMContentLoaded", function() {
     getPatientProfile();
 });
 
+const updatePatient = () => {
+    //alert('update Btn');
+    const genderRadio = document.querySelector('input[name="gender"]:checked');
+    const updateGender = genderRadio ? genderRadio.value : null;
 
+    const requestBody = {
+        updateFname: updateFname.value,
+        updateLname: updateLname.value,
+        updateEmail: updateEmail.value,
+        updatePhone: updatePhone.value,
+        updateDate: updateDate.value,
+        updateGender: updateGender,
+        updateBloodType: updateBloodType.value
+    };
+    fetch('././updatePatientInfo.php', {
+        method: 'POST',
+        body: JSON.stringify(requestBody),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        if(data.response == 200){
+            swal("Error!", "All fields are required.", "error");
+        }
+        else if(data.response == 500){
+            swal("Updated!", "Your informations are updated successfully.", "success");
+            passwordForm.reset();
+        }
+    })
+    .catch(error => {
+        console.error('Something went wrong:', error);
+    })
+    //patientForm.reset();
+}
 
-
-/*$(document).ready(function () {
-    $('#form2').submit(function (e) {
-        e.preventDefault();
-        $.ajax({
-            method: "POST",
-            url: "functions/sendEmail.php",
-            data: $('#form2').serialize(),
-            success: function (response) {
-                if (response.trim() === '200') {
-                    swal("Thank You!", "Your data has been submitted successfully!", "success");
-                    // Clear form inputs
-                    $('#form2')[0].reset();
-                    document.getElementById('fname-error').innerHTML = '';
-                    document.getElementById('lname-error').innerHTML = '';
-                    document.getElementById('email-error').innerHTML = '';
-                    document.getElementById('subject-error').innerHTML='';
-                    document.getElementById('message-error').innerHTML='';
-                } else if (response.trim() === '500') {
-                    swal("Check!", "All Fileds should required* ", "error");
-                }
-            },
-            error: function () {
-                swal("Error!", "Failed to communicate with the server.", "error");
-            }
-        });
-    });
-});*/
-
-
-
-/*
 const changePassword = () => {
     //alert('change Btn');
     fetch('././changePatientPassword.php', {
