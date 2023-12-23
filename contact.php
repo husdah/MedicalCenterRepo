@@ -51,7 +51,7 @@
                     </div>
                     <!-- <input type="hidden" name="_template" value="box"></input>
                     <input type="hidden" name="_next" value="https://yourdomain.co/thanks.html">-->
-                    <input type="submit" id="btnSend"  class="contact-btn" name="btn-send" value="Send">
+                    <input type="button" id="btnSend"  class="contact-btn" name="btn-send" value="Send">
                 </form>
             </div>
             <div class="column-right">

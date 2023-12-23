@@ -41,7 +41,7 @@ const btn_update         = document.getElementById('updateBtn');
 const btn_changePassword = document.getElementById('changeBtn');
 
 //Forms Validation Functions
-contactForm?.addEventListener('submit', (e) => { 
+/* contactForm?.addEventListener('submit', (e) => { 
     //prevents the default form submission behavior 
     const isValid = validateContactForm();
 
@@ -49,8 +49,54 @@ contactForm?.addEventListener('submit', (e) => {
     if (!isValid) {
         e.preventDefault();
     }
-});
+}); */
 
+let sendBtn = document.getElementById("btnSend");
+sendBtn?.addEventListener('click', (e) =>{
+    if(e.target.type == "submit"){
+        e.preventDefault();
+    }else{
+        /* validateContactForm(); */
+        const valid = validateContactForm();
+        console.log(valid);
+        if(valid){
+            const sendMail = async () => {
+                const form = document.getElementById('form2');
+                const formData = new FormData(form);
+            
+                await fetch('functions/sendMail.php', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.response == 200) {
+                            swal("Thank You!", "Your data has been submitted successfully!", "success");
+                            // Clear form inputs
+                            form.reset();
+                            document.getElementById('fname-error').innerHTML = '';
+                            document.getElementById('lname-error').innerHTML = '';
+                            document.getElementById('email-error').innerHTML = '';
+                            document.getElementById('subject-error').innerHTML='';
+                            document.getElementById('message-error').innerHTML='';
+            
+                        }else if(data.response == 500){
+                            swal("Note!", data.message +"!", "warning");
+                        }
+                        else {
+                            swal("Error!", "Failed: " + data.message, "error");
+                        }
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }
+            sendMail();
+        }
+    }
+
+})
 // Function to validate name
 const validateNameStructure = (name) => {
     return name.match(/^[a-zA-Z]{3,}$/);
@@ -349,15 +395,19 @@ function validateContactForm(){
         return false;
     }
 }
-$(document).ready(function () {
-    $('#form2').submit(function (e) {
+
+/* $(document).ready(function () {
+    $(document).on('click','#btnSend', function (e) {
         e.preventDefault();
+        validateContactForm();
         $.ajax({
             method: "POST",
             url: "functions/sendEmail.php",
             data: $('#form2').serialize(),
-            success: function (response) {
-                if (response.trim() === '200') {
+            success: function (response) {              
+                if (response.trim() === '500') {
+                    swal("Check!", "All Fileds should required* ", "error");
+                }else{
                     swal("Thank You!", "Your data has been submitted successfully!", "success");
                     // Clear form inputs
                     $('#form2')[0].reset();
@@ -366,8 +416,6 @@ $(document).ready(function () {
                     document.getElementById('email-error').innerHTML = '';
                     document.getElementById('subject-error').innerHTML='';
                     document.getElementById('message-error').innerHTML='';
-                } else if (response.trim() === '500') {
-                    swal("Check!", "All Fileds should required* ", "error");
                 }
             },
             error: function () {
@@ -375,7 +423,7 @@ $(document).ready(function () {
             }
         });
     });
-});
+}); */
 /*
 const getPatientApp = async() => {
     const res = await fetch('././getPatientData.php');
