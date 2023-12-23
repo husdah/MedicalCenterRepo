@@ -75,80 +75,80 @@ function validateInput(input) {
 //Validation on Focusout Event For Empty Input
 const checkFirstname = () => {
     if(fname_input.value === ''){
-        if(fnameError){
+        //if(fnameError){
             fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
             return false;
-        }
+        //}
     }
     else{
-        if(fnameError){
+       // if(fnameError){
             return true;
-        }
+       // }
     }
 }
 const checkLastname = () => {
     if(lname_input.value === ''){
-        if(lnameError){
+        //if(lnameError){
             lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
             return false;
-        }
+        //}
     }
     else{
-        if(lnameError){
+        //if(lnameError){
             return true;
-        }
+        //}
     }
 }
 const checkEmail = () => {
     if(email_input.value === ''){
-        if(emailError){    
+        //if(emailError){    
             emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
             return false;
-        }
+        //}
     }
     else{
-        if(emailError){  
+       // if(emailError){  
             return true;
-        }
+        //}
     }
 }
 const checkSubject = () => {
     if(subject_input.value === ''){
-        if(subjectError){
+       // if(subjectError){
             subjectError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
             return false;
-        }
+        //}
     }
     else{
-        if(subjectError){
+        //if(subjectError){
             return true;
-        }
+        //}
     }
 }
 const checkMessage = () => {
     if(message_input.value === ''){
-        if(messageError){
+        //if(messageError){
             messageError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
             return false;
-        }
+       // }
     }
     else{
-        if(messageError){
+        //if(messageError){
             return true;
-        }
+       // }
     }
 }
 const checkEmail2 = () => {
     if(emailText.value == ''){
-        if(errorDisplay){
+       // if(errorDisplay){
             errorDisplay.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
             return false;
-        }
+        //}
     }
     else{
-        if(errorDisplay){
+        //if(errorDisplay){
             return true;
-        }
+        //}
     }
 }
 
@@ -156,43 +156,43 @@ const checkEmail2 = () => {
 const validateFirstname = () => {
     const fnameValue   = fname_input.value;
     if(!validateNameStructure(fnameValue)){
-        if(fnameError){
+        //if(fnameError){
             fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Must contain only and at least 3 Letters.';
             return false;
-        }
+       // }
     }
     else{
-        if(fnameError){
+        //if(fnameError){
             fnameError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
             return true;
-        }
+        //}
     }    
 }
 const validateLastname = () => {
     const lnameValue   = lname_input.value;
     if(!validateNameStructure(lnameValue)){
-        if(lnameError){
+        //if(lnameError){
             lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Must contain only and at least 3 Letters.';
             return false;
-        }
+        //}
     }
     else{
-        if(lnameError){
+        //if(lnameError){
             lnameError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
             return true;
-        }
+        //}
     }
 }
 const validateEmail = () => {
     const emailValue   = email_input.value;
     if(!validateEmailStructure(emailValue)){
-        if(emailError){
+       if(emailError){
             emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> example@hotmail.com';
             return false;
         }
     }
     else{
-        if(emailError){
+       if(emailError){
             emailError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
             return true;
         }
@@ -201,16 +201,16 @@ const validateEmail = () => {
 const validateSubject = () => {
     const subjectValue   = subject_input.value;
     if(!validateSubjectStructure(subjectValue)){
-        if(subjectError){
+        //if(subjectError){
             subjectError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Subject must be clear.';
             return false;
-        }
+        //}
     }
     else{
-        if(subjectError){
+        //if(subjectError){
             subjectError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
             return true;
-        }
+       // }
     }
 }
 const validateMessage = () => {
@@ -325,95 +325,65 @@ btn_donate?.addEventListener("click", function(event) {
     }
 });
 
-btn_sendEmail?.addEventListener("click", function(event) {
-    if (event.target.type === 'submit') {
-        event.preventDefault();
-        alert("stop submit");
-    }else{
-        if(!checkFirstname() || !checkLastname() || !checkEmail() || !checkSubject() || !checkMessage() || !validateFirstname() || !validateLastname() || !validateEmail() || !validateSubject() || !validateMessage()){
-            checkFirstname();
-            checkLastname();
-            checkEmail();
-            checkSubject();
-            checkMessage();
-            //alert("invalid form");
-        } else {
-            /*const sendEmail = async() => {
-                const data = {
-                    firstName : fname_input.value,
-                    lastName : lname_input.value,
-                    email: email_input.value,
-                    subject: subject_input.value,
-                    message: message_input.value
-                };
-                await fetch('functions/sendEmail.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json; charset=UTF-8',
-                    },
-                    body: JSON.stringify(data),
-                })
-                .then((response) => response.json())
-                .then((data) => {
-                    if (data.response === '200') {
-                        swal("Error", "Please fill the fields", "error");
-                        console.log('message', data);
-                    }  
-                    else if(data.response === '300') {
-                        swal("Error", "All fields must be validated", "error");
-                        console.log('message', data);
-                    }  
-                    else if(data.response === '100') {
-                        swal("Thank you", "Your data has been submitted successfully!", "success");
-                        contactForm.reset();
-                        fnameError.innerHTML   = "";
-                        lnameError.innerHTML   = ""; 
-                        emailError.innerHTML   = "";
-                        subjectError.innerHTML = ""; 
-                        messageError.innerHTML = ""; 
-                        console.log('message', data);
-                    }   
-                })
-                .catch((error) => {
-                    console.error('Something went wrong:', error);
-                });
-            }
-            sendEmail();*/
-            $(document).ready(function () {
-            $('#sendEmail').click(function (e) {
-                e.preventDefault();
-                $.ajax({
-                    method: "POST",
-                    url: "functions/sendEmail.php",
-                    success: function (response) {
-                        if (response.trim() === '200') {
-                            swal("Error", "Please fill the fields", "error");
-                        } else if (response.trim() === '300') {
-                            swal("Error", "All fields must be validated", "error");
-                        } else if (response.trim() === '100') {
-                            swal("Thank you", "Your data has been submitted successfully!", "success");
-                            contactForm.reset();
-                            fnameError.innerHTML   = "";
-                            lnameError.innerHTML   = ""; 
-                            emailError.innerHTML   = "";
-                            subjectError.innerHTML = ""; 
-                            messageError.innerHTML = ""; 
-                        }
-                    },
-                    error: function () {
-                        swal("Error!", "Failed to communicate with the server.", "error");
-                    }
-                });
-            });
-            });
-        }
+//Forms Validation Function
+contactForm?.addEventListener('submit', (e) => { 
+    //prevents the default form submission behavior 
+    const isValid = validateContactForm();
+
+    // If validation fails, prevent the default form submission
+    if (!isValid) {
+        e.preventDefault();
     }
 });
-
-
-
-
-
+//validates Contact Form 
+function validateContactForm(){
+    if(checkFirstname() && checkLastname() && checkEmail() && checkSubject() && checkMessage() && validateFirstname() && validateLastname() && validateEmail() && validateSubject() && validateMessage()){
+        //alert('Submit Done');
+        console.log('Submit Successfully');
+        return true;
+    }
+    else{
+        checkFirstname();
+        checkLastname();
+        checkEmail();
+        checkSubject();
+        checkMessage();
+        //alert('something wrong'); 
+        console.log('something wrong');
+        return false;
+    }
+}
+$(document).ready(function () {
+    $('#contactForm').submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            method: "POST",
+            url: "functions/sendEmail.php",
+            data: $('#contactForm').serialize(),
+            success: function (response) {
+                /*if (response.trim() === '100') {
+                    swal("Check!", "All Fileds should required", "error");
+                    
+                } else if (response.trim() === '200') {
+                    swal("Check!", "All Fileds should Validated", "error");
+                }
+                else if (response.trim() === '300') {
+                    swal("Thank You!", "Your data has been submitted successfully!", "success");
+                    // Clear form inputs
+                    $('#contactForm')[0].reset();
+                    document.getElementById('fname-error').innerHTML = '';
+                    document.getElementById('lname-error').innerHTML = '';
+                    document.getElementById('email-error').innerHTML = '';
+                    document.getElementById('subject-error').innerHTML='';
+                    document.getElementById('message-error').innerHTML='';
+                }*/
+            },
+            error: function () {
+                swal("Error!", "Failed to communicate with the server.", "error");
+            }
+        })
+    });
+});
 
 
 

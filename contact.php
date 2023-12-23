@@ -1,7 +1,7 @@
 
     <?php
         include('includes/header.php');
-        include('selectData.php');
+        include('functions/selectData.php');
 
     ?>
 
@@ -49,7 +49,7 @@
                     </div>
                     <!-- <input type="hidden" name="_template" value="box"></input>
                     <input type="hidden" name="_next" value="https://yourdomain.co/thanks.html">-->
-                    <button type="button" id="sendEmail"  class="contact-btn" name="btn-send" > Send </button>
+                    <input type="submit" id="sendEmail"  class="contact-btn" name="btn-send" >
                 </form>
             </div>
             <div class="column-right">

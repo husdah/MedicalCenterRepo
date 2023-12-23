@@ -1,24 +1,32 @@
-
-    /*$('#donateform').submit(function (e) {
+$(document).ready(function () {
+    $('#contactForm').submit(function (e) {
         e.preventDefault();
         $.ajax({
             method: "POST",
-            url: "donateData.php",
-            data: $('#donateform').serialize(),
+            url: "functions/sendEmail.php",
+            data: $('#contactForm').serialize(),
             success: function (response) {
-                if (response.trim() === '200') {
-                    swal("Thank you again", "But you have already donated and we have your data");
-                } else if (response.trim() === '300') {
+                if (response.trim() === '100') {
+                    swal("Check!", "All Fileds should required", "error");
+                    
+                } else if (response.trim() === '200') {
+                    swal("Check!", "All Fileds should Validated", "error");
+                }
+                else if (response.trim() === '300') {
                     swal("Thank You!", "Your data has been submitted successfully!", "success");
                     // Clear form inputs
-                    $('#donateform')[0].reset();
-                    document.getElementById('errorInput').innerHTML = '';
-                } else if (response.trim() === '500') {
-                    swal("Error!", "Please, Fill The Fields", "error");
+                    $('#contactForm')[0].reset();
+                    document.getElementById('fname-error').innerHTML = '';
+                    document.getElementById('lname-error').innerHTML = '';
+                    document.getElementById('email-error').innerHTML = '';
+                    document.getElementById('subject-error').innerHTML='';
+                    document.getElementById('message-error').innerHTML='';
                 }
             },
             error: function () {
                 swal("Error!", "Failed to communicate with the server.", "error");
             }
         });
-    });*/
+    });
+});
+
