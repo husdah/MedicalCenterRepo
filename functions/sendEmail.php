@@ -17,7 +17,7 @@
             echo '300';
         }
         else{
-            include('../config/email.php');
+            include('config/email.php');
             
             //Email Composition
             $mail->setFrom($email, $name);// Set "From" address to the user-entered email

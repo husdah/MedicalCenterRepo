@@ -1,7 +1,7 @@
 
     <?php
         include('includes/header.php');
-        include('selectData.php');
+        include('functions/selectData.php');
 
         $doctorCount  = getRowCount('doctor');
         $patientCount = getRowCount('patient');
