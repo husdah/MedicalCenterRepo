@@ -1,10 +1,11 @@
 
-    <?php
-        session_start();
-        include('includes/header.php');
-        include('selectData.php');
 
-    ?>
+<?php
+    session_start();
+    include('includes/header.php');
+    include('functions/selectData.php');
+
+?>
 
     <section id="contact-section" class="contact-section">
         <div id="contact-banner" class="contact banner">

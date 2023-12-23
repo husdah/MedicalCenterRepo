@@ -165,12 +165,13 @@ updateForm?.addEventListener('submit', (e) => {
 
 passwordForm?.addEventListener('submit', (e) => { 
     const isValid = validatePasswordForm();
-
     // If validation fails, prevent the default form submission
-    if (!isValid) {
+    if (!isValid ) {
         e.preventDefault();
     }
 });
+
+
 
 //Check if the Email is Empty
 function isEmailEmpty(emailInput,emailMsg){

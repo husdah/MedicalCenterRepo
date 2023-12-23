@@ -49,10 +49,6 @@
             $msg = "All fields are required!";
             $response = '200';
         }
-        /*else if(!validateEmail($updateFname) || !validateEmail($updateLname) || !validateEmail($updateEmail) || !validatePhone($updatePhone)){
-            $msg = "All fields must be validated!";
-            $response = '300';
-        }*/
         else{
             $msg = "Update!";
             require_once('config/dbcon.php');
@@ -87,11 +83,14 @@
             else {
                 $msg = "Error preparing statement: " . mysqli_error($con);
             }  
+            
         }
         $data["response"] = $response;
-        $data["message"]  = $msg;
-        echo json_encode($data);
+        
         // Close the database connection
         //mysqli_close($con);
+        //$msg = "Submited ";
+        $data["message"]  = $msg;
+        echo json_encode($data);
     }
 ?>
