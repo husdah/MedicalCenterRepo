@@ -1,5 +1,12 @@
 <?php 
 
+require '../PHPMailer-master/src/Exception.php';
+require '../PHPMailer-master/src/PHPMailer.php';
+require '../PHPMailer-master/src/SMTP.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 include("../config/dbcon.php");
 
 $email = $_POST['email'];
@@ -22,20 +29,42 @@ mysqli_stmt_bind_param($stmt, "sss", $token_hash, $expiry, $email);
 mysqli_stmt_execute($stmt);
 
 if (mysqli_affected_rows($con) > 0) {
-    require('../config/email.php');
+
+    $mail = new PHPMailer();
     
-    $mail->setFrom("healthhubcenter23@gmail.com");
-    $mail->addAddress($email);
-    $mail->Subject = "Password Reset";
-    $mail->Body = <<<END
+    try {
+        $mail->isSMTP(); // Set mailer to use SMTP
+        $mail->Host = "smtp.gmail.com"; // Define SMTP host
+        $mail->SMTPAuth = true; // Enable SMTP authentication
+        $mail->SMTPSecure = 'tls'; // Set type of encryption
+        $mail->Port = 587; // Set port to connect SMTP
+        $mail->Username = "healthhubcenter23@gmail.com"; // Set Gmail username
+        $mail->Password = "clctytzjvtgjfhei"; // Set Gmail password
 
-    Click <a href="http://example.com/reset-password.php?token=$token">here</a> 
-    to reset your password.
+        //Email Composition
+        $mail->setFrom("noreply@example.com");
+        $mail->addAddress($email);
+        $mail->Subject = "Password Reset";
+        //$mail->Body = 'Click <a href="http://reset-password.php?token=' . $token . '">here</a> to reset your password.';
+        //$mail->Body = 'Click <a http://localhost:3000/ResetPassword/send-password-reset.php?token=' . $token . '">here</a> to reset your password.';
+        $mail->Body = <<<END
 
-    END;
+        Click <a href="http://localhost/phpcodes/MedicalCenter/MedicalCenterRepo/ResetPassword/reset-password.php?token=$token">here</a> 
+        to reset your password.
 
-    $mail->send();
-    echo "Message sent, please check your inbox.";
+       END;
+
+        $mail->IsHTML(true);
+        $mail->send();
+
+    } catch (Exception $e) {
+
+        echo "Message could not be sent. Mailer error: {$mail->ErrorInfo}";
+
+    }
+
 }
+
+echo "Message sent, please check your inbox.";
 
 ?>
