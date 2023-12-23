@@ -91,7 +91,7 @@
                         <div class="content-field">
                           <div class="input-field"> 
                             <i class="fas fa-phone"></i> 
-                            <input type="number" placeholder="Phone Number" class="contact" id="phone2" /> 
+                            <input type="number" placeholder="Phone Number" name="phone" class="contact" id="phone2" /> 
                           </div> 
                           <div class="display"><p class="message" id="pMsg2"></p></div>
                         </div>

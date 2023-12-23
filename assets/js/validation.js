@@ -288,7 +288,113 @@ message_input?.addEventListener('input', validateMessage);
 emailText?.addEventListener('input', validateEmail2);
 bloodType?.addEventListener('change', validateSelect);
 
+/*const btn_update = document.getElementById('updateBtn');
+btn_update?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
+    }else{
+        const valid = validateUpdateForm();
+        //console.log(valid);
+        if(valid){
+            /*console.log(updateFname.value);
+            console.log(updateLname.value);
+            console.log(updateEmail.value);
+            console.log(updatePhone.value);
+            console.log(updateDate.value);
+            console.log(updateBloodType.value);*/
+            /*
+            const updatePatient = () => {
+                //alert('update Btn');
+                const genderRadio = document.querySelector('input[name="gender"]:checked');
+                const updateGender = genderRadio ? genderRadio.value : null;
+                //console.log(updateGender);
+                const requestBody = {
+                    updateFname: updateFname.value,
+                    updateLname: updateLname.value,
+                    updateEmail: updateEmail.value,
+                    updatePhone: updatePhone.value,
+                    updateDate: updateDate.value,
+                    updateGender: updateGender,
+                    updateBloodType: updateBloodType.value
+                };
+                fetch('functions/updatePatientInfo1.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8'
+                    },
+                    body: JSON.stringify(requestBody),
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    //console.log('Received data:', data);
 
+                    // Access individual properties
+                    //console.log('updateFname:', data.updateFname);
+                    //console.log('updateLname:', data.updateLname);
+                    
+                    
+                    if(data.response == 200){
+                        swal("Error!", "All fields are required.", "error");
+                    }
+                    else if(data.response == 100){
+                        swal("Error!", "Something went wrong", "error");
+                    }
+                    else if(data.response == 500){
+                        swal("Updated!", "Your informations are updated successfully.", "success");
+                        //passwordForm.reset();
+                    }
+                })
+                .catch(error => {
+                    console.error('Something went wrong:', error);
+                })
+                
+            }
+            updatePatient();
+        }
+    }
+});
+*/
+
+
+const btnUpdate = document.getElementById('updateBtn');
+btnUpdate?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
+    }else{
+        const valid = validateUpdateForm();
+        console.log(valid);
+        if(valid){
+            //alert("submit");
+            const updatePatient = () => {
+                const form = document.getElementById('update-form');
+                const formData = new FormData(form);
+                fetch('functions/updatePatientInfo.php', {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    //console.log('Success:', data);
+                    if(data.response == 200){
+                        swal("Error!", "All fields are required.", "error");
+                    }
+                    else if(data.response == 100){
+                        swal("Error!", "Something Went Wrong", "error");
+                    }
+                    else if(data.response == 500){
+                        swal("Updated!", "Your informations are updated successfully.", "success");
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            }
+            updatePatient();
+        }
+    }
+});
 
 let sendBtn = document.getElementById("btnSend");
 sendBtn?.addEventListener('click', (e) =>{
@@ -461,60 +567,7 @@ const getPatientProfile = async() => {
     }
 }
 
-const btn_update = document.getElementById('updateBtn');
-btn_update?.addEventListener("click", function(event) {
-    if (event.target.type === 'submit') {
-        event.preventDefault();
-        alert("stop submit");
-    }else{
-        const valid = validateUpdateForm();
-        console.log(valid);
-        if(valid){
-            const updatePatient = () => {
-                //alert('update Btn');
-                const genderRadio = document.querySelector('input[name="gender"]:checked');
-                const updateGender = genderRadio ? genderRadio.value : null;
 
-                const requestBody = {
-                    updateFname: updateFname.value,
-                    updateLname: updateLname.value,
-                    updateEmail: updateEmail.value,
-                    /*updatePhone: updatePhone.value,
-                    updateDate: updateDate.value,
-                    updateGender: updateGender,
-                    updateBloodType: updateBloodType.value*/
-                };
-                fetch('functions/updatePatientInfo.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-type': 'application/json; charset=UTF-8'
-                    },
-                    body: JSON.stringify(requestBody),
-                })
-                .then((response) => response.json())
-                .then((data) => {
-                    if(data.response == 200){
-                        swal("Error!", "All fields are required.", "error");
-                    }
-                    else if(data.response == 100){
-                        swal("Error!", "before execution error", "error");
-                    }
-                    else if(data.response == 101){
-                        swal("Error!", "in bind parameter", "error");
-                    }
-                    else if(data.response == 500){
-                        swal("Updated!", "Your informations are updated successfully.", "success");
-                        //passwordForm.reset();
-                    }
-                })
-                .catch(error => {
-                    console.error('Something went wrong:', error);
-                })
-            }
-            updatePatient();
-        }
-    }
-});
 
 const btn_changePassword = document.getElementById('changeBtn');
 btn_changePassword?.addEventListener("click", function(event) {
