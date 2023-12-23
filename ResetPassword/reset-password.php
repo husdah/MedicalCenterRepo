@@ -43,16 +43,20 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
 
               <div class="input-field"> 
                 <i class="fas fa-lock"></i> 
-                <input type="password" placeholder="New Password" name="password"/> 
+                <input type="password" placeholder="New Password" name="password" id="pass1"/> 
               </div>
+              <div class="display"><p class="message" id="msg1"></p></div>
              
               <div class="input-field"> 
                 <i class="fas fa-lock"></i> 
-                <input type="password" placeholder="Confirm Password" name="cpassword"/> 
+                <input type="password" placeholder="Confirm Password" name="cpassword" id="pass2"/> 
               </div>
+              <div class="display"><p class="message" id="msg2"></p></div>
 
         <button class="button">Send</button>
     </form>
 </div>
+
+<script src="../assets/js/resetPassword.js"></script>
 </body>
 </html>
