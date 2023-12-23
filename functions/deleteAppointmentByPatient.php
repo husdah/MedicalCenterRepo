@@ -1,11 +1,11 @@
 <?php
-    require_once('config/dbcon.php');
     header('Content-type: application/json');
     $response = "";
     $data     = [];
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $json = json_decode(file_get_contents('php://input'));
         $id = trim($json->id);
+        include('../config/dbcon.php');
         $query = 'DELETE FROM appointment WHERE appointment.appId = ?';
         $stmt  = mysqli_prepare($con, $query);
         if($stmt) {

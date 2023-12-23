@@ -1,7 +1,5 @@
 <?php
   require('middleware/patientMiddleware.php');
-  //$patientName = $_SESSION['patientName'];
-  $patientName = "Zeinab Hijazi";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +16,7 @@
     <div class="container">
             <div class="header">
                 <div class="title">
-                <label>Welcome, </label><span><?php echo $patientName ?></span><br>
+                <label>Welcome, </label><span><?= $_SESSION['auth_user']['name']; ?></span><br>
                 <label class="date" id="date"></label>
                 </div>
                 <div class="buttons">
@@ -85,7 +83,7 @@
                         <div class="content-field">
                           <div class="input-field"> 
                             <i class="fas fa-envelope"></i> 
-                            <input type="email" placeholder="Email" id="update-email"/> 
+                            <input type="email" placeholder="Email" name ="pat-email" id="update-email"/> 
                           </div> 
                           <div class="display"><p class="message" id="emailMessage"></p></div>
                         </div> 
@@ -93,7 +91,7 @@
                         <div class="content-field">
                           <div class="input-field"> 
                             <i class="fas fa-phone"></i> 
-                            <input type="number" placeholder="Phone Number" class="contact" id="phone2" /> 
+                            <input type="number" placeholder="Phone Number" name="phone" class="contact" id="phone2" /> 
                           </div> 
                           <div class="display"><p class="message" id="pMsg2"></p></div>
                         </div>
@@ -165,7 +163,7 @@
     </div>
 
     <script src="assets/js/user.js"></script>
-    <!-- <script src="assets/js/siginValidation.js"></script>-->
+    <script src="assets/js/siginValidation.js"></script>
     <script src="assets/js/validation.js"></script>
     <!-- sweetalert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

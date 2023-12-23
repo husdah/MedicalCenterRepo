@@ -154,7 +154,7 @@ signupForm?.addEventListener('submit', (e) => {
     }
 });
 
-updateForm?.addEventListener('submit', (e) => { 
+/*updateForm?.addEventListener('submit', (e) => { 
     const isValid = validateUpdateForm();
 
     // If validation fails, prevent the default form submission
@@ -169,7 +169,7 @@ passwordForm?.addEventListener('submit', (e) => {
     if (!isValid ) {
         e.preventDefault();
     }
-});
+});*/
 
 
 
@@ -465,7 +465,6 @@ function validateSignupForm(){
 }
 
 function validateUpdateForm(){
-
     if(validateEmail(updateEmail,emailMessage) && isEmailEmpty(updateEmail,emailMessage) && validateName(updateFname,firstMsg)
     && validateName(updateLname,lastMsg) && isNameEmpty(updateFname,firstMsg) && isNameEmpty(updateLname,lastMsg) && isDateEmpty(updateDate,dateMessage)
     && validatePhone(phoneInput2,phoneMsg2)){

@@ -3,9 +3,9 @@ const donateForm   = document.getElementById('donateform');
 const emailText    = document.getElementById('email');
 const errorDisplay = document.getElementById('errorInput');
 const bloodType    = document.getElementById('mySelect');
-const btn_donate   = document.getElementById('click_donate');
 
 //variables for contact page
+
 const contactForm   = document.getElementById('form2');
 const fname_input   = document.getElementById('fname');
 const fnameError    = document.getElementById('fname-error');
@@ -17,28 +17,14 @@ const subject_input = document.getElementById('subject');
 const subjectError  = document.getElementById('subject-error');
 const message_input = document.getElementById('message');
 const messageError  = document.getElementById('message-error');
-const btnsend       = document.getElementById('btnSend');
 
 //variables for user page
 const TableData = document.getElementById('patient-app');
 
-const patientForm        = document.getElementById('update-form'); 
-const changePasswordForm = document.getElementById('change-password');
-
-const updateFname     = document.getElementById('update-fname');
-const updateLname     = document.getElementById('update-lname');
-const updateEmail     = document.getElementById('update-email');
-const updateDate      = document.getElementById('update-date');
 const updatePhone     = document.getElementById('phone2');
 const updateGenderF   = document.getElementById('female');
 const updateGenderM   = document.getElementById('male');
 const updateBloodType = document.getElementById('mySelect');
-const currentPass     = document.getElementById('current-pwd');
-const newPass         = document.getElementById('new-pwd');
-const confirmPass     = document.getElementById('c-pwd');
-
-const btn_update         = document.getElementById('updateBtn');
-const btn_changePassword = document.getElementById('changeBtn');
 
 //Forms Validation Functions
 /* contactForm?.addEventListener('submit', (e) => { 
@@ -50,6 +36,11 @@ const btn_changePassword = document.getElementById('changeBtn');
         e.preventDefault();
     }
 }); */
+
+document.addEventListener("DOMContentLoaded", function() {
+    getPatientApp();
+    getPatientProfile();
+});
 
 let sendBtn = document.getElementById("btnSend");
 sendBtn?.addEventListener('click', (e) =>{
@@ -97,6 +88,7 @@ sendBtn?.addEventListener('click', (e) =>{
     }
 
 })
+
 // Function to validate name
 const validateNameStructure = (name) => {
     return name.match(/^[a-zA-Z]{3,}$/);
@@ -127,80 +119,80 @@ function validateInput(input) {
 //Validation on Focusout Event For Empty Input
 const checkFirstname = () => {
     if(fname_input.value === ''){
-        //if(fnameError){
+        if(fnameError){
             fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
             return false;
-        //}
+        }
     }
     else{
-       // if(fnameError){
+        if(fnameError){
             return true;
-       // }
+        }
     }
 }
 const checkLastname = () => {
     if(lname_input.value === ''){
-        //if(lnameError){
+        if(lnameError){
             lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
             return false;
-        //}
+        }
     }
     else{
-        //if(lnameError){
+        if(lnameError){
             return true;
-        //}
+        }
     }
 }
 const checkEmail = () => {
     if(email_input.value === ''){
-        //if(emailError){    
+        if(emailError){    
             emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
             return false;
-        //}
+        }
     }
     else{
-       // if(emailError){  
+        if(emailError){  
             return true;
-        //}
+        }
     }
 }
 const checkSubject = () => {
     if(subject_input.value === ''){
-       // if(subjectError){
+        if(subjectError){
             subjectError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
             return false;
-        //}
+        }
     }
     else{
-        //if(subjectError){
+        if(subjectError){
             return true;
-        //}
+        }
     }
 }
 const checkMessage = () => {
     if(message_input.value === ''){
-        //if(messageError){
+        if(messageError){
             messageError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
             return false;
-       // }
+        }
     }
     else{
-        //if(messageError){
+        if(messageError){
             return true;
-       // }
+        }
     }
 }
 const checkEmail2 = () => {
     if(emailText.value == ''){
-       // if(errorDisplay){
+        if(errorDisplay){
             errorDisplay.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
             return false;
-        //}
+        }
     }
     else{
-        //if(errorDisplay){
+        if(errorDisplay){
             return true;
-        //}
+        }
     }
 }
 
@@ -208,34 +200,34 @@ const checkEmail2 = () => {
 const validateFirstname = () => {
     const fnameValue   = fname_input.value;
     if(!validateNameStructure(fnameValue)){
-        //if(fnameError){
+        if(fnameError){
             fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Must contain only and at least 3 Letters.';
             return false;
-       // }
+        }
     }
     else{
-        //if(fnameError){
+        if(fnameError){
             fnameError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
             return true;
-        //}
+        }
     }    
 }
 const validateLastname = () => {
     const lnameValue   = lname_input.value;
     if(!validateNameStructure(lnameValue)){
-        //if(lnameError){
+        if(lnameError){
             lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Must contain only and at least 3 Letters.';
             return false;
-        //}
+        }
     }
     else{
-        //if(lnameError){
+        if(lnameError){
             lnameError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
             return true;
-        //}
+        }
     }
 }
-const validateEmail = () => {
+const validateEmail3 = () => {
     const emailValue   = email_input.value;
     if(!validateEmailStructure(emailValue)){
        if(emailError){
@@ -253,16 +245,16 @@ const validateEmail = () => {
 const validateSubject = () => {
     const subjectValue   = subject_input.value;
     if(!validateSubjectStructure(subjectValue)){
-        //if(subjectError){
+        if(subjectError){
             subjectError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Subject must be clear.';
             return false;
-        //}
+        }
     }
     else{
-        //if(subjectError){
+        if(subjectError){
             subjectError.innerHTML   = '<i class="fa-regular fa-circle-check"></i>';
             return true;
-       // }
+        }
     }
 }
 const validateMessage = () => {
@@ -309,6 +301,25 @@ const validateSelect = () => {
     }
 }
 
+//validates Form 
+function validateContactForm(){
+    if(checkFirstname() && checkLastname() && checkEmail() && checkSubject() && checkMessage() && validateFirstname() && validateLastname() && validateEmail() && validateSubject() && validateMessage()){
+        //alert('Submit Done');
+        console.log('Submit Successfully');
+        return true;
+    }
+    else{
+        checkFirstname();
+        checkLastname();
+        checkEmail();
+        checkSubject();
+        checkMessage();
+        //alert('something wrong'); 
+        console.log('something wrong');
+        return false;
+    }
+}
+
 // Add event listeners to input fields
 fname_input?.addEventListener('focusout', checkFirstname);
 lname_input?.addEventListener('focusout', checkLastname);
@@ -318,14 +329,167 @@ message_input?.addEventListener('focusout', checkMessage);
 emailText?.addEventListener('focusout', checkEmail2);
 fname_input?.addEventListener('input', validateFirstname);
 lname_input?.addEventListener('input', validateLastname);
-email_input?.addEventListener('input', validateEmail);
+email_input?.addEventListener('input', validateEmail3);
 subject_input?.addEventListener('input', validateSubject);
 message_input?.addEventListener('input', validateMessage);
 emailText?.addEventListener('input', validateEmail2);
-bloodType?.addEventListener('change', validateSelect)
+bloodType?.addEventListener('change', validateSelect);
 
+/*const btn_update = document.getElementById('updateBtn');
+btn_update?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
+    }else{
+        const valid = validateUpdateForm();
+        //console.log(valid);
+        if(valid){
+            /*console.log(updateFname.value);
+            console.log(updateLname.value);
+            console.log(updateEmail.value);
+            console.log(updatePhone.value);
+            console.log(updateDate.value);
+            console.log(updateBloodType.value);*/
+            /*
+            const updatePatient = () => {
+                //alert('update Btn');
+                const genderRadio = document.querySelector('input[name="gender"]:checked');
+                const updateGender = genderRadio ? genderRadio.value : null;
+                //console.log(updateGender);
+                const requestBody = {
+                    updateFname: updateFname.value,
+                    updateLname: updateLname.value,
+                    updateEmail: updateEmail.value,
+                    updatePhone: updatePhone.value,
+                    updateDate: updateDate.value,
+                    updateGender: updateGender,
+                    updateBloodType: updateBloodType.value
+                };
+                fetch('functions/updatePatientInfo1.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8'
+                    },
+                    body: JSON.stringify(requestBody),
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    //console.log('Received data:', data);
 
-// event lister on Form Buttons
+                    // Access individual properties
+                    //console.log('updateFname:', data.updateFname);
+                    //console.log('updateLname:', data.updateLname);
+                    
+                    
+                    if(data.response == 200){
+                        swal("Error!", "All fields are required.", "error");
+                    }
+                    else if(data.response == 100){
+                        swal("Error!", "Something went wrong", "error");
+                    }
+                    else if(data.response == 500){
+                        swal("Updated!", "Your informations are updated successfully.", "success");
+                        //passwordForm.reset();
+                    }
+                })
+                .catch(error => {
+                    console.error('Something went wrong:', error);
+                })
+                
+            }
+            updatePatient();
+        }
+    }
+});
+*/
+
+const btnUpdate = document.getElementById('updateBtn');
+btnUpdate?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
+    }else{
+        const valid = validateUpdateForm();
+        console.log(valid);
+        if(valid){
+            //alert("submit");
+            const updatePatient = () => {
+                const form = document.getElementById('update-form');
+                const formData = new FormData(form);
+                fetch('functions/updatePatientInfo.php', {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    //console.log('Success:', data);
+                    if(data.response == 200){
+                        swal("Error!", "All fields are required.", "error");
+                    }
+                    else if(data.response == 100){
+                        swal("Error!", "Something Went Wrong", "error");
+                    }
+                    else if(data.response == 500){
+                        swal("Updated!", "Your informations are updated successfully.", "success");
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            }
+            updatePatient();
+        }
+    }
+});
+
+let sendBtn = document.getElementById("btnSend");
+sendBtn?.addEventListener('click', (e) =>{
+    if(e.target.type == "submit"){
+        e.preventDefault();
+    }else{
+        /* validateContactForm(); */
+        const valid = validateContactForm();
+        console.log(valid);
+        if(valid){
+            const sendMail = async () => {
+                const form = document.getElementById('form2');
+                const formData = new FormData(form);
+            
+                await fetch('functions/sendMail.php', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.response == 200) {
+                            swal("Thank You!", "Your data has been submitted successfully!", "success");
+                            // Clear form inputs
+                            form.reset();
+                            document.getElementById('fname-error').innerHTML = '';
+                            document.getElementById('lname-error').innerHTML = '';
+                            document.getElementById('email-error').innerHTML = '';
+                            document.getElementById('subject-error').innerHTML='';
+                            document.getElementById('message-error').innerHTML='';
+            
+                        }else if(data.response == 500){
+                            swal("Note!", data.message +"!", "warning");
+                        }
+                        else {
+                            swal("Error!", "Failed: " + data.message, "error");
+                        }
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }
+            sendMail();
+        }
+    }
+
+})
+
+const btn_donate   = document.getElementById('click_donate');
 btn_donate?.addEventListener("click", function(event) {
     if (event.target.type === 'submit') {
         event.preventDefault();
@@ -425,8 +589,9 @@ function validateContactForm(){
     });
 }); */
 /*
+
 const getPatientApp = async() => {
-    const res = await fetch('././getPatientData.php');
+    const res = await fetch('functions/getPatientAppData.php');
     const received_data = await res.json();
     TableData.innerHTML = "";
     console.log('App records:',received_data);
@@ -440,7 +605,6 @@ const getPatientApp = async() => {
 
     });
 }
-
 function del(id) {
     swal({
         title: "Are you sure?",
@@ -451,7 +615,7 @@ function del(id) {
     })
     .then((willDelete) => {
         if (willDelete) {
-            fetch('././deleteAppointmentByPatient.php', {
+            fetch('functions/deleteAppointmentByPatient.php', {
                 method: 'POST',
                 body: JSON.stringify({
                     id: id
@@ -464,18 +628,18 @@ function del(id) {
             .then((data) => {
                 if(data.response == 200){
                     swal("Deleted", "Your appointment deleted successfully.", "success");
+                    
                 }
                 else if(data.response == 500){
                     swal("Error!", "could not delete from database.", "error");
                 } 
-                getPatientApp();
             })
+            getPatientApp();
         }
     });
 }
-
 const getPatientProfile = async() => {
-    const response      = await fetch('././getPatientInfo.php');
+    const response      = await fetch('functions/getPatientInfo.php');
     const res = await response.json();
     console.log('patient info record:', res);
     if (res.length > 0) {
@@ -497,81 +661,84 @@ const getPatientProfile = async() => {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    getPatientApp();
-    getPatientProfile();
+
+
+const btn_changePassword = document.getElementById('changeBtn');
+btn_changePassword?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
+    }else{
+        const valid = validatePasswordForm();
+        console.log(valid);
+        if(valid){
+            const changePassword = () => {
+                //alert('change Btn');
+                fetch('functions/changePatientPassword.php', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        currentPassword: currentPasswordInput.value,
+                        newPassword: newPasswordInput.value,
+                        confirmPassword: cPasswordInput.value
+                    }),
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8'
+                    }
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    if(data.response == 200){
+                        swal("Error!", "All fields are required.", "error");
+                    }
+                    else if(data.response == 300){
+                        swal("Error!", "All fields must be validated.", "error");
+                    }
+                    else if(data.response == 400){
+                        swal("Error!", "New password and confirm password do not match.", "error");
+                    }
+                    else if(data.response == 500){
+                        swal("Updated!", "Password updated successfully.", "success");
+                        passwordForm.reset();
+                    }
+                    else if(data.response == 600){
+                        swal("Error!", "Please enter the old password correct.", "error");
+                    }
+                })
+                .catch(error => {
+                    console.error('Something went wrong:', error);
+                })
+            }
+            changePassword();
+        }
+    }
 });
 
-const updatePatient = () => {
-    //alert('update Btn');
-    const genderRadio = document.querySelector('input[name="gender"]:checked');
-    const updateGender = genderRadio ? genderRadio.value : null;
+/* $(document).ready(function () {
+    $(document).on('click','#btnSend', function (e) {
+        e.preventDefault();
+        validateContactForm();
+        $.ajax({
+            method: "POST",
+            url: "functions/sendEmail.php",
+            data: $('#form2').serialize(),
+            success: function (response) {              
+                if (response.trim() === '500') {
+                    swal("Check!", "All Fileds should required* ", "error");
+                }else{
+                    swal("Thank You!", "Your data has been submitted successfully!", "success");
+                    // Clear form inputs
+                    $('#form2')[0].reset();
+                    document.getElementById('fname-error').innerHTML = '';
+                    document.getElementById('lname-error').innerHTML = '';
+                    document.getElementById('email-error').innerHTML = '';
+                    document.getElementById('subject-error').innerHTML='';
+                    document.getElementById('message-error').innerHTML='';
+                }
+            },
+            error: function () {
+                swal("Error!", "Failed to communicate with the server.", "error");
+            }
+        });
+    });
+}); */
 
-    const requestBody = {
-        updateFname: updateFname.value,
-        updateLname: updateLname.value,
-        updateEmail: updateEmail.value,
-        updatePhone: updatePhone.value,
-        updateDate: updateDate.value,
-        updateGender: updateGender,
-        updateBloodType: updateBloodType.value
-    };
-    fetch('././updatePatientInfo.php', {
-        method: 'POST',
-        body: JSON.stringify(requestBody),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8'
-        }
-    })
-    .then((response) => response.json())
-    .then((data) => {
-        if(data.response == 200){
-            swal("Error!", "All fields are required.", "error");
-        }
-        else if(data.response == 500){
-            swal("Updated!", "Your informations are updated successfully.", "success");
-            passwordForm.reset();
-        }
-    })
-    .catch(error => {
-        console.error('Something went wrong:', error);
-    })
-    //patientForm.reset();
-}
-
-const changePassword = () => {
-    //alert('change Btn');
-    fetch('././changePatientPassword.php', {
-        method: 'POST',
-        body: JSON.stringify({
-            currentPassword: currentPass.value,
-            newPassword: newPass.value,
-            confirmPassword: confirmPass.value
-        }),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8'
-        }
-    })
-    .then((response) => response.json())
-    .then((data) => {
-        if(data.response == 200){
-            swal("Error!", "All fields are required.", "error");
-        }
-        else if(data.response == 300){
-            swal("Error!", "All fields must be validated.", "error");
-        }
-        else if(data.response == 400){
-            swal("Error!", "New password and confirm password do not match.", "error");
-        }
-        else if(data.response == 500){
-            swal("Updated!", "Password updated successfully.", "success");
-            passwordForm.reset();
-        }
-        else if(data.response == 600){
-            swal("Error!", "Please enter the old password correct.", "error");
-        }
-    })
-    .catch(error => {
-        console.error('Something went wrong:', error);
-    })
-}*/
