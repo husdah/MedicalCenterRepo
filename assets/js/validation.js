@@ -36,11 +36,58 @@ const updateBloodType = document.getElementById('mySelect');
         e.preventDefault();
     }
 }); */
+
 document.addEventListener("DOMContentLoaded", function() {
     getPatientApp();
     getPatientProfile();
 });
 
+let sendBtn = document.getElementById("btnSend");
+sendBtn?.addEventListener('click', (e) =>{
+    if(e.target.type == "submit"){
+        e.preventDefault();
+    }else{
+        /* validateContactForm(); */
+        const valid = validateContactForm();
+        console.log(valid);
+        if(valid){
+            const sendMail = async () => {
+                const form = document.getElementById('form2');
+                const formData = new FormData(form);
+            
+                await fetch('functions/sendMail.php', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.response == 200) {
+                            swal("Thank You!", "Your data has been submitted successfully!", "success");
+                            // Clear form inputs
+                            form.reset();
+                            document.getElementById('fname-error').innerHTML = '';
+                            document.getElementById('lname-error').innerHTML = '';
+                            document.getElementById('email-error').innerHTML = '';
+                            document.getElementById('subject-error').innerHTML='';
+                            document.getElementById('message-error').innerHTML='';
+            
+                        }else if(data.response == 500){
+                            swal("Note!", data.message +"!", "warning");
+                        }
+                        else {
+                            swal("Error!", "Failed: " + data.message, "error");
+                        }
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }
+            sendMail();
+        }
+    }
+
+})
 
 // Function to validate name
 const validateNameStructure = (name) => {
@@ -494,6 +541,54 @@ btn_donate?.addEventListener("click", function(event) {
     }
 });
 
+//validates Form 
+function validateContactForm(){
+    if(checkFirstname() && checkLastname() && checkEmail() && checkSubject() && checkMessage() && validateFirstname() && validateLastname() && validateEmail() && validateSubject() && validateMessage()){
+        //alert('Submit Done');
+        console.log('Submit Successfully');
+        return true;
+    }
+    else{
+        checkFirstname();
+        checkLastname();
+        checkEmail();
+        checkSubject();
+        checkMessage();
+        //alert('something wrong'); 
+        console.log('something wrong');
+        return false;
+    }
+}
+
+/* $(document).ready(function () {
+    $(document).on('click','#btnSend', function (e) {
+        e.preventDefault();
+        validateContactForm();
+        $.ajax({
+            method: "POST",
+            url: "functions/sendEmail.php",
+            data: $('#form2').serialize(),
+            success: function (response) {              
+                if (response.trim() === '500') {
+                    swal("Check!", "All Fileds should required* ", "error");
+                }else{
+                    swal("Thank You!", "Your data has been submitted successfully!", "success");
+                    // Clear form inputs
+                    $('#form2')[0].reset();
+                    document.getElementById('fname-error').innerHTML = '';
+                    document.getElementById('lname-error').innerHTML = '';
+                    document.getElementById('email-error').innerHTML = '';
+                    document.getElementById('subject-error').innerHTML='';
+                    document.getElementById('message-error').innerHTML='';
+                }
+            },
+            error: function () {
+                swal("Error!", "Failed to communicate with the server.", "error");
+            }
+        });
+    });
+}); */
+/*
 
 const getPatientApp = async() => {
     const res = await fetch('functions/getPatientAppData.php');
