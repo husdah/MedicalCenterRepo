@@ -21,6 +21,11 @@ const messageError  = document.getElementById('message-error');
 //variables for user page
 const TableData = document.getElementById('patient-app');
 
+/* const updateFname    = document.getElementById('pdate-fname');
+const updateLname   = document.getElementById('update-lname');
+const updateEmail   = document.getElementById('update-email');
+const updateDate = document.getElementById('update-date'); */
+
 const updatePhone     = document.getElementById('phone2');
 const updateGenderF   = document.getElementById('female');
 const updateGenderM   = document.getElementById('male');
@@ -42,52 +47,6 @@ document.addEventListener("DOMContentLoaded", function() {
     getPatientProfile();
 });
 
-let sendBtn = document.getElementById("btnSend");
-sendBtn?.addEventListener('click', (e) =>{
-    if(e.target.type == "submit"){
-        e.preventDefault();
-    }else{
-        /* validateContactForm(); */
-        const valid = validateContactForm();
-        console.log(valid);
-        if(valid){
-            const sendMail = async () => {
-                const form = document.getElementById('form2');
-                const formData = new FormData(form);
-            
-                await fetch('functions/sendMail.php', {
-                        method: 'POST',
-                        body: formData,
-                    })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        if (data.response == 200) {
-                            swal("Thank You!", "Your data has been submitted successfully!", "success");
-                            // Clear form inputs
-                            form.reset();
-                            document.getElementById('fname-error').innerHTML = '';
-                            document.getElementById('lname-error').innerHTML = '';
-                            document.getElementById('email-error').innerHTML = '';
-                            document.getElementById('subject-error').innerHTML='';
-                            document.getElementById('message-error').innerHTML='';
-            
-                        }else if(data.response == 500){
-                            swal("Note!", data.message +"!", "warning");
-                        }
-                        else {
-                            swal("Error!", "Failed: " + data.message, "error");
-                        }
-                        console.log('Success:', data);
-                    })
-                    .catch((error) => {
-                        console.error('Error:', error);
-                    });
-            }
-            sendMail();
-        }
-    }
-
-})
 
 // Function to validate name
 const validateNameStructure = (name) => {
@@ -416,7 +375,7 @@ btnUpdate?.addEventListener("click", function(event) {
             const updatePatient = () => {
                 const form = document.getElementById('update-form');
                 const formData = new FormData(form);
-                fetch('functions/updatePatientInfo.php', {
+                fetch('functions/updateUserInfo.php', {
                     method: 'POST',
                     body: formData,
                 })
@@ -588,22 +547,23 @@ function validateContactForm(){
         });
     });
 }); */
-/*
 
 const getPatientApp = async() => {
-    const res = await fetch('functions/getPatientAppData.php');
-    const received_data = await res.json();
-    TableData.innerHTML = "";
-    console.log('App records:',received_data);
-    received_data.forEach(user => {
-        TableData.innerHTML += `<tr>
-                                    <td>${user.doctor}</td>
-                                    <td>${user.date}</td>
-                                    <td>${user.time}</td>
-                                    <td><button id="cancel-btn" onclick ='del(${user.id})'>Cancel</button></td>
-                                </tr>`
-
-    });
+    if(TableData){ // here to check that we are in page user
+        const res = await fetch('functions/getPatientAppData.php');
+        const received_data = await res.json();
+        TableData.innerHTML = "";
+        console.log('App records:',received_data);
+        received_data.forEach(user => {
+            TableData.innerHTML += `<tr>
+                                        <td>${user.doctor}</td>
+                                        <td>${user.date}</td>
+                                        <td>${user.time}</td>
+                                        <td><button id="cancel-btn" onclick ='del(${user.id})'>Cancel</button></td>
+                                    </tr>`
+    
+        });
+    }
 }
 function del(id) {
     swal({
@@ -639,25 +599,27 @@ function del(id) {
     });
 }
 const getPatientProfile = async() => {
-    const response      = await fetch('functions/getPatientInfo.php');
-    const res = await response.json();
-    console.log('patient info record:', res);
-    if (res.length > 0) {
-        res.forEach( patient => {
-            updateFname.value = patient.firstName;
-            updateLname.value = patient.lastName;
-            updateEmail.value = patient.email;
-            updateDate.value  = patient.date;
-            updatePhone.value= patient.phoneNumber;
-            if (patient.gender === "male") {
-                updateGenderM.checked = true;
-            } else {
-                updateGenderF.checked = true;
-            }
-            updateBloodType.value = patient.bloodType;
-        });
-    } else {
-        console.log('No patient data received.');
+    if(updatePhone){ // here to check that we are in page user (we can put any elemet in page user)
+        const response      = await fetch('functions/getPatientInfo.php');
+        const res = await response.json();
+        console.log('patient info record:', res);
+        if (res.length > 0) {
+            res.forEach( patient => {
+                updateFname.value = patient.firstName;
+                updateLname.value = patient.lastName;
+                updateEmail.value = patient.email;
+                updateDate.value  = patient.date;
+                updatePhone.value= patient.phoneNumber;
+                if (patient.gender === "male") {
+                    updateGenderM.checked = true;
+                } else {
+                    updateGenderF.checked = true;
+                }
+                updateBloodType.value = patient.bloodType;
+            });
+        } else {
+            console.log('No patient data received.');
+        }
     }
 }
 

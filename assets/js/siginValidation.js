@@ -396,10 +396,14 @@ phoneInput2?.addEventListener('input',function(){
 
 function genderCheck(){
     if(maleCheck.checked || femaleCheck.checked){
-        genderMsg.innerHTML = '';
+        if(genderMsg){
+            genderMsg.innerHTML = '';
+        }
         return true;
     }else{
-        genderMsg.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required';
+        if(genderMsg){
+            genderMsg.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required';
+        }
         return false;
     }
 

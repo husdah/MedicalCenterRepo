@@ -50,8 +50,8 @@ if(isset($_SESSION['auth'])){
             <div class="form-footer"> 
 
             <a class="forget-link" href="ResetPassword/resetPassword-Form.php"> Forget your password? </a> 
-            <input type="submit" value="Login" class="btn solid" name="loginBtn" id="signin-btn" /> 
-            </div> 
+            <input type="button" value="Login" class="btn solid" name="loginBtn" id="signin-btn" />
+            </div>
         </form> 
 
           <form action="phpCode.php" method="post" class="sign-up-form" id="sign-up"> 
