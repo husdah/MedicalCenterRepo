@@ -21,7 +21,7 @@ while($row=mysqli_fetch_assoc($res3))
 }
 if(isset($_POST['pname']) && $_POST['pname']!='')
 {
-    $query1 = "insert into appointement(doctorId,patientId,date,time,status) values ('1','$pid3','$newappdate','$tapp','accepted')";
+    $query1 = "insert into appointment(doctorId,patientId,date,time,status) values ('1','$pid3','$newappdate','$tapp','accepted')";
 		mysqli_query($con, $query1);
     
         

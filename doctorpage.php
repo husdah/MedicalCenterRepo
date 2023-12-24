@@ -1,6 +1,7 @@
 <?php
 require('middleware/patientMiddleware.php'); 
 $did=$_GET['did'];
+$pid=$_SESSION['patientId'];
 $enabledDays=array();
 require('config/dbcon.php');
 $query="select Fname, Lname,ProfilePic,phoneNumber,linkedin,instagram,facebook,doctor.clinicId,name from user join doctor on user.userId=doctor.userId  left join media on doctor.doctorId=media.doctorId left join clinic on doctor.clinicId = clinic.clinicId where doctor.doctorId=$did";
@@ -144,6 +145,7 @@ while ($row = mysqli_fetch_assoc($result4)) {
                         <label>
                             <textarea class="input" name="feedback" id="description" cols="50" rows="2" placeholder="Write Your Feedback"></textarea>
                             <input type="hidden" value="<?=$did?>" name="did" id="did">
+                            <input type="hidden" value="<?=$pid?>" name="pid" id="pid">
                             <div id="errmsg"></div>
                         </label>
                         <button type="submit" class="addfb" id="addfb">Add your feedback</button>
@@ -171,10 +173,15 @@ while ($row = mysqli_fetch_assoc($result4)) {
         var time = $(".time").text();
         var dateObj = new Date(day + ' ' + new Date().getFullYear());
         var mysqlDate = dateObj.toISOString().slice(0, 10);
-        console.log(mysqlDate);
+        //console.log(mysqlDate);
 
         $.post("./functions/makeApp.php", { did: did, day:mysqlDate, time: time }, function(response) {
-    console.log("Response:", response);
+            Swal.fire({
+                title: "Appointment Sent!",
+                icon: "success",
+                text: `Your appointment  request on ${day} at ${time} has been sent successfully.`,
+                confirmButtonText: "OK"
+            });
 });
 
     });

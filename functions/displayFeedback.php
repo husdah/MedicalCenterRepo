@@ -2,9 +2,10 @@
 require('../config/dbcon.php');
 header('Content-type: application/json');
 $did = $_GET['did'];
-$query = "SELECT feedbackId,patientId,message FROM feedback WHERE doctorId=?";
+$p=1;
+$query = "SELECT feedbackId,patientId,message FROM feedback WHERE doctorId=? AND published=?";
 $stmt = mysqli_prepare($con, $query);
-mysqli_stmt_bind_param($stmt, "i", $did);
+mysqli_stmt_bind_param($stmt, "ii", $did,$p);
 
 mysqli_stmt_execute($stmt);
 

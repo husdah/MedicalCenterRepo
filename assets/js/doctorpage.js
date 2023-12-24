@@ -4,7 +4,7 @@ var description=document.getElementById('description');
 var did=document.getElementById('did').value;
 var feedbacks=document.getElementById('feedback_list');
 var did=document.getElementById('did').value;
-var pid=2;
+var pid=document.getElementById('pid');
 var form = document.getElementById('yourFB');
 
 

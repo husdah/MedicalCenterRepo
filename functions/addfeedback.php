@@ -1,11 +1,19 @@
 <?php
 session_start();
 require('../config/dbcon.php');
-$pid=$_SESSION['auth_user']['patient_id'];
-
+$pid= $_SESSION['patientId'];
+$p=0;
+$status="completed";
 $response = [];
-
 if (isset($_POST['feedback']) && $_POST['feedback'] != "") {
+    $aquery="SELECT EXISTS (SELECT 1 FROM appointment WHERE patientId = ? and status=?) AS doctorExists";
+    $stmt = mysqli_prepare($con, $aquery);
+    mysqli_stmt_bind_param($stmt, "is", $pid,$status);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt, $takeapp);
+    mysqli_stmt_fetch($stmt);
+    mysqli_stmt_close($stmt);
+    ///////////////////////////////
     $feedback = $_POST['feedback'];
     $did = $_POST['did'];
     $cquery = "SELECT COUNT(feedbackId) AS feedbackCount FROM feedback WHERE patientId = ?";
@@ -15,14 +23,19 @@ if (isset($_POST['feedback']) && $_POST['feedback'] != "") {
     mysqli_stmt_bind_result($stmt, $feedbackCount);
     mysqli_stmt_fetch($stmt);
     mysqli_stmt_close($stmt);
-
+    if(!$takeapp)
+    {
+        $response["response"] = 400;
+        $response["message"] = "You can't add a feedback until you take an appointment with the dr";
+    }
+    else{
     if ($feedbackCount <2) {
-        $query = "INSERT INTO feedback (doctorId,patientId, message) VALUES (?, ?,?)";
+        $query = "INSERT INTO feedback (doctorId,patientId, message,published) VALUES (?, ?,?,?)";
 
         $stmt = mysqli_prepare($con, $query);
 
         if ($stmt) {
-            mysqli_stmt_bind_param($stmt, 'iis', $did,$pid, $feedback);
+            mysqli_stmt_bind_param($stmt, 'iisi', $did,$pid, $feedback,$p);
 
             if (mysqli_stmt_execute($stmt)) {
                 $response["response"] = 200;
@@ -43,10 +56,11 @@ if (isset($_POST['feedback']) && $_POST['feedback'] != "") {
     $response["response"] = 400;
     $response["message"] = "You can't add more than 2 feedbacks.";
   }
-} else {
+} }else {
     $response["response"] = 400;
     $response["message"] = "Invalid input or missing data!";
 }
+
 
 echo json_encode($response);
 ?>
