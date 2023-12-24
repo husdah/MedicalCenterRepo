@@ -29,7 +29,7 @@ if (isset($_POST['feedback']) && $_POST['feedback'] != "") {
         $response["message"] = "You can't add a feedback until you take an appointment with the dr";
     }
     else{
-    if ($feedbackCount <2 && $published==1) {
+    if ($feedbackCount <2) {
         $query = "INSERT INTO feedback (doctorId,patientId, message,published) VALUES (?, ?,?,?)";
 
         $stmt = mysqli_prepare($con, $query);
