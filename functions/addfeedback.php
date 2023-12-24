@@ -16,11 +16,11 @@ if (isset($_POST['feedback']) && $_POST['feedback'] != "") {
     ///////////////////////////////
     $feedback = $_POST['feedback'];
     $did = $_POST['did'];
-    $cquery = "SELECT COUNT(feedbackId) AS feedbackCount,published FROM feedback WHERE patientId = ?";
+    $cquery = "SELECT COUNT(feedbackId) AS feedbackCount FROM feedback WHERE patientId = ?";
     $stmt = mysqli_prepare($con, $cquery);
     mysqli_stmt_bind_param($stmt, "i", $pid);
     mysqli_stmt_execute($stmt);
-    mysqli_stmt_bind_result($stmt, $feedbackCount,$published);
+    mysqli_stmt_bind_result($stmt, $feedbackCount);
     mysqli_stmt_fetch($stmt);
     mysqli_stmt_close($stmt);
     if(!$takeapp)
