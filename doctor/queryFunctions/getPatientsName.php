@@ -1,5 +1,5 @@
 <?php
-require('config/dbcon.php');
+require('../../config/dbcon.php');
 
 $keyword = '';
 

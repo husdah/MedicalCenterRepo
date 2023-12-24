@@ -140,6 +140,11 @@
 {
     font-size: 1.2rem;
 }
+.menu a img
+{
+    max-width: 35px;
+    max-height: 35px;
+}
 .main--content
 {
     /* position:relative; */

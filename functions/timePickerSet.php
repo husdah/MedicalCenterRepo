@@ -1,5 +1,5 @@
 <?php 
-require('config/dbcon.php');                    
+require('../config/dbcon.php');                    
     if (isset($_POST['selectedDay']) && isset($_POST['did'])) {
         $day = $_POST['selectedDay'];
         $did= $_POST['did'];

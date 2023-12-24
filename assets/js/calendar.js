@@ -54,7 +54,7 @@ $('#calendar').datepicker({
   let doctorId= document.getElementById("docId_Get").value;
   $.ajax({
     method: "POST",
-    url: "timePickerSet.php", // Update this with the actual path to your PHP script
+    url: "functions/timePickerSet.php", // Update this with the actual path to your PHP script
     data: { selectedDay: dayOfWeek, did: doctorId },
     success: function(response) {
         // Assuming your PHP script returns only the working hours HTML

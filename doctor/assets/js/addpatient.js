@@ -32,7 +32,7 @@ document.getElementById('form').addEventListener('submit',(e)=>{
                 if(e.submitter.id === 'add'){
              $.ajax({
               method:"POST",
-              url:"../../../addPatientDb.php",
+              url:"../../queryFunctions/addPatientDb.php",
               processData: false,
                contentType: false, 
                cache: false,
@@ -47,7 +47,7 @@ document.getElementById('form').addEventListener('submit',(e)=>{
             {
                 $.ajax({
                     method:"POST",
-                    url:"../../../editPatientDb.php",
+                    url:"../../queryFunctions/editPatientDb.php",
                     processData: false,
                      contentType: false, 
                      cache: false,

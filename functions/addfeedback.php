@@ -1,6 +1,7 @@
 <?php
+session_start();
 require('../config/dbcon.php');
-$pid='2';
+$pid=$_SESSION['auth_user']['patient_id'];
 
 $response = [];
 

@@ -31,7 +31,7 @@ $res=mysqli_query($con,$query);
       <img src="images/hayaClinic.jpg" alt="">
     </div>
     <div class="main-content">
-      <div class="title">
+      <div class="title"> 
         <h1>Get well soon,Username</h1>
         <h2>Book Appointment</h2>
       </div>
