@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_GET["token"])){
+    die("token not found");
+}
 
 $token = $_GET["token"];
 
@@ -52,6 +56,15 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
                 <input type="password" placeholder="Confirm Password" name="cpassword" id="pass2"/> 
               </div>
               <div class="display"><p class="message" id="msg2"></p></div>
+
+              <?php
+                if(isset($_SESSION['message'])){
+                    ?>
+                         <div class="display"><p class="message"><?= $_SESSION['message']; ?></p></div>
+                    <?php
+                    unset($_SESSION['message']);
+                }
+                ?>
 
         <button class="button">Send</button>
     </form>

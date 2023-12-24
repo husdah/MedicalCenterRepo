@@ -341,9 +341,9 @@ body{
 .content nav .notif .count{
     position: absolute;
     top: -6px;
-    right: -6px;
-    width: 20px;
-    height: 20px;
+    right: -10px;
+    width: 23px;
+    height: 22px;
     background: var(--danger);
     border-radius: 50%;
     color: var(--light);
@@ -594,7 +594,7 @@ body{
     padding: 16px 0;
 }
 
-.content main .bottom-data .orders table tr td:first-child{
+.content main .bottom-data .orders table tr td.DocProfTD{
     display: flex;
     align-items: center;
     grid-gap: 12px;

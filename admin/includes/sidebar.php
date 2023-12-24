@@ -14,7 +14,7 @@
     <li class="<?= $page == 'patients.php'? "active" : "";?>"><a href="patients.php"><i class='bx bx-group'></i>Patients</a></li>
     <li class="<?= $page == 'donors.php'? "active" : "";?>"><a href="donors.php"><i class='bx bx-donate-blood'></i>Donors</a></li>
     <li class="<?= $page == 'workingHours.php'? "active" : "";?>"><a href="workingHours.php"><i class='bx bx-time'></i>Working Hours</a></li>
-    <li class="<?= $page == 'settings.php'? "active" : "";?>"><a href="settings.php"><i class='bx bx-cog'></i>Settings</a></li>
+    <li class="<?= $page == 'feedbacks.php'? "active" : "";?>"><a href="feedbacks.php"><i class='bx bx-notepad'></i>Feedbacks</a></li>
 </ul>
 <ul class="side-menu">
     <li class="log-li">

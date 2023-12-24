@@ -1702,7 +1702,7 @@ const reminderDetails = async() => {
 }
 reminderDetails();
 
-let recentApptTbody = document.getElementById('recentApptTbody');
+/* let recentApptTbody = document.getElementById('recentApptTbody');
 const recentApptDetails = async() => {
     if(recentApptTbody){
         const res = await fetch('functions/displayRecentAppt.php');
@@ -1727,7 +1727,93 @@ const recentApptDetails = async() => {
         }
     }
 }
-recentApptDetails();
+recentApptDetails(); */
+
+const recentApptTbody = document.getElementById('recentApptTbody');
+const apptDisplay = document.getElementById('apptDisplay');
+
+const filterAppointmentsByDate = (appointments, days) => {
+    const currentDate = new Date();
+    const startDate = new Date(currentDate);
+    let endDate = new Date(currentDate);
+
+    switch (days) {
+        case 0: // Today
+            startDate.setHours(0, 0, 0, 0);
+            endDate.setHours(23, 59, 59, 999);
+            break;
+        case 1: // Tomorrow
+            startDate.setDate(currentDate.getDate() + 1);
+            startDate.setHours(0, 0, 0, 0);
+            endDate.setDate(currentDate.getDate() + 1);
+            endDate.setHours(23, 59, 59, 999);
+            break;
+        case 7: // Last 7 Days
+            startDate.setDate(currentDate.getDate() - 6);
+            startDate.setHours(0, 0, 0, 0);
+            endDate.setHours(23, 59, 59, 999);
+            break;
+        case 8: // Next 7 Days
+            startDate.setDate(currentDate.getDate() + 1);
+            startDate.setHours(0, 0, 0, 0);
+            endDate.setDate(currentDate.getDate() + 7);
+            endDate.setHours(23, 59, 59, 999);
+            break;
+        case 30: // All Appointments (for example, consider 30 days for all appointments)
+            startDate.setFullYear(2000); // Some arbitrary date in the past
+            endDate.setFullYear(3000);   // Some arbitrary date in the future
+            break;
+        default:
+            // For other values, assume it's the number of days to look ahead
+            endDate.setDate(currentDate.getDate() + days);
+            endDate.setHours(23, 59, 59, 999);
+            break;
+    }
+
+    return appointments.filter(appointment => {
+        const appointmentDate = new Date(appointment.date);
+        return appointmentDate >= startDate && appointmentDate <= endDate;
+    });
+};
+
+const updateAppointmentTable = async () => {
+    if (recentApptTbody && apptDisplay) {
+        const res = await fetch('functions/displayRecentAppt.php');
+        const received_data = await res.json();
+        recentApptTbody.innerHTML = '';
+
+        if (received_data !== 'empty') {
+            const filterDays = parseInt(apptDisplay.value);
+            const filteredAppointments = filterAppointmentsByDate(received_data, filterDays);
+
+            if (filteredAppointments.length > 0) {
+                filteredAppointments.forEach(rm => {
+                    const formattedTime = formatTimeToAMPM(`${rm.time}`);
+                    recentApptTbody.innerHTML += `
+                        <tr>
+                            <td>
+                                <a href="view-patient.php"><p class="name">${rm.PatientName}</p></a>
+                            </td>
+                            <td class="date">${rm.date}</td>
+                            <td>${formattedTime}</td>
+                            <td><span class="status ${rm.status}">${rm.status}</span></td>
+                        </tr>`;
+                });
+            } else {
+                recentApptTbody.innerHTML = `<tr><td colspan='4'>No appointments found based on the selected filter</td></tr>`;
+            }
+        } else {
+            recentApptTbody.innerHTML = `<tr><td colspan='4'>No appointments found</td></tr>`;
+        }
+    }
+};
+
+updateAppointmentTable();
+
+apptDisplay?.addEventListener('change', () => {
+    updateAppointmentTable();
+});
+
 
 let clincTbody = document.getElementById('clincTbody');
 const clinicDetails = async() => {
@@ -1871,7 +1957,7 @@ const doctorDetails = async() => {
                 }
                content += `                          
                 <tr>
-                    <td>
+                    <td class="DocProfTD">
                     <a href="../uploads/${profilePic}" class="imageLB"> 
                         <img src="../uploads/${profilePic}" alt="doctor Image">
                     </a>`;
@@ -2155,7 +2241,7 @@ const specificPatientApptDetails = async() => {
 
                 specPApptTbody.innerHTML += `
                 <tr>
-                <td>
+                <td class="DocProfTD">
                     <a href="../uploads/${profilePic}" class="imageLB"> 
                         <img src="../uploads/${profilePic}" alt="doctor Image">
                     </a>
@@ -2305,7 +2391,7 @@ const doctorsWHDetails = async() => {
                 // Display doctor's name and profile picture in the first cell
                 content += `
                     <tr>
-                        <td>
+                        <td class="DocProfTD">
                             <a href="../uploads/${profilePic}" class="imageLB"> 
                                 <img src="../uploads/${profilePic}" alt="doctor Image">
                             </a>
@@ -2362,6 +2448,48 @@ const doctorsWHDetails = async() => {
     }
 }
 doctorsWHDetails();
+
+let feedbacksTbody = document.getElementById('feedbacksTbody');
+const feedbackDetails = async() => {
+    if(feedbacksTbody){
+        const res = await fetch('functions/displayFeedabcks.php');
+        const received_data = await res.json();
+        feedbacksTbody.innerHTML = '';
+        console.log(received_data);
+        if(received_data != 'empty'){
+            received_data.forEach(f => {
+                var formattedDate = formatJsDate(`${f.date}`);
+                let content = "";
+                content += `
+                <tr>
+                <td class="doctor">${f.docName}</td>
+                <td class="patient">${f.patientName}</td>
+                <td style="max-width: 400px;">${f.feedback}</td>
+                <td class="date">${formattedDate}</td>
+                <td>
+                <label class="check-container" id="check_display">published`;
+                    if(f.published == 1){
+                        content += `<input type="checkbox" name="publish" id="publish" checked onchange="publishFeed(${f.feedbackId},0)">`;
+                    }else{
+                        content += `<input type="checkbox" name="publish" id="publish" onchange="publishFeed(${f.feedbackId},1)">`;
+                    }
+                    content += ` 
+                        <span class="checkmark"></span>
+                </label>
+                </td>
+                <td>
+                    <button class="btn-delete deleteFeedback" onclick="delFeedback(${f.feedbackId})"><i class="bx bx-trash-alt"></i><span>Delete</span></button>
+                </td>
+                </tr>`;
+
+                feedbacksTbody.innerHTML += content;
+            });
+        }else{
+            feedbacksTbody.innerHTML = `<tr><td colspan ='4'>no Feedbacks found</td></tr>`;
+        }
+    }
+}
+feedbackDetails();
 
 
 //delete functions
@@ -2742,6 +2870,87 @@ function delCenterWH(day) {
     });
 }
 
+function delFeedback(id) {
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+        })
+        .then((willDelete) => {
+        if (willDelete) {
+
+            fetch('functions/delFeedback.php', {
+                method: 'POST',
+                body: JSON.stringify({
+                    id: id
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8'
+                }
+            }).then((response) => response.json() )
+            .then((res) => {
+                if(res == 'deleted'){
+                    console.log(res);
+                    feedbackDetails();
+                    swal("Success!", "Feedback deleted Successfully!", "success");
+                }else{
+                    swal("Error!", "Something Went Wrong!", "error");
+                }
+
+            }).catch(error => {
+                console.log(error);
+            });
+
+        }
+    });
+}
+
+function publishFeed(id,published) {
+    swal({
+        title: "Are you sure?",
+        text: "Feedback visibility will be changed",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+        })
+        .then((willDelete) => {
+        if (willDelete) {
+
+            fetch('functions/publishFeed.php', {
+                method: 'POST',
+                body: JSON.stringify({
+                    id: id,
+                    published: published
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8'
+                }
+            }).then((response) => response.json() )
+            .then((res) => {
+                if(res == 'updated'){
+                    console.log(res);
+                    feedbackDetails();
+                    swal("Success!", "Feedback visibility updated Successfully!", "success");
+                }else{
+                    swal("Error!", "Something Went Wrong!", "error");
+                }
+
+            }).catch(error => {
+                console.log(error);
+            });
+
+        }else{
+            let publishCheck = document.getElementById('publish');
+            if(publishCheck.checked){
+                publishCheck.checked = false;
+            }else{
+                publishCheck.checked = true;
+            }
+        }
+    });
+}
 
 //other functions
 function formatJsDate(originalDate) {

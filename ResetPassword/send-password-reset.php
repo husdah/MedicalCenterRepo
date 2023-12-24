@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 require '../PHPMailer-master/src/Exception.php';
 require '../PHPMailer-master/src/PHPMailer.php';
 require '../PHPMailer-master/src/SMTP.php';
@@ -8,6 +8,12 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 include("../config/dbcon.php");
+
+function redirect($url, $message){
+    $_SESSION['message']= $message;
+    header('Location: ' .$url);
+    exit();
+}
 
 $email = $_POST['email'];
 
@@ -49,7 +55,7 @@ if (mysqli_affected_rows($con) > 0) {
         //$mail->Body = 'Click <a http://localhost:3000/ResetPassword/send-password-reset.php?token=' . $token . '">here</a> to reset your password.';
         $mail->Body = <<<END
 
-        Click <a href="http://localhost/phpcodes/MedicalCenter/MedicalCenterRepo/ResetPassword/reset-password.php?token=$token">here</a> 
+        Click <a href="http://localhost:3000/ResetPassword/reset-password.php?token=$token">here</a> 
         to reset your password.
 
        END;
@@ -62,9 +68,12 @@ if (mysqli_affected_rows($con) > 0) {
         echo "Message could not be sent. Mailer error: {$mail->ErrorInfo}";
 
     }
-
+    /* echo "Message sent, please check your inbox."; */
+    redirect('resetPassword-Form.php',"Message sent, please check your inbox.");
+}else{
+    redirect('resetPassword-Form.php',"Email is not registered in the database");
 }
 
-echo "Message sent, please check your inbox.";
+
 
 ?>
