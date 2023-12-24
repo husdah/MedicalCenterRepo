@@ -76,25 +76,40 @@
                 <div class="header">
                     <i class='bx bx-receipt'></i>
                     <h3>Recent Appts</h3>
-                    <form class="expanding-search-form">
-                        <div class="search-dropdown">
-                            <button class="button dropdown-toggle" type="button">
-                            <span class="toggle-active">Name</span>
-                            <span class="ion-arrow-down-b"></span>
+                    <div class="filterContainer">
+                        <form class="form">
+                            <label>
+                                <select name="apptDisplay" id="apptDisplay" class="input">
+                                    <option value="0" selected>Today</option>
+                                    <option value="1">Tomorrow</option>
+                                    <option value="7">Last 7 days</option>
+                                    <option value="8">Next 7 days</option>
+                                    <option value="30">All</option>
+                                </select>
+                                <span>Date</span>
+                            </label> 
+                        </form>
+
+                        <form class="expanding-search-form">
+                            <div class="search-dropdown">
+                                <button class="button dropdown-toggle" type="button">
+                                <span class="toggle-active">Name</span>
+                                <span class="ion-arrow-down-b"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                <li class="menu-active"><a href="#">Name</a></li>
+                                <li><a href="#">Date</a></li>
+                                <li><a href="#">Status</a></li>
+                                </ul>
+                            </div>
+                            <input class="search-input" id="global-search" type="search" placeholder="Search">
+                            <button class="button search-button" type="button">
+                                <span class="icon ion-search">
+                                    <span class="sr-only">Search</span>
+                                </span>
                             </button>
-                            <ul class="dropdown-menu">
-                            <li class="menu-active"><a href="#">Name</a></li>
-                            <li><a href="#">Date</a></li>
-                            <li><a href="#">Status</a></li>
-                            </ul>
-                        </div>
-                        <input class="search-input" id="global-search" type="search" placeholder="Search">
-                        <button class="button search-button" type="button">
-                            <span class="icon ion-search">
-                                <span class="sr-only">Search</span>
-                            </span>
-                        </button>
-                    </form>
+                        </form>
+                    </div>
                 </div>
                 <table id="dataTable">
                     <thead>

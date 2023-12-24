@@ -1,4 +1,13 @@
 <!-- Navbar -->
+<?php
+
+$fullname = $_SESSION['auth_user']['name'];
+$nameArray = explode(' ', $fullname);
+$firstNameInitial = strtoupper(substr($nameArray[0], 0, 1));
+$lastNameInitial = strtoupper(substr(end($nameArray), 0, 1));
+$profileName = $firstNameInitial .$lastNameInitial;
+
+?>
 <nav>
     <i class='bx bx-menu'></i>
     <form action="#">
@@ -18,9 +27,13 @@
     </form>
     <input type="checkbox" id="theme-toggle" hidden>
     <label for="theme-toggle" class="theme-toggle"></label>
-    <a href="#" class="notif">
+   <!--  <a href="#" class="notif">
         <i class='bx bx-bell'></i>
         <span class="count">12</span>
+    </a> -->
+    <a href="settings.php" class="notif">
+        <i class='bx bx-user'></i>
+        <span class="count"><?= $profileName; ?></span>
     </a>
     <a href="../images/HealthHubLogo.png" class="imageLB profile"> 
         <img src="../images/HealthHubLogo.png" alt="LOGO">

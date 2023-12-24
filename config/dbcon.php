@@ -18,7 +18,9 @@
             password longtext NOT NULL,
             role int NOT NULL,
             registrationDate timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            restricted int NOT NULL DEFAULT 0
+            restricted int NOT NULL DEFAULT 0,
+            reset_token_hash VARCHAR(255) NULL,
+            reset_token_expires_at DATETIME NULL
         );";
         $createTableUserQuery_run = mysqli_query($con,$createTableUserQuery);
 
@@ -109,6 +111,7 @@
             patientId INT NOT NULL,
             message mediumtext NOT NULL,
             date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            published int NOT NULL DEFAULT 0,
             FOREIGN KEY (doctorId) REFERENCES doctor(doctorId),
             FOREIGN KEY (patientId) REFERENCES patient(patientId)
 

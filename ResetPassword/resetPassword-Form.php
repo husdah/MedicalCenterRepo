@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +19,22 @@
         <div class="input-field"> 
             <i class="fas fa-user"></i> 
             <input type="text" placeholder="Enter your email" name="email" id="reset-email" class="email"/> 
-        </div> 
+        </div>
+        <?php
+            if(isset($_SESSION['message'])){
+                if($_SESSION['message'] =="Email is not registered in the database"){
+                ?>
+                    <span style="color: red;"><?= $_SESSION['message']; ?></span>
+                <?php
+                }else{
+                ?>
+                    <span style="color: green;"><?= $_SESSION['message']; ?></span>
+                <?php
+                }
+                unset($_SESSION['message']);
+            }
+
+        ?>
         <!-- <input type="submit" value="Send Password Reset Link" class="button" name="send" id="signin-btn" /> -->
         <button class="button">Send</button> 
         </div> 
