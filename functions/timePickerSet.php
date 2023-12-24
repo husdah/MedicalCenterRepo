@@ -3,7 +3,7 @@ require('../config/dbcon.php');
     if (isset($_POST['selectedDay']) && isset($_POST['did'])) {
         $day = $_POST['selectedDay'];
         $did= $_POST['did'];
-        $query3 = "SELECT formHour, toHour, day FROM doctorhours WHERE doctorId=$did AND day='$day';";
+        $query3 = "SELECT fromHour, toHour, day FROM doctorhours WHERE doctorId=$did AND day='$day';";
         $result3 = mysqli_query($con, $query3);
     
         // Check if there's an error in the query
@@ -17,7 +17,7 @@ require('../config/dbcon.php');
             mysqli_data_seek($result3, 0);
     
             while ($row = mysqli_fetch_assoc($result3)) {
-                $startTime = new DateTime($row['formHour']);
+                $startTime = new DateTime($row['fromHour']);
                 $endTime = new DateTime($row['toHour']);
     
                 while ($startTime <= $endTime) {
