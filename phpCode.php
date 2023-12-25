@@ -71,6 +71,8 @@ function validatePhone($phone) {
     $date = $_POST['date'];
     $gender = $_POST['gender'];
     $bloodtype = $_POST['mySelect'];
+    //Hash the password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     if($firtname == ""){
        echo "1";
@@ -112,7 +114,7 @@ function validatePhone($phone) {
         }else{
             if($contact == ""){
                 $stmt_user = mysqli_prepare($con, "INSERT INTO `user` (Fname, Lname, email, password, role, restricted) VALUES (?, ?, ?, ?, 2, 0)");
-                mysqli_stmt_bind_param($stmt_user, "ssss", $firtname, $lastname, $email, $password);
+                mysqli_stmt_bind_param($stmt_user, "ssss", $firtname, $lastname, $email, $hashed_password);
                 if(mysqli_stmt_execute($stmt_user)){
                 $userId = mysqli_insert_id($con);
                  $stmt_patient = mysqli_prepare($con, "INSERT INTO `patient` (userId, gender, bloodType, dateOfBirth) VALUES (?, ?, ?, ?)");
@@ -149,7 +151,7 @@ function validatePhone($phone) {
                     echo "9";
                 } else {
                     $stmt_user = mysqli_prepare($con, "INSERT INTO `user` (Fname, Lname, email, password, role, restricted) VALUES (?, ?, ?, ?, 2, 0)");
-                    mysqli_stmt_bind_param($stmt_user, "ssss", $firtname, $lastname, $email, $password);
+                    mysqli_stmt_bind_param($stmt_user, "ssss", $firtname, $lastname, $email, $hashed_password);
                     if(mysqli_stmt_execute($stmt_user)){
                     $userId = mysqli_insert_id($con);
                     $stmt_patient = mysqli_prepare($con, "INSERT INTO `patient` (userId, gender, bloodType, dateOfBirth ,phoneNumber) VALUES (?,?, ?, ?, ?)");
