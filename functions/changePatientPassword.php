@@ -54,11 +54,12 @@
                     if(mysqli_num_rows($result_select) > 0){
                         $row = mysqli_fetch_assoc($result_select);
                         $PasswordDB = $row['password'];
-                        if($PasswordDB === $currentPassword){
+                        if (password_verify($currentPassword, $PasswordDB)) {
                             $query  = 'UPDATE user SET user.password = ? WHERE user.userId = ?';
                             $stmt = mysqli_prepare($con, $query);
                             if ($stmt) {
-                                mysqli_stmt_bind_param($stmt, "si", $confirmPassword, $userId);
+                                $hashedNewPassword = password_hash($confirmPassword, PASSWORD_DEFAULT);
+                                mysqli_stmt_bind_param($stmt, "si", $hashedNewPassword, $userId);
                                 $result = mysqli_stmt_execute($stmt);
                                 if ($result) {
                                     $msg = "Password updated successfully.";

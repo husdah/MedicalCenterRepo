@@ -13,17 +13,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($email != "" && $password != "") {
 
-        $login_query= "SELECT * FROM user WHERE email=? AND password=?";
+        $login_query= "SELECT * FROM user WHERE email=?";
         $login_query_run = mysqli_prepare($con, $login_query);
-        mysqli_stmt_bind_param($login_query_run, "ss", $email, $password);
+        mysqli_stmt_bind_param($login_query_run, "s", $email);
         mysqli_stmt_execute($login_query_run);
         $result = mysqli_stmt_get_result($login_query_run);
     
         if(mysqli_num_rows($result) > 0){
     
-            $_SESSION['auth']=true;
-    
+            //$_SESSION['auth']=true;
             $userdata= mysqli_fetch_array($result);
+            $stored_password = $userdata['password'];
+            
+            if (password_verify($password, $stored_password)) {
+
+            $_SESSION['auth']=true;
             $username = $userdata['Fname'] ." " .$userdata['Lname'];
             $useremail = $userdata['email'];
             $userid = $userdata['userId'];
@@ -68,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 mysqli_stmt_bind_param($getId_query_run, "i", $userid);
                 mysqli_stmt_execute($getId_query_run);
                 $result = mysqli_stmt_get_result($getId_query_run);
+            }
 
                 if(mysqli_num_rows($result) > 0){
                     $row = mysqli_fetch_assoc($result);
@@ -80,6 +85,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $msg = "Something Went Wrong!";
                     $response = 500;
                 }
+            }else{
+                $response = 500;
+                $msg = "Invalid Credentials!";
             }
 
           /*   
