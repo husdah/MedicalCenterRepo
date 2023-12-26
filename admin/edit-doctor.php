@@ -289,15 +289,7 @@
                             <input id="editDoctorPhone" name="editDoctorPhone" value="" required placeholder="" type="tel" class="input">
                             <span id="editDoctorPhoneError">Phone</span>
                         </label>
-                            
-                        <label>
-                            <input id="editDoctorPass" name="editDoctorPass" value="" required placeholder="" type="password" class="input">
-                            <span id="editDoctorPassError" class="sm">Password</span>
-                        </label>
-                        <label>
-                            <input id="editDoctorPassConfirm" name="editDoctorPassConfirm" value="" required placeholder="" type="password" class="input">
-                            <span id="editDoctorPassConfirmError">Confirm password</span>
-                        </label>
+                        
                         <button id="editDoctorFormBtn" type="button" class="submit">Save Changes</button>                              
                     </form>
                 </div>

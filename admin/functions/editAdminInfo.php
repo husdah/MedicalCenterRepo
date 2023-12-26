@@ -6,8 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $name = test_input($_POST['signup-name']);
     $email = test_input($_POST['signup-email']);
-    $password = test_input($_POST['signup-password']);
-    $confirmation = test_input($_POST['signup-passwordConfirm']);
 
     $data = [];
 
@@ -25,22 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $response =500;
         $msg=  "Please Enter a Valid Email!";
     }
-    else if($password == ""){
-        $response =500;
-        $msg= "Please Enter Admin Password!";
-    }
-    else if(!validatePass($password)){
-        $response =500;
-        $msg=  "Please Enter a Valid Password!";
-    }
-    else if($confirmation == ""){
-        $response =500;
-        $msg= "Please Confirm Password!";
-    }
-    else if($password != $confirmation){
-        $response =500;
-        $msg= "Password Confirmation Incorrect!";
-    }
     else{
         $Email_check_query = "SELECT * FROM user WHERE email=? AND role <> 0";
         $Email_check_query_run = mysqli_prepare($con, $Email_check_query);
@@ -55,18 +37,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $fname = $fullname[0];
             $lname = $fullname[1];
     
-            $user_query = "UPDATE user SET Fname=? , Lname=?, email=?, password=? WHERE role=0 ";
+            $user_query = "UPDATE user SET Fname=? , Lname=?, email=? WHERE role=0 ";
             $user_query_run = mysqli_prepare($con, $user_query);
-            mysqli_stmt_bind_param($user_query_run, "ssss", $fname, $lname, $email,$password);
+            mysqli_stmt_bind_param($user_query_run, "sss", $fname, $lname, $email);
     
             if(mysqli_stmt_execute($user_query_run))
             {
                 $response =200;
                 $msg= "Account Updated Successfully!";
 
-                $data["name"] = $fname;
-                $data["email"] = $lname;
-                $data["password"] = $email;
+                $data["name"] = $name;
+                $data["email"] = $email;
         
             }else{
                 $response =500;

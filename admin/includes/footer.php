@@ -10,6 +10,7 @@
     <script src="assets/js/animatedLogin.js"></script>
     <script src="assets/js/autocomplete.js"></script>
     <script src="assets/js/validation.js"></script> 
+    <script src="assets/js/sendConfEmail.js"></script> 
 
     <!-- <script src="assets/js/custom.js"></script>  -->
     <!-- sweetalert -->

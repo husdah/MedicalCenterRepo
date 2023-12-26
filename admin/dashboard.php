@@ -76,6 +76,7 @@
                 <div class="header">
                     <i class='bx bx-receipt'></i>
                     <h3>Recent Appts</h3>
+                    <button type="button" id="sendConfEmailBtn" class="sendConfEmailBtn">Send Confirmation Emails</button>
                     <div class="filterContainer">
                         <form class="form">
                             <label>

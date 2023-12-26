@@ -11,10 +11,10 @@
               <h1>Admin Settings</h1>
               <ul class="breadcrumb">
                   <li id="viewMode"><a href="#">
-                          View
+                          Profile
                       </a></li>
                       /
-                  <li id="changeMode"><a href="#" class="active">Update</a></li>
+                  <li id="changeMode"><a href="#" class="active">Password</a></li>
               </ul>
           </div>
       </div>
@@ -24,88 +24,66 @@
           <div class="forms">
             <div id="viewWrapper" class="form-wrapper is-active">
               <button type="button" class="switcher switcher-login">
-                View
+                Profile
                 <span class="underline"></span>
               </button>
-              <form class="animated-form form-login">
+              <form class="animated-form form-login" id="adminForm1">
                 <fieldset>
-                  <legend>Please, enter your email and password for login.</legend>
+                  <legend>Please, enter your email and password for login.</legend>   
                   <div class="input-block">
-                    <label for="login-name">Name</label>
-                    <!-- <input id="login-name" type="text" required disabled> -->
-                    <div class="input-field"> 
-                      <i class="bx bx-user"></i> 
-                      <input id="login-name" type="text" value="" placeholder="name" required disabled>
-                      <span>Login Name</span>
-                    </div>
-                  </div>
-                  <div class="input-block">
-                    <label for="login-email">Email</label>
-                    <!-- <input id="login-email" type="email" required disabled> -->
-                    <div class="input-field"> 
-                      <i class="bx bx-envelope"></i> 
-                      <input id="login-email" type="email" value="" placeholder="email" required disabled>
-                      <span>Login Email</span>
-                    </div>
-                  </div>
-                  <div class="input-block">
-                      <label for="login-password">Password</label>
-                      <!-- <input id="login-password" type="password" required disabled> -->
+                      <label for="signup-name">Name</label>
                       <div class="input-field"> 
-                        <i class="bx bx-lock"></i> 
-                        <input id="login-password" type="password" value="" placeholder="password" required disabled>
-                        <span>Login Password</span>
+                        <i class="bx bx-user"></i> 
+                        <input id="signup-name" name="signup-name" value="" type="text" placeholder="name" required>
+                        <span class="Name" id="signup-nameError">Admin Name</span>
                       </div>
                   </div>
+                  <div class="input-block">
+                    <label for="signup-email">E-mail</label>
+                    <div class="input-field"> 
+                      <i class="bx bx-envelope"></i> 
+                      <input id="signup-email" name="signup-email" value="" type="email" placeholder="email" required>
+                      <span id="signup-emailError">Admin Email</span>
+                    </div>
+                  </div>
                 </fieldset>    
+                <button id="adminFormBtn1" type="button" class="btn-signup">Save</button>
               </form>
             </div>
             <div id="changeWrapper" class="form-wrapper">
               <button type="button" class="switcher switcher-signup">
-                Change
+                Password
                 <span class="underline"></span>
               </button>
-              <form class="animated-form form-signup" id="adminForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
+              <form class="animated-form form-signup" id="adminForm2">
                 <fieldset>
-                  <legend>Please, enter your email, password and password confirmation for sign up.</legend>
+                  <legend>Please, enter your current password, new password and confirmation.</legend>
                   <div class="input-block">
-                      <label for="signup-name">Name</label>
-                      <!-- <input id="signup-name" type="text" required> -->
-                      <div class="input-field"> 
-                        <i class="bx bx-user"></i> 
-                        <input id="signup-name" name="signup-name" value="" type="text" placeholder="name" required>
-                        <span class="Name" id="signup-nameError">SignUp Name</span>
-                      </div>
-                    </div>
-                  <div class="input-block">
-                    <label for="signup-email">E-mail</label>
-                    <!-- <input id="signup-email" type="email" required> -->
+                    <label for="signup-Currentpassword">Current Password</label>
                     <div class="input-field"> 
-                      <i class="bx bx-envelope"></i> 
-                      <input id="signup-email" name="signup-email" value="" type="email" placeholder="email" required>
-                      <span id="signup-emailError">SignUp Email</span>
+                      <i class="bx bx-lock"></i> 
+                      <input id="signup-Currentpassword" name="signup-Currentpassword" value="" type="password" placeholder="Current Password" required>
+                      <span id="signup-CurrentpasswordError">Current Password</span>
                     </div>
                   </div>
                   <div class="input-block">
                     <label for="signup-password">Password</label>
-                    <!-- <input id="signup-password" type="password" required> -->
                     <div class="input-field"> 
                       <i class="bx bx-lock"></i> 
-                      <input id="signup-password" name="signup-password" value="" type="password" placeholder="password" required>
-                      <span id="signup-passwordError">SignUp Password</span>
+                      <input id="signup-password" name="signup-password" value="" type="password" placeholder="New Password" required>
+                      <span id="signup-passwordError">New Password</span>
                     </div>
                   </div>
                   <div class="input-block">
                     <label for="signup-password-confirm">Confirm password</label>
-                    <!-- <input id="signup-password-confirm" type="password" required> -->
                     <div class="input-field"> 
                       <i class="bx bx-lock"></i> 
-                      <input id="signup-passwordConfirm" name="signup-passwordConfirm" value="" type="password" placeholder="password" required>
+                      <input id="signup-passwordConfirm" name="signup-passwordConfirm" value="" type="password" placeholder="Confirm Password" required>
                       <span id="signup-passwordConfirmError">Confirm Password</span>
                     </div>
                   </div>
                 </fieldset>
-                <button id="adminFormBtn" type="button" class="btn-signup">Save</button>
+                <button id="adminFormBtn2" type="button" class="btn-signup">Change</button>
               </form>
             </div>
           </div>

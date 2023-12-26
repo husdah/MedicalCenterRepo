@@ -19,7 +19,7 @@
             role int NOT NULL,
             registrationDate timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
             restricted int NOT NULL DEFAULT 0,
-            reset_token_hash VARCHAR(255) NULL,
+            reset_token_hash VARCHAR(64) UNIQUE NULL,
             reset_token_expires_at DATETIME NULL
         );";
         $createTableUserQuery_run = mysqli_query($con,$createTableUserQuery);

@@ -95,9 +95,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if($response != 500)
         {
+            $hashedNewPassword = password_hash($password, PASSWORD_DEFAULT);
             $user_query = "INSERT INTO user (Fname, Lname, email, password, role) VALUES (?, ?, ?, ?, ?)";
             $user_query_run = mysqli_prepare($con, $user_query);
-            mysqli_stmt_bind_param($user_query_run, "ssssi", $fname, $lname, $email, $password, $role);
+            mysqli_stmt_bind_param($user_query_run, "ssssi", $fname, $lname, $email, $hashedNewPassword, $role);
     
             if (mysqli_stmt_execute($user_query_run)) {
     

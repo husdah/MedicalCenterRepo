@@ -11,10 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = test_input($_POST['editDoctorEmail']);
     $phone = test_input($_POST['editDoctorPhone']);
     $clinicId = mysqli_real_escape_string($con, $_POST['editDoctorClinic']);
-    $password = test_input($_POST['editDoctorPass']);
-    $confirmation = test_input($_POST['editDoctorPassConfirm']);
 
     $data = [];
+    $response = 200;
 
     if($fname == ""){
         $response =500;
@@ -45,18 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }else if($clinicId == "" || $clinicId == "clinic"){
         $response =500;
         $msg = "Please Enter Doctor Speciality!";
-    }else if($password == ""){
-        $response =500;
-        $msg = "Please Enter Doctor Password!";
-    }else if(!validatePass($password)){
-        $response =500;
-        $msg = "Please Enter a Valid Password!";
-    }else if($confirmation == ""){
-        $response =500;
-        $msg = "Please Confirm Password!";
-    }else if($password != $confirmation){
-        $response =500;
-        $msg = "Password Confirmation Incorrect!";
     }
     else{
 
@@ -68,49 +55,52 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (mysqli_stmt_num_rows($Email_check_query_run) > 0) {
             $response =500;
             $msg = "Email already exists!";
-        }else{
-            $user_query = "UPDATE user SET Fname=? , Lname=? , email=? , password=? WHERE userId=? ";
+        }else {
+            $phoneCheckQuery = "SELECT phoneNumber FROM patient WHERE phoneNumber = ? 
+            UNION 
+            SELECT phoneNumber FROM doctor WHERE phoneNumber = ? AND doctorId <> ?";
+
+            $phoneCheckQueryRun = mysqli_prepare($con, $phoneCheckQuery);
+            mysqli_stmt_bind_param($phoneCheckQueryRun, "iii", $phone, $phone, $doctorId);
+            mysqli_stmt_execute($phoneCheckQueryRun);
+            mysqli_stmt_store_result($phoneCheckQueryRun);
+
+            if (mysqli_stmt_num_rows($phoneCheckQueryRun) > 0) {
+                $response =500;
+                $msg = "Phone already exists!";
+            }
+
+            mysqli_stmt_close($phoneCheckQueryRun);
+        }
+
+        if($response != 500)
+        {
+            $user_query = "UPDATE user SET Fname=? , Lname=? , email=? WHERE userId=? ";
             $user_query_run = mysqli_prepare($con, $user_query);
-            mysqli_stmt_bind_param($user_query_run, "ssssi", $fname, $lname, $email, $password, $userId);
+            mysqli_stmt_bind_param($user_query_run, "sssi", $fname, $lname, $email, $userId);
     
             if(mysqli_stmt_execute($user_query_run)){
 
-                $phoneCheckQuery = "SELECT phoneNumber FROM patient WHERE phoneNumber = ? 
-                UNION 
-                SELECT phoneNumber FROM doctor WHERE phoneNumber = ? AND doctorId <> ?";
-
-                $phoneCheckQueryRun = mysqli_prepare($con, $phoneCheckQuery);
-                mysqli_stmt_bind_param($phoneCheckQueryRun, "iii", $phone, $phone, $doctorId);
-                mysqli_stmt_execute($phoneCheckQueryRun);
-                mysqli_stmt_store_result($phoneCheckQueryRun);
-
-                if (mysqli_stmt_num_rows($phoneCheckQueryRun) > 0) {
+                $doctor_query = "UPDATE doctor SET clinicId=? , phoneNumber=? WHERE doctorId=? ";
+                $doctor_query_run = mysqli_prepare($con, $doctor_query);
+                mysqli_stmt_bind_param($doctor_query_run, "iii", $clinicId, $phone, $doctorId);
+    
+                if(mysqli_stmt_execute($doctor_query_run))
+                {
+                    $response =200;
+                    $msg ="Doctor Account Updated Successfully!";   
+                    
+                    $data["fname"] = $fname;
+                    $data["lname"] = $lname;
+                    $data["email"] = $email;
+                    $data["phone"] = $phone;
+                    $data["clinic"] = $clinicId;
+                }else{  
                     $response =500;
-                    $msg = "Phone already exists!";
-                } else {
-                    $doctor_query = "UPDATE doctor SET clinicId=? , phoneNumber=? WHERE doctorId=? ";
-                    $doctor_query_run = mysqli_prepare($con, $doctor_query);
-                    mysqli_stmt_bind_param($doctor_query_run, "iii", $clinicId, $phone, $doctorId);
-        
-                    if(mysqli_stmt_execute($doctor_query_run))
-                    {
-                        $response =200;
-                        $msg ="Doctor Account Updated Successfully!";   
-                        
-                        $data["fname"] = $fname;
-                        $data["lname"] = $lname;
-                        $data["email"] = $email;
-                        $data["phone"] = $phone;
-                        $data["clinic"] = $clinicId;
-                    }else{  
-                        $response =500;
-                        $msg ="Something Went Wrong!";
-                    }
-
-                    mysqli_stmt_close($doctor_query_run);
+                    $msg ="Something Went Wrong!";
                 }
 
-                mysqli_stmt_close($phoneCheckQueryRun);
+                mysqli_stmt_close($doctor_query_run);     
                 
             }else{
                 mysqli_close($con);

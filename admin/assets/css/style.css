@@ -100,7 +100,7 @@ body{
     background-color: #9fc3e7;
 }
 
-.btn-edit{
+.btn-edit,.sendConfEmailBtn{
     border: none;
     outline: none;
     background-color: #0051a1;
@@ -116,7 +116,8 @@ body{
     margin-right: 5px;
 }
   
-.btn-edit:hover {
+.btn-edit:hover,
+.sendConfEmailBtn:hover {
     background-color: #9fc3e7;
 }
 
@@ -653,8 +654,12 @@ body{
     background: var(--success);
 }
 
-.content main .bottom-data .orders table tr td .status.process{
+.content main .bottom-data .orders table tr td .status.accepted{
     background: var(--primary);
+}
+
+.content main .bottom-data .orders table tr td .status.rejected{
+    background: var(--danger);
 }
 
 .content main .bottom-data .orders table tr td .status.pending{

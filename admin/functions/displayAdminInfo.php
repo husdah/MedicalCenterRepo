@@ -4,12 +4,11 @@ class Admin
 {
     public $name;
     public $email;
-    public $password;
 }
 
 require_once('../../config/dbcon.php');
 
-$query= "SELECT  CONCAT(Fname, ' ', Lname) AS name, email, password FROM user WHERE role =0";
+$query= "SELECT  CONCAT(Fname, ' ', Lname) AS name, email FROM user WHERE role =0";
 $query_run = mysqli_prepare($con, $query);
 mysqli_stmt_execute($query_run);
 $result = mysqli_stmt_get_result($query_run);
@@ -21,7 +20,6 @@ if (mysqli_num_rows($result) > 0) {
         $admin = new Admin();
         $admin->name = $row['name'];
         $admin->email = $row['email'];
-        $admin->password = $row['password'];
         array_push($data, $admin);
     }
 
