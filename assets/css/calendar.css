@@ -395,6 +395,7 @@
 
 }
 
+
 #calendar .ui-datepicker .ui-datepicker-calendar .ui-datepicker-current-day.open {
   margin-bottom: 100px;
 }
@@ -421,6 +422,21 @@
 #calendar .ui-datepicker .ui-datepicker-calendar .ui-datepicker-other-month .ui-state-default {
   color: #919BA3;
 }
+#calendar .ui-datepicker .ui-datepicker-calendar td.disabled-day a {
+  color: #919BA3;
+}
+
+#calendar .ui-datepicker .ui-datepicker-calendar td.disabled-day span {
+  color:  #919BA3;
+}
+#calendar .ui-datepicker .ui-datepicker-calendar td.ui-datepicker-unselectable.ui-state-disabled a,
+#calendar .ui-datepicker .ui-datepicker-calendar td.ui-datepicker-unselectable.ui-state-disabled span {
+  color: #919BA3 !important;
+}
+
+
+
+
 
 @media only screen and (max-width: 768px) {
   .wrapper .inner-wrap .request br {

@@ -1,7 +1,8 @@
 <?php
 require('middleware/doctorMiddleware.php');
 require('../config/dbcon.php');
-$query="SELECT Fname, Lname, email, phoneNumber, profilePic, facebook, instagram, linkedin FROM user JOIN doctor ON user.userId = doctor.userId LEFT JOIN media ON doctor.doctorId = media.doctorId WHERE doctor.doctorid = 2;";
+$did=$_SESSION['doctorId'];
+$query="SELECT Fname, Lname, email, phoneNumber, profilePic, facebook, instagram, linkedin FROM user JOIN doctor ON user.userId = doctor.userId LEFT JOIN media ON doctor.doctorId = media.doctorId WHERE doctor.doctorid =$did;";
 $result=mysqli_query($con,$query);
 while($row=mysqli_fetch_assoc($result))
 {
@@ -12,7 +13,13 @@ while($row=mysqli_fetch_assoc($result))
     $instagram=$row['instagram'];
     $linkedin=$row['linkedin'];
     $phoneNumber=$row['phoneNumber'];
-    $photo=$row['profilePic'];
+    if($row['profilePic']==null)
+    { $photo="docImgPlaceholder.jpg";}
+    else
+    {
+        $photo=$row['profilePic'];
+    }
+   
 }
 ?>
 <!DOCTYPE html>

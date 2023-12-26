@@ -1,9 +1,10 @@
 <?php
-//header('Content-Type: application/json');
+session_start();
 require('../../config/dbcon.php');
 $pname=$_POST['pname'];
 $newappdate=$_POST['nappdate'];
 $tapp=$_POST['tapp'];
+$did=$_SESSION['doctorId'];
 
 $query2="select userId from user where email='$pname'";
 $res=mysqli_query($con,$query2);
@@ -21,7 +22,7 @@ while($row=mysqli_fetch_assoc($res3))
 }
 if(isset($_POST['pname']) && $_POST['pname']!='')
 {
-    $query1 = "insert into appointment(doctorId,patientId,date,time,status) values ('1','$pid3','$newappdate','$tapp','accepted')";
+    $query1 = "insert into appointment(doctorId,patientId,date,time,status) values ('$did','$pid3','$newappdate','$tapp','accepted')";
 		mysqli_query($con, $query1);
     
         
