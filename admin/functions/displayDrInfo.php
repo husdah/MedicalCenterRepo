@@ -13,11 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     public $Lname;
     public $email;
     public $phoneNumber;
-    public $password;
     public $clinicId;
 }
 
-$query= "SELECT user.Fname AS Fname, user.Lname AS Lname, user.email AS email, user.password AS password, doctor.userId As userId, doctor.clinicId As clinicId, doctor.phoneNumber As phoneNumber 
+$query= "SELECT user.Fname AS Fname, user.Lname AS Lname, user.email AS email, doctor.userId As userId, doctor.clinicId As clinicId, doctor.phoneNumber As phoneNumber 
 FROM user, doctor 
 WHERE user.userId = doctor.userId
 AND doctor.doctorId =?";
@@ -36,7 +35,6 @@ $result = mysqli_stmt_get_result($query_run);
             $dr->Lname = $row['Lname'];
             $dr->email = $row['email'];
             $dr->phoneNumber = $row['phoneNumber'];
-            $dr->password = $row['password'];
             $dr->clinicId = $row['clinicId'];
             array_push($data, $dr);
         }

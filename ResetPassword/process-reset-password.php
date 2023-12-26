@@ -55,7 +55,8 @@ if(isset($_POST["token"])){
     }
 
     $id = $user["userId"]; // Assuming $user["id"] holds the user's ID
-    mysqli_stmt_bind_param($stmt, "si", $password, $id);
+    $hashedNewPassword = password_hash($password, PASSWORD_DEFAULT);
+    mysqli_stmt_bind_param($stmt, "si", $hashedNewPassword, $id);
 
     mysqli_stmt_execute($stmt);
 

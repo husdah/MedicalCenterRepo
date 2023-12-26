@@ -767,12 +767,6 @@ editDoctorPhoneInput?.addEventListener('input', handleInputPhoneEvent);
 var editDoctorClinicInput = document.getElementById('editDoctorClinic');
 editDoctorClinicInput?.addEventListener('change', handleSelectEvent);
 
-var editDoctorPassInput = document.getElementById('editDoctorPass');
-editDoctorPassInput?.addEventListener('input', handleInputPassEvent);
-
-var editDoctorPassConfirmInput = document.getElementById('editDoctorPassConfirm');
-editDoctorPassConfirmInput?.addEventListener('input', handleInputConfPassEvent);
-
 //add patient form
 var patientFNInput = document.getElementById('patientFN');
 patientFNInput?.addEventListener('input', handleInputNameEvent);
@@ -817,6 +811,9 @@ adminNameInput?.addEventListener('input', handleInputAdminNameEvent);
 
 var adminEmailInput = document.getElementById('signup-email');
 adminEmailInput?.addEventListener('input', handleInputEmailEvent);
+
+var adminCurrentPassInput = document.getElementById('signup-Currentpassword');
+adminCurrentPassInput?.addEventListener('input', handleInputPassEvent);
 
 var adminPassInput = document.getElementById('signup-password');
 adminPassInput?.addEventListener('input', handleInputPassEvent);
@@ -1099,26 +1096,20 @@ editDoctorFormBtn?.addEventListener("click", function(event) {
         let lastName= editDoctorLNInput.value;
         let email = editDoctorEmailInput.value;
         let phone = editDoctorPhoneInput.value;
-        let password = editDoctorPassInput.value;
-        let confirm = editDoctorPassConfirmInput.value;
     
         let errorFN = document.getElementById("editDoctorFNError");
         let errorLN = document.getElementById("editDoctorLNError");
         let errorEmail = document.getElementById("editDoctorEmailError");
         let errorPhone = document.getElementById("editDoctorPhoneError");
         let errorClinic = document.getElementById("editDoctorClinicError");
-        let errorPass = document.getElementById("editDoctorPassError");
-        let errorPassConfirm = document.getElementById("editDoctorPassConfirmError");
     
         validateNameSubmit(firstName, editDoctorFNInput, errorFN);
         validateNameSubmit(lastName, editDoctorLNInput, errorLN);
         validateEmailSubmit(email, editDoctorEmailInput, errorEmail);
         validatePhoneSubmit(phone, editDoctorPhoneInput, errorPhone);
-        validatePassSubmit(password, editDoctorPassInput, errorPass);
-        ConfirmPassSubmit(confirm, editDoctorPassConfirmInput,password, errorPassConfirm);
         validateSelectSubmit(editDoctorClinicInput, errorClinic);
     
-        if (!validateNameSubmit(firstName, editDoctorFNInput, errorFN) || !validateNameSubmit(lastName, editDoctorLNInput, errorLN) || !validateEmailSubmit(email, editDoctorEmailInput, errorEmail) || !validatePhoneSubmit(phone, editDoctorPhoneInput, errorPhone) || !validatePassSubmit(password, editDoctorPassInput, errorPass) || !ConfirmPassSubmit(confirm, editDoctorPassConfirmInput,password, errorPassConfirm) || !validateSelectSubmit(editDoctorClinicInput, errorClinic)) {
+        if (!validateNameSubmit(firstName, editDoctorFNInput, errorFN) || !validateNameSubmit(lastName, editDoctorLNInput, errorLN) || !validateEmailSubmit(email, editDoctorEmailInput, errorEmail) || !validatePhoneSubmit(phone, editDoctorPhoneInput, errorPhone) || !validateSelectSubmit(editDoctorClinicInput, errorClinic)) {
             /* alert("invalid form"); */
         } else {
            /*  alert("done"); */
@@ -1317,8 +1308,8 @@ urgentBloodTypeFormBtn?.addEventListener("click",  function(event) {
 
 });
 
-let adminFormBtn = document.getElementById("adminFormBtn");
-adminFormBtn?.addEventListener("click", function(event) {
+let adminFormBtn1 = document.getElementById("adminFormBtn1");
+adminFormBtn1?.addEventListener("click", function(event) {
     if (event.target.type === 'submit') {
         event.preventDefault();
         alert("stop submit");
@@ -1326,27 +1317,21 @@ adminFormBtn?.addEventListener("click", function(event) {
     }else{
         let name= adminNameInput.value;
         let email = adminEmailInput.value;
-        let password = adminPassInput.value;
-        let confirm = adminPassConfirmInput.value;
     
         let errorName= document.getElementById("signup-nameError");
         let errorEmail = document.getElementById("signup-emailError");
-        let errorPass = document.getElementById("signup-passwordError");
-        let errorPassConfirm = document.getElementById("signup-passwordConfirmError");
     
         validateAdminNameSubmit(name, adminNameInput, errorName);
         validateEmailSubmit(email, adminEmailInput, errorEmail);
-        validatePassSubmit(password, adminPassInput, errorPass);
-        ConfirmPassSubmit(confirm, adminPassConfirmInput,password, errorPassConfirm);
     
-        if (!validateAdminNameSubmit(name, adminNameInput, errorName) || !validateEmailSubmit(email, adminEmailInput, errorEmail) || !validatePassSubmit(password, adminPassInput, errorPass) || !ConfirmPassSubmit(confirm, adminPassConfirmInput,password, errorPassConfirm) ) {
+        if (!validateAdminNameSubmit(name, adminNameInput, errorName) || !validateEmailSubmit(email, adminEmailInput, errorEmail) ) {
             /* alert("invalid form"); */
         } else {
            /*  alert("done"); */
-            /* document.getElementById('adminForm').submit(); */
+            /* document.getElementById('adminForm1').submit(); */
 
             const updateAdminInfo = async () => {
-                const form = document.getElementById('adminForm');
+                const form = document.getElementById('adminForm1');
                 const formData = new FormData(form);
             
                 await fetch('functions/editAdminInfo.php', {
@@ -1376,6 +1361,70 @@ adminFormBtn?.addEventListener("click", function(event) {
                     });
             }
             updateAdminInfo();
+            
+        }
+    }
+
+});
+
+let adminFormBtn2 = document.getElementById("adminFormBtn2");
+adminFormBtn2?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
+
+    }else{
+        let currentPass = adminCurrentPassInput.value;
+        let password = adminPassInput.value;
+        let confirm = adminPassConfirmInput.value;
+    
+        let errorCurrPass = document.getElementById("signup-CurrentpasswordError");
+        let errorPass = document.getElementById("signup-passwordError");
+        let errorPassConfirm = document.getElementById("signup-passwordConfirmError");
+    
+        validatePassSubmit(currentPass, adminCurrentPassInput, errorCurrPass);
+        validatePassSubmit(password, adminPassInput, errorPass);
+        ConfirmPassSubmit(confirm, adminPassConfirmInput,password, errorPassConfirm);
+    
+        if (!validatePassSubmit(currentPass, adminCurrentPassInput, errorCurrPass) || !validatePassSubmit(password, adminPassInput, errorPass) || !ConfirmPassSubmit(confirm, adminPassConfirmInput,password, errorPassConfirm) ) {
+            /* alert("invalid form"); */
+        } else {
+           /*  alert("done"); */
+            /* document.getElementById('adminForm2').submit(); */
+
+            const updateAdminPass = async () => {
+                const form = document.getElementById('adminForm2');
+                const formData = new FormData(form);
+            
+                await fetch('functions/editAdminPass.php', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.response == 200) {
+        
+                            $('.alert').removeClass("hide");
+                            $('.alert').addClass("show");
+                            document.getElementById("alertMsg").innerHTML = data.message;
+
+                            adminCurrentPassInput.value = "";
+                            adminPassInput.value = "";
+                            adminPassConfirmInput.value = "";
+            
+                        }else if(data.response == 500){
+                            swal("Note!", data.message +"!", "warning");
+                        }
+                        else {
+                            swal("Error!", "Failed: " + data.message, "error");
+                        }
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }
+            updateAdminPass();
             
         }
     }
@@ -2093,8 +2142,6 @@ const specificDrDetails = async() => {
                 editDoctorLNInput.value = dr.Lname;
                 editDoctorEmailInput.value = dr.email;
                 editDoctorPhoneInput.value = dr.phoneNumber;
-                editDoctorPassInput.value = dr.password;
-                editDoctorPassConfirmInput.value = dr.password;
                 editDoctorClinicInput.value = dr.clinicId;
             });
         }
@@ -2269,12 +2316,12 @@ const adminDetails = async() => {
             received_data.forEach(admin => {
                 adminNameInput.value = admin.name;
                 adminEmailInput.value = admin.email;
-                adminPassInput.value = admin.password;
-                adminPassConfirmInput.value = admin.password;
+/*                 adminPassInput.value = admin.password;
+                adminPassConfirmInput.value = admin.password; */
 
-                document.getElementById('login-name').value = admin.name;
-                document.getElementById('login-email').value = admin.email;
-                document.getElementById('login-password').value = admin.password;
+                /* document.getElementById('login-name').value = admin.name;
+                document.getElementById('login-email').value = admin.email; */
+                /* document.getElementById('login-password').value = admin.password; */
             });
         }
     }

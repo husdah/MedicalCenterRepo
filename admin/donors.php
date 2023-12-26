@@ -28,24 +28,29 @@
                 <div class="header">
                     <i class='bx bx-receipt'></i>
                     <h3>Possible Donors</h3>
-                    <form class="expanding-search-form">
-                        <div class="search-dropdown">
-                            <button class="button dropdown-toggle" type="button">
-                            <span class="toggle-active">Info</span>
-                            <span class="ion-arrow-down-b"></span>
+                    <div class="filterContainer">
+                        <button type="button" id="sendDonorEmailBtn" class="sendConfEmailBtn">Send Emails</button>
+
+                        <form class="expanding-search-form">
+                            <div class="search-dropdown">
+                                <button class="button dropdown-toggle" type="button">
+                                <span class="toggle-active">Info</span>
+                                <span class="ion-arrow-down-b"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                <li class="menu-active"><a href="#">Info</a></li>
+                                <li><a href="#">BloodType</a></li>
+                                </ul>
+                            </div>
+                            <input class="search-input" id="global-search" type="search" placeholder="Search">
+                            <button class="button search-button" type="button">
+                                <span class="icon ion-search">
+                                    <span class="sr-only">Search</span>
+                                </span>
                             </button>
-                            <ul class="dropdown-menu">
-                            <li class="menu-active"><a href="#">Info</a></li>
-                            <li><a href="#">BloodType</a></li>
-                            </ul>
-                        </div>
-                        <input class="search-input" id="global-search" type="search" placeholder="Search">
-                        <button class="button search-button" type="button">
-                            <span class="icon ion-search">
-                                <span class="sr-only">Search</span>
-                            </span>
-                        </button>
-                    </form>
+                        </form>
+
+                    </div>
                 </div>
                 <table id="dataTable">
                     <thead>

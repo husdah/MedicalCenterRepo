@@ -19,10 +19,10 @@ menuBar.addEventListener('click', () => {
 
 document.addEventListener("DOMContentLoaded", function() {
     var currentDateElement = document.getElementById("currentDate");
-    
+    if(currentDateElement){
     // Get the current date
     var currentDate = new Date();
-    
+        
     // Format the date as you desire
     var options = { year: 'numeric', month: 'long', day: 'numeric' };
     var formattedDate = currentDate.toLocaleDateString('en-US', options);
@@ -31,4 +31,5 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Set the formatted date inside the HTML element
     currentDateElement.textContent = formattedDate;
+    }
 });
