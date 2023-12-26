@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($email != "" && $password != "") {
 
-        $login_query= "SELECT * FROM user WHERE email=?";
+        $login_query= "SELECT * FROM user WHERE email=?  AND account_activation_hash IS NULL";
         $login_query_run = mysqli_prepare($con, $login_query);
         mysqli_stmt_bind_param($login_query_run, "s", $email);
         mysqli_stmt_execute($login_query_run);
@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
         }else{
             $response = 500;
-            $msg = "Invalid Credentials!";
+            $msg = "Invalid Credentials or Inactive Account !";
         }
 
         mysqli_stmt_close($login_query_run);

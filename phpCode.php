@@ -1,5 +1,13 @@
 <?php
 session_start();
+
+require 'PHPMailer-master/src/Exception.php';
+require 'PHPMailer-master/src/PHPMailer.php';
+require 'PHPMailer-master/src/SMTP.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 include("config/dbcon.php");
 
 function validateName($name) {
@@ -113,18 +121,48 @@ function validatePhone($phone) {
             echo "8";
         }else{
             if($contact == ""){
-                $stmt_user = mysqli_prepare($con, "INSERT INTO `user` (Fname, Lname, email, password, role, restricted) VALUES (?, ?, ?, ?, 2, 0)");
-                mysqli_stmt_bind_param($stmt_user, "ssss", $firtname, $lastname, $email, $hashed_password);
+
+                $activate_token = bin2hex(random_bytes(16));
+                $activate_token_hash = hash("sha256",$activate_token);
+
+                $stmt_user = mysqli_prepare($con, "INSERT INTO `user` (Fname, Lname, email, password, role, restricted, account_activation_hash) VALUES (?, ?, ?, ?, 2, 0, ?)");
+                mysqli_stmt_bind_param($stmt_user, "sssss", $firtname, $lastname, $email, $hashed_password, $activate_token_hash);
                 if(mysqli_stmt_execute($stmt_user)){
                 $userId = mysqli_insert_id($con);
                  $stmt_patient = mysqli_prepare($con, "INSERT INTO `patient` (userId, gender, bloodType, dateOfBirth) VALUES (?, ?, ?, ?)");
                     mysqli_stmt_bind_param($stmt_patient, "isss", $userId, $gender, $bloodtype, $date);
                     if (mysqli_stmt_execute($stmt_patient)) {
-                        mysqli_stmt_close($stmt_user);
-                        mysqli_stmt_close($stmt_patient);
-                        mysqli_close($con);
-                        echo "12";
-                    } else {
+
+                        $mail = new PHPMailer();
+                        try {
+                            $mail->isSMTP(); // Set mailer to use SMTP
+                            $mail->Host = "smtp.gmail.com"; // Define SMTP host
+                            $mail->SMTPAuth = true; // Enable SMTP authentication
+                            $mail->SMTPSecure = 'tls'; // Set type of encryption
+                            $mail->Port = 587; // Set port to connect SMTP
+                            $mail->Username = "healthhubcenter23@gmail.com"; // Set Gmail username
+                            $mail->Password = "clctytzjvtgjfhei"; // Set Gmail password
+
+                        //Email Composition
+                            $mail->setFrom("noreply@example.com");
+                            $mail->addAddress($email);
+                            $mail->Subject = "Account Activation";
+                            $mail->Body = <<<END
+                            Click <a href="http://localhost:3000/activate-account.php?token=$activate_token">here</a> 
+                            to activate your account.
+                            END;
+
+                            $mail->IsHTML(true);
+                            $mail->send();
+
+                            } catch (Exception $e) {
+                                echo "11";
+                            }
+                            mysqli_stmt_close($stmt_user);
+                            mysqli_stmt_close($stmt_patient);
+                            mysqli_close($con);
+                            echo "12";
+                        } else {
                         mysqli_stmt_close($stmt_user);
                         mysqli_stmt_close($stmt_patient);
                         mysqli_close($con);
@@ -150,17 +188,46 @@ function validatePhone($phone) {
                     mysqli_close($con);
                     echo "9";
                 } else {
-                    $stmt_user = mysqli_prepare($con, "INSERT INTO `user` (Fname, Lname, email, password, role, restricted) VALUES (?, ?, ?, ?, 2, 0)");
-                    mysqli_stmt_bind_param($stmt_user, "ssss", $firtname, $lastname, $email, $hashed_password);
+
+                    $activate_token = bin2hex(random_bytes(16));
+                    $activate_token_hash = hash("sha256",$activate_token);
+
+                    $stmt_user = mysqli_prepare($con, "INSERT INTO `user` (Fname, Lname, email, password, role, restricted, account_activation_hash) VALUES (?, ?, ?, ?, 2, 0, ?)");
+                    mysqli_stmt_bind_param($stmt_user, "sssss", $firtname, $lastname, $email, $hashed_password, $activate_token_hash);
                     if(mysqli_stmt_execute($stmt_user)){
                     $userId = mysqli_insert_id($con);
                     $stmt_patient = mysqli_prepare($con, "INSERT INTO `patient` (userId, gender, bloodType, dateOfBirth ,phoneNumber) VALUES (?,?, ?, ?, ?)");
                     mysqli_stmt_bind_param($stmt_patient, "isssi", $userId, $gender, $bloodtype, $date, $contact);
                     if (mysqli_stmt_execute($stmt_patient)) {
-                        mysqli_stmt_close($stmt_user);
-                        mysqli_stmt_close($stmt_patient);
-                        mysqli_close($con);
-                        echo "12";
+                        $mail = new PHPMailer();
+                        try {
+                            $mail->isSMTP(); // Set mailer to use SMTP
+                            $mail->Host = "smtp.gmail.com"; // Define SMTP host
+                            $mail->SMTPAuth = true; // Enable SMTP authentication
+                            $mail->SMTPSecure = 'tls'; // Set type of encryption
+                            $mail->Port = 587; // Set port to connect SMTP
+                            $mail->Username = "healthhubcenter23@gmail.com"; // Set Gmail username
+                            $mail->Password = "clctytzjvtgjfhei"; // Set Gmail password
+
+                        //Email Composition
+                            $mail->setFrom("noreply@example.com");
+                            $mail->addAddress($email);
+                            $mail->Subject = "Account Activation";
+                            $mail->Body = <<<END
+                            Click <a href="http://localhost:3000/activate-account.php?token=$activate_token">here</a> 
+                            to activate your account.
+                            END;
+
+                            $mail->IsHTML(true);
+                            $mail->send();
+
+                            } catch (Exception $e) {
+                                echo "11";
+                            }
+                            mysqli_stmt_close($stmt_user);
+                            mysqli_stmt_close($stmt_patient);
+                            mysqli_close($con);
+                            echo "12";
                     } else {
                         mysqli_stmt_close($stmt_user);
                         mysqli_stmt_close($stmt_patient);
