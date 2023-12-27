@@ -6,16 +6,16 @@ $p=0;
 $status="completed";
 $response = [];
 if (isset($_POST['feedback']) && $_POST['feedback'] != "") {
-    $aquery="SELECT EXISTS (SELECT 1 FROM appointment WHERE patientId = ? AND status=?) AS doctorExists";
+    $did = $_POST['did'];
+    $aquery="SELECT EXISTS (SELECT 1 FROM appointment WHERE patientId = ? AND status=? AND doctorId=?) AS doctorExists";
     $stmt = mysqli_prepare($con, $aquery);
-    mysqli_stmt_bind_param($stmt, "is", $pid,$status);
+    mysqli_stmt_bind_param($stmt, "isi", $pid,$status, $did);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_bind_result($stmt, $takeapp);
     mysqli_stmt_fetch($stmt);
     mysqli_stmt_close($stmt);
     ///////////////////////////////
     $feedback = $_POST['feedback'];
-    $did = $_POST['did'];
     $cquery = "SELECT COUNT(feedbackId) AS feedbackCount FROM feedback WHERE patientId = ?";
     $stmt = mysqli_prepare($con, $cquery);
     mysqli_stmt_bind_param($stmt, "i", $pid);

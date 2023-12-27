@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = [];
 
     if ($email != "" && $password != "") {
-        $login_query = "SELECT * FROM user WHERE email=?  AND account_activation_hash IS NULL";
+        $login_query = "SELECT * FROM user WHERE email=? AND restricted=0  AND account_activation_hash IS NULL";
         $login_query_run = mysqli_prepare($con, $login_query);
         mysqli_stmt_bind_param($login_query_run, "s", $email);
         mysqli_stmt_execute($login_query_run);
