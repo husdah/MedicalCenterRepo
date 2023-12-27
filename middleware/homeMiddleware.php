@@ -34,18 +34,6 @@ function getUserByToken($token) {
     return $result;
 }
 
-function checkRole($role) {
-    if($role !=0){
-
-        if($role == 1){
-            redirect('../doctor/dashboard.php',"You Are Not Authorized To Access This Page!");
-        }else{
-            redirect('../home.php',"You Are Not Authorized To Access This Page!");
-        }
-    
-    }
-}
-
 // Check if the user is logged in
 if (isset($_COOKIE['auth_token'])) {
 
@@ -57,10 +45,6 @@ if (isset($_COOKIE['auth_token'])) {
         if (isValidToken($token)) {
             // Token is valid, user is logged in
             $user = getUserByToken($token);
-    
-            // Example: store user information in the session
-    /*         $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username']; */
     
             $_SESSION['auth'] = true;
             $userdata = mysqli_fetch_array($user);
@@ -76,16 +60,24 @@ if (isset($_COOKIE['auth_token'])) {
                 'token' => $token // Save the token in the session
             ];
             $_SESSION['role_as'] = $role_as;
-            checkRole($_SESSION['role_as']);
-    
-        } else {
-            redirect('../sign-in-up.php',"Login to continue");
-        }
-    }else{
-        checkRole($_SESSION['role_as']);
-    }
 
-} else {
-    redirect('../sign-in-up.php',"Login to continue");
+            if ($role_as == 2) {
+                $getId_query= "SELECT patientId FROM patient WHERE userId=?";
+                $getId_query_run = mysqli_prepare($con, $getId_query);
+                mysqli_stmt_bind_param($getId_query_run, "i", $userid);
+                mysqli_stmt_execute($getId_query_run);
+                $result = mysqli_stmt_get_result($getId_query_run);
+
+                if(mysqli_num_rows($result) > 0){
+                    $row = mysqli_fetch_assoc($result);
+                    $patientId = $row['patientId'];
+                    $_SESSION['patientId']= $patientId;
+                }
+            }
+    
+        }else {
+            header('Location: sign-in-up.php');
+        }
+    }
 }
 ?>

@@ -19,6 +19,8 @@
             role int NOT NULL,
             registrationDate timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
             restricted int NOT NULL DEFAULT 0,
+            auth_token VARCHAR(255) UNIQUE NULL,
+            account_activation_hash VARCHAR(64) UNIQUE NULL,
             reset_token_hash VARCHAR(64) UNIQUE NULL,
             reset_token_expires_at DATETIME NULL
         );";
