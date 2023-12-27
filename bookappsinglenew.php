@@ -127,15 +127,15 @@ while($row=mysqli_fetch_assoc($result1))
     
                        
                         <ul class="card__social-list">
-                            <a href="'.$facebook.'" target="_blank" class="card__social-link">
+                            <a href="'.$facebook.'" class="card__social-link">
                                 <i class="fa-brands fa-facebook"></i>
                             </a>
     
-                            <a href="'.$instagram.'" target="_blank" class="card__social-link">
+                            <a href="'.$instagram.'" class="card__social-link">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
     
-                            <a href="'.$linkedin.'" target="_blank" class="card__social-link">
+                            <a href="'.$linkedin.'" class="card__social-link">
                                 <i class="fa-brands fa-linkedin"></i>
                             </a>
                         </ul>

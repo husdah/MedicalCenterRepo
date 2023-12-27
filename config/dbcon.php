@@ -33,8 +33,9 @@
 
         if (mysqli_num_rows($checkExistingResult) == 0) {
             // The role doesn't exist, so insert the new admin
+            $hashed_password = password_hash('Admin123', PASSWORD_DEFAULT);
             $addAdminQuery = "INSERT INTO `user`(`Fname`, `Lname`, `email`, `password`, `role`) 
-                            VALUES ('admin', 'root', 'healthHubAdmin@gmail.com', 'Admin123', $role)";
+                            VALUES ('admin', 'root', 'healthHubAdmin@gmail.com', $hashed_password, $role)";
             $addAdminQuery_run = mysqli_query($con, $addAdminQuery);
 
         }

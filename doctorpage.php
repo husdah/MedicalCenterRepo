@@ -106,7 +106,7 @@ while ($row = mysqli_fetch_assoc($result4)) {
                             </button>
                           <!-- </form> -->
                           <div class="notyou">
-                            <p>Not you? <a href="sign-in-up.php">Change accout</a></p>
+                            <p>Not you? <a href="logout.php">Change accout</a></p>
                           </div>
                       
                         </div>
