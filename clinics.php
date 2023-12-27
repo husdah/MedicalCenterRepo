@@ -3,6 +3,18 @@ session_start();
 require('config/dbcon.php');
 $query="select clinicId,name,description,icon from clinic";
 $res=mysqli_query($con,$query);
+$pid=$_SESSION['patientId'];
+$queryn="select Fname,Lname from user,patient where user.userId=patient.userId and patientId=?";
+$stmt= mysqli_prepare($con, $queryn);
+mysqli_stmt_bind_param($stmt, "i", $pid);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+if(mysqli_num_rows($result) > 0){
+    $row = mysqli_fetch_assoc($result);
+    $pfname = $row['Fname'];
+    $plname=$row['Lname'];
+  
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +44,7 @@ $res=mysqli_query($con,$query);
     </div>
     <div class="main-content">
       <div class="title"> 
-        <h1>Get well soon,Username</h1>
+        <h1>Get well soon,<?=$pfname?> <?=$plname?></h1>
         <h2>Book Appointment</h2>
       </div>
       <div class="clinicsContainer">

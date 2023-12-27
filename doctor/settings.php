@@ -67,8 +67,8 @@ while($row=mysqli_fetch_assoc($result))
                 <i class="fa-solid fa-pen"></i>
             </div>
             <div class="title2i">
-                <input type="text" name="demail" id="demail" value="<?=$email?>">
-                <i class="fa-solid fa-pen"></i>
+                <input type="text" name="demail" id="demail" value="<?=$email?>" style="color:gray" readonly>
+                <i class="fa-solid fa-pen" style="color:gray"></i>
             </div>
             <div class="emailerror" id="emailerror"></div>
             <div class="title2i">

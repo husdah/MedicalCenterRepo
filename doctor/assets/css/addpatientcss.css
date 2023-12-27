@@ -90,6 +90,11 @@
     font-size: 16px; 
     margin: 10px;
 }
+.forcomplete
+{
+    color: green;
+    font-size: 20px;
+}
 
 .btn
 {
