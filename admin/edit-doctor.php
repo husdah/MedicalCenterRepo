@@ -281,8 +281,8 @@
                         </label> 
                                 
                         <label>
-                            <input id="editDoctorEmail" name="editDoctorEmail" value="" required placeholder="" type="email" class="input">
-                            <span id="editDoctorEmailError">Email</span>
+                            <input disabled id="editDoctorEmail" name="editDoctorEmail" value="" required placeholder="" type="email" class="input">
+                            <!-- <span id="editDoctorEmailError">Email</span> -->
                         </label>
                         
                         <label>

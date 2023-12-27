@@ -185,7 +185,6 @@ function validateDOBSubmit(dobInput, errorDob) {
     var currentDate = new Date();
 
     if (isNaN(dobDate) || dobDate > currentDate) {
-        /* alert('Invalid date of birth.'); */
         dobInput.classList.add("required");
         errorDob.classList.add("count");
 
@@ -904,9 +903,10 @@ addClinicFormBtn?.addEventListener("click", function(event) {
                             if (data.response == 200) {
             
                                 clinicDetails();
-                                $('.alert').removeClass("hide");
+                               /*  $('.alert').removeClass("hide");
                                 $('.alert').addClass("show");
-                                document.getElementById("alertMsg").innerHTML = data.message;
+                                document.getElementById("alertMsg").innerHTML = data.message; */
+                                swal("Success!", data.message, "success");
                 
                                 clinicNameInput.value = "";
                                 clinicDescInput.value = "";
@@ -971,9 +971,11 @@ editClinicFormBtn?.addEventListener("click", function(event) {
                         if (data.response == 200) {
         
                             clinicDetails();
-                            $('.alert').removeClass("hide");
+                            /* $('.alert').removeClass("hide");
                             $('.alert').addClass("show");
-                            document.getElementById("alertMsg").innerHTML = data.message;
+                            document.getElementById("alertMsg").innerHTML = data.message; */
+
+                            swal("Success!", data.message, "success");
             
                             editClinicNameInput.value = "";
                             editClinicDescInput.value = "";
@@ -1055,9 +1057,11 @@ addDoctorFormBtn?.addEventListener("click", function(event) {
                         if (data.response == 200) {
         
                             doctorDetails();
-                            $('.alert').removeClass("hide");
+                            /* $('.alert').removeClass("hide");
                             $('.alert').addClass("show");
-                            document.getElementById("alertMsg").innerHTML = data.message;
+                            document.getElementById("alertMsg").innerHTML = data.message; */
+
+                            swal("Success!", data.message, "success");
             
                             doctorFNInput.value = "";
                             doctorLNInput.value = "";
@@ -1128,9 +1132,11 @@ editDoctorFormBtn?.addEventListener("click", function(event) {
                         if (data.response == 200) {
         
                             specificDrDetails();
-                            $('.alert').removeClass("hide");
+                            /* $('.alert').removeClass("hide");
                             $('.alert').addClass("show");
-                            document.getElementById("alertMsg").innerHTML = data.message;
+                            document.getElementById("alertMsg").innerHTML = data.message; */
+
+                            swal("Success!", data.message, "success");
             
                         }else if(data.response == 500){
                             swal("Note!", data.message +"!", "warning");
@@ -1212,9 +1218,11 @@ addPatientFormBtn?.addEventListener("click", function(event) {
                         if (data.response == 200) {
         
                             patientDetails();
-                            $('.alert').removeClass("hide");
+                            /* $('.alert').removeClass("hide");
                             $('.alert').addClass("show");
-                            document.getElementById("alertMsg").innerHTML = data.message;
+                            document.getElementById("alertMsg").innerHTML = data.message; */
+
+                            swal("Success!", data.message, "success");
             
                             patientFNInput.value = "";
                             patientLNInput.value = "";
@@ -1285,9 +1293,11 @@ urgentBloodTypeFormBtn?.addEventListener("click",  function(event) {
                     if (data.response === 200) {
         
                         bloodDetails();
-                        $('.alert').removeClass("hide");
+                        /* $('.alert').removeClass("hide");
                         $('.alert').addClass("show");
-                        document.getElementById("alertMsg").innerHTML = data.message;
+                        document.getElementById("alertMsg").innerHTML = data.message; */
+
+                        swal("Success!", data.message, "success");
         
                         urgentBTInput.value = "BT";
                         urgentBTNInput.value = "";
@@ -1342,9 +1352,11 @@ adminFormBtn1?.addEventListener("click", function(event) {
                     .then((data) => {
                         if (data.response == 200) {
         
-                            $('.alert').removeClass("hide");
+                            /* $('.alert').removeClass("hide");
                             $('.alert').addClass("show");
-                            document.getElementById("alertMsg").innerHTML = data.message;
+                            document.getElementById("alertMsg").innerHTML = data.message; */
+
+                            swal("Success!", data.message, "success");
                             
                             adminDetails();
             
@@ -1404,9 +1416,11 @@ adminFormBtn2?.addEventListener("click", function(event) {
                     .then((data) => {
                         if (data.response == 200) {
         
-                            $('.alert').removeClass("hide");
+                            /* $('.alert').removeClass("hide");
                             $('.alert').addClass("show");
-                            document.getElementById("alertMsg").innerHTML = data.message;
+                            document.getElementById("alertMsg").innerHTML = data.message; */
+
+                            swal("Success!", data.message, "success");
 
                             adminCurrentPassInput.value = "";
                             adminPassInput.value = "";
@@ -1473,9 +1487,11 @@ manageWHFormBtn?.addEventListener("click", function(event) {
                             centerWHDetails();
                             doctorsWHDetails();
         
-                            $('.alert').removeClass("hide");
+                            /* $('.alert').removeClass("hide");
                             $('.alert').addClass("show");
-                            document.getElementById("alertMsg").innerHTML = data.message;
+                            document.getElementById("alertMsg").innerHTML = data.message; */
+
+                            swal("Success!", data.message, "success");
 
                             WHDayInput.value = "WHDay";
                             WHFromInput.value = "";
@@ -1540,9 +1556,11 @@ manageDWHFormBtn?.addEventListener("click", function(event) {
                     .then((data) => {
                         if (data.response == 200) {
         
-                            $('.alert').removeClass("hide");
+                            /* $('.alert').removeClass("hide");
                             $('.alert').addClass("show");
-                            document.getElementById("alertMsg").innerHTML = data.message;
+                            document.getElementById("alertMsg").innerHTML = data.message; */
+
+                            swal("Success!", data.message, "success");
             
                             DWHDayInput.value = "WHDay";
                             DWHFromInput.value = "";
@@ -1602,9 +1620,11 @@ manageExceptionFormBtn?.addEventListener("click", function(event) {
                 .then((data) => {
                     if (data.response == 200) {
     
-                        $('.alert').removeClass("hide");
+                        /* $('.alert').removeClass("hide");
                         $('.alert').addClass("show");
-                        document.getElementById("alertMsg").innerHTML = data.message;
+                        document.getElementById("alertMsg").innerHTML = data.message; */
+
+                        swal("Success!", data.message, "success");
                         
                         exceptionDetails();
 
@@ -1666,9 +1686,11 @@ addReminderFormBtn?.addEventListener("click", function(event) {
                     if (data.response === 200) {
         
                         reminderDetails();
-                        $('.alert').removeClass("hide");
+/*                         $('.alert').removeClass("hide");
                         $('.alert').addClass("show");
-                        document.getElementById("alertMsg").innerHTML = data.message;
+                        document.getElementById("alertMsg").innerHTML = data.message; */
+
+                        swal("Success!", data.message, "success");
         
                         reminderInput.value = "";
         
@@ -3028,7 +3050,7 @@ function formatTimeToAMPM(originalTime) {
 
 
 // alert
-if( $('.alert').hasClass("showAlert")){
+/* if( $('.alert').hasClass("showAlert")){
 setTimeout(function(){
 $('.alert').removeClass("show");
 $('.alert').addClass("hide");
@@ -3038,4 +3060,4 @@ $('.alert').addClass("hide");
 $('.close-btn').click(function(){
 $('.alert').removeClass("show");
 $('.alert').addClass("hide");
-});
+}); */
