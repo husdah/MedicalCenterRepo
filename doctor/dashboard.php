@@ -1,6 +1,7 @@
 <?php
-require('middleware/doctorMiddleware.php');
+session_start();
 include("queryFunctions/queryfunctions.php");
+require('middleware/doctorMiddleware.php');
 
 /* $doctor = $_SESSION['doctor_id']; */
 $userId = $_SESSION['auth_user']['user_id'];

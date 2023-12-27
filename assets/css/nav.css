@@ -143,6 +143,11 @@ nav{
     cursor: pointer;
 
 }
+
+.login-button i{
+    margin-right: 5px;
+}
+
 .login-button:hover {
     color: var(--dark);
     background-color: var(--light);

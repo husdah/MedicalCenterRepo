@@ -1,9 +1,10 @@
 <?php
+session_start();
+require('config/dbcon.php');
 require('middleware/patientMiddleware.php'); 
 $did=$_GET['did'];
 $pid=$_SESSION['patientId'];
 $enabledDays=array();
-require('config/dbcon.php');
 $query="select Fname, Lname,ProfilePic,phoneNumber,linkedin,instagram,facebook,doctor.clinicId,name from user join doctor on user.userId=doctor.userId  left join media on doctor.doctorId=media.doctorId left join clinic on doctor.clinicId = clinic.clinicId where doctor.doctorId=$did";
 $result=mysqli_query($con,$query);
 

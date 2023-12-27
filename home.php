@@ -1,8 +1,9 @@
 
     <?php
         session_start();
-        include('includes/header.php');
         include('functions/selectData.php');
+        require('middleware/homeMiddleware.php');
+        include('includes/header.php');
 
         $doctorCount  = getRowCount('doctor');
         $patientCount = getRowCount('patient');

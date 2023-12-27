@@ -1,6 +1,7 @@
 <?php 
-require('middleware/doctorMiddleware.php');
+session_start();
 require('../config/dbcon.php');
+require('middleware/doctorMiddleware.php');
 $did=$_SESSION['doctorId'];
 $query="SELECT app.appId, app.date AS date, app.time AS time, app.status AS status, user.email FROM user, appointment AS app, patient, doctor WHERE app.patientId = patient.patientId AND app.doctorId = doctor.doctorId AND patient.userId = user.userId AND doctor.doctorId=$did;";
 $res=mysqli_query($con,$query);

@@ -1,6 +1,7 @@
 <?php
-require('middleware/doctorMiddleware.php');
+session_start();
 require('../config/dbcon.php');
+require('middleware/doctorMiddleware.php');
 $did=$_SESSION['doctorId'];
 $query="SELECT Fname, Lname, email, phoneNumber, profilePic, facebook, instagram, linkedin FROM user JOIN doctor ON user.userId = doctor.userId LEFT JOIN media ON doctor.doctorId = media.doctorId WHERE doctor.doctorid =$did;";
 $result=mysqli_query($con,$query);
