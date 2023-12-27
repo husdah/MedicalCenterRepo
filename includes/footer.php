@@ -3,24 +3,24 @@
         <div class="grid-container">
             <div class="footer-column1">
                 <a href="home.php"><img src="./images/HealthHubLogo-removebg-preview.png" alt="HealthHubLogo" class="logo"></a>
-                <p class="text-justify">Welcome to Health Hub, where compassionate care and medical excellence meet. To prioritize your well-being with state-of-the-art facilities and a patient-focused approach at every stage of your healthcare journey.</p>
+                <p class="text-justify"><?php echo $footer['desc']; ?></p>
             </div>
 
             <div class="footer-column2">
-                <h4 class="footer-heading">Quick Link</h4>
+                <h4 class="footer-heading"><?php echo $footer['title1']; ?></h4>
                 <hr>
                 <ul class="footer-links">
-                    <li><a href="home.php">Home</a></li>
-                    <li><a href="home.php#aboutSection">About Us</a></li>
-                    <li><a href="home.php#serviceSection">Services</a></li>
-                    <li><a href="home.php#doctorSection">Doctors</a></li>
-                    <li><a href="clinics.php">Clinics</a></li>
-                    <li><a href="contact.php">Contact Us</a></li>
+                    <li><a href="home.php"><?php echo $nav['HOME']; ?></a></li>
+                    <li><a href="home.php#aboutSection"><?php echo $nav['ABOUT']; ?></a></li>
+                    <li><a href="home.php#serviceSection"><?php echo $nav['SERVICES']; ?></a></li>
+                    <li><a href="home.php#doctorSection"><?php echo $nav['DOCTORS']; ?></a></li>
+                    <li><a href="clinics.php"><?php echo $nav['CLINICS']; ?></a></li>
+                    <li><a href="contact.php"><?php echo $nav['CONTACT US']; ?></a></li>
                 </ul>
             </div>
 
             <div class="footer-column3">
-                <h4 class="footer-heading">Opening Hours</h4>
+                <h4 class="footer-heading"><?php echo $footer['title2']; ?></h4>
                 <hr>
                 <ul class="opening-hour">
                     <?php
@@ -51,13 +51,13 @@
                 </ul>
             </div>
             <div class="footer-column4">
-                <h4 class="footer-heading">Contact Info</h4>
+                <h4 class="footer-heading"><?php echo $footer['title3']; ?></h4>
                 <hr>
                 <div class="footer-links">
                     <ul>
-                        <li><a href="https://www.google.com/maps/place/Beyrouth/@33.8892114,35.4630826,13z/data=!3m1!4b1!4m6!3m5!1s0x151f17215880a78f:0x729182bae99836b4!8m2!3d33.8937913!4d35.5017767!16zL20vMDlianY?entry=ttu" target="_blank"><i class="fa-solid fa-location-dot"></i>Beirut, Lebanon</a></li></br>
-                        <li><a href="tel:0096178960304"><i class="fa-solid fa-phone"></i>+ 961 78960304</a></li></br>
-                        <li><a href="mailto:hijazizeinab5@gmail.com"><i class="fa-regular fa-envelope"></i>info@gmail.com</a></li></br>
+                        <li><a href="https://www.google.com/maps/place/Beyrouth/@33.8892114,35.4630826,13z/data=!3m1!4b1!4m6!3m5!1s0x151f17215880a78f:0x729182bae99836b4!8m2!3d33.8937913!4d35.5017767!16zL20vMDlianY?entry=ttu" target="_blank"><i class="fa-solid fa-location-dot"></i><?php echo $footer['address']; ?></a></li></br>
+                        <li><a href="tel:0096178960304"><i class="fa-solid fa-phone"></i><?php echo $footer['phone']; ?></a></li></br>
+                        <li><a href="mailto:hijazizeinab5@gmail.com"><i class="fa-regular fa-envelope"></i><?php echo $footer['email']; ?></a></li></br>
                     </ul>
                 </div>
                 <ul class="social-icons mt">
@@ -71,7 +71,7 @@
 
     <div class="box-copyright">
         <div class="container-copyright">    
-            <p class="copyright-text">&copy; 2023 Health Hub Medical Center. All Rights Reserved.</p>
+            <p class="copyright-text"><?php echo $footer['rightCopy']; ?></p>
         </div>
     </div>
 
@@ -90,7 +90,9 @@
     <!-- <script src="assets/js/scrollSection.js"></script> -->
     <!-- <script src="assets/js/navbar.js"></script> -->
     <script src="../assets/js/nav.js"></script>
-    <script src="assets/js/validation.js"></script>
+    <!-- <script src="assets/js/validation.js"></script> -->
+    <script src="assets/js/contactFormValidation.js"></script>
+    <script src="assets/js/donateFormValidation.js"></script>
     <script src="assets/js/errorpage.js"></script>
 
 </body>

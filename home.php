@@ -13,41 +13,41 @@
     <!-- Section Banner -->
     <section id="banner" class="banner">
         <div class="banner-container">
-            <h1>Welcome to </h1>
-            <h1 class="bannerHeading-mt">Health Hub Medical Center</h1>
-            <h2>Your Health, Our Priority: Where Compassion Meets Care at Health Hub.</h2>
+            <h1><?php echo $banner['greet']; ?></h1>
+            <h1 class="bannerHeading-mt"><?php echo $banner['title']; ?></h1>
+            <h2><?php echo $banner['subtitle']; ?> </h2>
         </div>
         <div class="why-us-container">
             <div class="why-us-grid-col1 col1-content">
-                <h3>Why Choose Health Hub?</h3>
+                <h3><?php echo $whyUs['Why Choose Health Hub?']; ?></h3>
                 <ul>
-                    <li>- Compassionate Care</li>
-                    <li>- Medical Excellence</li>
-                    <li>- Innovation</li>
+                    <li>-<?php echo $whyUs['Compassionate Care']; ?></li>
+                    <li>-<?php echo $whyUs['Medical Excellence']; ?></li>
+                    <li>-<?php echo $whyUs['Innovation']; ?></li>
                 </ul>
             </div>
     
             <div class="why-us-grid-col2">
                 <div class="icon-box">
                     <i class="fa-solid fa-user-doctor"></i>
-                    <h4>Medical Team</h4>
-                    <p>With a shared commitment to your well-being, our physicians bring a wealth of experience and expertise to every patient interaction. </p>
+                    <h4><?php echo $whyUs['Medical Team']; ?></h4>
+                    <p><?php echo $whyUs['boxdesc2']; ?> </p>
                 </div>
             </div>
     
             <div class="why-us-grid-col2">
                 <div class="icon-box">
                     <i class="fa-solid fa-calendar-days"></i>
-                    <h4>Stay Informed</h4>
-                    <p>Stay updated on upcoming health check-ups, special events, and wellness programs tailored just for you.</p>
+                    <h4><?php echo $whyUs['Stay Informed']; ?></h4>
+                    <p><?php echo $whyUs['boxdesc3']; ?></p>
                 </div>
             </div>
     
             <div class="why-us-grid-col2">
                 <div class="icon-box">
                     <i class="fa-solid fa-language"></i>
-                    <h4>Accessible Language</h4>
-                    <p>Experience healthcare that speaks your language – because your well-being knows no linguistic boundaries.</p>
+                    <h4><?php echo $whyUs['Accessible Language']; ?></h4>
+                    <p><?php echo $whyUs['boxdesc4']; ?></p>
                 </div>
             </div>
         </div>
@@ -65,16 +65,16 @@
                 <img id="aboutImage" src="images/about-home.jpg" alt="about-home">
             </div>
             <div class="about-col2">
-                <h3>Health Hub Medical Center</h3>
-                <p>A leading healthcare institution dedicated to providing exceptional medical services with a focus on compassion, innovation, and excellence.</p>
+                <h3><?php echo $aboutUs['aboutTitle']; ?></h3>
+                <p><?php echo $aboutUs['aboutDesc']; ?></p>
   
                 <div class="icon-box">
                     <div class="icon">
                         <i class="fa-solid fa-eye-low-vision"></i>
                     </div>
                     <div class="title-description">
-                        <h4 class="title">Our Mission</h4>
-                        <p class="description">To enhance the well-being of our community by delivering comprehensive and personalized healthcare. Our team of highly skilled and compassionate healthcare professionals is committed to ensuring that every patient receives the highest standard of care in a supportive and healing environment.</p>
+                        <h4 class="title"><?php echo $aboutUs['Our Mission']; ?></h4>
+                        <p class="description"><?php echo $aboutUs['missionDesc']; ?></p>
                     </div>
                 </div>
                 <div class="icon-box">
@@ -82,8 +82,8 @@
                         <i class='bx bx-target-lock'></i>
                     </div>
                     <div class="title-description">
-                        <h4 class="title">Our Vision</h4>
-                        <p class="description">To be a beacon of health and wellness in our community, providing accessible, patient-centered care that empowers individuals to lead healthier lives</p>
+                        <h4 class="title"><?php echo $aboutUs['Our Vision']; ?></h4>
+                        <p class="description"><?php echo $aboutUs['vissionDesc']; ?></p>
                     </div>
                 </div>
             </div>
@@ -97,22 +97,22 @@
                 <div class="count-box">
                     <i class="fas fa-user-md"></i>
                     <span data-purecounter-start="0" data-purecounter-end="<?php echo $doctorCount-1; ?>" data-purecounter-duration="0" class="count">0</span>
-                    <p>Doctors</p> 
+                    <p><?php echo $counter['Doctors']; ?></p> 
                 </div>
                 <div class="count-box">
                     <i class="bx bx-group"></i>
                     <span data-purecounter-start="0" data-purecounter-end="<?php echo $patientCount-1; ?>" data-purecounter-duration="0" class="count">0</span>
-                    <p>Patients</p>
+                    <p><?php echo $counter['Patients']; ?></p>
                 </div>
                 <div class="count-box">
                     <i class="bx bx-clinic"></i>
                     <span data-purecounter-start="0" data-purecounter-end="<?php echo $clinicCount-1; ?>" data-purecounter-duration="0" class="count">0</span>
-                    <p>Clinics</p>
+                    <p><?php echo $counter['Clinics']; ?></p>
                 </div>
                 <div class="count-box">
                     <i class="bx bx-donate-blood"></i>
                     <span data-purecounter-start="0" data-purecounter-end="<?php echo $donorCount-1; ?>" data-purecounter-duration="0" class="count">0</span>
-                    <p>Donors</p>
+                    <p><?php echo $counter['Donors']; ?></p>
                 </div>
             </div>
         </div>
@@ -120,8 +120,8 @@
 
     <section id="serviceSection" class="service-heading">
         <div class="section-title">
-            <h2>Services</h2>
-            <p>Your Well-Being, Our Priority: A Spectrum of Specialized Services</p>
+            <h2><?php echo $service['title']; ?></h2>
+            <p><?php echo $service['subTitle']; ?></p>
         </div>
     </section>
 
@@ -131,14 +131,14 @@
             <div class="col col-1">
                 <div class="service-column">
                     <i class='bx bxs-injection'></i>
-                    <h1>Primary Care</h1>
-                    <p>Routine check-ups, Preventive care and Vaccinations</p>
+                    <h1><?php echo $service['service1T']; ?></h1>
+                    <p><?php echo $service['service1desc']; ?></p>
                 </div>
     
                 <div class="service-column">
                     <i class='bx bxs-camera-plus'></i>
-                    <h1>Diagnostic services</h1>
-                    <p class="padding-on-ipad">Radiology(X-rays, CT scans, MRIs) and Laboratory tests</p>
+                    <h1><?php echo $service['service2T']; ?></h1>
+                    <p class="padding-on-ipad"><?php echo $service['service2desc']; ?></p>
                 </div>
             </div>
             <div class="col col-2">
@@ -149,13 +149,13 @@
             <div class="col col-3">
                 <div class="service-column">
                     <i class='bx bxs-shield-plus'></i>
-                    <h1>Emergency Care</h1>
-                    <p>Urgent medical attention and Emergency room services</p>
+                    <h1><?php echo $service['service3T']; ?></h1>
+                    <p><?php echo $service['service3desc']; ?></p>
                 </div>
                 <div class="service-column">
                     <i class='bx bxs-user-voice'></i>
-                    <h1>Mental Health</h1>
-                    <p>Psychiatery, Conseling and therapy services</p>
+                    <h1><?php echo $service['service4T']; ?></h1>
+                    <p><?php echo $service['service4desc']; ?></p>
                 </div>
             </div>
         </div>
@@ -163,8 +163,8 @@
 
     <section id="doctorSection" class="doctor-heading">
         <div class="section-title">
-            <h2>Examples of Our Doctors</h2>
-            <p>Dedicated to Your Health: Our Esteemed Team of Physicians</p>
+            <h2><?php echo $doctor['title']; ?></h2>
+            <p><?php echo $doctor['subtitle']; ?></p>
         </div>
     </section>
 
@@ -209,8 +209,8 @@
 
     <section id="clinic-heading" class="clinic-heading">
         <div class="section-title">
-            <h2>Clinics</h2>
-            <p>A Haven of Healing: Discover Our Clinic's Comprehensive Services</p>
+            <h2><?php echo $clinic['title']; ?></h2>
+            <p><?php echo $clinic['subtitle']; ?></p>
         </div>
     </section>
     
@@ -254,25 +254,25 @@
     <!-- Section Donation -->
      <section id="donation" class="donation">
         <div id="donatPanel" class="donation-panel">
-            <h1><i class='bx bxs-quote-alt-left'></i>people live when people give<i class='bx bxs-quote-alt-right'></i></h1>
+            <h1><i class='<?php echo $donate['leftComma']; ?>'></i><?php echo $donate['title']; ?><i class='<?php echo $donate['rightComma']; ?>'></i></h1>
             <img src="images/donate-bg1-removebg-preview.png" alt="">
-            <button id="btn-donate" class="click-to-donate"><span class="clickHere">Donate</span></button>
+            <button id="btn-donate" class="click-to-donate"><span class="clickHere"><?php echo $donate['Donate']; ?></span></button>
         </div>
         <div id="donateForm" class="donation-form">
-            <h1><i class='bx bxs-quote-alt-left'></i>people live when people give<i class='bx bxs-quote-alt-right'></i></h1>
+            <h1><i class='<?php echo $donate['leftComma']; ?>'></i><?php echo $donate['title']; ?><i class='<?php echo $donate['rightComma']; ?>'></i></h1>
             <div class="donation-content">
                 <i class="fa-solid fa-xmark"></i>
                 <div class="sectionOne">
                     <img src="images/donate-bg2-removebg-preview.png">
                 </div>
-                <p>Please, Fill Out This Information:</p>
+                <p><?php echo $donate['formtitle']; ?></p>
                 <form id = "donateform" method="post" enctype="multipart/form-data">    
                     <div class="email-input">  
-                        <input type="text" id="email" name="email-phone" class="donation-input" placeholder="Enter Email or Phone Number">
+                        <input type="text" id="email" name="email-phone" class="donation-input" placeholder="<?php echo $donate['placeholder']; ?>">
                         <span id="errorInput"></span>
                     </div>
                     <div class="blood-group"> 
-                        <label for="mySelect">Select your blood group:</label> 
+                        <label for="mySelect"><?php echo $donate['select']; ?></label> 
                         <select id="mySelect" name="mySelect"> 
                             <option value="Blood-Type">Blood Type</option> 
                             <option value="A+">A+</option> 
@@ -285,7 +285,7 @@
                             <option value="AB-">AB-</option> 
                         </select>
                     </div> 
-                    <button id="click_donate" name="btn_send" type="button" class="btn-send"> Donate </button>
+                    <button id="click_donate" name="btn_send" type="button" class="btn-send"> <?php echo $donate['Donate']; ?> </button>
                 </form>
             </div>
         </div>

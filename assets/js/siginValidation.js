@@ -21,6 +21,10 @@ const updateFname = document.getElementById('update-fname');
 const updateLname = document.getElementById('update-lname');
 const updateEmail = document.getElementById('update-email');
 const updateDate = document.getElementById('update-date');
+const updatePhone     = document.getElementById('phone2');
+const updateGenderF   = document.getElementById('female');
+const updateGenderM   = document.getElementById('male');
+const updateBloodType = document.getElementById('mySelect');
 const currentPasswordInput = document.getElementById('current-pwd');
 const newPasswordInput = document.getElementById('new-pwd');
 const cPasswordInput = document.getElementById('c-pwd');
@@ -48,6 +52,14 @@ const genderMsg = document.getElementById('radioMsg');
 //Buttons
 const signinBtn = document.getElementById('signin-btn');
 const signupBtn = document.getElementById('signup-btn');
+
+//variables for Table
+const TableData = document.getElementById('patient-app');
+
+document.addEventListener("DOMContentLoaded", function() {
+    getPatientApp();
+    getPatientProfile();
+});
 
 signinBtn?.addEventListener("click", function(event) {
     if (event.target.type === 'submit') {
@@ -102,6 +114,172 @@ signinBtn?.addEventListener("click", function(event) {
         }
     }
 
+});
+
+const btnUpdate = document.getElementById('updateBtn');
+btnUpdate?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
+    }else{
+        const valid = validateUpdateForm();
+        console.log(valid);
+        if(valid){
+            //alert("submit");
+            const updatePatient = () => {
+                const form = document.getElementById('update-form');
+                const formData = new FormData(form);
+                fetch('functions/updateUserInfo.php', {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    //console.log('Success:', data);
+                    if(data.response == 200){
+                        swal("Error!", "All fields are required.", "error");
+                    }
+                    else if(data.response == 100){
+                        swal("Error!", "Something Went Wrong", "error");
+                    }
+                    else if(data.response == 500){
+                        swal("Updated!", "Your informations are updated successfully.", "success");
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            }
+            updatePatient();
+        }
+    }
+});
+
+const getPatientApp = async() => {
+    if(TableData){ // here to check that we are in page user
+        const res = await fetch('functions/getPatientAppData.php');
+        const received_data = await res.json();
+        TableData.innerHTML = "";
+        console.log('App records:',received_data);
+        received_data.forEach(user => {
+            TableData.innerHTML += `<tr>
+                                        <td>${user.doctor}</td>
+                                        <td>${user.date}</td>
+                                        <td>${user.time}</td>
+                                        <td><button id="cancel-btn" onclick ='del(${user.id})'>Cancel</button></td>
+                                    </tr>`
+    
+        });
+    }
+}
+function del(id) {
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            fetch('functions/deleteAppointmentByPatient.php', {
+                method: 'POST',
+                body: JSON.stringify({
+                    id: id
+                }),
+                headers: {
+                    'Content-type': 'application/json, charset=UTF-8'
+                }
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                if(data.response == 200){
+                    swal("Deleted", "Your appointment deleted successfully.", "success");
+                    
+                }
+                else if(data.response == 500){
+                    swal("Error!", "could not delete from database.", "error");
+                } 
+            })
+            getPatientApp();
+        }
+    });
+}
+const getPatientProfile = async() => {
+    if(updatePhone){ // here to check that we are in page user (we can put any elemet in page user)
+        const response      = await fetch('functions/getPatientInfo.php');
+        const res = await response.json();
+        console.log('patient info record:', res);
+        if (res.length > 0) {
+            res.forEach( patient => {
+                updateFname.value = patient.firstName;
+                updateLname.value = patient.lastName;
+                updateEmail.value = patient.email;
+                updateDate.value  = patient.date;
+                updatePhone.value= patient.phoneNumber;
+                if (patient.gender === "male") {
+                    updateGenderM.checked = true;
+                } else {
+                    updateGenderF.checked = true;
+                }
+                updateBloodType.value = patient.bloodType;
+            });
+        } else {
+            console.log('No patient data received.');
+        }
+    }
+}
+
+
+
+const btn_changePassword = document.getElementById('changeBtn');
+btn_changePassword?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
+    }else{
+        const valid = validatePasswordForm();
+        console.log(valid);
+        if(valid){
+            const changePassword = () => {
+                //alert('change Btn');
+                fetch('functions/changePatientPassword.php', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        currentPassword: currentPasswordInput.value,
+                        newPassword: newPasswordInput.value,
+                        confirmPassword: cPasswordInput.value
+                    }),
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8'
+                    }
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    if(data.response == 200){
+                        swal("Error!", "All fields are required.", "error");
+                    }
+                    else if(data.response == 300){
+                        swal("Error!", "All fields must be validated.", "error");
+                    }
+                    else if(data.response == 400){
+                        swal("Error!", "New password and confirm password do not match.", "error");
+                    }
+                    else if(data.response == 500){
+                        swal("Updated!", "Password updated successfully.", "success");
+                        passwordForm.reset();
+                    }
+                    else if(data.response == 600){
+                        swal("Error!", "Please enter the old password correct.", "error");
+                    }
+                })
+                .catch(error => {
+                    console.error('Something went wrong:', error);
+                })
+            }
+            changePassword();
+        }
+    }
 });
 
 //Forms Validation Functions

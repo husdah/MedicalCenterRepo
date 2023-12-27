@@ -180,11 +180,24 @@ span.Sat, span.Sun {
     }
 }
 
+/* Arabic */
+[dir="rtl"] .footer{
+    padding: 50px 50px 50px 0; 
+}
 
-
-
-
-
+[dir="rtl"] .footer-column2{
+    padding-right: 75px;
+}
+[dir="rtl"]  .footer-column2 .footer-links li a:hover, 
+.footer-column4 .footer-links li a:hover{
+    padding-right: 10px;
+}
+[dir="rtl"]  .footer-links ul li a i{
+    padding-left: 10px;
+}
+[dir="rtl"]  .footer-column4 ul.social-icons li{
+    margin-left: 10px;
+}
 
 
 
