@@ -3,7 +3,7 @@ session_start();
 require('../config/dbcon.php');
 require('middleware/doctorMiddleware.php');
 $did=$_SESSION['doctorId'];
-$query="SELECT app.appId, app.date AS date, app.time AS time, app.status AS status, user.email FROM user, appointment AS app, patient, doctor WHERE app.patientId = patient.patientId AND app.doctorId = doctor.doctorId AND patient.userId = user.userId AND doctor.doctorId=$did;";
+$query="SELECT app.appId, app.date AS date, app.time AS time, app.status AS status, user.email , user.Fname , user.Lname FROM user, appointment AS app, patient, doctor WHERE app.patientId = patient.patientId AND app.doctorId = doctor.doctorId AND patient.userId = user.userId AND doctor.doctorId=$did AND app.status='accepted';";
 $res=mysqli_query($con,$query);
 ?>
 <!DOCTYPE html>
@@ -47,10 +47,12 @@ $res=mysqli_query($con,$query);
                     <thead>
                     <tr>
                         <th class="appId">AppId</th>
+                        <th>Name</th>
                         <th>Email of Patient</th>
                         <th>Date</th>
                         <th>Time</th>
                         <th>Actions</th>
+                        <th>Completed</th>
                        
                     </tr>
                     </thead>
@@ -60,21 +62,17 @@ $res=mysqli_query($con,$query);
                         echo '
                         <tr>
                         <td class="appId">'.$row['appId'].'</td>
+                        <td>'.$row['Fname'].' '.$row['Lname'].'</td>
                         <td>'.$row['email'].'</td>
                         <td>'.$row['date'].'</td>
                         <td>'.$row['time'].'</td>
                         <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
+                        <td><a href="" class="forcomplete"><i class="fa-regular fa-circle-check"></i></a></td>
                          </tr>
                         ';
                     }
                     ?>
-                    <!-- <tr>
-                        <td>patient 1</td>
-                        <td>2023-12-11</td>
-                        <td>23:00</td>
-                        <td><a href="" class="foredit">Edit</a>  <a href="" class="fordelete">Delete</a></td>
-                       
-                    </tr> -->
+                    
                   
                     
                 </table>
@@ -159,12 +157,41 @@ $res=mysqli_query($con,$query);
             document.getElementById('eid').style.display="block";
         
         });
+        $(".forcomplete").click(function (e) {
+        e.preventDefault(); 
+        completeAction($(this).closest("tr").find("td:eq(0)").text());
+    });
         $(".fordelete").click(function (e) {
         e.preventDefault(); 
         deleteAction($(this).closest("tr").find("td:eq(0)").text());
     });
     });
     
+    function completeAction(r) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: 'You won\'t be able to cancel the action!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: 'queryFunctions/completeApp.php',
+                type: 'get',
+                data: { id: r },
+                success: function (data) {
+                    location.reload();
+                },
+                error: function (jXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        }
+    });
+}
 
 function deleteAction(r) {
     Swal.fire({
