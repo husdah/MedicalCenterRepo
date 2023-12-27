@@ -9,11 +9,12 @@
         public $doctor;
         public $date;
         public $time;
+        public $status;
     }
     $patinetApp = [];
     include('../config/dbcon.php');
     $query = 'SELECT
-	                appointment.appID AS appointmentID, concat(user.Fname, " ", user.Lname) AS doctor, appointment.date, appointment.time, patient.patientId, doctor.doctorId
+	                appointment.appID AS appointmentID, concat(user.Fname, " ", user.Lname) AS doctor, appointment.date, appointment.time, patient.patientId, doctor.doctorId, appointment.status
                 FROM
                     appointment
                 JOIN
@@ -23,8 +24,8 @@
                 JOIN
                     user ON doctor.userId = user.userId
                 WHERE
-                    patient.userId = ?; 
-            ';
+                    patient.userId = ? AND (appointment.status = "pending" 
+                    OR appointment.status = "accepted")';
     $stmt = mysqli_prepare($con, $query);
     if ($stmt) {
         mysqli_stmt_bind_param($stmt, "i", $userId);
@@ -39,6 +40,7 @@
                 $user-> doctor = $row['doctor'];
                 $user-> date   = $row['date'];
                 $user-> time   = $row['time'];
+                $user-> status   = $row['status'];
                 array_push($patinetApp, $user);
             }
         }

@@ -34,29 +34,11 @@
                             <th>Doctor</th>
                             <th>Date</th>
                             <th>Time</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                       </thead>
                       <tbody id= "patient-app"> 
-
-                        <!--<tr>
-                            <td>doctor1</td>
-                            <td>11/11/2023</td>
-                            <td>11:00 am</td>
-                            <td><button id="cancel-btn">Cancel</button></td>
-                        </tr>
-                        <tr>
-                            <td>doctor1</td>
-                            <td>1/12/2023</td>
-                            <td>10:00 am</td>
-                            <td><button id="cancel-btn">Cancel</button></td>
-                        </tr>
-                        <tr>
-                            <td>doctor2</td>
-                            <td>12/12/2023</td>
-                            <td>10:30 am</td>
-                            <td><button id="cancel-btn">Cancel</button></td>
-                        </tr>-->
                       </tbody>
                     </table>
                 </div>
@@ -83,7 +65,7 @@
                         <div class="content-field">
                           <div class="input-field"> 
                             <i class="fas fa-envelope"></i> 
-                            <input type="email" placeholder="Email" name ="pat-email" id="update-email"/> 
+                            <input type="email" placeholder="Email" name ="pat-email" id="update-email" disabled/> 
                           </div> 
                           <div class="display"><p class="message" id="emailMessage"></p></div>
                         </div> 
