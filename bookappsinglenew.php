@@ -11,9 +11,23 @@ while($row=mysqli_fetch_assoc($result1))
 {
     $cname=$row['name'];
 }
-//to display the clinics in the side bar
 $query="select clinicId,name,description,icon from clinic";
 $res=mysqli_query($con,$query);
+$facebook = "#";
+$instagram="#";
+$linkedin="#";
+while($row=mysqli_fetch_assoc($result1))
+{
+    if($row['facebook'] != null){
+        $facebook = $row['facebook'];
+    }
+    if($row['instagram'] != null){
+        $instagram = $row['instagram'];
+    }
+    if($row['linkedin'] != null){
+        $linkedin= $row['linkedin'];
+    }
+}
 ?>
 <!DOCTYPE html>
     <html lang="en">
@@ -113,16 +127,16 @@ $res=mysqli_query($con,$query);
     
                        
                         <ul class="card__social-list">
-                            <a href="'.$row["facebook"].'" target="_blank" class="card__social-link">
+                            <a href="'.$facebook.'" target="_blank" class="card__social-link">
                                 <i class="fa-brands fa-facebook"></i>
                             </a>
     
-                            <a href="'.$row["instagram"].'" target="_blank" class="card__social-link">
+                            <a href="'.$instagram.'" target="_blank" class="card__social-link">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
     
-                            <a href="'.$row["linkedin"].'" target="_blank" class="card__social-link">
-                                <i class="fa-brands fa-x-twitter"></i>
+                            <a href="'.$linkedin.'" target="_blank" class="card__social-link">
+                                <i class="fa-brands fa-linkedin"></i>
                             </a>
                         </ul>
                     </div>

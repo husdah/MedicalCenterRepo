@@ -29,7 +29,7 @@ $(document).ready(function () {
                 } else if(response === '11') {
                     displayError("Something went wrong!");
                 } else if (response === '12'){
-                    displaySuccess("Form Submitted Successfully!");
+                    displaySuccess("Form Submitted Successfully! Please check your email to activate your account.");
                 }
             }
         });
