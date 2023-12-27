@@ -47,7 +47,7 @@ $requestNb = getRequestCount($doctorId);
        </div>
        <div class="banner">
         <div class="banner-img"><img src="../images/ban.png"></div>
-        <div class="title"><h2>Welcome, dr. <span></span></h2>
+        <div class="title"><h2>Welcome, dr. <span><?= $userName ?></span></h2>
         <p>Have a nice day at work.</p></div>
        </div>
 

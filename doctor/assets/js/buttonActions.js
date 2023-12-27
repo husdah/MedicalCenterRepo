@@ -21,13 +21,14 @@ $(document).ready(function () {
                         'appId': id,
                         'del-btn': 1
                     },
-                    success: function () {
-                           swal("Success!", "Appointment canceled successfully!", "success");
+                    success: function (response) {
+                        if(response === '1'){
+                          // swal("Success!", "Appointment canceled successfully!", "success");
                            // $('#requestTable').load(location.href + " #requestTable");
                            location.reload();
-                    },
-                    error: function () {
-                        swal("Error!", "Something Went Wrong!", "error");
+                        } else if (response === '2'){
+                            swal("Error!", "Something Went Wrong!", "error");
+                        }
                     }
               });
           }

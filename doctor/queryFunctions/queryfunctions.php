@@ -11,7 +11,7 @@ function redirect($url, $message){
 function getAppoinmentCount($id){
     global $con;
     $query = "SELECT * FROM `appointment`, `doctor` WHERE doctor.doctorId = appointment.doctorId
-     AND doctor.doctorId = ? AND (appointment.status = 'completed' OR appointment.status = 'confirmed')";
+     AND doctor.doctorId = ? AND (appointment.status = 'completed' OR appointment.status = 'accepted')";
 
     $stmt = mysqli_prepare($con, $query);
     mysqli_stmt_bind_param($stmt, 'i', $id);
@@ -56,7 +56,7 @@ function getPastAppointments($id,$id2){
 function getUpcomingAppointments($id,$id2){
     global $con;
     $query = "SELECT * FROM `appointment`, `patient` WHERE patient.patientId = appointment.patientId AND 
-    patient.patientId = ? AND (appointment.status = 'pending' OR appointment.status = 'confirmed') AND
+    patient.patientId = ? AND (appointment.status = 'pending' OR appointment.status = 'accepted') AND
     appointment.doctorId = ?";
 
     $stmt = mysqli_prepare($con, $query);
