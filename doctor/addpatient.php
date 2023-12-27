@@ -1,7 +1,8 @@
 <?php 
 require('middleware/doctorMiddleware.php');
 require('../config/dbcon.php');
-$query="select appId,email,date,time from user,patient,appointment where user.userId=patient.userId AND patient.patientId=appointment.patientId";
+$did=$_SESSION['doctorId'];
+$query="SELECT app.appId, app.date AS date, app.time AS time, app.status AS status, user.email FROM user, appointment AS app, patient, doctor WHERE app.patientId = patient.patientId AND app.doctorId = doctor.doctorId AND patient.userId = user.userId AND doctor.doctorId=$did;";
 $res=mysqli_query($con,$query);
 ?>
 <!DOCTYPE html>
@@ -104,6 +105,7 @@ $res=mysqli_query($con,$query);
                         <input type="submit" value="Add" name="submit" id="add" class="add">
                         <input type="submit" value="Edit" name="submit" id="edit" class="edit">
                      </div>
+                     <input type="hidden" name="did" id="did" value="<?=$did?>">
                 </form>
 
             </div>

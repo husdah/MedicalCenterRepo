@@ -28,6 +28,12 @@ form.addEventListener('submit', async (e) => {
 
             if (data && data.response === 200) {
                 description.value = "";
+                Swal.fire({
+                    title: "Your feedback has been sent succefully!",
+                    icon: "success",
+                    text: data.message,
+                    confirmButtonText: "OK"
+                });
                 displayFeedbacks();
             } else {
                 errmsg.innerHTML = `<i class='fa-solid fa-triangle-exclamation'></i> ${data.message}`;

@@ -6,7 +6,7 @@ $p=0;
 $status="completed";
 $response = [];
 if (isset($_POST['feedback']) && $_POST['feedback'] != "") {
-    $aquery="SELECT EXISTS (SELECT 1 FROM appointment WHERE patientId = ? and status=?) AS doctorExists";
+    $aquery="SELECT EXISTS (SELECT 1 FROM appointment WHERE patientId = ? AND status=?) AS doctorExists";
     $stmt = mysqli_prepare($con, $aquery);
     mysqli_stmt_bind_param($stmt, "is", $pid,$status);
     mysqli_stmt_execute($stmt);
@@ -26,7 +26,7 @@ if (isset($_POST['feedback']) && $_POST['feedback'] != "") {
     if(!$takeapp)
     {
         $response["response"] = 400;
-        $response["message"] = "You can't add a feedback until you take an appointment with the dr";
+        $response["message"] = "Please complete an appointment with the doctor before submitting feedback.";
     }
     else{
     if ($feedbackCount <2) {
@@ -39,7 +39,7 @@ if (isset($_POST['feedback']) && $_POST['feedback'] != "") {
 
             if (mysqli_stmt_execute($stmt)) {
                 $response["response"] = 200;
-                $response["message"] = " ";
+                $response["message"] = "Your feedback will not be visible until it's published by the admin";
             } else {
                 $response["response"] = 500; 
                 $response["message"] = "Error executing statement: " . mysqli_error($con);
