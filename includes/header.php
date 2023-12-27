@@ -1,5 +1,10 @@
+<?php
+    require 'lang.php';
+    require 'language/'.$_SESSION['lang'].'.php';
+?>
 <!DOCTYPE html>
-<html lang="en">
+<!-- <html lang="en"> -->
+<html lang="<?php echo $_SESSION['lang']; ?>" dir="<?php echo ($_SESSION['lang'] == 'ar') ? 'rtl' : 'ltr'; ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

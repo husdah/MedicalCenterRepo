@@ -9,12 +9,20 @@
     </div>
     <ul class="nav-links">
         <div class="links">
-            <li><a href="home.php">Home</a></li>
+            <!-- <li><a href="home.php">HOME</a></li>
             <li><a href="home.php#aboutSection">About</a></li>
             <li><a href="home.php#serviceSection">Services</a></li>
             <li><a href="clinics.php">Clinics</a></li>
             <li><a href="home.php#doctorSection">Doctors</a></li>
-            <li><a href="contact.php">Contact Us</a></li>
+            <li><a href="contact.php">Contact Us</a></li> -->
+            
+            <li><a href="home.php"><?php echo $nav['HOME'] ?></a></li>
+            <li><a href="home.php#aboutSection"><?php echo $nav['ABOUT'] ?></a></li>
+            <li><a href="home.php#serviceSection"><?php echo $nav['SERVICES'] ?></a></li>
+            <li><a href="clinics.php"><?php echo $nav['CLINICS'] ?></a></li>
+            <li><a href="home.php#doctorSection"><?php echo $nav['DOCTORS'] ?></a></li>
+            <li><a href="contact.php"><?php echo $nav['CONTACT US'] ?></a></li>
+
         </div>
         <div class="icons">
             <li class="dropdown dropdown-6">
@@ -34,25 +42,27 @@
                                     <?php
                                 }
                             ?>
-                            <a href="logout.php"><li class="dropdown_item-1">Logout</li></a>
+                            <a href="logout.php"><li class="dropdown_item-1"><?php echo $nav['Logout']; ?></li></a>
                         </ul>
                         <?php
                     }else{
                         ?>
-                        <button class="login-button"><i class="fa-solid fa-user"></i> Log in</button>
+                        <button class="login-button"><i class="fa-solid fa-user"></i><?php echo $nav['Log in']; ?></button>
                         <ul class="dropdown_menu dropdown_menu--animated dropdown_menu-6">
-                            <a href="sign-in-up.php"><li class="dropdown_item-1">Log in</li></a>
-                            <a href="sign-in-up.php"><li class="dropdown_item-2">SignUp</li></a>
+                            <a href="sign-in-up.php"><li class="dropdown_item-1"><?php echo $nav['Log in']; ?></li></a>
+                            <a href="sign-in-up.php"><li class="dropdown_item-2"><?php echo $nav['SignUp']; ?></li></a>
                         </ul>
                         <?php
                     }
                 ?>
             </li>
             <li class="dropdown dropdown-6">
-                <button class="join-button" href="#"><i class="fa-solid fa-globe"></i> EN</button>
+                <button class="join-button" href="#"><i class="fa-solid fa-globe"></i> <?php echo $nav['EN']; ?></button>
                 <ul class="dropdown_menu dropdown_menu--animated dropdown_menu-6">
-                    <li class="dropdown_item-1">EN</li>
-                    <li class="dropdown_item-2">AR</li>
+                    <!--<li class="dropdown_item-1">EN</li>
+                    <li class="dropdown_item-2">AR</li>-->
+                    <li class="dropdown_item-1"><a href="?lang=en"><?php echo $nav['EN']; ?></a></li>
+                    <li class="dropdown_item-2"><a href="?lang=ar"><?php echo $nav['AR']; ?></a></li>
                 </ul>
             </li>
             <!-- <li><button class="login-button" href="#"><i class="fa-solid fa-user"></i> Login</button></li> -->

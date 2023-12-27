@@ -105,7 +105,7 @@ const checkLastname = () => {
 const checkEmail = () => {
     if(email_input.value === ''){
         if(emailError){    
-            emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
+            emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i>This field is required*';
             return false;
         }
     }
