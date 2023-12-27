@@ -398,7 +398,7 @@ body{
     background: var(--success);
 }
 
-.content .apps-table table td .confirmed{
+.content .apps-table table td .accepted{
     background: var(--primary);
 }
 
@@ -406,7 +406,7 @@ body{
     background: var(--warning);
 }
 
-.content .apps-table table td .canceled{
+.content .apps-table table td .rejected{
     background: var(--danger);
 }
 

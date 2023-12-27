@@ -129,6 +129,22 @@ body{
     height: 55px;
 }
 
+.table1 table td .completed{
+    background: var(--success);
+}
+
+.table1 table td .accepted{
+    background: var(--primary);
+}
+
+.table1 table td .pending{
+    background: var(--warning);
+}
+
+.table1 table td .rejected{
+    background: var(--danger);
+}
+
 button,
 .table2 form .update-btn,
 .table2 form .change-btn{

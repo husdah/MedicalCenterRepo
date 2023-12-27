@@ -30,6 +30,7 @@ $(document).ready(function () {
                     displayError("Something went wrong!");
                 } else if (response === '12'){
                     displaySuccess("Form Submitted Successfully! Please check your email to activate your account.");
+                    $('#sign-up')[0].reset();
                 }
             }
         });

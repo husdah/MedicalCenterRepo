@@ -155,13 +155,14 @@ function validatePhone($phone) {
                             $mail->IsHTML(true);
                             $mail->send();
 
-                            } catch (Exception $e) {
-                                echo "11";
-                            }
                             mysqli_stmt_close($stmt_user);
                             mysqli_stmt_close($stmt_patient);
                             mysqli_close($con);
                             echo "12";
+
+                            } catch (Exception $e) {
+                                echo "11";
+                            }
                         } else {
                         mysqli_stmt_close($stmt_user);
                         mysqli_stmt_close($stmt_patient);
@@ -199,6 +200,7 @@ function validatePhone($phone) {
                     $stmt_patient = mysqli_prepare($con, "INSERT INTO `patient` (userId, gender, bloodType, dateOfBirth ,phoneNumber) VALUES (?,?, ?, ?, ?)");
                     mysqli_stmt_bind_param($stmt_patient, "isssi", $userId, $gender, $bloodtype, $date, $contact);
                     if (mysqli_stmt_execute($stmt_patient)) {
+                            
                         $mail = new PHPMailer();
                         try {
                             $mail->isSMTP(); // Set mailer to use SMTP
@@ -221,13 +223,15 @@ function validatePhone($phone) {
                             $mail->IsHTML(true);
                             $mail->send();
 
-                            } catch (Exception $e) {
-                                echo "11";
-                            }
                             mysqli_stmt_close($stmt_user);
                             mysqli_stmt_close($stmt_patient);
                             mysqli_close($con);
                             echo "12";
+
+                            } catch (Exception $e) {
+                                echo "11";
+                            }
+                        
                     } else {
                         mysqli_stmt_close($stmt_user);
                         mysqli_stmt_close($stmt_patient);
