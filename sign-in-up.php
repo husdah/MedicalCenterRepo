@@ -1,20 +1,7 @@
 <?php 
 session_start(); 
-
-if(isset($_SESSION['auth'])){
-    /* $_SESSION['message']= "You are already logged in"; */
-
-    if($_SESSION['role_as'] == 0){
-      header('Location: admin/dashboard.php');
-      exit();
-    }else if($_SESSION['role_as'] == 1){
-      header('Location: doctor/dashboard.php');
-      exit();
-    }else{
-      header('Location: home.php');
-      exit();
-    }
-}
+require('config/dbcon.php');
+require('middleware/logMiddleware.php');
 ?>
 
 <!DOCTYPE html> 

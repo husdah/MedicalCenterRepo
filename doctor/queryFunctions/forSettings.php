@@ -106,10 +106,11 @@ if(isset($_POST['submit2']))
         mysqli_stmt_bind_result($stmt, $pass);
         mysqli_stmt_fetch($stmt);
 
-        if ($pass!== null & $pass === $cpass) {
+        if ($pass!== null & password_verify($cpass, $pass)) {
+                $hashedNewPassword = password_hash($npass, PASSWORD_DEFAULT);
                 $query="UPDATE user JOIN doctor ON user.userId = doctor.userId SET user.password=? WHERE doctor.doctorId = ?";
                 $stmt=mysqli_prepare($con,$query);
-                mysqli_stmt_bind_param($stmt,"si",$npass,$doctorId);
+                mysqli_stmt_bind_param($stmt,"si",$hashedNewPassword,$doctorId);
                 mysqli_stmt_execute($stmt);
                 
         } else {

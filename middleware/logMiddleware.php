@@ -35,15 +35,17 @@ function getUserByToken($token) {
 }
 
 function checkRole($role) {
-    if($role !=0){
-
-        if($role == 1){
-            redirect('../doctor/dashboard.php',"You Are Not Authorized To Access This Page!");
-        }else{
-            redirect('../home.php',"You Are Not Authorized To Access This Page!");
-        }
-    
+ 
+    if($role == 0){
+        header('Location: admin/dashboard.php');
     }
+    else if($role == 1){
+        header('Location: doctor/dashboard.php');
+    }
+    else if($role == 2){
+        header('Location: home.php');
+    }
+    
 }
 
 // Check if the user is logged in
@@ -57,10 +59,6 @@ if (isset($_COOKIE['auth_token'])) {
         if (isValidToken($token)) {
             // Token is valid, user is logged in
             $user = getUserByToken($token);
-    
-            // Example: store user information in the session
-    /*         $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username']; */
     
             $_SESSION['auth'] = true;
             $userdata = mysqli_fetch_array($user);
@@ -78,14 +76,10 @@ if (isset($_COOKIE['auth_token'])) {
             $_SESSION['role_as'] = $role_as;
             checkRole($_SESSION['role_as']);
     
-        } else {
-            redirect('../sign-in-up.php',"Login to continue");
         }
     }else{
         checkRole($_SESSION['role_as']);
     }
 
-} else {
-    redirect('../sign-in-up.php',"Login to continue");
 }
 ?>

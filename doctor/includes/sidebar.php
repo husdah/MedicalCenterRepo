@@ -1,4 +1,21 @@
 <?php
+require('../config/dbcon.php');
+$did=$_SESSION['doctorId'];
+$query="select Fname,Lname,profilePic from user,doctor where user.userId=doctor.userId and doctorId=?";
+$stmt= mysqli_prepare($con, $query);
+mysqli_stmt_bind_param($stmt, "i", $did);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$photo="docImgPlaceholder.jpg";
+if(mysqli_num_rows($result) > 0){
+    $row = mysqli_fetch_assoc($result);
+    $drfname = $row['Fname'];
+    $drlname=$row['Lname'];
+    if($row['profilePic']!=null)
+    {
+      $photo=$row['profilePic'];
+    }
+}
 
 $currentScript = basename($_SERVER['PHP_SELF']);
 
@@ -16,9 +33,9 @@ $currentPage = ($currentScript == 'dashboard.php') ? 'dashboard.php' :
         <i class="bx bx-menu"></i>
         </div>
         <div class="user">
-            <img src="../../uploads/doctor.webp" class="user-img">
-            <label class="user-name">Dr. Salem</label>
-            <label class="user-clinic">Cardiology</label>
+            <img src="../../uploads/<?=$photo?>" class="user-img">
+            <label class="user-name">Dr. <?=$drfname?> <?=$drlname?></label>
+            <!-- <label class="user-clinic">Cardiology</label> -->
         </div>
         <ul class="side-menu">
         <ul class="side-menu">

@@ -12,40 +12,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = [];
 
     if ($email != "" && $password != "") {
-
-        $login_query= "SELECT * FROM user WHERE email=?  AND account_activation_hash IS NULL";
+        $login_query = "SELECT * FROM user WHERE email=? AND restricted=0  AND account_activation_hash IS NULL";
         $login_query_run = mysqli_prepare($con, $login_query);
         mysqli_stmt_bind_param($login_query_run, "s", $email);
         mysqli_stmt_execute($login_query_run);
         $result = mysqli_stmt_get_result($login_query_run);
-    
-        if(mysqli_num_rows($result) > 0){
-    
-            //$_SESSION['auth']=true;
-            $userdata= mysqli_fetch_array($result);
-            $stored_password = $userdata['password'];
-            
-            if (password_verify($password, $stored_password)) {
 
-                $_SESSION['auth']=true;
-                $username = $userdata['Fname'] ." " .$userdata['Lname'];
+        if (mysqli_num_rows($result) > 0) {
+            $userdata = mysqli_fetch_array($result);
+            $stored_password = $userdata['password'];
+
+            if (password_verify($password, $stored_password)) {
+                $token = bin2hex(random_bytes(32)); // Generate a unique token
+
+                $_SESSION['auth'] = true;
+                $username = $userdata['Fname'] . " " . $userdata['Lname'];
                 $useremail = $userdata['email'];
                 $userid = $userdata['userId'];
-                $role_as= $userdata['role'];
-        
-                $_SESSION['auth_user']=[
-                    'user_id' =>  $userid,
+                $role_as = $userdata['role'];
+
+                $_SESSION['auth_user'] = [
+                    'user_id' => $userid,
                     'name' => $username,
-                    'email' => $useremail
+                    'email' => $useremail,
+                    'token' => $token // Save the token in the session
                 ];
-        
-                $_SESSION['role_as']= $role_as;
-        
-                if($role_as == 0){
+
+                // Save the token in the database
+                $updateTokenQuery = "UPDATE user SET auth_token = ? WHERE userId = ?";
+                $updateTokenQuery_run = mysqli_prepare($con, $updateTokenQuery);
+                mysqli_stmt_bind_param($updateTokenQuery_run, "si", $token, $userid);
+                mysqli_stmt_execute($updateTokenQuery_run);
+
+                // Set the token as a cookie
+                setcookie("auth_token", $token, time() + (86400 * 30), "/"); // 30 days validity
+
+                $_SESSION['role_as'] = $role_as;
+
+                if ($role_as == 0) {
                     $msg = "Welcome to Admin Dashboard";
                     $response = 200;
-                }else if($role_as == 1){
-
+                } elseif ($role_as == 1) {
                     $getId_query= "SELECT doctorId FROM doctor WHERE userId=?";
                     $getId_query_run = mysqli_prepare($con, $getId_query);
                     mysqli_stmt_bind_param($getId_query_run, "i", $userid);
@@ -64,9 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $response = 500;
                     }
 
-                
-                }else if($role_as == 2){
-
+                } elseif ($role_as == 2) {
                     $getId_query= "SELECT patientId FROM patient WHERE userId=?";
                     $getId_query_run = mysqli_prepare($con, $getId_query);
                     mysqli_stmt_bind_param($getId_query_run, "i", $userid);
@@ -84,27 +89,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $msg = "Something Went Wrong!";
                         $response = 500;
                     }
+
                 }
-            }else{
+            } else {
                 $response = 500;
                 $msg = "Invalid Credentials!";
             }
-
-          /*   
-            $data["userId"] = $userid;
-            $data["name"] = $username;
-            $data["email"] = $useremail;
-            $data["role"] = $role_as; */
-            
-    
-        }else{
+        } else {
             $response = 500;
             $msg = "Invalid Credentials or Inactive Account !";
         }
 
         mysqli_stmt_close($login_query_run);
         mysqli_close($con);
-    } else{
+    } else {
         $response = 500;
         $msg = "Please Enter needed Information!";
     }
@@ -113,3 +111,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data["response"] = $response;
     echo json_encode($data);
 }
+?>

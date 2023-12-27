@@ -19,6 +19,8 @@
             role int NOT NULL,
             registrationDate timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
             restricted int NOT NULL DEFAULT 0,
+            auth_token VARCHAR(255) UNIQUE NULL,
+            account_activation_hash VARCHAR(64) UNIQUE NULL,
             reset_token_hash VARCHAR(64) UNIQUE NULL,
             reset_token_expires_at DATETIME NULL
         );";
@@ -31,8 +33,9 @@
 
         if (mysqli_num_rows($checkExistingResult) == 0) {
             // The role doesn't exist, so insert the new admin
+            $hashed_password = password_hash('Admin123', PASSWORD_DEFAULT);
             $addAdminQuery = "INSERT INTO `user`(`Fname`, `Lname`, `email`, `password`, `role`) 
-                            VALUES ('admin', 'root', 'healthHubAdmin@gmail.com', 'Admin123', $role)";
+                            VALUES ('admin', 'root', 'healthHubAdmin@gmail.com', $hashed_password, $role)";
             $addAdminQuery_run = mysqli_query($con, $addAdminQuery);
 
         }

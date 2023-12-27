@@ -1,5 +1,12 @@
 <?php
-include('validate.php');
+require '../../PHPMailer-master/src/Exception.php';
+require '../../PHPMailer-master/src/PHPMailer.php';
+require '../../PHPMailer-master/src/SMTP.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require('validate.php');
 header('Content-type: application/json');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $json = json_decode(file_get_contents('php://input'));
@@ -95,10 +102,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if($response != 500)
         {
+            $activate_token = bin2hex(random_bytes(16));
+            $activate_token_hash = hash("sha256",$activate_token);
             $hashedNewPassword = password_hash($password, PASSWORD_DEFAULT);
-            $user_query = "INSERT INTO user (Fname, Lname, email, password, role) VALUES (?, ?, ?, ?, ?)";
+            $user_query = "INSERT INTO user (Fname, Lname, email, password, role, account_activation_hash) VALUES (?, ?, ?, ?, ?, ?)";
             $user_query_run = mysqli_prepare($con, $user_query);
-            mysqli_stmt_bind_param($user_query_run, "ssssi", $fname, $lname, $email, $hashedNewPassword, $role);
+            mysqli_stmt_bind_param($user_query_run, "ssssis", $fname, $lname, $email, $hashedNewPassword, $role, $activate_token_hash);
     
             if (mysqli_stmt_execute($user_query_run)) {
     
@@ -118,16 +127,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
                             
                         if (mysqli_stmt_execute($patient_query_run)) {
-                            $response = 200;
-                            $msg = "Patient Added Successfully!";
+                            $mail = new PHPMailer();
+                            try {
+                                $mail->isSMTP(); // Set mailer to use SMTP
+                                $mail->Host = "smtp.gmail.com"; // Define SMTP host
+                                $mail->SMTPAuth = true; // Enable SMTP authentication
+                                $mail->SMTPSecure = 'tls'; // Set type of encryption
+                                $mail->Port = 587; // Set port to connect SMTP
+                                $mail->Username = "healthhubcenter23@gmail.com"; // Set Gmail username
+                                $mail->Password = "clctytzjvtgjfhei"; // Set Gmail password
+    
+                                //Email Composition
+                                $mail->setFrom("noreply@example.com");
+                                $mail->addAddress($email);
+                                $mail->Subject = "Account Activation";
+                                $mail->Body = <<<END
+                                Click <a href="http://localhost:3000/activate-account.php?token=$activate_token">here</a> 
+                                to activate your account.
+                                END;
+    
+                                $mail->IsHTML(true);
+                                $mail->send();
+    
+                                $response = 200;
+                                $msg = "Patient Registered Successfully! An Email has been sent to him in order to Activate his Account.";
 
-                            $data["fname"] = $fname;
-                            $data["lname"] = $lname;
-                            $data["email"] = $email;
-                            $data["phone"] = $phone;
-                            $data["gender"] = $gender;
-                            $data["bloodType"] = $bloodType;
-                            $data["DOB"] = $DOB;
+                                $data["fname"] = $fname;
+                                $data["lname"] = $lname;
+                                $data["email"] = $email;
+                                $data["phone"] = $phone;
+                                $data["gender"] = $gender;
+                                $data["bloodType"] = $bloodType;
+                                $data["DOB"] = $DOB;
+    
+                            } catch (Exception $e) {
+                                $response = 500;
+                                $msg = "Something Went Wrong While Sending Activation Email!";
+                            }
                         } else {
                             $response = 500;
                             $msg = "Something Went Wrong!";
@@ -141,16 +177,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         mysqli_stmt_bind_param($patient_query_run, "isssi", $userId, $gender, $bloodType, $DOB, $phone);
                         
                         if (mysqli_stmt_execute($patient_query_run)) {           
-                            $response = 200;
-                            $msg = "Patient Added Successfully!";
+                            $mail = new PHPMailer();
+                            try {
+                                $mail->isSMTP(); // Set mailer to use SMTP
+                                $mail->Host = "smtp.gmail.com"; // Define SMTP host
+                                $mail->SMTPAuth = true; // Enable SMTP authentication
+                                $mail->SMTPSecure = 'tls'; // Set type of encryption
+                                $mail->Port = 587; // Set port to connect SMTP
+                                $mail->Username = "healthhubcenter23@gmail.com"; // Set Gmail username
+                                $mail->Password = "clctytzjvtgjfhei"; // Set Gmail password
+    
+                                //Email Composition
+                                $mail->setFrom("noreply@example.com");
+                                $mail->addAddress($email);
+                                $mail->Subject = "Account Activation";
+                                $mail->Body = <<<END
+                                Click <a href="http://localhost:3000/activate-account.php?token=$activate_token">here</a> 
+                                to activate your account.
+                                END;
+    
+                                $mail->IsHTML(true);
+                                $mail->send();
+    
+                                $response = 200;
+                                $msg = "Patient Registered Successfully! An Email has been sent to him in order to Activate his Account.";
 
-                            $data["fname"] = $fname;
-                            $data["lname"] = $lname;
-                            $data["email"] = $email;
-                            $data["phone"] = $phone;
-                            $data["gender"] = $gender;
-                            $data["bloodType"] = $bloodType;
-                            $data["DOB"] = $DOB;
+                                $data["fname"] = $fname;
+                                $data["lname"] = $lname;
+                                $data["email"] = $email;
+                                $data["phone"] = $phone;
+                                $data["gender"] = $gender;
+                                $data["bloodType"] = $bloodType;
+                                $data["DOB"] = $DOB;
+    
+                            } catch (Exception $e) {
+                                $response = 500;
+                                $msg = "Something Went Wrong While Sending Activation Email!";
+                            }
                         } else {          
                             $response = 500;
                             $msg = "Something Went Wrong!";

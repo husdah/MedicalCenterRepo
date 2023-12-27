@@ -77,7 +77,5 @@ if(isset($_POST['del-btn'])){
         } else{
             //echo "2";
         }
-
 }
-
 ?>

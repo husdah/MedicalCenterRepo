@@ -26,6 +26,7 @@ section.banner::after{
     justify-content: center;
     padding-top: 120px;
 }
+
 .banner .banner-container  h1 {
     font-size: 48px;
     font-weight: 700;
@@ -160,6 +161,7 @@ section.about{
     border: 2px solid #8dc2f1;
     border-radius: 50px;
     transition: 0.5s;
+    cursor: pointer;
 }
 .icon-box .icon i{
     font-size:32px;
@@ -344,6 +346,7 @@ section.service{
     border-right: 5px solid #0051a1;
 }
 .service-column:hover{
+    cursor: pointer;
     background-color: var(--light-primary);
     border-radius:12px;
 } 
@@ -667,6 +670,7 @@ section.donation{
     width: 110px;
     height: 30px;
     text-align: center;
+    cursor: pointer;
 }
 .donation-form{
     display: none;
@@ -687,6 +691,7 @@ section.donation{
     font-size: 13px;
     font-weight: bold;
     padding:10px;
+    cursor: pointer;
 }
 span#errorInput{
     color: #aaa;
@@ -1043,4 +1048,25 @@ span i.fa-solid.fa-circle-exclamation{
         height: 450px;
     }
     
+}
+
+/* Arabic */
+[dir="rtl"] section.banner {
+    background-image: url(../../images/bg15AR.jpg) ;
+}
+
+[dir="rtl"] .banner-container {
+    margin-right: 43px;
+}
+
+[dir="rtl"] .why-us-container{
+    margin: 123px 43px 0 0;
+}
+
+[dir="rtl"] .why-us-grid-col1.col1-content{
+    text-align: right!important;
+}
+
+[dir="rtl"] .about-col2{
+    padding: 0 40px 0px 60px;
 }

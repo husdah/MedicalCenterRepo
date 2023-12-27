@@ -1,7 +1,9 @@
 <?php
-require('middleware/doctorMiddleware.php');
+session_start();
 require('../config/dbcon.php');
-$query="SELECT Fname, Lname, email, phoneNumber, profilePic, facebook, instagram, linkedin FROM user JOIN doctor ON user.userId = doctor.userId LEFT JOIN media ON doctor.doctorId = media.doctorId WHERE doctor.doctorid = 2;";
+require('middleware/doctorMiddleware.php');
+$did=$_SESSION['doctorId'];
+$query="SELECT Fname, Lname, email, phoneNumber, profilePic, facebook, instagram, linkedin FROM user JOIN doctor ON user.userId = doctor.userId LEFT JOIN media ON doctor.doctorId = media.doctorId WHERE doctor.doctorid =$did;";
 $result=mysqli_query($con,$query);
 while($row=mysqli_fetch_assoc($result))
 {
@@ -12,7 +14,13 @@ while($row=mysqli_fetch_assoc($result))
     $instagram=$row['instagram'];
     $linkedin=$row['linkedin'];
     $phoneNumber=$row['phoneNumber'];
-    $photo=$row['profilePic'];
+    if($row['profilePic']==null)
+    { $photo="docImgPlaceholder.jpg";}
+    else
+    {
+        $photo=$row['profilePic'];
+    }
+   
 }
 ?>
 <!DOCTYPE html>
@@ -59,8 +67,8 @@ while($row=mysqli_fetch_assoc($result))
                 <i class="fa-solid fa-pen"></i>
             </div>
             <div class="title2i">
-                <input type="text" name="demail" id="demail" value="<?=$email?>">
-                <i class="fa-solid fa-pen"></i>
+                <input type="text" name="demail" id="demail" value="<?=$email?>" style="color:gray" readonly>
+                <i class="fa-solid fa-pen" style="color:gray"></i>
             </div>
             <div class="emailerror" id="emailerror"></div>
             <div class="title2i">

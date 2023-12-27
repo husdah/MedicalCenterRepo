@@ -3,7 +3,7 @@ require('config/dbcon.php');
 $cid=$_GET['cid'];
 $query1="select name from clinic where clinicid=$cid";
 $result1=mysqli_query($con,$query1);
-$query2 = "SELECT user.Fname, user.Lname, doctor.doctorId, doctor.ProfilePic, media.facebook, media.instagram, media.linkedin  FROM user  JOIN doctor ON user.userId = doctor.userId LEFT JOIN media ON doctor.doctorId = media.doctorId WHERE doctor.clinicId = $cid";
+$query2 = "SELECT user.Fname, user.Lname, doctor.doctorId, doctor.ProfilePic, media.facebook, media.instagram, media.linkedin  FROM user  JOIN doctor ON user.userId = doctor.userId LEFT JOIN media ON doctor.doctorId = media.doctorId WHERE doctor.clinicId = $cid AND deleted='0'";
 
 $result1=mysqli_query($con,$query1);
 $result2=mysqli_query($con,$query2);
@@ -11,9 +11,23 @@ while($row=mysqli_fetch_assoc($result1))
 {
     $cname=$row['name'];
 }
-//to display the clinics in the side bar
 $query="select clinicId,name,description,icon from clinic";
 $res=mysqli_query($con,$query);
+$facebook = "#";
+$instagram="#";
+$linkedin="#";
+while($row=mysqli_fetch_assoc($result1))
+{
+    if($row['facebook'] != null){
+        $facebook = $row['facebook'];
+    }
+    if($row['instagram'] != null){
+        $instagram = $row['instagram'];
+    }
+    if($row['linkedin'] != null){
+        $linkedin= $row['linkedin'];
+    }
+}
 ?>
 <!DOCTYPE html>
     <html lang="en">
@@ -100,7 +114,7 @@ $res=mysqli_query($con,$query);
                 </div>
 
                 <h3 class="card__name">Dr '.$row['Fname'].' '.$row['Lname'].'</h3>
-                <span class="card__profession">Cardiology/electrophysiology</span>
+                <span class="card__profession">'.$cname.'</span>
 
                 <div class="card__social" id="card-social">
                     <div class="card__social-control">
@@ -113,16 +127,16 @@ $res=mysqli_query($con,$query);
     
                        
                         <ul class="card__social-list">
-                            <a href="'.$row["facebook"].'" target="_blank" class="card__social-link">
+                            <a href="'.$facebook.'" class="card__social-link">
                                 <i class="fa-brands fa-facebook"></i>
                             </a>
     
-                            <a href="'.$row["instagram"].'" target="_blank" class="card__social-link">
+                            <a href="'.$instagram.'" class="card__social-link">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
     
-                            <a href="'.$row["linkedin"].'" target="_blank" class="card__social-link">
-                                <i class="fa-brands fa-x-twitter"></i>
+                            <a href="'.$linkedin.'" class="card__social-link">
+                                <i class="fa-brands fa-linkedin"></i>
                             </a>
                         </ul>
                     </div>

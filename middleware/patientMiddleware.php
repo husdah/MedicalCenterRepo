@@ -1,25 +1,104 @@
 <?php
 
-session_start();
+function isValidToken($token) {
+    // Implement your logic to check if the token is valid (e.g., compare with the database)
+    // Return true if valid, false otherwise
+    // ...
+    global $con;
+    $token_check = "SELECT * From user WHERE auth_token = ?";
+    $token_check_run = mysqli_prepare($con, $token_check);
+    mysqli_stmt_bind_param($token_check_run, "s", $token);
+    mysqli_stmt_execute($token_check_run);
+    $result = mysqli_stmt_get_result($token_check_run);
 
-if(isset($_SESSION['auth']))
-{
-    if($_SESSION['role_as'] !=2){
-       /*  redirect('../home.php',"You Are Not Authorized To Access This Page!"); */
-
-       if($_SESSION['role_as'] == 0){
-        header('Location: admin/dashboard.php');
-       }
-       else if($_SESSION['role_as'] == 1){
-        header('Location: doctor/dashboard.php');
-       }
-       else{
-        header('Location: home.php');
-       }
+    if (mysqli_num_rows($result) > 0) {
+        return true;
+    }else{
+        return false;
     }
-}else{
-    /* redirect('../sign-in-up.php',"Login to continue"); */
-    header('Location: sign-in-up.php');
 }
 
+function getUserByToken($token) {
+    // Implement your logic to retrieve user information based on the token
+    // Return user information array if found, or false if not found
+    // ...
+
+    global $con;
+    $get_user = "SELECT * From user WHERE auth_token = ?";
+    $get_user_run = mysqli_prepare($con, $get_user);
+    mysqli_stmt_bind_param($get_user_run, "s", $token);
+    mysqli_stmt_execute($get_user_run);
+    $result = mysqli_stmt_get_result($get_user_run);
+
+    
+    return $result;
+}
+
+function checkRole($role) {
+    if($role !=2){
+ 
+        if($role == 0){
+            header('Location: admin/dashboard.php');
+        }
+        else if($role == 1){
+            header('Location: doctor/dashboard.php');
+        }
+        else{
+            header('Location: home.php');
+        }
+    }
+}
+
+// Check if the user is logged in
+if (isset($_COOKIE['auth_token'])) {
+
+    if(!isset($_SESSION['auth']))
+    {
+        $token = $_COOKIE['auth_token'];
+
+        // Check if the token is valid (compare with the database)
+        if (isValidToken($token)) {
+            // Token is valid, user is logged in
+            $user = getUserByToken($token);
+    
+            $_SESSION['auth'] = true;
+            $userdata = mysqli_fetch_array($user);
+            $username = $userdata['Fname'] . " " . $userdata['Lname'];
+            $useremail = $userdata['email'];
+            $userid = $userdata['userId'];
+            $role_as = $userdata['role'];
+    
+            $_SESSION['auth_user'] = [
+                'user_id' => $userid,
+                'name' => $username,
+                'email' => $useremail,
+                'token' => $token // Save the token in the session
+            ];
+            $_SESSION['role_as'] = $role_as;
+
+            if ($role_as == 2) {
+                $getId_query= "SELECT patientId FROM patient WHERE userId=?";
+                $getId_query_run = mysqli_prepare($con, $getId_query);
+                mysqli_stmt_bind_param($getId_query_run, "i", $userid);
+                mysqli_stmt_execute($getId_query_run);
+                $result = mysqli_stmt_get_result($getId_query_run);
+
+                if(mysqli_num_rows($result) > 0){
+                    $row = mysqli_fetch_assoc($result);
+                    $patientId = $row['patientId'];
+                    $_SESSION['patientId']= $patientId;
+                }
+            }
+            checkRole($_SESSION['role_as']);
+    
+        } else {
+            header('Location: sign-in-up.php');
+        }
+    }else{
+        checkRole($_SESSION['role_as']);
+    }
+
+} else {
+    header('Location: sign-in-up.php');
+}
 ?>

@@ -51,6 +51,9 @@ nav{
     /* border: 1px solid yellow; */
 }
 
+
+
+
 /*Styling Links*/
 .nav-links{
     display: flex;
@@ -65,7 +68,9 @@ nav{
 
     /* border: 1px solid yellow; */
 }
-
+ul .dropdown_menu a{
+    color:#fff;
+}
 .nav-links .links{
     display: flex;
     align-items: center;
@@ -143,6 +148,11 @@ nav{
     cursor: pointer;
 
 }
+
+.login-button i{
+    margin-right: 5px;
+}
+
 .login-button:hover {
     color: var(--dark);
     background-color: var(--light);
@@ -263,4 +273,9 @@ nav{
 }
 .toggle .line3{
     transform: rotate(45deg) translate(-5px,-6px);
+}
+
+/* Arabic */ 
+[dir="rtl"] .navlogo img {
+    margin-right: 43px;
 }

@@ -1,4 +1,6 @@
 <?php
+  session_start();
+  require('config/dbcon.php');
   require('middleware/patientMiddleware.php');
 ?>
 <!DOCTYPE html>

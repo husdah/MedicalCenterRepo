@@ -35,12 +35,16 @@ $('#calendar').datepicker({
   },
   
   beforeShowDay: function (date) {
-    var day = date.getDay(); 
+    var currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+
+    var day = date.getDay();
     var isEnabled = enabledDays.includes(dayNames[day]);
+    var isBeforeToday = date.getTime() < currentDate.getTime();
 
     return [
-      isEnabled, 
-      isEnabled ? '' : 'disabled-day' 
+      isEnabled && !isBeforeToday,
+      isEnabled ? '' : 'disabled-day'
     ];
   },
   onSelect: function(dateText, inst){
@@ -129,6 +133,7 @@ $(".request .day").text(fullDate);
     center.prev("div").addClass("center-n");
     center.next("div").addClass("center-n");
   }
+  
 });
 /******************************/ 
 
