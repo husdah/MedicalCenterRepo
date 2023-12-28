@@ -2,10 +2,16 @@
 require('middleware/doctorMiddleware.php');
 include("queryFunctions/queryfunctions.php");
 $doctorId = $_SESSION['doctorId'];
+$userEmail = $_SESSION['auth_user']['email'];
 /* $doctorId = getDoctorId($doctor);  */
 if (isset($_GET['id'])) {
     $patientId = $_GET['id'];
 }
+$sql = "SELECT `email` FROM `patient`, `user` WHERE patient.patientId = $patientId AND
+ patient.userId = user.userId";
+$result = mysqli_query($con, $sql);
+$row = mysqli_fetch_assoc($result);
+$email = $row['email'];
 ?>
 
 
@@ -89,7 +95,7 @@ if (isset($_GET['id'])) {
             }}
             ?>
                 </table>
-                <button class="send-email">Send Email</button>
+                <button class="send-email" id="sendEmailButton">Send Email</button>
             </div>
             
         </div>
@@ -160,6 +166,21 @@ if (isset($_GET['id'])) {
         </div>
     </div>
     <!-- End of Content -->
+
+    <script>
+    document.getElementById('sendEmailButton').addEventListener('click', function() {
+    // Replace 'patient_email@example.com' with the patient's email address
+    var patientEmail = "<?php echo $email; ?>";
+    
+    // Constructing the mailto link
+    var mailtoLink = 'mailto:' + patientEmail;
+    
+    // Open the mail client
+    window.location.href = mailtoLink;
+
+    });
+
+    </script>
 
     <script src="assets/js/patient.js"></script>
 </body>
