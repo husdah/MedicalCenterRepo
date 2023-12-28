@@ -1,3 +1,23 @@
+// Set a default language (e.g., English)
+let currentLanguage = 'ar';
+
+// Function to change language
+function changeLanguage(language) {
+    currentLanguage = language;
+    // Re-run validation functions to update error messages
+    checkEmailOrPhone();
+    validateEmailOrPhone();
+    validateSelect();
+}
+// Function to get language from URL
+function getLanguageFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('lang') || 'en'; // Default to English if not found
+}
+
+// Initialize currentLanguage based on URL
+currentLanguage = getLanguageFromURL();
+
 // Form variable
 const donateForm   = document.getElementById('donateform');
 
@@ -8,15 +28,6 @@ const bloodType    = document.getElementById('mySelect');
 
 // Form Button variable
 const btn_donate   = document.getElementById('click_donate');
-
-// Function to change language
-function changeLanguage(language) {
-    const currentLanguage = language;
-    // Re-run validation functions to update error messages
-    checkEmailOrPhone();
-    validateEmailOrPhone();
-    validateSelect();
-}
 
 // Function to handle submit email and phone events
 function validateInput(input) {
@@ -40,7 +51,6 @@ const translations = {
       error:'الهاتف او بريد إلكتروني',
     },
 };
-
 
 //Validation on Focusout Event For Empty Input
 const checkEmailOrPhone = () => {
@@ -72,6 +82,7 @@ const validateEmailOrPhone = () => {
         }
     }
 }
+
 const validateSelect = () => {
     var selectedOption = bloodType.options[bloodType.selectedIndex];
     var selectedValue  = selectedOption.value;
@@ -95,7 +106,7 @@ btn_donate?.addEventListener("click", function(event) {
     if (event.target.type === 'submit') {
         event.preventDefault();
         alert("stop submit");
-    }else{
+    } else {
         if(!validateSelect() || !checkEmailOrPhone() || !validateEmailOrPhone()){
             validateSelect();
             checkEmailOrPhone();
@@ -141,6 +152,3 @@ btn_donate?.addEventListener("click", function(event) {
         }
     }
 });
-
-
-  
