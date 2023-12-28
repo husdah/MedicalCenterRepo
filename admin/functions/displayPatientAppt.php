@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $query = "SELECT CONCAT(Fname, ' ', Lname) AS docName, app.date AS date, app.time AS time, app.status AS status, doctor.doctorId As doctorId , doctor.profilePic As profilePic
 FROM user, appointment AS app, patient, doctor
 WHERE app.patientId = patient.patientId 
+AND app.doctorId = doctor.doctorId 
 AND doctor.userId = user.userId
 AND patient.patientId=? ";
 

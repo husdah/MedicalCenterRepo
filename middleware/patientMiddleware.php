@@ -60,36 +60,41 @@ if (isset($_COOKIE['auth_token'])) {
         if (isValidToken($token)) {
             // Token is valid, user is logged in
             $user = getUserByToken($token);
-    
-            $_SESSION['auth'] = true;
             $userdata = mysqli_fetch_array($user);
             $username = $userdata['Fname'] . " " . $userdata['Lname'];
             $useremail = $userdata['email'];
             $userid = $userdata['userId'];
             $role_as = $userdata['role'];
+
+            $restricted = $userdata['restricted'];
+
+            if($restricted == 0){
+                $_SESSION['auth'] = true;
+                $_SESSION['auth_user'] = [
+                    'user_id' => $userid,
+                    'name' => $username,
+                    'email' => $useremail,
+                    'token' => $token // Save the token in the session
+                ];
+                $_SESSION['role_as'] = $role_as;
     
-            $_SESSION['auth_user'] = [
-                'user_id' => $userid,
-                'name' => $username,
-                'email' => $useremail,
-                'token' => $token // Save the token in the session
-            ];
-            $_SESSION['role_as'] = $role_as;
-
-            if ($role_as == 2) {
-                $getId_query= "SELECT patientId FROM patient WHERE userId=?";
-                $getId_query_run = mysqli_prepare($con, $getId_query);
-                mysqli_stmt_bind_param($getId_query_run, "i", $userid);
-                mysqli_stmt_execute($getId_query_run);
-                $result = mysqli_stmt_get_result($getId_query_run);
-
-                if(mysqli_num_rows($result) > 0){
-                    $row = mysqli_fetch_assoc($result);
-                    $patientId = $row['patientId'];
-                    $_SESSION['patientId']= $patientId;
+                if ($role_as == 2) {
+                    $getId_query= "SELECT patientId FROM patient WHERE userId=?";
+                    $getId_query_run = mysqli_prepare($con, $getId_query);
+                    mysqli_stmt_bind_param($getId_query_run, "i", $userid);
+                    mysqli_stmt_execute($getId_query_run);
+                    $result = mysqli_stmt_get_result($getId_query_run);
+    
+                    if(mysqli_num_rows($result) > 0){
+                        $row = mysqli_fetch_assoc($result);
+                        $patientId = $row['patientId'];
+                        $_SESSION['patientId']= $patientId;
+                    }
                 }
+                checkRole($_SESSION['role_as']);
+            }else{
+                header('Location: logout.php');
             }
-            checkRole($_SESSION['role_as']);
     
         } else {
             header('Location: sign-in-up.php');

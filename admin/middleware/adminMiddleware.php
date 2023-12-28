@@ -57,26 +57,28 @@ if (isset($_COOKIE['auth_token'])) {
         if (isValidToken($token)) {
             // Token is valid, user is logged in
             $user = getUserByToken($token);
-    
-            // Example: store user information in the session
-    /*         $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username']; */
-    
-            $_SESSION['auth'] = true;
             $userdata = mysqli_fetch_array($user);
             $username = $userdata['Fname'] . " " . $userdata['Lname'];
             $useremail = $userdata['email'];
             $userid = $userdata['userId'];
             $role_as = $userdata['role'];
-    
-            $_SESSION['auth_user'] = [
-                'user_id' => $userid,
-                'name' => $username,
-                'email' => $useremail,
-                'token' => $token // Save the token in the session
-            ];
-            $_SESSION['role_as'] = $role_as;
-            checkRole($_SESSION['role_as']);
+
+            $restricted = $userdata['restricted'];
+
+            if($restricted == 0){
+                $_SESSION['auth'] = true;
+                $_SESSION['auth_user'] = [
+                    'user_id' => $userid,
+                    'name' => $username,
+                    'email' => $useremail,
+                    'token' => $token // Save the token in the session
+                ];
+                $_SESSION['role_as'] = $role_as;
+                checkRole($_SESSION['role_as']);
+            }else{
+                redirect('../logout.php',"You are Restricted form Logining in!");
+            }
+           
     
         } else {
             redirect('../sign-in-up.php',"Login to continue");

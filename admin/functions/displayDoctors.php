@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     class doctor
 {
     public $doctorId;
+    public $userId;
     public $docName;
     public $clinicName;
     public $profilePic;
@@ -16,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 if($deletedFilter == 2){
-    $query= "SELECT  CONCAT(user.Fname, ' ', user.Lname) AS docName, clinic.name AS clinicName, doctor.doctorId AS doctorId, doctor.profilePic AS profilePic, doctor.deleted AS deleted
+    $query= "SELECT  CONCAT(user.Fname, ' ', user.Lname) AS docName, clinic.name AS clinicName, doctor.doctorId AS doctorId, doctor.userId AS userId , doctor.profilePic AS profilePic, doctor.deleted AS deleted
     FROM user
     INNER JOIN doctor ON doctor.userId = user.userId
     LEFT JOIN clinic ON doctor.clinicId = clinic.clinicId";
@@ -24,7 +25,7 @@ if($deletedFilter == 2){
     mysqli_stmt_execute($query_run);
     $result = mysqli_stmt_get_result($query_run);
 }else{
-    $query= "SELECT  CONCAT(user.Fname, ' ', user.Lname) AS docName, clinic.name AS clinicName, doctor.doctorId AS doctorId, doctor.profilePic AS profilePic, doctor.deleted AS deleted
+    $query= "SELECT  CONCAT(user.Fname, ' ', user.Lname) AS docName, clinic.name AS clinicName, doctor.doctorId AS doctorId, doctor.userId AS userId, doctor.profilePic AS profilePic, doctor.deleted AS deleted
     FROM user
     INNER JOIN doctor ON doctor.userId = user.userId
     LEFT JOIN clinic ON doctor.clinicId = clinic.clinicId
@@ -41,6 +42,7 @@ if($deletedFilter == 2){
         for ($i = 0; $row = $result->fetch_assoc(); $i++) {
             $d = new doctor();
             $d->doctorId = $row['doctorId'];
+            $d->userId = $row['userId'];
             $d->docName = $row['docName'];
             $d->clinicName = $row['clinicName'];
             $d->profilePic = $row['profilePic'];

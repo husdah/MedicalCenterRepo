@@ -13,7 +13,7 @@ function clearTokenFromDatabase($userId) {
 }
 
 // Check if the user is logged in
-if (isset($_SESSION['auth_user']['user_id'])) {
+if (isset($_SESSION['auth_user']['user_id']) || isset($_COOKIE['auth_token'])) {
     // Clear the token from the client's cookies
     setcookie("auth_token", "", time() - 3600, "/");
 

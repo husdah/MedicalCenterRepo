@@ -15,7 +15,8 @@ $query = "SELECT CONCAT(user.Fname, ' ', user.Lname) AS PatientName, app.date AS
               INNER JOIN patient
               ON app.patientId = patient.patientId
               INNER JOIN user
-              ON patient.userId = user.userId;";
+              ON patient.userId = user.userId
+              WHERE app.status <> 'rejected';";
 $query_run = mysqli_prepare($con, $query);
 mysqli_stmt_execute($query_run);
 $result = mysqli_stmt_get_result($query_run);
