@@ -59,11 +59,6 @@ input.onkeyup = (e)=>{
         });
         searchInput.classList.add("active"); //show autocomplete box
         showSuggestions(emptyArray);
-/*         let allList = resultBox.querySelectorAll("li");
-        for (let i = 0; i < allList.length; i++) {
-            //adding onclick attribute in all li tag
-            allList[i].setAttribute("onclick", "window.location='patients.html';");
-        } */
     }else{
         searchInput.classList.remove("active"); //hide autocomplete box
     }

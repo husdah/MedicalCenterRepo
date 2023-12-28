@@ -35,7 +35,6 @@
                 <i class='bx bx-clinic'></i>
                 <span class="info">
                     <h3>
-                        <!-- 1,074 -->
                         <?= $clinicsNb ?>
                     </h3>
                     <p>Clinics</p>
@@ -44,7 +43,6 @@
             <li><i class='bx bx-first-aid'></i>
                 <span class="info">
                     <h3>
-                        <!-- 3,944 -->
                         <?= $doctorsNb ?>
                     </h3>
                     <p>Doctors</p>
@@ -53,7 +51,6 @@
             <li><i class='bx bx-group'></i>
                 <span class="info">
                     <h3>
-                        <!-- 14,721 -->
                         <?= $patientsNb ?>
                     </h3>
                     <p>Patients</p>
@@ -62,7 +59,6 @@
             <li><i class='bx bx-donate-blood'></i>
                 <span class="info">
                     <h3>
-                        <!-- 6,742 -->
                         <?= $donorsNb ?>
                     </h3>
                     <p>Donors</p>

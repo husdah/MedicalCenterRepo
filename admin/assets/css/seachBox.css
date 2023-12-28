@@ -3,12 +3,6 @@
 	display: inline-block;
 }
 
-/* #searchIcon {
-	cursor: pointer;
-	font-size: 18px;
-	color: #333;
-} */
-
 .searchBox {
 	display: none;
 	position: absolute;

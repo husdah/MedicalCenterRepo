@@ -166,6 +166,7 @@ const getPatientApp = async() => {
                                         <td>${user.doctor}</td>
                                         <td>${user.date}</td>
                                         <td>${user.time}</td>
+                                        <td>${user.status}</td>
                                         <td><button id="cancel-btn" onclick ='del(${user.id})'>Cancel</button></td>
                                     </tr>`
     

@@ -4,20 +4,15 @@ header('Content-type: application/json');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $json = json_decode(file_get_contents('php://input'));
 
-/*     $name=test_input($json->clinicName);
-    $description=test_input($json->clinicDesc); */
-
     $name = test_input($_POST['clinicName']);
     $description = test_input($_POST['clinicDesc']);
 
     $image = $_FILES['clinicImg']['name'];
     $path="../../uploads";
-    /* $image_ext =pathinfo($image,PATHINFO_EXTENSION); */
     $image_ext = strtolower(pathinfo($image, PATHINFO_EXTENSION));
     $filename= time().'.'.$image_ext;
 
     $icon = $_FILES['clinicIcon']['name'];
-    /* $icon_ext =pathinfo($icon,PATHINFO_EXTENSION); */
     $icon_ext = strtolower(pathinfo($icon, PATHINFO_EXTENSION));
     $filename2= time()+1 .'.'.$icon_ext;
 
@@ -58,7 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         mysqli_stmt_store_result($clinic_check_query_run);
         if (mysqli_stmt_num_rows($clinic_check_query_run) > 0) {
             mysqli_stmt_close($clinic_check_query_run);
-            /* mysqli_close($con); */
             $response = 500;
             $msg= "Clinic already exists!";
         }else{

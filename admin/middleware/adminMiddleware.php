@@ -29,7 +29,6 @@ function getUserByToken($token) {
     mysqli_stmt_bind_param($get_user_run, "s", $token);
     mysqli_stmt_execute($get_user_run);
     $result = mysqli_stmt_get_result($get_user_run);
-
     
     return $result;
 }

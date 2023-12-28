@@ -169,7 +169,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         mysqli_stmt_close($Email_check_query_run);
-        /* mysqli_stmt_close($phoneCheckQueryRun); */
         mysqli_close($con);
     }
 

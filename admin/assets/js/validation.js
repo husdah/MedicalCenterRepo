@@ -611,25 +611,6 @@ function handleInputTimeEvent(event) {
 }
 
 // Function to handle input Acount CHECk events
-/* function handleAccountCheckEvent(event) {
-    var inputElement = event.target;
-
-    if(!inputElement.checked){
-        patientEmailInput.classList.remove("required"); 
-        document.getElementById(patientEmailInput.id + 'Error').textContent = "Email";
-
-        patientPhoneInput.classList.remove("required");
-        document.getElementById(patientPhoneInput.id + 'Error').textContent = "Phone";
-
-        patientPassInput.classList.remove("required");
-         document.getElementById(patientPassInput.id + 'Error').textContent = "Password";
-
-        patientPassConfirmInput.classList.remove("required");
-        document.getElementById(patientPassConfirmInput.id + 'Error').textContent = "Confirm password";
-    }
-} */
-
-// Function to handle input Acount CHECk events
 function handleClosedCheckEvent(event) {
     var inputElement = event.target;
 
@@ -776,14 +757,10 @@ patientLNInput?.addEventListener('input', handleInputNameEvent);
 var patientMaleCheck = document.getElementById('male');
 var patientFemaleCheck = document.getElementById('female');
 
-/* var patientAccountCheck = document.getElementById('account');
-patientAccountCheck?.addEventListener("change",handleAccountCheckEvent); */
-
 var patientDOBInput = document.getElementById('patientDOB');
 patientDOBInput?.addEventListener('input', handleDOBEvent);
 
 var patientBloodTypeInput = document.getElementById('patientBT');
-/* patientBloodTypeInput?.addEventListener('change', handleSelectEvent); */
 
 var patientEmailInput = document.getElementById('patientEmail');
 patientEmailInput?.addEventListener('input', handleInputEmailEvent);
@@ -834,9 +811,6 @@ var WHClosedCheck = document.getElementById('closed');
 WHClosedCheck?.addEventListener("change",handleClosedCheckEvent);
 
 //add doctor working hours form
-/* var docNameInput = document.getElementById('docName');
-docNameInput?.addEventListener('input', handleInputNameEvent); */
-
 var DWHDayInput = document.getElementById('DWHDay');
 DWHDayInput?.addEventListener('change', handleSelectEvent);
 
@@ -903,9 +877,6 @@ addClinicFormBtn?.addEventListener("click", function(event) {
                             if (data.response == 200) {
             
                                 clinicDetails();
-                               /*  $('.alert').removeClass("hide");
-                                $('.alert').addClass("show");
-                                document.getElementById("alertMsg").innerHTML = data.message; */
                                 swal("Success!", data.message, "success");
                 
                                 clinicNameInput.value = "";
@@ -971,10 +942,6 @@ editClinicFormBtn?.addEventListener("click", function(event) {
                         if (data.response == 200) {
         
                             clinicDetails();
-                            /* $('.alert').removeClass("hide");
-                            $('.alert').addClass("show");
-                            document.getElementById("alertMsg").innerHTML = data.message; */
-
                             swal("Success!", data.message, "success");
             
                             editClinicNameInput.value = "";
@@ -1057,10 +1024,6 @@ addDoctorFormBtn?.addEventListener("click", function(event) {
                         if (data.response == 200) {
         
                             doctorDetails();
-                            /* $('.alert').removeClass("hide");
-                            $('.alert').addClass("show");
-                            document.getElementById("alertMsg").innerHTML = data.message; */
-
                             swal("Success!", data.message, "success");
             
                             doctorFNInput.value = "";
@@ -1132,10 +1095,6 @@ editDoctorFormBtn?.addEventListener("click", function(event) {
                         if (data.response == 200) {
         
                             specificDrDetails();
-                            /* $('.alert').removeClass("hide");
-                            $('.alert').addClass("show");
-                            document.getElementById("alertMsg").innerHTML = data.message; */
-
                             swal("Success!", data.message, "success");
             
                         }else if(data.response == 500){
@@ -1218,10 +1177,6 @@ addPatientFormBtn?.addEventListener("click", function(event) {
                         if (data.response == 200) {
         
                             patientDetails();
-                            /* $('.alert').removeClass("hide");
-                            $('.alert').addClass("show");
-                            document.getElementById("alertMsg").innerHTML = data.message; */
-
                             swal("Success!", data.message, "success");
             
                             patientFNInput.value = "";
@@ -1232,7 +1187,6 @@ addPatientFormBtn?.addEventListener("click", function(event) {
                             patientPassInput.value = "";
                             patientPassConfirmInput.value = "";
                             patientMaleCheck.checked = true;
-                            /* patientBloodTypeInput = "BT"; */
                             document.getElementById('patientBT').value = "BT"
             
                         }else if(data.response == 500){
@@ -1293,10 +1247,6 @@ urgentBloodTypeFormBtn?.addEventListener("click",  function(event) {
                     if (data.response === 200) {
         
                         bloodDetails();
-                        /* $('.alert').removeClass("hide");
-                        $('.alert').addClass("show");
-                        document.getElementById("alertMsg").innerHTML = data.message; */
-
                         swal("Success!", data.message, "success");
         
                         urgentBTInput.value = "BT";
@@ -1351,13 +1301,8 @@ adminFormBtn1?.addEventListener("click", function(event) {
                     .then((response) => response.json())
                     .then((data) => {
                         if (data.response == 200) {
-        
-                            /* $('.alert').removeClass("hide");
-                            $('.alert').addClass("show");
-                            document.getElementById("alertMsg").innerHTML = data.message; */
 
-                            swal("Success!", data.message, "success");
-                            
+                            swal("Success!", data.message, "success"); 
                             adminDetails();
             
                         }else if(data.response == 500){
@@ -1416,10 +1361,6 @@ adminFormBtn2?.addEventListener("click", function(event) {
                     .then((data) => {
                         if (data.response == 200) {
         
-                            /* $('.alert').removeClass("hide");
-                            $('.alert').addClass("show");
-                            document.getElementById("alertMsg").innerHTML = data.message; */
-
                             swal("Success!", data.message, "success");
 
                             adminCurrentPassInput.value = "";
@@ -1486,17 +1427,15 @@ manageWHFormBtn?.addEventListener("click", function(event) {
 
                             centerWHDetails();
                             doctorsWHDetails();
-        
-                            /* $('.alert').removeClass("hide");
-                            $('.alert').addClass("show");
-                            document.getElementById("alertMsg").innerHTML = data.message; */
-
                             swal("Success!", data.message, "success");
 
                             WHDayInput.value = "WHDay";
                             WHFromInput.value = "";
                             WHTOInput.value = "";
+                            WHFromInput.disabled = false;
+                            WHTOInput.disabled = false;
                             WHClosedCheck.checked = false;
+
             
                         }else if(data.response == 500){
                             swal("Note!", data.message +"!", "warning");
@@ -1555,16 +1494,15 @@ manageDWHFormBtn?.addEventListener("click", function(event) {
                     .then((response) => response.json())
                     .then((data) => {
                         if (data.response == 200) {
-        
-                            /* $('.alert').removeClass("hide");
-                            $('.alert').addClass("show");
-                            document.getElementById("alertMsg").innerHTML = data.message; */
 
                             swal("Success!", data.message, "success");
             
                             DWHDayInput.value = "WHDay";
                             DWHFromInput.value = "";
                             DWHTOInput.value = "";
+                            DWHFromInput.disabled = false;
+                            DWHTOInput.disabled = false;
+                            DWHAvailableCheck.checked = true;
             
                         }else if(data.response == 500){
                             swal("Note!", data.message +"!", "warning");
@@ -1619,13 +1557,8 @@ manageExceptionFormBtn?.addEventListener("click", function(event) {
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.response == 200) {
-    
-                        /* $('.alert').removeClass("hide");
-                        $('.alert').addClass("show");
-                        document.getElementById("alertMsg").innerHTML = data.message; */
 
                         swal("Success!", data.message, "success");
-                        
                         exceptionDetails();
 
                         exceptionDayInput.value = "";
@@ -1686,10 +1619,6 @@ addReminderFormBtn?.addEventListener("click", function(event) {
                     if (data.response === 200) {
         
                         reminderDetails();
-/*                         $('.alert').removeClass("hide");
-                        $('.alert').addClass("show");
-                        document.getElementById("alertMsg").innerHTML = data.message; */
-
                         swal("Success!", data.message, "success");
         
                         reminderInput.value = "";
@@ -1772,33 +1701,6 @@ const reminderDetails = async() => {
     }
 }
 reminderDetails();
-
-/* let recentApptTbody = document.getElementById('recentApptTbody');
-const recentApptDetails = async() => {
-    if(recentApptTbody){
-        const res = await fetch('functions/displayRecentAppt.php');
-        const received_data = await res.json();
-        recentApptTbody.innerHTML = '';
-        console.log(received_data);
-        if(received_data != 'empty'){
-            received_data.forEach(rm => {
-                var formattedTime = formatTimeToAMPM(`${rm.time}`);
-               recentApptTbody.innerHTML += `            
-                <tr>
-                <td>
-                    <a href="view-patient.php"><p class="name">${rm.PatientName}</p></a>
-                </td>
-                <td class="date">${rm.date}</td>
-                <td>${formattedTime}</td>
-                <td><span class="status ${rm.status}">${rm.status}</span></td>
-                </tr>`;
-            });
-        }else{
-            recentApptTbody.innerHTML = `<tr><td colspan ='4'>no appointments found</td></tr>`;
-        }
-    }
-}
-recentApptDetails(); */
 
 const recentApptTbody = document.getElementById('recentApptTbody');
 const apptDisplay = document.getElementById('apptDisplay');
@@ -2001,7 +1903,6 @@ donorDetails();
 let doctorsTbody = document.getElementById('doctorsTbody');
 const doctorDetails = async() => {
     if(doctorsTbody){
-        /* const res = await fetch('functions/displayDoctors.php'); */
         const data = {
             filterBy: doctorDisplay.value
         };
@@ -2326,7 +2227,6 @@ const specificPatientApptDetails = async() => {
         }
     }
 }
-/* specificPatientApptDetails(); */
 
 let adminForms = document.getElementById('adminForms');
 const adminDetails = async() => {
@@ -2338,12 +2238,6 @@ const adminDetails = async() => {
             received_data.forEach(admin => {
                 adminNameInput.value = admin.name;
                 adminEmailInput.value = admin.email;
-/*                 adminPassInput.value = admin.password;
-                adminPassConfirmInput.value = admin.password; */
-
-                /* document.getElementById('login-name').value = admin.name;
-                document.getElementById('login-email').value = admin.email; */
-                /* document.getElementById('login-password').value = admin.password; */
             });
         }
     }
@@ -2351,13 +2245,11 @@ const adminDetails = async() => {
 adminDetails();
 
 let centerWHTbody = document.getElementById('centerWHTbody');
-/* let wDaysTh = document.getElementById('workingDaysTH'); */
 const centerWHDetails = async() => {
     if(centerWHTbody){
         const res = await fetch('functions/displayCenterWH.php');
         const received_data = await res.json();
         centerWHTbody.innerHTML = '';
-        /* wDaysTh.innerHTML = "Doctors"; */
         console.log(received_data);
         if(received_data != 'empty'){
             received_data.forEach(wh => {
@@ -2390,10 +2282,6 @@ const centerWHDetails = async() => {
             </tr>`;
 
             centerWHTbody.innerHTML += content;
-/* 
-            if(wh.closed == 0){
-                wDaysTh.innerHTML += `<th>${wh.day}</th>`;
-            } */
            
             });
         }else{
@@ -3049,17 +2937,3 @@ function formatTimeToAMPM(originalTime) {
 
     return formattedTime;
 }
-
-
-// alert
-/* if( $('.alert').hasClass("showAlert")){
-setTimeout(function(){
-$('.alert').removeClass("show");
-$('.alert').addClass("hide");
-},5000);
-}
-
-$('.close-btn').click(function(){
-$('.alert').removeClass("show");
-$('.alert').addClass("hide");
-}); */

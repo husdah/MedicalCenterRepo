@@ -10,7 +10,6 @@
         {
             $id = $_GET['doctorId'];
         
-
             ?>
 
         <main>
@@ -32,143 +31,6 @@
             </div>
     
             <div class="bottom-data">
-    <!--                 <div class="orders">
-                    <div class="header">
-                        <i class='bx bx-time'></i>
-                        <h3>Manage WH</h3>
-                        <form class="expanding-search-form">
-                            <div class="search-dropdown">
-                                <button class="button dropdown-toggle" type="button">
-                                <span class="toggle-active">Sort By</span>
-                                <span class="ion-arrow-down-b"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                <li><a href="#">Day</a></li>
-                                <li><a href="#">Availability</a></li>
-                                </ul>
-                            </div>
-                            <input class="search-input" id="global-search" type="search" placeholder="Search">
-                            <button class="button search-button" type="button">
-                                <span class="icon ion-search">
-                                    <span class="sr-only">Search</span>
-                                </span>
-                            </button>
-                        </form>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Day</th>
-                                <th>Available</th>
-                                <th>Exception</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <form action="">
-                            <tr>
-                                <td>Monday</td>
-                                <td>
-                                    <label class="check-container" id="check_display" style="margin: 0 25px;">
-                                        <input type="checkbox" name="available">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </td>
-                                <td class="form" style="background: transparent;">
-                                    <div class="flex">
-                                        <label>
-                                            <input required="" placeholder="" type="text" class="input">
-                                            <span>reason</span>
-                                        </label>
-                                        <label>
-                                            <input type="date" class="input">
-                                        </label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Tuesday</td>
-                                <td>
-                                    <label class="check-container" id="check_display" style="margin: 0 25px;">
-                                        <input type="checkbox" name="available">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </td>
-                                <td class="form" style="background: transparent;">
-                                    <div class="flex">
-                                        <label>
-                                            <input required="" placeholder="" type="text" class="input">
-                                            <span>reason</span>
-                                        </label>
-                                        <label>
-                                            <input required="" placeholder="" type="date" class="input">
-                                        </label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Wednesday</td>
-                                <td>
-                                    <label class="check-container" id="check_display" style="margin: 0 25px;">
-                                        <input type="checkbox" name="available">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </td>
-                                <td class="form" style="background: transparent;">
-                                    <div class="flex">
-                                        <label>
-                                            <input required="" placeholder="" type="text" class="input">
-                                            <span>reason</span>
-                                        </label>
-                                        <label>
-                                            <input required="" placeholder="" type="date" class="input">
-                                        </label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Thursday</td>
-                                <td>
-                                    <label class="check-container" id="check_display" style="margin: 0 25px;">
-                                        <input type="checkbox" name="available">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </td>
-                                <td class="form" style="background: transparent;">
-                                    <div class="flex">
-                                        <label>
-                                            <input required="" placeholder="" type="text" class="input">
-                                            <span>reason</span>
-                                        </label>
-                                        <label>
-                                            <input required="" placeholder="" type="date" class="input">
-                                        </label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Friday</td>
-                                <td>
-                                    <label class="check-container" id="check_display" style="margin: 0 25px;">
-                                        <input type="checkbox" name="available">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </td>
-                                <td class="form" style="background: transparent;">
-                                    <div class="flex">
-                                        <label>
-                                            <input required="" placeholder="" type="text" class="input">
-                                            <span>reason</span>
-                                        </label>
-                                        <label>
-                                            <input required="" placeholder="" type="date" class="input">
-                                        </label>
-                                    </div>
-                                </td>
-                            </tr>
-                            </form>
-                        </tbody>
-                    </table>
-                </div> -->
             <input type="hidden" id="editDrpageId" value="<?= $id; ?>">
             <!-- Reminders -->
             <div class="reminders centerBox">
@@ -249,141 +111,99 @@
             </div>
             <!-- End of Reminders-->
     
-                <!-- Reminders -->
-                <div class="reminders centerBox">
-                    <div class="header">
-                        <i class='bx bx-pencil'></i>
-                        <h3>Edit Doctor Account</h3>
-                    </div>
-                    <form class="form" id="editDoctorForm">
-                        <p class="title">Update Info</p>
-                        <p class="message">Please Enter The Needed Information. </p>
+            <!-- Reminders -->
+            <div class="reminders centerBox">
+                <div class="header">
+                    <i class='bx bx-pencil'></i>
+                    <h3>Edit Doctor Account</h3>
+                </div>
+                <form class="form" id="editDoctorForm">
+                    <p class="title">Update Info</p>
+                    <p class="message">Please Enter The Needed Information. </p>
 
-                        <input type="hidden" value="" id="editDoctorFormId" name="editDoctorFormId">
-                        <input type="hidden" value="" id="editUserId" name="editUserId">
-                        <div class="flex">
-                            <label>
-                                <input id="editDoctorFN" name="editDoctorFN" value="" required placeholder="" type="text" class="input">
-                                <span class="FirstName" id="editDoctorFNError">Firstname</span>
-                            </label>
+                    <input type="hidden" value="" id="editDoctorFormId" name="editDoctorFormId">
+                    <input type="hidden" value="" id="editUserId" name="editUserId">
+                    <div class="flex">
+                        <label>
+                            <input id="editDoctorFN" name="editDoctorFN" value="" required placeholder="" type="text" class="input">
+                            <span class="FirstName" id="editDoctorFNError">Firstname</span>
+                        </label>
+                
+                        <label>
+                            <input id="editDoctorLN" name="editDoctorLN" value="" required placeholder="" type="text" class="input">
+                            <span class="LastName" id="editDoctorLNError">Lastname</span>
+                        </label>
+                    </div>  
+
+                    <label>
+                        <select id="editDoctorClinic" name="editDoctorClinic" class="input s2" required>
+    
+                        </select>
+                        <span id="editDoctorClinicError">Clinic</span>
+                    </label> 
+                            
+                    <label>
+                        <input readonly id="editDoctorEmail" name="editDoctorEmail" value="" required placeholder="" type="email" class="input">
+                        <!-- <span id="editDoctorEmailError">Email</span> -->
+                    </label>
                     
-                            <label>
-                                <input id="editDoctorLN" name="editDoctorLN" value="" required placeholder="" type="text" class="input">
-                                <span class="LastName" id="editDoctorLNError">Lastname</span>
-                            </label>
-                        </div>  
-
-                        <label>
-                            <select id="editDoctorClinic" name="editDoctorClinic" class="input s2" required>
-     
-                            </select>
-                            <span id="editDoctorClinicError">Clinic</span>
-                        </label> 
-                                
-                        <label>
-                            <input disabled id="editDoctorEmail" name="editDoctorEmail" value="" required placeholder="" type="email" class="input">
-                            <!-- <span id="editDoctorEmailError">Email</span> -->
-                        </label>
-                        
-                        <label>
-                            <input id="editDoctorPhone" name="editDoctorPhone" value="" required placeholder="" type="tel" class="input">
-                            <span id="editDoctorPhoneError">Phone</span>
-                        </label>
-                        
-                        <button id="editDoctorFormBtn" type="button" class="submit">Save Changes</button>                              
+                    <label>
+                        <input id="editDoctorPhone" name="editDoctorPhone" value="" required placeholder="" type="tel" class="input">
+                        <span id="editDoctorPhoneError">Phone</span>
+                    </label>
+                    
+                    <button id="editDoctorFormBtn" type="button" class="submit">Save Changes</button>                              
+                </form>
+            </div>
+            <!-- End of Reminders-->
+    
+            <div class="orders">
+                <div class="header">
+                    <i class='bx bx-time'></i>
+                    <h3>Manage Exceptions</h3>
+                    <form class="expanding-search-form">
+                        <div class="search-dropdown">
+                            <button class="button dropdown-toggle" type="button">
+                            <span class="toggle-active">Day</span>
+                            <span class="ion-arrow-down-b"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                            <li class="menu-active"><a href="#">Day</a></li>
+                            </ul>
+                        </div>
+                        <input class="search-input" id="global-search" type="search" placeholder="Search">
+                        <button class="button search-button" type="button">
+                            <span class="icon ion-search">
+                                <span class="sr-only">Search</span>
+                            </span>
+                        </button>
                     </form>
                 </div>
-                <!-- End of Reminders-->
-    
-                <div class="orders">
-                    <div class="header">
-                        <i class='bx bx-time'></i>
-                        <h3>Manage Exceptions</h3>
-                        <form class="expanding-search-form">
-                            <div class="search-dropdown">
-                                <button class="button dropdown-toggle" type="button">
-                                <span class="toggle-active">Day</span>
-                                <span class="ion-arrow-down-b"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                <li class="menu-active"><a href="#">Day</a></li>
-                                </ul>
-                            </div>
-                            <input class="search-input" id="global-search" type="search" placeholder="Search">
-                            <button class="button search-button" type="button">
-                                <span class="icon ion-search">
-                                    <span class="sr-only">Search</span>
-                                </span>
-                            </button>
-                        </form>
-    <!--                     <form class="form" style="background: transparent;">
-                            <div class="flex3">     
-                                <label>ADD Exception: </label>
-                                <label>
-                                    <input required="" placeholder="" type="date" class="input">
-                                </label>
-                                <label>
-                                    <input required="" placeholder="" type="text" class="input">
-                                    <span>reason</span>
-                                </label>
-                                <button class="submit">ADD</button>
-                            </div>
-                        </form> -->
-<!--                     <form class="form" id="manageExceptionForm" action="functions/code.php"  method="post" enctype="multipart/form-data">
-                        <p class="title">Working Exceptions</p>
-                        <p class="message">ADD Exception:</p>
+                <table id="dataTable" class="exceptionTable">
+                    <thead>
+                        <tr>
+                            <th>Day</th>  
+                            <th>From</th>  
+                            <th>To</th>  
+                            <th>Available</th>  
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="exceptionTbody">
 
-                        <input type="hidden" value="" id="docId" name="docId">
-
-                        <div class="flex">
-                            <label>Date:
-                                <input id="exceptionDay" name="exceptionDay" placeholder="" required type="date" class="input">
-                                <p id="exceptionDayError" class="imgError">From</p>
-                            </label>
-                            <label>From:
-                                <input id="exceptionFrom" name="exceptionFrom" required placeholder="" type="time" class="input">
-                                <p id="exceptionFromError" class="imgError">From</p>
-                            </label>
-                    
-                            <label>To:
-                                <input id="exceptionTO" name="exceptionTO" required placeholder="" type="time" class="input">
-                                <p id="exceptionTOError" class="imgError">To</p>
-                            </label>
-                        </div>               
-                        
-                        <label class="check-container" id="check_display">Available
-                            <input type="checkbox" name="availableException" id="availableException">
-                            <span class="checkmark"></span>
-                        </label>
-    
-                        <button id="manageExceptionFormBtn" type="button" class="submit">ADD</button>
-                    </form> -->
-                    </div>
-                    <table id="dataTable" class="exceptionTable">
-                        <thead>
-                            <tr>
-                                <th>Day</th>  
-                                <th>From</th>  
-                                <th>To</th>  
-                                <th>Available</th>  
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="exceptionTbody">
-
-                        </tbody>
-                    </table>
-                </div>
-    
+                    </tbody>
+                </table>
             </div>
+
+        </div>
     
-        </main>
+    </main>
 
-        <?php
+    <?php
 
-        }else{
-            die("Id Missing From url");
-        }
+    }else{
+        die("Id Missing From url");
+    }
 
 ?>
 
