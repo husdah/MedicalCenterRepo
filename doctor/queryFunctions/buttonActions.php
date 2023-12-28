@@ -67,7 +67,13 @@ if(isset($_POST['del-btn'])){
             $mail->addAddress($email);
             $mail->Subject = "Appointment Acception";
             $mail->Body = <<<END
-            Dear Patient,\n\nYour appointment has been accepted.\nPlease contact us if you have any questions.\n\nSincerely,\nThe Clinic
+            Dear Patient,
+            
+            Your appointment has been accepted.
+            Please contact us if you have any questions.
+            
+            Sincerely,
+            The Clinic
             END;
            // $mail->IsHTML(true);
             $mail->send();
