@@ -67,7 +67,7 @@
                         <div class="content-field">
                           <div class="input-field"> 
                             <i class="fas fa-envelope"></i> 
-                            <input type="email" placeholder="Email" name ="pat-email" id="update-email" disabled/> 
+                            <input type="email" placeholder="Email" name ="pat-email" id="update-email" readonly/> 
                           </div> 
                           <div class="display"><p class="message" id="emailMessage"></p></div>
                         </div> 

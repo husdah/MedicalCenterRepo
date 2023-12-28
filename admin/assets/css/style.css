@@ -706,7 +706,6 @@ body{
 }
 
 .content main .bottom-data .reminders .task-list li.completed{
-    /* border-left: 10px solid var(--success); */
     border-left: 10px solid var(--primary); 
 }
 
@@ -779,18 +778,6 @@ body{
         grid-template-columns: 1fr;
     }
 
-/*     .content main .bottom-data .header{
-        min-width: 340px;
-    }
-
-    .content main .bottom-data .orders table{
-        min-width: 340px;
-    }
-
-    .content main .bottom-data .reminders .task-list{
-        min-width: 340px;
-    } */
-
     .content main .bottom-data .header{
         max-width: 340px;
     }
@@ -827,14 +814,6 @@ body{
 }
 
 @media screen and (max-width: 450px) {
-  /*   .content main .bottom-data .reminders{
-        min-width: 300px;
-    }
-
-    .content main .bottom-data .reminders .task-list{
-        min-width: 280px;
-    } */
-
     .content main .header .left h1{
         font-size: 30px;
     }

@@ -29,6 +29,7 @@
 	50% {
 		z-index: 1;
 	}
+
 	100% {
 		z-index: 1;
 	}
@@ -38,6 +39,7 @@
 	0% {
 		z-index: 1;
 	}
+
 	49.999% {
 		z-index: 1;
 	}
@@ -111,7 +113,7 @@
 	min-width: 260px;
 	margin-top: 50px;
 	padding: 30px 25px;
-    border-radius: 20px;
+	border-radius: 20px;
 	transform-origin: top;
 }
 
@@ -128,9 +130,11 @@
 		background: #0051a1;
 		transform: translate(40%, 10px);
 	}
+
 	50% {
 		transform: translate(0, 0);
 	}
+
 	100% {
 		background-color: var(--light);
 		transform: translate(35%, -20px);
@@ -142,9 +146,11 @@
 		background-color: var(--light);
 		transform: translate(35%, -20px);
 	}
+
 	50% {
 		transform: translate(0, 0);
 	}
+
 	100% {
 		background: #0051a1;
 		transform: translate(40%, 10px);
@@ -161,12 +167,14 @@
 
 @keyframes showSignup {
 	0% {
-        background: #0051a1;
+		background: #0051a1;
 		transform: translate(-40%, 10px) scaleY(.8);
 	}
+
 	50% {
 		transform: translate(0, 0) scaleY(.8);
 	}
+
 	100% {
 		background-color: var(--light);
 		transform: translate(-35%, -20px) scaleY(1);
@@ -178,11 +186,13 @@
 		background-color: var(--light);
 		transform: translate(-35%, -20px) scaleY(1);
 	}
+
 	50% {
 		transform: translate(0, 0) scaleY(.8);
 	}
+
 	100% {
-        background: #0051a1;
+		background: #0051a1;
 		transform: translate(-40%, 10px) scaleY(.8);
 	}
 }
@@ -224,22 +234,8 @@
 
 .input-block label {
 	font-size: 14px;
-    color: rgba(88, 87, 87, 0.822);
-}
-
-/* .input-block input {
-	display: block;
-	width: 100%;
-	margin-top: 8px;
-	padding-right: 15px;
-	padding-left: 15px;
-	font-size: 16px;
-	line-height: 40px;
 	color: rgba(88, 87, 87, 0.822);
-    background: var(--grey);
-    border: 1px solid rgba(105, 105, 105, 0.397);
-    border-radius: 10px;
-} */
+}
 
 .animated-form [type='button'] {
 	opacity: 0;
@@ -272,41 +268,35 @@
 	transform: translateX(30%);
 }
 
-.btn-signup:hover{
+.btn-signup:hover {
 	color: var(--light);
 	background: #0051a1;
 }
 
-
-
 .input-field {
 	max-width: 380px;
 	width: 100%;
-	/* background-color: #f0f0f0; */
 	margin: 10px 0;
-	/* height: 55px; */
 	height: fit-content;
-	/* border-radius: 55px; */
 	display: grid;
 	grid-template-columns: 15% 85%;
 	padding: 0 0.4rem;
 	position: relative;
-
 	border: 1px solid rgba(105, 105, 105, 0.397);
 	background: var(--grey);
 	border-radius: 10px;
-	
-  }
-  
-  .input-field i {
+
+}
+
+.input-field i {
 	text-align: center;
 	line-height: 55px;
 	color: var(--dark-grey);
 	transition: 0.5s;
 	font-size: 1.5rem;
-  }
-  
-  .input-field input {
+}
+
+.input-field input {
 	background: none;
 	outline: none;
 	border: none;
@@ -314,43 +304,29 @@
 	font-weight: 600;
 	font-size: .8rem;
 	color: var(--dark);
-  }
-  
-  .input-field input::placeholder {
+}
+
+.input-field input::placeholder {
 	color: var(--dark-grey);
 	font-weight: 500;
-  }
+}
 
-  .input-field input + span {
+.input-field input+span {
 	width: 350px;
-    font-size: 0.7em;
-    font-weight: 600;
+	font-size: 0.7em;
+	font-weight: 600;
 	color: var(--primary);
 	padding-bottom: 5px;
-	/* visibility: hidden; */
 	border-top: 1px solid rgba(105, 105, 105, 0.397);
-  }
+}
 
-  .input-field input.required + span {
+.input-field input.required+span {
 	visibility: visible;
 	color: red;
 	border-top: 1px solid red;
-  }
+}
 
-/*   #signup-name.required + #signup-nameError {
-	color: red;
-  } */
-
-/*   .input-field input.required {
-    border: 1px solid red;
-  } */
-
-
-  @media screen and (max-width: 450px) {
-    /* .forms-section {
-		margin-top: 40px;
-	} */
-
+@media screen and (max-width: 450px) {
 	.switcher {
 		display: none;
 	}
@@ -371,34 +347,38 @@
 	.input-field {
 		max-width: 240px;
 		height: fit-content;
-	  }
+	}
 
-	  .input-field input + span {
+	.input-field input+span {
 		width: 230px;
-	  }
+	}
 
 	@keyframes showLogin {
 		0% {
 			background: #0051a1;
 			transform: translate(40%, 10px);
 		}
+
 		50% {
 			transform: translate(0, 0);
 		}
+
 		100% {
 			background-color: var(--light);
 			transform: translate(50%, -20px);
 		}
 	}
-	
+
 	@keyframes hideLogin {
 		0% {
 			background-color: var(--light);
 			transform: translate(50%, -20px);
 		}
+
 		50% {
 			transform: translate(0, 0);
 		}
+
 		100% {
 			background: #0051a1;
 			transform: translate(40%, 10px);
@@ -410,31 +390,35 @@
 			background: #0051a1;
 			transform: translate(-40%, 10px) scaleY(.8);
 		}
+
 		50% {
 			transform: translate(0, 0) scaleY(.8);
 		}
+
 		100% {
 			background-color: var(--light);
 			transform: translate(-50%, -20px) scaleY(1);
 		}
 	}
-	
+
 	@keyframes hideSignup {
 		0% {
 			background-color: var(--light);
 			transform: translate(-50%, -20px) scaleY(1);
 		}
+
 		50% {
 			transform: translate(0, 0) scaleY(.8);
 		}
+
 		100% {
 			background: #0051a1;
 			transform: translate(-40%, 10px) scaleY(.8);
 		}
 	}
-  }
+}
 
-  @media screen and (max-width: 375px) {
+@media screen and (max-width: 375px) {
 	.switcher {
 		display: none;
 	}
@@ -454,5 +438,5 @@
 
 	.input-field {
 		max-width: 240px;
-	  }
+	}
 }

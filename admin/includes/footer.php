@@ -12,7 +12,6 @@
     <script src="assets/js/validation.js"></script> 
     <script src="assets/js/sendConfEmail.js"></script> 
 
-    <!-- <script src="assets/js/custom.js"></script>  -->
     <!-- sweetalert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -27,20 +26,6 @@
             }
         });
     </script>
-
-    <script>
-    if( $('.alert').hasClass("showAlert")){
-      setTimeout(function(){
-        $('.alert').removeClass("show");
-        $('.alert').addClass("hide");
-      },5000);
-    }
-
-    $('.close-btn').click(function(){
-      $('.alert').removeClass("show");
-      $('.alert').addClass("hide");
-    });
-  </script>
 
 </body>
 </html>

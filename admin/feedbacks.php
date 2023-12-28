@@ -57,7 +57,6 @@
                             <th>Date</th>
                             <th>publish</th>
                             <th>Delete</th>
-                            <!-- <th class="action_center">Action</th> -->
                         </tr>
                     </thead>
                     <tbody id="feedbacksTbody">

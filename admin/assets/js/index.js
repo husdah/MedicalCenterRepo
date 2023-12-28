@@ -99,7 +99,6 @@ account?.addEventListener('change', function () {
     }
 });
 
-
 var firstInput = document.getElementById('firstInput');
 var secondInput = document.getElementById('secondInput');
 

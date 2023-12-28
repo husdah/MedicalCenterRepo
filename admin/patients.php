@@ -127,18 +127,14 @@
                         <span id="patientBTError">BT</span>
                     </label>
 
-                    <!-- <div class="flex"> -->
-                        <label>
-                            <input id="patientEmail" name="patientEmail" required placeholder="" type="email" id="firstInput" class="input req">
-                            <span id="patientEmailError">Email</span>
-                        </label>
-                        <!-- <label>or</label> -->
-                        <label>
-                            <!-- pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" maxlength="12" -->
-                            <input id="patientPhone" name="patientPhone" placeholder="" type="number" id="secondInput" class="input req">
-                            <span id="patientPhoneError">Phone</span>
-                        </label>
-                    <!-- </div> -->
+                    <label>
+                        <input id="patientEmail" name="patientEmail" required placeholder="" type="email" id="firstInput" class="input req">
+                        <span id="patientEmailError">Email</span>
+                    </label>
+                    <label>
+                        <input id="patientPhone" name="patientPhone" placeholder="" type="number" id="secondInput" class="input req">
+                        <span id="patientPhoneError">Phone</span>
+                    </label>
                         
                     <label>
                         <input id="patientPass" name="patientPass" required placeholder="" type="password" class="input req">
@@ -148,11 +144,6 @@
                         <input id="patientPassConfirm" name="patientPassConfirm" required placeholder="" type="password" class="input req">
                         <span id="patientPassConfirmError">Confirm password</span>
                     </label>
-
-                    <!-- <label class="check-container" id="check_display">Create Account
-                        <input checked type="checkbox" name="account" id="account" value="account">
-                        <span class="checkmark"></span>
-                    </label> -->
 
                     <button id="addPatientFormBtn" type="button" class="submit">Submit</button>
                 </form>

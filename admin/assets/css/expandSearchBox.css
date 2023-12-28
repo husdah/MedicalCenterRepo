@@ -153,14 +153,6 @@
 }
 
 @media screen and (max-width: 375px) {
-/*     .expanding-search-form .button {
-        padding: 0 5px;
-    }
-
-    .expanding-search-form .dropdown-menu {  
-        padding: 3px;
-    } */
-
     .expanding-search-form {
         display: flex;
         gap: 1px;

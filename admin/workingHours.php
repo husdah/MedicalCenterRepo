@@ -24,28 +24,10 @@
         </div>
 
         <div class="bottom-data">
-                <div class="orders">
+            <div class="orders">
                 <div class="header">
                     <i class='bx bx-time'></i>
-                    <h3>Medical Hours</h3>
-<!--                     <form class="expanding-search-form">
-                        <div class="search-dropdown">
-                            <button class="button dropdown-toggle" type="button">
-                            <span class="toggle-active">Name</span>
-                            <span class="ion-arrow-down-b"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                            <li class="menu-active"><a href="#">Name</a></li>
-                            <li><a href="#">Day</a></li>
-                            </ul>
-                        </div>
-                        <input class="search-input" id="global-search" type="search" placeholder="Search">
-                        <button class="button search-button" type="button">
-                            <span class="icon ion-search">
-                                <span class="sr-only">Search</span>
-                            </span>
-                        </button>
-                    </form>    -->                 
+                    <h3>Medical Hours</h3>           
                 </div>
                 <table id="dataTable2">
                     <thead>
@@ -132,9 +114,7 @@
                 </div>
                 <table id="dataTable" class="whTable">
                     <thead id="workingDaysTH">
-<!--                         <tr >
 
-                        </tr> -->
                     </thead>
                     <tbody id="doctorsWHTbody">
  
