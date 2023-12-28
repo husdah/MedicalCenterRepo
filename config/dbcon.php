@@ -26,18 +26,27 @@
         );";
         $createTableUserQuery_run = mysqli_query($con,$createTableUserQuery);
 
-        $role = 0;
+        $role_admin = 0;
+
         // Check if the admin already exists
-        $checkExistingQuery = "SELECT * FROM user WHERE role = $role";
-        $checkExistingResult = mysqli_query($con, $checkExistingQuery);
-
-        if (mysqli_num_rows($checkExistingResult) == 0) {
+        $checkExistingQuery = "SELECT * FROM user WHERE role = ?";
+        $checkExistingResult = mysqli_prepare($con, $checkExistingQuery);
+        mysqli_stmt_bind_param($checkExistingResult, "i", $role_admin);
+        mysqli_stmt_execute($checkExistingResult);
+        mysqli_stmt_store_result($checkExistingResult); 
+        
+        if (mysqli_stmt_num_rows($checkExistingResult) == 0) {
             // The role doesn't exist, so insert the new admin
-            $hashed_password = password_hash('Admin123', PASSWORD_DEFAULT);
-            $addAdminQuery = "INSERT INTO `user`(`Fname`, `Lname`, `email`, `password`, `role`) 
-                            VALUES ('admin', 'root', 'healthHubAdmin@gmail.com', $hashed_password, $role)";
-            $addAdminQuery_run = mysqli_query($con, $addAdminQuery);
-
+            $pass = 'Admin123';
+            $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
+        
+            $addAdminQuery = "INSERT INTO user (Fname, Lname, email, password, role) 
+                            VALUES ('admin', 'root', 'healthHubAdmin@gmail.com', ?, ?)";
+            $addAdminQuery_run = mysqli_prepare($con, $addAdminQuery);
+            mysqli_stmt_bind_param($addAdminQuery_run, "si", $hashed_password, $role_admin);
+            mysqli_stmt_execute($addAdminQuery_run);
+            mysqli_stmt_close($addAdminQuery_run);
+            mysqli_stmt_close($checkExistingResult);
         }
 
         $createTableClinicQuery= "CREATE TABLE IF NOT EXISTS clinic (

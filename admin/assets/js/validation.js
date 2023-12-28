@@ -2045,9 +2045,9 @@ const doctorDetails = async() => {
                     <td>`;
 
                     if(d.deleted == 0){
-                        content += ` <button class="btn-delete deleteDocBtn" onclick="delDoctor(${d.doctorId})"><i class="bx bx-trash-alt"></i><span>Delete</span></button>`;
+                        content += ` <button class="btn-delete deleteDocBtn" onclick="delDoctor(${d.doctorId},${d.userId})"><i class="bx bx-trash-alt"></i><span>Delete</span></button>`;
                     }else if(d.deleted == 1){
-                        content += `<button class="btn-delete restoreDocBtn" onclick="resDoctor(${d.doctorId})"><i class="bx bx-refresh"></i><span>Restore</span></button>`;
+                        content += `<button class="btn-delete restoreDocBtn" onclick="resDoctor(${d.doctorId},${d.userId})"><i class="bx bx-refresh"></i><span>Restore</span></button>`;
                     }
 
                 content += `
@@ -2711,7 +2711,7 @@ function delDonor(id) {
       });
 }
 
-function delDoctor(id) {
+function delDoctor(did,uid) {
 
     swal({
         title: "Are you sure?",
@@ -2726,7 +2726,8 @@ function delDoctor(id) {
             fetch('functions/delDoctor.php', {
                 method: 'POST',
                 body: JSON.stringify({
-                    id: id
+                    did: did,
+                    uid: uid
                 }),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8'
@@ -2749,7 +2750,7 @@ function delDoctor(id) {
       });
 }
 
-function resDoctor(id) {
+function resDoctor(did,uid) {
 
     swal({
         title: "Are you sure?",
@@ -2764,7 +2765,8 @@ function resDoctor(id) {
             fetch('functions/resDoctor.php', {
                 method: 'POST',
                 body: JSON.stringify({
-                    id: id
+                    did: did,
+                    uid: uid
                 }),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8'
