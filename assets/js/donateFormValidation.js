@@ -9,6 +9,15 @@ const bloodType    = document.getElementById('mySelect');
 // Form Button variable
 const btn_donate   = document.getElementById('click_donate');
 
+// Function to change language
+function changeLanguage(language) {
+    const currentLanguage = language;
+    // Re-run validation functions to update error messages
+    checkEmailOrPhone();
+    validateEmailOrPhone();
+    validateSelect();
+}
+
 // Function to handle submit email and phone events
 function validateInput(input) {
     var lebanesePhoneRegex = /^\d{8}$/;
@@ -21,11 +30,23 @@ function validateInput(input) {
     }
 }
 
+const translations = {
+    en: {
+      required: "This field is required.",
+      error: "Phone or Email",
+    },
+    ar: {
+      required: "هذا الحقل مطلوب.",
+      error:'الهاتف او بريد إلكتروني',
+    },
+};
+
+
 //Validation on Focusout Event For Empty Input
 const checkEmailOrPhone = () => {
     if(emailText.value == ''){
         if(errorDisplay){
-            errorDisplay.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
+            errorDisplay.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${translations[currentLanguage].required}`;
             return false;
         }
     }
@@ -40,7 +61,7 @@ const checkEmailOrPhone = () => {
 const validateEmailOrPhone = () => {
     if(!validateInput(emailText.value)){
         if(errorDisplay){
-            errorDisplay.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Phone or Email';
+            errorDisplay.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${translations[currentLanguage].error}`;
             return false;
         }
     }
@@ -120,3 +141,6 @@ btn_donate?.addEventListener("click", function(event) {
         }
     }
 });
+
+
+  
