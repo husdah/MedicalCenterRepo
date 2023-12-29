@@ -22,9 +22,9 @@
             <div class="why-us-grid-col1 col1-content">
                 <h3><?php echo $whyUs['Why Choose Health Hub?']; ?></h3>
                 <ul>
-                    <li>-<?php echo $whyUs['Compassionate Care']; ?></li>
-                    <li>-<?php echo $whyUs['Medical Excellence']; ?></li>
-                    <li>-<?php echo $whyUs['Innovation']; ?></li>
+                    <li>- <?php echo $whyUs['Compassionate Care']; ?></li>
+                    <li>- <?php echo $whyUs['Medical Excellence']; ?></li>
+                    <li>- <?php echo $whyUs['Innovation']; ?></li>
                 </ul>
             </div>
     
