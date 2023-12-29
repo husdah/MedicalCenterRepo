@@ -362,6 +362,9 @@ input[type="date"]{
   text-align: center;
   z-index: 6;
 }
+.panel a{
+  color: var(--light-primary);
+}
 
 .left-panel {
   pointer-events: all;

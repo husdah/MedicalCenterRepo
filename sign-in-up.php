@@ -137,8 +137,7 @@ require('middleware/logMiddleware.php');
           <div class="content"> 
             <h3>New here ?</h3> 
             <p> 
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis, 
-              ex ratione. Aliquid! 
+              Click on Sign up to register. <a href="home.php">back to home page</a>
             </p> 
             <button class="btn transparent" id="sign-up-btn"> 
               Sign up 
@@ -150,8 +149,7 @@ require('middleware/logMiddleware.php');
           <div class="content"> 
             <h3>One of us ?</h3> 
             <p> 
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum 
-              laboriosam ad deleniti. 
+              Click on Sign in to login. <a href="home.php">back to home page</a> 
             </p> 
             <button class="btn transparent" id="sign-in-btn"> 
               Sign in 
