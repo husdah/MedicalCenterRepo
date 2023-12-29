@@ -148,7 +148,7 @@
 
     <script src="assets/js/user.js"></script>
     <script src="assets/js/siginValidation.js"></script>
-    <script src="assets/js/validation.js"></script>
+   <!-- <script src="assets/js/validation.js"></script> -->
     <!-- sweetalert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>

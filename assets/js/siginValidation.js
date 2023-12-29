@@ -116,6 +116,45 @@ signinBtn?.addEventListener("click", function(event) {
 
 });
 
+/*const btnUpdate = document.getElementById('updateBtn');
+btnUpdate?.addEventListener("click", function(event) {
+    if (event.target.type === 'submit') {
+        event.preventDefault();
+        alert("stop submit");
+    }else{
+        const valid = validateUpdateForm();
+        console.log(valid);
+        if(valid){
+            //alert("submit");
+            const updatePatient = () => {
+                const form = document.getElementById('update-form');
+                const formData = new FormData(form);
+                fetch('functions/updateUserInfo.php', {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    //console.log('Success:', data);
+                    if(data.response == 200){
+                        swal("Error!", "All fields are required.", "error");
+                    }
+                    else if(data.response == 100){
+                        swal("Error!", "Something Went Wrong", "error");
+                    }
+                    else if(data.response == 500){
+                        swal("Updated!", "Your informations are updated successfully.", "success");
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            }
+            updatePatient();
+        }
+    }
+});*/
+
 const btnUpdate = document.getElementById('updateBtn');
 btnUpdate?.addEventListener("click", function(event) {
     if (event.target.type === 'submit') {
@@ -166,12 +205,14 @@ const getPatientApp = async() => {
                                         <td>${user.doctor}</td>
                                         <td>${user.date}</td>
                                         <td>${user.time}</td>
+                                        <td>${user.status}</td>
                                         <td><button id="cancel-btn" onclick ='del(${user.id})'>Cancel</button></td>
                                     </tr>`
     
         });
     }
 }
+
 function del(id) {
     swal({
         title: "Are you sure?",
