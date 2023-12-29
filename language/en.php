@@ -9,6 +9,7 @@
         'Logout' => 'Logout',
         'Log in' => 'Log in',
         'SignUp' => 'SignUp',
+        'Profile' => 'Profile',
         'EN' => 'EN',
         'AR' => 'AR',
     ];
@@ -89,7 +90,7 @@
         'title3' => 'Contact Info',
         'address' => 'Beirut, Lebanon',
         'phone' => '+ 961 78960304',
-        'email' => 'info@gmail.com',
+        'email' => 'healthhubcenter23@gmail.com',
         'rightCopy' => '© 2023 Health Hub Medical Center. All Rights Reserved.',
         'contactTitle' => 'Get In Touch',
     ];

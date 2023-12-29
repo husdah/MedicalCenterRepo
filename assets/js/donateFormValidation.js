@@ -1,23 +1,3 @@
-// Set a default language (e.g., English)
-let currentLanguage = 'ar';
-
-// Function to change language
-function changeLanguage(language) {
-    currentLanguage = language;
-    // Re-run validation functions to update error messages
-    checkEmailOrPhone();
-    validateEmailOrPhone();
-    validateSelect();
-}
-// Function to get language from URL
-function getLanguageFromURL() {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('lang') || 'en'; // Default to English if not found
-}
-
-// Initialize currentLanguage based on URL
-currentLanguage = getLanguageFromURL();
-
 // Form variable
 const donateForm   = document.getElementById('donateform');
 
@@ -41,14 +21,22 @@ function validateInput(input) {
     }
 }
 
-const translations = {
+const translations2 = {
     en: {
       required: "This field is required.",
       error: "Phone or Email",
+      success: "Your data has been submitted successfully!",
+      success1: "But you donated to us.",
+      thank: "Thank you",
+      failed: "Error!",
     },
     ar: {
       required: "هذا الحقل مطلوب.",
       error:'الهاتف او بريد إلكتروني',
+      success: "لقد تم حفظ بياناتك بنجاح!",
+      success1: "لكنك تبرعت لنا.",
+      thank: "شكرًا لك",
+      failed: "خطأ!",
     },
 };
 
@@ -56,7 +44,7 @@ const translations = {
 const checkEmailOrPhone = () => {
     if(emailText.value == ''){
         if(errorDisplay){
-            errorDisplay.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${translations[currentLanguage].required}`;
+            errorDisplay.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${translations2[currentLanguage].required}`;
             return false;
         }
     }
@@ -71,7 +59,7 @@ const checkEmailOrPhone = () => {
 const validateEmailOrPhone = () => {
     if(!validateInput(emailText.value)){
         if(errorDisplay){
-            errorDisplay.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${translations[currentLanguage].error}`;
+            errorDisplay.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${translations2[currentLanguage].error}`;
             return false;
         }
     }
@@ -128,17 +116,17 @@ btn_donate?.addEventListener("click", function(event) {
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.response === '100') {
-                        swal("Thank You", "But you donated to us.", "success");
+                        swal(`${translations2[currentLanguage].thank}`, `${translations2[currentLanguage].success1}`, "success");
                         console.log('message', data);
                     }  
                     else if(data.response === '300') {
-                        swal("Thank you", "Your data has been submitted successfully!", "success");
+                        swal(`${translations2[currentLanguage].thank}`, `${translations2[currentLanguage].success}`, "success");
                         donateForm.reset();
                         errorDisplay.innerHTML = "";
                         console.log('message', data);
                     }  
                     else if(data.response === '400') {
-                        swal("Error", "All fields must be validated", "error");
+                        swal(`${translations2[currentLanguage].failed}`, "All fields must be validated", "error");
                     }  
                     else if(data.response === '500') {
                         swal("Error", "Please fill the fields", "error");

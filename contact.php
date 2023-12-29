@@ -58,7 +58,7 @@
                     <h3><?php echo $footer['contactTitle']; ?></h3>
                     <span><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/place/Beyrouth/@33.8892114,35.4630826,13z/data=!3m1!4b1!4m6!3m5!1s0x151f17215880a78f:0x729182bae99836b4!8m2!3d33.8937913!4d35.5017767!16zL20vMDlianY?entry=ttu" target="_blank"><?php echo $footer['address']; ?></a></span></br>
                     <span><i class="fa-solid fa-phone"></i><a href="tel:0096178960304"><?php echo $footer['phone']; ?></a></span></br>
-                    <span><i class="fa-regular fa-envelope"></i><a href="mailto:hijazizeinab5@gmail.com"><?php echo $footer['email']; ?></a></span></br>
+                    <span><i class="fa-regular fa-envelope"></i><a href="mailto:healthhubcenter23@gmail.com"><?php echo $footer['email']; ?></a></span></br>
                 </div>
             </div>
         </div>    

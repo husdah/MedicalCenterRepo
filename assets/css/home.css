@@ -989,6 +989,10 @@ span i.fa-solid.fa-circle-exclamation{
     .donation-content select {
         margin: 5px 0;
     }
+    .btn-send{
+        width: 25%;
+    }
+
 }
 
 
@@ -1069,4 +1073,39 @@ span i.fa-solid.fa-circle-exclamation{
 
 [dir="rtl"] .about-col2{
     padding: 0 40px 0px 60px;
+}
+/* Responsive on width 1024px */ 
+@media(max-width:1024px){
+    .donation-content {
+        padding: 25px;
+    }
+}
+
+/* Responsive on width 768px */ 
+@media(max-width:768px){
+    [dir="rtl"] .btn-send {
+        margin-right: 10px;
+    }
+    [dir="rtl"] .service-column p {
+        padding: 0;
+    }
+}
+/* Responsive on width 425px */ 
+@media(max-width:425px){
+    [dir="rtl"] .banner-container {
+        margin-right: 23px;
+    }
+    [dir="rtl"] .banner .banner-container {
+        padding-top: 70px;
+    }
+    [dir="rtl"] .about-col2 {
+        padding: 0 20px 0px 20px;
+    }
+    [dir="rtl"] .title-description {
+        margin-right: 25px;
+    }
+    [dir="rtl"] .why-us-container {
+        margin: 30px 12px 0 0px;
+    }
+    
 }

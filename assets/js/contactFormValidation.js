@@ -1,5 +1,5 @@
 // Set a default language (e.g., English)
-let currentLanguage = 'ar';
+//let currentLanguage = 'en';
 
 // Function to change language
 function changeLanguage(language) {
@@ -57,6 +57,8 @@ const translations = {
       emailstructure: "example@hotmail.com",
       subjectStructure: "Subject must be clear.",
       messageStructure: "more characters required. <br> The message must be clear.",
+      success: "Your data has been submitted successfully!",
+      thank: "Thank you",
 
     },
     ar: {
@@ -65,7 +67,10 @@ const translations = {
       namestructure: "يجب أن يحتوي على 3 أحرف فقط.",
       emailstructure: "example@hotmail.com",
       subjectStructure: "يجب أن يكون الموضوع واضحا.",
-      messageStructure: "المزيد من الشخصيات المطلوبة. <br> يجب أن تكون الرسالة واضحة.",
+      messageStructure: "المزيد من  الاحرف. <br> يجب أن تكون الرسالة واضحة.",
+      success: "لقد تم حفظ بياناتك بنجاح!",
+      thank: "شكرًا لك",
+
     },
 };
 
@@ -207,7 +212,7 @@ const validateMessage = () => {
     const left         = required - message.length;
     messageError.innerHTML = '';
     if(left>0){
-        messageError.innerHTML = left +  `${translations[currentLanguage].messageStructure}`;
+        messageError.innerHTML = left +  ` ${translations[currentLanguage].messageStructure}`;
         return false;
     }
     else{
@@ -268,7 +273,7 @@ sendBtn?.addEventListener('click', (e) =>{
                     .then((response) => response.json())
                     .then((data) => {
                         if (data.response == 200) {
-                            swal("Thank You!", "Your data has been submitted successfully!", "success");
+                            swal(`${translations[currentLanguage].thank}`, `${translations[currentLanguage].success}`, "success");
                             // Clear form inputs
                             form.reset();
                             document.getElementById('fname-error').innerHTML = '';

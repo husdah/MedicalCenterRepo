@@ -15,6 +15,8 @@ if(mysqli_num_rows($result) > 0){
     $plname=$row['Lname'];
   
 }
+require 'lang.php';
+require 'language/'.$_SESSION['lang'].'.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
