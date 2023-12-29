@@ -205,7 +205,7 @@ function deleteAction(r) {
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: '../deleteApp.php',
+                url: 'queryFunctions/deleteApp.php',
                 type: 'get',
                 data: { id: r },
                 success: function (data) {

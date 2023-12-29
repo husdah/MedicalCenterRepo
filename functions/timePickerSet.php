@@ -3,7 +3,7 @@ require('../config/dbcon.php');
     if (isset($_POST['selectedDay']) && isset($_POST['did'])) {
         $day = $_POST['selectedDay'];
         $did= $_POST['did'];
-        $query3 = "SELECT fromHour, toHour, day FROM doctorhours WHERE doctorId=$did AND day='$day';";
+        $query3 = "SELECT fromHour, toHour, day FROM doctorhours WHERE doctorId=$did AND day='$day' AND available=1;";
         $result3 = mysqli_query($con, $query3);
     
         // Check if there's an error in the query
