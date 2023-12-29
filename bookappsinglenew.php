@@ -13,21 +13,7 @@ while($row=mysqli_fetch_assoc($result1))
 }
 $query="select clinicId,name,description,icon from clinic";
 $res=mysqli_query($con,$query);
-$facebook = "#";
-$instagram="#";
-$linkedin="#";
-while($row=mysqli_fetch_assoc($result1))
-{
-    if($row['facebook'] != null){
-        $facebook = $row['facebook'];
-    }
-    if($row['instagram'] != null){
-        $instagram = $row['instagram'];
-    }
-    if($row['linkedin'] != null){
-        $linkedin= $row['linkedin'];
-    }
-}
+
 ?>
 <!DOCTYPE html>
     <html lang="en">
@@ -43,8 +29,6 @@ while($row=mysqli_fetch_assoc($result1))
         <link rel="stylesheet" href="assets/css/doctorcss.css">
         <link rel="stylesheet" href="assets/css/doctorcss2.css">
 
-        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> -->
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         <title>Doctors</title>
@@ -53,7 +37,6 @@ while($row=mysqli_fetch_assoc($result1))
 
         <div class="sidebar" id="sidebar">
             <div class="logo">
-                <!-- <i class="fa-solid fa-clinic-medical"></i> -->
                 <i id="sideMenu" class="fa-solid fa-list"></i>
                 <span>Clinics</span>
             </div>
@@ -127,15 +110,15 @@ while($row=mysqli_fetch_assoc($result1))
     
                        
                         <ul class="card__social-list">
-                            <a href="'.$facebook.'" class="card__social-link">
+                            <a href="'.$row['facebook'].'" target="_blank" class="card__social-link">
                                 <i class="fa-brands fa-facebook"></i>
                             </a>
     
-                            <a href="'.$instagram.'" class="card__social-link">
+                            <a href="'.$row['instagram'].'" target="_blank" class="card__social-link">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
     
-                            <a href="'.$linkedin.'" class="card__social-link">
+                            <a href="'.$row['linkedin'].'" target="_blank" class="card__social-link">
                                 <i class="fa-brands fa-linkedin"></i>
                             </a>
                         </ul>
@@ -144,12 +127,7 @@ while($row=mysqli_fetch_assoc($result1))
             </div>';
               }
           ?>
-
-            
-
         </div>
-
-
     </div>
     <script>
  var filterInput = document.getElementById('search');

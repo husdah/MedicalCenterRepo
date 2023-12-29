@@ -65,7 +65,7 @@
             gender VARCHAR(100) NOT NULL,
             bloodType VARCHAR(10) NULL,
             dateOfBirth date NOT NULL,
-            phoneNumber int UNIQUE NULL,
+            phoneNumber VARCHAR(200) UNIQUE NULL,
             FOREIGN KEY (userId) REFERENCES user(userId)
 
         );";
@@ -75,7 +75,7 @@
             doctorId INT PRIMARY KEY AUTO_INCREMENT,
             userId INT NOT NULL,
             clinicId INT NULL,
-            phoneNumber int UNIQUE NOT NULL,
+            phoneNumber varchar(200) UNIQUE NOT NULL,
             profilePic varchar(200) NULL,
             deleted tinyint NOT NULL DEFAULT 0,
             FOREIGN KEY (userId) REFERENCES user(userId),
@@ -112,7 +112,7 @@
             donorId INT PRIMARY KEY AUTO_INCREMENT,
             email varchar(200) UNIQUE NULL,
             bloodType varchar(10) NOT NULL,
-            phoneNumber int UNIQUE NULL
+            phoneNumber varchar(200) UNIQUE NULL
 
         );";
         $createTableDonorQuery_run = mysqli_query($con,$createTableDonorQuery);
@@ -197,7 +197,7 @@
         }
 
         // Check if the trigger exists
-       /* $checkTriggerQuery = "SHOW TRIGGERS LIKE 'before_update_doctor'";
+        $checkTriggerQuery = "SHOW TRIGGERS LIKE 'before_update_doctor'";
         $checkTriggerResult = mysqli_query($con, $checkTriggerQuery);
 
         if (mysqli_num_rows($checkTriggerResult) == 0) {
@@ -214,7 +214,7 @@
                 END";
             $createTriggerQuery_run = mysqli_query($con, $createTriggerQuery);
 
-        }*/
+        }
     }
     
 ?>

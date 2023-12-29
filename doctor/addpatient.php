@@ -142,9 +142,9 @@ $res=mysqli_query($con,$query);
             e.preventDefault(); 
 
             var eid  =$(this).closest("tr").find("td:eq(0)").text();
-            var name = $(this).closest("tr").find("td:eq(1)").text();
-            var date = $(this).closest("tr").find("td:eq(2)").text();
-            var time = $(this).closest("tr").find("td:eq(3)").text();
+            var name = $(this).closest("tr").find("td:eq(2)").text();
+            var date = $(this).closest("tr").find("td:eq(3)").text();
+            var time = $(this).closest("tr").find("td:eq(4)").text();
             console.log(time);
 
             document.getElementById('eid').value=eid;

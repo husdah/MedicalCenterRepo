@@ -39,7 +39,7 @@ function checkRole($role) {
         if($role == 1){
             redirect('../doctor/dashboard.php',"You Are Not Authorized To Access This Page!");
         }else{
-            redirect('../home.php',"You Are Not Authorized To Access This Page!");
+            redirect('../index.php',"You Are Not Authorized To Access This Page!");
         }
     
     }

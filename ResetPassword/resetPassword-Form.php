@@ -35,7 +35,6 @@ session_start();
             }
 
         ?>
-        <!-- <input type="submit" value="Send Password Reset Link" class="button" name="send" id="signin-btn" /> -->
         <button class="button">Send</button> 
         </div> 
     </form> 

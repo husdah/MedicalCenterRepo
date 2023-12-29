@@ -4,7 +4,7 @@ include("queryFunctions/queryfunctions.php");
 require('middleware/doctorMiddleware.php');
 $doctorId = $_SESSION['doctorId'];
 $userEmail = $_SESSION['auth_user']['email'];
-/* $doctorId = getDoctorId($doctor);  */
+
 if (isset($_GET['id'])) {
     $patientId = $_GET['id'];
 }
@@ -119,18 +119,6 @@ $email = $row['email'];
                     <td><?= $app['time'] ?></td>
                     <td><span class="<?= $app['status']; ?>"><?= $app['status'] ?></span></td>
                 </tr>
-               <!-- <tr>
-                    <td>sep,15 2023</td>
-                    <td>11:00 am</td>
-                    <td>Follow-up</td>
-                    <td><span class="Completed">Completed</span></td>
-                </tr>
-                <tr>
-                    <td>Nov,18 2023</td>
-                    <td>10:30 am</td>
-                    <td>Follow-up</td>
-                    <td><span class="Pending">Pending</span></td>
-                </tr> -->
                 <?php
 
                             }

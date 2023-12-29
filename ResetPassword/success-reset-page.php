@@ -1,7 +1,6 @@
 
 <?php
     session_start();
-   /*  include('../functions/selectData.php'); */
 ?>
 
 <!DOCTYPE html>

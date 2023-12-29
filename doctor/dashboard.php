@@ -3,21 +3,16 @@ session_start();
 include("queryFunctions/queryfunctions.php");
 require('middleware/doctorMiddleware.php');
 
-/* $doctor = $_SESSION['doctor_id']; */
 $userId = $_SESSION['auth_user']['user_id'];
 $userName = $_SESSION['auth_user']['name'];
 $userEmail = $_SESSION['auth_user']['email'];
 
 $doctorId = $_SESSION['doctorId'];
-
-/* $doctorId = getDoctorId($userId);  */
 $patientsNb = getPatientCount($doctorId);
 $AppointmentsNb = getAppoinmentCount($doctorId);
 $requestNb = getRequestCount($doctorId);
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">

@@ -22,7 +22,7 @@
                 <label class="date" id="date"></label>
                 </div>
                 <div class="buttons">
-                    <a href="home.php" class="back"><button type="button" id="back" name="back"><i class="fas fa-arrow-left"></i>  Back</button></a>
+                    <a href="index.php" class="back"><button type="button" id="back" name="back"><i class="fas fa-arrow-left"></i>  Back</button></a>
                     <a href="logout.php"><button type="button" id="logout" name="logout" class="log-out">Log out</button></a>
                 </div>
             </div>
@@ -148,7 +148,6 @@
 
     <script src="assets/js/user.js"></script>
     <script src="assets/js/siginValidation.js"></script>
-   <!-- <script src="assets/js/validation.js"></script> -->
     <!-- sweetalert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>

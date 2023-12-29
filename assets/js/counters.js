@@ -26,27 +26,3 @@ function counterFunc(){
     }, 1500);
   }
 }
-
-/*
-let nums = document.querySelectorAll(".count-box .count");
-let section = document.querySelector(".counts");
-let started = false;
-
-window.onscroll = function (){
-  if(window.scrollY >= section.offestTop){
-    if(!started){
-      nums.forEach((count) => startCount(count));
-    } 
-      started = true;
-  }
-}
-function startCount(el){
-  let goal = el.dataset.goal;
-  let count = setInterval(() => {
-    el.textContent++;
-    if(el.textContent == goal){
-      clearInterval(count);
-    }
-  }, 1000 / goal);
-}
-*/

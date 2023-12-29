@@ -263,7 +263,6 @@ body{
     border-radius: 15px;
     text-align: center;
     color: var(--dark);
-   /* width: 600px;*/
     margin-bottom: 30px;
 }
 
@@ -365,7 +364,6 @@ body{
     margin-top: 10px;
     border-radius: 15px;
     width: 100%;
-   /* width: 600px; */
     border-collapse: collapse;
     border-spacing: 5px 0;
     cursor: pointer;

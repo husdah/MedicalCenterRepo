@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             SELECT phoneNumber FROM doctor WHERE phoneNumber = ? AND doctorId <> ?";
 
             $phoneCheckQueryRun = mysqli_prepare($con, $phoneCheckQuery);
-            mysqli_stmt_bind_param($phoneCheckQueryRun, "iii", $phone, $phone, $doctorId);
+            mysqli_stmt_bind_param($phoneCheckQueryRun, "ssi", $phone, $phone, $doctorId);
             mysqli_stmt_execute($phoneCheckQueryRun);
             mysqli_stmt_store_result($phoneCheckQueryRun);
 
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 $doctor_query = "UPDATE doctor SET clinicId=? , phoneNumber=? WHERE doctorId=? ";
                 $doctor_query_run = mysqli_prepare($con, $doctor_query);
-                mysqli_stmt_bind_param($doctor_query_run, "iii", $clinicId, $phone, $doctorId);
+                mysqli_stmt_bind_param($doctor_query_run, "isi", $clinicId, $phone, $doctorId);
     
                 if(mysqli_stmt_execute($doctor_query_run))
                 {

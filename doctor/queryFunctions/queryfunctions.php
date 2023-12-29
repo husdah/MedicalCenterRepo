@@ -193,5 +193,4 @@ function getPatientById($id){
     return $query_run;
 }
 
-
 ?>

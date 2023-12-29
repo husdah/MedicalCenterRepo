@@ -39,16 +39,6 @@
             $stmt = mysqli_prepare($con, $query);
             mysqli_stmt_bind_param($stmt, "ssssssii", $updateFname, $updateLname, $updateEmail, $updateGender, $updateBloodType, $updateDate, $updatePhone, $userId);
             if (mysqli_query($con, $query)) {
-                /*
-                    $data['updateFname'] = $updateFname,
-                    $data['updateLname'] = $updateLname,
-                    $data['updateEmail'] = $updateEmail,
-                    $data['updatePhone'] = $updatePhone,
-                    $data['updateDate']  = $updateDate,
-                    $data['updateGender']=$updateGender,
-                    $data['updateBloodType'] = $updateBloodType
-                ];
-                */
                 $response = '500';
                 $msg = "Updated Successfully!";
             }

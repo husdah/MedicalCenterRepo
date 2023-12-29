@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             SELECT phoneNumber FROM doctor WHERE phoneNumber = ?";
     
             $phoneCheckQueryRun = mysqli_prepare($con, $phoneCheckQuery);
-            mysqli_stmt_bind_param($phoneCheckQueryRun, "ii", $phone, $phone);
+            mysqli_stmt_bind_param($phoneCheckQueryRun, "ss", $phone, $phone);
             mysqli_stmt_execute($phoneCheckQueryRun);
             mysqli_stmt_store_result($phoneCheckQueryRun);
             if (mysqli_stmt_num_rows($phoneCheckQueryRun) > 0) {  
@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     $doctor_query = "INSERT INTO doctor (userId, clinicId, phoneNumber) VALUES (?, ?, ?)";
                     $doctor_query_run = mysqli_prepare($con, $doctor_query);
-                    mysqli_stmt_bind_param($doctor_query_run, "iii", $userId, $clinicId, $phone);
+                    mysqli_stmt_bind_param($doctor_query_run, "iis", $userId, $clinicId, $phone);
     
                     if (mysqli_stmt_execute($doctor_query_run)) {   
                         $mail = new PHPMailer();

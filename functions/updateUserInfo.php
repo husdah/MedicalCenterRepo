@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         WHERE user.userId = ?";
 
         $query_run = mysqli_prepare($con, $query);
-        mysqli_stmt_bind_param($query_run, "ssssssii", $updateFname, $updateLname, $updateEmail, $updateGender, $updateBloodType, $updateDate, $updatePhone, $userId);
+        mysqli_stmt_bind_param($query_run, "sssssssi", $updateFname, $updateLname, $updateEmail, $updateGender, $updateBloodType, $updateDate, $updatePhone, $userId);
 
         if(mysqli_stmt_execute($query_run))
         {

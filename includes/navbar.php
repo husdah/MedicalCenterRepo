@@ -1,5 +1,5 @@
 <nav>
-    <a href="home.php" class="navlogo">
+    <a href="index.php" class="navlogo">
         <img src="images/logoNav.png" alt="Logo Image">
     </a>
     <div class="hamburger">
@@ -8,19 +8,12 @@
         <div class="line3"></div>
     </div>
     <ul class="nav-links">
-        <div class="links">
-            <!-- <li><a href="home.php">HOME</a></li>
-            <li><a href="home.php#aboutSection">About</a></li>
-            <li><a href="home.php#serviceSection">Services</a></li>
-            <li><a href="clinics.php">Clinics</a></li>
-            <li><a href="home.php#doctorSection">Doctors</a></li>
-            <li><a href="contact.php">Contact Us</a></li> -->
-            
-            <li><a href="home.php"><?php echo $nav['HOME'] ?></a></li>
-            <li><a href="home.php#aboutSection"><?php echo $nav['ABOUT'] ?></a></li>
-            <li><a href="home.php#serviceSection"><?php echo $nav['SERVICES'] ?></a></li>
+        <div class="links">         
+            <li><a href="index.php"><?php echo $nav['HOME'] ?></a></li>
+            <li><a href="index.php#aboutSection"><?php echo $nav['ABOUT'] ?></a></li>
+            <li><a href="index.php#serviceSection"><?php echo $nav['SERVICES'] ?></a></li>
             <li><a href="clinics.php"><?php echo $nav['CLINICS'] ?></a></li>
-            <li><a href="home.php#doctorSection"><?php echo $nav['DOCTORS'] ?></a></li>
+            <li><a href="index.php#doctorSection"><?php echo $nav['DOCTORS'] ?></a></li>
             <li><a href="contact.php"><?php echo $nav['CONTACT US'] ?></a></li>
 
         </div>
@@ -59,14 +52,10 @@
             <li class="dropdown dropdown-6">
                 <button class="join-button" href="#"><i class="fa-solid fa-globe"></i> <?php echo $nav['EN']; ?></button>
                 <ul class="dropdown_menu dropdown_menu--animated dropdown_menu-6">
-                    <!--<li class="dropdown_item-1">EN</li>
-                    <li class="dropdown_item-2">AR</li>-->
                     <li class="dropdown_item-1"><a href="?lang=en"><?php echo $nav['EN']; ?></a></li>
                     <li class="dropdown_item-2"><a href="?lang=ar"><?php echo $nav['AR']; ?></a></li>
                 </ul>
             </li>
-            <!-- <li><button class="login-button" href="#"><i class="fa-solid fa-user"></i> Login</button></li> -->
-            <!-- <li><button class="join-button" href="#"><i class="fa-solid fa-globe"></i> EN</button></li> -->
         </div>
     </ul>
 </nav>

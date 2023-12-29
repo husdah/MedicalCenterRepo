@@ -44,7 +44,7 @@ function checkRole($role) {
             header('Location: doctor/dashboard.php');
         }
         else{
-            header('Location: home.php');
+            header('Location: index.php');
         }
     }
 }
