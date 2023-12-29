@@ -17,38 +17,38 @@ menuBar.addEventListener('click', () => {
     sideBar.classList.toggle('close');
 });
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     var currentDateElement = document.getElementById("currentDate");
     var currentDayElement = document.getElementById("currentDay");
-    
+
     // Get the current date
     var currentDate = new Date();
-    
+
     // Format the date as you desire
-    var doptions = {weekday: 'long'}
+    var doptions = { weekday: 'long' }
     var options = { year: 'numeric', month: 'short', day: 'numeric' };
     var formattedDate = currentDate.toLocaleDateString('en-US', options);
     var formattedDay = currentDate.toLocaleDateString('en-US', doptions);
 
     formattedDate = formattedDate.replace(/,/g, '');
-    
+
     // Set the formatted date inside the HTML element
-    if(currentDateElement){
+    if (currentDateElement) {
         currentDateElement.textContent = formattedDate;
     }
-    if(currentDayElement){
+    if (currentDayElement) {
         currentDayElement.textContent = formattedDay;
     }
-    
+
 });
 
 var filterInput = document.getElementById('searchInput');
-        var rows = document.querySelectorAll('.p-row');
+var rows = document.querySelectorAll('.p-row');
 
-        filterInput.addEventListener('input', function() {
-        var filterValue = filterInput.value.toLowerCase();
+filterInput?.addEventListener('input', function () {
+    var filterValue = filterInput.value.toLowerCase();
 
-        rows.forEach(function(row) {
+    rows.forEach(function (row) {
         var name = row.querySelector('#name').textContent.toLowerCase();
         var phone = row.querySelector('#phone').textContent.toLowerCase();
         var email = row.querySelector('#email').textContent.toLowerCase();
@@ -60,4 +60,4 @@ var filterInput = document.getElementById('searchInput');
 
         row.style.display = shouldShow ? 'table-row' : 'none';
     });
-    });
+});

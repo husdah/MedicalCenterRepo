@@ -11,7 +11,7 @@
             <div class="content banner">
                 <h2><?php echo $nav['CONTACT US']; ?></h2>
                 <ul class="breadcrumb">
-                    <li><a href= "home.php"><?php echo $nav['HOME']; ?></a></li>
+                    <li><a href= "index.php"><?php echo $nav['HOME']; ?></a></li>
                     <li> | </li>
                     <li><?php echo $nav['CONTACT US']; ?></li>
                 </ul>

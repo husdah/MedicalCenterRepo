@@ -36,7 +36,6 @@ if(isset($_POST["token"])){
     }
 
     if ($_POST["password"] !== $_POST["cpassword"]) {
-        /* die("Passwords must match"); */
         redirect('reset-password.php?token='.$token,"Passwords must match");
     }
 
@@ -59,12 +58,9 @@ if(isset($_POST["token"])){
     mysqli_stmt_bind_param($stmt, "si", $hashedNewPassword, $id);
 
     mysqli_stmt_execute($stmt);
-
-    /* echo "Password updated. You can now login."; */
     redirect('success-reset-page.php',"Password updated. You can now login.");
 
     } else{
-        /* die("password not valid."); */
         redirect('reset-password.php?token='.$token,"Invalid Password.");
     }
 

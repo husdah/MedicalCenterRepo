@@ -2,7 +2,7 @@
     <footer class="footer">
         <div class="grid-container">
             <div class="footer-column1">
-                <a href="home.php"><img src="./images/HealthHubLogo-removebg-preview.png" alt="HealthHubLogo" class="logo"></a>
+                <a href="index.php"><img src="./images/HealthHubLogo-removebg-preview.png" alt="HealthHubLogo" class="logo"></a>
                 <p class="text-justify"><?php echo $footer['desc']; ?></p>
             </div>
 
@@ -10,10 +10,10 @@
                 <h4 class="footer-heading"><?php echo $footer['title1']; ?></h4>
                 <hr>
                 <ul class="footer-links">
-                    <li><a href="home.php"><?php echo $nav['HOME']; ?></a></li>
-                    <li><a href="home.php#aboutSection"><?php echo $nav['ABOUT']; ?></a></li>
-                    <li><a href="home.php#serviceSection"><?php echo $nav['SERVICES']; ?></a></li>
-                    <li><a href="home.php#doctorSection"><?php echo $nav['DOCTORS']; ?></a></li>
+                    <li><a href="index.php"><?php echo $nav['HOME']; ?></a></li>
+                    <li><a href="index.php#aboutSection"><?php echo $nav['ABOUT']; ?></a></li>
+                    <li><a href="index.php#serviceSection"><?php echo $nav['SERVICES']; ?></a></li>
+                    <li><a href="index.php#doctorSection"><?php echo $nav['DOCTORS']; ?></a></li>
                     <li><a href="clinics.php"><?php echo $nav['CLINICS']; ?></a></li>
                     <li><a href="contact.php"><?php echo $nav['CONTACT US']; ?></a></li>
                 </ul>
@@ -87,10 +87,7 @@
     <script src="assets/js/donation.js"></script>
     <script src="assets/js/swiper.js"></script>
     <script src="assets/js/counters.js"></script>
-    <!-- <script src="assets/js/scrollSection.js"></script> -->
-    <!-- <script src="assets/js/navbar.js"></script> -->
     <script src="../assets/js/nav.js"></script>
-    <!-- <script src="assets/js/validation.js"></script> -->
     <script src="assets/js/siginValidation.js"></script>
     <script src="assets/js/contactFormValidation.js"></script>
     <script src="assets/js/donateFormValidation.js"></script>

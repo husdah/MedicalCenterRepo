@@ -23,10 +23,7 @@ while($row=mysqli_fetch_assoc($res))
 }
 if(isset($_POST['pname']) && $_POST['pname']!='')
 {
-    $query1 = "update appointment set doctorId='$did',patientId='$pid2',date='$newappdate',time='$tapp',status='acccepted' where appId='$eid' ";
-		mysqli_query($con, $query1);
-    
-        
-		
+    $query1 = "update appointment set doctorId='$did',patientId='$pid2',date='$newappdate',time='$tapp',status='accepted' where appId='$eid' ";
+	mysqli_query($con, $query1);
 }
 ?>

@@ -9,20 +9,6 @@ var sub1=false;
 var sub2=false;
 var sub3=false;
 
-//current date
-// const currentDate = () => {
-//     const date = new Date();
-//     const day = date.getDate();
-//     const month = date.getMonth() + 1;
-//     const year = date.getFullYear();
-    
-//     const formattedDate = `${year}-${day.toString().padStart(2, '0')}-${month.toString().padStart(2, '0')}`;
-    
-//     return formattedDate;
-// };
-// lastappdate.value = currentDate();
-
-
 //on submit
 document.getElementById('form').addEventListener('submit',(e)=>{
     if(patientname.value!=="" && newappdate.value!=="" && timeapp.value!=="")

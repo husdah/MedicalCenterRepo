@@ -1,6 +1,7 @@
  <?php
 require("../../config/dbcon.php");
-$doctorId='2';
+session_start();
+$doctorId= $_SESSION['doctorId'];
 
 
 if(isset($_POST['submit']))
@@ -45,9 +46,14 @@ if(isset($_POST['submitinfo']))
         $uploadedFileName = $_FILES['drphoto']['name'];
         if($uploadedFileName!="")
         {
-                $uploadedFilePath = $uploadDir . $uploadedFileName;
+                $uploadedFilePath = $uploadDir .'/' . $uploadedFileName;
                 if (move_uploaded_file($_FILES['drphoto']['tmp_name'], $uploadedFilePath)) {
                 $success = true;
+                
+                if(file_exists("../../uploads/".$oldimg)){
+                        unlink("../../uploads/".$oldimg);
+                }
+                    
                 } else {
                 $success = false;
         }
@@ -57,15 +63,15 @@ if(isset($_POST['submitinfo']))
                 $uploadedFileName=$oldimg;   
         }
 
-        $dphnum=(int)$_POST['dphnum'];
+        $dphnum=$_POST['dphnum'];
         $query2 ="SELECT EXISTS ( SELECT 1 FROM doctor  WHERE phoneNumber = ? AND doctorId <> ?  UNION  SELECT 1 FROM patient WHERE phoneNumber = ? ) AS numExists";
         $stmt2 = mysqli_prepare($con, $query2);
-        mysqli_stmt_bind_param($stmt2, "iii", $dphnum,$doctorId,$dphnum);
+        mysqli_stmt_bind_param($stmt2, "sis", $dphnum,$doctorId,$dphnum);
         mysqli_stmt_execute($stmt2);
         mysqli_stmt_bind_result($stmt2, $numExists);
         mysqli_stmt_fetch($stmt2);
         mysqli_stmt_close($stmt2);
-        $query3 = "SELECT EXISTS (SELECT 1 FROM user JOIN doctor ON user.userId=doctor.userId WHERE email = ? AND doctorId<>?) AS emailExists";
+        $query3 = "SELECT EXISTS (SELECT 1 FROM user JOIN doctor ON user.userId=doctor.userId WHERE email = ? AND doctorId <> ?) AS emailExists";
         $stmt3 = mysqli_prepare($con, $query3);
         mysqli_stmt_bind_param($stmt3, "si", $demail,$doctorId);
         mysqli_stmt_execute($stmt3);
@@ -87,8 +93,9 @@ if(isset($_POST['submitinfo']))
         else{
                 $query="update user join doctor ON user.userId = doctor.userId set user.Fname=?,user.Lname=?,user.email=?,doctor.phoneNumber=?,doctor.profilePic=? where doctor.doctorId = ?";
                 $stmt=mysqli_prepare($con,$query);
-                mysqli_stmt_bind_param($stmt,"sssisi",$dfname, $dlname, $demail,$dphnum,$uploadedFileName,$doctorId);
+                mysqli_stmt_bind_param($stmt,"sssssi",$dfname, $dlname, $demail,$dphnum,$uploadedFileName,$doctorId);
                 mysqli_stmt_execute($stmt);
+                
         }
         
 }
@@ -112,13 +119,13 @@ if(isset($_POST['submit2']))
                 $stmt=mysqli_prepare($con,$query);
                 mysqli_stmt_bind_param($stmt,"si",$hashedNewPassword,$doctorId);
                 mysqli_stmt_execute($stmt);
+
+                if(mysqli_stmt_execute($stmt)){
+                        echo '200';
+                }
                 
         } else {
                 echo "incorrect password";
         }
 }
-
-
-
-
 ?>

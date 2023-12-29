@@ -34,39 +34,6 @@ function validatePhone($phone) {
     return preg_match($lebanesePhoneRegex, $phone);
 }
 
-/* if ( isset($_POST['email']) && $_POST['password']){
-    $email = $_POST['email'];
-    $pass = $_POST['password'];
-
-    $stmt = mysqli_prepare($con, "SELECT * FROM `user` WHERE email=? AND password=? ");
-    mysqli_stmt_bind_param($stmt, "ss", $email, $pass);
-    if (mysqli_stmt_execute($stmt)){
-
-    $result = mysqli_stmt_get_result($stmt);
-
-    if(mysqli_num_rows($result) > 0){
-        $row = mysqli_fetch_assoc($result);
-
-        if($row['role'] == 0){
-            $_SESSION['admin_email'] = $row['email'];
-            $_SESSION['admin_id'] = $row['userId'];
-            header('location:admin/dashboard.php');
-        } else if($row['role'] == 2) {
-            $_SESSION['user_email'] = $row['email'];
-            $_SESSION['user_id'] = $row['userId'];
-            header('location:home.php');
-        } else if($row['role'] == 1){
-          $_SESSION['doctor_email'] = $row['email'];
-          $_SESSION['doctor_id'] = $row['userId'];
-          header('location:doctor/dashboard.php');
-        }}
-        } else {
-          mysqli_stmt_close($stmt);
-          mysqli_close($con);
-          echo "1";
-    }
-}
- else */ 
  if (isset($_POST['FirstName']) && isset($_POST['LastName']) && isset($_POST['email2']) && isset($_POST['password']) 
   && isset($_POST['cpassword']) && isset($_POST['date']) && isset($_POST['gender']) && isset($_POST['mySelect'])){
     
@@ -181,7 +148,7 @@ function validatePhone($phone) {
                 SELECT phoneNumber FROM doctor WHERE phoneNumber = ?";
 
                 $phoneCheckQueryRun = mysqli_prepare($con, $phoneCheckQuery);
-                mysqli_stmt_bind_param($phoneCheckQueryRun, "ii", $contact, $contact);
+                mysqli_stmt_bind_param($phoneCheckQueryRun, "ss", $contact, $contact);
                 mysqli_stmt_execute($phoneCheckQueryRun);
                 mysqli_stmt_store_result($phoneCheckQueryRun);
                 if (mysqli_stmt_num_rows($phoneCheckQueryRun) > 0) {

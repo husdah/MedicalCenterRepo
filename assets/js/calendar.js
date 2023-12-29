@@ -173,27 +173,6 @@ $(".timepicker").on('click', '.owl-prev', function(){
   center.prev("div").addClass("center-n");
   center.next("div").addClass("center-n");
 });
-// $(".request").on("click",function () {
-//   var day = $(".day").text();
-//   var time = $(".time").text();
-
-//   $.ajax({
-//       method: "POST",
-//       url: "../../functions/makeApp.php",
-//       processData: false,
-//       contentType: JSON,
-//       cache: false,
-//       enctype: 'multipart/form-data',
-//       data: { day: '2002-08-06', time: time },
-//       success: function () {
-//           console.log("success");
-//       },
-//       error: function (error) {
-//           console.error(error);
-//           // Handle errors here
-//       }
-//   });
-// });
 
 var owlInstance; // Declare a variable to store the Owl Carousel instance
 
@@ -246,10 +225,6 @@ $(document).on('click', '.ui-datepicker-prev', function(){
     'transform': 'translateX(-100%)'
   }, 200);
 });
-
-/* $(window).on('resize', function(){
-  $(".timepicker").css('top', $(".timepicker-cf").offset().top - 2);
-}); */
 
 //hide timepicker when clicking outside
 $(document).on('click', function(event) {

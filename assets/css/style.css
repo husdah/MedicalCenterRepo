@@ -18,8 +18,6 @@ input {
   min-height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
-
-  /* border: 6px solid orange; */
 }
 
 .forms-container {
@@ -28,8 +26,6 @@ input {
   height: 100%;
   top: 30px;
   left: 0;
-
- /*  border: 2px solid black; */
 }
 
 .signin-signup {
@@ -42,8 +38,6 @@ input {
   display: grid;
   grid-template-columns: 1fr;
   z-index: 5;
-
-  /* border: 5px solid green; */
 }
 
 .fullname{
@@ -63,8 +57,6 @@ form {
   overflow: hidden;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
-  /* height: 100%; */
-  /* border: 1px solid red; */
 }
 
 form.sign-up-form {
@@ -88,7 +80,6 @@ form.sign-in-form {
   flex-direction: column;
   justify-content: start;
   align-items: start;
-  /* border: 1px solid red; */
   width: 100%;
   max-width: 380px;
 }
@@ -236,7 +227,6 @@ input[type="date"]{
   flex-direction: row;
   align-items: center;
   justify-content: center;
- /*  border: 1px solid red; */
 }
 
 .blood-group label{
@@ -357,7 +347,6 @@ input[type="date"]{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* justify-content: space-around; */
   gap: 20px;
   text-align: center;
   z-index: 6;
@@ -463,9 +452,7 @@ input[type="date"]{
 @media (max-width: 870px) {
   .container {
     height: 100vh;
-    /* height: 100vhpx; */
     overflow-y: hidden;
-    /* border: 5px solid green; */
   }
 
   .forms-container {
@@ -501,8 +488,6 @@ input[type="date"]{
     align-items: center;
     padding: 2.5rem 8%;
     grid-column: 1 / 2;
-
-    /* border: 1px solid blue; */
   }
 
   .right-panel {
@@ -568,29 +553,23 @@ input[type="date"]{
   .right-panel .image,
   .right-panel .content {
     transform: translateY(300px);
-    /* border: 1px solid white; */
   }
 
   .container.sign-up-mode .signin-signup {
     top: 0%;
     transform: translate(-50%, 0);
-    /* border: 1px solid brown; */
-
   }
 }
 
 @media (max-width: 570px) {
   .container {
     height: 120vh;
-    /* height: 100vhpx; */
     overflow-y: hidden;
-    /* border: 5px solid green; */
   }
 
   .right-panel {
     pointer-events: none;
     padding: 0;
-    /* border:  3px solid orange; */
   }
 
   form {
@@ -615,8 +594,6 @@ input[type="date"]{
   .container.sign-up-mode:before {
     bottom: 20%;
     left: 50%;
-   /*  border: 8px solid yellow; */
-    /* display: none; */
   }
 }
 
@@ -659,12 +636,9 @@ input[type="date"]{
   }
 }
 
-
 @media (max-height: 800px) {
   .container {
     height: 160vh;
-    /* height: 100vhpx; */
     overflow-y: hidden;
-   /*  border: 5px solid green; */
   }
 }

@@ -43,7 +43,7 @@ function checkRole($role) {
         header('Location: doctor/dashboard.php');
     }
     else if($role == 2){
-        header('Location: home.php');
+        header('Location: index.php');
     }
     
 }

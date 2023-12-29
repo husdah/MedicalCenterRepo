@@ -35,7 +35,6 @@ $currentPage = ($currentScript == 'dashboard.php') ? 'dashboard.php' :
         <div class="user">
             <img src="../../uploads/<?=$photo?>" class="user-img">
             <label class="user-name">Dr. <?=$drfname?> <?=$drlname?></label>
-            <!-- <label class="user-clinic">Cardiology</label> -->
         </div>
         <ul class="side-menu">
         <ul class="side-menu">

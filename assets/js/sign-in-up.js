@@ -35,26 +35,6 @@ $(document).ready(function () {
             }
         });
     });
-
-/*     $('#sign-in').submit(function(e) {
-        console.log("heloo");
-        e.preventDefault();
-        console.log("heloo222");
-        $.ajax({
-            method: "POST",
-            url: "phpCode.php",
-            data: $("#sign-in").serialize(),
-            success: function(response){
-                if(response === '1') {
-                    displayError("Incorrect email or password. Please try again.");
-                    console.log("gggg");
-                }else if(response === '2') {
-                    displayError("test test.");
-                    console.log("hh");
-                }
-              }
-            });
-        }); */
 });
 
 // Function to display error message using SweetAlert

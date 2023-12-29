@@ -261,7 +261,12 @@ document.getElementById('formsubmit').addEventListener('submit',(e)=>
             data:formData,
             success:function(response){
                 console.log(formData);
-                document.getElementById('errcurrentpass').innerText=response;
+                if(response == 200){
+                    swal("Success!", "Password Updated Successfully!", "success");
+                    document.getElementById('formsubmit').reset();
+                }else{
+                    document.getElementById('errcurrentpass').innerText=response;
+                } 
             }
             }) }
     e.preventDefault();

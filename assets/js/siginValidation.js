@@ -96,7 +96,7 @@ signinBtn?.addEventListener("click", function(event) {
                         window.location.href = 'doctor/dashboard.php';
                     } 
                     else if(data.response == 202){
-                        window.location.href = 'home.php';
+                        window.location.href = 'index.php';
                     } 
                     else if(data.response == 500){
                         swal("Invalid!", data.message +"!", "warning");
@@ -115,45 +115,6 @@ signinBtn?.addEventListener("click", function(event) {
     }
 
 });
-
-/*const btnUpdate = document.getElementById('updateBtn');
-btnUpdate?.addEventListener("click", function(event) {
-    if (event.target.type === 'submit') {
-        event.preventDefault();
-        alert("stop submit");
-    }else{
-        const valid = validateUpdateForm();
-        console.log(valid);
-        if(valid){
-            //alert("submit");
-            const updatePatient = () => {
-                const form = document.getElementById('update-form');
-                const formData = new FormData(form);
-                fetch('functions/updateUserInfo.php', {
-                    method: 'POST',
-                    body: formData,
-                })
-                .then((response) => response.json())
-                .then((data) => {
-                    //console.log('Success:', data);
-                    if(data.response == 200){
-                        swal("Error!", "All fields are required.", "error");
-                    }
-                    else if(data.response == 100){
-                        swal("Error!", "Something Went Wrong", "error");
-                    }
-                    else if(data.response == 500){
-                        swal("Updated!", "Your informations are updated successfully.", "success");
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-            }
-            updatePatient();
-        }
-    }
-});*/
 
 const btnUpdate = document.getElementById('updateBtn');
 btnUpdate?.addEventListener("click", function(event) {
@@ -323,46 +284,6 @@ btn_changePassword?.addEventListener("click", function(event) {
     }
 });
 
-//Forms Validation Functions
-/* signinForm?.addEventListener('submit', (e) => { 
-    //prevents the default form submission behavior 
-    const isValid = validateSigninForm();
-
-    // If validation fails, prevent the default form submission
-    if (!isValid) {
-        e.preventDefault();
-    }
-});
- */
-/*document.getElementById('sign-in').addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    var formData = new FormData(document.getElementById('sign-in'));
-    
-    // Log the form data for debugging purposes
-    for (var pair of formData.entries()) {
-        console.log(pair[0]+ ', ' + pair[1]);
-    }
-
-    $.ajax({
-        method: 'POST',
-        url: './test.php',
-        processData: false,
-        contentType: false,
-        cache: false,
-        data: formData,
-        success: function(response) {
-            // Handle success, you can log the response for debugging
-            console.log(response);
-            // Redirect to a new page or handle the response accordingly
-        },
-        error: function(xhr, status, error) {
-            // Handle error
-            console.error(xhr.responseText);
-        }
-    });
-});
-*/
 signupForm?.addEventListener('submit', (e) => { 
     //prevents the default form submission behavior 
     const isValid = validateSignupForm();
@@ -372,25 +293,6 @@ signupForm?.addEventListener('submit', (e) => {
         e.preventDefault();
     }
 });
-
-/*updateForm?.addEventListener('submit', (e) => { 
-    const isValid = validateUpdateForm();
-
-    // If validation fails, prevent the default form submission
-    if (!isValid) {
-        e.preventDefault();
-    }
-});
-
-passwordForm?.addEventListener('submit', (e) => { 
-    const isValid = validatePasswordForm();
-    // If validation fails, prevent the default form submission
-    if (!isValid ) {
-        e.preventDefault();
-    }
-});*/
-
-
 
 //Check if the Email is Empty
 function isEmailEmpty(emailInput,emailMsg){
@@ -495,24 +397,12 @@ function validatePwd(pwdInput,pwdMsg){
     return true;
 }
 
-/*pwdInput1?.addEventListener('input',function(){
-    validatePwd(pwdInput1,pwdMsg1);
-});*/
 pwdInput2?.addEventListener('input',function(){
     validatePwd(pwdInput2,pwdMsg2);
 });
-/*confirmInput?.addEventListener('input',function(){
-    validatePwd(confirmInput,confirmMsg);
-});*/
-/*currentPasswordInput?.addEventListener('input',function(){
-    validatePwd(currentPasswordInput,currentMsg);
-});*/
 newPasswordInput?.addEventListener('input',function(){
     validatePwd(newPasswordInput,newMsg);
 });
-/*cPasswordInput?.addEventListener('input',function(){
-    validatePwd(cPasswordInput,cMsg);
-});*/
 
 // Compare Password and Confirm password
 

@@ -60,7 +60,7 @@
                 else {
                     $query = "INSERT INTO donor (bloodType, phoneNumber) VALUES (?, ?)";
                     $stmt = mysqli_prepare($con, $query);
-                    mysqli_stmt_bind_param($stmt, "si", $BloodType, $columnPhone);
+                    mysqli_stmt_bind_param($stmt, "ss", $BloodType, $columnPhone);
                     $result = mysqli_stmt_execute($stmt);
                     if ($result) {
                         $response = '300';
