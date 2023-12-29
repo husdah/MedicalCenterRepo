@@ -91,6 +91,7 @@
     <!-- <script src="assets/js/navbar.js"></script> -->
     <script src="../assets/js/nav.js"></script>
     <!-- <script src="assets/js/validation.js"></script> -->
+    <script src="assets/js/siginValidation.js"></script>
     <script src="assets/js/contactFormValidation.js"></script>
     <script src="assets/js/donateFormValidation.js"></script>
     <script src="assets/js/errorpage.js"></script>
