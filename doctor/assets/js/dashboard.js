@@ -41,3 +41,23 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
 });
+
+var filterInput = document.getElementById('searchInput');
+        var rows = document.querySelectorAll('.p-row');
+
+        filterInput.addEventListener('input', function() {
+        var filterValue = filterInput.value.toLowerCase();
+
+        rows.forEach(function(row) {
+        var name = row.querySelector('#name').textContent.toLowerCase();
+        var phone = row.querySelector('#phone').textContent.toLowerCase();
+        var email = row.querySelector('#email').textContent.toLowerCase();
+        var shouldShow = false;
+
+        if (name.includes(filterValue) || phone.includes(filterValue) || email.includes(filterValue)) {
+            shouldShow = true;
+        }
+
+        row.style.display = shouldShow ? 'table-row' : 'none';
+    });
+    });
