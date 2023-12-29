@@ -173,7 +173,7 @@ const validateLastname = () => {
         }
     }
 }
-const validateEmail = () => {
+const validateEmail2 = () => {
     const emailValue   = email_input.value;
     if(!validateEmailStructure(emailValue)){
        if(emailError){
@@ -229,14 +229,14 @@ subject_input?.addEventListener('focusout', checkSubject);
 message_input?.addEventListener('focusout', checkMessage);
 fname_input?.addEventListener('input', validateFirstname);
 lname_input?.addEventListener('input', validateLastname);
-email_input?.addEventListener('input', validateEmail);
+email_input?.addEventListener('input', validateEmail2);
 subject_input?.addEventListener('input', validateSubject);
 message_input?.addEventListener('input', validateMessage);
 
 // Validates Form 
 function validateContactForm(){
     if(checkFirstname() && checkLastname() && checkEmail() && checkSubject() && checkMessage() 
-    && validateFirstname() && validateLastname() && validateEmail() && validateSubject() && validateMessage()){
+    && validateFirstname() && validateLastname() && validateEmail2() && validateSubject() && validateMessage()){
         //alert('Submit Done');
         console.log('Submit Successfully');
         return true;

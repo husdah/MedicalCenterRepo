@@ -279,3 +279,10 @@ ul .dropdown_menu a{
 [dir="rtl"] .navlogo img {
     margin-right: 43px;
 }
+
+@media screen and (max-width: 950px){
+    [dir="rtl"] .hamburger {
+        left: 5%;
+        right: 85%;
+    }
+}
