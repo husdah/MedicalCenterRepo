@@ -275,7 +275,7 @@
                     <div class="blood-group"> 
                         <label for="mySelect"><?php echo $donate['select']; ?></label> 
                         <select id="mySelect" name="mySelect"> 
-                            <option value="Blood-Type">Blood Type</option> 
+                            <option value="Blood-Type"><?php echo $donate['Blood Type']; ?></option> 
                             <option value="A+">A+</option> 
                             <option value="B+">B+</option> 
                             <option value="O+">O+</option> 

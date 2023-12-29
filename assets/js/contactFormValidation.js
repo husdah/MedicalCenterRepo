@@ -1,3 +1,23 @@
+// Set a default language (e.g., English)
+//let currentLanguage = 'en';
+
+// Function to change language
+function changeLanguage(language) {
+    currentLanguage = language;
+    // Re-run validation functions to update error messages
+    checkEmailOrPhone();
+    validateEmailOrPhone();
+    validateSelect();
+}
+// Function to get language from URL
+function getLanguageFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('lang') || 'en'; // Default to English if not found
+}
+
+// Initialize currentLanguage based on URL
+currentLanguage = getLanguageFromURL();
+
 // Form variable
 const contactForm   = document.getElementById('form2');
 
@@ -29,11 +49,37 @@ const validateSubjectStructure = (subject) => {
     return subject.match(/^.{1,}$/);
 };
 
+const translations = {
+    en: {
+      required: "This field is required.",
+      error: "Phone or Email",
+      namestructure: "Must contain only and at least 3 Letters.",
+      emailstructure: "example@hotmail.com",
+      subjectStructure: "Subject must be clear.",
+      messageStructure: "more characters required. <br> The message must be clear.",
+      success: "Your data has been submitted successfully!",
+      thank: "Thank you",
+
+    },
+    ar: {
+      required: "هذا الحقل مطلوب.",
+      error:'الهاتف او بريد إلكتروني',
+      namestructure: "يجب أن يحتوي على 3 أحرف فقط.",
+      emailstructure: "example@hotmail.com",
+      subjectStructure: "يجب أن يكون الموضوع واضحا.",
+      messageStructure: "المزيد من  الاحرف. <br> يجب أن تكون الرسالة واضحة.",
+      success: "لقد تم حفظ بياناتك بنجاح!",
+      thank: "شكرًا لك",
+
+    },
+};
+
+
 // Validation on Focusout Event For Empty Input
 const checkFirstname = () => {
     if(fname_input.value === ''){
         if(fnameError){
-            fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
+            fnameError.innerHTML   = `<i class="fa-solid fa-triangle-exclamation"></i> ${translations[currentLanguage].required}`;
             return false;
         }
     }
@@ -46,7 +92,7 @@ const checkFirstname = () => {
 const checkLastname = () => {
     if(lname_input.value === ''){
         if(lnameError){
-            lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
+            lnameError.innerHTML   = `<i class="fa-solid fa-triangle-exclamation"></i> ${translations[currentLanguage].required}`;
             return false;
         }
     }
@@ -59,7 +105,7 @@ const checkLastname = () => {
 const checkEmail = () => {
     if(email_input.value === ''){
         if(emailError){    
-            emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i>This field is required*';
+            emailError.innerHTML   = `<i class="fa-solid fa-triangle-exclamation"></i> ${translations[currentLanguage].required}`;
             return false;
         }
     }
@@ -72,7 +118,7 @@ const checkEmail = () => {
 const checkSubject = () => {
     if(subject_input.value === ''){
         if(subjectError){
-            subjectError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
+            subjectError.innerHTML   = `<i class="fa-solid fa-triangle-exclamation"></i> ${translations[currentLanguage].required}`;
             return false;
         }
     }
@@ -85,7 +131,7 @@ const checkSubject = () => {
 const checkMessage = () => {
     if(message_input.value === ''){
         if(messageError){
-            messageError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
+            messageError.innerHTML   = `<i class="fa-solid fa-triangle-exclamation"></i> ${translations[currentLanguage].required}`;
             return false;
         }
     }
@@ -101,7 +147,7 @@ const validateFirstname = () => {
     const fnameValue   = fname_input.value;
     if(!validateNameStructure(fnameValue)){
         if(fnameError){
-            fnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Must contain only and at least 3 Letters.';
+            fnameError.innerHTML   = `<i class="fa-solid fa-triangle-exclamation"></i> ${translations[currentLanguage].namestructure}`;
             return false;
         }
     }
@@ -116,7 +162,7 @@ const validateLastname = () => {
     const lnameValue   = lname_input.value;
     if(!validateNameStructure(lnameValue)){
         if(lnameError){
-            lnameError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Must contain only and at least 3 Letters.';
+            lnameError.innerHTML   = `<i class="fa-solid fa-triangle-exclamation"></i> ${translations[currentLanguage].namestructure}`;
             return false;
         }
     }
@@ -131,7 +177,7 @@ const validateEmail = () => {
     const emailValue   = email_input.value;
     if(!validateEmailStructure(emailValue)){
        if(emailError){
-            emailError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> example@hotmail.com';
+            emailError.innerHTML   = `<i class="fa-solid fa-triangle-exclamation"></i> ${translations[currentLanguage].emailstructure}`;
             return false;
         }
     }
@@ -146,7 +192,7 @@ const validateSubject = () => {
     const subjectValue   = subject_input.value;
     if(!validateSubjectStructure(subjectValue)){
         if(subjectError){
-            subjectError.innerHTML   = '<i class="fa-solid fa-triangle-exclamation"></i> Subject must be clear.';
+            subjectError.innerHTML   = `<i class="fa-solid fa-triangle-exclamation"></i> ${translations[currentLanguage].subjectStructure}`;
             return false;
         }
     }
@@ -166,7 +212,7 @@ const validateMessage = () => {
     const left         = required - message.length;
     messageError.innerHTML = '';
     if(left>0){
-        messageError.innerHTML = left + ' more characters required. <br> Please the message must be clear.';
+        messageError.innerHTML = left +  ` ${translations[currentLanguage].messageStructure}`;
         return false;
     }
     else{
@@ -227,7 +273,7 @@ sendBtn?.addEventListener('click', (e) =>{
                     .then((response) => response.json())
                     .then((data) => {
                         if (data.response == 200) {
-                            swal("Thank You!", "Your data has been submitted successfully!", "success");
+                            swal(`${translations[currentLanguage].thank}`, `${translations[currentLanguage].success}`, "success");
                             // Clear form inputs
                             form.reset();
                             document.getElementById('fname-error').innerHTML = '';

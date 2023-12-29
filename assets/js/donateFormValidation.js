@@ -21,11 +21,30 @@ function validateInput(input) {
     }
 }
 
+const translations2 = {
+    en: {
+      required: "This field is required.",
+      error: "Phone or Email",
+      success: "Your data has been submitted successfully!",
+      success1: "But you donated to us.",
+      thank: "Thank you",
+      failed: "Error!",
+    },
+    ar: {
+      required: "هذا الحقل مطلوب.",
+      error:'الهاتف او بريد إلكتروني',
+      success: "لقد تم حفظ بياناتك بنجاح!",
+      success1: "لكنك تبرعت لنا.",
+      thank: "شكرًا لك",
+      failed: "خطأ!",
+    },
+};
+
 //Validation on Focusout Event For Empty Input
 const checkEmailOrPhone = () => {
     if(emailText.value == ''){
         if(errorDisplay){
-            errorDisplay.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> This field is required*';
+            errorDisplay.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${translations2[currentLanguage].required}`;
             return false;
         }
     }
@@ -40,7 +59,7 @@ const checkEmailOrPhone = () => {
 const validateEmailOrPhone = () => {
     if(!validateInput(emailText.value)){
         if(errorDisplay){
-            errorDisplay.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Phone or Email';
+            errorDisplay.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${translations2[currentLanguage].error}`;
             return false;
         }
     }
@@ -51,6 +70,7 @@ const validateEmailOrPhone = () => {
         }
     }
 }
+
 const validateSelect = () => {
     var selectedOption = bloodType.options[bloodType.selectedIndex];
     var selectedValue  = selectedOption.value;
@@ -74,7 +94,7 @@ btn_donate?.addEventListener("click", function(event) {
     if (event.target.type === 'submit') {
         event.preventDefault();
         alert("stop submit");
-    }else{
+    } else {
         if(!validateSelect() || !checkEmailOrPhone() || !validateEmailOrPhone()){
             validateSelect();
             checkEmailOrPhone();
@@ -96,17 +116,17 @@ btn_donate?.addEventListener("click", function(event) {
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.response === '100') {
-                        swal("Thank You", "But you donated to us.", "success");
+                        swal(`${translations2[currentLanguage].thank}`, `${translations2[currentLanguage].success1}`, "success");
                         console.log('message', data);
                     }  
                     else if(data.response === '300') {
-                        swal("Thank you", "Your data has been submitted successfully!", "success");
+                        swal(`${translations2[currentLanguage].thank}`, `${translations2[currentLanguage].success}`, "success");
                         donateForm.reset();
                         errorDisplay.innerHTML = "";
                         console.log('message', data);
                     }  
                     else if(data.response === '400') {
-                        swal("Error", "All fields must be validated", "error");
+                        swal(`${translations2[currentLanguage].failed}`, "All fields must be validated", "error");
                     }  
                     else if(data.response === '500') {
                         swal("Error", "Please fill the fields", "error");

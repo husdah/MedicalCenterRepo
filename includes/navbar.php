@@ -38,7 +38,7 @@
                             <?php
                                 if($_SESSION['role_as'] == 2){
                                     ?>
-                                        <a href="user.php"><li class="dropdown_item-2">Profile</li></a>
+                                        <a href="user.php"><li class="dropdown_item-2"><?php echo $nav['Profile'] ?></li></a>
                                     <?php
                                 }
                             ?>

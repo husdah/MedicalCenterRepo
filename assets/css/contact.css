@@ -116,7 +116,7 @@ ul.breadcrumb li a:hover{
 /* Responsive on width 1024px */
 @media(max-width:1024px){
     .contact-form h2 {
-        font-size: 20px;
+        font-size: 15px;
         line-height: 20px;
     }
 }
@@ -143,6 +143,9 @@ ul.breadcrumb li a:hover{
 
 /* Responsive on width 550px */
 @media(max-width:550px){
+    .contact-form h2 {
+        font-size: 13px;
+    }
     .contact.container{
         height:  100%;
         display: flex;
@@ -174,6 +177,9 @@ ul.breadcrumb li a:hover{
 [dir="rtl"] .content.banner{
     padding-right: 50px;
 }
+[dir="rtl"] .contact.container {
+    height: 650px;
+}
 
 [dir="rtl"] .contact-form h2 {
     line-height: 40px;
@@ -185,8 +191,43 @@ ul.breadcrumb li a:hover{
     padding-right: 50px;
 }
 [dir="rtl"] .column-right span {
-    margin-right: 100px;
+    margin-right: 50px;
+    margin-left: 0px;
 }
 [dir="rtl"] .column-right .get-in-touch span i {
     margin-left: 20px;
+}
+
+[dir="rtl"] ul.breadcrumb li {
+    margin: 25px 5px 0 20px;
+}
+
+/* Responsive on width 1024px */
+@media(max-width:1024px){
+    [dir="rtl"] .contact-form h2 {
+        line-height: 20px;
+    }
+}
+
+/* Responsive on width 768px */
+@media(max-width:768px){
+    [dir="rtl"] .contact.container .column-right{
+        margin-left: 0px;
+    }
+
+    [dir="rtl"]  .contact-form input[type="text"] {
+        width: 85%;
+    }
+    [dir="rtl"] .contact-form textarea{
+        width: 90%;
+    }
+}
+/* Responsive on width 425px */
+@media(max-width:425px){
+    [dir="rtl"] .contact.container {
+        margin: 380px auto;
+    }
+    [dir="rtl"] .contact.container .column-right {
+        margin-right: 0px; 
+    }
 }
