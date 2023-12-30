@@ -41,7 +41,7 @@
             $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
         
             $addAdminQuery = "INSERT INTO user (Fname, Lname, email, password, role) 
-                            VALUES ('admin', 'root', 'healthHubAdmin@gmail.com', ?, ?)";
+                            VALUES ('admin', 'root', 'healthhubesa23@gmail.com', ?, ?)";
             $addAdminQuery_run = mysqli_prepare($con, $addAdminQuery);
             mysqli_stmt_bind_param($addAdminQuery_run, "si", $hashed_password, $role_admin);
             mysqli_stmt_execute($addAdminQuery_run);
@@ -131,12 +131,11 @@
         $createTableFeedbackQuery_run = mysqli_query($con,$createTableFeedbackQuery);
     
         $createTableMediaQuery= "CREATE TABLE IF NOT EXISTS media (
-            mediaId INT PRIMARY KEY AUTO_INCREMENT,
-            doctorId INT NOT NULL,
+            doctorId INT PRIMARY KEY,
             facebook varchar(200) NULL,
             instagram varchar(200) NULL,
             linkedin varchar(200) NULL,
-            FOREIGN KEY (doctorId) REFERENCES doctor(doctorId)
+            FOREIGN KEY (doctorId) REFERENCES doctor(doctorId),
 
         );";
         $createTableMediaQuery_run = mysqli_query($con,$createTableMediaQuery);
@@ -159,8 +158,7 @@
         $createTableRemindersQuery_run = mysqli_query($con,$createTableRemindersQuery);
     
         $createTableUrgentBTQuery= "CREATE TABLE IF NOT EXISTS urgentBT (
-            urgentBTId INT PRIMARY KEY AUTO_INCREMENT,
-            bloodType varchar(10) NOT NULL,
+            bloodType varchar(10) PRIMARY KEY,
             number int NOT NULL
 
         );";
