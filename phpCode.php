@@ -23,13 +23,13 @@ function validateEmail($email) {
 
 // Function to validate password
 function validatePass($pass) {
-    $passRegex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/';
+    $passRegex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+{};:\'",<.>\/?\\[\]`~]).{8,}$/';
     return preg_match($passRegex, $pass);
 }
 
 // Function to validate phone
 function validatePhone($phone) {
-    $lebanesePhoneRegex = '/^\d{8}$/';
+    $lebanesePhoneRegex = '/^(03|71|70|76|78|79|81)\d{6}$/';
     /* $lebanesePhoneRegex = '/^(?:\+961|0\d{1,2}) \d{3} \d{3}$/'; */
     return preg_match($lebanesePhoneRegex, $phone);
 }

@@ -18,14 +18,13 @@ function validateEmail(email) {
 
 // Function to validate password
 function validatePass(pass) {
-    var passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    var passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+{};:'",<.>\/?\\[\]`~])(.{8,})$/;
     return passRegex.test(pass);
 }
 
 // Function to validate phone
 function validatePhone(phone) {
-    var lebanesePhoneRegex = /^\d{8}$/;
-    /* var lebanesePhoneRegex = /^(?:\+961|0\d{1,2}) \d{3} \d{3}$/; */
+    var lebanesePhoneRegex = /^(03|71|70|76|78|79|81)\d{6}$/;
     return lebanesePhoneRegex.test(phone);
 }
 

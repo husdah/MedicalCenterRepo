@@ -11,7 +11,7 @@ const btn_donate   = document.getElementById('click_donate');
 
 // Function to handle submit email and phone events
 function validateInput(input) {
-    var lebanesePhoneRegex = /^\d{8}$/;
+    var lebanesePhoneRegex = /^(03|71|70|76|78|79|81)\d{6}$/;
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (lebanesePhoneRegex.test(input)) {
       return input.match(lebanesePhoneRegex);
