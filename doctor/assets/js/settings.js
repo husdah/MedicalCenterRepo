@@ -32,7 +32,7 @@ const validateEmail = (email) => {
 
 const validatePhone = (phone) => {
     return phone.match(
-        /^(76|03|71|70)\d{6}$/
+        /^(03|71|70|76|78|79|81)\d{6}$/
     );
 };
 //validation for new password
