@@ -2,7 +2,6 @@
 
 class Urgentbt
 {
-    public $urgentBTId;
     public $bloodType;
     public $number;
 }
@@ -19,7 +18,6 @@ if (mysqli_num_rows($result) > 0) {
     // output data of each row
     for ($i = 0; $row = $result->fetch_assoc(); $i++) {
         $BT = new Urgentbt();
-        $BT->urgentBTId = $row['urgentBTId'];
         $BT->bloodType = $row['bloodType'];
         $BT->number = $row['number'];
         array_push($data, $BT);

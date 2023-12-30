@@ -1655,7 +1655,7 @@ const bloodDetails = async() => {
                     <td>
                         <p>${bt.number}</p>
                     </td>
-                    <td><button class="btn-delete deleteUrgentBTBtn" onclick="delUrgentBT(${bt.urgentBTId})" value="${bt.urgentBTId}"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
+                    <td><button class="btn-delete deleteUrgentBTBtn" onclick="delUrgentBT('${bt.bloodType}')" value="${bt.urgentBTId}"><i class="bx bx-trash-alt"></i><span>Delete</span></button></td>
                     </tr>`;
             });
         }else{
@@ -2450,7 +2450,7 @@ feedbackDetails();
 
 
 //delete functions
-function delUrgentBT(id) {
+function delUrgentBT(bloodType) {
 
     swal({
         title: "Are you sure?",
@@ -2465,7 +2465,7 @@ function delUrgentBT(id) {
             fetch('functions/delUrgentBT.php', {
                 method: 'POST',
                 body: JSON.stringify({
-                    id: id
+                    bloodType: bloodType
                 }),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8'
