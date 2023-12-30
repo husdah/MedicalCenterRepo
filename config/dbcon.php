@@ -135,7 +135,7 @@
             facebook varchar(200) NULL,
             instagram varchar(200) NULL,
             linkedin varchar(200) NULL,
-            FOREIGN KEY (doctorId) REFERENCES doctor(doctorId),
+            FOREIGN KEY (doctorId) REFERENCES doctor(doctorId)
 
         );";
         $createTableMediaQuery_run = mysqli_query($con,$createTableMediaQuery);
