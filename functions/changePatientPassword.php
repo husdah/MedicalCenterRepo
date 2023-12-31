@@ -16,7 +16,7 @@
     
     // Function to validate password
     function validatePass($pass) {
-        $passRegex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/';
+        $passRegex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+{};:\'",<.>\/?\\[\]`~]).{8,}$/';
         return preg_match($passRegex, $pass);
     }
 
