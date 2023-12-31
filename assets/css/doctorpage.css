@@ -282,6 +282,17 @@ body{
     color: var(--danger);
 }
 
+.wExcTitle{
+    color: var(--danger);
+    font-size: .8rem;
+    font-weight: 500;
+    margin-top: 5px;
+}
+.wExcList li{
+    color: var(--danger);
+    font-size: .8rem;
+    list-style:disc !important;
+}
 
 
 @media screen and (max-width: 576px) {

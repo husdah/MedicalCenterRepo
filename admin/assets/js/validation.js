@@ -1564,6 +1564,8 @@ manageExceptionFormBtn?.addEventListener("click", function(event) {
                         exceptionFromInput.value = "";
                         exceptionTOInput.value = "";
                         exceptionAvailableCheck.checked = true;
+                        exceptionTOInput.disabled = false;
+                        exceptionFromInput.disabled = false;
         
                     }else if(data.response == 500){
                         swal("Note!", data.message +"!", "warning");
