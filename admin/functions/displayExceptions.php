@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     public $available;
 }
 
-$query= "SELECT * FROM workingexception WHERE doctorId =?";
+$query= "SELECT * FROM workingException WHERE doctorId =?";
 $query_run = mysqli_prepare($con, $query);
 mysqli_stmt_bind_param($query_run, "i", $id);
 mysqli_stmt_execute($query_run);

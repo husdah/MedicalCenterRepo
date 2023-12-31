@@ -55,7 +55,7 @@ function getClinics(){
 function getOpeningHour(){
     global $con;
     //$query    = "SELECT *, substring(day, 1, 3) AS shortDay FROM medicalhours ORDER BY FIELD(day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');";
-    $query    = "SELECT *, LEFT(day, 3) AS shortDay  FROM medicalhours ORDER BY FIELD(day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');";
+    $query    = "SELECT *, LEFT(day, 3) AS shortDay  FROM medicalHours ORDER BY FIELD(day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');";
     $stmt = mysqli_prepare($con, $query);
     if ($stmt) {
         mysqli_stmt_execute($stmt);

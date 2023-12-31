@@ -20,13 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $response = 200;
     
     if($day!= "" && $day != "WHDay"){
-        $check_query = "SELECT * FROM doctorhours WHERE doctorId=? AND day=?";
+        $check_query = "SELECT * FROM doctorHours WHERE doctorId=? AND day=?";
         $stmt = mysqli_prepare($con, $check_query);
         mysqli_stmt_bind_param($stmt, "is", $doctorId, $day);
         mysqli_stmt_execute($stmt);
         $check_query_run = mysqli_stmt_get_result($stmt);
 
-        $select_query = "SELECT * FROM medicalhours WHERE day=?";
+        $select_query = "SELECT * FROM medicalHours WHERE day=?";
         $select_query_run = mysqli_prepare($con, $select_query);
         mysqli_stmt_bind_param($select_query_run, "s", $day);
         mysqli_stmt_execute($select_query_run);
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             if(mysqli_num_rows($check_query_run) >0){
 
-                $update_query = "UPDATE doctorhours SET fromHour=? , toHour=?, available=? WHERE doctorId=? AND day=? ";
+                $update_query = "UPDATE doctorHours SET fromHour=? , toHour=?, available=? WHERE doctorId=? AND day=? ";
                 $update_query_run = mysqli_prepare($con, $update_query);
                 mysqli_stmt_bind_param($update_query_run, "ssiis", $from, $to, $available,$doctorId,$day);
         
@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 mysqli_stmt_close($update_query_run);
     
             }else{
-                $doctorHours_query = "INSERT INTO doctorhours (doctorId,day, fromHour, toHour, available) VALUES (?, ?, ?, ?, ?)";
+                $doctorHours_query = "INSERT INTO doctorHours (doctorId,day, fromHour, toHour, available) VALUES (?, ?, ?, ?, ?)";
                 $doctorHours_query_run = mysqli_prepare($con, $doctorHours_query);
                 mysqli_stmt_bind_param($doctorHours_query_run, "isssi", $doctorId, $day, $from, $to, $available);
         

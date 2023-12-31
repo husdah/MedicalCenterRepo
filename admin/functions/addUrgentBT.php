@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = [];
     if (!empty($urgentBT) && !empty($number)) {
 
-        $check_query = "SELECT * FROM urgentbt WHERE bloodType=?";
+        $check_query = "SELECT * FROM urgentBT WHERE bloodType=?";
         $check_query_run = mysqli_prepare($con, $check_query);
         mysqli_stmt_bind_param($check_query_run, "s",$urgentBT);
         mysqli_stmt_execute($check_query_run);
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if(mysqli_num_rows($check_result) > 0){
 
-            $update_query = "UPDATE urgentbt SET number=? WHERE bloodType=? ";
+            $update_query = "UPDATE urgentBT SET number=? WHERE bloodType=? ";
             $update_query_run = mysqli_prepare($con, $update_query);
             mysqli_stmt_bind_param($update_query_run, "is", $number, $urgentBT);
     
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             mysqli_stmt_close($update_query_run);
 
         }else{
-            $urgentbt_query = "INSERT INTO urgentbt (bloodType, number) VALUES (?, ?)";
+            $urgentbt_query = "INSERT INTO urgentBT (bloodType, number) VALUES (?, ?)";
             $urgentbt_query_run = mysqli_prepare($con, $urgentbt_query);
             mysqli_stmt_bind_param($urgentbt_query_run, "si", $urgentBT, $number);
     

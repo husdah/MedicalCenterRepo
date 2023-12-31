@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if($date != ""){
         $day= date("l", strtotime($date));
 
-        $select_query = "SELECT * FROM medicalhours WHERE day=?";
+        $select_query = "SELECT * FROM medicalHours WHERE day=?";
         $select_query_run = mysqli_prepare($con, $select_query);
         mysqli_stmt_bind_param($select_query_run, "s", $day);
         mysqli_stmt_execute($select_query_run);
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
 
                 if($response != 500){
-                    $clinic_check_query = "SELECT * FROM workingexception WHERE doctorId=? AND date=?";
+                    $clinic_check_query = "SELECT * FROM workingException WHERE doctorId=? AND date=?";
                     $clinic_check_query_run = mysqli_prepare($con, $clinic_check_query);
                     mysqli_stmt_bind_param($clinic_check_query_run, "is", $doctorId, $date);
                     mysqli_stmt_execute($clinic_check_query_run);
@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
                     if(mysqli_num_rows($clinic_check_result) > 0){
             
-                        $exception_query = "UPDATE workingexception SET fromHour=? , toHour=?, available=? WHERE doctorId=? AND date=? ";
+                        $exception_query = "UPDATE workingException SET fromHour=? , toHour=?, available=? WHERE doctorId=? AND date=? ";
                         $exception_query_run = mysqli_prepare($con, $exception_query);
                         mysqli_stmt_bind_param($exception_query_run, "ssiis", $from, $to, $available,$doctorId,$date);
             
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         mysqli_stmt_close($exception_query_run);
                         
                     }else{
-                        $exception_query = "INSERT INTO workingexception (doctorId, date, fromHour, toHour, available) VALUES (?, ?, ?, ?,?)";
+                        $exception_query = "INSERT INTO workingException (doctorId, date, fromHour, toHour, available) VALUES (?, ?, ?, ?,?)";
                         $exception_query_run = mysqli_prepare($con, $exception_query);
                         mysqli_stmt_bind_param($exception_query_run, "isssi", $doctorId, $date, $from, $to, $available);
                 

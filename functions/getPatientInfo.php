@@ -1,5 +1,4 @@
 <?php
-
     session_start();
     header('Content-type: application/json');
     $userId = $_SESSION['auth_user']['user_id'];

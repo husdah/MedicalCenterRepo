@@ -8,14 +8,14 @@ $enabledDays=array();
 $query="select Fname, Lname,ProfilePic,phoneNumber,linkedin,instagram,facebook,doctor.clinicId,name from user join doctor on user.userId=doctor.userId  left join media on doctor.doctorId=media.doctorId left join clinic on doctor.clinicId = clinic.clinicId where doctor.doctorId=$did";
 $result=mysqli_query($con,$query);
 
-$query4="select day from doctorhours where doctorId=$did AND available=1";
+$query4="select day from doctorHours where doctorId=$did AND available=1";
 $result4=mysqli_query($con,$query4);
 
 while ($row = mysqli_fetch_assoc($result4)) {
     $enabledDays[] = $row['day'];
 }
 
-$query5="select * from workingexception where doctorId=$did";
+$query5="select * from workingException where doctorId=$did";
 $result5=mysqli_query($con,$query5);
 
 ?>
