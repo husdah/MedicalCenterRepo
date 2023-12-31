@@ -483,10 +483,15 @@ updateLname?.addEventListener('input',function(){
 
 
 //Phone Structure Validation
+// Function to validate phone
+function PhoneRegularExce(phone) {
+    var lebanesePhoneRegex = /^(03|71|70|76|78|79|81)\d{6}$/;
+    return lebanesePhoneRegex.test(phone);
+}
 
 function validatePhone(phone,msg){
     const nb = phone.value;
-    if(nb.length == 8 || nb.length == 0){
+    if(PhoneRegularExce(nb) || nb.length == 0){
         msg.innerHTML = '';
         return true;
     }else{
