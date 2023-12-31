@@ -14,6 +14,10 @@ $result4=mysqli_query($con,$query4);
 while ($row = mysqli_fetch_assoc($result4)) {
     $enabledDays[] = $row['day'];
 }
+
+$query5="select * from workingexception where doctorId=$did";
+$result5=mysqli_query($con,$query5);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,7 +98,34 @@ while ($row = mysqli_fetch_assoc($result4)) {
                           </div>
                           <div class="monthChange"></div>
                         </div>
-                        
+
+                        <!-- exceptionDays -->
+                        <?php
+                            if(mysqli_num_rows($result5) >0){
+                            ?>
+                            <label class="wExcTitle">Note:</label>
+                            <ul class="wExcList" type="square">
+                                <?php
+                                    while ($row = mysqli_fetch_assoc($result5)) {
+                                        if($row['available'] == 0){
+                                            ?>
+                                                <li>Dr will not be available on <?= $row['date']; ?></li>
+                                            <?php
+                                        }else{
+                                            $fromTime = DateTime::createFromFormat('H:i:s', $row['fromHour'])->format('h:i A');
+                                            $toTime = DateTime::createFromFormat('H:i:s', $row['toHour'])->format('h:i A');
+                                            ?>
+                                                <li>On <?= $row['date']; ?>, dr will be available from: <?= $fromTime; ?> to: <?= $toTime; ?></li>
+                                            <?php
+                                        }
+                                    }
+                                ?>
+                            </ul>
+                            <?php
+                            }
+                        ?>
+                        <!-- end of exceptionDays -->
+
                          <div class="inner-wrap">
                             <button type="submit" class="request disabled" id="btn">
                               Request appointment <br class="break">
@@ -120,7 +151,6 @@ while ($row = mysqli_fetch_assoc($result4)) {
                             <div class="fade-l"></div>
                             <div class="fade-r"></div>
                         </div>
-
                           
                     </div>
 
