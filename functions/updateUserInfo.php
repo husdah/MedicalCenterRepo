@@ -3,25 +3,29 @@ session_start();
 $userId = $_SESSION['auth_user']['user_id'];
 include('../config/dbcon.php');
 header('Content-type: application/json');
+include('validateFunctions.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $json = json_decode(file_get_contents('php://input'));
 
-    $updateFname     = $_POST['First-Name'];
-    $updateLname     = $_POST['Last-Name'];
-    $updateEmail     = $_POST['pat-email'];
+    $updateFname     = test_input($_POST['First-Name']);
+    $updateLname     = test_input($_POST['Last-Name']);
+    $updateEmail     = test_input($_POST['pat-email']);
     if($_POST['phone'] == ""){
         $updatePhone     = null;
     }else{
-        $updatePhone     = $_POST['phone'];
+        $updatePhone     = test_input($_POST['phone']);
     }
-    $updateDate      = $_POST['date'];
-    $updateGender    = $_POST['gender'];
-    $updateBloodType = $_POST['mySelect'];
+    $updateDate      = test_input($_POST['date']);
+    $updateGender    = test_input($_POST['gender']);
+    $updateBloodType = test_input($_POST['mySelect']);
 
     $data = [];
 
     if(empty($updateFname) || empty($updateLname) || empty($updateEmail)) {
         $response ='200';
+    }
+    else if(!validateName($updateFname) || !validateName($updateLname) || !validateEmail($updateEmail) || !validatePhone($_POST['phone'])) {
+        $response ='201';
     }
     else{
 

@@ -139,6 +139,9 @@ btnUpdate?.addEventListener("click", function(event) {
                     if(data.response == 200){
                         swal("Error!", "All fields are required.", "error");
                     }
+                    else if(data.response == 201){
+                        swal("Error!", "All fields must be validated.", "error");
+                    }
                     else if(data.response == 100){
                         swal("Error!", "Something Went Wrong", "error");
                     }
