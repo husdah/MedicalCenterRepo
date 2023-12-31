@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $bloodType = mysqli_real_escape_string($con, trim($json->bloodType));
 
-    $delete_query = "DELETE FROM urgentbt WHERE bloodType=?";
+    $delete_query = "DELETE FROM urgentBT WHERE bloodType=?";
     $delete_query_run = mysqli_prepare($con, $delete_query);
     mysqli_stmt_bind_param($delete_query_run, "s", $bloodType);
 

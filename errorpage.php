@@ -1,10 +1,8 @@
-
-    <?php
-        session_start();
-        include('includes/header.php');
-        include('functions/selectData.php');
-
-    ?>
+<?php
+    session_start();
+    include('includes/header.php');
+    include('functions/selectData.php');
+?>
 
     <section id="error" class="error-section">
         <div class="error-container">

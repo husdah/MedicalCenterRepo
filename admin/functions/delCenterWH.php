@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $day = trim($json->day);
 
-    $delete_query = "DELETE FROM medicalhours WHERE day=?";
+    $delete_query = "DELETE FROM medicalHours WHERE day=?";
     $delete_query_run = mysqli_prepare($con, $delete_query);
     mysqli_stmt_bind_param($delete_query_run, "s", $day);
     

@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $drId = mysqli_real_escape_string($con, trim($json->id));
     $date = $json->date;
 
-    $delete_query = "DELETE FROM workingexception WHERE doctorID=? AND date=?";
+    $delete_query = "DELETE FROM workingException WHERE doctorID=? AND date=?";
     $delete_query_run = mysqli_prepare($con, $delete_query);
     mysqli_stmt_bind_param($delete_query_run, "is", $drId,$date);
     

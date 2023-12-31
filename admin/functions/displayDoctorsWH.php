@@ -15,7 +15,7 @@ $query = "SELECT CONCAT(user.Fname, ' ', user.Lname) AS docName,
             dh.day AS day, dh.fromHour AS fromHour, dh.toHour AS toHour, dh.available AS available 
             FROM user
             JOIN doctor ON user.userId = doctor.userId
-            JOIN doctorhours AS dh ON doctor.doctorId = dh.doctorId
+            JOIN doctorHours AS dh ON doctor.doctorId = dh.doctorId
             JOIN medicalHours ON medicalHours.day = dh.day AND medicalHours.closed = 0
             ORDER BY FIELD(dh.day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');";
 

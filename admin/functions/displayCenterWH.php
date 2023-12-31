@@ -10,7 +10,7 @@ class Center_Working_Hours
 
 require_once('../../config/dbcon.php');
 
-$query= "SELECT * FROM medicalhours ORDER BY FIELD(day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');";
+$query= "SELECT * FROM medicalHours ORDER BY FIELD(day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');";
 $query_run = mysqli_prepare($con, $query);
 mysqli_stmt_execute($query_run);
 $result = mysqli_stmt_get_result($query_run);

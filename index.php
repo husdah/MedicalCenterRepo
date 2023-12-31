@@ -1,15 +1,14 @@
+<?php
+    session_start();
+    include('functions/selectData.php');
+    require('middleware/homeMiddleware.php');
+    include('includes/header.php');
 
-    <?php
-        session_start();
-        include('functions/selectData.php');
-        require('middleware/homeMiddleware.php');
-        include('includes/header.php');
-
-        $doctorCount  = getRowCount('doctor');
-        $patientCount = getRowCount('patient');
-        $clinicCount  = getRowCount('clinic');
-        $donorCount   = getRowCount('donor');                
-    ?>                
+    $doctorCount  = getRowCount('doctor');
+    $patientCount = getRowCount('patient');
+    $clinicCount  = getRowCount('clinic');
+    $donorCount   = getRowCount('donor');                
+?>                
     
     <!-- Section Banner -->
     <section id="banner" class="banner">
