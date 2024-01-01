@@ -1,7 +1,7 @@
 <?php
     $server='localhost';
     $user='root';
-    $pass='';
+    $pass='#Daher@123#123@blizboy@123#';
     $mydb='healthhubdb';
 
     $con=mysqli_connect($server, $user, $pass, $mydb);

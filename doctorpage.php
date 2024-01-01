@@ -199,18 +199,32 @@ $result5=mysqli_query($con,$query5);
         var did = urlParams.get('did');
         var day = $(".day").text();
         var time = $(".time").text();
-        var dateObj = new Date(day + ' ' + new Date().getFullYear());
-        var mysqlDate = dateObj.toISOString().slice(0, 10);
+       /*  var dateObj = new Date(day + ' ' + new Date().getFullYear());
+        var mysqlDate = dateObj.toISOString().slice(0, 10); */
+        var dateObj = new Date(day);
+        var day = dateObj.getDate();
+        var month = dateObj.getMonth() + 1;
+        var year = dateObj.getFullYear();
+        var fullDate = year + "/" + month + "/" + day;
         //console.log(mysqlDate);
 
-        $.post("./functions/makeApp.php", { did: did, day:mysqlDate, time: time }, function(response) {
+        if(time != ""){
+            $.post("./functions/makeApp.php", { did: did, day:fullDate, time: time }, function(response) {
             Swal.fire({
                 title: "Appointment Sent!",
                 icon: "success",
                 text: `Your appointment  request on ${day} at ${time} has been sent successfully.`,
                 confirmButtonText: "OK"
             });
-});
+        });
+        }else{
+            Swal.fire({
+                title: "Note!",
+                icon: "warning",
+                text: 'Dr is not available on this day',
+                confirmButtonText: "OK"
+            });
+        }
 
     });
 
