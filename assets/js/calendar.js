@@ -54,12 +54,13 @@ $('#calendar').datepicker({
     year =  date.getFullYear();
   
     var dayOfWeek = $.datepicker.formatDate('DD', $(this).datepicker('getDate'));
+    var fullDate = year + "/" + month + "/" + day; 
 
   let doctorId= document.getElementById("docId_Get").value;
   $.ajax({
     method: "POST",
     url: "functions/timePickerSet.php", // Update this with the actual path to your PHP script
-    data: { selectedDay: dayOfWeek, did: doctorId },
+    data: { selectedDay: dayOfWeek, did: doctorId, date: fullDate },
     success: function(response) {
         // Assuming your PHP script returns only the working hours HTML
 
@@ -72,6 +73,9 @@ $('#calendar').datepicker({
 
     // Reinitialize Owl Carousel after content is added
     initOwlCarousel();
+
+    time = $(".owl-stage .center").text();
+    $(".request .time").text(time);
         
     },
     error: function(xhr, status, error) {
