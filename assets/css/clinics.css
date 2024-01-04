@@ -270,11 +270,13 @@ h2 {
 
     .name {
         font-size: 16px;
+        padding: 0 1px;
     }
 
     .des {
         font-size: 10px;
         padding-top: 3px;
+        padding: 0 .5px;
     }
 }
 

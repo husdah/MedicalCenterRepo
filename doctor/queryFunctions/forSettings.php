@@ -50,7 +50,7 @@ if(isset($_POST['submitinfo']))
                 if (move_uploaded_file($_FILES['drphoto']['tmp_name'], $uploadedFilePath)) {
                 $success = true;
                 
-                if(file_exists("../../uploads/".$oldimg)){
+                if(file_exists("../../uploads/".$oldimg) && $oldimg != 'docImgPlaceholder.jpg'){
                         unlink("../../uploads/".$oldimg);
                 }
                     

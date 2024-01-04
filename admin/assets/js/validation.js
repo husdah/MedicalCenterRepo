@@ -6,7 +6,7 @@ function validateName(name) {
 
 // Function to validate desc
 function validateDesc(desc) {
-    var descRegex = /^[a-zA-Z\s]+$/;
+    var descRegex = /^[a-zA-Z\s,'']+$/;
     return descRegex.test(desc);
 }
 

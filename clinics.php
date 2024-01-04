@@ -1,7 +1,7 @@
 <?php
 session_start();
 require('config/dbcon.php');
-$query="select clinicId,name,description,icon from clinic";
+$query="select clinicId,name,description,icon from clinic ORDER BY name";
 $res=mysqli_query($con,$query);
 if(isset($_SESSION['patientId'])){
   $pid=$_SESSION['patientId'];

@@ -22,7 +22,7 @@ function validateName($name) {
 
 // Function to validate desc
 function validateDesc($desc) {
-    $descRegex = '/^[a-zA-Z\s]+$/';
+    $descRegex = '/^[a-zA-Z\s,\'\']+$/';
     return preg_match($descRegex, $desc);
 }
 
