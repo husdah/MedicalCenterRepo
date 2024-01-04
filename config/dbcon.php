@@ -183,13 +183,13 @@
         if (mysqli_num_rows($checkProcedureResult) == 0) {
             // The stored procedure doesn't exist, so create it
             $deleteDocChildrenQuery = "
-                CREATE PROCEDURE delete_doctor_children(IN doctorId INT)
+                CREATE PROCEDURE delete_doctor_children(IN doctorIdParam INT)
                 BEGIN
                     -- Delete child records based on the doctorId
-                    DELETE FROM media WHERE doctorId = doctorId;
-                    DELETE FROM feedback WHERE doctorId = doctorId;
-                    DELETE FROM workingException WHERE doctorId = doctorId;
-                    DELETE FROM doctorHours WHERE doctorId = doctorId;
+                    DELETE FROM media WHERE doctorId = doctorIdParam;
+                    DELETE FROM feedback WHERE doctorId = doctorIdParam;
+                    DELETE FROM workingException WHERE doctorId = doctorIdParam;
+                    DELETE FROM doctorHours WHERE doctorId = doctorIdParam;
                 END";
             $deleteDocChildrenQuery_run = mysqli_query($con, $deleteDocChildrenQuery);
         }
