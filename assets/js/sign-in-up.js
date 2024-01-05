@@ -27,7 +27,7 @@ $(document).ready(function () {
                 } else if(response === '10') {
                     displayError("User already exists!");
                 } else if(response === '11') {
-                    displayError("Something went wrong!");
+                    displayError("Please Fill the required fields!");
                 } else if (response === '12'){
                     displaySuccess("Form Submitted Successfully! Please check your email to activate your account.");
                     $('#sign-up')[0].reset();

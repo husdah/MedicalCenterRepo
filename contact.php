@@ -43,7 +43,7 @@
                         <div id="subject-error" class="error"></div>
                     </div>
                     <div class="input-control">
-                        <textarea cols="50" rows="5" id="message" name="message" placeholder="<?php echo $contact['message']; ?>"></textarea>
+                        <textarea cols="50" rows="3" id="message" name="message" placeholder="<?php echo $contact['message']; ?>"></textarea>
                         <div id="message-error" class="error"></div>
                     </div>
                     <!-- <input type="hidden" name="_template" value="box"></input>

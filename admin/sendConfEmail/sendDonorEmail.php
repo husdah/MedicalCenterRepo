@@ -36,6 +36,7 @@ $numRows = $stmtUrgent->num_rows;
 
 if($numRows > 0){
     // Send urgent blood type notifications to matching donors
+    $exsist = false;
     foreach ($urgentBloodTypes as $row) {
         $bloodType = $row['bloodType'];
         $stmt = $con->prepare("SELECT email FROM donor WHERE bloodType = ?");
@@ -64,9 +65,12 @@ if($numRows > 0){
                     $msg = $e->getMessage();
                 }
             }
+            $exsist = true;
         }else{
-            $response = 500;
-            $msg = "No Matching Blood Type!";
+            if($exsist == false){
+                $response = 500;
+                $msg = "No Matching Blood Type!";
+            }
         }
 
     }
