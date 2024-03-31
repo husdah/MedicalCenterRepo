@@ -20,6 +20,12 @@ Libraries used:
 - Sweet  Alert
 - Swiper
 
+Team:
+- Hussein Daher
+- Haya Tfaily
+- Loreen Baker
+- Zeinab Hijazi
+
 Achievements:
 - Innovation meets care for a healthier tomorrow
 - Streamlined appointment booking for patients
