@@ -18,7 +18,7 @@ $(document).ready(function () {
                     method:'POST',
                     url: 'queryFunctions/buttonActions.php',
                     data: {
-                        'appId': id,
+                        'id': id,
                         'del-btn': 1
                     },
                     success: function (response) {
